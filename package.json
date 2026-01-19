@@ -1,0 +1,13 @@
+{
+    "name": "docs.webpack.js.org",
+    "private": true,
+    "scripts": {
+        "dev": "mint dev"
+    },
+    "dependencies": {
+        "mint": "4.2.284"
+    },
+    "engines": {
+        "node": ">=20"
+    }
+}
