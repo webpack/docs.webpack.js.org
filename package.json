@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "mint dev"
     },
-    "dependencies": {
+    "devDependencies": {
         "mint": "4.2.284"
     },
     "engines": {
