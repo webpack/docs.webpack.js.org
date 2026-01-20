@@ -107,7 +107,37 @@
             ]
           }
         ]
-      }, 
+      },
+      {
+        "tab": "Loaders",
+        "groups": [
+          {
+            "group": "Loaders",
+            "pages": [
+              "loaders/index",
+              "loaders/babel-loader",
+              "loaders/coffee-loader",
+              "loaders/exports-loader",
+              "loaders/expose-loader",
+              "loaders/html-loader",
+              "loaders/imports-loader",
+              "loaders/remark-loader",
+              "loaders/thread-loader"
+            ]
+          },
+          {
+            "group": "CSS",
+            "pages": [
+              "loaders/css-loader",
+              "loaders/less-loader",
+              "loaders/postcss-loader",
+              "loaders/sass-loader",
+              "loaders/style-loader",
+              "loaders/stylus-loader"
+            ]
+          }
+        ]
+      },
       {
         "tab": "Plugins",
         "groups": [
