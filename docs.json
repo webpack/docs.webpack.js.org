@@ -109,6 +109,45 @@
         ]
       },
       {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/index",
+              "guides/getting-started",
+              "guides/asset-management",
+              "guides/output-management",
+              "guides/development",
+              "guides/code-splitting",
+              "guides/caching",
+              "guides/author-libraries",
+              "guides/environment-variables",
+              "guides/build-performance",
+              "guides/csp",
+              "guides/development-vagrant",
+              "guides/dependency-management",
+              "guides/installation",
+              "guides/hot-module-replacement",
+              "guides/tree-shaking",
+              "guides/production",
+              "guides/lazy-loading",
+              "guides/ecma-script-modules",
+              "guides/shimming",
+              "guides/typescript",
+              "guides/web-workers",
+              "guides/progressive-web-application",
+              "guides/public-path",
+              "guides/integrations",
+              "guides/asset-modules",
+              "guides/entry-advanced",
+              "guides/package-exports"
+              
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Loaders",
         "groups": [
           {
