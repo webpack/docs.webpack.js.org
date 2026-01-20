@@ -11,38 +11,59 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "index"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Concepts",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "concepts/index",
+              "concepts/entry-points",
+              "concepts/loaders",
+              "concepts/output",
+              "concepts/plugins",
+              "concepts/configuration",
+              "concepts/modules",
+              "concepts/module-resolution/",
+              "concepts/module-federation",
+              "concepts/dependency-graph",
+              "concepts/targets",
+              "concepts/manifest",
+              "concepts/hot-module-replacement",
+              "concepts/why-webpack"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Configuration",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "configuration/index",
+              "configuration/configuration-languages",
+              "configuration/configuration-types",
+              "configuration/entry-context",
+              "configuration/mode",
+              "configuration/module",
+              "configuration/resolve",
+              "configuration/optimization",
+              "configuration/plugins",
+              "configuration/dev-server",
+              "configuration/cache",
+              "configuration/devtool",
+              "configuration/extending-configurations",
+              "configuration/target",
+              "configuration/watch",
+              "configuration/externals",
+              "configuration/dotenv",
+              "configuration/node",
+              "configuration/stats",
+              "configuration/experiments",
+              "configuration/infrastructureLogging",
+              "configuration/performance",
+              "configuration/other-options"
             ]
           }
         ]
@@ -53,16 +74,36 @@
           {
             "group": "API documentation",
             "pages": [
-              "api-reference/introduction"
+              "api/index",
+              "api/cli",
+              "api/node",
+              "api/stats",
+              "api/webpack-dev-server",
+              "api/hot-module-replacement",
+              "api/loaders",
+              "api/logging"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Modules",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api/module-methods",
+              "api/module-variables"
+            ]
+          },
+          {
+            "group": "Objects",
+            "pages": [
+              "api/compilation-object"
+            ]
+          },
+          {
+            "group": "Plugins",
+            "pages": [
+              "api/compiler-hooks",
+              "api/compilation-hooks",
+              "api/context-module-factory-hooks",
+              "api/parser"
             ]
           }
         ]
