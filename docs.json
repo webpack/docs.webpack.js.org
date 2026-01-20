@@ -107,6 +107,62 @@
             ]
           }
         ]
+      }, 
+      {
+        "tab": "Plugins",
+        "groups": [
+          {
+            "group": "Official plugins",
+            "pages": [
+              "plugins/index",
+              "plugins/automatic-prefetch-plugin",
+              "plugins/banner-plugin",
+              "plugins/context-exclusion-plugin",
+              "plugins/context-replacement-plugin",
+              "plugins/compression-webpack-plugin",
+              "plugins/copy-webpack-plugin",
+              "plugins/css-minimizer-webpack-plugin",
+              "plugins/define-plugin",
+              "plugins/dll-plugin",
+              "plugins/environment-plugin",
+              "plugins/eslint-webpack-plugin",
+              "plugins/eval-source-map-dev-tool-plugin",
+              "plugins/hashed-module-ids-plugin",
+              "plugins/hot-module-replacement-plugin",
+              "plugins/html-minimizer-webpack-plugin",
+              "plugins/ignore-plugin",
+              "plugins/internal-plugins",
+              "plugins/image-minimizer-webpack-plugin",
+              "plugins/json-minimizer-webpack-plugin",
+              "plugins/limit-chunk-count-plugin",
+              "plugins/manifest-plugin",
+              "plugins/min-chunk-size-plugin",
+              "plugins/mini-css-extract-plugin",
+              "plugins/module-concatenation-plugin",
+              "plugins/module-federation-plugin",
+              "plugins/NoEmitOnErrorsPlugin",
+              "plugins/normal-module-replacement-plugin",
+              "plugins/prefetch-plugin",
+              "plugins/profiling-plugin",
+              "plugins/progress-plugin",
+              "plugins/provide-plugin",
+              "plugins/source-map-dev-tool-plugin",
+              "plugins/split-chunks-plugin",
+              "plugins/stylelint-webpack-plugin",
+              "plugins/terser-webpack-plugin",
+              "plugins/virtual-url-plugin",
+              "plugins/watch-ignore-plugin"
+            ]
+          },
+          {
+            "group": "Community plugins",
+            "pages": [
+              "plugins/chunks-webpack-plugin",
+              "plugins/html-webpack-plugin",
+              "plugins/svg-chunk-webpack-plugin"
+            ]
+          }
+        ]
       }
     ],
     "global": {
