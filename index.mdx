@@ -1,97 +1,73 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "webpack"
+description: "A static module bundler for modern JavaScript applications."
 ---
 
-## Setting up
+## What is webpack?
 
-Get your documentation site up and running in minutes.
+webpack is a powerful, open-source **static module bundler** for JavaScript
+applications. It builds a dependency graph from your project's modules and
+packages them into optimized bundles for the browser.
+
+Used by millions of developers worldwide, webpack powers projects built with
+React, Vue, Angular, and many other modern frameworks.
+
+## Get Started
 
 <Card
-  title="Start here"
+  title="Quick Start"
   icon="rocket"
-  href="/quickstart"
+  href="/guides/getting-started"
   horizontal
 >
-  Follow our three step quickstart guide.
+  Install webpack and bundle your first project in minutes.
 </Card>
 
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
+## Explore webpack
 
 <Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+  <Card title="Core Concepts" icon="book" href="/essentials/concepts">
+    Understand entry, output, loaders, plugins, and mode — the five core ideas
+    behind webpack.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="Loaders" icon="wrench" href="/loaders">
+    Transform files like CSS, images, and TypeScript before they enter your
+    bundle.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="Plugins" icon="plug" href="/plugins">
+    Extend webpack's capabilities with a rich ecosystem of plugins.
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title="API Reference" icon="terminal" href="/api">
+    Explore webpack's full programmatic API and configuration options.
   </Card>
 </Columns>
 
-## Create beautiful pages
+## Install webpack
 
-Everything you need to create world-class documentation.
+Add webpack to your project with a single command:
+
+```bash
+npm install --save-dev webpack webpack-cli
+```
+
+## Community & Support
 
 <Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
+  <Card title="GitHub" icon="github" href="https://github.com/webpack/webpack">
+    Report issues, contribute code, and follow development.
   </Card>
   <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
+    title="Discord"
+    icon="discord"
+    href="https://discord.com/invite/5sxFZPdx2k"
   >
-    Add sample code to demonstrate how to use your product.
+    Chat with the webpack community in real time.
   </Card>
   <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
+    title="Stack Overflow"
+    icon="stack-overflow"
+    href="https://stackoverflow.com/questions/tagged/webpack"
   >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
+    Ask questions and find answers from the webpack community.
   </Card>
 </Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
