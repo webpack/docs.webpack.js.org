@@ -1,0 +1,140 @@
+---
+title: "Getting Started"
+description: "Learn how to install webpack and bundle your first JavaScript project."
+---
+
+## Overview
+
+webpack is used to compile JavaScript modules. Once installed, you can use its
+[CLI](/api/cli) or [API](/api/node) to interact with it.
+
+<Warning>
+  Before proceeding, make sure you have a working installation of
+  [Node.js](https://nodejs.org/en/) (v18 or above recommended).
+</Warning>
+
+## Basic Setup
+
+First, create a project directory and initialize npm:
+
+```bash
+mkdir webpack-demo
+cd webpack-demo
+npm init -y
+```
+
+## Install webpack
+
+Install webpack and webpack-cli as development dependencies:
+
+```bash
+npm install --save-dev webpack webpack-cli
+```
+
+## Project Structure
+
+Create the following folder and file structure:
+
+```
+webpack-demo/
+  |- package.json
+  |- package-lock.json
+  |- index.html
+  |- /src
+      |- index.js
+```
+
+**src/index.js**
+
+```javascript
+function component() {
+  const element = document.createElement("div");
+  element.innerHTML = "Hello webpack";
+  return element;
+}
+
+document.body.appendChild(component());
+```
+
+**index.html**
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started</title>
+  </head>
+  <body>
+    <script src="./dist/main.js"></script>
+  </body>
+</html>
+```
+
+## Creating a Bundle
+
+Run webpack to bundle your project:
+
+```bash
+npx webpack
+```
+
+This will take `src/index.js` as the entry point and generate `dist/main.js`
+as the output. Open `index.html` in your browser to see **Hello webpack**.
+
+## Using a Configuration File
+
+Most projects will need a more complex setup. Create a `webpack.config.js`
+in the root of your project:
+
+```javascript
+const path = require("path");
+
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+};
+```
+
+Now run webpack using the config file:
+
+```bash
+npx webpack --config webpack.config.js
+```
+
+## NPM Scripts
+
+It is useful to add a shortcut in `package.json` to avoid typing the full
+command every time:
+
+```json
+{
+  "scripts": {
+    "build": "webpack"
+  }
+}
+```
+
+Now you can run the build with:
+
+```bash
+npm run build
+```
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Asset Management" icon="image" href="/guides/asset-management">
+    Learn how to load CSS, images, and fonts with webpack.
+  </Card>
+  <Card
+    title="Output Management"
+    icon="folder-open"
+    href="/guides/output-management"
+  >
+    Manage multiple entry points and auto-generate HTML files.
+  </Card>
+</Columns>
