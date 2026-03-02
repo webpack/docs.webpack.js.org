@@ -2,7 +2,8 @@
     "name": "docs.webpack.js.org",
     "private": true,
     "scripts": {
-        "dev": "mint dev"
+        "dev": "mint dev",
+        "validate": "node scripts/validate-nav.mjs"
     },
     "devDependencies": {
         "mint": "4.2.284"
