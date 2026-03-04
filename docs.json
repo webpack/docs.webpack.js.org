@@ -1,21 +1,16 @@
 {
   "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
   "name": "webpack",
-  "theme": "palm",
   "colors": {
-    "primary": "#8DD6F9",
-    "light": "#8DD6F9",
-    "dark": "#1C78C0"
+    "primary": "#1d78c1",
+    "light": "#50A5E0",
+    "dark": "#15803D"
   },
   "navbar": {
     "primary": {
       "type": "github",
       "href": "https://github.com/webpack/webpack"
-    }
-  },
-  "footer": {
-    "socials": {
-      "github": "https://github.com/webpack/webpack"
     }
   },
   "navigation": {
@@ -187,5 +182,29 @@
         ]
       }
     ]
+  },
+  "logo": {
+    "light": "/images/logo-light.svg",
+    "dark": "/images/logo-dark.svg"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/webpack",
+      "github": "https://github.com/webpack",
+      "discord": "https://discord.gg/webpack",
+      "linkedin": "https://linkedin.com/company/webpack"
+    }
   }
 }
