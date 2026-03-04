@@ -1,0 +1,303 @@
+---
+title: DotenvPlugin
+description: Load environment variables from .env files
+---
+
+# DotenvPlugin
+
+The `DotenvPlugin` loads environment variables from `.env` files and makes them available during the build process. It supports multiple .env files based on the build mode and provides a flexible templating system.
+
+<Info>
+  This is a built-in alternative to the popular `dotenv-webpack` package. It's available in webpack 5.74.0+.
+</Info>
+
+## Basic Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.DotenvPlugin()
+  ]
+};
+```
+
+With default settings, this loads variables from `.env` files with the `WEBPACK_` prefix.
+
+## Configuration Options
+
+<ParamField path="path" type="string">
+  Path to the directory containing .env files.
+  
+  Default: Project root directory
+</ParamField>
+
+<ParamField path="template" type="string[]">
+  Template array for .env file names. `[mode]` is replaced with the current mode.
+  
+  Default: `[".env", ".env.local", ".env.[mode]", ".env.[mode].local"]`
+</ParamField>
+
+<ParamField path="prefix" type="string | string[] | function">
+  Prefix(es) for environment variables to include.
+  
+  Default: `"WEBPACK_"`
+  
+  - String: Variables must start with this prefix
+  - Array: Variables must start with any of these prefixes  
+  - Function: `(key) => boolean` to determine if variable should be included
+</ParamField>
+
+<ParamField path="allowEmptyValues" type="boolean" default="false">
+  Allow empty values for environment variables.
+</ParamField>
+
+<ParamField path="systemvars" type="boolean" default="false">
+  Load system environment variables.
+</ParamField>
+
+<ParamField path="defaults" type="object">
+  Default values for environment variables.
+</ParamField>
+
+## File Loading Order
+
+The plugin loads .env files in this order (later files override earlier ones):
+
+1. `.env`
+2. `.env.local`
+3. `.env.[mode]` (e.g., `.env.production`)
+4. `.env.[mode].local` (e.g., `.env.production.local`)
+
+<Tip>
+  Add `.env*.local` files to `.gitignore` to keep sensitive values out of version control.
+</Tip>
+
+## Examples
+
+### Custom Prefix
+
+Only load variables with a specific prefix:
+
+```javascript
+new webpack.DotenvPlugin({
+  prefix: 'APP_'
+})
+```
+
+**.env:**
+```bash
+APP_API_URL=https://api.example.com
+APP_VERSION=1.0.0
+OTHER_VAR=ignored  # Won't be loaded (no APP_ prefix)
+```
+
+### Multiple Prefixes
+
+Load variables with multiple prefixes:
+
+```javascript
+new webpack.DotenvPlugin({
+  prefix: ['APP_', 'PUBLIC_']
+})
+```
+
+**.env:**
+```bash
+APP_API_URL=https://api.example.com
+PUBLIC_URL=/
+PRIVATE_KEY=secret  # Won't be loaded
+```
+
+### Custom Filter Function
+
+Use a function for complete control:
+
+```javascript
+new webpack.DotenvPlugin({
+  prefix: (key) => {
+    // Only load variables ending with _URL or _KEY
+    return key.endsWith('_URL') || key.endsWith('_KEY');
+  }
+})
+```
+
+### Mode-Specific Files
+
+Different values for development and production:
+
+**.env:**
+```bash
+WEBPACK_API_URL=https://api.example.com
+```
+
+**.env.development:**
+```bash
+WEBPACK_API_URL=http://localhost:3000
+WEBPACK_DEBUG=true
+```
+
+**.env.production:**
+```bash
+WEBPACK_API_URL=https://api.production.com
+WEBPACK_DEBUG=false
+```
+
+When building with `--mode production`, production values override defaults.
+
+### System Variables
+
+Include system environment variables:
+
+```javascript
+new webpack.DotenvPlugin({
+  systemvars: true,
+  prefix: 'WEBPACK_'
+})
+```
+
+This allows you to set variables like `WEBPACK_API_URL=https://api.com npm run build`.
+
+### Default Values
+
+Provide fallback values:
+
+```javascript
+new webpack.DotenvPlugin({
+  defaults: {
+    WEBPACK_API_URL: 'http://localhost:3000',
+    WEBPACK_TIMEOUT: '5000'
+  }
+})
+```
+
+### Custom Directory
+
+Load .env files from a specific directory:
+
+```javascript
+new webpack.DotenvPlugin({
+  path: path.resolve(__dirname, 'config')
+})
+```
+
+### Custom Template
+
+Use custom .env file naming:
+
+```javascript
+new webpack.DotenvPlugin({
+  template: [
+    '.env',
+    '.env.[mode]',
+    '.env.override'
+  ]
+})
+```
+
+## Using Loaded Variables
+
+Variables are available through `process.env`:
+
+```javascript
+// In your application code
+console.log(process.env.WEBPACK_API_URL);
+
+// In webpack config
+module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify(process.env.WEBPACK_API_URL)
+    })
+  ]
+};
+```
+
+<Note>
+  DotenvPlugin loads variables during webpack configuration. Use DefinePlugin to make them available in your application code.
+</Note>
+
+## Complete Example
+
+**Project structure:**
+```
+my-app/
+├── .env
+├── .env.local
+├── .env.production
+├── .gitignore
+├── webpack.config.js
+└── src/
+    └── index.js
+```
+
+**.env:**
+```bash
+WEBPACK_APP_NAME=My App
+WEBPACK_API_URL=https://api.example.com
+```
+
+**.env.local:**
+```bash
+WEBPACK_API_URL=http://localhost:3000
+```
+
+**.env.production:**
+```bash
+WEBPACK_API_URL=https://api.production.com
+WEBPACK_ANALYTICS_ID=UA-123456
+```
+
+**.gitignore:**
+```
+.env*.local
+```
+
+**webpack.config.js:**
+```javascript
+const webpack = require('webpack');
+
+module.exports = (env, argv) => ({
+  plugins: [
+    new webpack.DotenvPlugin({
+      prefix: 'WEBPACK_',
+      defaults: {
+        WEBPACK_API_URL: 'http://localhost:3000'
+      }
+    }),
+    new webpack.DefinePlugin({
+      APP_CONFIG: JSON.stringify({
+        name: process.env.WEBPACK_APP_NAME,
+        apiUrl: process.env.WEBPACK_API_URL,
+        analyticsId: process.env.WEBPACK_ANALYTICS_ID
+      })
+    })
+  ]
+});
+```
+
+**src/index.js:**
+```javascript
+console.log('App Config:', APP_CONFIG);
+// Development: { name: 'My App', apiUrl: 'http://localhost:3000', analyticsId: undefined }
+// Production: { name: 'My App', apiUrl: 'https://api.production.com', analyticsId: 'UA-123456' }
+```
+
+## vs. EnvironmentPlugin
+
+| Feature | DotenvPlugin | EnvironmentPlugin |
+|---------|--------------|-------------------|
+| Loads .env files | ✅ Yes | ❌ No |
+| Mode-specific files | ✅ Yes | ❌ No |
+| System env vars | Optional | ✅ Always |
+| Prefix filtering | ✅ Yes | ❌ No |
+| Default values | ✅ Yes | ✅ Yes |
+
+Use DotenvPlugin for .env file support, EnvironmentPlugin for simple system variable injection.
+
+## Related
+
+- [EnvironmentPlugin](/plugins/environment-plugin) - Inject system environment variables
+- [DefinePlugin](/plugins/define-plugin) - Define global constants
+- [Mode Configuration](/concepts/mode) - Development vs production modes

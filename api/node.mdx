@@ -1,0 +1,233 @@
+---
+title: "Node.js API"
+description: "webpack Node.js API documentation - webpack() function for programmatic usage"
+---
+
+The Node.js API allows you to use webpack directly from Node.js, giving you full control over the compilation process.
+
+## webpack()
+
+The primary function exported by webpack. It can be used to create a Compiler or MultiCompiler instance.
+
+### Signature
+
+```typescript
+function webpack(
+  options: WebpackOptions,
+  callback?: (err: Error | null, stats?: Stats) => void
+): Compiler | null;
+
+function webpack(
+  options: WebpackOptions[],
+  callback?: (err: Error | null, stats?: MultiStats) => void
+): MultiCompiler | null;
+```
+
+<ParamField path="options" type="WebpackOptions | WebpackOptions[]" required>
+  Webpack configuration object or array of configuration objects for multi-compiler mode.
+</ParamField>
+
+<ParamField path="callback" type="function">
+  Optional callback function that receives compilation errors and stats. When provided, webpack will automatically run the compilation.
+  
+  **Callback parameters:**
+  - `err` - Compilation error or null
+  - `stats` - Stats object containing compilation information
+</ParamField>
+
+<ResponseField name="return" type="Compiler | MultiCompiler | null">
+  Returns a Compiler instance for single config, MultiCompiler for array of configs, or null if callback was provided and an error occurred.
+</ResponseField>
+
+### Basic Usage
+
+```javascript
+const webpack = require('webpack');
+const config = require('./webpack.config.js');
+
+// Without callback - get compiler instance
+const compiler = webpack(config);
+
+compiler.run((err, stats) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  
+  console.log(stats.toString({
+    colors: true
+  }));
+  
+  compiler.close((closeErr) => {
+    if (closeErr) {
+      console.error(closeErr);
+    }
+  });
+});
+```
+
+### With Callback
+
+When a callback is provided, webpack automatically runs the compilation:
+
+```javascript
+const webpack = require('webpack');
+const config = require('./webpack.config.js');
+
+webpack(config, (err, stats) => {
+  if (err) {
+    console.error(err.stack || err);
+    if (err.details) {
+      console.error(err.details);
+    }
+    return;
+  }
+
+  const info = stats.toJson();
+
+  if (stats.hasErrors()) {
+    console.error(info.errors);
+  }
+
+  if (stats.hasWarnings()) {
+    console.warn(info.warnings);
+  }
+
+  // Compiler is automatically closed when using callback
+});
+```
+
+### Multi-Compiler Mode
+
+Pass an array of configurations to create a MultiCompiler:
+
+```javascript
+const webpack = require('webpack');
+const config1 = require('./webpack.config1.js');
+const config2 = require('./webpack.config2.js');
+
+const multiCompiler = webpack([config1, config2]);
+
+multiCompiler.run((err, multiStats) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+
+  // Access individual stats
+  multiStats.stats.forEach((stats, index) => {
+    console.log(`Compiler ${index}:`, stats.toString());
+  });
+
+  multiCompiler.close((closeErr) => {
+    // Handle close errors
+  });
+});
+```
+
+### Watch Mode
+
+For watch mode, use the compiler's `watch()` method:
+
+```javascript
+const webpack = require('webpack');
+const config = require('./webpack.config.js');
+
+const compiler = webpack(config);
+
+const watching = compiler.watch({
+  aggregateTimeout: 300,
+  poll: undefined
+}, (err, stats) => {
+  // Stats is updated on each compilation
+  console.log(stats.toString());
+});
+
+// Stop watching
+watching.close((closeErr) => {
+  console.log('Watching closed.');
+});
+```
+
+## Related Functions
+
+### webpack.validate()
+
+Validates a webpack configuration object:
+
+```javascript
+const webpack = require('webpack');
+const config = require('./webpack.config.js');
+
+try {
+  webpack.validate(config);
+  console.log('Configuration is valid');
+} catch (err) {
+  console.error('Configuration error:', err.message);
+}
+```
+
+### webpack.version
+
+Returns the current webpack version:
+
+```javascript
+const webpack = require('webpack');
+console.log(webpack.version); // "5.x.x"
+```
+
+## Error Handling
+
+Webpack operations can fail at different stages:
+
+```javascript
+const webpack = require('webpack');
+
+webpack(config, (err, stats) => {
+  // Fatal webpack errors (wrong configuration, etc)
+  if (err) {
+    console.error(err.stack || err);
+    if (err.details) {
+      console.error(err.details);
+    }
+    return;
+  }
+
+  const info = stats.toJson();
+
+  // Compilation errors (missing modules, syntax errors, etc)
+  if (stats.hasErrors()) {
+    console.error(info.errors);
+  }
+
+  // Compilation warnings
+  if (stats.hasWarnings()) {
+    console.warn(info.warnings);
+  }
+});
+```
+
+## TypeScript Support
+
+Webpack provides TypeScript type definitions:
+
+```typescript
+import webpack, { Configuration, Stats, Compiler } from 'webpack';
+
+const config: Configuration = {
+  entry: './src/index.ts',
+  // ... other options
+};
+
+const compiler: Compiler = webpack(config);
+
+compiler.run((err: Error | null, stats?: Stats) => {
+  // Type-safe callback
+});
+```
+
+## See Also
+
+- [Compiler API](/api/compiler) - Compiler instance methods and hooks
+- [Stats Object](/api/stats) - Compilation statistics and output
+- [Compilation API](/api/compilation) - Compilation instance API

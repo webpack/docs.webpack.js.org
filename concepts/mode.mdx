@@ -1,0 +1,431 @@
+---
+title: Mode
+description: Configure webpack for development or production with built-in optimizations
+---
+
+# Mode
+
+Providing the **mode** configuration option tells webpack to use its built-in optimizations accordingly. The mode can be set to `development`, `production`, or `none`.
+
+## Usage
+
+Set mode in your configuration:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  mode: 'production'
+};
+```
+
+Or pass it via CLI:
+
+```bash
+webpack --mode=production
+```
+
+## Mode Values
+
+### Development
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  mode: 'development'
+};
+```
+
+**Optimizations enabled:**
+- Fast builds with minimal optimization
+- Detailed error messages and warnings
+- Source maps for debugging
+- Hot Module Replacement support
+- Readable output code
+
+**Built-in plugins enabled:**
+- `NamedChunksPlugin` - Readable chunk names
+- `NamedModulesPlugin` - Readable module names
+
+**DefinePlugin values:**
+```javascript
+process.env.NODE_ENV = 'development'
+```
+
+### Production
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  mode: 'production'
+};
+```
+
+**Optimizations enabled:**
+- Minification
+- Tree shaking
+- Scope hoisting
+- Code splitting optimization
+- Smaller bundle sizes
+- Optimized runtime
+
+**Built-in plugins enabled:**
+- `FlagDependencyUsagePlugin` - Flag unused dependencies
+- `FlagIncludedChunksPlugin` - Optimize chunk loading
+- `ModuleConcatenationPlugin` - Scope hoisting
+- `NoEmitOnErrorsPlugin` - Skip emitting on errors
+- `TerserPlugin` - Minify JavaScript
+
+**DefinePlugin values:**
+```javascript
+process.env.NODE_ENV = 'production'
+```
+
+### None
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  mode: 'none'
+};
+```
+
+Opts out of all default optimizations. Use this when you want complete control over configuration.
+
+## Mode Comparison
+
+<Tabs>
+  <Tab title="Development">
+    ```javascript
+    // Equivalent configuration
+    module.exports = {
+      mode: 'development',
+      // These are set automatically:
+      devtool: 'eval',
+      cache: true,
+      performance: {
+        hints: false
+      },
+      output: {
+        pathinfo: true
+      },
+      optimization: {
+        moduleIds: 'named',
+        chunkIds: 'named',
+        mangleExports: false,
+        nodeEnv: 'development',
+        flagIncludedChunks: false,
+        concatenateModules: false,
+        splitChunks: {
+          hidePathInfo: false,
+          minSize: 10000,
+          maxAsyncRequests: Infinity,
+          maxInitialRequests: Infinity,
+        },
+        emitOnErrors: true,
+        checkWasmTypes: false,
+        minimize: false,
+      },
+      plugins: [
+        new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
+      ]
+    };
+    ```
+  </Tab>
+  <Tab title="Production">
+    ```javascript
+    // Equivalent configuration
+    module.exports = {
+      mode: 'production',
+      // These are set automatically:
+      performance: {
+        hints: 'warning'
+      },
+      output: {
+        pathinfo: false
+      },
+      optimization: {
+        moduleIds: 'deterministic',
+        chunkIds: 'deterministic',
+        mangleExports: 'deterministic',
+        nodeEnv: 'production',
+        flagIncludedChunks: true,
+        concatenateModules: true,
+        splitChunks: {
+          hidePathInfo: true,
+          minSize: 30000,
+          maxAsyncRequests: 5,
+          maxInitialRequests: 3,
+        },
+        emitOnErrors: false,
+        checkWasmTypes: true,
+        minimize: true,
+        minimizer: [
+          new TerserPlugin(/* ... */),
+        ],
+      },
+      plugins: [
+        new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
+      ]
+    };
+    ```
+  </Tab>
+</Tabs>
+
+## Environment-Specific Configuration
+
+### Using Environment Variables
+
+```javascript filename="webpack.config.js"
+const mode = process.env.NODE_ENV || 'development';
+
+module.exports = {
+  mode: mode,
+  // Other config...
+};
+```
+
+### Exporting a Function
+
+```javascript filename="webpack.config.js"
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+
+  return {
+    mode: argv.mode,
+    devtool: isProduction ? 'source-map' : 'eval-source-map',
+    optimization: {
+      minimize: isProduction
+    },
+    plugins: [
+      isProduction && new SomeProductionPlugin(),
+    ].filter(Boolean)
+  };
+};
+```
+
+### Multiple Configurations
+
+```javascript filename="webpack.config.js"
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    return {
+      mode: 'development',
+      entry: './src/index.js',
+      devtool: 'eval-source-map',
+      devServer: {
+        hot: true
+      }
+    };
+  }
+
+  return {
+    mode: 'production',
+    entry: './src/index.js',
+    output: {
+      filename: '[name].[contenthash].js'
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all'
+      }
+    }
+  };
+};
+```
+
+## Mode Detection in Code
+
+Webpack's DefinePlugin makes `process.env.NODE_ENV` available in your code:
+
+```javascript
+if (process.env.NODE_ENV === 'production') {
+  console.log('Production mode');
+  // Production-specific code
+} else {
+  console.log('Development mode');
+  // Development-specific code
+}
+```
+
+<Info>
+Dead code elimination removes the unused branch in production builds.
+</Info>
+
+### Tree Shaking Example
+
+```javascript
+// Development build includes both branches
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./prod');
+} else {
+  module.exports = require('./dev');
+}
+
+// Production build after minification:
+module.exports = require('./prod');
+```
+
+## Custom Optimizations by Mode
+
+```javascript filename="webpack.config.js"
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+module.exports = (env, argv) => {
+  const isDevelopment = argv.mode === 'development';
+  const isProduction = argv.mode === 'production';
+
+  return {
+    mode: argv.mode,
+    optimization: {
+      minimize: isProduction,
+      minimizer: isProduction ? [
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              drop_console: true,
+            },
+          },
+        }),
+        new CssMinimizerPlugin(),
+      ] : [],
+      splitChunks: isProduction ? {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      } : false,
+    },
+    devtool: isDevelopment ? 'eval-source-map' : 'source-map',
+  };
+};
+```
+
+## Performance Hints
+
+### Development
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  mode: 'development',
+  performance: {
+    hints: false // Disable performance hints in development
+  }
+};
+```
+
+### Production
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  mode: 'production',
+  performance: {
+    hints: 'warning',
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  }
+};
+```
+
+## Mode-Specific Plugins
+
+```javascript filename="webpack.config.js"
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+
+  return {
+    mode: argv.mode,
+    plugins: [
+      new HtmlWebpackPlugin(),
+      
+      // Production only
+      isProduction && new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css'
+      }),
+      
+      // Development only
+      !isProduction && new webpack.HotModuleReplacementPlugin(),
+    ].filter(Boolean)
+  };
+};
+```
+
+## Module IDs
+
+Mode affects how module IDs are generated:
+
+### Development
+```javascript
+optimization: {
+  moduleIds: 'named' // Readable module names for debugging
+}
+```
+
+### Production
+```javascript
+optimization: {
+  moduleIds: 'deterministic' // Short numeric IDs for smaller bundles
+}
+```
+
+## Source Maps by Mode
+
+```javascript filename="webpack.config.js"
+module.exports = (env, argv) => ({
+  mode: argv.mode,
+  devtool: argv.mode === 'production'
+    ? 'source-map'              // Full source maps
+    : 'eval-cheap-source-map'   // Fast rebuilds
+});
+```
+
+<Warning>
+In production, consider whether to include source maps. They help with debugging but expose your source code.
+</Warning>
+
+## Best Practices
+
+1. **Always set mode explicitly** - Don't rely on defaults
+2. **Use environment variables** - Make mode configurable via NODE_ENV
+3. **Optimize for target** - Development for speed, production for size
+4. **Test both modes** - Ensure your app works in both development and production
+5. **Remove debug code** - Use dead code elimination to remove development-only code
+6. **Monitor bundle size** - Use performance hints in production
+
+## Common Patterns
+
+### Package.json Scripts
+
+```json filename="package.json"
+{
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "watch": "webpack --mode=development --watch",
+    "serve": "webpack serve --mode=development"
+  }
+}
+```
+
+### Cross-env for Windows
+
+```json filename="package.json"
+{
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack"
+  }
+}
+```
+
+## Related Concepts
+
+- [Output](/concepts/output) - Configure output based on mode
+- [Optimization](/configuration/optimization) - Deep dive into optimization settings
+- [Targets](/concepts/targets) - Configure for different runtime environments

@@ -1,0 +1,572 @@
+---
+title: Plugins
+description: Add additional functionality to webpack through plugins
+---
+
+Plugins are the backbone of webpack's functionality. They can perform a wide range of tasks like bundle optimization, asset management, and environment variable injection.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ]
+};
+```
+
+## Plugins Array
+
+<ParamField path="plugins" type="array">
+  Add additional plugins to the compiler.
+  
+  ```javascript
+  plugins: [
+    new Plugin1(),
+    new Plugin2(options),
+    // Conditional plugin
+    isDevelopment && new DevPlugin()
+  ].filter(Boolean)
+  ```
+  
+  Plugins are instantiated with the `new` operator and can receive configuration options.
+</ParamField>
+
+## Built-in Plugins
+
+Webpack includes several built-in plugins accessible via `webpack` module:
+
+### DefinePlugin
+
+Create global constants available at compile time:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.API_URL': JSON.stringify('https://api.example.com'),
+      VERSION: JSON.stringify('1.0.0'),
+      PRODUCTION: true,
+      __DEV__: false
+    })
+  ]
+};
+```
+
+### ProvidePlugin
+
+Automatically load modules instead of importing/requiring them:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      process: 'process/browser'
+    })
+  ]
+};
+```
+
+### BannerPlugin
+
+Add a banner to the top of generated chunks:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: '/*! Copyright 2024 MyCompany */',
+      raw: true,
+      entryOnly: true
+    })
+  ]
+};
+```
+
+### EnvironmentPlugin
+
+Shorthand for DefinePlugin on `process.env` keys:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'API_URL'])
+    // or with defaults
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      DEBUG: false
+    })
+  ]
+};
+```
+
+### IgnorePlugin
+
+Exclude certain modules from bundles:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/
+    })
+  ]
+};
+```
+
+### ProgressPlugin
+
+Show compilation progress:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ProgressPlugin({
+      activeModules: true,
+      entries: true,
+      modules: true,
+      percentBy: 'entries'
+    })
+  ]
+};
+```
+
+### HotModuleReplacementPlugin
+
+Enable Hot Module Replacement:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
+};
+```
+
+<Note>
+  Usually not needed as it's automatically enabled with `devServer.hot: true`.
+</Note>
+
+## Popular Third-Party Plugins
+
+### HtmlWebpackPlugin
+
+Generate HTML files with script tags:
+
+```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      inject: 'body',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      },
+      meta: {
+        viewport: 'width=device-width, initial-scale=1'
+      }
+    })
+  ]
+};
+```
+
+Multiple HTML files:
+
+```javascript
+plugins: [
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+    filename: 'index.html',
+    chunks: ['main']
+  }),
+  new HtmlWebpackPlugin({
+    template: './src/admin.html',
+    filename: 'admin.html',
+    chunks: ['admin']
+  })
+]
+```
+
+### MiniCssExtractPlugin
+
+Extract CSS into separate files:
+
+```javascript
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css'
+    })
+  ]
+};
+```
+
+### CopyWebpackPlugin
+
+Copy files and directories to output directory:
+
+```javascript
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public', to: '' },
+        { from: 'src/assets', to: 'assets' },
+        {
+          from: 'src/manifest.json',
+          to: 'manifest.json',
+          transform(content) {
+            return JSON.stringify({
+              ...JSON.parse(content),
+              version: process.env.VERSION
+            });
+          }
+        }
+      ]
+    })
+  ]
+};
+```
+
+### CleanWebpackPlugin
+
+Remove build folder before building:
+
+```javascript
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CleanWebpackPlugin()
+  ]
+};
+```
+
+<Note>
+  In webpack 5, you can use `output.clean: true` instead.
+</Note>
+
+### CompressionWebpackPlugin
+
+Prepare compressed versions of assets:
+
+```javascript
+const CompressionPlugin = require('compression-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CompressionPlugin({
+      filename: '[path][base].gz',
+      algorithm: 'gzip',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
+  ]
+};
+```
+
+### WebpackBundleAnalyzer
+
+Visualize bundle size:
+
+```javascript
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
+      reportFilename: 'bundle-report.html'
+    })
+  ]
+};
+```
+
+### DotenvWebpackPlugin
+
+Load environment variables from .env file:
+
+```javascript
+const Dotenv = require('dotenv-webpack');
+
+module.exports = {
+  plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      silent: false
+    })
+  ]
+};
+```
+
+### ESLintWebpackPlugin
+
+Run ESLint on build:
+
+```javascript
+const ESLintPlugin = require('eslint-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      fix: true,
+      emitWarning: true,
+      failOnError: false
+    })
+  ]
+};
+```
+
+### ForkTsCheckerWebpackPlugin
+
+Run TypeScript type checker on a separate process:
+
+```javascript
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
+      typescript: {
+        configFile: 'tsconfig.json'
+      }
+    })
+  ]
+};
+```
+
+## Plugin Patterns
+
+### Conditional Plugins
+
+```javascript webpack.config.js
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  plugins: [
+    // Always include
+    new HtmlWebpackPlugin(),
+    
+    // Conditional with ternary
+    isProduction 
+      ? new MiniCssExtractPlugin()
+      : null,
+    
+    // Conditional with &&
+    isDevelopment && new webpack.HotModuleReplacementPlugin(),
+    
+    // Multiple conditional plugins
+    ...(isProduction ? [
+      new CompressionPlugin(),
+      new BundleAnalyzerPlugin()
+    ] : [])
+  ].filter(Boolean) // Remove falsy values
+};
+```
+
+### Plugin Composition
+
+```javascript webpack.config.js
+function getPlugins(env) {
+  const plugins = [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env)
+    })
+  ];
+  
+  if (env === 'production') {
+    plugins.push(
+      new MiniCssExtractPlugin(),
+      new CompressionPlugin()
+    );
+  }
+  
+  if (env === 'development') {
+    plugins.push(
+      new webpack.HotModuleReplacementPlugin()
+    );
+  }
+  
+  return plugins;
+}
+
+module.exports = {
+  plugins: getPlugins(process.env.NODE_ENV)
+};
+```
+
+### Environment-Based Configuration
+
+```javascript webpack.config.js
+const webpack = require('webpack');
+
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+  
+  return {
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env.API_URL': JSON.stringify(
+          isProduction 
+            ? 'https://api.production.com'
+            : 'https://api.dev.com'
+        )
+      }),
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+        minify: isProduction
+      })
+    ]
+  };
+};
+```
+
+## Writing Custom Plugins
+
+Basic plugin structure:
+
+```javascript
+class MyCustomPlugin {
+  apply(compiler) {
+    compiler.hooks.done.tap('MyCustomPlugin', (stats) => {
+      console.log('Build complete!');
+    });
+  }
+}
+
+module.exports = {
+  plugins: [
+    new MyCustomPlugin()
+  ]
+};
+```
+
+Plugin with options:
+
+```javascript
+class MyPlugin {
+  constructor(options) {
+    this.options = options;
+  }
+  
+  apply(compiler) {
+    compiler.hooks.emit.tapAsync(
+      'MyPlugin',
+      (compilation, callback) => {
+        // Modify compilation
+        const { message } = this.options;
+        console.log(message);
+        callback();
+      }
+    );
+  }
+}
+
+module.exports = {
+  plugins: [
+    new MyPlugin({ message: 'Hello from plugin!' })
+  ]
+};
+```
+
+## Common Plugin Combinations
+
+### Production Build
+
+```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      minify: true
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    }),
+    new CompressionPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false
+    })
+  ]
+};
+```
+
+### Development Build
+
+```javascript
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx'],
+      fix: true
+    })
+  ]
+};
+```

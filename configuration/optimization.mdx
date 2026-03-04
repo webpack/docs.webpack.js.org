@@ -1,0 +1,589 @@
+---
+title: Optimization
+description: Customize webpack's optimization behavior for better bundle performance
+---
+
+The optimization configuration controls webpack's built-in optimization features, including code splitting, minification, and module concatenation.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+module.exports = {
+  optimization: {
+    minimize: true,
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+};
+```
+
+## Optimization Options
+
+<ParamField path="optimization.minimize" type="boolean">
+  Enable/disable minification.
+  
+  ```javascript
+  optimization: {
+    minimize: true
+  }
+  ```
+  
+  Default: `true` in production mode, `false` otherwise
+</ParamField>
+
+<ParamField path="optimization.minimizer" type="array">
+  Customized minifier plugins.
+  
+  ```javascript
+  const TerserPlugin = require('terser-webpack-plugin');
+  
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      })
+    ]
+  }
+  ```
+  
+  Use `'...'` to extend default minimizers:
+  ```javascript
+  optimization: {
+    minimizer: [
+      '...', // extend defaults
+      new CssMinimizerPlugin()
+    ]
+  }
+  ```
+</ParamField>
+
+<ParamField path="optimization.moduleIds" type="'natural' | 'named' | 'deterministic' | 'size' | false">
+  Algorithm for module IDs.
+  
+  ```javascript
+  optimization: {
+    moduleIds: 'deterministic'
+  }
+  ```
+  
+  - `'natural'`: Numeric IDs in order of usage
+  - `'named'`: Readable IDs for debugging
+  - `'deterministic'`: Short numeric hash IDs for caching
+  - `'size'`: Numeric IDs focused on minimal bundle size
+  - `false`: Custom algorithm via plugin
+  
+  Default: `'deterministic'` in production, `'named'` in development
+</ParamField>
+
+<ParamField path="optimization.chunkIds" type="'natural' | 'named' | 'deterministic' | 'size' | 'total-size' | false">
+  Algorithm for chunk IDs.
+  
+  ```javascript
+  optimization: {
+    chunkIds: 'deterministic'
+  }
+  ```
+  
+  - `'deterministic'`: Short numeric hash IDs (recommended for caching)
+  - `'named'`: Readable IDs for debugging
+  - `'size'`: IDs focused on minimal initial download
+  - `'total-size'`: IDs focused on minimal total download
+  
+  Default: `'deterministic'` in production, `'named'` in development
+</ParamField>
+
+## Code Splitting
+
+<ParamField path="optimization.splitChunks" type="object | false">
+  Configure chunk splitting behavior.
+  
+  ```javascript
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 244000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+  ```
+  
+  Set to `false` to disable splitting.
+</ParamField>
+
+### Split Chunks Options
+
+<Accordion title="Basic Split Chunks Options">
+  <ParamField path="splitChunks.chunks" type="'all' | 'async' | 'initial' | function">
+    Which chunks to optimize.
+    
+    ```javascript
+    chunks: 'all' // all chunks
+    chunks: 'async' // only async chunks
+    chunks: 'initial' // only initial chunks
+    ```
+  </ParamField>
+  
+  <ParamField path="splitChunks.minSize" type="number">
+    Minimum size (in bytes) for a chunk to be generated.
+    
+    ```javascript
+    minSize: 20000 // 20kb
+    ```
+    
+    Default: `20000`
+  </ParamField>
+  
+  <ParamField path="splitChunks.maxSize" type="number">
+    Maximum size hint for chunks.
+    
+    ```javascript
+    maxSize: 244000 // 244kb
+    ```
+  </ParamField>
+  
+  <ParamField path="splitChunks.minChunks" type="number">
+    Minimum times a module must be shared before splitting.
+    
+    ```javascript
+    minChunks: 2
+    ```
+    
+    Default: `1`
+  </ParamField>
+  
+  <ParamField path="splitChunks.maxAsyncRequests" type="number">
+    Maximum number of parallel requests for on-demand loading.
+    
+    ```javascript
+    maxAsyncRequests: 30
+    ```
+    
+    Default: `30`
+  </ParamField>
+  
+  <ParamField path="splitChunks.maxInitialRequests" type="number">
+    Maximum number of parallel requests at entry point.
+    
+    ```javascript
+    maxInitialRequests: 30
+    ```
+    
+    Default: `30`
+  </ParamField>
+</Accordion>
+
+<Accordion title="Cache Groups">
+  <ParamField path="splitChunks.cacheGroups" type="object">
+    Define custom chunk groups.
+    
+    ```javascript
+    cacheGroups: {
+      vendor: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all',
+        priority: 10
+      },
+      common: {
+        minChunks: 2,
+        priority: 5,
+        reuseExistingChunk: true
+      },
+      styles: {
+        test: /\.css$/,
+        name: 'styles',
+        chunks: 'all',
+        enforce: true
+      }
+    }
+    ```
+  </ParamField>
+  
+  Cache group properties:
+  - `test`: Condition to match modules
+  - `name`: Name of the split chunk
+  - `priority`: Priority when a module matches multiple groups
+  - `reuseExistingChunk`: Reuse existing chunk if available
+  - `enforce`: Create chunk even if it violates size limits
+</Accordion>
+
+## Runtime Chunk
+
+<ParamField path="optimization.runtimeChunk" type="boolean | 'single' | 'multiple' | object">
+  Extract runtime code into a separate chunk.
+  
+  ```javascript
+  // Single runtime chunk for all entry points
+  runtimeChunk: 'single'
+  
+  // Separate runtime chunk for each entry
+  runtimeChunk: 'multiple'
+  
+  // Custom name
+  runtimeChunk: {
+    name: (entrypoint) => `runtime-${entrypoint.name}`
+  }
+  ```
+  
+  Default: `false`
+</ParamField>
+
+## Tree Shaking
+
+<ParamField path="optimization.usedExports" type="boolean | 'global'">
+  Detect and mark unused exports.
+  
+  ```javascript
+  optimization: {
+    usedExports: true // analyze per runtime
+    // or
+    usedExports: 'global' // analyze globally
+  }
+  ```
+  
+  Default: `true` in production
+</ParamField>
+
+<ParamField path="optimization.providedExports" type="boolean">
+  Determine exports for each module.
+  
+  ```javascript
+  optimization: {
+    providedExports: true
+  }
+  ```
+  
+  Default: `true`
+</ParamField>
+
+<ParamField path="optimization.sideEffects" type="boolean | 'flag'">
+  Skip modules without side effects.
+  
+  ```javascript
+  optimization: {
+    sideEffects: true // use + analyze code
+    // or
+    sideEffects: 'flag' // only use package.json flag
+  }
+  ```
+  
+  Default: `true` in production
+</ParamField>
+
+## Module Concatenation
+
+<ParamField path="optimization.concatenateModules" type="boolean">
+  Safely concatenate modules into a single module (scope hoisting).
+  
+  ```javascript
+  optimization: {
+    concatenateModules: true
+  }
+  ```
+  
+  Default: `true` in production
+</ParamField>
+
+<ParamField path="optimization.innerGraph" type="boolean">
+  Enable inner module graph analysis for better tree shaking.
+  
+  ```javascript
+  optimization: {
+    innerGraph: true
+  }
+  ```
+  
+  Default: `true` in production
+</ParamField>
+
+## Other Optimizations
+
+<Accordion title="Export Mangling">
+  <ParamField path="optimization.mangleExports" type="boolean | 'deterministic' | 'size'">
+    Rename exports to shorter names.
+    
+    ```javascript
+    optimization: {
+      mangleExports: 'deterministic' // or 'size' or true
+    }
+    ```
+    
+    Default: `'deterministic'` in production
+  </ParamField>
+</Accordion>
+
+<Accordion title="WebAssembly">
+  <ParamField path="optimization.mangleWasmImports" type="boolean">
+    Reduce WASM size by renaming imports.
+    
+    ```javascript
+    optimization: {
+      mangleWasmImports: true
+    }
+    ```
+    
+    Default: `false`
+  </ParamField>
+</Accordion>
+
+<Accordion title="Chunk Optimization">
+  <ParamField path="optimization.removeAvailableModules" type="boolean">
+    Remove modules already available in parent chunks.
+    
+    ```javascript
+    optimization: {
+      removeAvailableModules: true
+    }
+    ```
+    
+    Default: `true` in production
+  </ParamField>
+  
+  <ParamField path="optimization.removeEmptyChunks" type="boolean">
+    Remove empty chunks.
+    
+    ```javascript
+    optimization: {
+      removeEmptyChunks: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="optimization.mergeDuplicateChunks" type="boolean">
+    Merge chunks with identical modules.
+    
+    ```javascript
+    optimization: {
+      mergeDuplicateChunks: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="optimization.flagIncludedChunks" type="boolean">
+    Flag chunks as loaded when they contain all modules from another chunk.
+    
+    ```javascript
+    optimization: {
+      flagIncludedChunks: true
+    }
+    ```
+    
+    Default: `true` in production
+  </ParamField>
+</Accordion>
+
+<Accordion title="Error Handling">
+  <ParamField path="optimization.emitOnErrors" type="boolean">
+    Emit assets even when errors occur.
+    
+    ```javascript
+    optimization: {
+      emitOnErrors: false
+    }
+    ```
+    
+    Default: `false`
+  </ParamField>
+</Accordion>
+
+<Accordion title="Content Hashing">
+  <ParamField path="optimization.realContentHash" type="boolean">
+    Use real content hash instead of build-time hash.
+    
+    ```javascript
+    optimization: {
+      realContentHash: true
+    }
+    ```
+    
+    Default: `true` in production
+  </ParamField>
+</Accordion>
+
+<Accordion title="Other Options">
+  <ParamField path="optimization.nodeEnv" type="string | false">
+    Set `process.env.NODE_ENV` to a specific value.
+    
+    ```javascript
+    optimization: {
+      nodeEnv: 'production'
+    }
+    ```
+    
+    Default: `false` or value from `mode`
+  </ParamField>
+  
+  <ParamField path="optimization.portableRecords" type="boolean">
+    Generate records with relative paths.
+    
+    ```javascript
+    optimization: {
+      portableRecords: true
+    }
+    ```
+    
+    Default: `false`
+  </ParamField>
+</Accordion>
+
+## Common Patterns
+
+### Production Optimization
+
+```javascript webpack.config.js
+module.exports = {
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: ['...'],
+    moduleIds: 'deterministic',
+    chunkIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          priority: 10
+        }
+      }
+    },
+    usedExports: true,
+    sideEffects: true,
+    concatenateModules: true
+  }
+};
+```
+
+### Vendor Code Splitting
+
+```javascript webpack.config.js
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        react: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: 'react',
+          chunks: 'all',
+          priority: 20
+        },
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+          priority: 10
+        },
+        common: {
+          minChunks: 2,
+          priority: 5,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+};
+```
+
+### CSS Splitting
+
+```javascript webpack.config.js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+module.exports = {
+  optimization: {
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin()
+    ],
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          type: 'css/mini-extract',
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })
+  ]
+};
+```
+
+### Development Optimization
+
+```javascript webpack.config.js
+module.exports = {
+  mode: 'development',
+  optimization: {
+    minimize: false,
+    moduleIds: 'named',
+    chunkIds: 'named',
+    runtimeChunk: 'single',
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false
+  }
+};
+```
+
+### Size-Optimized Build
+
+```javascript webpack.config.js
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+            pure_funcs: ['console.log']
+          },
+          mangle: true
+        }
+      })
+    ],
+    moduleIds: 'size',
+    chunkIds: 'size',
+    mangleExports: 'size',
+    concatenateModules: true,
+    usedExports: true,
+    sideEffects: true
+  }
+};
+```

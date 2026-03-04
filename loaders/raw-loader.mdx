@@ -1,0 +1,464 @@
+---
+title: raw-loader
+description: Import files as strings
+---
+
+## Overview
+
+`raw-loader` imports file contents as strings. This is useful for loading text files, SVG markup, HTML templates, shaders, and other text-based assets as strings in your JavaScript code.
+
+<Note>
+  In webpack 5, you can use [Asset Modules](/guides/asset-modules) with `type: 'asset/source'` as an alternative to `raw-loader`.
+</Note>
+
+## Installation
+
+<CodeGroup>
+```bash npm
+npm install -D raw-loader
+```
+
+```bash yarn
+yarn add -D raw-loader
+```
+
+```bash pnpm
+pnpm add -D raw-loader
+```
+</CodeGroup>
+
+## Basic Usage
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/i,
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+```javascript app.js
+import content from './file.txt';
+
+console.log(content); // File contents as string
+```
+
+```text file.txt
+Hello, World!
+This is a text file.
+```
+</CodeGroup>
+
+## Common Use Cases
+
+### Text Files
+
+```javascript
+{
+  test: /\.txt$/,
+  use: 'raw-loader'
+}
+```
+
+```javascript
+import readme from './README.txt';
+document.body.innerHTML = `<pre>${readme}</pre>`;
+```
+
+### HTML Templates
+
+```javascript
+{
+  test: /\.html$/,
+  use: 'raw-loader',
+  exclude: /index\.html/
+}
+```
+
+```javascript
+import template from './templates/card.html';
+
+const container = document.createElement('div');
+container.innerHTML = template;
+```
+
+### SVG as String
+
+```javascript
+{
+  test: /\.svg$/,
+  use: 'raw-loader'
+}
+```
+
+```javascript
+import iconSvg from './icons/star.svg';
+
+const div = document.createElement('div');
+div.innerHTML = iconSvg;
+```
+
+### Shader Files
+
+```javascript
+{
+  test: /\.(glsl|vs|fs|vert|frag)$/,
+  use: 'raw-loader'
+}
+```
+
+```javascript
+import vertexShader from './shaders/vertex.glsl';
+import fragmentShader from './shaders/fragment.glsl';
+
+const material = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader
+});
+```
+
+### Markdown Files
+
+```javascript
+{
+  test: /\.md$/,
+  use: 'raw-loader'
+}
+```
+
+```javascript
+import markdown from './README.md';
+import marked from 'marked';
+
+const html = marked(markdown);
+document.body.innerHTML = html;
+```
+
+### XML/Configuration Files
+
+```javascript
+{
+  test: /\.xml$/,
+  use: 'raw-loader'
+}
+```
+
+```javascript
+import xmlString from './config.xml';
+const parser = new DOMParser();
+const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+```
+
+## Asset Modules Alternative
+
+Webpack 5 provides a built-in alternative using Asset Modules:
+
+<CodeGroup>
+```javascript raw-loader
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+```javascript Asset Modules (webpack 5)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        type: 'asset/source'
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+<Note>
+  Both approaches work identically. Asset Modules (`asset/source`) is the modern, built-in approach for webpack 5.
+</Note>
+
+## Configuration Examples
+
+### Multiple File Types
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(txt|md|csv)$/,
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+### With Specific Directory
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        include: path.resolve(__dirname, 'src/templates'),
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+### Excluding Files
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        exclude: /index\.html$/,
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+## Advanced Patterns
+
+### Processing Raw Content
+
+```javascript
+import sqlQuery from './queries/users.sql';
+
+const processedQuery = sqlQuery
+  .replace(/\s+/g, ' ')
+  .trim();
+
+db.query(processedQuery);
+```
+
+### Template System
+
+```javascript
+import template from './template.html';
+
+function render(data) {
+  return template.replace(/{{(\w+)}}/g, (match, key) => {
+    return data[key] || '';
+  });
+}
+
+const html = render({
+  title: 'Hello',
+  content: 'World'
+});
+```
+
+### Loading Shaders for WebGL
+
+```javascript
+{
+  test: /\.(glsl|vs|fs)$/,
+  use: 'raw-loader'
+}
+```
+
+```javascript
+import vertShader from './shader.vs';
+import fragShader from './shader.fs';
+
+const program = gl.createProgram();
+
+const vs = gl.createShader(gl.VERTEX_SHADER);
+gl.shaderSource(vs, vertShader);
+gl.compileShader(vs);
+
+const fs = gl.createShader(gl.FRAGMENT_SHADER);
+gl.shaderSource(fs, fragShader);
+gl.compileShader(fs);
+
+gl.attachShader(program, vs);
+gl.attachShader(program, fs);
+gl.linkProgram(program);
+```
+
+## TypeScript Support
+
+Add type declarations for raw file imports:
+
+```typescript typings.d.ts
+declare module '*.txt' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.md' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.html' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.glsl' {
+  const content: string;
+  export default content;
+}
+```
+
+```typescript
+import readme from './README.md'; // TypeScript knows this is a string
+console.log(readme.toUpperCase());
+```
+
+## Migration to Asset Modules
+
+For webpack 5 projects, consider migrating to Asset Modules:
+
+<CodeGroup>
+```javascript Before (raw-loader)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        use: 'raw-loader'
+      },
+      {
+        test: /\.md$/,
+        use: 'raw-loader'
+      },
+      {
+        test: /\.glsl$/,
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+```javascript After (Asset Modules)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        type: 'asset/source'
+      },
+      {
+        test: /\.md$/,
+        type: 'asset/source'
+      },
+      {
+        test: /\.glsl$/,
+        type: 'asset/source'
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+## Common Issues
+
+### Issue: Binary Files Not Loading Correctly
+
+**Cause:** `raw-loader` is for text files only.
+
+**Solution:** Use `file-loader` or `asset/resource` for binary files:
+
+```javascript
+// Text files - use raw-loader
+{
+  test: /\.txt$/,
+  use: 'raw-loader'
+}
+
+// Binary files - use asset/resource
+{
+  test: /\.(png|jpg)$/,
+  type: 'asset/resource'
+}
+```
+
+### Issue: HTML Not Rendering
+
+**Solution:** Ensure you're setting `innerHTML`:
+
+```javascript
+import template from './template.html';
+
+// Correct
+element.innerHTML = template;
+
+// Wrong - won't render HTML
+element.textContent = template;
+```
+
+### Issue: Special Characters Not Encoded
+
+**Solution:** Process the string as needed:
+
+```javascript
+import content from './file.txt';
+
+const encoded = content
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;');
+```
+
+## Performance Considerations
+
+<Warning>
+  Loading large text files as strings increases bundle size. Consider:
+  - Code splitting for large files
+  - Dynamic imports for rarely-used content
+  - External file loading for very large datasets
+</Warning>
+
+```javascript
+// Dynamic import for large files
+const loadLargeText = async () => {
+  const { default: content } = await import('./large-file.txt');
+  return content;
+};
+```
+
+## Use Cases Summary
+
+| File Type | Common Use |
+|-----------|------------|
+| `.txt` | Text content, logs |
+| `.html` | Templates, snippets |
+| `.svg` | Inline SVG manipulation |
+| `.md` | Markdown processing |
+| `.glsl`, `.vs`, `.fs` | WebGL shaders |
+| `.sql` | SQL queries |
+| `.xml` | XML parsing |
+| `.csv` | CSV processing |
+
+## Resources
+
+- [raw-loader GitHub](https://github.com/webpack-contrib/raw-loader)
+- [Asset Modules Guide](/guides/asset-modules)
+- [webpack 5 Migration](/guides/asset-modules)

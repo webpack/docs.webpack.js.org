@@ -1,0 +1,218 @@
+---
+title: Quickstart
+description: Get started with webpack and create your first bundle
+---
+
+# Quickstart
+
+Get started with webpack by creating a simple project and bundling it.
+
+<Steps>
+  <Step title="Create a project directory">
+    Create a new directory for your project and initialize npm:
+    
+    ```bash
+    mkdir webpack-demo
+    cd webpack-demo
+    npm init -y
+    ```
+  </Step>
+
+  <Step title="Install webpack">
+    Install webpack and webpack-cli as dev dependencies:
+    
+    <CodeGroup>
+    ```bash npm
+    npm install --save-dev webpack webpack-cli
+    ```
+    
+    ```bash yarn
+    yarn add --dev webpack webpack-cli
+    ```
+    
+    ```bash pnpm
+    pnpm add -D webpack webpack-cli
+    ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Create source files">
+    Create a `src` directory and add your JavaScript files:
+    
+    **src/index.js**
+    ```javascript
+    import { add } from './math.js';
+    
+    console.log('webpack is working!');
+    console.log('2 + 3 =', add(2, 3));
+    ```
+    
+    **src/math.js**
+    ```javascript
+    export function add(a, b) {
+      return a + b;
+    }
+    
+    export function subtract(a, b) {
+      return a - b;
+    }
+    ```
+  </Step>
+
+  <Step title="Create webpack configuration">
+    Create a `webpack.config.js` file in the root directory:
+    
+    ```javascript
+    const path = require('path');
+    
+    module.exports = {
+      mode: 'development',
+      entry: './src/index.js',
+      output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+      },
+    };
+    ```
+  </Step>
+
+  <Step title="Add build script">
+    Update your `package.json` to include a build script:
+    
+    ```json
+    {
+      "scripts": {
+        "build": "webpack"
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Build your bundle">
+    Run webpack to create your bundle:
+    
+    ```bash
+    npm run build
+    ```
+    
+    Webpack will create a `dist/bundle.js` file with your bundled code.
+  </Step>
+
+  <Step title="Create an HTML file">
+    Create `dist/index.html` to load your bundle:
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>webpack Demo</title>
+      </head>
+      <body>
+        <h1>webpack Quickstart</h1>
+        <script src="bundle.js"></script>
+      </body>
+    </html>
+    ```
+    
+    Open `dist/index.html` in your browser and check the console!
+  </Step>
+</Steps>
+
+## What Just Happened?
+
+Webpack:
+1. Started from the entry point (`src/index.js`)
+2. Analyzed all imports and created a dependency graph
+3. Bundled all modules into a single file (`dist/bundle.js`)
+4. Generated optimized JavaScript that runs in the browser
+
+## Production Build
+
+For production, change the mode to `production`:
+
+```javascript
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
+```
+
+Production mode automatically:
+- Minifies your code
+- Enables tree shaking
+- Optimizes bundle size
+- Sets `process.env.NODE_ENV` to `production`
+
+## Adding CSS
+
+To bundle CSS files, install loaders:
+
+```bash
+npm install --save-dev style-loader css-loader
+```
+
+Update `webpack.config.js`:
+
+```javascript
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+};
+```
+
+Create `src/style.css`:
+
+```css
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+```
+
+Import it in `src/index.js`:
+
+```javascript
+import './style.css';
+import { add } from './math.js';
+
+console.log('webpack is working!');
+console.log('2 + 3 =', add(2, 3));
+```
+
+<Note>
+  Loaders transform files before they're added to the bundle. CSS files are converted to JavaScript that injects styles into the page.
+</Note>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Core Concepts" icon="book" href="/concepts/entry">
+    Learn about entry points, output, loaders, and plugins
+  </Card>
+  <Card title="Configuration" icon="gear" href="/configuration/overview">
+    Explore all configuration options
+  </Card>
+  <Card title="Code Splitting" icon="scissors" href="/guides/code-splitting">
+    Split your code for better performance
+  </Card>
+  <Card title="Development" icon="laptop-code" href="/guides/development">
+    Set up a development environment with dev server and HMR
+  </Card>
+</CardGroup>

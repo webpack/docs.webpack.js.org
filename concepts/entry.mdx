@@ -1,0 +1,205 @@
+---
+title: Entry Points
+description: Learn how webpack uses entry points to start building the dependency graph
+---
+
+# Entry Points
+
+The **entry point** is where webpack starts building the internal dependency graph. From the entry point, webpack determines which modules and libraries the entry depends on (directly and indirectly).
+
+## Overview
+
+Every webpack build starts from one or more entry points. Entry points tell webpack where to start and follow the graph of dependencies to know what to bundle.
+
+## Configuration
+
+### Single Entry Syntax
+
+The simplest entry configuration is a single string:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: './src/index.js'
+};
+```
+
+This is shorthand for:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: {
+    main: './src/index.js'
+  }
+};
+```
+
+### Object Syntax
+
+For multiple entry points, use object syntax:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    admin: './src/admin.js'
+  }
+};
+```
+
+This creates two separate dependency graphs, one for each entry point.
+
+### Array Syntax
+
+Pass an array of file paths to create a "multi-main entry":
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: {
+    app: ['./src/polyfills.js', './src/app.js']
+  }
+};
+```
+
+This injects multiple dependent files together and graphs their dependencies into one chunk.
+
+## Entry Descriptor
+
+For advanced configuration, use entry descriptor objects:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: {
+    app: {
+      import: './src/app.js',
+      filename: 'pages/[name].js',
+      dependOn: 'shared',
+      chunkLoading: 'jsonp',
+      asyncChunks: true,
+      layer: 'app'
+    },
+    shared: ['react', 'react-dom', 'lodash']
+  }
+};
+```
+
+### Entry Options
+
+<Note>
+Entry descriptors provide fine-grained control over how entry chunks are created and loaded.
+</Note>
+
+| Option | Description |
+|--------|-------------|
+| `import` | Module(s) that are loaded on startup |
+| `filename` | Specifies the name of each output file on disk |
+| `dependOn` | Entry points that the current entry depends on |
+| `chunkLoading` | Method of loading chunks (e.g., 'jsonp', 'import-scripts') |
+| `asyncChunks` | Create async chunks for this entry |
+| `layer` | Specify the layer for this entry |
+| `runtime` | Name of the runtime chunk |
+
+## How Entry Points Work
+
+Internally, webpack uses the `EntryPlugin` to process entry points:
+
+```javascript
+// From EntryPlugin.js
+class EntryPlugin {
+  constructor(context, entry, options) {
+    this.context = context;
+    this.entry = entry;
+    this.options = options;
+  }
+
+  apply(compiler) {
+    compiler.hooks.compilation.tap(
+      'EntryPlugin',
+      (compilation, { normalModuleFactory }) => {
+        compilation.dependencyFactories.set(
+          EntryDependency,
+          normalModuleFactory
+        );
+      }
+    );
+
+    const { entry, options, context } = this;
+    const dep = EntryPlugin.createDependency(entry, options);
+
+    compiler.hooks.make.tapAsync('EntryPlugin', (compilation, callback) => {
+      compilation.addEntry(context, dep, options, (err) => {
+        callback(err);
+      });
+    });
+  }
+}
+```
+
+<Info>
+The `compilation.addEntry` method starts the dependency resolution process, creating an entry point in the module graph.
+</Info>
+
+## Dynamic Entry
+
+Entry points can be functions that return a configuration:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: () => './src/app.js'
+};
+```
+
+Or a Promise:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: () => new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('./src/app.js');
+    }, 1000);
+  })
+};
+```
+
+## Multiple Entry Points
+
+When using multiple entry points, consider these patterns:
+
+### Separate App and Vendor Entries
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    vendor: ['react', 'react-dom', 'lodash']
+  }
+};
+```
+
+### Multi-Page Application
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: {
+    pageOne: './src/pageOne/index.js',
+    pageTwo: './src/pageTwo/index.js',
+    pageThree: './src/pageThree/index.js'
+  }
+};
+```
+
+<Warning>
+Each entry point creates a separate dependency graph. Shared modules will be duplicated unless you configure code splitting.
+</Warning>
+
+## Best Practices
+
+1. **Use descriptive names** - Entry point names become part of the output filename
+2. **Split by page** - For multi-page apps, create one entry per page
+3. **Share common code** - Use `dependOn` or optimization.splitChunks to share code between entries
+4. **Consider runtime** - Specify a shared runtime chunk to avoid duplication
+
+## Related Concepts
+
+- [Output](/concepts/output) - Configure where webpack emits bundles
+- [Dependency Graph](/concepts/dependency-graph) - How webpack builds the module graph
+- [Loaders](/concepts/loaders) - Transform files as they're added to the dependency graph

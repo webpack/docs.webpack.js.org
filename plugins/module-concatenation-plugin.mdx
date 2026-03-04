@@ -1,0 +1,365 @@
+---
+title: ModuleConcatenationPlugin
+description: Enable scope hoisting to reduce bundle size and improve runtime performance
+---
+
+The `ModuleConcatenationPlugin` enables scope hoisting, which concatenates the scope of modules into one closure, reducing bundle size and improving runtime performance.
+
+<Note>
+This plugin is automatically enabled in production mode when using `mode: 'production'`. You don't need to add it manually.
+</Note>
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin()
+  ]
+};
+```
+
+Or enable via optimization:
+
+```javascript
+module.exports = {
+  optimization: {
+    concatenateModules: true
+  }
+};
+```
+
+## How It Works
+
+Without scope hoisting:
+
+```javascript
+// Separate module scopes
+(function(module, exports) {
+  exports.a = 1;
+}),
+(function(module, exports, __webpack_require__) {
+  var a = __webpack_require__(0).a;
+  console.log(a);
+})
+```
+
+With scope hoisting:
+
+```javascript
+// Single scope
+(function(module, exports) {
+  var a = 1;
+  console.log(a);
+})
+```
+
+## Benefits
+
+1. **Smaller Bundle Size**
+   - Reduces wrapper function overhead
+   - Typically 5-15% size reduction
+
+2. **Faster Execution**
+   - Fewer function calls
+   - Better minification
+   - Improved runtime performance
+
+3. **Better Dead Code Elimination**
+   - More effective tree shaking
+   - Easier for minifiers to optimize
+
+## Requirements
+
+For scope hoisting to work, modules must:
+
+1. Use ES6 module syntax (`import`/`export`)
+2. Be in strict mode
+3. Not use `eval()` or dynamic imports in certain ways
+4. Have static exports (no dynamic exports)
+
+## Examples
+
+### Enable in Development
+
+```javascript
+module.exports = {
+  mode: 'development',
+  optimization: {
+    concatenateModules: true // Usually only in production
+  }
+};
+```
+
+### Disable in Production
+
+```javascript
+module.exports = {
+  mode: 'production',
+  optimization: {
+    concatenateModules: false // Disable if needed
+  }
+};
+```
+
+### Conditional Enabling
+
+```javascript
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  optimization: {
+    concatenateModules: isProduction
+  }
+};
+```
+
+## Bailout Reasons
+
+Scope hoisting may be disabled for modules that:
+
+### Use CommonJS
+
+```javascript
+// Won't be concatenated
+module.exports = { a: 1 };
+```
+
+```javascript
+// Will be concatenated
+export const a = 1;
+```
+
+### Use Dynamic Imports
+
+```javascript
+// May prevent concatenation
+const module = await import('./dynamic.js');
+```
+
+### Use eval()
+
+```javascript
+// Prevents concatenation
+eval('var x = 1');
+```
+
+### Module Not in Strict Mode
+
+```javascript
+// Add 'use strict' or use ES6 modules
+'use strict';
+
+export const a = 1;
+```
+
+### Dynamic Exports
+
+```javascript
+// Prevents concatenation
+export const a = Math.random() > 0.5 ? 1 : 2;
+```
+
+## Debugging
+
+Check why modules aren't concatenated:
+
+```javascript
+module.exports = {
+  stats: {
+    optimizationBailout: true
+  }
+};
+```
+
+Output:
+```
+Module concatenation bailout: Module is not an ECMAScript module
+```
+
+### Using webpack-bundle-analyzer
+
+```bash
+npm install --save-dev webpack-bundle-analyzer
+```
+
+```javascript
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+};
+```
+
+Look for "Concatenated Module" labels in the visualization.
+
+## Optimization Tips
+
+### Convert to ES6 Modules
+
+Before:
+```javascript
+const utils = require('./utils');
+module.exports = { helper };
+```
+
+After:
+```javascript
+import { utils } from './utils';
+export { helper };
+```
+
+### Avoid Dynamic Exports
+
+Before:
+```javascript
+export const config = process.env.NODE_ENV === 'production'
+  ? prodConfig
+  : devConfig;
+```
+
+After:
+```javascript
+// config.js
+export const prodConfig = { /* ... */ };
+export const devConfig = { /* ... */ };
+
+// app.js
+import { prodConfig, devConfig } from './config';
+const config = process.env.NODE_ENV === 'production'
+  ? prodConfig
+  : devConfig;
+```
+
+### Use Named Exports
+
+Better for concatenation:
+```javascript
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+```
+
+Instead of:
+```javascript
+export default {
+  add: (a, b) => a + b,
+  subtract: (a, b) => a - b
+};
+```
+
+## Performance Impact
+
+<Note>
+Typical improvements:
+- Bundle size: 5-15% smaller
+- Parse time: 10-20% faster
+- Execution time: 5-10% faster
+- Minification: More effective
+</Note>
+
+### Real-World Example
+
+```
+Without scope hoisting:
+- Bundle size: 450 KB
+- Parse time: 180 ms
+
+With scope hoisting:
+- Bundle size: 395 KB (12% smaller)
+- Parse time: 150 ms (17% faster)
+```
+
+## Comparison with Rollup
+
+Rollup pioneered scope hoisting. Webpack's implementation:
+
+- Works with the entire dependency graph
+- Handles CommonJS modules
+- Integrated with other webpack features
+- May not concatenate as aggressively as Rollup
+
+## Compatibility
+
+### Works Well With
+
+- ES6 modules
+- Tree shaking
+- Minification
+- Code splitting (within limits)
+
+### Limitations
+
+- CommonJS modules not concatenated
+- Some dynamic imports prevent concatenation
+- HMR (Hot Module Replacement) disables it
+- Module.hot usage prevents concatenation
+
+## Best Practices
+
+1. **Use ES6 Modules**
+   - Write `import`/`export` syntax
+   - Avoid `require()`/`module.exports`
+
+2. **Enable in Production**
+   - Default with `mode: 'production'`
+   - Disable in development if it causes issues
+
+3. **Monitor Bailouts**
+   - Check stats for bailout reasons
+   - Fix issues preventing concatenation
+
+4. **Combine with Tree Shaking**
+   ```javascript
+   optimization: {
+     concatenateModules: true,
+     usedExports: true,
+     sideEffects: false
+   }
+   ```
+
+5. **Test Thoroughly**
+   - Scope hoisting can change behavior
+   - Test production builds
+   - Verify in target environments
+
+<Warning>
+Scope hoisting can change the behavior of code that relies on module identity or side effects. Always test production builds thoroughly.
+</Warning>
+
+## Troubleshooting
+
+### Modules Not Concatenating
+
+Check stats:
+```javascript
+module.exports = {
+  stats: {
+    optimizationBailout: true
+  }
+};
+```
+
+### Performance Regression
+
+If you see slower builds:
+```javascript
+optimization: {
+  concatenateModules: false // Temporarily disable
+}
+```
+
+### Unexpected Behavior
+
+Some code patterns may break:
+```javascript
+// Before: Module has its own scope
+var internal = 'secret';
+export const api = {};
+
+// After: May be exposed in global scope
+// Solution: Use proper encapsulation
+```

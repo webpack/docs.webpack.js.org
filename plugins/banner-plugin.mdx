@@ -1,0 +1,230 @@
+---
+title: BannerPlugin
+description: Add a banner comment to the top of generated chunks
+---
+
+The `BannerPlugin` adds a banner to the top of each generated chunk. This is useful for adding copyright notices, licensing information, or build metadata.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.BannerPlugin('Copyright © 2024')
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="banner" type="string | function" required>
+  The banner text or a function that returns the banner text. Function receives `{hash, chunk, filename}` as argument.
+</ParamField>
+
+<ParamField path="raw" type="boolean" default="false">
+  If true, banner will not be wrapped in a comment
+</ParamField>
+
+<ParamField path="entryOnly" type="boolean" default="false">
+  If true, banner will only be added to entry chunks
+</ParamField>
+
+<ParamField path="test" type="RegExp | RegExp[]">
+  Include chunks that match the test
+</ParamField>
+
+<ParamField path="include" type="RegExp | RegExp[]">
+  Include chunks matching this pattern
+</ParamField>
+
+<ParamField path="exclude" type="RegExp | RegExp[]">
+  Exclude chunks matching this pattern
+</ParamField>
+
+<ParamField path="footer" type="boolean" default="false">
+  If true, banner will be placed at the bottom instead of top
+</ParamField>
+
+<ParamField path="stage" type="number">
+  The stage of asset processing to add the banner
+</ParamField>
+
+## Examples
+
+### Simple Copyright Notice
+
+```javascript
+new webpack.BannerPlugin('Copyright © 2024 My Company')
+```
+
+Generates:
+```javascript
+/*! Copyright © 2024 My Company */
+```
+
+### Multiline Banner
+
+```javascript
+new webpack.BannerPlugin({
+  banner: `
+Project: My Application
+Version: 1.0.0
+Copyright © 2024
+License: MIT
+  `.trim()
+})
+```
+
+Generates:
+```javascript
+/*!
+ * Project: My Application
+ * Version: 1.0.0
+ * Copyright © 2024
+ * License: MIT
+ */
+```
+
+### Dynamic Banner with Build Info
+
+```javascript
+const webpack = require('webpack');
+
+new webpack.BannerPlugin({
+  banner: (data) => {
+    return [
+      'Project: My App',
+      `Build: ${new Date().toISOString()}`,
+      `Chunk: ${data.chunk.name || data.chunk.id}`,
+      `Hash: ${data.hash}`
+    ].join('\n');
+  }
+})
+```
+
+### Entry Chunks Only
+
+```javascript
+new webpack.BannerPlugin({
+  banner: 'Copyright © 2024',
+  entryOnly: true
+})
+```
+
+### JavaScript Files Only
+
+```javascript
+new webpack.BannerPlugin({
+  banner: 'Copyright © 2024',
+  test: /\.js$/
+})
+```
+
+### Raw Banner (No Comment Wrapper)
+
+```javascript
+new webpack.BannerPlugin({
+  banner: '#!/usr/bin/env node',
+  raw: true,
+  entryOnly: true
+})
+```
+
+Generates:
+```javascript
+#!/usr/bin/env node
+```
+
+### Footer Banner
+
+```javascript
+new webpack.BannerPlugin({
+  banner: 'End of bundle',
+  footer: true
+})
+```
+
+### With Version from package.json
+
+```javascript
+const pkg = require('./package.json');
+
+new webpack.BannerPlugin({
+  banner: `${pkg.name} v${pkg.version}\nCopyright © ${new Date().getFullYear()}`
+})
+```
+
+### Exclude Specific Files
+
+```javascript
+new webpack.BannerPlugin({
+  banner: 'Copyright © 2024',
+  exclude: /vendor/
+})
+```
+
+### Multiple File Types
+
+```javascript
+new webpack.BannerPlugin({
+  banner: 'Copyright © 2024',
+  test: [/\.js$/, /\.css$/]
+})
+```
+
+## Use Cases
+
+### License Information
+
+```javascript
+const fs = require('fs');
+
+new webpack.BannerPlugin({
+  banner: fs.readFileSync('./LICENSE', 'utf8')
+})
+```
+
+### Build Metadata
+
+```javascript
+new webpack.BannerPlugin({
+  banner: () => {
+    const buildDate = new Date().toISOString();
+    const gitHash = require('child_process')
+      .execSync('git rev-parse --short HEAD')
+      .toString()
+      .trim();
+    
+    return [
+      `Build Date: ${buildDate}`,
+      `Git Commit: ${gitHash}`
+    ].join('\n');
+  }
+})
+```
+
+### Shebang for CLI Tools
+
+```javascript
+new webpack.BannerPlugin({
+  banner: '#!/usr/bin/env node\n\n"use strict";',
+  raw: true,
+  entryOnly: true,
+  include: /cli\.js$/
+})
+```
+
+## Best Practices
+
+<Note>
+- Keep banners concise for better readability
+- Use `entryOnly: true` to avoid duplicate banners in code-split chunks
+- Use `raw: true` only when necessary (e.g., shebangs)
+- Consider file size impact in production builds
+</Note>
+
+<Warning>
+Banners are added to all matching chunks by default. Use `test`, `include`, or `exclude` to limit which files receive the banner.
+</Warning>

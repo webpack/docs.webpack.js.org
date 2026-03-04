@@ -1,0 +1,171 @@
+---
+title: HotModuleReplacementPlugin
+description: Enable Hot Module Replacement (HMR) for faster development
+---
+
+The `HotModuleReplacementPlugin` enables Hot Module Replacement (HMR), which allows modules to be updated at runtime without requiring a full page refresh.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    hot: true
+  }
+};
+```
+
+<Note>
+When using webpack-dev-server, HMR is enabled automatically. You don't need to add this plugin explicitly.
+</Note>
+
+## How It Works
+
+HMR exchanges, adds, or removes modules while an application is running without a full reload. This significantly speeds up development by:
+
+- Retaining application state that would be lost on full reload
+- Saving time by only updating changed modules
+- Instantly reflecting changes in the browser
+
+## Module API
+
+### module.hot.accept
+
+Accept updates for a module and its dependencies:
+
+```javascript
+if (module.hot) {
+  module.hot.accept('./library.js', function() {
+    // Do something with the updated library module
+  });
+}
+```
+
+<ParamField path="dependencies" type="string | string[]">
+  Module path(s) to watch for updates
+</ParamField>
+
+<ParamField path="callback" type="function" optional>
+  Function called when modules are updated
+</ParamField>
+
+### module.hot.decline
+
+Mark a module as not updatable:
+
+```javascript
+if (module.hot) {
+  module.hot.decline('./non-updatable.js');
+}
+```
+
+### import.meta.webpackHot
+
+ESM syntax for HMR:
+
+```javascript
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept('./module.js', () => {
+    // Handle update
+  });
+}
+```
+
+## Examples
+
+### Basic Setup
+
+```javascript
+if (module.hot) {
+  module.hot.accept();
+}
+```
+
+### With Callback
+
+```javascript
+if (module.hot) {
+  module.hot.accept('./config.js', function() {
+    const newConfig = require('./config.js');
+    // Apply new configuration
+    applyConfig(newConfig);
+  });
+}
+```
+
+### Multiple Dependencies
+
+```javascript
+if (module.hot) {
+  module.hot.accept(['./moduleA.js', './moduleB.js'], function() {
+    // Handle updates to either module
+  });
+}
+```
+
+### React Hot Reload
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+const render = Component => {
+  ReactDOM.render(<Component />, document.getElementById('root'));
+};
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+    render(NextApp);
+  });
+}
+```
+
+## Framework Support
+
+<Note>
+Many frameworks have built-in HMR support:
+- React: Use `react-refresh-webpack-plugin`
+- Vue: Built into `vue-loader`
+- Angular: Supported via `@angularclass/hmr`
+</Note>
+
+## Troubleshooting
+
+<Warning>
+HMR should only be used in development. Ensure you're not including it in production builds.
+</Warning>
+
+### Full Reload Occurs
+
+If HMR falls back to a full reload:
+- Check that modules are properly accepting updates
+- Verify no syntax errors in the updated modules
+- Ensure dependencies are correctly specified
+
+### State Not Preserved
+
+To preserve state across updates:
+```javascript
+if (module.hot) {
+  module.hot.dispose((data) => {
+    // Save state before module is replaced
+    data.state = getCurrentState();
+  });
+
+  module.hot.accept(() => {
+    // Restore state after module is replaced
+    if (module.hot.data) {
+      restoreState(module.hot.data.state);
+    }
+  });
+}
+```

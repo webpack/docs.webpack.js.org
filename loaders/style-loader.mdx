@@ -1,0 +1,456 @@
+---
+title: style-loader
+description: Inject CSS into the DOM by adding style tags
+---
+
+## Overview
+
+`style-loader` injects CSS into the DOM by adding `<style>` tags. It's typically used during development to enable hot module replacement for CSS. For production, use `MiniCssExtractPlugin` to extract CSS into separate files.
+
+<Note>
+  This is an external loader maintained by the webpack team. Install it from npm to use in your webpack configuration.
+</Note>
+
+## Installation
+
+<CodeGroup>
+```bash npm
+npm install -D style-loader css-loader
+```
+
+```bash yarn
+yarn add -D style-loader css-loader
+```
+
+```bash pnpm
+pnpm add -D style-loader css-loader
+```
+</CodeGroup>
+
+## Basic Usage
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+};
+```
+
+```javascript app.js
+import './styles.css';
+
+// CSS is automatically injected into the DOM
+```
+
+```css styles.css
+body {
+  background: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+```
+</CodeGroup>
+
+<Note>
+  `style-loader` is chained with `css-loader`. The `css-loader` interprets `@import` and `url()`, then `style-loader` injects the result into the DOM.
+</Note>
+
+## How It Works
+
+When you import a CSS file:
+
+1. `css-loader` processes the CSS and resolves imports/URLs
+2. `style-loader` creates a `<style>` tag with the CSS content
+3. The `<style>` tag is injected into the document `<head>`
+4. Hot Module Replacement (HMR) updates styles without page reload
+
+## Options
+
+### `injectType`
+
+Control how styles are injected:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    injectType: 'styleTag' // default
+  }
+}
+```
+
+Available values:
+- `styleTag` - Injects `<style>` tag (default)
+- `singletonStyleTag` - Single `<style>` tag for all CSS
+- `lazyStyleTag` - Lazy load styles
+- `lazySingletonStyleTag` - Lazy load with single tag
+- `linkTag` - Injects `<link>` tag
+
+### `attributes`
+
+Add custom attributes to style tags:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    attributes: {
+      id: 'my-styles',
+      'data-app': 'my-app'
+    }
+  }
+}
+```
+
+Generates:
+```html
+<style id="my-styles" data-app="my-app">
+  /* CSS here */
+</style>
+```
+
+### `insert`
+
+Customize where styles are inserted:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    insert: 'head' // default
+  }
+}
+```
+
+Or use a function:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    insert: function(element) {
+      // Insert before other styles
+      var parent = document.querySelector('head');
+      var lastInsertedElement = window._lastInsertedElement || parent.querySelector('style');
+      
+      if (!lastInsertedElement) {
+        parent.insertBefore(element, parent.firstChild);
+      } else if (lastInsertedElement.nextSibling) {
+        parent.insertBefore(element, lastInsertedElement.nextSibling);
+      } else {
+        parent.appendChild(element);
+      }
+      
+      window._lastInsertedElement = element;
+    }
+  }
+}
+```
+
+### `styleTagTransform`
+
+Customize how CSS is applied to the style tag:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    styleTagTransform: function(css, style) {
+      // Custom transformation
+      style.innerHTML = css;
+    }
+  }
+}
+```
+
+## Advanced Usage
+
+### Lazy Loading Styles
+
+```javascript
+{
+  test: /\.lazy\.css$/i,
+  use: [
+    {
+      loader: 'style-loader',
+      options: {
+        injectType: 'lazyStyleTag'
+      }
+    },
+    'css-loader'
+  ]
+}
+```
+
+```javascript
+import styles from './styles.lazy.css';
+
+// Styles are not injected yet
+styles.use(); // Inject styles
+styles.unuse(); // Remove styles
+```
+
+### Singleton Style Tag
+
+Use a single `<style>` tag for all CSS:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    injectType: 'singletonStyleTag'
+  }
+}
+```
+
+<Note>
+  Singleton mode can improve performance when you have many CSS modules.
+</Note>
+
+### Custom Insertion Point
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    insert: function(element) {
+      var target = document.querySelector('#app-styles');
+      target.appendChild(element);
+    }
+  }
+}
+```
+
+## Development vs Production
+
+<Warning>
+  Use `style-loader` in development and `MiniCssExtractPlugin` in production for better performance.
+</Warning>
+
+<CodeGroup>
+```javascript Development
+module.exports = {
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+};
+```
+
+```javascript Production
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })
+  ]
+};
+```
+
+```javascript Dynamic (Recommended)
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    !isDevelopment && new MiniCssExtractPlugin()
+  ].filter(Boolean)
+};
+```
+</CodeGroup>
+
+## Hot Module Replacement
+
+`style-loader` works seamlessly with HMR:
+
+```javascript
+module.exports = {
+  devServer: {
+    hot: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+};
+```
+
+CSS changes are reflected immediately without page reload.
+
+## Common Patterns
+
+### With CSS Modules
+
+```javascript
+{
+  test: /\.module\.css$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true
+      }
+    }
+  ]
+}
+```
+
+### With PostCSS
+
+```javascript
+{
+  test: /\.css$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1
+      }
+    },
+    'postcss-loader'
+  ]
+}
+```
+
+### With Sass
+
+```javascript
+{
+  test: /\.scss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    'sass-loader'
+  ]
+}
+```
+
+## Performance Considerations
+
+### Development
+
+- Fast rebuilds with HMR
+- No need to extract CSS to files
+- Styles update without page reload
+
+### Production
+
+- Use `MiniCssExtractPlugin` instead
+- Enables CSS caching
+- Reduces JavaScript bundle size
+- Allows parallel loading of CSS and JS
+
+## Common Issues
+
+### Issue: Flash of Unstyled Content (FOUC)
+
+**Cause:** Styles are injected after JavaScript executes.
+
+**Solution:** Use `MiniCssExtractPlugin` in production:
+
+```javascript
+use: [MiniCssExtractPlugin.loader, 'css-loader']
+```
+
+### Issue: Styles Not Updating
+
+**Cause:** HMR not enabled or `style-loader` not properly configured.
+
+**Solution:** Ensure HMR is enabled:
+
+```javascript
+devServer: {
+  hot: true
+}
+```
+
+### Issue: Too Many Style Tags
+
+**Solution:** Use `singletonStyleTag`:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    injectType: 'singletonStyleTag'
+  }
+}
+```
+
+### Issue: Conflicts with Content Security Policy (CSP)
+
+**Solution:** Use nonce attribute:
+
+```javascript
+{
+  loader: 'style-loader',
+  options: {
+    attributes: {
+      nonce: '__webpack_nonce__'
+    }
+  }
+}
+```
+
+Set nonce in your entry file:
+```javascript
+__webpack_nonce__ = 'random-nonce-value';
+```
+
+## Browser Compatibility
+
+`style-loader` works in all modern browsers that support:
+- `document.createElement`
+- `document.head.appendChild`
+- `style.innerHTML`
+
+IE9+ is supported.
+
+## Resources
+
+- [style-loader GitHub](https://github.com/webpack-contrib/style-loader)
+- [css-loader](/loaders/css-loader)
+- [MiniCssExtractPlugin](/plugins/mini-css-extract-plugin)
+- [Hot Module Replacement Guide](/concepts/hot-module-replacement)

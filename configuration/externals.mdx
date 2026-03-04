@@ -1,0 +1,470 @@
+---
+title: Externals
+description: Exclude dependencies from the output bundles
+---
+
+The `externals` configuration option provides a way to exclude dependencies from the output bundles. Instead, the created bundle relies on that dependency to be present in the consumer's environment.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+module.exports = {
+  externals: {
+    react: 'React',
+    jquery: 'jQuery'
+  }
+};
+```
+
+## Use Cases
+
+- **Libraries**: When building a library, you don't want to bundle dependencies
+- **CDN**: Using dependencies from a CDN instead of bundling them
+- **Micro-frontends**: Sharing dependencies between multiple apps
+- **Node.js**: Excluding Node.js built-in modules
+
+## Externals Option
+
+<ParamField path="externals" type="string | object | function | RegExp | array">
+  Define dependencies that should not be bundled.
+  
+  ```javascript
+  externals: {
+    lodash: 'lodash',
+    react: 'React'
+  }
+  ```
+</ParamField>
+
+## String Format
+
+```javascript webpack.config.js
+module.exports = {
+  externals: {
+    // Property: Module to exclude
+    // Value: Global variable name
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    jquery: 'jQuery',
+    lodash: '_'
+  }
+};
+```
+
+In your code:
+```javascript
+import React from 'react'; // Uses global window.React
+import $ from 'jquery'; // Uses global window.jQuery
+```
+
+## Different Module Types
+
+### CommonJS
+
+```javascript
+externals: {
+  react: 'commonjs react' // require('react')
+}
+```
+
+### CommonJS2
+
+```javascript
+externals: {
+  react: 'commonjs2 react' // module.exports = require('react')
+}
+```
+
+### AMD
+
+```javascript
+externals: {
+  react: 'amd react' // define(['react'], ...)
+}
+```
+
+### UMD
+
+```javascript
+externals: {
+  react: {
+    root: 'React',
+    commonjs2: 'react',
+    commonjs: 'react',
+    amd: 'react'
+  }
+}
+```
+
+### Module (ESM)
+
+```javascript
+externals: {
+  react: 'module react' // import from 'react'
+}
+```
+
+## Array Format
+
+Externalize multiple modules:
+
+```javascript webpack.config.js
+module.exports = {
+  externals: ['react', 'react-dom', 'lodash']
+};
+```
+
+This assumes the global variable name matches the module name.
+
+## RegExp Format
+
+Match modules with a regular expression:
+
+```javascript webpack.config.js
+module.exports = {
+  externals: /^(@company\/.+|lodash)$/
+};
+```
+
+Example: Externalize all `@company/*` packages:
+
+```javascript
+externals: /^@company\//
+```
+
+## Function Format
+
+Dynamically determine externals:
+
+```javascript webpack.config.js
+module.exports = {
+  externals: function({ context, request }, callback) {
+    // Externalize all modules in node_modules
+    if (/^[a-z\-0-9]+$/.test(request)) {
+      return callback(null, 'commonjs ' + request);
+    }
+    
+    // Not an external
+    callback();
+  }
+};
+```
+
+Async function:
+
+```javascript
+externals: async function({ context, request }) {
+  if (request === 'special-module') {
+    return 'commonjs special-module';
+  }
+}
+```
+
+## Combined Formats
+
+Use multiple formats together:
+
+```javascript webpack.config.js
+module.exports = {
+  externals: [
+    {
+      // Specific modules
+      react: 'React',
+      lodash: '_'
+    },
+    // All modules matching pattern
+    /^@company\//,
+    // Dynamic function
+    function({ request }, callback) {
+      if (request.startsWith('legacy-')) {
+        return callback(null, 'var ' + request);
+      }
+      callback();
+    }
+  ]
+};
+```
+
+## Externals Type
+
+<ParamField path="externalsType" type="string">
+  Specify the default type for externals.
+  
+  ```javascript
+  externalsType: 'commonjs' // or 'var', 'module', 'umd', etc.
+  ```
+  
+  Options: `'var'`, `'module'`, `'assign'`, `'this'`, `'window'`, `'self'`, `'global'`, `'commonjs'`, `'commonjs2'`, `'amd'`, `'umd'`, `'jsonp'`, `'system'`, `'promise'`, `'import'`, `'script'`
+</ParamField>
+
+```javascript webpack.config.js
+module.exports = {
+  externalsType: 'commonjs',
+  externals: {
+    react: 'react' // Treated as 'commonjs react'
+  }
+};
+```
+
+## Externals Presets
+
+<ParamField path="externalsPresets" type="object">
+  Enable presets for common external scenarios.
+  
+  ```javascript
+  externalsPresets: {
+    node: true, // Externalize Node.js built-ins
+    web: true,  // Externalize http(s):// imports
+    electron: true,
+    electronMain: true,
+    electronPreload: true,
+    electronRenderer: true
+  }
+  ```
+</ParamField>
+
+### Node.js Preset
+
+```javascript webpack.config.js
+module.exports = {
+  externalsPresets: {
+    node: true // Treats node built-ins as externals
+  }
+};
+```
+
+### Web Preset
+
+```javascript webpack.config.js
+module.exports = {
+  externalsPresets: {
+    web: true // Treats http(s):// and std: imports as externals
+  }
+};
+```
+
+## Common Patterns
+
+### Library Development
+
+```javascript webpack.config.js
+module.exports = {
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    }
+  },
+  output: {
+    library: {
+      name: 'MyLibrary',
+      type: 'umd'
+    }
+  }
+};
+```
+
+### Node.js Application
+
+Externalize all node_modules:
+
+```javascript webpack.config.js
+const nodeExternals = require('webpack-node-externals');
+
+module.exports = {
+  target: 'node',
+  externalsPresets: { node: true },
+  externals: [nodeExternals()]
+};
+```
+
+Manual approach:
+
+```javascript webpack.config.js
+const fs = require('fs');
+
+module.exports = {
+  target: 'node',
+  externals: [
+    function ({ context, request }, callback) {
+      if (/node_modules/.test(context)) {
+        return callback(null, 'commonjs ' + request);
+      }
+      callback();
+    }
+  ]
+};
+```
+
+### CDN Dependencies
+
+```javascript webpack.config.js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      cdn: {
+        js: [
+          'https://unpkg.com/react@18/umd/react.production.min.js',
+          'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js'
+        ]
+      }
+    })
+  ]
+};
+```
+
+HTML template:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My App</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+</body>
+</html>
+```
+
+### Micro-Frontends
+
+```javascript webpack.config.js
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+
+module.exports = {
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'app1',
+      shared: {
+        react: { singleton: true },
+        'react-dom': { singleton: true }
+      }
+    })
+  ],
+  externals: {
+    // Additional externals if needed
+  }
+};
+```
+
+### Electron Application
+
+```javascript webpack.config.js
+module.exports = {
+  target: 'electron-renderer',
+  externalsPresets: {
+    electron: true,
+    electronRenderer: true
+  },
+  externals: {
+    // Additional electron modules
+    'electron-store': 'commonjs electron-store'
+  }
+};
+```
+
+### Dynamic Import Externals
+
+```javascript webpack.config.js
+module.exports = {
+  externalsType: 'import',
+  externals: {
+    'big-library': 'https://cdn.example.com/big-library.js'
+  }
+};
+```
+
+Usage:
+```javascript
+import('big-library').then(lib => {
+  // Use library
+});
+```
+
+### Layer-Specific Externals
+
+```javascript webpack.config.js
+module.exports = {
+  externals: {
+    byLayer: {
+      'client': {
+        react: 'React'
+      },
+      'server': {
+        express: 'commonjs express'
+      }
+    }
+  }
+};
+```
+
+## Testing Externals
+
+When testing, you may need to mock externals:
+
+```javascript webpack.test.js
+module.exports = {
+  externals: {
+    // No externals for tests - bundle everything
+  }
+};
+```
+
+Or use Jest configuration:
+
+```javascript jest.config.js
+module.exports = {
+  moduleNameMapper: {
+    '^react$': '<rootDir>/node_modules/react'
+  }
+};
+```
+
+## Troubleshooting
+
+### External Not Found
+
+Make sure the external is available in the runtime environment:
+
+```html
+<!-- Include before your bundle -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="your-bundle.js"></script>
+```
+
+### Wrong Global Name
+
+Check the library's documentation for the correct global variable name:
+
+```javascript
+// Wrong
+externals: { react: 'react' }
+
+// Correct
+externals: { react: 'React' }
+```
+
+### TypeScript Externals
+
+Install type definitions for externalized packages:
+
+```bash
+npm install --save-dev @types/react @types/react-dom
+```

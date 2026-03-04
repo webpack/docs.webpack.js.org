@@ -1,0 +1,547 @@
+---
+title: require.context()
+description: Dynamically require multiple modules with a single expression
+---
+
+`require.context()` allows you to create a context to dynamically require a set of modules matching specific criteria.
+
+## Syntax
+
+```javascript
+require.context(directory, useSubdirectories, regExp, mode)
+```
+
+### Parameters
+
+<ParamField path="directory" type="string" required>
+  Directory to search in (relative to current file).
+  
+  ```javascript
+  require.context('./components', true, /\.js$/)
+  ```
+</ParamField>
+
+<ParamField path="useSubdirectories" type="boolean" default="true">
+  Whether to search subdirectories.
+  
+  ```javascript
+  // Include subdirectories
+  require.context('./modules', true, /\.js$/)
+  
+  // Only direct children
+  require.context('./modules', false, /\.js$/)
+  ```
+</ParamField>
+
+<ParamField path="regExp" type="RegExp" default="/^\.\/.*$/">
+  Regular expression to match files against.
+  
+  ```javascript
+  // Match .js files
+  require.context('./src', true, /\.js$/)
+  
+  // Match .vue files
+  require.context('./components', true, /\.vue$/)
+  
+  // Match specific pattern
+  require.context('./icons', true, /icon-.*\.svg$/)
+  ```
+</ParamField>
+
+<ParamField path="mode" type="string" default="'sync'">
+  Module loading mode.
+  
+  **Values:** `sync` | `lazy` | `weak` | `eager` | `lazy-once`
+  
+  ```javascript
+  // Synchronous (default)
+  require.context('./modules', true, /\.js$/, 'sync')
+  
+  // Lazy loading (code splitting)
+  require.context('./features', true, /\.js$/, 'lazy')
+  ```
+</ParamField>
+
+### Return Type
+
+**Returns:** `WebpackContext` function with properties:
+
+- `keys()`: Returns array of all possible module paths
+- `resolve(key)`: Returns module ID for a given key
+- `id`: Context module ID
+
+---
+
+## Basic Usage
+
+### Loading All Files in Directory
+
+```javascript
+// Create context for all .js files in ./modules
+const modulesContext = require.context('./modules', false, /\.js$/);
+
+// Get all module paths
+const modulePaths = modulesContext.keys();
+// ['./module-a.js', './module-b.js', './module-c.js']
+
+// Load all modules
+modulePaths.forEach(path => {
+  const module = modulesContext(path);
+  console.log(module);
+});
+```
+
+### Auto-importing Components
+
+```javascript
+// components/index.js
+// Automatically import all Vue components
+
+const componentsContext = require.context(
+  './components',
+  false,
+  /\.vue$/
+);
+
+const components = {};
+
+componentsContext.keys().forEach(fileName => {
+  const componentConfig = componentsContext(fileName);
+  const componentName = fileName
+    .replace(/^\.\//, '')
+    .replace(/\.vue$/, '');
+  
+  components[componentName] = componentConfig.default || componentConfig;
+});
+
+export default components;
+```
+
+### Loading Locale Files
+
+```javascript
+// i18n/index.js
+const messages = {};
+
+const localesContext = require.context(
+  './locales',
+  false,
+  /\.json$/
+);
+
+localesContext.keys().forEach(key => {
+  // Extract locale from filename: './en-US.json' -> 'en-US'
+  const locale = key.replace(/^\.\//, '').replace(/\.json$/, '');
+  messages[locale] = localesContext(key);
+});
+
+// messages = {
+//   'en-US': { ... },
+//   'es-ES': { ... },
+//   'fr-FR': { ... }
+// }
+
+export default messages;
+```
+
+---
+
+## Advanced Patterns
+
+### Vue Component Auto-registration
+
+```javascript
+// main.js
+import Vue from 'vue';
+
+const requireComponent = require.context(
+  './components',
+  false,
+  /Base[A-Z]\w+\.vue$/
+);
+
+requireComponent.keys().forEach(fileName => {
+  const componentConfig = requireComponent(fileName);
+  
+  // Get PascalCase name of component
+  const componentName = fileName
+    .split('/')
+    .pop()
+    .replace(/\.\w+$/, '');
+  
+  // Register component globally
+  Vue.component(
+    componentName,
+    componentConfig.default || componentConfig
+  );
+});
+```
+
+### Vuex Module Auto-loading
+
+```javascript
+// store/index.js
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+const modulesContext = require.context(
+  './modules',
+  false,
+  /\.js$/
+);
+
+const modules = {};
+
+modulesContext.keys().forEach(fileName => {
+  const moduleName = fileName.replace(/^\.\//, '').replace(/\.js$/, '');
+  modules[moduleName] = modulesContext(fileName).default;
+});
+
+export default new Vuex.Store({
+  modules
+});
+```
+
+### SVG Icon Registry
+
+```javascript
+// icons/index.js
+const svgContext = require.context(
+  './svg',
+  false,
+  /\.svg$/
+);
+
+const icons = {};
+
+svgContext.keys().forEach(path => {
+  const iconName = path.replace(/^\.\//, '').replace(/\.svg$/, '');
+  icons[iconName] = svgContext(path).default;
+});
+
+export default icons;
+
+// Usage
+import icons from './icons';
+const homeIcon = icons['home'];
+```
+
+### Plugin System
+
+```javascript
+// plugins/index.js
+class PluginManager {
+  constructor() {
+    this.plugins = new Map();
+    this.loadPlugins();
+  }
+  
+  loadPlugins() {
+    const pluginsContext = require.context(
+      './plugins',
+      true,
+      /\.js$/
+    );
+    
+    pluginsContext.keys().forEach(path => {
+      const plugin = pluginsContext(path).default;
+      if (plugin && plugin.name) {
+        this.plugins.set(plugin.name, plugin);
+      }
+    });
+  }
+  
+  get(name) {
+    return this.plugins.get(name);
+  }
+  
+  has(name) {
+    return this.plugins.has(name);
+  }
+}
+
+export default new PluginManager();
+```
+
+---
+
+## Lazy Loading with Context
+
+### Lazy Mode
+
+```javascript
+// Load modules lazily (creates separate chunks)
+const featuresContext = require.context(
+  './features',
+  false,
+  /\.js$/,
+  'lazy'
+);
+
+// Returns a Promise
+async function loadFeature(name) {
+  const path = `./${name}.js`;
+  if (featuresContext.keys().includes(path)) {
+    const module = await featuresContext(path);
+    return module.default;
+  }
+  throw new Error(`Feature ${name} not found`);
+}
+
+// Usage
+const feature = await loadFeature('advanced-search');
+```
+
+### Lazy-Once Mode
+
+```javascript
+// Bundle all modules into one async chunk
+const localesContext = require.context(
+  './locales',
+  false,
+  /\.json$/,
+  'lazy-once'
+);
+
+// All locales loaded together when first one is requested
+async function loadLocale(locale) {
+  const messages = await localesContext(`./${locale}.json`);
+  return messages.default;
+}
+```
+
+---
+
+## Context API Methods
+
+### keys()
+
+Returns an array of all matching module paths.
+
+```javascript
+const ctx = require.context('./modules', false, /\.js$/);
+
+const allPaths = ctx.keys();
+// ['./module-a.js', './module-b.js', './module-c.js']
+
+// Filter paths
+const testFiles = ctx.keys().filter(key => /\.test\.js$/.test(key));
+```
+
+### resolve(key)
+
+Returns the module ID for a given key.
+
+```javascript
+const ctx = require.context('./modules', false, /\.js$/);
+
+const moduleId = ctx.resolve('./module-a.js');
+console.log(moduleId); // 42 (numeric module ID)
+```
+
+### id
+
+The module ID of the context itself.
+
+```javascript
+const ctx = require.context('./modules', false, /\.js$/);
+
+console.log(ctx.id); // './src/modules sync \.js$'
+```
+
+---
+
+## Dynamic Contexts
+
+### Building Module Maps
+
+```javascript
+function requireAll(context) {
+  const modules = {};
+  
+  context.keys().forEach(key => {
+    const module = context(key);
+    const name = key.replace(/^\.\//, '').replace(/\.js$/, '');
+    modules[name] = module.default || module;
+  });
+  
+  return modules;
+}
+
+// Usage
+const utils = requireAll(require.context('./utils', false, /\.js$/));
+const helpers = requireAll(require.context('./helpers', false, /\.js$/));
+```
+
+### Conditional Loading
+
+```javascript
+function loadModulesByEnv() {
+  const isProd = process.env.NODE_ENV === 'production';
+  
+  const context = isProd
+    ? require.context('./prod-modules', false, /\.js$/)
+    : require.context('./dev-modules', false, /\.js$/);
+  
+  return context.keys().map(key => context(key));
+}
+```
+
+---
+
+## React Examples
+
+### Auto-import Redux Reducers
+
+```javascript
+// reducers/index.js
+import { combineReducers } from 'redux';
+
+const reducersContext = require.context(
+  './reducers',
+  false,
+  /\.js$/
+);
+
+const reducers = {};
+
+reducersContext.keys().forEach(fileName => {
+  if (fileName === './index.js') return;
+  
+  const reducerName = fileName
+    .replace(/^\.\//, '')
+    .replace(/\.js$/, '');
+  
+  reducers[reducerName] = reducersContext(fileName).default;
+});
+
+export default combineReducers(reducers);
+```
+
+### Image Importing
+
+```javascript
+// images/index.js
+const imagesContext = require.context(
+  './images',
+  false,
+  /\.(png|jpe?g|svg)$/
+);
+
+const images = {};
+
+imagesContext.keys().forEach(path => {
+  const imageName = path.replace(/^\.\//, '').replace(/\.[^.]+$/, '');
+  images[imageName] = imagesContext(path);
+});
+
+export default images;
+
+// Usage in component
+import images from './images';
+
+function MyComponent() {
+  return <img src={images['logo']} alt="Logo" />;
+}
+```
+
+---
+
+## Performance Considerations
+
+### Limit Context Scope
+
+```javascript
+// Bad: Too broad, includes many files
+const ctx = require.context('.', true, /\.js$/);
+
+// Good: Specific directory and pattern
+const ctx = require.context('./components', false, /Component\.js$/);
+```
+
+### Use Lazy Loading for Large Sets
+
+```javascript
+// Synchronous: All modules in main bundle
+const ctx = require.context('./features', false, /\.js$/, 'sync');
+
+// Lazy: Separate chunks, loaded on demand
+const ctx = require.context('./features', false, /\.js$/, 'lazy');
+```
+
+---
+
+## TypeScript Support
+
+```typescript
+// Type-safe context
+interface Module {
+  default: React.ComponentType;
+}
+
+const componentsContext = require.context(
+  './components',
+  false,
+  /\.tsx$/
+);
+
+const components: Record<string, React.ComponentType> = {};
+
+componentsContext.keys().forEach((fileName: string) => {
+  const component = componentsContext(fileName) as Module;
+  const componentName = fileName
+    .replace(/^\.\//, '')
+    .replace(/\.tsx$/, '');
+  
+  components[componentName] = component.default;
+});
+
+export default components;
+```
+
+---
+
+## Common Patterns
+
+### Test File Discovery
+
+```javascript
+// test/setup.js
+// Load all test files
+const testsContext = require.context(
+  '../src',
+  true,
+  /\.test\.js$/
+);
+
+testsContext.keys().forEach(testsContext);
+```
+
+### Asset Manifest
+
+```javascript
+// Generate asset manifest
+const assetsContext = require.context(
+  './assets',
+  true,
+  /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/
+);
+
+const manifest = assetsContext.keys().reduce((acc, path) => {
+  acc[path] = assetsContext(path);
+  return acc;
+}, {});
+
+export default manifest;
+```
+
+---
+
+## See Also
+
+- [import()](/api/module-methods/import) - Dynamic imports
+- [require()](/api/module-methods/require) - CommonJS require
+- [Module Variables](/api/module-methods/module-variables) - Module-scoped variables
+- [Dependency Management](/concepts/dependency-graph) - Managing dependencies

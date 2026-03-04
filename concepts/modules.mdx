@@ -1,0 +1,517 @@
+---
+title: Modules
+description: Understanding webpack's module system and how modules are processed
+---
+
+# Modules
+
+In webpack, **modules** are discrete chunks of functionality that encapsulate implementation details and expose a public API. Webpack supports various module formats and processes them through its module system.
+
+## What is a Webpack Module?
+
+Unlike Node.js modules which only support CommonJS, webpack modules can express dependencies in multiple ways:
+
+- An ES2015 `import` statement
+- A CommonJS `require()` statement
+- An AMD `define` and `require` statement
+- An `@import` statement inside CSS/Sass/Less files
+- An image URL in a stylesheet (`url(...)`) or HTML (`<img src=...>`)
+
+## Supported Module Types
+
+Webpack natively supports the following module types:
+
+### ECMAScript Modules (ESM)
+
+```javascript
+import { foo } from './module.js';
+export const bar = 'bar';
+export default function() { }
+```
+
+### CommonJS
+
+```javascript
+const module = require('./module');
+module.exports = { foo: 'bar' };
+exports.baz = 'qux';
+```
+
+### AMD (Asynchronous Module Definition)
+
+```javascript
+define(['./module'], function(module) {
+  return { foo: module.bar };
+});
+
+require(['./module'], function(module) {
+  // Use module
+});
+```
+
+### WebAssembly Modules
+
+```javascript
+import { add } from './math.wasm';
+add(1, 2);
+```
+
+### Asset Modules
+
+```javascript
+import imageUrl from './image.png';
+import styles from './styles.css';
+import data from './data.json';
+```
+
+## Module Resolution
+
+Webpack uses enhanced-resolve to find module files:
+
+### Absolute Paths
+
+```javascript
+import '/home/user/file';
+import 'C:\\Users\\user\\file';
+```
+
+### Relative Paths
+
+```javascript
+import '../src/file';
+import './file';
+```
+
+### Module Paths
+
+```javascript
+import 'module';
+import 'module/lib/file';
+```
+
+Webpack searches in directories specified in `resolve.modules` (defaults to `node_modules`).
+
+## Module Configuration
+
+### Module Rules
+
+Define how different module types should be processed:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: 'asset/resource'
+      }
+    ]
+  }
+};
+```
+
+### No Parse
+
+Exclude modules from parsing:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    noParse: /jquery|lodash/,
+  }
+};
+```
+
+<Info>
+Use `noParse` for large libraries that don't use module syntax to improve build performance.
+</Info>
+
+## NormalModule
+
+Webpack represents most modules as `NormalModule` instances:
+
+```javascript
+// From NormalModule.js (simplified)
+const { runLoaders } = require('loader-runner');
+
+class NormalModule extends Module {
+  constructor({
+    type,
+    request,
+    userRequest,
+    rawRequest,
+    loaders,
+    resource,
+    parser,
+    generator,
+    resolveOptions
+  }) {
+    super(type, request);
+    this.request = request;
+    this.userRequest = userRequest;
+    this.rawRequest = rawRequest;
+    this.loaders = loaders;
+    this.resource = resource;
+    this.parser = parser;
+    this.generator = generator;
+  }
+
+  build(options, compilation, resolver, fs, callback) {
+    // Run loaders
+    runLoaders({
+      resource: this.resource,
+      loaders: this.loaders,
+      context: loaderContext,
+      readResource: fs.readFile.bind(fs)
+    }, (err, result) => {
+      if (err) return callback(err);
+      // Parse the result
+      this.parser.parse(result.result, {
+        current: this,
+        module: this,
+        compilation: compilation
+      });
+      callback();
+    });
+  }
+}
+```
+
+## Module Types
+
+### JavaScript Module Types
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        type: 'javascript/auto', // Default, supports all module systems
+      },
+      {
+        test: /\.mjs$/,
+        type: 'javascript/esm', // ESM only
+      },
+      {
+        test: /\.cjs$/,
+        type: 'javascript/dynamic', // CommonJS
+      }
+    ]
+  }
+};
+```
+
+### Asset Module Types
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.png$/,
+        type: 'asset/resource', // Emits file, returns URL
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset/inline', // Inlines as data URI
+      },
+      {
+        test: /\.txt$/,
+        type: 'asset/source', // Exports source as string
+      },
+      {
+        test: /\.jpg$/,
+        type: 'asset', // Auto chooses between resource and inline
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024 // 8kb
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+## Module Graph
+
+Webpack builds a `ModuleGraph` to track dependencies:
+
+```javascript
+// From ModuleGraph.js (simplified)
+class ModuleGraph {
+  constructor() {
+    this._dependencyMap = new WeakMap();
+    this._moduleMap = new Map();
+  }
+
+  getModule(dependency) {
+    const connection = this._dependencyMap.get(dependency);
+    return connection ? connection.module : null;
+  }
+
+  getIssuer(module) {
+    const mgm = this._getModuleGraphModule(module);
+    return mgm.issuer;
+  }
+
+  getOutgoingConnections(module) {
+    const mgm = this._getModuleGraphModule(module);
+    return mgm.outgoingConnections;
+  }
+
+  getIncomingConnections(module) {
+    const mgm = this._getModuleGraphModule(module);
+    return mgm.incomingConnections;
+  }
+}
+```
+
+## Module Context
+
+Each module is executed with context:
+
+```javascript
+// Available in modules
+__filename  // Current file name
+__dirname   // Current directory
+module      // Module object
+exports     // Module exports
+require     // Require function
+```
+
+### Module Variables
+
+```javascript
+// These are available in webpack modules
+console.log(__filename); // Path to the module
+console.log(__dirname);  // Directory of the module
+console.log(module.id);  // Module identifier
+```
+
+## Dynamic Imports
+
+Create code split points with dynamic imports:
+
+```javascript
+// Dynamically import a module
+import('./module').then(module => {
+  module.doSomething();
+});
+
+// With async/await
+const module = await import('./module');
+module.doSomething();
+```
+
+### Magic Comments
+
+Control dynamic import behavior:
+
+```javascript
+import(
+  /* webpackChunkName: "my-chunk" */
+  /* webpackMode: "lazy" */
+  /* webpackPrefetch: true */
+  /* webpackPreload: true */
+  './module'
+);
+```
+
+<Tabs>
+  <Tab title="Chunk Name">
+    ```javascript
+    import(/* webpackChunkName: "lodash" */ 'lodash')
+      .then(_ => {
+        // Use lodash
+      });
+    ```
+  </Tab>
+  <Tab title="Prefetch">
+    ```javascript
+    import(/* webpackPrefetch: true */ './module')
+      .then(module => {
+        // Module prefetched during idle time
+      });
+    ```
+  </Tab>
+  <Tab title="Preload">
+    ```javascript
+    import(/* webpackPreload: true */ './module')
+      .then(module => {
+        // Module loaded in parallel with parent
+      });
+    ```
+  </Tab>
+</Tabs>
+
+## Module Federation
+
+Share modules between separate builds:
+
+```javascript filename="webpack.config.js"
+const { ModuleFederationPlugin } = require('webpack').container;
+
+module.exports = {
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'app1',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Button': './src/Button'
+      },
+      shared: ['react', 'react-dom']
+    })
+  ]
+};
+```
+
+## Context Modules
+
+Require with expressions creates context modules:
+
+```javascript
+// Creates a context for all .js files in the directory
+require('./pages/' + name + '.js');
+
+// Equivalent to:
+const context = require.context('./pages', false, /\.js$/);
+const module = context('./' + name + '.js');
+```
+
+### require.context
+
+```javascript
+const context = require.context(
+  './components', // Directory
+  true,           // Use subdirectories
+  /\.vue$/        // Match .vue files
+);
+
+context.keys().forEach(key => {
+  const component = context(key);
+  // Register component
+});
+```
+
+## External Modules
+
+Exclude dependencies from the bundle:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  externals: {
+    jquery: 'jQuery',
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  }
+};
+```
+
+### External Types
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  externalsType: 'var', // or 'module', 'commonjs', 'amd', etc.
+  externals: {
+    lodash: '_'
+  }
+};
+```
+
+## Module Concatenation
+
+Scope hoisting merges modules into a single scope:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  optimization: {
+    concatenateModules: true // Enabled by default in production
+  }
+};
+```
+
+<Note>
+Module concatenation reduces function call overhead and bundle size.
+</Note>
+
+## Module Identifiers
+
+Modules are identified by:
+
+### Module IDs
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  optimization: {
+    moduleIds: 'deterministic' // or 'named', 'natural', 'size'
+  }
+};
+```
+
+### Module Path
+
+Each module has a unique request path:
+
+```javascript
+module.exports = {
+  output: {
+    pathinfo: true // Include path info in bundles (development)
+  }
+};
+```
+
+## Best Practices
+
+1. **Use ESM syntax** - Enables tree shaking and static analysis
+2. **Avoid mixing module types** - Stick to one module system per project
+3. **Use dynamic imports** - For code splitting and lazy loading
+4. **Configure module rules** - Process different file types appropriately
+5. **Exclude node_modules** - Use `exclude` in loader rules for performance
+6. **Use module concatenation** - Enable in production for smaller bundles
+
+## Common Patterns
+
+### Conditional Imports
+
+```javascript
+let module;
+if (condition) {
+  module = await import('./moduleA');
+} else {
+  module = await import('./moduleB');
+}
+```
+
+### Parallel Imports
+
+```javascript
+const [moduleA, moduleB] = await Promise.all([
+  import('./moduleA'),
+  import('./moduleB')
+]);
+```
+
+### Named Exports Aggregation
+
+```javascript
+export * from './moduleA';
+export * from './moduleB';
+export { default as ModuleC } from './moduleC';
+```
+
+## Related Concepts
+
+- [Module Resolution](/concepts/module-resolution) - How webpack finds modules
+- [Dependency Graph](/concepts/dependency-graph) - Module relationships
+- [Loaders](/concepts/loaders) - Transform modules

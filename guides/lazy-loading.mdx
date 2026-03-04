@@ -1,0 +1,486 @@
+---
+title: "Lazy Loading"
+description: "Load code on demand to improve initial load performance"
+icon: "hourglass"
+---
+
+Lazy loading (or code splitting on demand) allows you to load parts of your application only when they're needed, significantly improving initial load time.
+
+## What is Lazy Loading?
+
+Lazy loading defers loading of non-critical resources at page load time. Instead, these resources are loaded at the moment they're needed.
+
+**Benefits:**
+- Reduced initial bundle size
+- Faster initial page load
+- Better resource utilization
+- Improved user experience
+
+<Tip>
+Lazy load anything that's not immediately visible or needed when the page first loads.
+</Tip>
+
+## Dynamic Imports
+
+The foundation of lazy loading in webpack is the dynamic `import()` syntax.
+
+<Steps>
+<Step title="Convert static imports to dynamic">
+  **Before:**
+  ```javascript
+  import { heavyFunction } from './heavy-module';
+  
+  button.addEventListener('click', () => {
+    heavyFunction();
+  });
+  ```
+
+  **After:**
+  ```javascript
+  button.addEventListener('click', async () => {
+    const { heavyFunction } = await import('./heavy-module');
+    heavyFunction();
+  });
+  ```
+</Step>
+
+<Step title="Add loading state">
+  ```javascript
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    button.textContent = 'Loading...';
+    
+    try {
+      const module = await import('./heavy-module');
+      module.initialize();
+    } catch (error) {
+      console.error('Failed to load module:', error);
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Click me';
+    }
+  });
+  ```
+</Step>
+
+<Step title="Name your chunks">
+  ```javascript
+  const module = await import(
+    /* webpackChunkName: "heavy-module" */
+    './heavy-module'
+  );
+  ```
+</Step>
+</Steps>
+
+## Route-Based Lazy Loading
+
+Load components only when users navigate to specific routes:
+
+### React Router Example
+
+```javascript
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// Lazy load route components
+const Home = lazy(() => import('./routes/Home'));
+const About = lazy(() => import('./routes/About'));
+const Dashboard = lazy(() => import('./routes/Dashboard'));
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
+```
+
+### Vue Router Example
+
+```javascript
+import { createRouter, createWebHistory } from 'vue-router';
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: '/',
+      component: () => import('./views/Home.vue')
+    },
+    {
+      path: '/about',
+      component: () => import(
+        /* webpackChunkName: "about" */
+        './views/About.vue'
+      )
+    },
+    {
+      path: '/dashboard',
+      component: () => import(
+        /* webpackChunkName: "dashboard" */
+        './views/Dashboard.vue'
+      )
+    }
+  ]
+});
+```
+
+<Note>
+Route-based splitting is the easiest and most effective way to implement lazy loading.
+</Note>
+
+## Component-Based Lazy Loading
+
+### React
+
+```javascript
+import { lazy, Suspense } from 'react';
+
+const HeavyComponent = lazy(() => import('./HeavyComponent'));
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <Suspense fallback={<div>Loading component...</div>}>
+        <HeavyComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+### Vue 3
+
+```javascript
+import { defineAsyncComponent } from 'vue';
+
+export default {
+  components: {
+    HeavyComponent: defineAsyncComponent(() =>
+      import('./HeavyComponent.vue')
+    )
+  }
+};
+```
+
+## Prefetching and Preloading
+
+Optimize when lazy-loaded modules are fetched:
+
+### Prefetch
+
+Load during idle time (low priority):
+
+```javascript
+// Load when browser is idle
+import(
+  /* webpackPrefetch: true */
+  './future-module'
+);
+```
+
+Generates:
+```html
+<link rel="prefetch" href="future-module.js">
+```
+
+<Tip>
+Use prefetch for modules users will likely need soon, like the next page in a flow.
+</Tip>
+
+### Preload
+
+Load in parallel with parent (high priority):
+
+```javascript
+// Load in parallel with current page
+import(
+  /* webpackPreload: true */
+  './critical-module'
+);
+```
+
+Generates:
+```html
+<link rel="preload" href="critical-module.js" as="script">
+```
+
+<Warning>
+Overusing preload can harm performance. Only preload truly critical resources.
+</Warning>
+
+## Event-Based Lazy Loading
+
+Load code in response to user interactions:
+
+### On Click
+
+```javascript
+const button = document.getElementById('open-modal');
+
+button.addEventListener('click', async () => {
+  const { Modal } = await import(
+    /* webpackChunkName: "modal" */
+    './components/Modal'
+  );
+  
+  const modal = new Modal();
+  modal.open();
+});
+```
+
+### On Scroll
+
+```javascript
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(async (entry) => {
+    if (entry.isIntersecting) {
+      const { initChart } = await import('./chart');
+      initChart(entry.target);
+      observer.unobserve(entry.target);
+    }
+  });
+});
+
+const chartElement = document.getElementById('chart');
+observer.observe(chartElement);
+```
+
+### On Hover
+
+```javascript
+const menuItem = document.getElementById('menu-item');
+
+let modulePromise = null;
+
+menuItem.addEventListener('mouseenter', () => {
+  // Start loading on hover
+  if (!modulePromise) {
+    modulePromise = import('./dropdown-menu');
+  }
+});
+
+menuItem.addEventListener('click', async () => {
+  const { DropdownMenu } = await modulePromise;
+  const menu = new DropdownMenu();
+  menu.show();
+});
+```
+
+## Library/Vendor Lazy Loading
+
+Load heavy third-party libraries only when needed:
+
+```javascript
+// Load chart library only when showing charts
+async function renderChart(data) {
+  const Chart = await import(
+    /* webpackChunkName: "chart-library" */
+    'chart.js'
+  );
+  
+  return new Chart.default('canvas', {
+    type: 'bar',
+    data: data
+  });
+}
+
+// Load PDF library only when exporting
+async function exportToPDF() {
+  const jsPDF = await import(
+    /* webpackChunkName: "pdf-library" */
+    'jspdf'
+  );
+  
+  const doc = new jsPDF.default();
+  // Generate PDF
+}
+```
+
+<Tip>
+Heavy libraries like chart.js, moment.js, or PDF generators are perfect candidates for lazy loading.
+</Tip>
+
+## Lazy Compilation
+
+For development, compile dynamic imports only when they're requested:
+
+```javascript
+module.exports = {
+  mode: 'development',
+  experiments: {
+    lazyCompilation: true
+  },
+  cache: {
+    type: 'filesystem'
+  }
+};
+```
+
+<Note>
+Lazy compilation can dramatically reduce development server startup time for applications with many routes.
+</Note>
+
+## Error Handling
+
+Handle loading failures gracefully:
+
+```javascript
+async function loadModule() {
+  try {
+    const module = await import('./optional-module');
+    return module.default;
+  } catch (error) {
+    console.error('Failed to load module:', error);
+    // Fallback behavior
+    return null;
+  }
+}
+```
+
+### Retry Logic
+
+```javascript
+async function importWithRetry(importFn, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await importFn();
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+    }
+  }
+}
+
+// Usage
+const module = await importWithRetry(() => import('./flaky-module'));
+```
+
+## Webpack Magic Comments
+
+Control how chunks are loaded:
+
+```javascript
+import(
+  /* webpackChunkName: "my-chunk" */
+  /* webpackMode: "lazy" */
+  /* webpackPrefetch: true */
+  /* webpackPreload: true */
+  './module'
+);
+```
+
+### Available Comments
+
+| Comment | Description |
+|---------|-------------|
+| `webpackChunkName` | Name for the chunk |
+| `webpackMode` | `"lazy"` (default), `"lazy-once"`, `"eager"`, `"weak"` |
+| `webpackPrefetch` | Prefetch during idle time |
+| `webpackPreload` | Preload in parallel |
+| `webpackExports` | Only include specific exports |
+
+### Mode Options
+
+```javascript
+// lazy (default) - separate chunk for each import
+import(/* webpackMode: "lazy" */ `./locales/${lang}.js`);
+
+// lazy-once - single chunk for all possible modules
+import(/* webpackMode: "lazy-once" */ `./locales/${lang}.js`);
+
+// eager - no separate chunk, but async execution
+import(/* webpackMode: "eager" */ './module');
+
+// weak - assume module is already loaded
+import(/* webpackMode: "weak" */ './module');
+```
+
+## Best Practices
+
+<Steps>
+<Step title="Split by routes">
+  Implement route-based code splitting as your first optimization:
+
+  ```javascript
+  const routes = [
+    { path: '/', component: () => import('./Home') },
+    { path: '/about', component: () => import('./About') }
+  ];
+  ```
+</Step>
+
+<Step title="Lazy load heavy components">
+  Identify and lazy load components that:
+  - Are not immediately visible
+  - Contain heavy dependencies
+  - Are only used by some users
+</Step>
+
+<Step title="Use prefetch wisely">
+  Prefetch modules users will likely need:
+
+  ```javascript
+  import(/* webpackPrefetch: true */ './next-page');
+  ```
+</Step>
+
+<Step title="Monitor bundle sizes">
+  Use webpack-bundle-analyzer to identify lazy loading opportunities:
+
+  ```bash
+  npm install --save-dev webpack-bundle-analyzer
+  ```
+</Step>
+</Steps>
+
+## Common Patterns
+
+### Modal/Dialog
+
+```javascript
+let modalModule = null;
+
+async function openModal() {
+  if (!modalModule) {
+    modalModule = await import('./Modal');
+  }
+  return new modalModule.default();
+}
+```
+
+### Tab Content
+
+```javascript
+const tabs = {
+  profile: () => import('./ProfileTab'),
+  settings: () => import('./SettingsTab'),
+  billing: () => import('./BillingTab')
+};
+
+async function switchTab(tabName) {
+  const TabComponent = await tabs[tabName]();
+  renderTab(TabComponent.default);
+}
+```
+
+### Feature Flags
+
+```javascript
+if (features.newDashboard) {
+  const { NewDashboard } = await import('./NewDashboard');
+  render(NewDashboard);
+} else {
+  const { OldDashboard } = await import('./OldDashboard');
+  render(OldDashboard);
+}
+```

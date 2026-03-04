@@ -1,0 +1,268 @@
+---
+title: CLI Commands
+description: Reference for webpack CLI commands including build, serve, watch, and init
+---
+
+Webpack provides several CLI commands to build, serve, and initialize your projects.
+
+## webpack build
+
+Compiles your webpack project.
+
+### Syntax
+
+```bash
+webpack build [options]
+```
+
+### Description
+
+The `build` command compiles your webpack configuration and outputs bundled assets. This is the default command when running `webpack` without any subcommand.
+
+### Usage Examples
+
+```bash
+# Basic build
+webpack build
+
+# Build with custom config
+webpack build --config webpack.prod.js
+
+# Build with mode
+webpack build --mode production
+
+# Build and watch
+webpack build --watch
+```
+
+### Return Value
+
+Exits with code `0` on success, non-zero on error.
+
+---
+
+## webpack serve
+
+Starts a development server with live reloading.
+
+### Syntax
+
+```bash
+webpack serve [options]
+```
+
+### Description
+
+The `serve` command starts webpack DevServer, which provides live reloading and hot module replacement for development.
+
+<Note>
+  Requires `webpack-dev-server` to be installed.
+</Note>
+
+### Usage Examples
+
+```bash
+# Start dev server
+webpack serve
+
+# Serve on custom port
+webpack serve --port 3000
+
+# Serve with hot reload
+webpack serve --hot
+
+# Open browser automatically
+webpack serve --open
+```
+
+### Parameters
+
+<ParamField path="--port" type="number">
+  Port number for the dev server. Default: `8080`
+</ParamField>
+
+<ParamField path="--host" type="string">
+  Host to use for the dev server. Default: `localhost`
+</ParamField>
+
+<ParamField path="--hot" type="boolean">
+  Enable hot module replacement. Default: `true`
+</ParamField>
+
+<ParamField path="--open" type="boolean">
+  Open the browser after server starts. Default: `false`
+</ParamField>
+
+---
+
+## webpack watch
+
+Watches files and rebuilds on changes.
+
+### Syntax
+
+```bash
+webpack watch [options]
+```
+
+### Description
+
+The `watch` command starts webpack in watch mode. It monitors your source files and automatically rebuilds when changes are detected.
+
+### Usage Examples
+
+```bash
+# Start watch mode
+webpack watch
+
+# Watch with specific config
+webpack watch --config webpack.dev.js
+
+# Watch with info verbosity
+webpack watch --stats verbose
+```
+
+### Parameters
+
+<ParamField path="--watch-options-stdin" type="boolean">
+  Stop watching when stdin stream ends. Default: `false`
+</ParamField>
+
+<ParamField path="--watch-options-poll" type="number">
+  Polling interval in milliseconds. Use when file watching doesn't work.
+</ParamField>
+
+### Return Value
+
+Runs continuously until terminated. Exits with code `0` on graceful shutdown.
+
+---
+
+## webpack init
+
+Scaffolds a new webpack project.
+
+### Syntax
+
+```bash
+webpack init [scaffold-template]
+```
+
+### Description
+
+The `init` command helps you create a new webpack configuration interactively. It can use built-in templates or custom scaffolds.
+
+<Note>
+  Requires `@webpack-cli/generators` to be installed.
+</Note>
+
+### Usage Examples
+
+```bash
+# Interactive initialization
+webpack init
+
+# Initialize with specific generator
+webpack init react-app
+
+# Force initialization (overwrite existing files)
+webpack init --force
+```
+
+### Parameters
+
+<ParamField path="scaffold-template" type="string">
+  Name of the scaffold template to use. If omitted, uses interactive mode.
+</ParamField>
+
+<ParamField path="--force" type="boolean">
+  Overwrite existing files without prompting. Default: `false`
+</ParamField>
+
+<ParamField path="--template" type="string">
+  Template to generate from. Can be a package name or local path.
+</ParamField>
+
+### Return Value
+
+Exits with code `0` on successful initialization, non-zero on error.
+
+---
+
+## Common Options
+
+These options work with all commands:
+
+<ParamField path="--config" type="string">
+  Path to webpack configuration file. Default: `webpack.config.js`
+  
+  ```bash
+  webpack build --config config/webpack.prod.js
+  ```
+</ParamField>
+
+<ParamField path="--mode" type="string">
+  Build mode: `development`, `production`, or `none`. Sets `process.env.NODE_ENV` and applies defaults.
+  
+  ```bash
+  webpack build --mode production
+  ```
+</ParamField>
+
+<ParamField path="--env" type="object">
+  Environment variables passed to the config function.
+  
+  ```bash
+  webpack build --env production --env apiUrl=https://api.example.com
+  ```
+</ParamField>
+
+<ParamField path="--stats" type="string">
+  Stats output preset: `none`, `errors-only`, `minimal`, `normal`, `verbose`, `detailed`.
+  
+  ```bash
+  webpack build --stats detailed
+  ```
+</ParamField>
+
+<ParamField path="--progress" type="boolean">
+  Show compilation progress. Default: `false`
+  
+  ```bash
+  webpack build --progress
+  ```
+</ParamField>
+
+<ParamField path="--help" type="boolean">
+  Display help information.
+  
+  ```bash
+  webpack build --help
+  ```
+</ParamField>
+
+<ParamField path="--version" type="boolean">
+  Display webpack version.
+  
+  ```bash
+  webpack --version
+  ```
+</ParamField>
+
+---
+
+## Exit Codes
+
+| Code | Description |
+|------|-------------|
+| `0` | Success |
+| `1` | Errors from webpack |
+| `2` | Configuration or options error |
+
+---
+
+## See Also
+
+- [CLI Flags](/api/cli/flags) - Complete list of CLI flags and options
+- [Configuration](/configuration/overview) - webpack configuration reference
+- [DevServer](/configuration/devserver) - Development server options

@@ -1,0 +1,398 @@
+---
+title: ProgressPlugin
+description: Report compilation progress during webpack builds
+---
+
+The `ProgressPlugin` reports compilation progress, showing you the current stage and module being processed. This is especially useful for long builds to understand what webpack is doing.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ProgressPlugin()
+  ]
+};
+```
+
+With webpack-cli, you can also use:
+
+```bash
+webpack --progress
+```
+
+## Configuration
+
+<ParamField path="handler" type="function">
+  Custom progress handler function. Receives `(percentage, message, ...args)` as parameters.
+</ParamField>
+
+<ParamField path="profile" type="boolean" default="false">
+  Enable profiling to capture timing information for each step
+</ParamField>
+
+<ParamField path="modulesCount" type="number" default="5000">
+  Expected number of modules (improves progress accuracy)
+</ParamField>
+
+<ParamField path="dependenciesCount" type="number" default="10000">
+  Expected number of dependencies
+</ParamField>
+
+<ParamField path="modules" type="boolean" default="true">
+  Show active modules count
+</ParamField>
+
+<ParamField path="dependencies" type="boolean" default="true">
+  Show dependencies count
+</ParamField>
+
+<ParamField path="activeModules" type="boolean" default="false">
+  Show currently active modules
+</ParamField>
+
+<ParamField path="entries" type="boolean" default="true">
+  Show entries count
+</ParamField>
+
+<ParamField path="percentBy" type="string">
+  How to calculate progress: `'entries'`, `'modules'`, `'dependencies'`, or `null` (median)
+</ParamField>
+
+## Examples
+
+### Default Usage
+
+```javascript
+new webpack.ProgressPlugin()
+```
+
+Output:
+```
+10% building
+30% building 150/300 modules
+50% building 300/300 modules
+70% sealing
+90% emitting
+100%
+```
+
+### Custom Handler
+
+```javascript
+new webpack.ProgressPlugin((percentage, message, ...args) => {
+  console.log(`${Math.round(percentage * 100)}%`, message, ...args);
+})
+```
+
+### With Profiling
+
+```javascript
+new webpack.ProgressPlugin({
+  profile: true
+})
+```
+
+This logs timing information:
+```
+142 ms sealing
+38 ms building
+12 ms optimizing
+```
+
+### Detailed Progress
+
+```javascript
+new webpack.ProgressPlugin({
+  activeModules: true,
+  modules: true,
+  dependencies: true,
+  entries: true
+})
+```
+
+Output:
+```
+30% building 150/300 modules 45 active ./src/index.js
+```
+
+### Custom Message Formatting
+
+```javascript
+const chalk = require('chalk');
+
+new webpack.ProgressPlugin((percentage, message, ...args) => {
+  const percent = Math.round(percentage * 100);
+  const color = percent < 50 ? 'red' : percent < 90 ? 'yellow' : 'green';
+  
+  console.log(
+    chalk[color](`[${percent}%]`),
+    message,
+    ...args
+  );
+})
+```
+
+### With Progress Bar
+
+```javascript
+const ProgressBar = require('progress');
+
+const bar = new ProgressBar(':bar :percent :msg', { total: 100 });
+
+new webpack.ProgressPlugin((percentage, message) => {
+  bar.update(percentage, { msg: message });
+})
+```
+
+### Write to File
+
+```javascript
+const fs = require('fs');
+const logStream = fs.createWriteStream('build.log');
+
+new webpack.ProgressPlugin((percentage, message, ...args) => {
+  logStream.write(
+    `${new Date().toISOString()} - ${Math.round(percentage * 100)}% ${message}\n`
+  );
+})
+```
+
+### Minimal Output
+
+```javascript
+new webpack.ProgressPlugin({
+  modules: false,
+  dependencies: false,
+  activeModules: false,
+  entries: false
+})
+```
+
+### Estimated Module Count
+
+```javascript
+new webpack.ProgressPlugin({
+  modulesCount: 2000,
+  dependenciesCount: 5000
+})
+```
+
+This improves progress estimation accuracy.
+
+### Progress Based on Entries
+
+```javascript
+new webpack.ProgressPlugin({
+  percentBy: 'entries'
+})
+```
+
+## Advanced Usage
+
+### Multi-Compiler Progress
+
+For multiple configurations:
+
+```javascript
+module.exports = [
+  {
+    name: 'client',
+    plugins: [
+      new webpack.ProgressPlugin((percentage, message, ...args) => {
+        console.log('[Client]', Math.round(percentage * 100) + '%', message);
+      })
+    ]
+  },
+  {
+    name: 'server',
+    plugins: [
+      new webpack.ProgressPlugin((percentage, message, ...args) => {
+        console.log('[Server]', Math.round(percentage * 100) + '%', message);
+      })
+    ]
+  }
+];
+```
+
+### Detailed Profiling
+
+```javascript
+const logger = compiler.getInfrastructureLogger('webpack.Progress');
+
+new webpack.ProgressPlugin({
+  profile: true,
+  handler: (percentage, message, ...args) => {
+    logger.log(`${Math.round(percentage * 100)}%`, message, ...args);
+  }
+})
+```
+
+### Integration with CI/CD
+
+```javascript
+const isCI = process.env.CI === 'true';
+
+new webpack.ProgressPlugin({
+  handler: isCI
+    ? (percentage, message) => {
+        // Only log major milestones in CI
+        if (percentage === 0 || percentage === 1 || percentage % 0.1 === 0) {
+          console.log(`Build ${Math.round(percentage * 100)}% complete`);
+        }
+      }
+    : undefined // Use default handler locally
+})
+```
+
+### Notification on Complete
+
+```javascript
+const notifier = require('node-notifier');
+
+new webpack.ProgressPlugin((percentage, message) => {
+  if (percentage === 1) {
+    notifier.notify({
+      title: 'Webpack',
+      message: 'Build complete!'
+    });
+  }
+})
+```
+
+## Handler Function Signature
+
+```typescript
+type Handler = (
+  percentage: number,    // 0 to 1
+  message: string,       // Stage name: 'building', 'sealing', 'emitting'
+  ...args: string[]      // Additional context: module counts, file names, etc.
+) => void;
+```
+
+## Build Phases
+
+The plugin reports progress through these phases:
+
+1. **Setup** (0-10%)
+   - Initializing compiler
+   - Loading plugins
+   - Setting up module factories
+
+2. **Building** (10-70%)
+   - Processing entries
+   - Building modules
+   - Loading dependencies
+
+3. **Sealing** (70-95%)
+   - Optimizing modules
+   - Creating chunks
+   - Optimizing chunks
+   - Hashing
+
+4. **Emitting** (95-100%)
+   - Writing files
+   - Emitting assets
+
+## Performance Considerations
+
+<Note>
+The ProgressPlugin has minimal performance impact:
+- Adds ~1-2% to build time
+- More noticeable in very fast builds
+- Profiling mode adds ~5% overhead
+</Note>
+
+### Optimize for CI
+
+```javascript
+const isCI = process.env.CI === 'true';
+
+module.exports = {
+  plugins: [
+    // Disable progress in CI for cleaner logs
+    !isCI && new webpack.ProgressPlugin()
+  ].filter(Boolean)
+};
+```
+
+## Debugging Slow Builds
+
+Use profiling to identify bottlenecks:
+
+```javascript
+new webpack.ProgressPlugin({
+  profile: true,
+  handler: (percentage, message, ...args) => {
+    // Log slow operations
+    console.log({
+      percentage: Math.round(percentage * 100),
+      message,
+      details: args,
+      timestamp: Date.now()
+    });
+  }
+})
+```
+
+## Custom Progress Reporters
+
+### Fancy Terminal Output
+
+```javascript
+const ora = require('ora');
+const spinner = ora('Building').start();
+
+new webpack.ProgressPlugin((percentage, message, ...args) => {
+  const percent = Math.round(percentage * 100);
+  spinner.text = `Building: ${percent}% - ${message}`;
+  
+  if (percentage === 1) {
+    spinner.succeed('Build complete!');
+  }
+})
+```
+
+### JSON Progress Log
+
+```javascript
+new webpack.ProgressPlugin((percentage, message, ...args) => {
+  process.stdout.write(JSON.stringify({
+    percentage: Math.round(percentage * 100),
+    message,
+    args,
+    timestamp: new Date().toISOString()
+  }) + '\n');
+})
+```
+
+### Web Dashboard
+
+```javascript
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+new webpack.ProgressPlugin((percentage, message, ...args) => {
+  wss.clients.forEach(client => {
+    client.send(JSON.stringify({
+      percentage,
+      message,
+      args
+    }));
+  });
+})
+```
+
+## Best Practices
+
+- Use default settings for most cases
+- Enable `profile` only when debugging build performance
+- Disable or simplify in CI environments
+- Set accurate `modulesCount` for better progress estimation
+- Use `percentBy` to focus on bottlenecks
+
+<Warning>
+Enabling `activeModules` can produce verbose output and slow down the build slightly. Use only when debugging.
+</Warning>

@@ -1,0 +1,442 @@
+---
+title: Plugins
+description: Extend webpack's functionality with plugins that tap into the compilation lifecycle
+---
+
+# Plugins
+
+**Plugins** are the backbone of webpack. Webpack itself is built on the same plugin system that you use in your configuration. They allow you to perform a wider range of tasks than loaders, from bundle optimization and minification to defining environment variables.
+
+## Overview
+
+While loaders transform individual modules, plugins can tap into webpack's compilation process to perform more complex tasks. Plugins have access to the full webpack compilation lifecycle through hooks.
+
+## Using Plugins
+
+Plugins are configured in the `plugins` array:
+
+```javascript filename="webpack.config.js"
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new webpack.ProgressPlugin()
+  ]
+};
+```
+
+<Note>
+Plugins are JavaScript classes that must be instantiated with `new`.
+</Note>
+
+## Plugin Interface
+
+A webpack plugin is a JavaScript object with an `apply` method:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.compile.tap('MyPlugin', (params) => {
+      console.log('The compilation is starting!');
+    });
+    
+    compiler.hooks.emit.tapAsync('MyPlugin', (compilation, callback) => {
+      console.log('The compilation is emitting files...');
+      callback();
+    });
+  }
+}
+
+module.exports = MyPlugin;
+```
+
+### Basic Structure
+
+```javascript
+class BasicPlugin {
+  // Constructor can accept options
+  constructor(options = {}) {
+    this.options = options;
+  }
+
+  // Apply method is called by webpack
+  apply(compiler) {
+    // Access compiler hooks
+    compiler.hooks.done.tap('BasicPlugin', (stats) => {
+      console.log('Build complete!');
+    });
+  }
+}
+```
+
+## Compiler Hooks
+
+The `Compiler` object represents the fully configured webpack environment and exposes hooks for the entire build lifecycle:
+
+```javascript
+// Available Compiler hooks (from Compiler.js)
+compiler.hooks = {
+  initialize: new SyncHook([]),
+  shouldEmit: new SyncBailHook(['compilation']),
+  done: new AsyncSeriesHook(['stats']),
+  afterDone: new SyncHook(['stats']),
+  beforeRun: new AsyncSeriesHook(['compiler']),
+  run: new AsyncSeriesHook(['compiler']),
+  emit: new AsyncSeriesHook(['compilation']),
+  assetEmitted: new AsyncSeriesHook(['file', 'info']),
+  afterEmit: new AsyncSeriesHook(['compilation']),
+  
+  thisCompilation: new SyncHook(['compilation', 'params']),
+  compilation: new SyncHook(['compilation', 'params']),
+  make: new AsyncParallelHook(['compilation']),
+  afterCompile: new AsyncSeriesHook(['compilation']),
+  
+  watchRun: new AsyncSeriesHook(['compiler']),
+  failed: new SyncHook(['error']),
+  invalid: new SyncHook(['filename', 'changeTime']),
+  watchClose: new SyncHook([]),
+  shutdown: new AsyncSeriesHook([])
+};
+```
+
+## Compilation Hooks
+
+The `Compilation` object represents a single build of versioned assets and provides hooks for finer-grained control:
+
+```javascript
+// Key Compilation hooks (from Compilation.js)
+compilation.hooks = {
+  buildModule: new SyncHook(['module']),
+  succeedModule: new SyncHook(['module']),
+  finishModules: new AsyncSeriesHook(['modules']),
+  
+  seal: new SyncHook([]),
+  beforeChunks: new SyncHook([]),
+  afterChunks: new SyncHook(['chunks']),
+  
+  optimizeModules: new SyncBailHook(['modules']),
+  optimizeChunks: new SyncBailHook(['chunks', 'chunkGroups']),
+  optimizeTree: new AsyncSeriesHook(['chunks', 'modules']),
+  
+  processAssets: new AsyncSeriesHook(['assets']),
+  afterProcessAssets: new SyncHook(['assets']),
+  
+  beforeHash: new SyncHook([]),
+  afterHash: new SyncHook([]),
+  
+  beforeModuleAssets: new SyncHook([]),
+  afterSeal: new AsyncSeriesHook([])
+};
+```
+
+## Hook Types
+
+Webpack uses the [Tapable](https://github.com/webpack/tapable) library for hooks:
+
+### Synchronous Hooks
+
+```javascript
+compiler.hooks.compile.tap('MyPlugin', (params) => {
+  // Synchronous operation
+});
+```
+
+### Asynchronous Hooks (Callback)
+
+```javascript
+compiler.hooks.emit.tapAsync('MyPlugin', (compilation, callback) => {
+  // Async operation
+  setTimeout(() => {
+    console.log('Done!');
+    callback();
+  }, 1000);
+});
+```
+
+### Asynchronous Hooks (Promise)
+
+```javascript
+compiler.hooks.emit.tapPromise('MyPlugin', (compilation) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('Done!');
+      resolve();
+    }, 1000);
+  });
+});
+```
+
+## Common Plugin Patterns
+
+### Modifying Assets
+
+```javascript
+class ModifyAssetsPlugin {
+  apply(compiler) {
+    compiler.hooks.compilation.tap('ModifyAssetsPlugin', (compilation) => {
+      compilation.hooks.processAssets.tapAsync(
+        {
+          name: 'ModifyAssetsPlugin',
+          stage: compilation.PROCESS_ASSETS_STAGE_OPTIMIZE
+        },
+        (assets, callback) => {
+          // Modify assets
+          Object.keys(assets).forEach((filename) => {
+            if (filename.endsWith('.js')) {
+              const asset = assets[filename];
+              const source = asset.source();
+              // Transform source
+            }
+          });
+          callback();
+        }
+      );
+    });
+  }
+}
+```
+
+### Adding Assets
+
+```javascript
+const { RawSource } = require('webpack-sources');
+
+class EmitFilePlugin {
+  apply(compiler) {
+    compiler.hooks.emit.tapAsync('EmitFilePlugin', (compilation, callback) => {
+      // Add a new asset to the compilation
+      compilation.emitAsset(
+        'my-file.txt',
+        new RawSource('This is my file content')
+      );
+      callback();
+    });
+  }
+}
+```
+
+### Watching Files
+
+```javascript
+class WatchFilesPlugin {
+  apply(compiler) {
+    compiler.hooks.afterCompile.tap('WatchFilesPlugin', (compilation) => {
+      // Add files to watch
+      compilation.fileDependencies.add('/path/to/file');
+      compilation.contextDependencies.add('/path/to/directory');
+    });
+  }
+}
+```
+
+## Built-in Plugins
+
+Webpack includes many built-in plugins:
+
+### DefinePlugin
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'API_URL': JSON.stringify('https://api.example.com')
+    })
+  ]
+};
+```
+
+### ProvidePlugin
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      process: 'process/browser'
+    })
+  ]
+};
+```
+
+### BannerPlugin
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: '/*! My Copyright Notice */'
+    })
+  ]
+};
+```
+
+## Popular Third-Party Plugins
+
+<Tabs>
+  <Tab title="HTML">
+    ```javascript
+    const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+    module.exports = {
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: './src/index.html',
+          filename: 'index.html',
+          inject: 'body',
+          minify: true
+        })
+      ]
+    };
+    ```
+  </Tab>
+  <Tab title="CSS">
+    ```javascript
+    const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+    module.exports = {
+      plugins: [
+        new MiniCssExtractPlugin({
+          filename: '[name].[contenthash].css',
+          chunkFilename: '[id].[contenthash].css'
+        })
+      ]
+    };
+    ```
+  </Tab>
+  <Tab title="Clean">
+    ```javascript
+    const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+    module.exports = {
+      plugins: [
+        new CleanWebpackPlugin()
+      ]
+    };
+    ```
+  </Tab>
+  <Tab title="Copy">
+    ```javascript
+    const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+    module.exports = {
+      plugins: [
+        new CopyWebpackPlugin({
+          patterns: [
+            { from: 'public', to: 'assets' }
+          ]
+        })
+      ]
+    };
+    ```
+  </Tab>
+</Tabs>
+
+## Process Assets Stages
+
+When modifying assets, use the appropriate stage:
+
+```javascript
+compilation.hooks.processAssets.tap(
+  {
+    name: 'MyPlugin',
+    stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE_SIZE
+  },
+  (assets) => {
+    // Process assets
+  }
+);
+```
+
+Available stages (in order):
+- `PROCESS_ASSETS_STAGE_ADDITIONAL`
+- `PROCESS_ASSETS_STAGE_PRE_PROCESS`
+- `PROCESS_ASSETS_STAGE_DERIVED`
+- `PROCESS_ASSETS_STAGE_ADDITIONS`
+- `PROCESS_ASSETS_STAGE_OPTIMIZE`
+- `PROCESS_ASSETS_STAGE_OPTIMIZE_COUNT`
+- `PROCESS_ASSETS_STAGE_OPTIMIZE_COMPATIBILITY`
+- `PROCESS_ASSETS_STAGE_OPTIMIZE_SIZE`
+- `PROCESS_ASSETS_STAGE_DEV_TOOLING`
+- `PROCESS_ASSETS_STAGE_OPTIMIZE_INLINE`
+- `PROCESS_ASSETS_STAGE_SUMMARIZE`
+- `PROCESS_ASSETS_STAGE_OPTIMIZE_HASH`
+- `PROCESS_ASSETS_STAGE_OPTIMIZE_TRANSFER`
+- `PROCESS_ASSETS_STAGE_ANALYSE`
+- `PROCESS_ASSETS_STAGE_REPORT`
+
+## Real-World Plugin Example
+
+```javascript
+class FileListPlugin {
+  constructor(options = {}) {
+    this.options = options;
+  }
+
+  apply(compiler) {
+    compiler.hooks.emit.tapAsync('FileListPlugin', (compilation, callback) => {
+      // Create a list of all files
+      const fileList = Object.keys(compilation.assets)
+        .map(filename => `- ${filename}`)
+        .join('\n');
+
+      // Insert as a new file asset
+      compilation.emitAsset(
+        'filelist.md',
+        new RawSource(`# Build Files\n\n${fileList}`)
+      );
+
+      callback();
+    });
+  }
+}
+
+module.exports = FileListPlugin;
+```
+
+<Info>
+This plugin generates a markdown file listing all emitted assets.
+</Info>
+
+## Best Practices
+
+1. **Use specific hooks** - Choose the most appropriate hook for your task
+2. **Handle errors** - Always call callbacks with errors when appropriate
+3. **Don't mutate** - Avoid mutating webpack internals directly
+4. **Clean up** - Remove listeners and clean up resources
+5. **Document options** - Provide clear documentation for plugin options
+6. **Test thoroughly** - Test plugins with different configurations
+
+## Debugging Plugins
+
+Enable webpack's debug mode:
+
+```javascript
+module.exports = {
+  infrastructureLogging: {
+    level: 'verbose',
+    debug: /MyPlugin/
+  }
+};
+```
+
+Or use Node.js debugging:
+
+```bash
+node --inspect-brk node_modules/webpack/bin/webpack.js
+```
+
+## Related Concepts
+
+- [Loaders](/concepts/loaders) - Transform individual modules
+- [Compiler](/api/compiler) - Understanding the Compiler object
+- [Hot Module Replacement](/concepts/hot-module-replacement) - HMR plugin system

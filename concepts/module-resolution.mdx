@@ -1,0 +1,524 @@
+---
+title: Module Resolution
+description: Learn how webpack resolves module paths and configures the resolver
+---
+
+# Module Resolution
+
+**Module resolution** is the process webpack uses to locate the file referenced in an `import` or `require` statement. Webpack uses the [enhanced-resolve](https://github.com/webpack/enhanced-resolve) library to resolve module paths.
+
+## Resolution Rules
+
+Webpack can resolve three types of file paths:
+
+### Absolute Paths
+
+```javascript
+import '/home/user/file';
+import 'C:\\Users\\user\\file';
+```
+
+No further resolution is needed as the absolute path is already known.
+
+### Relative Paths
+
+```javascript
+import '../src/file';
+import './file';
+import './components/Button';
+```
+
+The resource file's directory is taken as the context directory. The relative path is joined with this context directory to produce the absolute path.
+
+### Module Paths
+
+```javascript
+import 'lodash';
+import 'react';
+import 'module/lib/file';
+```
+
+Modules are searched in directories specified in `resolve.modules` (defaults to `node_modules`).
+
+## Resolver Configuration
+
+Webpack uses `ResolverFactory` to create resolver instances:
+
+```javascript
+// From ResolverFactory.js
+class ResolverFactory {
+  constructor() {
+    this.hooks = {
+      resolveOptions: new HookMap(() => new SyncWaterfallHook(['resolveOptions'])),
+      resolver: new HookMap(() => new SyncHook(['resolver', 'resolveOptions', 'userResolveOptions']))
+    };
+    this.cache = new Map();
+  }
+
+  get(type, resolveOptions = {}) {
+    // Returns cached or creates new resolver
+    return this._create(type, resolveOptions);
+  }
+
+  _create(type, resolveOptionsWithDepType) {
+    const resolveOptions = convertToResolveOptions(
+      this.hooks.resolveOptions.for(type).call(resolveOptionsWithDepType)
+    );
+    const resolver = Factory.createResolver(resolveOptions);
+    return resolver;
+  }
+}
+```
+
+## Basic Configuration
+
+### Resolve Modules
+
+```javascript filename="webpack.config.js"
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src')
+    ]
+  }
+};
+```
+
+Now you can import from `src` without relative paths:
+
+```javascript
+import Button from 'components/Button'; // Resolves to src/components/Button
+```
+
+### Extensions
+
+Define which extensions webpack will resolve:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+  }
+};
+```
+
+Now you can omit extensions:
+
+```javascript
+import Button from './Button'; // Resolves to Button.jsx or Button.tsx
+```
+
+<Warning>
+Be careful with extensions order. Webpack will try them in the specified order and stop at the first match.
+</Warning>
+
+### Main Files
+
+Define which files to check when resolving a directory:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    mainFiles: ['index', 'main']
+  }
+};
+```
+
+```javascript
+import utils from './utils'; // Resolves to utils/index.js or utils/main.js
+```
+
+### Alias
+
+Create aliases to import modules more easily:
+
+```javascript filename="webpack.config.js"
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      'lodash': 'lodash-es'
+    }
+  }
+};
+```
+
+Usage:
+
+```javascript
+import Button from '@components/Button';
+import { debounce } from '@utils/helpers';
+import { map } from 'lodash'; // Uses lodash-es instead
+```
+
+### Exact Match Alias
+
+Use `$` for exact matches:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    alias: {
+      'xyz$': path.resolve(__dirname, 'path/to/file.js')
+    }
+  }
+};
+```
+
+```javascript
+import xyz from 'xyz';          // Exact match: path/to/file.js
+import xyz from 'xyz/file.js';  // Not a match: xyz/file.js
+```
+
+## Advanced Configuration
+
+### Resolve to Context
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    alias: {
+      'images': path.resolve(__dirname, 'src/assets/images/')
+    }
+  }
+};
+```
+
+### Conditional Exports
+
+Use package.json `exports` field:
+
+```json filename="package.json"
+{
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    },
+    "./feature": "./feature/index.js"
+  }
+}
+```
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    conditionNames: ['import', 'require', 'node']
+  }
+};
+```
+
+### Symlinks
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    symlinks: true // Follow symlinks (default)
+  }
+};
+```
+
+### Cache
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    cache: true // Cache resolution results
+  }
+};
+```
+
+## Package.json Fields
+
+### Main Fields
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    mainFields: ['browser', 'module', 'main']
+  }
+};
+```
+
+Webpack checks these fields in package.json to determine the entry point.
+
+### Exports Field
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    exportsFields: ['exports']
+  }
+};
+```
+
+### Imports Field
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    importsFields: ['imports']
+  }
+};
+```
+
+## Loader Resolution
+
+Resolve loaders separately:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')],
+    extensions: ['.js', '.json'],
+    mainFields: ['loader', 'main'],
+    alias: {
+      'my-loader': path.resolve(__dirname, 'loaders/my-loader.js')
+    }
+  }
+};
+```
+
+## Plugin Resolution
+
+### TsconfigPathsPlugin
+
+Use TypeScript paths:
+
+```javascript filename="webpack.config.js"
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
+module.exports = {
+  resolve: {
+    plugins: [new TsconfigPathsPlugin()]
+  }
+};
+```
+
+```json filename="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"]
+    }
+  }
+}
+```
+
+## Resolution Context
+
+By dependency type:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    byDependency: {
+      esm: {
+        mainFields: ['module', 'main']
+      },
+      commonjs: {
+        mainFields: ['main']
+      },
+      url: {
+        preferRelative: true
+      }
+    }
+  }
+};
+```
+
+## Resolve Performance
+
+<Tabs>
+  <Tab title="Optimize Extensions">
+    ```javascript
+    module.exports = {
+      resolve: {
+        extensions: ['.js', '.jsx'], // Fewer extensions
+      }
+    };
+    ```
+  </Tab>
+  <Tab title="Minimize Modules">
+    ```javascript
+    module.exports = {
+      resolve: {
+        modules: [path.resolve(__dirname, 'node_modules')]
+      }
+    };
+    ```
+  </Tab>
+  <Tab title="Use Alias">
+    ```javascript
+    module.exports = {
+      resolve: {
+        alias: {
+          'react': path.resolve(__dirname, 'node_modules/react')
+        }
+      }
+    };
+    ```
+  </Tab>
+</Tabs>
+
+## Fully Specified
+
+Require full paths for ESM:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        resolve: {
+          fullySpecified: false // Allows imports without extensions
+        }
+      }
+    ]
+  }
+};
+```
+
+## Common Patterns
+
+### TypeScript + Path Mapping
+
+```javascript filename="webpack.config.js"
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@utils': path.resolve(__dirname, 'src/utils')
+    }
+  }
+};
+```
+
+### Monorepo Resolution
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, '../../packages')
+    ],
+    symlinks: true
+  }
+};
+```
+
+### Browser vs Node
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  resolve: {
+    mainFields: ['browser', 'module', 'main'],
+    aliasFields: ['browser']
+  }
+};
+```
+
+## Resolution Algorithm
+
+Webpack's resolution follows this process:
+
+1. **Parse the request** - Determine if absolute, relative, or module
+2. **Check cache** - Return cached result if available
+3. **Resolve directory** - Find the context directory
+4. **Try extensions** - Append extensions from `resolve.extensions`
+5. **Check aliases** - Apply alias rules
+6. **Search modules** - Look in `resolve.modules` directories
+7. **Read package.json** - Check `mainFields` and `exports`
+8. **Check main files** - Try files from `resolve.mainFiles`
+9. **Return result** - Return absolute path or error
+
+## Debugging Resolution
+
+### Enable Logging
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  infrastructureLogging: {
+    level: 'verbose',
+    debug: /webpack\.ResolverFactory/
+  }
+};
+```
+
+### Use Stats
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  stats: {
+    modules: true,
+    reasons: true
+  }
+};
+```
+
+<Info>
+Use `--display-modules` and `--display-reasons` flags with webpack CLI for detailed resolution info.
+</Info>
+
+## Best Practices
+
+1. **Use aliases sparingly** - Too many aliases can make code hard to follow
+2. **Be specific with extensions** - Include only necessary extensions
+3. **Cache resolution** - Enable caching for better performance
+4. **Organize modules** - Use a clear directory structure
+5. **Document aliases** - Keep a reference of custom aliases
+6. **Use absolute imports** - For better refactoring and clarity
+
+## Common Issues
+
+### Case Sensitivity
+
+```javascript
+// macOS/Windows may work, but Linux won't:
+import Button from './button'; // File is Button.jsx
+
+// Always match case exactly:
+import Button from './Button';
+```
+
+### Missing Extensions
+
+```javascript
+// Add .json to extensions if importing JSON:
+import data from './data.json';
+```
+
+### Conflicting Packages
+
+```javascript
+// Use aliases to specify versions:
+module.exports = {
+  resolve: {
+    alias: {
+      'react': path.resolve('./node_modules/react')
+    }
+  }
+};
+```
+
+## Related Concepts
+
+- [Modules](/concepts/modules) - Understanding webpack modules
+- [Loaders](/concepts/loaders) - Transform modules during resolution
+- [Dependency Graph](/concepts/dependency-graph) - How modules connect

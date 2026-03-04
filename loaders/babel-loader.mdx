@@ -1,0 +1,364 @@
+---
+title: babel-loader
+description: Use Babel to transform modern JavaScript and JSX in webpack
+---
+
+## Overview
+
+`babel-loader` allows transpiling JavaScript files using Babel and webpack. This loader enables you to use the latest JavaScript features and JSX syntax by transforming them into code that browsers can understand.
+
+<Note>
+  This is an external loader maintained by the Babel team. Install it from npm to use in your webpack configuration.
+</Note>
+
+## Installation
+
+<CodeGroup>
+```bash npm
+npm install -D babel-loader @babel/core @babel/preset-env
+```
+
+```bash yarn
+yarn add -D babel-loader @babel/core @babel/preset-env
+```
+
+```bash pnpm
+pnpm add -D babel-loader @babel/core @babel/preset-env
+```
+</CodeGroup>
+
+## Basic Usage
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+```json .babelrc
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+</CodeGroup>
+
+## React/JSX Support
+
+For React applications, add the React preset:
+
+<CodeGroup>
+```bash Installation
+npm install -D @babel/preset-react
+```
+
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ]
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+```json .babelrc
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
+}
+```
+</CodeGroup>
+
+## TypeScript Support
+
+For TypeScript with Babel:
+
+```bash
+npm install -D @babel/preset-typescript
+```
+
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript'
+            ]
+          }
+        }
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  }
+};
+```
+
+<Warning>
+  Babel does not perform type checking. Use `tsc --noEmit` or `fork-ts-checker-webpack-plugin` for type checking.
+</Warning>
+
+## Options
+
+### `cacheDirectory`
+
+Enable caching to improve build performance:
+
+```javascript
+{
+  loader: 'babel-loader',
+  options: {
+    cacheDirectory: true,
+    cacheCompression: false
+  }
+}
+```
+
+<Note>
+  Caching can significantly speed up rebuilds during development.
+</Note>
+
+### `presets`
+
+Specify Babel presets:
+
+```javascript
+{
+  loader: 'babel-loader',
+  options: {
+    presets: [
+      ['@babel/preset-env', {
+        targets: {
+          browsers: ['last 2 versions', 'ie >= 11']
+        },
+        useBuiltIns: 'usage',
+        corejs: 3
+      }]
+    ]
+  }
+}
+```
+
+### `plugins`
+
+Add Babel plugins:
+
+```javascript
+{
+  loader: 'babel-loader',
+  options: {
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-optional-chaining'
+    ]
+  }
+}
+```
+
+## Advanced Configuration
+
+### Custom Config File
+
+Specify a custom Babel config file:
+
+```javascript
+{
+  loader: 'babel-loader',
+  options: {
+    configFile: path.resolve(__dirname, 'babel.custom.config.js')
+  }
+}
+```
+
+### Environment-Specific Configuration
+
+```json babel.config.json
+{
+  "presets": ["@babel/preset-env"],
+  "env": {
+    "development": {
+      "plugins": ["react-refresh/babel"]
+    },
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
+}
+```
+
+### Excluding node_modules Selectively
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules[\/\\](?!(some-module|another-module)[\/\\])/,
+        use: 'babel-loader'
+      }
+    ]
+  }
+};
+```
+
+## Performance Optimization
+
+### Include/Exclude Specific Directories
+
+```javascript
+{
+  test: /\.js$/,
+  include: path.resolve(__dirname, 'src'),
+  exclude: /node_modules/,
+  use: 'babel-loader'
+}
+```
+
+### Thread Loader for Parallel Processing
+
+```bash
+npm install -D thread-loader
+```
+
+```javascript
+{
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: [
+    'thread-loader',
+    {
+      loader: 'babel-loader',
+      options: {
+        cacheDirectory: true
+      }
+    }
+  ]
+}
+```
+
+## Common Issues
+
+### Issue: Slow Build Times
+
+**Solution:** Enable caching and limit scope with `include`:
+
+```javascript
+{
+  test: /\.js$/,
+  include: path.resolve(__dirname, 'src'),
+  use: {
+    loader: 'babel-loader',
+    options: {
+      cacheDirectory: true
+    }
+  }
+}
+```
+
+### Issue: Module Not Found Errors
+
+**Solution:** Ensure all necessary presets and plugins are installed:
+
+```bash
+npm install -D @babel/core @babel/preset-env babel-loader
+```
+
+### Issue: Configuration Not Applied
+
+**Solution:** Check that your `.babelrc` or `babel.config.js` is in the correct location or specify `configFile` option.
+
+<Warning>
+  `.babelrc` uses file-relative configuration, while `babel.config.js` uses project-wide configuration. Choose based on your needs.
+</Warning>
+
+## Integration with Other Tools
+
+### ESLint
+
+```bash
+npm install -D eslint-loader
+```
+
+```javascript
+{
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: ['babel-loader', 'eslint-loader']
+}
+```
+
+### React Fast Refresh
+
+```bash
+npm install -D @pmmmwh/react-refresh-webpack-plugin react-refresh
+```
+
+```javascript
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['react-refresh/babel']
+          }
+        }
+      }
+    ]
+  },
+  plugins: [
+    new ReactRefreshWebpackPlugin()
+  ]
+};
+```
+
+## Resources
+
+- [babel-loader GitHub](https://github.com/babel/babel-loader)
+- [Babel Documentation](https://babeljs.io/docs/)
+- [Babel Presets](https://babeljs.io/docs/presets)
+- [Babel Plugins](https://babeljs.io/docs/plugins)

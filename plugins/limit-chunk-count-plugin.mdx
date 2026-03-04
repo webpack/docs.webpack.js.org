@@ -1,0 +1,436 @@
+---
+title: LimitChunkCountPlugin
+description: Control the maximum number of chunks in your webpack build
+---
+
+The `LimitChunkCountPlugin` merges chunks to keep the total number of chunks below a specified limit. This helps control the number of HTTP requests and optimize loading performance.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 5
+    })
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="maxChunks" type="number" required>
+  Maximum number of chunks to generate. Must be greater than or equal to 1.
+</ParamField>
+
+## Examples
+
+### Limit to 5 Chunks
+
+```javascript
+new webpack.optimize.LimitChunkCountPlugin({
+  maxChunks: 5
+})
+```
+
+### Single Chunk (Bundle Everything)
+
+```javascript
+new webpack.optimize.LimitChunkCountPlugin({
+  maxChunks: 1
+})
+```
+
+This creates a single bundle file, useful for:
+- Simple applications
+- Reducing HTTP requests on HTTP/1.1
+- Embedded environments
+
+### HTTP/1.1 Optimization
+
+```javascript
+const isHTTP1 = process.env.HTTP_VERSION === '1.1';
+
+module.exports = {
+  plugins: [
+    isHTTP1 && new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 3 // Limit requests for HTTP/1.1
+    })
+  ].filter(Boolean)
+};
+```
+
+### Progressive Web App
+
+```javascript
+module.exports = {
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 10 // Balance caching and request count
+    })
+  ]
+};
+```
+
+### Development vs Production
+
+```javascript
+const isDev = process.env.NODE_ENV === 'development';
+
+module.exports = {
+  plugins: [
+    isDev
+      ? new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1 // Single bundle for easier debugging
+        })
+      : new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 5 // Multiple chunks for better caching
+        })
+  ]
+};
+```
+
+### With Code Splitting
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors'
+        }
+      }
+    }
+  },
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 5 // Limit total chunks after splitting
+    })
+  ]
+};
+```
+
+## How It Works
+
+The plugin:
+
+1. Analyzes all generated chunks
+2. Calculates the size benefit of merging chunks
+3. Merges chunks with the best size/benefit ratio
+4. Repeats until chunk count is below the limit
+
+### Merging Strategy
+
+Chunks are merged based on:
+
+1. **Size Difference** - Smallest increase in total size
+2. **Integrated Size** - Smallest resulting chunk size
+3. **Position** - Deterministic ordering for reproducible builds
+
+## Use Cases
+
+### HTTP/1.1 Optimization
+
+Reduce request overhead:
+
+```javascript
+// HTTP/1.1: Limited concurrent connections
+new webpack.optimize.LimitChunkCountPlugin({
+  maxChunks: 3
+})
+```
+
+### Mobile Optimization
+
+Reduce request count on slower connections:
+
+```javascript
+const isMobile = process.env.TARGET === 'mobile';
+
+if (isMobile) {
+  new webpack.optimize.LimitChunkCountPlugin({
+    maxChunks: 2
+  })
+}
+```
+
+### Embedded Applications
+
+Create a single bundle for embedding:
+
+```javascript
+module.exports = {
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    })
+  ]
+};
+```
+
+### Library Distribution
+
+Single file for easy distribution:
+
+```javascript
+module.exports = {
+  output: {
+    library: 'MyLibrary',
+    libraryTarget: 'umd'
+  },
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    })
+  ]
+};
+```
+
+## Performance Considerations
+
+<Note>
+Tradeoffs:
+- **Fewer chunks** = Fewer requests, larger files, worse caching
+- **More chunks** = Better caching, smaller updates, more requests
+</Note>
+
+### HTTP/2 vs HTTP/1.1
+
+```javascript
+// HTTP/1.1
+maxChunks: 3-5 // Limit concurrent connections
+
+// HTTP/2
+maxChunks: 10-20 // Multiplexing allows more chunks
+```
+
+### Example Analysis
+
+```
+Before limiting:
+- 15 chunks
+- Total size: 2.5 MB
+- HTTP/1.1 load time: 8 seconds
+
+After limiting (maxChunks: 5):
+- 5 chunks
+- Total size: 2.6 MB (+100 KB overhead)
+- HTTP/1.1 load time: 4 seconds
+```
+
+## Combining with Other Plugins
+
+### With SplitChunksPlugin
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      maxSize: 250000 // Split large chunks
+    }
+  },
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 8 // But limit total chunks
+    })
+  ]
+};
+```
+
+### With MinChunkSizePlugin
+
+```javascript
+module.exports = {
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 50000 // Minimum 50 KB per chunk
+    }),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 5 // Maximum 5 chunks
+    })
+  ]
+};
+```
+
+## Advanced Configuration
+
+### Environment-Based
+
+```javascript
+const getMaxChunks = () => {
+  if (process.env.NODE_ENV === 'development') return 1;
+  if (process.env.TARGET === 'mobile') return 3;
+  if (process.env.HTTP_VERSION === '1.1') return 5;
+  return 15; // HTTP/2
+};
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: getMaxChunks()
+    })
+  ]
+};
+```
+
+### Conditional Application
+
+```javascript
+const shouldLimit = 
+  process.env.LIMIT_CHUNKS === 'true' ||
+  process.env.NODE_ENV === 'production';
+
+module.exports = {
+  plugins: [
+    shouldLimit && new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 5
+    })
+  ].filter(Boolean)
+};
+```
+
+## Debugging
+
+### Analyze Chunk Merging
+
+```javascript
+module.exports = {
+  stats: {
+    chunks: true,
+    chunkModules: true,
+    chunkOrigins: true
+  },
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 5
+    })
+  ]
+};
+```
+
+### Using webpack-bundle-analyzer
+
+```javascript
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 5
+    }),
+    new BundleAnalyzerPlugin()
+  ]
+};
+```
+
+## Common Pitfalls
+
+<Warning>
+**Setting maxChunks Too Low**
+
+Very low values (especially 1) can:
+- Increase bundle size due to duplication
+- Prevent effective code splitting
+- Hurt caching strategy
+- Increase initial load time
+</Warning>
+
+### Example Issue
+
+```javascript
+// Bad: Forces everything into one chunk
+maxChunks: 1
+
+// Result:
+// - No code splitting
+// - Large initial bundle
+// - Any change invalidates entire cache
+```
+
+## Best Practices
+
+1. **Consider Your Protocol**
+   - HTTP/1.1: 3-5 chunks
+   - HTTP/2: 10-20 chunks
+
+2. **Balance Requests and Caching**
+   ```javascript
+   // Good balance
+   maxChunks: 8
+   ```
+
+3. **Use with Code Splitting**
+   ```javascript
+   optimization: {
+     splitChunks: { chunks: 'all' }
+   },
+   plugins: [
+     new webpack.optimize.LimitChunkCountPlugin({
+       maxChunks: 10
+     })
+   ]
+   ```
+
+4. **Test Different Values**
+   - Measure actual load times
+   - Consider your target audience
+   - Monitor cache hit rates
+
+5. **Document Your Choice**
+   ```javascript
+   // Limit to 5 chunks for HTTP/1.1 optimization
+   // Reduces concurrent connection overhead
+   maxChunks: 5
+   ```
+
+## Alternatives
+
+Instead of limiting chunks, consider:
+
+### HTTP/2 Push
+
+```javascript
+// Push resources proactively
+server.push('/vendor.js');
+server.push('/app.js');
+```
+
+### Resource Hints
+
+```html
+<link rel="preload" href="vendor.js" as="script">
+<link rel="prefetch" href="async-chunk.js">
+```
+
+### Dynamic Imports
+
+```javascript
+// Load chunks on demand
+button.addEventListener('click', () => {
+  import('./feature').then(module => {
+    module.initialize();
+  });
+});
+```
+
+## Migration
+
+From webpack 3:
+
+```javascript
+// webpack 3
+new webpack.optimize.LimitChunkCountPlugin({
+  maxChunks: 5
+})
+
+// webpack 4/5 (same)
+new webpack.optimize.LimitChunkCountPlugin({
+  maxChunks: 5
+})
+```

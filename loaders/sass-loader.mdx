@@ -1,0 +1,564 @@
+---
+title: sass-loader
+description: Compile Sass/SCSS to CSS in webpack
+---
+
+## Overview
+
+`sass-loader` compiles Sass/SCSS to CSS. It uses Dart Sass (recommended), Node Sass, or Sass Embedded as the compiler. Use it with `css-loader` and `style-loader` to add Sass support to your webpack project.
+
+<Note>
+  This is an external loader maintained by the webpack team. Install it from npm to use in your webpack configuration.
+</Note>
+
+## Installation
+
+<CodeGroup>
+```bash npm (Dart Sass - Recommended)
+npm install -D sass-loader sass
+```
+
+```bash yarn
+yarn add -D sass-loader sass
+```
+
+```bash pnpm
+pnpm add -D sass-loader sass
+```
+</CodeGroup>
+
+<Warning>
+  Node Sass is deprecated. Use Dart Sass (`sass` package) instead.
+</Warning>
+
+## Basic Usage
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript app.js
+import './styles.scss';
+```
+
+```scss styles.scss
+$primary-color: #3498db;
+$padding: 20px;
+
+.header {
+  background: $primary-color;
+  padding: $padding;
+  
+  h1 {
+    margin: 0;
+    color: white;
+  }
+}
+```
+</CodeGroup>
+
+## Loader Chain Order
+
+Loaders execute from right to left:
+
+1. `sass-loader` - Compiles Sass to CSS
+2. `css-loader` - Resolves CSS imports and URLs
+3. `style-loader` - Injects CSS into DOM
+
+```javascript
+use: ['style-loader', 'css-loader', 'sass-loader']
+```
+
+## Options
+
+### `implementation`
+
+Specify which Sass implementation to use:
+
+```javascript
+const sass = require('sass');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: sass
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+### `sassOptions`
+
+Pass options to the Sass compiler:
+
+```javascript
+{
+  loader: 'sass-loader',
+  options: {
+    sassOptions: {
+      indentWidth: 2,
+      includePaths: ['node_modules', 'src/styles'],
+      outputStyle: 'compressed'
+    }
+  }
+}
+```
+
+<Note>
+  `outputStyle: 'compressed'` is ignored in Dart Sass. Use CSS minifier plugins instead.
+</Note>
+
+### `sourceMap`
+
+Enable source maps:
+
+```javascript
+{
+  loader: 'sass-loader',
+  options: {
+    sourceMap: true
+  }
+}
+```
+
+### `additionalData`
+
+Prepend/append Sass code to every file:
+
+```javascript
+{
+  loader: 'sass-loader',
+  options: {
+    additionalData: `
+      $primary: #3498db;
+      $secondary: #2ecc71;
+      @import "variables";
+    `
+  }
+}
+```
+
+Or use a function:
+
+```javascript
+{
+  loader: 'sass-loader',
+  options: {
+    additionalData: (content, loaderContext) => {
+      // Add variables based on file path
+      const { resourcePath } = loaderContext;
+      
+      if (resourcePath.includes('components')) {
+        return '@import "component-variables";\n' + content;
+      }
+      
+      return content;
+    }
+  }
+}
+```
+
+## Advanced Configuration
+
+### Import Paths
+
+Configure where Sass looks for imports:
+
+```javascript
+{
+  loader: 'sass-loader',
+  options: {
+    sassOptions: {
+      includePaths: [
+        path.resolve(__dirname, 'src/styles'),
+        path.resolve(__dirname, 'node_modules')
+      ]
+    }
+  }
+}
+```
+
+```scss
+// Now you can import without relative paths
+@import 'variables'; // Looks in includePaths
+@import 'bootstrap/scss/bootstrap'; // From node_modules
+```
+
+### Webpack Resolve Alias
+
+Use webpack resolve with `~` prefix:
+
+```javascript
+module.exports = {
+  resolve: {
+    alias: {
+      '@styles': path.resolve(__dirname, 'src/styles')
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  }
+};
+```
+
+```scss
+@import '~@styles/variables';
+@import '~bootstrap/scss/bootstrap';
+```
+
+### Global Variables
+
+```javascript
+{
+  loader: 'sass-loader',
+  options: {
+    additionalData: `
+      $env: '${process.env.NODE_ENV}';
+      $api-url: '${process.env.API_URL}';
+    `
+  }
+}
+```
+
+```scss
+.debug-info {
+  @if $env == 'development' {
+    display: block;
+  } @else {
+    display: none;
+  }
+}
+```
+
+## Common Patterns
+
+### With PostCSS
+
+```javascript
+{
+  test: /\.scss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    'postcss-loader',
+    'sass-loader'
+  ]
+}
+```
+
+### With CSS Modules
+
+```javascript
+{
+  test: /\.module\.scss$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true,
+        importLoaders: 2
+      }
+    },
+    'postcss-loader',
+    'sass-loader'
+  ]
+}
+```
+
+### Development vs Production
+
+<CodeGroup>
+```javascript Development
+module.exports = {
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript Production
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css'
+    })
+  ]
+};
+```
+</CodeGroup>
+
+### Bootstrap Integration
+
+```bash
+npm install bootstrap
+```
+
+```javascript
+{
+  loader: 'sass-loader',
+  options: {
+    sassOptions: {
+      includePaths: ['node_modules']
+    }
+  }
+}
+```
+
+```scss
+// Custom Bootstrap variables
+$primary: #007bff;
+$enable-rounded: false;
+
+// Import Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Custom styles
+.my-component {
+  @extend .btn;
+  @extend .btn-primary;
+}
+```
+
+## Performance Optimization
+
+### Limit Scope
+
+```javascript
+{
+  test: /\.scss$/,
+  include: path.resolve(__dirname, 'src'),
+  use: ['style-loader', 'css-loader', 'sass-loader']
+}
+```
+
+### Cache Compilation
+
+Webpack 5 caches automatically, but you can configure it:
+
+```javascript
+module.exports = {
+  cache: {
+    type: 'filesystem'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  }
+};
+```
+
+### Thread Loader
+
+For large projects:
+
+```bash
+npm install -D thread-loader
+```
+
+```javascript
+{
+  test: /\.scss$/,
+  use: [
+    'style-loader',
+    'thread-loader',
+    'css-loader',
+    'sass-loader'
+  ]
+}
+```
+
+## Common Issues
+
+### Issue: Cannot Find Module
+
+**Error:**
+```
+Can't find stylesheet to import.
+```
+
+**Solution:** Use `~` prefix for node_modules or configure `includePaths`:
+
+```scss
+@import '~bootstrap/scss/bootstrap'; // Correct
+@import 'bootstrap/scss/bootstrap'; // May fail
+```
+
+### Issue: Compilation Errors
+
+**Error:**
+```
+Sass compilation error
+```
+
+**Solution:** Check Sass syntax and ensure all variables are defined:
+
+```scss
+// Define before use
+$primary-color: #3498db;
+
+.header {
+  color: $primary-color;
+}
+```
+
+### Issue: Slow Compilation
+
+**Solution:** 
+1. Limit scope with `include`
+2. Enable caching
+3. Use Dart Sass instead of Node Sass
+4. Minimize use of `@import` (use `@use` instead)
+
+### Issue: Source Maps Not Working
+
+**Solution:** Enable source maps in all loaders:
+
+```javascript
+{
+  test: /\.scss$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: { sourceMap: true }
+    },
+    {
+      loader: 'sass-loader',
+      options: { sourceMap: true }
+    }
+  ]
+}
+```
+
+## Dart Sass vs Node Sass
+
+<CodeGroup>
+```bash Dart Sass (Recommended)
+npm install -D sass
+```
+
+```bash Node Sass (Deprecated)
+npm install -D node-sass
+```
+</CodeGroup>
+
+| Feature | Dart Sass | Node Sass |
+|---------|-----------|----------|
+| Performance | Good | Faster |
+| Maintenance | Active | Deprecated |
+| Features | Latest | Limited |
+| Compatibility | Better | Issues with Node versions |
+
+<Warning>
+  Node Sass is deprecated and not recommended. Migrate to Dart Sass.
+</Warning>
+
+## Modern Sass Features
+
+### Using `@use` and `@forward`
+
+```scss
+// _variables.scss
+$primary: #3498db;
+$secondary: #2ecc71;
+```
+
+```scss
+// styles.scss
+@use 'variables' as vars;
+
+.header {
+  color: vars.$primary;
+}
+```
+
+### Modules
+
+```scss
+@use 'sass:math';
+@use 'sass:color';
+
+.box {
+  width: math.div(100%, 3);
+  background: color.scale(#3498db, $lightness: 20%);
+}
+```
+
+## Resources
+
+- [sass-loader GitHub](https://github.com/webpack-contrib/sass-loader)
+- [Sass Documentation](https://sass-lang.com/documentation)
+- [Dart Sass](https://sass-lang.com/dart-sass)
+- [Bootstrap with webpack](https://getbootstrap.com/docs/5.0/getting-started/webpack/)

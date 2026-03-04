@@ -1,0 +1,588 @@
+---
+title: "Module Federation"
+description: "Share code between independent webpack builds at runtime"
+icon: "diagram-project"
+---
+
+Module Federation allows multiple independent webpack builds to share code at runtime, enabling micro-frontend architectures and dynamic code sharing without rebuilding.
+
+## What is Module Federation?
+
+Module Federation enables:
+- Multiple separate builds sharing modules at runtime
+- Independent deployments of micro-frontends
+- Sharing dependencies without duplication
+- Dynamic remote module loading
+- No build-time dependencies between apps
+
+<Note>
+Module Federation is a webpack 5 feature. Both the host and remote applications must use webpack 5.
+</Note>
+
+## Core Concepts
+
+### Host
+The application that consumes remote modules.
+
+### Remote
+The application that exposes modules for others to consume.
+
+### Bidirectional
+An application can be both host and remote simultaneously.
+
+## Basic Setup
+
+<Steps>
+<Step title="Create a remote application">
+  **remote/webpack.config.js:**
+  ```javascript
+  const { ModuleFederationPlugin } = require('webpack').container;
+
+  module.exports = {
+    name: 'remote',
+    mode: 'development',
+    
+    output: {
+      publicPath: 'http://localhost:3001/',
+      uniqueName: 'remote'
+    },
+    
+    plugins: [
+      new ModuleFederationPlugin({
+        name: 'remote',
+        filename: 'remoteEntry.js',
+        
+        exposes: {
+          './Button': './src/Button',
+          './Header': './src/Header'
+        },
+        
+        shared: {
+          react: { singleton: true },
+          'react-dom': { singleton: true }
+        }
+      })
+    ],
+    
+    devServer: {
+      port: 3001
+    }
+  };
+  ```
+</Step>
+
+<Step title="Create a host application">
+  **host/webpack.config.js:**
+  ```javascript
+  const { ModuleFederationPlugin } = require('webpack').container;
+
+  module.exports = {
+    name: 'host',
+    mode: 'development',
+    
+    output: {
+      publicPath: 'http://localhost:3000/',
+      uniqueName: 'host'
+    },
+    
+    plugins: [
+      new ModuleFederationPlugin({
+        name: 'host',
+        
+        remotes: {
+          remote: 'remote@http://localhost:3001/remoteEntry.js'
+        },
+        
+        shared: {
+          react: { singleton: true },
+          'react-dom': { singleton: true }
+        }
+      })
+    ],
+    
+    devServer: {
+      port: 3000
+    }
+  };
+  ```
+</Step>
+
+<Step title="Use remote modules in host">
+  ```javascript
+  import React, { lazy, Suspense } from 'react';
+
+  const RemoteButton = lazy(() => import('remote/Button'));
+  const RemoteHeader = lazy(() => import('remote/Header'));
+
+  function App() {
+    return (
+      <div>
+        <Suspense fallback="Loading Header...">
+          <RemoteHeader />
+        </Suspense>
+        
+        <Suspense fallback="Loading Button...">
+          <RemoteButton />
+        </Suspense>
+      </div>
+    );
+  }
+  ```
+</Step>
+</Steps>
+
+## Configuration Options
+
+### Exposing Modules
+
+```javascript
+new ModuleFederationPlugin({
+  name: 'myApp',
+  filename: 'remoteEntry.js',
+  
+  exposes: {
+    './Component': './src/Component',
+    './utils': './src/utils',
+    './hooks/useAuth': './src/hooks/useAuth'
+  }
+})
+```
+
+### Consuming Remotes
+
+```javascript
+new ModuleFederationPlugin({
+  remotes: {
+    app1: 'app1@http://localhost:3001/remoteEntry.js',
+    app2: 'app2@http://localhost:3002/remoteEntry.js',
+    
+    // Dynamic remote URLs
+    app3: `app3@${process.env.APP3_URL}/remoteEntry.js`
+  }
+})
+```
+
+### Shared Dependencies
+
+```javascript
+new ModuleFederationPlugin({
+  shared: {
+    // Simple sharing
+    react: { singleton: true },
+    
+    // With version requirements
+    lodash: {
+      singleton: true,
+      requiredVersion: '^4.17.0'
+    },
+    
+    // Share all lodash modules
+    'lodash/': {},
+    
+    // Advanced configuration
+    'react-router-dom': {
+      singleton: true,
+      requiredVersion: '^6.0.0',
+      strictVersion: true,
+      eager: false
+    }
+  }
+})
+```
+
+<Tip>
+Use `singleton: true` for libraries that must have only one instance (like React, Vue, or global state managers).
+</Tip>
+
+## Shared Module Options
+
+| Option | Description |
+|--------|-------------|
+| `singleton` | Only one version of the shared module |
+| `requiredVersion` | Minimum version requirement |
+| `strictVersion` | Throw error if version doesn't match |
+| `eager` | Include in initial chunk (not async) |
+| `import` | Module to provide (default is key) |
+| `shareKey` | Key to use for sharing |
+| `shareScope` | Sharing scope name |
+
+## Real-World Example
+
+Micro-frontend architecture with shared dependencies:
+
+**Shell Application (Host):**
+```javascript
+const { ModuleFederationPlugin } = require('webpack').container;
+
+module.exports = {
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'shell',
+      
+      remotes: {
+        products: 'products@https://products.example.com/remoteEntry.js',
+        checkout: 'checkout@https://checkout.example.com/remoteEntry.js',
+        profile: 'profile@https://profile.example.com/remoteEntry.js'
+      },
+      
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: '^18.0.0',
+          strictVersion: true
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: '^18.0.0',
+          strictVersion: true
+        },
+        'react-router-dom': {
+          singleton: true,
+          requiredVersion: '^6.0.0'
+        }
+      }
+    })
+  ]
+};
+```
+
+**Products Micro-Frontend (Remote):**
+```javascript
+const { ModuleFederationPlugin } = require('webpack').container;
+
+module.exports = {
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'products',
+      filename: 'remoteEntry.js',
+      
+      exposes: {
+        './ProductList': './src/components/ProductList',
+        './ProductDetail': './src/components/ProductDetail',
+        './routes': './src/routes'
+      },
+      
+      shared: {
+        react: { singleton: true },
+        'react-dom': { singleton: true },
+        'react-router-dom': { singleton: true }
+      }
+    })
+  ]
+};
+```
+
+**Using in Shell:**
+```javascript
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+const ProductList = lazy(() => import('products/ProductList'));
+const ProductDetail = lazy(() => import('products/ProductDetail'));
+const Checkout = lazy(() => import('checkout/CheckoutPage'));
+const Profile = lazy(() => import('profile/ProfilePage'));
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
+```
+
+## Dynamic Remotes
+
+Load remotes dynamically at runtime:
+
+```javascript
+// webpack.config.js
+new ModuleFederationPlugin({
+  name: 'host',
+  remotes: {
+    // Use script tag approach for dynamic URLs
+  }
+})
+
+// Dynamic remote loader
+function loadRemote(url, scope, module) {
+  return async () => {
+    await __webpack_init_sharing__('default');
+    
+    const container = await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = url;
+      script.onload = () => {
+        const proxy = {
+          get: (request) => window[scope].get(request),
+          init: (arg) => {
+            try {
+              return window[scope].init(arg);
+            } catch (e) {
+              console.error('Remote container init failed:', e);
+            }
+          }
+        };
+        resolve(proxy);
+      };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    
+    await container.init(__webpack_share_scopes__.default);
+    const factory = await container.get(module);
+    return factory();
+  };
+}
+
+// Usage
+const RemoteComponent = React.lazy(
+  loadRemote(
+    'https://example.com/remoteEntry.js',
+    'remoteName',
+    './Component'
+  )
+);
+```
+
+## Bidirectional Sharing
+
+Both applications can expose and consume modules:
+
+**App A:**
+```javascript
+new ModuleFederationPlugin({
+  name: 'appA',
+  filename: 'remoteEntry.js',
+  
+  exposes: {
+    './Header': './src/Header'
+  },
+  
+  remotes: {
+    appB: 'appB@http://localhost:3002/remoteEntry.js'
+  },
+  
+  shared: ['react', 'react-dom']
+})
+```
+
+**App B:**
+```javascript
+new ModuleFederationPlugin({
+  name: 'appB',
+  filename: 'remoteEntry.js',
+  
+  exposes: {
+    './Footer': './src/Footer'
+  },
+  
+  remotes: {
+    appA: 'appA@http://localhost:3001/remoteEntry.js'
+  },
+  
+  shared: ['react', 'react-dom']
+})
+```
+
+## Version Management
+
+### Automatic Version Detection
+
+```javascript
+const deps = require('./package.json').dependencies;
+
+new ModuleFederationPlugin({
+  shared: {
+    ...deps,
+    react: {
+      singleton: true,
+      requiredVersion: deps.react
+    }
+  }
+})
+```
+
+### Fallback Loading
+
+```javascript
+new ModuleFederationPlugin({
+  shared: {
+    react: {
+      singleton: true,
+      requiredVersion: '^18.0.0',
+      // Don't fail if not available
+      strictVersion: false
+    }
+  }
+})
+```
+
+## Error Handling
+
+```javascript
+import React, { lazy, Suspense } from 'react';
+
+class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+  
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+  
+  componentDidCatch(error, errorInfo) {
+    console.error('Remote module failed:', error, errorInfo);
+  }
+  
+  render() {
+    if (this.state.hasError) {
+      return <div>Failed to load remote module</div>;
+    }
+    return this.props.children;
+  }
+}
+
+const RemoteComponent = lazy(() => 
+  import('remote/Component').catch(() => {
+    // Fallback component
+    return { default: () => <div>Fallback UI</div> };
+  })
+);
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <Suspense fallback="Loading...">
+        <RemoteComponent />
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+```
+
+## TypeScript Support
+
+### Type Declarations for Remotes
+
+**src/@types/remote.d.ts:**
+```typescript
+declare module 'remote/Button' {
+  const Button: React.FC<{
+    onClick: () => void;
+    children: React.ReactNode;
+  }>;
+  export default Button;
+}
+
+declare module 'remote/Header' {
+  const Header: React.FC<{
+    title: string;
+  }>;
+  export default Header;
+}
+```
+
+### Generate Types Automatically
+
+```bash
+npm install --save-dev @module-federation/typescript
+```
+
+## Best Practices
+
+<Steps>
+<Step title="Use singleton for UI libraries">
+  ```javascript
+  shared: {
+    react: { singleton: true },
+    'react-dom': { singleton: true }
+  }
+  ```
+</Step>
+
+<Step title="Set unique names">
+  ```javascript
+  output: {
+    uniqueName: 'my-unique-app-name'
+  }
+  ```
+</Step>
+
+<Step title="Handle loading errors">
+  Always wrap remote components in ErrorBoundary
+</Step>
+
+<Step title="Version your remoteEntry">
+  ```javascript
+  filename: 'remoteEntry.[contenthash].js'
+  ```
+</Step>
+
+<Step title="Use Suspense for loading states">
+  ```javascript
+  <Suspense fallback={<Spinner />}>
+    <RemoteComponent />
+  </Suspense>
+  ```
+</Step>
+</Steps>
+
+## Common Patterns
+
+### Shared Component Library
+
+```javascript
+// Design system remote
+new ModuleFederationPlugin({
+  name: 'designSystem',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './Button': './src/Button',
+    './Input': './src/Input',
+    './Modal': './src/Modal',
+    './theme': './src/theme'
+  }
+})
+```
+
+### Shared State Management
+
+```javascript
+// State remote
+new ModuleFederationPlugin({
+  name: 'store',
+  exposes: {
+    './store': './src/store',
+    './actions': './src/actions',
+    './selectors': './src/selectors'
+  },
+  shared: {
+    redux: { singleton: true },
+    'react-redux': { singleton: true }
+  }
+})
+```
+
+<Warning>
+Be careful with shared state across micro-frontends. Consider using events or a shared state library instead.
+</Warning>
+
+## Performance Considerations
+
+<Tip>
+- Minimize shared dependencies to reduce bundle duplication
+- Use code splitting within each remote
+- Cache remoteEntry.js appropriately
+- Monitor bundle sizes with webpack-bundle-analyzer
+</Tip>
+
+<Note>
+Module Federation works best when remotes are deployed independently but share common dependencies like React, Vue, or utility libraries.
+</Note>

@@ -1,0 +1,71 @@
+---
+title: Plugins Overview
+description: Learn about webpack's plugin system and available built-in plugins
+---
+
+Webpack has a rich plugin system that allows you to extend its functionality. Plugins can modify compilation results, add optimization strategies, inject variables, and much more.
+
+## Plugin Categories
+
+### Built-in Plugins
+
+Webpack includes several powerful built-in plugins:
+
+- **[HotModuleReplacementPlugin](/plugins/hot-module-replacement-plugin)** - Enable Hot Module Replacement (HMR)
+- **[ProvidePlugin](/plugins/provide-plugin)** - Automatically load modules as free variables
+- **[BannerPlugin](/plugins/banner-plugin)** - Add a banner to the top of generated chunks
+- **[CleanPlugin](/plugins/clean-plugin)** - Clean the output directory before builds
+- **[DotenvPlugin](/plugins/dotenv-plugin)** - Load environment variables from .env files
+- **[IgnorePlugin](/plugins/ignore-plugin)** - Exclude modules matching patterns
+- **[EnvironmentPlugin](/plugins/environment-plugin)** - Define environment variables
+- **[NormalModuleReplacementPlugin](/plugins/normal-module-replacement-plugin)** - Replace modules matching patterns
+- **[ContextReplacementPlugin](/plugins/context-replacement-plugin)** - Override context module resolution
+- **[DllPlugin](/plugins/dll-plugin)** - Split bundles for faster builds
+- **[ProgressPlugin](/plugins/progress-plugin)** - Report compilation progress
+
+### Optimization Plugins
+
+Plugins that optimize your bundle:
+
+- **[SplitChunksPlugin](/plugins/split-chunks-plugin)** - Split code into separate chunks
+- **[ModuleConcatenationPlugin](/plugins/module-concatenation-plugin)** - Enable scope hoisting
+- **[LimitChunkCountPlugin](/plugins/limit-chunk-count-plugin)** - Limit the number of chunks
+- **[MinChunkSizePlugin](/plugins/min-chunk-size-plugin)** - Merge small chunks
+
+### External Plugins
+
+Popular community plugins:
+
+- **[HtmlWebpackPlugin](/plugins/html-webpack-plugin)** - Simplify HTML file creation
+- **[MiniCssExtractPlugin](/plugins/mini-css-extract-plugin)** - Extract CSS into separate files
+
+## Using Plugins
+
+Plugins are added to your webpack configuration:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
+};
+```
+
+## Creating Custom Plugins
+
+Webpack plugins are JavaScript objects with an `apply` method that is called by the webpack compiler:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.done.tap('MyPlugin', (stats) => {
+      console.log('Build complete!');
+    });
+  }
+}
+```
+
+For more information on creating custom plugins, see [Define a Plugin](/plugins/define-plugin).

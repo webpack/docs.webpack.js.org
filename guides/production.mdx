@@ -1,0 +1,438 @@
+---
+title: "Production Build"
+description: "Optimize your webpack build for production deployment"
+icon: "rocket"
+---
+
+Configuring webpack for production ensures your application is optimized for performance, size, and security.
+
+## Production Mode
+
+The simplest way to enable production optimizations is to set the mode:
+
+```javascript
+module.exports = {
+  mode: 'production'
+};
+```
+
+This automatically enables:
+- Minification
+- Tree shaking
+- Scope hoisting
+- Deterministic module IDs
+- NoEmitOnErrorsPlugin
+
+<Tip>
+Production mode enables many optimizations automatically. Always start with `mode: 'production'` and customize from there.
+</Tip>
+
+## Complete Production Configuration
+
+<Steps>
+<Step title="Set up output with content hashes">
+  ```javascript
+  const path = require('path');
+
+  module.exports = {
+    mode: 'production',
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].[contenthash].js',
+      chunkFilename: '[name].[contenthash].js',
+      clean: true // Clean dist folder before build
+    }
+  };
+  ```
+</Step>
+
+<Step title="Configure optimization">
+  ```javascript
+  module.exports = {
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              drop_console: true // Remove console.log
+            }
+          }
+        }),
+        new CssMinimizerPlugin()
+      ],
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all'
+          }
+        }
+      },
+      runtimeChunk: 'single'
+    }
+  };
+  ```
+</Step>
+
+<Step title="Add performance budgets">
+  ```javascript
+  module.exports = {
+    performance: {
+      maxEntrypointSize: 512000, // 500 KiB
+      maxAssetSize: 512000,
+      hints: 'error'
+    }
+  };
+  ```
+</Step>
+
+<Step title="Configure source maps">
+  ```javascript
+  module.exports = {
+    devtool: 'source-map' // or 'hidden-source-map'
+  };
+  ```
+</Step>
+</Steps>
+
+## Environment-Specific Configuration
+
+Use different configs for development and production:
+
+### Using Environment Variable
+
+```javascript
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  mode: isProduction ? 'production' : 'development',
+  devtool: isProduction ? 'source-map' : 'eval-source-map',
+  optimization: {
+    minimize: isProduction
+  }
+};
+```
+
+### Multiple Config Files
+
+**webpack.common.js:**
+```javascript
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ]
+  }
+};
+```
+
+**webpack.prod.js:**
+```javascript
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = merge(common, {
+  mode: 'production',
+  devtool: 'source-map',
+  optimization: {
+    minimizer: [new TerserPlugin()]
+  }
+});
+```
+
+<Note>
+Install `webpack-merge` to combine configurations: `npm install --save-dev webpack-merge`
+</Note>
+
+## Minification
+
+### JavaScript Minification
+
+```javascript
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true,
+            dead_code: true,
+            unused: true
+          },
+          format: {
+            comments: false
+          }
+        },
+        extractComments: false
+      })
+    ]
+  }
+};
+```
+
+### CSS Minification
+
+```javascript
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })
+  ],
+  optimization: {
+    minimizer: [
+      `...`, // Extend existing minimizers
+      new CssMinimizerPlugin()
+    ]
+  }
+};
+```
+
+## DefinePlugin for Environment Variables
+
+Replace variables at compile time:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.API_URL': JSON.stringify('https://api.example.com')
+    })
+  ]
+};
+```
+
+<Warning>
+Always use `JSON.stringify()` for string values in DefinePlugin, or the value will be inserted as code.
+</Warning>
+
+## Asset Optimization
+
+### Image Optimization
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024 // 8kb
+          }
+        }
+      }
+    ]
+  },
+  output: {
+    assetModuleFilename: 'assets/[hash][ext][query]'
+  }
+};
+```
+
+### Compression
+
+```bash
+npm install --save-dev compression-webpack-plugin
+```
+
+```javascript
+const CompressionPlugin = require('compression-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240, // Only compress files > 10KB
+      minRatio: 0.8
+    })
+  ]
+};
+```
+
+## Build Scripts
+
+Add production build scripts to `package.json`:
+
+```json
+{
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "build:analyze": "NODE_ENV=production webpack --config webpack.prod.js --env analyze",
+    "build:stats": "NODE_ENV=production webpack --config webpack.prod.js --json > stats.json"
+  }
+}
+```
+
+## Bundle Analysis
+
+### Webpack Bundle Analyzer
+
+```bash
+npm install --save-dev webpack-bundle-analyzer
+```
+
+```javascript
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'bundle-report.html',
+      openAnalyzer: false
+    })
+  ]
+};
+```
+
+### Stats Analysis
+
+```bash
+webpack --profile --json > stats.json
+```
+
+Analyze at: https://webpack.github.io/analyse/
+
+## Performance Checklist
+
+<Steps>
+<Step title="Enable production mode">
+  ```javascript
+  mode: 'production'
+  ```
+</Step>
+
+<Step title="Use content hashes for caching">
+  ```javascript
+  filename: '[name].[contenthash].js'
+  ```
+</Step>
+
+<Step title="Split vendor code">
+  ```javascript
+  optimization: {
+    splitChunks: { chunks: 'all' },
+    runtimeChunk: 'single'
+  }
+  ```
+</Step>
+
+<Step title="Minimize all assets">
+  Enable TerserPlugin and CssMinimizerPlugin
+</Step>
+
+<Step title="Remove source maps or use hidden-source-map">
+  ```javascript
+  devtool: 'hidden-source-map'
+  ```
+</Step>
+
+<Step title="Set performance budgets">
+  ```javascript
+  performance: { hints: 'error' }
+  ```
+</Step>
+
+<Step title="Analyze bundle size">
+  Use webpack-bundle-analyzer regularly
+</Step>
+</Steps>
+
+## CI/CD Integration
+
+### GitHub Actions Example
+
+```yaml
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/
+```
+
+<Tip>
+Use `npm ci` instead of `npm install` in CI/CD for faster, more reliable installs.
+</Tip>
+
+## Security Considerations
+
+### Subresource Integrity (SRI)
+
+```bash
+npm install --save-dev webpack-subresource-integrity
+```
+
+```javascript
+const { SubresourceIntegrityPlugin } = require('webpack-subresource-integrity');
+
+module.exports = {
+  output: {
+    crossOriginLoading: 'anonymous'
+  },
+  plugins: [
+    new SubresourceIntegrityPlugin()
+  ]
+};
+```
+
+### Remove Console Logs
+
+```javascript
+optimization: {
+  minimizer: [
+    new TerserPlugin({
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true
+        }
+      }
+    })
+  ]
+}
+```

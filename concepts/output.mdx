@@ -1,0 +1,349 @@
+---
+title: Output Configuration
+description: Configure how and where webpack outputs bundles, assets, and chunks
+---
+
+# Output Configuration
+
+The **output** configuration tells webpack how to write the compiled files to disk. While you can have multiple entry points, only one output configuration is specified.
+
+## Basic Usage
+
+At a minimum, webpack requires you to specify the output filename:
+
+```javascript filename="webpack.config.js"
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+
+This configuration outputs a single `bundle.js` file into the `dist` directory.
+
+## Output Path
+
+The `output.path` property specifies the output directory as an absolute path:
+
+```javascript filename="webpack.config.js"
+const path = require('path');
+
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist/assets')
+  }
+};
+```
+
+<Note>
+The path must be an absolute path. Use `path.resolve()` or `path.join()` with `__dirname` to ensure cross-platform compatibility.
+</Note>
+
+## Filename Patterns
+
+Webpack provides several substitutions for dynamic filenames:
+
+### Template Strings
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[id].[contenthash].chunk.js'
+  }
+};
+```
+
+### Available Substitutions
+
+| Template | Description |
+|----------|-------------|
+| `[name]` | Entry point name |
+| `[id]` | Chunk id |
+| `[contenthash]` | Hash of the content (recommended for caching) |
+| `[chunkhash]` | Hash of the chunk content |
+| `[fullhash]` | Hash of the full compilation |
+| `[hash]` | Deprecated alias for `[fullhash]` |
+
+### Hash Length
+
+Control hash length with a colon:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    filename: '[name].[contenthash:8].js'
+  }
+};
+```
+
+## Multiple Entry Points
+
+For multiple entry points, use substitutions to create unique filenames:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    admin: './src/admin.js'
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+
+This creates:
+- `dist/app.bundle.js`
+- `dist/admin.bundle.js`
+
+## Public Path
+
+The `publicPath` specifies the public URL address of output files when referenced in a browser:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    publicPath: '/assets/',
+    filename: '[name].js'
+  }
+};
+```
+
+### CDN Configuration
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    publicPath: 'https://cdn.example.com/assets/',
+    filename: '[name].[contenthash].js'
+  }
+};
+```
+
+### Automatic Public Path
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    publicPath: 'auto'
+  }
+};
+```
+
+<Info>
+Setting `publicPath: 'auto'` automatically determines the public path from the document's `<script>` tag or `import.meta.url`.
+</Info>
+
+## Advanced Options
+
+### Asset Modules
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    assetModuleFilename: 'images/[hash][ext][query]'
+  }
+};
+```
+
+### WebAssembly
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    webassemblyModuleFilename: '[hash].module.wasm'
+  }
+};
+```
+
+### Source Maps
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    sourceMapFilename: '[file].map[query]'
+  },
+  devtool: 'source-map'
+};
+```
+
+## Library Output
+
+For creating libraries, configure the library export:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    library: {
+      name: 'MyLibrary',
+      type: 'umd',
+      export: 'default'
+    },
+    globalObject: 'this'
+  }
+};
+```
+
+### Library Types
+
+<Tabs>
+  <Tab title="UMD">
+    ```javascript
+    module.exports = {
+      output: {
+        library: {
+          name: 'MyLib',
+          type: 'umd'
+        }
+      }
+    };
+    ```
+  </Tab>
+  <Tab title="CommonJS">
+    ```javascript
+    module.exports = {
+      output: {
+        library: {
+          type: 'commonjs2'
+        }
+      }
+    };
+    ```
+  </Tab>
+  <Tab title="ESM">
+    ```javascript
+    module.exports = {
+      experiments: {
+        outputModule: true
+      },
+      output: {
+        library: {
+          type: 'module'
+        }
+      }
+    };
+    ```
+  </Tab>
+</Tabs>
+
+## Chunk Loading
+
+Control how chunks are loaded:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    chunkLoading: 'jsonp', // or 'import-scripts', 'require', 'async-node'
+    chunkFormat: 'array-push' // or 'commonjs', 'module'
+  }
+};
+```
+
+## Clean Output Directory
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    clean: true // Clean the output directory before emit
+  }
+};
+```
+
+Or with options:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    clean: {
+      keep: /\.git/ // Keep .git folder
+    }
+  }
+};
+```
+
+## Compiler Output Path
+
+Webpack's `Compiler` manages the output path internally:
+
+```javascript
+// From Compiler.js
+class Compiler {
+  constructor(context, options = {}) {
+    // ...
+    this.outputPath = "";
+    this.outputFileSystem = null;
+    // ...
+  }
+
+  emitAssets(compilation, callback) {
+    const outputPath = compilation.getPath(this.outputPath, {});
+    // Emit files to outputFileSystem
+  }
+}
+```
+
+## Hash Functions
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    hashFunction: 'xxhash64', // or 'md4'
+    hashDigest: 'hex',
+    hashDigestLength: 20
+  }
+};
+```
+
+<Warning>
+Changing `hashFunction` affects caching. Only change if you have specific security or performance requirements.
+</Warning>
+
+## Best Practices
+
+1. **Use content hashes** - For long-term caching: `[name].[contenthash].js`
+2. **Set publicPath correctly** - Especially when deploying to CDN
+3. **Clean on build** - Enable `clean: true` to remove old files
+4. **Unique chunk names** - Use `[id]` or `[name]` to prevent conflicts
+5. **Absolute paths** - Always use absolute paths for `output.path`
+
+## Common Patterns
+
+### Production Build
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].chunk.js',
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    clean: true,
+    publicPath: '/'
+  }
+};
+```
+
+### Development Build
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
+    publicPath: '/'
+  }
+};
+```
+
+## Related Concepts
+
+- [Entry Points](/concepts/entry) - Configure entry points
+- [Mode](/concepts/mode) - Set development or production mode
+- [Targets](/concepts/targets) - Configure output for different environments

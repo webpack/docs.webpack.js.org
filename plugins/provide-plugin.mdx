@@ -1,0 +1,208 @@
+---
+title: ProvidePlugin
+description: Automatically load modules as free variables throughout your codebase
+---
+
+The `ProvidePlugin` automatically loads modules instead of having to import or require them everywhere. When webpack encounters an identifier that matches a configured module, it automatically requires that module.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ProvidePlugin({
+      identifier: 'module',
+      // or
+      identifier: ['module', 'property']
+    })
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="definitions" type="Record<string, string | string[]>" required>
+  Object mapping identifiers to modules. The value can be:
+  - A module name (string)
+  - An array with module name and property path
+</ParamField>
+
+## Examples
+
+### jQuery
+
+Automatically load jQuery:
+
+```javascript
+new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery'
+})
+```
+
+Now you can use `$` or `jQuery` anywhere without importing:
+
+```javascript
+// No import needed!
+$('#app').show();
+```
+
+### Lodash
+
+Provide lodash utilities:
+
+```javascript
+new webpack.ProvidePlugin({
+  _: 'lodash'
+})
+```
+
+Usage:
+
+```javascript
+// No import needed!
+const array = _.compact([0, 1, false, 2, '', 3]);
+```
+
+### Specific Module Exports
+
+Access specific exports from a module:
+
+```javascript
+new webpack.ProvidePlugin({
+  map: ['lodash', 'map'],
+  reduce: ['lodash', 'reduce']
+})
+```
+
+Usage:
+
+```javascript
+// No import needed!
+const result = map([1, 2, 3], n => n * 2);
+```
+
+### React Without Import
+
+```javascript
+new webpack.ProvidePlugin({
+  React: 'react'
+})
+```
+
+Now JSX works without importing React:
+
+```javascript
+// No React import needed!
+function Component() {
+  return <div>Hello World</div>;
+}
+```
+
+<Note>
+With React 17+ and the new JSX transform, you don't need this anymore as JSX no longer requires React to be in scope.
+</Note>
+
+### Process and Buffer (Node.js Polyfills)
+
+```javascript
+new webpack.ProvidePlugin({
+  process: 'process/browser',
+  Buffer: ['buffer', 'Buffer']
+})
+```
+
+### Nested Properties
+
+Access nested properties:
+
+```javascript
+new webpack.ProvidePlugin({
+  'window.jQuery': 'jquery',
+  'window.$': 'jquery'
+})
+```
+
+## Common Use Cases
+
+### Legacy Code Migration
+
+When migrating legacy code that uses global variables:
+
+```javascript
+new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery',
+  'window.jQuery': 'jquery',
+  _: 'lodash',
+  moment: 'moment'
+})
+```
+
+### Testing Environment
+
+Provide test utilities globally:
+
+```javascript
+new webpack.ProvidePlugin({
+  expect: 'chai',
+  sinon: 'sinon'
+})
+```
+
+### Consistent API
+
+Ensure consistent API across modules:
+
+```javascript
+new webpack.ProvidePlugin({
+  fetch: 'node-fetch',
+  Promise: 'bluebird'
+})
+```
+
+## How It Works
+
+The plugin works by:
+
+1. Scanning your code for free variables (identifiers used without being declared)
+2. When it finds a match with configured identifiers, it injects an import
+3. The import is added at the top of the module automatically
+
+For example:
+
+```javascript
+// Your code
+const result = map([1, 2, 3], n => n * 2);
+
+// Becomes (automatically)
+import { map } from 'lodash';
+const result = map([1, 2, 3], n => n * 2);
+```
+
+## Tree Shaking
+
+<Warning>
+ProvidePlugin may interfere with tree shaking. When possible, prefer explicit imports for better tree shaking.
+</Warning>
+
+```javascript
+// Better for tree shaking
+import { map } from 'lodash-es';
+
+// vs ProvidePlugin
+new webpack.ProvidePlugin({ map: ['lodash', 'map'] })
+```
+
+## Best Practices
+
+<Note>
+- Use ProvidePlugin sparingly, primarily for:
+  - Migrating legacy code
+  - Global utilities used everywhere
+  - Polyfills and shims
+- Prefer explicit imports for better code clarity
+- Consider tree shaking implications
+</Note>

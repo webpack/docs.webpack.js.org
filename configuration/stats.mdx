@@ -1,0 +1,685 @@
+---
+title: Stats
+description: Control webpack compilation output statistics and logging
+---
+
+The `stats` option controls what bundle information gets displayed in the console after compilation. It can also be used to generate detailed JSON output for analysis.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+module.exports = {
+  stats: 'normal' // or 'errors-only', 'minimal', 'verbose', etc.
+};
+```
+
+## Stats Presets
+
+<ParamField path="stats" type="string | boolean | object">
+  Control stats output.
+  
+  ```javascript
+  stats: 'errors-only'
+  // or
+  stats: { colors: true, modules: false }
+  ```
+</ParamField>
+
+### Preset Strings
+
+<Accordion title="errors-only">
+  Only output when errors happen.
+  
+  ```javascript
+  stats: 'errors-only'
+  ```
+  
+  Perfect for CI/CD pipelines.
+</Accordion>
+
+<Accordion title="errors-warnings">
+  Only output errors and warnings.
+  
+  ```javascript
+  stats: 'errors-warnings'
+  ```
+  
+  Good balance for production builds.
+</Accordion>
+
+<Accordion title="minimal">
+  Only output when errors or new compilation happens.
+  
+  ```javascript
+  stats: 'minimal'
+  ```
+  
+  Clean output with essential information.
+</Accordion>
+
+<Accordion title="normal">
+  Standard output (default).
+  
+  ```javascript
+  stats: 'normal'
+  ```
+  
+  Shows assets, chunks, modules, and errors/warnings.
+</Accordion>
+
+<Accordion title="detailed">
+  Output everything except chunkModules and chunkRootModules.
+  
+  ```javascript
+  stats: 'detailed'
+  ```
+  
+  More information than normal.
+</Accordion>
+
+<Accordion title="verbose">
+  Output everything.
+  
+  ```javascript
+  stats: 'verbose'
+  ```
+  
+  Maximum information for debugging.
+</Accordion>
+
+<Accordion title="none or false">
+  No output.
+  
+  ```javascript
+  stats: 'none'
+  // or
+  stats: false
+  ```
+  
+  Completely silent.
+</Accordion>
+
+<Accordion title="summary">
+  Output only webpack version, warnings count, and errors count.
+  
+  ```javascript
+  stats: 'summary'
+  ```
+</Accordion>
+
+## Stats Object Options
+
+Customize what information is displayed:
+
+### Assets
+
+<Accordion title="Assets Information">
+  <ParamField path="stats.assets" type="boolean">
+    Show assets information.
+    
+    ```javascript
+    stats: {
+      assets: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="stats.assetsSort" type="string | false">
+    Sort assets by field.
+    
+    ```javascript
+    stats: {
+      assetsSort: 'size' // or 'name', 'id', etc.
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.assetsSpace" type="number">
+    Space to display assets.
+    
+    ```javascript
+    stats: {
+      assetsSpace: 15 // Show top 15 assets
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.excludeAssets" type="string | RegExp | function | array">
+    Exclude assets from being displayed.
+    
+    ```javascript
+    stats: {
+      excludeAssets: /\.map$/
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.cachedAssets" type="boolean">
+    Show cached (not emitted) assets.
+    
+    ```javascript
+    stats: {
+      cachedAssets: false
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+</Accordion>
+
+### Modules
+
+<Accordion title="Modules Information">
+  <ParamField path="stats.modules" type="boolean">
+    Show modules information.
+    
+    ```javascript
+    stats: {
+      modules: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="stats.modulesSort" type="string | false">
+    Sort modules by field.
+    
+    ```javascript
+    stats: {
+      modulesSort: 'size' // or 'name', 'id', etc.
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.modulesSpace" type="number">
+    Space to display modules.
+    
+    ```javascript
+    stats: {
+      modulesSpace: 15
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.excludeModules" type="string | RegExp | function | array">
+    Exclude modules from being displayed.
+    
+    ```javascript
+    stats: {
+      excludeModules: /node_modules/
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.cachedModules" type="boolean">
+    Show cached (not built) modules.
+    
+    ```javascript
+    stats: {
+      cachedModules: false
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+### Chunks
+
+<Accordion title="Chunks Information">
+  <ParamField path="stats.chunks" type="boolean">
+    Show chunk information.
+    
+    ```javascript
+    stats: {
+      chunks: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="stats.chunksSort" type="string | false">
+    Sort chunks by field.
+    
+    ```javascript
+    stats: {
+      chunksSort: 'size'
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.chunkModules" type="boolean">
+    Show modules inside chunks.
+    
+    ```javascript
+    stats: {
+      chunkModules: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.chunkGroups" type="boolean">
+    Show chunk groups.
+    
+    ```javascript
+    stats: {
+      chunkGroups: true
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+### Errors and Warnings
+
+<Accordion title="Errors and Warnings">
+  <ParamField path="stats.errors" type="boolean">
+    Show errors.
+    
+    ```javascript
+    stats: {
+      errors: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="stats.errorsCount" type="boolean">
+    Show errors count.
+    
+    ```javascript
+    stats: {
+      errorsCount: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.errorDetails" type="boolean | 'auto'">
+    Show details for errors.
+    
+    ```javascript
+    stats: {
+      errorDetails: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.warnings" type="boolean">
+    Show warnings.
+    
+    ```javascript
+    stats: {
+      warnings: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="stats.warningsCount" type="boolean">
+    Show warnings count.
+    
+    ```javascript
+    stats: {
+      warningsCount: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.warningsFilter" type="string | RegExp | function | array">
+    Filter warnings to be shown.
+    
+    ```javascript
+    stats: {
+      warningsFilter: /size limit/
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+### Other Options
+
+<Accordion title="Display Options">
+  <ParamField path="stats.colors" type="boolean | object">
+    Enable/disable colors in output.
+    
+    ```javascript
+    stats: {
+      colors: true
+    }
+    ```
+    
+    Default: `false` (auto-detected in terminal)
+  </ParamField>
+  
+  <ParamField path="stats.hash" type="boolean">
+    Show compilation hash.
+    
+    ```javascript
+    stats: {
+      hash: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.version" type="boolean">
+    Show webpack version.
+    
+    ```javascript
+    stats: {
+      version: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.timings" type="boolean">
+    Show timing information.
+    
+    ```javascript
+    stats: {
+      timings: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.builtAt" type="boolean">
+    Show build timestamp.
+    
+    ```javascript
+    stats: {
+      builtAt: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.entrypoints" type="boolean | 'auto'">
+    Show entry points.
+    
+    ```javascript
+    stats: {
+      entrypoints: true
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Grouping Options">
+  <ParamField path="stats.groupAssetsByPath" type="boolean">
+    Group assets by path.
+    
+    ```javascript
+    stats: {
+      groupAssetsByPath: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.groupAssetsByExtension" type="boolean">
+    Group assets by extension.
+    
+    ```javascript
+    stats: {
+      groupAssetsByExtension: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="stats.groupModulesByPath" type="boolean">
+    Group modules by path.
+    
+    ```javascript
+    stats: {
+      groupModulesByPath: true
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+## Common Configurations
+
+### Development
+
+```javascript webpack.dev.js
+module.exports = {
+  stats: 'minimal'
+  // or
+  stats: {
+    colors: true,
+    modules: false,
+    children: false,
+    chunks: false,
+    chunkModules: false
+  }
+};
+```
+
+### Production
+
+```javascript webpack.prod.js
+module.exports = {
+  stats: 'normal'
+  // or
+  stats: {
+    colors: true,
+    hash: true,
+    timings: true,
+    assets: true,
+    chunks: false,
+    chunkModules: false,
+    modules: false,
+    children: false
+  }
+};
+```
+
+### CI/CD
+
+```javascript webpack.config.js
+module.exports = {
+  stats: 'errors-warnings'
+  // or
+  stats: {
+    all: false,
+    errors: true,
+    warnings: true,
+    errorDetails: true
+  }
+};
+```
+
+### Detailed Analysis
+
+```javascript webpack.config.js
+module.exports = {
+  stats: {
+    assets: true,
+    assetsSort: 'size',
+    modules: true,
+    modulesSort: 'size',
+    chunks: true,
+    chunkModules: true,
+    reasons: true,
+    depth: true,
+    usedExports: true,
+    providedExports: true,
+    optimizationBailout: true,
+    errorDetails: true,
+    performance: true
+  }
+};
+```
+
+## JSON Stats Output
+
+Generate detailed JSON statistics:
+
+```bash
+webpack --json > stats.json
+```
+
+With specific stats options:
+
+```bash
+webpack --json=verbose > stats.json
+```
+
+Programmatic:
+
+```javascript
+const webpack = require('webpack');
+const config = require('./webpack.config.js');
+
+webpack(config, (err, stats) => {
+  if (err || stats.hasErrors()) {
+    console.error(stats.toString('errors-only'));
+  }
+  
+  const jsonStats = stats.toJson({
+    all: false,
+    assets: true,
+    modules: true
+  });
+  
+  console.log(JSON.stringify(jsonStats, null, 2));
+});
+```
+
+## Stats Utilities
+
+### webpack-bundle-analyzer
+
+Visualize bundle content:
+
+```javascript
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'bundle-report.html',
+      openAnalyzer: false,
+      generateStatsFile: true,
+      statsFilename: 'stats.json'
+    })
+  ]
+};
+```
+
+### webpack-visualizer
+
+Online tool at https://chrisbateman.github.io/webpack-visualizer/
+
+Upload your stats.json file.
+
+### webpack-chart
+
+Online tool at https://alexkuz.github.io/webpack-chart/
+
+## DevServer Stats
+
+Configure stats for dev server:
+
+```javascript webpack.config.js
+module.exports = {
+  devServer: {
+    client: {
+      logging: 'info' // or 'log', 'warn', 'error', 'none'
+    }
+  },
+  stats: 'minimal'
+};
+```
+
+## Infrastructure Logging
+
+Control webpack's internal logging:
+
+```javascript webpack.config.js
+module.exports = {
+  infrastructureLogging: {
+    level: 'info', // 'none', 'error', 'warn', 'info', 'log', 'verbose'
+    debug: /webpack/,
+    colors: true
+  }
+};
+```
+
+## Performance Tips
+
+### Reduce Stats Size
+
+```javascript
+stats: {
+  assets: true,
+  chunks: false,
+  modules: false,
+  children: false,
+  source: false
+}
+```
+
+### Focus on Errors
+
+```javascript
+stats: {
+  all: false,
+  errors: true,
+  errorDetails: true,
+  warnings: true
+}
+```
+
+## Environment-Based Stats
+
+```javascript webpack.config.js
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+  
+  return {
+    stats: isProduction ? 'normal' : 'minimal'
+  };
+};
+```
+
+## Custom Stats Output
+
+```javascript webpack.config.js
+class CustomStatsPlugin {
+  apply(compiler) {
+    compiler.hooks.done.tap('CustomStatsPlugin', (stats) => {
+      const info = stats.toJson({
+        all: false,
+        assets: true,
+        errors: true
+      });
+      
+      console.log('\n=== Build Summary ===');
+      console.log(`Total Assets: ${info.assets.length}`);
+      console.log(`Total Size: ${info.assets.reduce((sum, a) => sum + a.size, 0)} bytes`);
+      console.log(`Errors: ${info.errors.length}`);
+    });
+  }
+}
+
+module.exports = {
+  plugins: [new CustomStatsPlugin()],
+  stats: 'none' // Disable default stats
+};
+```
+
+## Package.json Scripts
+
+```json package.json
+{
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:stats": "webpack --mode production --json > stats.json",
+    "build:verbose": "webpack --mode production --stats verbose",
+    "build:silent": "webpack --mode production --stats errors-only",
+    "analyze": "webpack --mode production --json | webpack-bundle-analyzer --stdin"
+  }
+}
+```

@@ -1,0 +1,195 @@
+---
+title: Installation
+description: Install webpack and start bundling your JavaScript modules
+---
+
+# Installing webpack
+
+This guide covers how to install webpack in your project.
+
+## Prerequisites
+
+<Note>
+webpack requires **Node.js version 10.13.0 or higher**. Check your Node.js version with `node -v`.
+</Note>
+
+Before installing webpack, make sure you have:
+- Node.js installed (version 10.13.0 or higher)
+- npm, yarn, or pnpm package manager
+
+## Local Installation (Recommended)
+
+For most projects, we recommend installing webpack locally. This allows different projects to use different versions of webpack and makes your build reproducible.
+
+<Steps>
+  <Step title="Initialize your project">
+    If you haven't already, create a `package.json` file:
+    
+    ```bash
+    npm init -y
+    ```
+  </Step>
+
+  <Step title="Install webpack and webpack-cli">
+    Choose your preferred package manager:
+    
+    <CodeGroup>
+    ```bash npm
+    npm install --save-dev webpack webpack-cli
+    ```
+    
+    ```bash yarn
+    yarn add webpack webpack-cli --dev
+    ```
+    
+    ```bash pnpm
+    pnpm add -D webpack webpack-cli
+    ```
+    </CodeGroup>
+    
+    <Info>
+    `webpack-cli` is optional but recommended. It provides a command-line interface for running webpack and accessing helpful commands.
+    </Info>
+  </Step>
+
+  <Step title="Verify installation">
+    Check that webpack was installed correctly:
+    
+    ```bash
+    npx webpack --version
+    ```
+    
+    You should see the webpack version number (currently 5.105.4).
+  </Step>
+</Steps>
+
+## Global Installation
+
+<Warning>
+Global installation is **not recommended** for most use cases. It locks you to a specific version of webpack across all projects and can cause version conflicts.
+</Warning>
+
+If you need webpack available globally (for quick experiments or testing):
+
+<CodeGroup>
+```bash npm
+npm install --global webpack webpack-cli
+```
+
+```bash yarn
+yarn global add webpack webpack-cli
+```
+
+```bash pnpm
+pnpm add -g webpack webpack-cli
+```
+</CodeGroup>
+
+After global installation, you can run `webpack` directly from your terminal.
+
+## Version-Specific Installation
+
+To install a specific version of webpack:
+
+<CodeGroup>
+```bash npm
+npm install --save-dev webpack@5.105.4 webpack-cli
+```
+
+```bash yarn
+yarn add webpack@5.105.4 webpack-cli --dev
+```
+
+```bash pnpm
+pnpm add -D webpack@5.105.4 webpack-cli
+```
+</CodeGroup>
+
+## Installing Loaders and Plugins
+
+Webpack's power comes from its ecosystem of loaders and plugins. Install them as dev dependencies:
+
+```bash
+# Example: Installing loaders for CSS and TypeScript
+npm install --save-dev css-loader style-loader ts-loader
+
+# Example: Installing common plugins
+npm install --save-dev html-webpack-plugin mini-css-extract-plugin
+```
+
+## Bleeding Edge Installation
+
+<Warning>
+The following npm package points to the latest development branch and may be unstable. Use at your own risk.
+</Warning>
+
+To install the latest development version directly from the repository:
+
+```bash
+npm install --save-dev webpack/webpack#main webpack-cli
+```
+
+## Verifying Your Installation
+
+After installation, verify everything is set up correctly:
+
+1. Check webpack version:
+   ```bash
+   npx webpack --version
+   ```
+
+2. Check webpack-cli version:
+   ```bash
+   npx webpack-cli --version
+   ```
+
+3. View webpack help:
+   ```bash
+   npx webpack --help
+   ```
+
+## Package Scripts
+
+Add webpack to your `package.json` scripts for easier access:
+
+```json package.json
+{
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack",
+    "build:prod": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "webpack": "^5.105.4",
+    "webpack-cli": "^6.0.1"
+  }
+}
+```
+
+Now you can run:
+```bash
+npm run build        # Build with default configuration
+npm run build:prod   # Build for production
+npm run build:dev    # Build for development
+npm run watch        # Watch for changes and rebuild
+```
+
+## Next Steps
+
+Now that webpack is installed, you're ready to:
+
+<CardGroup cols={2}>
+  <Card title="Quick Start Guide" icon="rocket" href="/quickstart">
+    Create your first webpack bundle
+  </Card>
+  <Card title="Configuration" icon="gear" href="/configuration">
+    Learn how to configure webpack
+  </Card>
+</CardGroup>
+
+<Tip>
+For production builds, consider installing `terser-webpack-plugin` (included by default in webpack 5) for JavaScript minification.
+</Tip>

@@ -1,0 +1,440 @@
+---
+title: require() and require.resolve()
+description: CommonJS module loading methods in webpack
+---
+
+Webpack supports CommonJS `require()` and `require.resolve()` for synchronous module loading and resolution.
+
+## require()
+
+Synchronously loads and returns a module.
+
+### Syntax
+
+```javascript
+require(modulePath)
+```
+
+### Parameters
+
+<ParamField path="modulePath" type="string" required>
+  Path to the module to require. Can be relative, absolute, or a module name.
+  
+  ```javascript
+  require('./module.js')
+  require('lodash')
+  require('/absolute/path/module.js')
+  ```
+</ParamField>
+
+### Return Type
+
+**Returns:** `Module`
+
+Returns the module's exports object.
+
+---
+
+## Basic Usage
+
+### Requiring Local Modules
+
+```javascript
+// math.js
+module.exports = {
+  add: (a, b) => a + b,
+  multiply: (a, b) => a * b
+};
+
+// app.js
+const math = require('./math.js');
+console.log(math.add(2, 3));      // 5
+console.log(math.multiply(2, 3)); // 6
+```
+
+### Destructuring Exports
+
+```javascript
+// Destructure specific exports
+const { add, multiply } = require('./math.js');
+
+console.log(add(2, 3));      // 5
+console.log(multiply(2, 3)); // 6
+```
+
+### Requiring npm Packages
+
+```javascript
+// Load from node_modules
+const _ = require('lodash');
+const axios = require('axios');
+const moment = require('moment');
+
+console.log(_.chunk([1, 2, 3, 4], 2)); // [[1, 2], [3, 4]]
+```
+
+### Default Exports
+
+```javascript
+// logger.js
+class Logger {
+  log(message) {
+    console.log(message);
+  }
+}
+
+module.exports = Logger;
+
+// app.js
+const Logger = require('./logger.js');
+const logger = new Logger();
+logger.log('Hello!'); // Hello!
+```
+
+---
+
+## Module Exports Patterns
+
+### Single Function Export
+
+```javascript
+// greet.js
+module.exports = function(name) {
+  return `Hello, ${name}!`;
+};
+
+// app.js
+const greet = require('./greet.js');
+console.log(greet('World')); // Hello, World!
+```
+
+### Multiple Named Exports
+
+```javascript
+// utils.js
+exports.capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+exports.lowercase = str => str.toLowerCase();
+exports.uppercase = str => str.toUpperCase();
+
+// app.js
+const utils = require('./utils.js');
+console.log(utils.capitalize('hello')); // Hello
+```
+
+### Mixed Exports
+
+```javascript
+// api.js
+function ApiClient(baseUrl) {
+  this.baseUrl = baseUrl;
+}
+
+ApiClient.prototype.get = function(endpoint) {
+  return fetch(`${this.baseUrl}${endpoint}`);
+};
+
+// Add static methods
+ApiClient.version = '1.0.0';
+ApiClient.create = function(baseUrl) {
+  return new ApiClient(baseUrl);
+};
+
+module.exports = ApiClient;
+
+// app.js
+const ApiClient = require('./api.js');
+console.log(ApiClient.version); // 1.0.0
+const client = ApiClient.create('https://api.example.com');
+```
+
+---
+
+## require.resolve()
+
+Resolves a module path to its absolute file path without executing it.
+
+### Syntax
+
+```javascript
+require.resolve(modulePath)
+require.resolve(modulePath, options)
+```
+
+### Parameters
+
+<ParamField path="modulePath" type="string" required>
+  Path to the module to resolve.
+  
+  ```javascript
+  require.resolve('./module.js')
+  require.resolve('lodash')
+  ```
+</ParamField>
+
+<ParamField path="options" type="object">
+  Resolution options.
+  
+  ```javascript
+  require.resolve('module', { paths: ['/custom/path'] })
+  ```
+  
+  **Properties:**
+  - `paths` (string[]): Additional paths to search for the module
+</ParamField>
+
+### Return Type
+
+**Returns:** `string` (module ID)
+
+Returns the resolved module identifier (typically a numeric ID in webpack bundles).
+
+---
+
+## require.resolve() Examples
+
+### Basic Resolution
+
+```javascript
+// Get module ID without loading it
+const moduleId = require.resolve('./utils.js');
+console.log(moduleId); // 42 (numeric module ID)
+
+// Later, load the module
+const utils = require('./utils.js');
+```
+
+### Checking Module Existence
+
+```javascript
+function moduleExists(modulePath) {
+  try {
+    require.resolve(modulePath);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+if (moduleExists('./optional-feature.js')) {
+  const feature = require('./optional-feature.js');
+  feature.init();
+}
+```
+
+### Custom Resolution Paths
+
+```javascript
+// Resolve from custom paths
+const modulePath = require.resolve('plugin', {
+  paths: [
+    './plugins',
+    './node_modules',
+    '/usr/local/lib/node_modules'
+  ]
+});
+```
+
+### Module ID Mapping
+
+```javascript
+// Build a module registry
+const moduleRegistry = {
+  utils: require.resolve('./utils.js'),
+  helpers: require.resolve('./helpers.js'),
+  api: require.resolve('./api.js')
+};
+
+// Load modules by name
+function loadModule(name) {
+  const moduleId = moduleRegistry[name];
+  if (moduleId) {
+    return require(moduleId);
+  }
+  throw new Error(`Module ${name} not found`);
+}
+```
+
+---
+
+## Advanced Patterns
+
+### Conditional Requires
+
+```javascript
+// Load different modules based on environment
+let config;
+if (process.env.NODE_ENV === 'production') {
+  config = require('./config.prod.js');
+} else {
+  config = require('./config.dev.js');
+}
+```
+
+### Dynamic Requires with Variables
+
+```javascript
+// Load locale files
+function loadLocale(language) {
+  // Webpack creates a context for this pattern
+  return require(`./locales/${language}.json`);
+}
+
+const messages = loadLocale('en-US');
+```
+
+<Warning>
+  Dynamic requires with variables create a webpack context that includes all possible matches. Use `require.context()` for more control.
+</Warning>
+
+### Circular Dependencies
+
+```javascript
+// a.js
+exports.name = 'Module A';
+const b = require('./b.js');
+exports.getMessage = () => `${exports.name} knows ${b.name}`;
+
+// b.js
+exports.name = 'Module B';
+const a = require('./a.js');
+exports.getMessage = () => `${exports.name} knows ${a.name}`;
+
+// app.js
+const a = require('./a.js');
+const b = require('./b.js');
+console.log(a.getMessage()); // Module A knows Module B
+console.log(b.getMessage()); // Module B knows Module A
+```
+
+### Module Caching
+
+```javascript
+// Modules are cached after first require
+const module1 = require('./module.js');
+const module2 = require('./module.js');
+
+console.log(module1 === module2); // true (same instance)
+
+// Access module cache
+console.log(require.cache);
+
+// Delete from cache to force reload
+delete require.cache[require.resolve('./module.js')];
+const freshModule = require('./module.js'); // Reloaded
+```
+
+---
+
+## require vs import()
+
+| Feature | require() | import() |
+|---------|-----------|----------|
+| Loading | Synchronous | Asynchronous |
+| Code Splitting | No | Yes |
+| Returns | Module exports | Promise\<Module\> |
+| Dynamic paths | Limited support | Full support |
+| Tree shaking | Limited | Full support |
+| Top-level await | No | Yes |
+
+```javascript
+// Synchronous (require)
+const module = require('./module.js');
+module.doSomething();
+
+// Asynchronous (import)
+import('./module.js').then(module => {
+  module.doSomething();
+});
+
+// Or with async/await
+const module = await import('./module.js');
+module.doSomething();
+```
+
+---
+
+## CommonJS vs ES Modules
+
+### Importing ES Modules with require()
+
+```javascript
+// ES module: math.js
+export function add(a, b) {
+  return a + b;
+}
+export function multiply(a, b) {
+  return a * b;
+}
+
+// CommonJS: app.js
+const math = require('./math.js');
+console.log(math.add(2, 3));      // 5
+console.log(math.multiply(2, 3)); // 6
+```
+
+### Default Export Handling
+
+```javascript
+// ES module: logger.js
+export default class Logger {
+  log(message) {
+    console.log(message);
+  }
+}
+
+// CommonJS: app.js
+const Logger = require('./logger.js').default;
+const logger = new Logger();
+```
+
+---
+
+## TypeScript Support
+
+```typescript
+// Type-safe requires
+import type { MathUtils } from './math';
+
+const math = require('./math') as MathUtils;
+const result = math.add(2, 3); // Type-safe
+
+// With module resolution
+const modulePath: string = require.resolve('./utils');
+```
+
+---
+
+## Performance Considerations
+
+### Prefer Static Imports
+
+```javascript
+// Better: Static imports can be optimized
+import { add } from './math.js';
+
+// Less optimal: Dynamic requires
+const { add } = require('./math.js');
+```
+
+### Lazy Loading with import()
+
+```javascript
+// Don't require immediately if not always needed
+// Instead of:
+const heavyModule = require('./heavy-module.js');
+
+// Use dynamic import:
+button.addEventListener('click', async () => {
+  const heavyModule = await import('./heavy-module.js');
+  heavyModule.process();
+});
+```
+
+---
+
+## See Also
+
+- [import()](/api/module-methods/import) - Dynamic imports
+- [require.context()](/api/module-methods/require-context) - Require multiple modules
+- [Module Variables](/api/module-methods/module-variables) - Module-scoped variables
+- [Module Resolution](/concepts/module-resolution) - How webpack resolves modules

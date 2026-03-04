@@ -1,0 +1,193 @@
+---
+title: MiniCssExtractPlugin
+description: Extract CSS into separate files for production builds
+---
+
+The `MiniCssExtractPlugin` extracts CSS into separate files. It creates a CSS file per JS file which contains CSS.
+
+<Note>
+This is an external plugin maintained by the webpack team. Install it separately with `npm install --save-dev mini-css-extract-plugin`.
+</Note>
+
+## Installation
+
+```bash
+npm install --save-dev mini-css-extract-plugin
+```
+
+## Basic Usage
+
+```javascript
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin()
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="filename" type="string" default="[name].css">
+  Filename template for the CSS files in the output directory
+</ParamField>
+
+<ParamField path="chunkFilename" type="string" default="[id].css">
+  Filename template for non-entry CSS chunks
+</ParamField>
+
+<ParamField path="ignoreOrder" type="boolean" default="false">
+  Remove warnings about conflicting order between imports
+</ParamField>
+
+<ParamField path="insert" type="string | function">
+  Inserts `<link>` at a custom position
+</ParamField>
+
+<ParamField path="attributes" type="object">
+  Adds custom attributes to the `<link>` tag
+</ParamField>
+
+## Examples
+
+### Production Configuration
+
+```javascript
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+module.exports = {
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css'
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin()
+    ]
+  }
+};
+```
+
+### Development vs Production
+
+```javascript
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    !devMode && new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })
+  ].filter(Boolean)
+};
+```
+
+### With Sass/SCSS
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin()
+  ]
+};
+```
+
+### With PostCSS
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin()
+  ]
+};
+```
+
+## Public Path
+
+```javascript
+new MiniCssExtractPlugin({
+  filename: '[name].css',
+  chunkFilename: '[id].css'
+})
+```
+
+## Long Term Caching
+
+For long term caching, use `[contenthash]`:
+
+```javascript
+new MiniCssExtractPlugin({
+  filename: '[name].[contenthash:8].css',
+  chunkFilename: '[id].[contenthash:8].css'
+})
+```
+
+<Warning>
+Don't use `style-loader` and `MiniCssExtractPlugin.loader` together. In development, use `style-loader`. In production, use `MiniCssExtractPlugin.loader`.
+</Warning>
+
+## Comparison with extract-text-webpack-plugin
+
+`MiniCssExtractPlugin` is the recommended replacement for `extract-text-webpack-plugin` (deprecated). Benefits include:
+
+- Async loading
+- No duplicate compilation
+- Easier to use
+- Specific to CSS

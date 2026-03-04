@@ -1,0 +1,517 @@
+---
+title: Module Factory Hooks
+description: Customize how webpack creates and resolves modules
+---
+
+Module factories are responsible for creating module instances in webpack. The two main factories are `NormalModuleFactory` and `ContextModuleFactory`.
+
+## NormalModuleFactory
+
+The NormalModuleFactory creates normal modules (most JavaScript/TypeScript files, JSON, etc.).
+
+### Accessing NormalModuleFactory
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.compilation.tap(
+      'MyPlugin',
+      (compilation, { normalModuleFactory }) => {
+        // Access normalModuleFactory hooks
+      }
+    );
+  }
+}
+```
+
+### NormalModuleFactory Hooks
+
+#### `resolve`
+
+```typescript
+AsyncSeriesBailHook<[ResolveData]>
+```
+
+Called before resolving a module request.
+
+```javascript
+normalModuleFactory.hooks.resolve.tap('MyPlugin', (resolveData) => {
+  console.log('Resolving:', resolveData.request);
+  console.log('Context:', resolveData.context);
+});
+```
+
+#### `factorize`
+
+```typescript
+AsyncSeriesBailHook<[ResolveData]>
+```
+
+Called before the module is created.
+
+```javascript
+normalModuleFactory.hooks.factorize.tapAsync(
+  'MyPlugin',
+  (resolveData, callback) => {
+    // Custom module creation logic
+    callback();
+  }
+);
+```
+
+#### `beforeResolve`
+
+```typescript
+AsyncSeriesBailHook<[ResolveData]>
+```
+
+Called before module resolution begins. Return `false` to skip resolving.
+
+```javascript
+normalModuleFactory.hooks.beforeResolve.tap('MyPlugin', (resolveData) => {
+  if (resolveData.request.includes('ignore-me')) {
+    return false; // Skip this module
+  }
+});
+```
+
+#### `afterResolve`
+
+```typescript
+AsyncSeriesBailHook<[ResolveData]>
+```
+
+Called after module is resolved.
+
+```javascript
+normalModuleFactory.hooks.afterResolve.tap('MyPlugin', (resolveData) => {
+  console.log('Resolved to:', resolveData.createData.resource);
+});
+```
+
+#### `createModule`
+
+```typescript
+AsyncSeriesBailHook<[CreateData, ResolveData]>
+```
+
+Called when creating a module. Can return a custom module.
+
+```javascript
+normalModuleFactory.hooks.createModule.tap(
+  'MyPlugin',
+  (createData, resolveData) => {
+    if (shouldUseCustomModule(createData)) {
+      return new MyCustomModule(createData);
+    }
+  }
+);
+```
+
+#### `module`
+
+```typescript
+SyncWaterfallHook<[Module, CreateData, ResolveData]>
+```
+
+Called after a module is created. Can modify or replace the module.
+
+```javascript
+normalModuleFactory.hooks.module.tap(
+  'MyPlugin',
+  (module, createData, resolveData) => {
+    // Modify module
+    module.customData = 'my custom data';
+    return module;
+  }
+);
+```
+
+#### `createParser`
+
+```typescript
+HookMap<SyncBailHook<[ParserOptions], Parser>>
+```
+
+Create a custom parser for a module type.
+
+```javascript
+normalModuleFactory.hooks.createParser
+  .for('javascript/auto')
+  .tap('MyPlugin', (parserOptions) => {
+    return new MyCustomParser(parserOptions);
+  });
+```
+
+#### `parser`
+
+```typescript
+HookMap<SyncHook<[Parser, ParserOptions]>>
+```
+
+Access and customize the parser for a module type. This is where most parser customization happens.
+
+```javascript
+normalModuleFactory.hooks.parser
+  .for('javascript/auto')
+  .tap('MyPlugin', (parser, parserOptions) => {
+    // Hook into parser events
+    parser.hooks.program.tap('MyPlugin', (ast) => {
+      console.log('Parsing JavaScript');
+    });
+  });
+```
+
+**Example: DefinePlugin** (lib/DefinePlugin.js:780):
+
+```javascript
+normalModuleFactory.hooks.parser
+  .for('javascript/auto')
+  .tap('DefinePlugin', (parser) => {
+    // Define global constants
+    parser.hooks.expression.for('MY_VAR').tap('DefinePlugin', (expr) => {
+      return toConstantDependency(parser, JSON.stringify('value'))(expr);
+    });
+  });
+```
+
+#### `createGenerator`
+
+```typescript
+HookMap<SyncBailHook<[GeneratorOptions], Generator>>
+```
+
+Create a custom generator for a module type.
+
+```javascript
+normalModuleFactory.hooks.createGenerator
+  .for('javascript/auto')
+  .tap('MyPlugin', (generatorOptions) => {
+    return new MyCustomGenerator(generatorOptions);
+  });
+```
+
+#### `generator`
+
+```typescript
+HookMap<SyncHook<[Generator, GeneratorOptions]>>
+```
+
+Access and customize the generator for a module type.
+
+```javascript
+normalModuleFactory.hooks.generator
+  .for('javascript/auto')
+  .tap('MyPlugin', (generator, generatorOptions) => {
+    // Customize code generation
+  });
+```
+
+## ContextModuleFactory
+
+The ContextModuleFactory handles dynamic requires like `require('./templates/' + name + '.js')`.
+
+### Accessing ContextModuleFactory
+
+```javascript
+compiler.hooks.compilation.tap(
+  'MyPlugin',
+  (compilation, { contextModuleFactory }) => {
+    // Access contextModuleFactory hooks
+  }
+);
+```
+
+### ContextModuleFactory Hooks
+
+#### `beforeResolve`
+
+```typescript
+AsyncSeriesBailHook<[ResolveData]>
+```
+
+Called before context resolution.
+
+```javascript
+contextModuleFactory.hooks.beforeResolve.tap('MyPlugin', (resolveData) => {
+  console.log('Context request:', resolveData.request);
+});
+```
+
+#### `afterResolve`
+
+```typescript
+AsyncSeriesBailHook<[ResolveData]>
+```
+
+Called after context resolution.
+
+```javascript
+contextModuleFactory.hooks.afterResolve.tap('MyPlugin', (resolveData) => {
+  console.log('Context resolved:', resolveData.resource);
+});
+```
+
+#### `contextModuleFiles`
+
+```typescript
+SyncWaterfallHook<[string[]]>
+```
+
+Called with the list of files found in the context.
+
+```javascript
+contextModuleFactory.hooks.contextModuleFiles.tap(
+  'MyPlugin',
+  (files) => {
+    console.log('Context files:', files);
+    // Can filter or modify files
+    return files.filter(f => !f.endsWith('.test.js'));
+  }
+);
+```
+
+## Parser Hooks (JavaScript)
+
+When you access a parser through `normalModuleFactory.hooks.parser`, you get access to numerous hooks for customizing code parsing.
+
+### Common Parser Hooks
+
+#### `program`
+
+```typescript
+SyncBailHook<[Program, Comment[]]>
+```
+
+Called when parsing starts.
+
+```javascript
+parser.hooks.program.tap('MyPlugin', (ast, comments) => {
+  console.log('Parsing program');
+});
+```
+
+#### `statement`
+
+```typescript
+SyncBailHook<[Statement]>
+```
+
+Called for each statement.
+
+```javascript
+parser.hooks.statement.tap('MyPlugin', (statement) => {
+  if (statement.type === 'ImportDeclaration') {
+    console.log('Found import');
+  }
+});
+```
+
+#### `expression`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Called when an expression is encountered.
+
+```javascript
+parser.hooks.expression.for('MY_GLOBAL').tap('MyPlugin', (expr) => {
+  // Replace MY_GLOBAL with a constant
+  const dep = new ConstDependency('"my value"', expr.range);
+  parser.state.module.addDependency(dep);
+  return true;
+});
+```
+
+**Example: ProvidePlugin** (lib/ProvidePlugin.js:75):
+
+```javascript
+parser.hooks.expression.for('$').tap('ProvidePlugin', (expr) => {
+  const dep = new ProvidedDependency(
+    'jquery',
+    'jquery',
+    [],
+    expr.range
+  );
+  parser.state.module.addDependency(dep);
+  return true;
+});
+```
+
+#### `call`
+
+```typescript
+HookMap<SyncBailHook<[CallExpression]>>
+```
+
+Called when a function call is encountered.
+
+```javascript
+parser.hooks.call.for('require').tap('MyPlugin', (expr) => {
+  console.log('Found require call');
+});
+```
+
+#### `import`
+
+```typescript
+SyncBailHook<[Statement, ImportSource]>
+```
+
+Called for import statements.
+
+```javascript
+parser.hooks.import.tap('MyPlugin', (statement, source) => {
+  console.log('Importing:', source);
+});
+```
+
+## Complete Example: Custom Module Type
+
+```javascript
+class CustomModulePlugin {
+  apply(compiler) {
+    compiler.hooks.compilation.tap(
+      'CustomModulePlugin',
+      (compilation, { normalModuleFactory }) => {
+        // Register custom module type
+        normalModuleFactory.hooks.createParser
+          .for('custom/type')
+          .tap('CustomModulePlugin', (parserOptions) => {
+            return new CustomParser(parserOptions);
+          });
+
+        normalModuleFactory.hooks.createGenerator
+          .for('custom/type')
+          .tap('CustomModulePlugin', (generatorOptions) => {
+            return new CustomGenerator(generatorOptions);
+          });
+
+        // Customize parsing for JavaScript
+        normalModuleFactory.hooks.parser
+          .for('javascript/auto')
+          .tap('CustomModulePlugin', (parser) => {
+            // Hook into require calls
+            parser.hooks.call.for('customRequire').tap(
+              'CustomModulePlugin',
+              (expr) => {
+                if (expr.arguments.length !== 1) return;
+                
+                const param = parser.evaluateExpression(expr.arguments[0]);
+                if (!param.isString()) return;
+                
+                // Add custom dependency
+                const dep = new CustomDependency(
+                  param.string,
+                  expr.range
+                );
+                parser.state.module.addDependency(dep);
+                return true;
+              }
+            );
+          });
+      }
+    );
+  }
+}
+```
+
+## Complete Example: Provide Global Variables
+
+```javascript
+class ProvideGlobalsPlugin {
+  constructor(definitions) {
+    this.definitions = definitions;
+  }
+
+  apply(compiler) {
+    compiler.hooks.compilation.tap(
+      'ProvideGlobalsPlugin',
+      (compilation, { normalModuleFactory }) => {
+        const handler = (parser) => {
+          for (const [name, modulePath] of Object.entries(this.definitions)) {
+            // Hook into identifier expressions
+            parser.hooks.expression.for(name).tap(
+              'ProvideGlobalsPlugin',
+              (expr) => {
+                const dep = new ProvidedDependency(
+                  modulePath,
+                  name,
+                  [],
+                  expr.range
+                );
+                dep.loc = expr.loc;
+                parser.state.module.addDependency(dep);
+                return true;
+              }
+            );
+          }
+        };
+
+        normalModuleFactory.hooks.parser
+          .for('javascript/auto')
+          .tap('ProvideGlobalsPlugin', handler);
+        normalModuleFactory.hooks.parser
+          .for('javascript/dynamic')
+          .tap('ProvideGlobalsPlugin', handler);
+        normalModuleFactory.hooks.parser
+          .for('javascript/esm')
+          .tap('ProvideGlobalsPlugin', handler);
+      }
+    );
+  }
+}
+
+// Usage
+new ProvideGlobalsPlugin({
+  $: 'jquery',
+  _: 'lodash'
+});
+```
+
+## Module Types
+
+Common module types you can hook into:
+
+- `javascript/auto` - Auto-detect ESM or CommonJS
+- `javascript/dynamic` - CommonJS
+- `javascript/esm` - ES Modules
+- `json` - JSON files
+- `asset` - Asset modules
+- `asset/source` - Source assets
+- `asset/resource` - Resource assets
+- `asset/inline` - Inline assets
+- `webassembly/async` - Async WebAssembly
+- `webassembly/sync` - Sync WebAssembly
+- `css` - CSS files
+- `css/module` - CSS Modules
+
+## ResolveData Structure
+
+The `ResolveData` object contains:
+
+```typescript
+interface ResolveData {
+  contextInfo: {
+    issuer: string;         // Path of the importing module
+    compiler: string;       // Compiler name
+  };
+  context: string;          // Directory context
+  request: string;          // The import request
+  dependencies: Dependency[];
+  createData: {
+    resource: string;       // Resolved file path
+    loaders: LoaderItem[];  // Loaders to apply
+    type: string;           // Module type
+    parser: Parser;         // Parser instance
+    generator: Generator;   // Generator instance
+  };
+}
+```
+
+## See Also
+
+- [Parser Hooks](./parser) - Detailed parser hooks reference
+- [Compilation Hooks](./compilation-hooks) - Compilation lifecycle
+- [Compiler Hooks](./compiler-hooks) - Compiler lifecycle

@@ -1,0 +1,480 @@
+---
+title: css-loader
+description: Interpret @import and url() like import/require() and resolve them
+---
+
+## Overview
+
+`css-loader` interprets `@import` and `url()` statements in CSS files like `import/require()` and resolves them. It processes CSS files and returns CSS code that can be used by other loaders.
+
+<Note>
+  This is an external loader maintained by the webpack team. Install it from npm to use in your webpack configuration.
+</Note>
+
+## Installation
+
+<CodeGroup>
+```bash npm
+npm install -D css-loader
+```
+
+```bash yarn
+yarn add -D css-loader
+```
+
+```bash pnpm
+pnpm add -D css-loader
+```
+</CodeGroup>
+
+## Basic Usage
+
+<Warning>
+  `css-loader` only interprets CSS. To inject CSS into the DOM, use it with `style-loader` or extract it with `MiniCssExtractPlugin`.
+</Warning>
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+};
+```
+
+```javascript app.js
+import './styles.css';
+```
+
+```css styles.css
+.header {
+  background: url('./images/bg.png');
+  color: #333;
+}
+
+@import './components/button.css';
+```
+</CodeGroup>
+
+## CSS Modules
+
+Enable CSS Modules for locally scoped styles:
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.module\.css$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript component.js
+import styles from './component.module.css';
+
+const element = document.createElement('div');
+element.className = styles.header;
+```
+
+```css component.module.css
+.header {
+  background: blue;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+}
+```
+</CodeGroup>
+
+<Note>
+  CSS Modules generate unique class names to prevent global scope pollution. Class names like `.header` become `.component_header__3xY2z`.
+</Note>
+
+## Options
+
+### `modules`
+
+Enable/disable CSS Modules:
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    modules: true,
+    // or with custom options
+    modules: {
+      localIdentName: '[path][name]__[local]--[hash:base64:5]'
+    }
+  }
+}
+```
+
+### `importLoaders`
+
+Specify how many loaders before `css-loader` should be applied to `@import` resources:
+
+```javascript
+{
+  test: /\.css$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1
+      }
+    },
+    'postcss-loader'
+  ]
+}
+```
+
+<Note>
+  `importLoaders: 1` means PostCSS will process imported CSS files. Without this, imports bypass PostCSS.
+</Note>
+
+### `sourceMap`
+
+Enable source maps:
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    sourceMap: true
+  }
+}
+```
+
+### `url`
+
+Enable/disable `url()` resolution:
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    url: true,
+    // or filter specific URLs
+    url: (url, resourcePath) => {
+      // Don't handle absolute URLs
+      if (url.startsWith('/')) {
+        return false;
+      }
+      return true;
+    }
+  }
+}
+```
+
+### `import`
+
+Enable/disable `@import` resolution:
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    import: true,
+    // or filter specific imports
+    import: (parsedImport, resourcePath) => {
+      // Don't handle imports from node_modules
+      if (parsedImport.url.includes('node_modules')) {
+        return false;
+      }
+      return true;
+    }
+  }
+}
+```
+
+## Advanced Configuration
+
+### Custom Module Class Names
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    modules: {
+      localIdentName: '[local]--[hash:base64:5]',
+      localIdentContext: path.resolve(__dirname, 'src'),
+      exportLocalsConvention: 'camelCase'
+    }
+  }
+}
+```
+
+### Named Exports
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    modules: {
+      namedExport: true,
+      exportLocalsConvention: 'camelCaseOnly'
+    }
+  }
+}
+```
+
+```javascript
+import { headerTitle, mainContent } from './styles.module.css';
+```
+
+### Auto-Enable CSS Modules
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true // Enable for .module.css files
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+## Common Patterns
+
+### With PostCSS
+
+```javascript
+{
+  test: /\.css$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1
+      }
+    },
+    'postcss-loader'
+  ]
+}
+```
+
+### With Sass
+
+```javascript
+{
+  test: /\.scss$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 2
+      }
+    },
+    'postcss-loader',
+    'sass-loader'
+  ]
+}
+```
+
+### Extract CSS to Files
+
+```javascript
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })
+  ]
+};
+```
+
+## Production Optimization
+
+```javascript
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+module.exports = {
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              sourceMap: false
+            }
+          },
+          'postcss-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css'
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin()
+    ]
+  }
+};
+```
+
+## Common Issues
+
+### Issue: Styles Not Applied
+
+**Solution:** Ensure `style-loader` or `MiniCssExtractPlugin.loader` is included:
+
+```javascript
+use: ['style-loader', 'css-loader'] // Correct
+use: ['css-loader'] // Wrong - CSS not injected
+```
+
+### Issue: @import Not Processed
+
+**Solution:** Set `importLoaders` correctly:
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    importLoaders: 1 // Process imports with postcss-loader
+  }
+}
+```
+
+### Issue: Images Not Loading
+
+**Solution:** Ensure webpack handles image files:
+
+```javascript
+{
+  test: /\.(png|jpg|gif|svg)$/,
+  type: 'asset/resource'
+}
+```
+
+### Issue: CSS Modules Not Working
+
+**Solution:** Enable modules option:
+
+```javascript
+{
+  loader: 'css-loader',
+  options: {
+    modules: true // or { auto: true }
+  }
+}
+```
+
+## Development vs Production
+
+<CodeGroup>
+```javascript Development
+module.exports = {
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript Production
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin()
+  ]
+};
+```
+</CodeGroup>
+
+## Resources
+
+- [css-loader GitHub](https://github.com/webpack-contrib/css-loader)
+- [CSS Modules Specification](https://github.com/css-modules/css-modules)
+- [PostCSS](https://postcss.org/)
+- [MiniCssExtractPlugin](/plugins/mini-css-extract-plugin)

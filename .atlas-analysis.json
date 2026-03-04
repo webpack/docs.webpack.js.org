@@ -1,23 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "name": "webpack",
+  "projectType": "framework",
+  "projectName": "webpack",
+  "projectDescription": "A powerful module bundler for JavaScript applications with extensive plugin and loader systems.",
   "theme": "palm",
-  "colors": {
-    "primary": "#8DD6F9",
-    "light": "#8DD6F9",
-    "dark": "#1C78C0"
-  },
-  "navbar": {
-    "primary": {
-      "type": "github",
-      "href": "https://github.com/webpack/webpack"
-    }
-  },
-  "footer": {
-    "socials": {
-      "github": "https://github.com/webpack/webpack"
-    }
-  },
+  "primaryColor": "#8DD6F9",
+  "lightColor": "#8DD6F9",
+  "darkColor": "#1C78C0",
   "navigation": {
     "tabs": [
       {
@@ -146,8 +134,6 @@
               "plugins/module-federation-plugin",
               "plugins/provide-plugin",
               "plugins/banner-plugin",
-              "plugins/clean-plugin",
-              "plugins/dotenv-plugin",
               "plugins/ignore-plugin",
               "plugins/environment-plugin",
               "plugins/normal-module-replacement-plugin",
@@ -187,5 +173,58 @@
         ]
       }
     ]
-  }
+  },
+  "keyFeatures": [
+    "Code Splitting - Split code into bundles loaded on demand",
+    "Loaders - Transform files during bundling (TypeScript, CSS, images, etc.)",
+    "Plugins - Extensive plugin system for customization",
+    "Hot Module Replacement - Update modules in browser without full reload",
+    "Tree Shaking - Remove unused code for smaller bundles",
+    "Module Federation - Share code between separate builds at runtime",
+    "Optimization - Built-in code splitting, minification, and scope hoisting",
+    "Asset Management - Handle images, fonts, and other assets",
+    "Development Server - Built-in dev server with live reloading",
+    "Multiple Module Formats - Support for ES modules, CommonJS, AMD"
+  ],
+  "publicApiSurface": [
+    "webpack(config, callback)",
+    "webpack.Compiler",
+    "webpack.Compilation",
+    "webpack.Stats",
+    "webpack.MultiCompiler",
+    "webpack.DefinePlugin",
+    "webpack.HotModuleReplacementPlugin",
+    "webpack.ProvidePlugin",
+    "webpack.BannerPlugin",
+    "webpack.IgnorePlugin",
+    "webpack.EnvironmentPlugin",
+    "webpack.NormalModuleReplacementPlugin",
+    "webpack.ContextReplacementPlugin",
+    "webpack.DllPlugin",
+    "webpack.DllReferencePlugin",
+    "webpack.ProgressPlugin",
+    "webpack.container.ModuleFederationPlugin",
+    "webpack.optimize.ModuleConcatenationPlugin",
+    "webpack.optimize.LimitChunkCountPlugin",
+    "webpack.optimize.MinChunkSizePlugin",
+    "module.hot.accept()",
+    "module.hot.decline()",
+    "module.hot.dispose()",
+    "require.context()",
+    "require.ensure()",
+    "import()",
+    "__webpack_public_path__",
+    "__webpack_require__",
+    "__webpack_chunk_load__",
+    "__webpack_modules__",
+    "__webpack_module_cache__",
+    "CLI: webpack [options]",
+    "CLI: webpack serve",
+    "CLI: webpack build",
+    "CLI: webpack watch",
+    "CLI: webpack init",
+    "LoaderContext API",
+    "Compiler.hooks.*",
+    "Compilation.hooks.*"
+  ]
 }
