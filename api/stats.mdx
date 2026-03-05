@@ -1,0 +1,498 @@
+---
+title: "Stats Object"
+description: "webpack Stats object API - compilation statistics and output information"
+---
+
+The Stats object provides detailed information about the compilation process, including modules, chunks, assets, errors, and warnings.
+
+## Obtaining Stats
+
+The Stats object is passed to the callback function after compilation:
+
+```javascript
+const webpack = require('webpack');
+
+webpack(config, (err, stats) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  
+  // Use stats object here
+  console.log(stats.toString({
+    colors: true
+  }));
+});
+```
+
+Or via compiler hooks:
+
+```javascript
+compiler.hooks.done.tap('MyPlugin', (stats) => {
+  console.log('Compilation hash:', stats.hash);
+});
+```
+
+## Properties
+
+### compilation
+
+Reference to the Compilation instance.
+
+```javascript
+compiler.hooks.done.tap('MyPlugin', (stats) => {
+  const compilation = stats.compilation;
+  console.log('Modules:', compilation.modules.size);
+  console.log('Chunks:', compilation.chunks.size);
+});
+```
+
+### hash
+
+The compilation hash.
+
+```javascript
+console.log('Build hash:', stats.hash);
+```
+
+### startTime
+
+Timestamp when compilation started.
+
+```javascript
+console.log('Started at:', new Date(stats.startTime));
+```
+
+### endTime
+
+Timestamp when compilation ended.
+
+```javascript
+const duration = stats.endTime - stats.startTime;
+console.log('Build duration:', duration, 'ms');
+```
+
+## Methods
+
+### hasErrors()
+
+Returns true if the compilation had errors.
+
+```typescript
+stats.hasErrors(): boolean
+```
+
+<ResponseField name="return" type="boolean">
+  True if there were compilation errors, false otherwise.
+</ResponseField>
+
+**Example:**
+
+```javascript
+webpack(config, (err, stats) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  
+  if (stats.hasErrors()) {
+    console.error('Build failed with errors');
+    const info = stats.toJson();
+    console.error(info.errors);
+    process.exit(1);
+  }
+});
+```
+
+### hasWarnings()
+
+Returns true if the compilation had warnings.
+
+```typescript
+stats.hasWarnings(): boolean
+```
+
+<ResponseField name="return" type="boolean">
+  True if there were compilation warnings, false otherwise.
+</ResponseField>
+
+**Example:**
+
+```javascript
+if (stats.hasWarnings()) {
+  console.warn('Build completed with warnings');
+  const info = stats.toJson();
+  console.warn(info.warnings);
+}
+```
+
+### toJson()
+
+Returns compilation information as a JSON object.
+
+```typescript
+stats.toJson(options?: StatsOptions): StatsCompilation
+```
+
+<ParamField path="options" type="StatsOptions">
+  Options to control what information is included. Can be a string preset or an options object.
+  
+  **Common presets:**
+  - `'normal'` - Standard output (default)
+  - `'minimal'` - Only errors and warnings
+  - `'errors-only'` - Only errors
+  - `'errors-warnings'` - Only errors and warnings
+  - `'verbose'` - All information
+  - `'none'` - No information
+</ParamField>
+
+<ResponseField name="return" type="StatsCompilation">
+  Object containing compilation statistics with properties like:
+  - `hash` (string) - Compilation hash
+  - `version` (string) - webpack version
+  - `time` (number) - Compilation time in ms
+  - `builtAt` (number) - Build timestamp
+  - `publicPath` (string) - Output public path
+  - `outputPath` (string) - Output file system path
+  - `assets` (Asset[]) - Array of asset objects
+  - `modules` (Module[]) - Array of module objects
+  - `chunks` (Chunk[]) - Array of chunk objects
+  - `entrypoints` (Object) - Entry point information
+  - `errors` (Error[]) - Array of errors
+  - `warnings` (Warning[]) - Array of warnings
+</ResponseField>
+
+**Example:**
+
+```javascript
+const statsJson = stats.toJson({
+  all: false,
+  assets: true,
+  errors: true,
+  warnings: true,
+  timings: true
+});
+
+console.log('Assets:', statsJson.assets.map(a => a.name));
+console.log('Time:', statsJson.time, 'ms');
+
+if (statsJson.errors.length > 0) {
+  console.error('Errors:', statsJson.errors);
+}
+```
+
+### toString()
+
+Returns compilation information as a formatted string.
+
+```typescript
+stats.toString(options?: StatsOptions): string
+```
+
+<ParamField path="options" type="StatsOptions">
+  Options to control output format. Can be a string preset or an options object.
+</ParamField>
+
+<ResponseField name="return" type="string">
+  Formatted string representation of the stats.
+</ResponseField>
+
+**Example:**
+
+```javascript
+const output = stats.toString({
+  colors: true,
+  modules: false,
+  children: false,
+  chunks: false,
+  chunkModules: false
+});
+
+console.log(output);
+```
+
+## Stats Options
+
+Detailed configuration for controlling stats output.
+
+### Common Options
+
+```javascript
+const statsOptions = {
+  // Basic options
+  all: false,              // Fallback value for stats options (default: undefined)
+  colors: true,            // Enable colored output
+  
+  // Assets
+  assets: true,            // Show assets information
+  assetsSort: 'size',      // Sort assets by: 'id', 'name', 'size', 'chunks'
+  
+  // Modules
+  modules: true,           // Show modules information
+  modulesSort: 'size',     // Sort modules
+  maxModules: 15,          // Maximum number of modules to show
+  
+  // Chunks
+  chunks: true,            // Show chunks information
+  chunkModules: false,     // Show modules contained in chunks
+  chunkOrigins: false,     // Show chunk origins
+  
+  // Depth
+  depth: false,            // Show module depth in dependency graph
+  
+  // Entry points
+  entrypoints: true,       // Show entry point information
+  
+  // Errors and warnings
+  errors: true,            // Show errors
+  errorDetails: true,      // Show details for errors
+  warnings: true,          // Show warnings
+  
+  // Timing
+  timings: true,           // Show timing information
+  builtAt: true,           // Show build timestamp
+  
+  // Other
+  hash: true,              // Show compilation hash
+  version: true,           // Show webpack version
+  publicPath: true,        // Show public path
+  performance: true,       // Show performance hints
+  reasons: false,          // Show reasons why modules are included
+  source: false,           // Show source code of modules
+  children: false          // Show stats for child compilations
+};
+
+const output = stats.toString(statsOptions);
+```
+
+### Preset Configurations
+
+```javascript
+// Minimal output - only errors and warnings
+stats.toString('minimal');
+
+// Errors only
+stats.toString('errors-only');
+
+// Errors and warnings
+stats.toString('errors-warnings');
+
+// Normal output (default)
+stats.toString('normal');
+
+// Verbose output - everything
+stats.toString('verbose');
+
+// No output
+stats.toString('none');
+```
+
+## Working with Stats Data
+
+### Analyzing Assets
+
+```javascript
+webpack(config, (err, stats) => {
+  if (err) return console.error(err);
+  
+  const json = stats.toJson();
+  
+  console.log('Total assets:', json.assets.length);
+  
+  // Find large assets
+  const largeAssets = json.assets.filter(asset => asset.size > 100000);
+  console.log('Large assets (>100KB):', largeAssets);
+  
+  // Group by type
+  const assetsByType = {};
+  json.assets.forEach(asset => {
+    const ext = asset.name.split('.').pop();
+    assetsByType[ext] = assetsByType[ext] || [];
+    assetsByType[ext].push(asset);
+  });
+  
+  console.log('Assets by type:', Object.keys(assetsByType));
+});
+```
+
+### Analyzing Modules
+
+```javascript
+webpack(config, (err, stats) => {
+  if (err) return console.error(err);
+  
+  const json = stats.toJson({ modules: true });
+  
+  console.log('Total modules:', json.modules.length);
+  
+  // Find modules from node_modules
+  const nodeModules = json.modules.filter(module => 
+    module.identifier.includes('node_modules')
+  );
+  console.log('Modules from node_modules:', nodeModules.length);
+  
+  // Calculate total size
+  const totalSize = json.modules.reduce((sum, mod) => sum + mod.size, 0);
+  console.log('Total modules size:', totalSize, 'bytes');
+});
+```
+
+### Analyzing Chunks
+
+```javascript
+webpack(config, (err, stats) => {
+  if (err) return console.error(err);
+  
+  const json = stats.toJson({ chunks: true });
+  
+  console.log('Total chunks:', json.chunks.length);
+  
+  json.chunks.forEach(chunk => {
+    console.log(`Chunk ${chunk.id}:`);
+    console.log('  Names:', chunk.names);
+    console.log('  Size:', chunk.size);
+    console.log('  Files:', chunk.files);
+    console.log('  Entry:', chunk.entry);
+    console.log('  Initial:', chunk.initial);
+  });
+});
+```
+
+### Error Handling
+
+```javascript
+webpack(config, (err, stats) => {
+  // Fatal webpack errors (wrong configuration, etc)
+  if (err) {
+    console.error('Fatal error:', err.message);
+    if (err.details) {
+      console.error('Details:', err.details);
+    }
+    return;
+  }
+  
+  const json = stats.toJson();
+  
+  // Compilation errors (missing modules, syntax errors, etc)
+  if (stats.hasErrors()) {
+    console.error('Compilation errors:');
+    json.errors.forEach(error => {
+      console.error(error.message);
+      if (error.moduleName) {
+        console.error('  in module:', error.moduleName);
+      }
+      if (error.loc) {
+        console.error('  at location:', error.loc);
+      }
+    });
+  }
+  
+  // Compilation warnings
+  if (stats.hasWarnings()) {
+    console.warn('Compilation warnings:');
+    json.warnings.forEach(warning => {
+      console.warn(warning.message);
+    });
+  }
+});
+```
+
+## Complete Example: Build Reporter
+
+```javascript
+const webpack = require('webpack');
+const config = require('./webpack.config.js');
+
+webpack(config, (err, stats) => {
+  if (err) {
+    console.error('\n❌ Fatal error:');
+    console.error(err.message);
+    process.exit(1);
+  }
+  
+  const json = stats.toJson({
+    all: false,
+    assets: true,
+    modules: true,
+    chunks: true,
+    errors: true,
+    warnings: true,
+    timings: true
+  });
+  
+  // Build info
+  console.log('\n📦 Build Information:');
+  console.log('  Hash:', json.hash);
+  console.log('  Time:', json.time, 'ms');
+  console.log('  Built:', new Date(json.builtAt).toLocaleString());
+  
+  // Assets summary
+  console.log('\n📄 Assets:');
+  json.assets.forEach(asset => {
+    const sizeKB = (asset.size / 1024).toFixed(2);
+    console.log(`  ${asset.name}: ${sizeKB} KB`);
+  });
+  
+  // Chunks summary
+  console.log('\n📦 Chunks:', json.chunks.length);
+  json.chunks.forEach(chunk => {
+    const sizeKB = (chunk.size / 1024).toFixed(2);
+    console.log(`  ${chunk.names.join(', ') || chunk.id}: ${sizeKB} KB`);
+  });
+  
+  // Modules summary
+  console.log('\n📋 Modules:', json.modules.length);
+  const totalSize = json.modules.reduce((sum, mod) => sum + mod.size, 0);
+  console.log('  Total size:', (totalSize / 1024).toFixed(2), 'KB');
+  
+  // Errors
+  if (stats.hasErrors()) {
+    console.log('\n❌ Errors:', json.errors.length);
+    json.errors.forEach((error, i) => {
+      console.log(`\n  Error ${i + 1}:`);
+      console.log('  ', error.message);
+    });
+    process.exit(1);
+  }
+  
+  // Warnings
+  if (stats.hasWarnings()) {
+    console.log('\n⚠️  Warnings:', json.warnings.length);
+    json.warnings.forEach((warning, i) => {
+      console.log(`\n  Warning ${i + 1}:`);
+      console.log('  ', warning.message);
+    });
+  }
+  
+  console.log('\n✅ Build completed successfully!\n');
+});
+```
+
+## TypeScript Types
+
+```typescript
+import { Stats, StatsCompilation } from 'webpack';
+
+const handleStats = (stats: Stats): void => {
+  const json: StatsCompilation = stats.toJson({
+    all: false,
+    assets: true,
+    errors: true,
+    warnings: true
+  });
+  
+  if (stats.hasErrors()) {
+    console.error('Build failed');
+    return;
+  }
+  
+  console.log('Hash:', json.hash);
+  console.log('Time:', json.time);
+};
+```
+
+## See Also
+
+- [Compiler API](/api/compiler) - Compiler instance methods
+- [Compilation API](/api/compilation) - Compilation instance API
+- [Stats Configuration](https://webpack.js.org/configuration/stats/) - Full stats options reference

@@ -1,0 +1,498 @@
+---
+title: Node
+description: Configure Node.js polyfills and mocks for browser bundles
+---
+
+The `node` option configures whether to polyfill or mock certain Node.js globals and modules. This is useful when bundling code that uses Node.js APIs for the browser.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+module.exports = {
+  node: {
+    __dirname: false,
+    __filename: false,
+    global: true
+  }
+};
+```
+
+## Node Options
+
+<ParamField path="node" type="object | false">
+  Configure Node.js polyfills.
+  
+  ```javascript
+  node: {
+    __dirname: true,
+    __filename: true,
+    global: true
+  }
+  // or disable all polyfills
+  node: false
+  ```
+</ParamField>
+
+## Available Options
+
+### __dirname
+
+<ParamField path="node.__dirname" type="boolean | 'warn-mock' | 'mock' | 'eval-only'">
+  Configure `__dirname` variable behavior.
+  
+  ```javascript
+  node: {
+    __dirname: false // Use actual __dirname value
+  }
+  ```
+  
+  - `true`: Provide the directory name of the module file
+  - `false`: Use Node.js `__dirname` value (path to the webpack output)
+  - `'mock'`: Provide `'/'` as value
+  - `'warn-mock'`: Provide `'/'` with a warning
+  - `'eval-only'`: Only available in eval-based devtools
+  
+  Default: `false` (webpack 5)
+</ParamField>
+
+### __filename
+
+<ParamField path="node.__filename" type="boolean | 'warn-mock' | 'mock' | 'eval-only'">
+  Configure `__filename` variable behavior.
+  
+  ```javascript
+  node: {
+    __filename: false // Use actual __filename value
+  }
+  ```
+  
+  - `true`: Provide the filename of the module file
+  - `false`: Use Node.js `__filename` value
+  - `'mock'`: Provide `'/index.js'` as value
+  - `'warn-mock'`: Provide `'/index.js'` with a warning
+  - `'eval-only'`: Only available in eval-based devtools
+  
+  Default: `false` (webpack 5)
+</ParamField>
+
+### global
+
+<ParamField path="node.global" type="boolean | 'warn'">
+  Configure `global` variable behavior.
+  
+  ```javascript
+  node: {
+    global: true // Provide polyfill
+  }
+  ```
+  
+  - `true`: Provide a polyfill
+  - `false`: Do not provide a polyfill
+  - `'warn'`: Show a warning when `global` is used
+  
+  Default: `false` (webpack 5)
+</ParamField>
+
+## Webpack 5 Changes
+
+Webpack 5 stopped providing Node.js polyfills by default. You need to:
+
+1. **Configure node option** to control built-in globals
+2. **Use resolve.fallback** for Node.js core modules
+3. **Install polyfill packages** manually
+
+## Migration from Webpack 4
+
+### Webpack 4 (Automatic Polyfills)
+
+```javascript
+// Webpack 4 - automatic polyfills
+module.exports = {
+  // No configuration needed
+};
+```
+
+### Webpack 5 (Manual Configuration)
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  node: {
+    global: true,
+    __filename: true,
+    __dirname: true
+  },
+  resolve: {
+    fallback: {
+      "crypto": require.resolve("crypto-browserify"),
+      "stream": require.resolve("stream-browserify"),
+      "buffer": require.resolve("buffer/"),
+      "util": require.resolve("util/"),
+      "assert": require.resolve("assert/"),
+      "http": require.resolve("stream-http"),
+      "https": require.resolve("https-browserify"),
+      "os": require.resolve("os-browserify/browser"),
+      "url": require.resolve("url/"),
+      "path": false,
+      "fs": false
+    }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer']
+    })
+  ]
+};
+```
+
+Install polyfills:
+
+```bash
+npm install --save-dev \
+  crypto-browserify \
+  stream-browserify \
+  buffer \
+  util \
+  assert \
+  stream-http \
+  https-browserify \
+  os-browserify \
+  url \
+  process
+```
+
+## Common Configurations
+
+### Browser Application (No Polyfills)
+
+```javascript webpack.config.js
+module.exports = {
+  target: 'web',
+  node: false // Disable all polyfills
+};
+```
+
+### Browser with Node.js Globals
+
+```javascript webpack.config.js
+const webpack = require('webpack');
+
+module.exports = {
+  target: 'web',
+  node: {
+    global: true,
+    __filename: true,
+    __dirname: true
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer']
+    })
+  ]
+};
+```
+
+### Electron Application
+
+```javascript webpack.config.js
+module.exports = {
+  target: 'electron-renderer',
+  node: {
+    __dirname: false,
+    __filename: false
+  }
+};
+```
+
+### Node.js Application
+
+```javascript webpack.config.js
+module.exports = {
+  target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false
+  }
+};
+```
+
+## Polyfill Packages
+
+### Core Modules
+
+```bash
+# Essential polyfills
+npm install --save-dev \
+  process \
+  buffer
+
+# Crypto and streams
+npm install --save-dev \
+  crypto-browserify \
+  stream-browserify \
+  browserify-zlib
+
+# Network
+npm install --save-dev \
+  stream-http \
+  https-browserify
+
+# Utilities
+npm install --save-dev \
+  util \
+  assert \
+  url \
+  path-browserify \
+  os-browserify
+
+# Events
+npm install --save-dev \
+  events
+```
+
+### Configuration with Polyfills
+
+```javascript webpack.config.js
+const webpack = require('webpack');
+
+module.exports = {
+  resolve: {
+    fallback: {
+      // Full polyfills
+      "assert": require.resolve("assert/"),
+      "buffer": require.resolve("buffer/"),
+      "console": require.resolve("console-browserify"),
+      "constants": require.resolve("constants-browserify"),
+      "crypto": require.resolve("crypto-browserify"),
+      "domain": require.resolve("domain-browser"),
+      "events": require.resolve("events/"),
+      "http": require.resolve("stream-http"),
+      "https": require.resolve("https-browserify"),
+      "os": require.resolve("os-browserify/browser"),
+      "path": require.resolve("path-browserify"),
+      "punycode": require.resolve("punycode/"),
+      "querystring": require.resolve("querystring-es3"),
+      "stream": require.resolve("stream-browserify"),
+      "string_decoder": require.resolve("string_decoder/"),
+      "sys": require.resolve("util/"),
+      "timers": require.resolve("timers-browserify"),
+      "tty": require.resolve("tty-browserify"),
+      "url": require.resolve("url/"),
+      "util": require.resolve("util/"),
+      "vm": require.resolve("vm-browserify"),
+      "zlib": require.resolve("browserify-zlib"),
+      
+      // Disable (not available in browser)
+      "fs": false,
+      "net": false,
+      "tls": false,
+      "child_process": false
+    }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer']
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_DEBUG': JSON.stringify(false)
+    })
+  ]
+};
+```
+
+## ProvidePlugin for Globals
+
+```javascript webpack.config.js
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ProvidePlugin({
+      // Make process available
+      process: 'process/browser',
+      
+      // Make Buffer available
+      Buffer: ['buffer', 'Buffer'],
+      
+      // Make global available
+      global: require.resolve('./global-shim.js')
+    })
+  ]
+};
+```
+
+Create `global-shim.js`:
+
+```javascript global-shim.js
+module.exports = (function() {
+  return this;
+})() || Function('return this')();
+```
+
+## Handling Specific Modules
+
+### Buffer Usage
+
+```javascript
+// Install
+npm install --save buffer
+
+// Configure
+module.exports = {
+  resolve: {
+    fallback: {
+      "buffer": require.resolve("buffer/")
+    }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer']
+    })
+  ]
+};
+```
+
+### Process Usage
+
+```javascript
+// Install
+npm install --save process
+
+// Configure
+module.exports = {
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    })
+  ]
+};
+```
+
+### Crypto Usage
+
+```javascript
+// Install
+npm install --save crypto-browserify
+
+// Configure
+module.exports = {
+  resolve: {
+    fallback: {
+      "crypto": require.resolve("crypto-browserify")
+    }
+  }
+};
+```
+
+## Disable Specific Modules
+
+When a module is not available in browser:
+
+```javascript webpack.config.js
+module.exports = {
+  resolve: {
+    fallback: {
+      "fs": false,        // File system
+      "path": false,      // Path
+      "net": false,       // Network
+      "tls": false,       // TLS
+      "child_process": false // Child processes
+    }
+  }
+};
+```
+
+## Error Messages
+
+### Module not found: Error: Can't resolve 'crypto'
+
+```javascript
+resolve: {
+  fallback: {
+    "crypto": require.resolve("crypto-browserify")
+  }
+}
+```
+
+### ReferenceError: Buffer is not defined
+
+```javascript
+const webpack = require('webpack');
+
+plugins: [
+  new webpack.ProvidePlugin({
+    Buffer: ['buffer', 'Buffer']
+  })
+]
+```
+
+### ReferenceError: process is not defined
+
+```javascript
+const webpack = require('webpack');
+
+plugins: [
+  new webpack.ProvidePlugin({
+    process: 'process/browser'
+  })
+]
+```
+
+## Best Practices
+
+### 1. Only Polyfill What You Need
+
+```javascript
+// Bad - polyfill everything
+resolve: {
+  fallback: { /* 20+ polyfills */ }
+}
+
+// Good - only what's used
+resolve: {
+  fallback: {
+    "crypto": require.resolve("crypto-browserify"),
+    "stream": require.resolve("stream-browserify")
+  }
+}
+```
+
+### 2. Consider Bundle Size
+
+Some polyfills are large. Consider alternatives:
+
+```javascript
+// crypto-browserify is large (~300KB)
+// Consider server-side crypto or Web Crypto API instead
+```
+
+### 3. Use Empty Modules for Unused Code
+
+```javascript
+resolve: {
+  fallback: {
+    "fs": false // Empty module instead of error
+  }
+}
+```
+
+### 4. Document Your Polyfills
+
+```javascript
+// webpack.config.js
+module.exports = {
+  resolve: {
+    fallback: {
+      // Required by: library-name
+      "crypto": require.resolve("crypto-browserify"),
+      
+      // Required by: another-library
+      "stream": require.resolve("stream-browserify")
+    }
+  }
+};
+```

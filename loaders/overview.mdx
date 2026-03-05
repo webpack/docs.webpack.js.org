@@ -1,0 +1,162 @@
+---
+title: Loaders Overview
+description: Understanding webpack loaders and how to use them in your build configuration
+---
+
+## What are Loaders?
+
+Loaders are transformations that are applied to the source code of modules. They allow you to preprocess files as you import or load them. Loaders can transform files from different languages (like TypeScript) to JavaScript, or load inline images as data URLs.
+
+## How Loaders Work
+
+Loaders are activated by using `loadername!` prefixes in `require()` statements, or are automatically applied via regex from your webpack configuration.
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  }
+};
+```
+
+```javascript Inline Usage
+import styles from 'style-loader!css-loader!./styles.css';
+```
+</CodeGroup>
+
+## Loader Features
+
+- Loaders can be chained. Each loader in the chain applies transformations to the processed resource.
+- Loaders can be synchronous or asynchronous.
+- Loaders run in Node.js and can do everything that's possible there.
+- Loaders can emit additional arbitrary files.
+
+## Execution Order
+
+Loaders are evaluated/executed from right to left (or bottom to top):
+
+```javascript
+use: ['style-loader', 'css-loader', 'sass-loader']
+```
+
+Execution order:
+1. `sass-loader` - Compiles Sass to CSS
+2. `css-loader` - Interprets `@import` and `url()` like `import/require()`
+3. `style-loader` - Injects CSS into the DOM
+
+## Loader Configuration
+
+### Using `test`
+
+Match files using regular expressions:
+
+```javascript
+{
+  test: /\.css$/,
+  use: 'css-loader'
+}
+```
+
+### Using `include` and `exclude`
+
+Control which files are processed:
+
+```javascript
+{
+  test: /\.js$/,
+  include: /src/,
+  exclude: /node_modules/,
+  use: 'babel-loader'
+}
+```
+
+### Passing Options
+
+Pass options to loaders using the `options` property:
+
+```javascript
+{
+  test: /\.css$/,
+  use: [
+    { loader: 'style-loader' },
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true
+      }
+    }
+  ]
+}
+```
+
+## Common Loaders
+
+<CardGroup cols={2}>
+  <Card title="Babel Loader" icon="js" href="/loaders/babel-loader">
+    Transform modern JavaScript and JSX
+  </Card>
+  <Card title="TypeScript Loader" icon="code" href="/loaders/ts-loader">
+    Compile TypeScript to JavaScript
+  </Card>
+  <Card title="CSS Loader" icon="css3" href="/loaders/css-loader">
+    Load and transform CSS files
+  </Card>
+  <Card title="Sass Loader" icon="sass" href="/loaders/sass-loader">
+    Compile Sass/SCSS to CSS
+  </Card>
+</CardGroup>
+
+## Asset Loaders
+
+<Note>
+  `file-loader` and `url-loader` are deprecated in webpack 5. Use [Asset Modules](/guides/asset-modules) instead.
+</Note>
+
+- [file-loader](/loaders/file-loader) - Emit files to output directory (deprecated)
+- [url-loader](/loaders/url-loader) - Encode files as data URLs (deprecated)
+- [raw-loader](/loaders/raw-loader) - Import files as strings
+
+## Writing Custom Loaders
+
+Loaders are simple functions that take source content and return transformed content:
+
+```javascript
+module.exports = function(source) {
+  // Transform source
+  return modifiedSource;
+};
+```
+
+<Card title="Loader API" icon="book" href="/api/loaders">
+  Learn how to write custom loaders
+</Card>
+
+## Best Practices
+
+1. **Keep loaders simple** - Each loader should do one thing well
+2. **Chain loaders** - Combine multiple simple loaders instead of creating complex ones
+3. **Use options** - Make loaders configurable through options
+4. **Cache results** - Enable caching for better performance
+5. **Avoid side effects** - Loaders should be pure transformations
+
+## Performance Tips
+
+- Use `include` to limit the scope of loaders
+- Enable caching when available
+- Run loaders in parallel when possible
+- Use newer asset modules instead of deprecated loaders
+
+<Warning>
+  Avoid using too many loaders as they can significantly impact build performance. Only use loaders when necessary.
+</Warning>

@@ -1,0 +1,422 @@
+---
+title: SplitChunksPlugin
+description: Split your code into separate chunks for better caching and parallel loading
+---
+
+The `SplitChunksPlugin` allows you to split your code into separate chunks. This improves caching by separating vendor code from application code and enables parallel loading of resources.
+
+<Note>
+This plugin is included by default in webpack and enabled automatically when using `optimization.splitChunks`.
+</Note>
+
+## Basic Usage
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+};
+```
+
+## Default Configuration
+
+Webpack provides sensible defaults:
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+};
+```
+
+## Configuration Options
+
+<ParamField path="chunks" type="string | function" default="'async'">
+  Which chunks to optimize:
+  - `'all'` - All chunks
+  - `'async'` - Only async chunks
+  - `'initial'` - Only initial chunks
+  - Function for custom logic
+</ParamField>
+
+<ParamField path="minSize" type="number" default="20000">
+  Minimum size (in bytes) for a chunk to be generated
+</ParamField>
+
+<ParamField path="minChunks" type="number" default="1">
+  Minimum number of chunks that must share a module before splitting
+</ParamField>
+
+<ParamField path="maxAsyncRequests" type="number" default="30">
+  Maximum number of parallel requests for async chunks
+</ParamField>
+
+<ParamField path="maxInitialRequests" type="number" default="30">
+  Maximum number of parallel requests for initial chunks
+</ParamField>
+
+<ParamField path="cacheGroups" type="object">
+  Define custom cache groups for splitting logic
+</ParamField>
+
+## Examples
+
+### Separate Vendor Code
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+```
+
+### Split by Library
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        react: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: 'react',
+          chunks: 'all'
+        },
+        lodash: {
+          test: /[\\/]node_modules[\\/]lodash[\\/]/,
+          name: 'lodash',
+          chunks: 'all'
+        },
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'commons',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+```
+
+### Shared Modules
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        shared: {
+          name: 'shared',
+          minChunks: 2,
+          chunks: 'all',
+          priority: 10,
+          reuseExistingChunk: true,
+          enforce: true
+        }
+      }
+    }
+  }
+};
+```
+
+### Split All Chunks
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: false // Keep original chunk names
+    }
+  }
+};
+```
+
+### Custom Chunk Names
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // Get package name
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)(?:[\\/]|$)/
+            )[1];
+            return `npm.${packageName.replace('@', '')}`;
+          },
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+```
+
+### Size-Based Splitting
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 10000,
+      maxSize: 250000,
+      cacheGroups: {
+        default: false,
+        vendors: false,
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+          priority: 20
+        },
+        common: {
+          minChunks: 2,
+          priority: 10,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+};
+```
+
+## Cache Groups
+
+Cache groups define how modules are grouped into chunks:
+
+```javascript
+cacheGroups: {
+  myGroup: {
+    test: /[\\/]src[\\/]components[\\/]/, // Which modules
+    name: 'components',                     // Chunk name
+    chunks: 'all',                          // Which chunks
+    priority: 10,                           // Priority
+    reuseExistingChunk: true,              // Reuse existing chunks
+    enforce: true                           // Ignore size limits
+  }
+}
+```
+
+### Cache Group Options
+
+<ParamField path="test" type="RegExp | string | function">
+  Condition to match modules
+</ParamField>
+
+<ParamField path="name" type="string | function">
+  Name for the chunk
+</ParamField>
+
+<ParamField path="priority" type="number" default="0">
+  Priority when multiple cache groups match
+</ParamField>
+
+<ParamField path="reuseExistingChunk" type="boolean" default="false">
+  Reuse existing chunk if it contains all modules
+</ParamField>
+
+<ParamField path="enforce" type="boolean" default="false">
+  Ignore minSize, minChunks, and other size constraints
+</ParamField>
+
+## Advanced Patterns
+
+### Dynamic Imports
+
+```javascript
+// Your code
+import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
+  // Use lodash
+});
+
+// Configuration
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'async', // Split async chunks
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor-async',
+          chunks: 'async'
+        }
+      }
+    }
+  }
+};
+```
+
+### CSS Splitting
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          type: 'css/mini-extract',
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  }
+};
+```
+
+### Conditional Splitting
+
+```javascript
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  optimization: {
+    splitChunks: isProduction
+      ? {
+          chunks: 'all',
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all'
+            }
+          }
+        }
+      : false // Disable in development
+  }
+};
+```
+
+### Multiple Entry Points
+
+```javascript
+module.exports = {
+  entry: {
+    home: './src/home.js',
+    admin: './src/admin.js'
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: 'commons',
+          chunks: 'initial',
+          minChunks: 2 // Shared between both entries
+        }
+      }
+    }
+  }
+};
+```
+
+## Performance Impact
+
+<Note>
+Benefits of code splitting:
+- Better caching (vendor code changes less frequently)
+- Parallel loading (multiple chunks load simultaneously)
+- Reduced initial bundle size
+- Faster page loads with lazy loading
+</Note>
+
+### Example
+
+```
+Before splitting:
+- app.js: 2.5 MB (changes frequently)
+
+After splitting:
+- vendor.js: 1.8 MB (changes rarely, cached)
+- app.js: 700 KB (changes frequently)
+
+Result: Most visits only download 700 KB
+```
+
+## Debugging
+
+Analyze bundle composition:
+
+```bash
+npm install --save-dev webpack-bundle-analyzer
+```
+
+```javascript
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+};
+```
+
+## Best Practices
+
+1. **Start Simple**
+   ```javascript
+   splitChunks: { chunks: 'all' }
+   ```
+
+2. **Separate Vendor Code**
+   - Vendors change less frequently
+   - Better caching
+   - Smaller app bundle
+
+3. **Use Meaningful Names**
+   ```javascript
+   name: 'vendor-react' // Not just 'vendor'
+   ```
+
+4. **Consider Size Limits**
+   ```javascript
+   minSize: 30000,    // 30 KB minimum
+   maxSize: 250000    // 250 KB maximum
+   ```
+
+5. **Balance Chunk Count**
+   - Too many chunks = too many requests
+   - Too few chunks = large downloads
+   - Aim for 3-7 chunks for most apps
+
+<Warning>
+Splitting too aggressively can increase the number of HTTP requests, potentially slowing down load times on HTTP/1.1. Consider your target environment.
+</Warning>

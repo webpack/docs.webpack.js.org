@@ -1,0 +1,533 @@
+---
+title: Targets
+description: Configure webpack to compile for specific deployment environments
+---
+
+# Targets
+
+Webpack can compile for multiple environments or **targets**. The target tells webpack which environment the bundle should run in, allowing it to optimize the output accordingly.
+
+## Overview
+
+Different JavaScript environments (browser, Node.js, Electron) have different capabilities and APIs. The target option tells webpack to:
+
+- Generate appropriate runtime code
+- Select correct chunk loading mechanisms
+- Include or exclude platform-specific features
+- Optimize for the target environment
+
+## Basic Usage
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'web' // Default
+};
+```
+
+## Available Targets
+
+### Web Targets
+
+<Tabs>
+  <Tab title="web">
+    ```javascript
+    module.exports = {
+      target: 'web'
+    };
+    ```
+    Compiles for browser environment (default).
+  </Tab>
+  <Tab title="webworker">
+    ```javascript
+    module.exports = {
+      target: 'webworker'
+    };
+    ```
+    Compiles for WebWorker environment.
+  </Tab>
+  <Tab title="browserslist">
+    ```javascript
+    module.exports = {
+      target: 'browserslist'
+    };
+    ```
+    Uses browserslist config for target browsers.
+  </Tab>
+</Tabs>
+
+### Node Targets
+
+```javascript
+module.exports = {
+  target: 'node',           // Current Node.js version
+  // or
+  target: 'node14',         // Node.js 14
+  // or
+  target: 'async-node',     // Async module loading
+};
+```
+
+### Electron Targets
+
+```javascript
+module.exports = {
+  target: 'electron-main',      // Electron main process
+  // or
+  target: 'electron-renderer',  // Electron renderer process
+  // or
+  target: 'electron-preload',   // Electron preload scripts
+};
+```
+
+### Other Targets
+
+```javascript
+module.exports = {
+  target: 'nwjs',   // NW.js
+  target: 'node-webkit', // Alias for nwjs
+  target: 'es5',    // ES5 compatible browsers
+  target: 'es2020', // ES2020 compatible environments
+};
+```
+
+## Target Properties
+
+Webpack determines target properties from the target string:
+
+```javascript
+// From lib/config/target.js
+const getTargetProperties = (target, context) => {
+  // web target properties
+  if (target === 'web') {
+    return {
+      node: false,
+      web: true,
+      browser: true,
+      electron: false,
+      
+      document: true,
+      importScriptsInWorker: true,
+      fetchWasm: true,
+      nodeBuiltins: false,
+      require: false,
+      global: false
+    };
+  }
+
+  // node target properties
+  if (/^node/.test(target)) {
+    return {
+      node: true,
+      web: false,
+      browser: false,
+      
+      require: true,
+      nodeBuiltins: true,
+      global: true,
+      document: false
+    };
+  }
+};
+```
+
+## Multiple Targets
+
+Compile for multiple targets:
+
+```javascript filename="webpack.config.js"
+module.exports = [
+  {
+    target: 'web',
+    entry: './src/index.js',
+    output: {
+      path: path.resolve(__dirname, 'dist/web'),
+      filename: 'bundle.js'
+    }
+  },
+  {
+    target: 'node',
+    entry: './src/server.js',
+    output: {
+      path: path.resolve(__dirname, 'dist/node'),
+      filename: 'server.js'
+    }
+  }
+];
+```
+
+## Target Features
+
+### ECMAScript Version
+
+Specify target ECMAScript version:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'es5',      // ES5 compatible
+  // or
+  target: 'es2015',   // ES2015+ features
+  // or
+  target: 'es2020',   // ES2020+ features
+};
+```
+
+This affects:
+- Arrow functions
+- Async/await
+- Template literals
+- Optional chaining
+- BigInt
+- Dynamic imports
+
+### Platform APIs
+
+Target affects available platform APIs:
+
+```javascript
+// web target
+if (target === 'web') {
+  // Available:
+  // - document
+  // - window
+  // - fetch
+  // - importScripts (in workers)
+}
+
+// node target
+if (target === 'node') {
+  // Available:
+  // - require()
+  // - process
+  // - __dirname
+  // - __filename
+  // - Buffer
+}
+```
+
+## Browserslist Integration
+
+Use browserslist to automatically determine target:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'browserslist'
+};
+```
+
+With browserslist config:
+
+```json filename="package.json"
+{
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
+```
+
+Or `.browserslistrc`:
+
+```text filename=".browserslistrc"
+> 1%
+last 2 versions
+not dead
+```
+
+<Info>
+Browserslist automatically determines which ECMAScript features are supported by your target browsers.
+</Info>
+
+## Node.js Versioning
+
+Target specific Node.js versions:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'node14.15',     // Node.js 14.15
+  // or
+  target: 'node16',        // Node.js 16.x
+  // or
+  target: 'async-node18',  // Async Node.js 18
+};
+```
+
+Versioning affects:
+- ESM support
+- globalThis availability
+- Optional chaining support
+- BigInt support
+
+## Electron Versioning
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'electron13-main',      // Electron 13 main
+  // or
+  target: 'electron20-renderer',  // Electron 20 renderer
+};
+```
+
+## Output Module Type
+
+Target affects the output module type:
+
+### CommonJS (Node.js)
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'node',
+  output: {
+    library: {
+      type: 'commonjs2'
+    }
+  }
+};
+```
+
+### ESM (Modern Browsers)
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'web',
+  experiments: {
+    outputModule: true
+  },
+  output: {
+    library: {
+      type: 'module'
+    },
+    module: true
+  }
+};
+```
+
+## Chunk Loading
+
+Target determines how chunks are loaded:
+
+```javascript
+// web target
+output.chunkLoading = 'jsonp';
+
+// node target  
+output.chunkLoading = 'require';
+
+// webworker target
+output.chunkLoading = 'import-scripts';
+```
+
+Customize chunk loading:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'web',
+  output: {
+    chunkLoading: 'import', // Use dynamic import()
+    chunkFormat: 'module'   // ESM format chunks
+  }
+};
+```
+
+## Global Object
+
+Target sets the global object:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'web',
+  output: {
+    globalObject: 'self' // For web workers
+  }
+};
+```
+
+Default global objects by target:
+- **web**: `window`
+- **node**: `global`
+- **webworker**: `self`
+
+## Polyfills
+
+Target determines which polyfills are needed:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  target: 'es5',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                targets: 'ie 11'
+              }]
+            ]
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+## Environment-Specific Code
+
+### Conditional Compilation
+
+```javascript
+if (typeof window !== 'undefined') {
+  // Browser-specific code
+  console.log('Running in browser');
+} else if (typeof process !== 'undefined') {
+  // Node.js-specific code
+  console.log('Running in Node.js');
+}
+```
+
+### DefinePlugin
+
+```javascript filename="webpack.config.js"
+const webpack = require('webpack');
+
+module.exports = {
+  target: 'web',
+  plugins: [
+    new webpack.DefinePlugin({
+      'IS_BROWSER': JSON.stringify(true),
+      'IS_NODE': JSON.stringify(false)
+    })
+  ]
+};
+```
+
+## Common Patterns
+
+### Universal/Isomorphic App
+
+```javascript filename="webpack.config.js"
+const common = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader'
+      }
+    ]
+  }
+};
+
+module.exports = [
+  // Client bundle
+  {
+    ...common,
+    target: 'web',
+    entry: './src/client.js',
+    output: {
+      path: path.resolve(__dirname, 'dist/client'),
+      filename: 'bundle.js'
+    }
+  },
+  // Server bundle
+  {
+    ...common,
+    target: 'node',
+    entry: './src/server.js',
+    output: {
+      path: path.resolve(__dirname, 'dist/server'),
+      filename: 'server.js',
+      library: {
+        type: 'commonjs2'
+      }
+    },
+    externals: [require('webpack-node-externals')()]
+  }
+];
+```
+
+### Progressive Web App
+
+```javascript filename="webpack.config.js"
+module.exports = [
+  // Main app bundle
+  {
+    target: 'web',
+    entry: './src/app.js',
+    output: {
+      filename: 'app.js'
+    }
+  },
+  // Service worker
+  {
+    target: 'webworker',
+    entry: './src/service-worker.js',
+    output: {
+      filename: 'sw.js'
+    }
+  }
+];
+```
+
+### Electron App
+
+```javascript filename="webpack.config.js"
+module.exports = [
+  // Main process
+  {
+    target: 'electron-main',
+    entry: './src/main.js',
+    output: {
+      filename: 'main.js'
+    }
+  },
+  // Renderer process
+  {
+    target: 'electron-renderer',
+    entry: './src/renderer.js',
+    output: {
+      filename: 'renderer.js'
+    }
+  },
+  // Preload script
+  {
+    target: 'electron-preload',
+    entry: './src/preload.js',
+    output: {
+      filename: 'preload.js'
+    }
+  }
+];
+```
+
+## Best Practices
+
+1. **Match your runtime** - Use the target that matches your deployment environment
+2. **Use browserslist** - For web targets, let browserslist determine features
+3. **Test all targets** - If building for multiple targets, test each
+4. **Optimize per target** - Different targets may need different optimizations
+5. **Consider polyfills** - Lower targets may need more polyfills
+6. **Check bundle size** - Some targets produce larger bundles
+
+## Debugging Targets
+
+Check which target properties are active:
+
+```javascript filename="webpack.config.js"
+const { getTargetProperties } = require('webpack/lib/config/target');
+
+const properties = getTargetProperties('web', __dirname);
+console.log(properties);
+```
+
+<Warning>
+Choosing the wrong target can lead to runtime errors or missing features. Always test in your target environment.
+</Warning>
+
+## Related Concepts
+
+- [Output](/concepts/output) - Target affects output configuration
+- [Mode](/concepts/mode) - Mode complements target configuration
+- [Module Resolution](/concepts/module-resolution) - Target affects how modules are resolved

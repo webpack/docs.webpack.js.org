@@ -1,0 +1,477 @@
+---
+title: Dependency Graph
+description: Understanding how webpack builds and traverses the module dependency graph
+---
+
+# Dependency Graph
+
+The **dependency graph** is a directed graph representing the relationships between modules in your application. Webpack uses this graph to determine which modules should be included in the bundle and in what order they should be processed.
+
+## How It Works
+
+Webpack builds the dependency graph by starting from the entry points and recursively finding all dependencies:
+
+1. **Start at entry points** - Begin with configured entry modules
+2. **Parse each module** - Extract `import` and `require` statements
+3. **Resolve dependencies** - Locate the files being imported
+4. **Add to graph** - Create connections between modules
+5. **Repeat recursively** - Process dependencies until all modules are included
+6. **Generate output** - Use the graph to create bundles
+
+## Building the Graph
+
+Webpack's `Compilation` manages the graph building process:
+
+```javascript
+// From Compilation.js (simplified)
+class Compilation {
+  constructor(compiler, params) {
+    this.moduleGraph = new ModuleGraph();
+    this.chunkGraph = new ChunkGraph(this.moduleGraph);
+    this.entries = new Map();
+    this.modules = new Set();
+  }
+
+  addEntry(context, dependency, options, callback) {
+    // Start building dependency graph from entry
+    this._addModuleChain(
+      context,
+      dependency,
+      (module) => {
+        // Module added to graph
+        this.entries.get(options.name).dependencies.push(dependency);
+      },
+      callback
+    );
+  }
+}
+```
+
+## Module Graph
+
+The `ModuleGraph` tracks relationships between modules:
+
+```javascript
+// From ModuleGraph.js
+class ModuleGraph {
+  constructor() {
+    // Maps dependencies to modules
+    this._dependencyMap = new WeakMap();
+    // Stores module metadata
+    this._moduleMap = new Map();
+  }
+
+  // Get module that a dependency resolves to
+  getModule(dependency) {
+    const connection = this._dependencyMap.get(dependency);
+    return connection ? connection.module : null;
+  }
+
+  // Get module that imports current module (issuer)
+  getIssuer(module) {
+    const mgm = this._getModuleGraphModule(module);
+    return mgm.issuer;
+  }
+
+  // Get modules this module depends on
+  getOutgoingConnections(module) {
+    const mgm = this._getModuleGraphModule(module);
+    return mgm.outgoingConnections;
+  }
+
+  // Get modules that depend on this module
+  getIncomingConnections(module) {
+    const mgm = this._getModuleGraphModule(module);
+    return mgm.incomingConnections;
+  }
+}
+```
+
+## Graph Traversal
+
+### Breadth-First Search
+
+Webpack processes modules in waves:
+
+```javascript
+// Pseudocode for graph traversal
+function buildDependencyGraph(entries) {
+  const queue = [...entries];
+  const visited = new Set();
+  const graph = new Map();
+
+  while (queue.length > 0) {
+    const module = queue.shift();
+    
+    if (visited.has(module)) continue;
+    visited.add(module);
+
+    // Parse module for dependencies
+    const dependencies = parseModule(module);
+    graph.set(module, dependencies);
+
+    // Add dependencies to queue
+    for (const dep of dependencies) {
+      if (!visited.has(dep)) {
+        queue.push(dep);
+      }
+    }
+  }
+
+  return graph;
+}
+```
+
+## Dependencies vs Connections
+
+### Dependency
+
+A **dependency** represents a reference in source code:
+
+```javascript
+import Button from './Button';     // ES Module dependency
+const utils = require('./utils');  // CommonJS dependency
+import('./lazy').then(mod => {}); // Dynamic import dependency
+```
+
+### Module Graph Connection
+
+A **connection** links a dependency to its resolved module:
+
+```javascript
+class ModuleGraphConnection {
+  constructor({
+    originModule,      // Module containing the import
+    dependency,        // The import statement
+    module,           // Resolved module
+    weak,             // Weak reference flag
+    conditional       // Conditional import flag
+  }) {
+    this.originModule = originModule;
+    this.dependency = dependency;
+    this.module = module;
+    this.weak = weak;
+    this.conditional = conditional;
+  }
+}
+```
+
+## Entry Points in the Graph
+
+Entry points are the roots of the dependency graph:
+
+```javascript
+// Single entry
+module.exports = {
+  entry: './src/index.js'
+};
+
+// Multiple entries create separate graphs
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    admin: './src/admin.js'
+  }
+};
+```
+
+### Entry Dependencies
+
+```javascript
+// From EntryPlugin.js
+class EntryPlugin {
+  apply(compiler) {
+    compiler.hooks.make.tapAsync('EntryPlugin', (compilation, callback) => {
+      const { entry, options, context } = this;
+      const dep = EntryPlugin.createDependency(entry, options);
+
+      // Add entry to dependency graph
+      compilation.addEntry(context, dep, options, callback);
+    });
+  }
+}
+```
+
+## Graph Optimization
+
+Webpack optimizes the dependency graph:
+
+### Module Concatenation (Scope Hoisting)
+
+```javascript
+// Before concatenation (2 modules):
+// moduleA.js
+export const a = 'a';
+
+// moduleB.js
+import { a } from './moduleA';
+console.log(a);
+
+// After concatenation (1 module):
+const a = 'a';
+console.log(a);
+```
+
+### Tree Shaking
+
+Remove unused exports from the graph:
+
+```javascript
+// utils.js
+export const used = () => 'used';
+export const unused = () => 'unused'; // Removed from graph
+
+// app.js
+import { used } from './utils';
+used();
+```
+
+### Dead Code Elimination
+
+```javascript
+// Development code
+if (process.env.NODE_ENV === 'development') {
+  console.log('Debug info'); // Removed in production graph
+}
+```
+
+## Chunks and the Graph
+
+Webpack creates chunks based on the dependency graph:
+
+```javascript
+// From buildChunkGraph.js
+const buildChunkGraph = (compilation, inputChunkGroups) => {
+  const { moduleGraph, chunkGraph } = compilation;
+
+  // Visit modules and assign to chunks
+  for (const chunkGroup of inputChunkGroups) {
+    for (const chunk of chunkGroup.chunks) {
+      const queue = new Set(chunk.entryModules);
+
+      for (const module of queue) {
+        chunkGraph.connectChunkAndModule(chunk, module);
+
+        // Add dependencies to chunk
+        for (const connection of moduleGraph.getOutgoingConnections(module)) {
+          if (connection.module) {
+            queue.add(connection.module);
+          }
+        }
+      }
+    }
+  }
+};
+```
+
+## Circular Dependencies
+
+Webpack handles circular dependencies:
+
+```javascript
+// moduleA.js
+import { b } from './moduleB';
+export const a = 'a';
+
+// moduleB.js
+import { a } from './moduleA'; // Circular reference
+export const b = 'b';
+```
+
+<Warning>
+Circular dependencies can lead to undefined values at runtime. Restructure your code to avoid them.
+</Warning>
+
+### Detection
+
+Webpack detects and warns about circular dependencies:
+
+```javascript
+module.exports = {
+  stats: {
+    warnings: true,
+    warningsFilter: /circular dependency/i
+  }
+};
+```
+
+## Visualizing the Graph
+
+### Webpack Bundle Analyzer
+
+```bash
+npm install --save-dev webpack-bundle-analyzer
+```
+
+```javascript filename="webpack.config.js"
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+};
+```
+
+### Stats JSON
+
+Generate graph data:
+
+```bash
+webpack --profile --json > stats.json
+```
+
+Then visualize at https://webpack.github.io/analyse/
+
+## Dynamic Import Graphs
+
+Dynamic imports create split points in the graph:
+
+```javascript
+// Main bundle graph
+import { header } from './header';
+
+// Separate graph/chunk
+button.addEventListener('click', () => {
+  import('./modal').then(modal => {
+    modal.show();
+  });
+});
+```
+
+### Graph Structure
+
+```
+entry.js (chunk: main)
+├─ header.js (chunk: main)
+├─ button.js (chunk: main)
+└─ [dynamic] modal.js (chunk: modal)
+   ├─ overlay.js (chunk: modal)
+   └─ animation.js (chunk: modal)
+```
+
+## Module Types in Graph
+
+Different module types in the dependency graph:
+
+<Tabs>
+  <Tab title="Normal Modules">
+    ```javascript
+    // JavaScript modules
+    import utils from './utils';
+    
+    // Added to graph with dependencies
+    ```
+  </Tab>
+  <Tab title="Context Modules">
+    ```javascript
+    // Dynamic requires create context modules
+    require('./pages/' + pageName);
+    
+    // Adds all matching files to graph
+    ```
+  </Tab>
+  <Tab title="External Modules">
+    ```javascript
+    // Externals are not added to graph
+    import React from 'react'; // If external
+    
+    // Reference only, no dependencies
+    ```
+  </Tab>
+  <Tab title="Asset Modules">
+    ```javascript
+    import logo from './logo.png';
+    
+    // Asset added as dependency
+    ```
+  </Tab>
+</Tabs>
+
+## Graph Metadata
+
+Webpack stores metadata about each module:
+
+```javascript
+class ModuleGraphModule {
+  constructor() {
+    this.incomingConnections = new SortableSet();
+    this.outgoingConnections = undefined;
+    this.issuer = undefined;           // Module that imported this
+    this.exports = new ExportsInfo();  // Export information
+    this.preOrderIndex = null;         // Traversal order
+    this.postOrderIndex = null;
+    this.depth = null;                 // Distance from entry
+  }
+}
+```
+
+## Code Splitting and Graphs
+
+Code splitting creates multiple sub-graphs:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+```
+
+This splits the graph into:
+- **Main graph** - Application code
+- **Vendor graph** - Third-party dependencies  
+- **Common graph** - Shared code
+
+## Best Practices
+
+1. **Minimize dependencies** - Fewer edges in the graph means smaller bundles
+2. **Avoid circular dependencies** - Can cause initialization issues
+3. **Use dynamic imports** - Split the graph into smaller chunks
+4. **Configure tree shaking** - Remove unused parts of the graph
+5. **Monitor bundle size** - Use bundle analyzer to understand the graph
+6. **Organize by feature** - Keep related modules close in the graph
+
+## Performance Implications
+
+### Graph Building Time
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  // Cache to speed up graph rebuilding
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename]
+    }
+  }
+};
+```
+
+### Graph Size
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  // Exclude unnecessary modules from graph
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
+  }
+};
+```
+
+## Related Concepts
+
+- [Entry Points](/concepts/entry) - Graph starting points
+- [Modules](/concepts/modules) - Graph nodes
+- [Module Resolution](/concepts/module-resolution) - How edges are created
+- [Loaders](/concepts/loaders) - Transform nodes during graph building

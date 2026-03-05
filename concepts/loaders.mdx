@@ -1,0 +1,457 @@
+---
+title: Loaders
+description: Transform files and modules as they're added to the dependency graph
+---
+
+# Loaders
+
+**Loaders** are transformations that are applied to the source code of modules. They allow you to pre-process files as you `import` or "load" them. Loaders can transform files from different languages (like TypeScript) to JavaScript, or load inline images as data URLs.
+
+## Overview
+
+Webpack only understands JavaScript and JSON files natively. Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependency graph.
+
+## Using Loaders
+
+There are three ways to use loaders:
+
+### Configuration (Recommended)
+
+Specify loaders in your webpack configuration:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader'
+      }
+    ]
+  }
+};
+```
+
+### Inline
+
+Specify loaders explicitly in each `import` statement:
+
+```javascript
+import styles from 'style-loader!css-loader!./styles.css';
+```
+
+<Warning>
+Inline loader syntax is not recommended. Use configuration-based loaders instead for better maintainability.
+</Warning>
+
+### CLI
+
+```bash
+webpack --module-bind 'css=style-loader!css-loader'
+```
+
+## Loader Configuration
+
+### Basic Rule
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+### Multiple Loaders
+
+Loaders are evaluated/executed from right to left (or bottom to top):
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader', // 3. Inject CSS into DOM
+          'css-loader',   // 2. Turn CSS into CommonJS
+          'sass-loader'   // 1. Turn Sass into CSS
+        ]
+      }
+    ]
+  }
+};
+```
+
+<Info>
+The order matters! Loaders transform files in a chain, passing results from one to the next.
+</Info>
+
+### Loader Options
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                indentWidth: 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+## Rule Conditions
+
+### Test
+
+Match files with a regular expression:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader'
+      }
+    ]
+  }
+};
+```
+
+### Include and Exclude
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ]
+  }
+};
+```
+
+### Resource Query
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        resourceQuery: /inline/,
+        use: 'url-loader'
+      }
+    ]
+  }
+};
+```
+
+Matches: `import './style.css?inline'`
+
+### issuer
+
+Match based on the module that imports the resource:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        issuer: /\.js$/,
+        use: 'css-loader'
+      }
+    ]
+  }
+};
+```
+
+This applies `css-loader` only when CSS is imported from JavaScript files.
+
+## Common Loaders
+
+### File Loaders
+
+<Tabs>
+  <Tab title="Babel">
+    ```javascript
+    {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react']
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="TypeScript">
+    ```javascript
+    {
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      exclude: /node_modules/
+    }
+    ```
+  </Tab>
+  <Tab title="CSS">
+    ```javascript
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }
+    ```
+  </Tab>
+  <Tab title="Images">
+    ```javascript
+    {
+      test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      type: 'asset/resource'
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Loader Features
+
+### Chaining
+
+Loaders can be chained to transform files through multiple stages:
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',  // 4. Inject into DOM
+          'css-loader',    // 3. CSS to JS
+          'postcss-loader', // 2. Process with PostCSS
+          'sass-loader'    // 1. Sass to CSS
+        ]
+      }
+    ]
+  }
+};
+```
+
+### Inline Loaders
+
+Prefixes for inline loaders:
+
+- `!` - Disable normal loaders
+- `!!` - Disable all loaders (pre, normal, post)
+- `-!` - Disable pre and normal loaders
+
+```javascript
+import styles from '!style-loader!css-loader!./styles.css';
+```
+
+### Loader Context
+
+Loaders execute with access to the loader API:
+
+```javascript
+// Example loader implementation
+module.exports = function(source) {
+  // this.resourcePath - path to the file being loaded
+  // this.addDependency() - add file as dependency
+  // this.async() - return async callback
+  // this.getOptions() - get loader options
+  
+  const options = this.getOptions();
+  const callback = this.async();
+  
+  // Transform source
+  const result = transform(source, options);
+  
+  callback(null, result);
+};
+```
+
+## How Loaders Work Internally
+
+Webpack processes modules through `NormalModule`:
+
+```javascript
+// From NormalModule.js (simplified)
+const { runLoaders } = require('loader-runner');
+
+class NormalModule {
+  build(options, compilation, resolver, fs, callback) {
+    return this.doBuild(options, compilation, resolver, fs, (err) => {
+      // Run loaders
+      runLoaders({
+        resource: this.resource,
+        loaders: this.loaders,
+        context: loaderContext,
+        readResource: fs.readFile.bind(fs)
+      }, (err, result) => {
+        // Process result
+        this.parser.parse(result.result, {
+          source: result.result,
+          current: this,
+          module: this
+        });
+      });
+    });
+  }
+}
+```
+
+## Loader Types
+
+### Synchronous Loaders
+
+```javascript
+module.exports = function(source) {
+  return someSyncOperation(source);
+};
+```
+
+### Asynchronous Loaders
+
+```javascript
+module.exports = function(source) {
+  const callback = this.async();
+  
+  someAsyncOperation(source, (err, result) => {
+    if (err) return callback(err);
+    callback(null, result);
+  });
+};
+```
+
+### Pitching Loaders
+
+```javascript
+module.exports = function(source) {
+  return source;
+};
+
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  // Called before normal loader execution
+  // Can short-circuit loader chain
+};
+```
+
+## Best Practices
+
+1. **Use specific test patterns** - Be precise with regex to avoid unnecessary processing
+2. **Minimize loader scope** - Use `include` to limit files processed
+3. **Cache loader results** - Many loaders support caching options
+4. **Keep loaders simple** - Each loader should do one thing well
+5. **Chain loaders** - Combine simple loaders rather than creating complex ones
+
+## Common Patterns
+
+### JavaScript/TypeScript
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+### Styles
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.module\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+### Assets
+
+```javascript filename="webpack.config.js"
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024 // 8kb
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+## Related Concepts
+
+- [Plugins](/concepts/plugins) - Extend webpack's functionality
+- [Module Resolution](/concepts/module-resolution) - How webpack finds modules
+- [Modules](/concepts/modules) - Understanding webpack modules

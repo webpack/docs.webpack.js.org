@@ -1,0 +1,102 @@
+---
+title: HtmlWebpackPlugin
+description: Simplify creation of HTML files to serve your webpack bundles
+---
+
+The `HtmlWebpackPlugin` simplifies creation of HTML files to serve your webpack bundles. This is especially useful for webpack bundles that include a hash in the filename which changes every compilation.
+
+<Note>
+This is an external plugin maintained by the community. Install it separately with `npm install --save-dev html-webpack-plugin`.
+</Note>
+
+## Installation
+
+```bash
+npm install --save-dev html-webpack-plugin
+```
+
+## Basic Usage
+
+```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin()
+  ]
+};
+```
+
+This will generate an HTML file that includes all your webpack bundles.
+
+## Configuration
+
+<ParamField path="title" type="string">
+  The title to use for the generated HTML document
+</ParamField>
+
+<ParamField path="filename" type="string" default="index.html">
+  The file to write the HTML to. Defaults to `index.html`
+</ParamField>
+
+<ParamField path="template" type="string">
+  Webpack require path to a template
+</ParamField>
+
+<ParamField path="inject" type="boolean | string" default="true">
+  Controls asset injection. Options: `true`, `'head'`, `'body'`, `false`
+</ParamField>
+
+<ParamField path="minify" type="boolean | object" default="true">
+  Controls HTML minification in production mode
+</ParamField>
+
+## Examples
+
+### Custom Template
+
+```javascript
+new HtmlWebpackPlugin({
+  title: 'My App',
+  template: 'src/index.html',
+  filename: 'index.html'
+})
+```
+
+### Multiple Pages
+
+```javascript
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'admin.html',
+      chunks: ['admin']
+    })
+  ]
+};
+```
+
+## Template Example
+
+Create a template file `src/index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+```
+
+## Further Reading
+
+For complete documentation, see the [HtmlWebpackPlugin GitHub repository](https://github.com/jantimon/html-webpack-plugin).

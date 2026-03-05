@@ -1,0 +1,458 @@
+---
+title: DevTool (Source Maps)
+description: Configure source map generation for debugging
+---
+
+The `devtool` option controls if and how source maps are generated. Source maps provide a way to map minified/compiled code back to the original source code for debugging.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+module.exports = {
+  devtool: 'source-map' // production
+  // or
+  devtool: 'eval-source-map' // development
+};
+```
+
+## DevTool Option
+
+<ParamField path="devtool" type="string | false">
+  Choose a style of source mapping.
+  
+  ```javascript
+  devtool: 'source-map'
+  ```
+  
+  Set to `false` to disable source maps.
+</ParamField>
+
+## Source Map Types
+
+### Production
+
+Recommended for production builds:
+
+<Accordion title="source-map (Recommended for Production)">
+  **Full source map** as a separate file.
+  
+  ```javascript
+  devtool: 'source-map'
+  ```
+  
+  - **Quality**: Original source
+  - **Build**: Slowest
+  - **Rebuild**: Slowest
+  - **Production**: Yes
+  - **File**: Separate `.map` file
+  
+  Best for production - provides complete original source with separate map files.
+</Accordion>
+
+<Accordion title="hidden-source-map">
+  Like `source-map` but doesn't add a reference comment to the bundle.
+  
+  ```javascript
+  devtool: 'hidden-source-map'
+  ```
+  
+  - **Quality**: Original source
+  - **Build**: Slowest
+  - **Rebuild**: Slowest
+  - **Production**: Yes
+  - **File**: Separate `.map` file (not referenced)
+  
+  Useful when you want to upload source maps to error reporting tools but not expose them to end users.
+</Accordion>
+
+<Accordion title="nosources-source-map">
+  Source map without the source content.
+  
+  ```javascript
+  devtool: 'nosources-source-map'
+  ```
+  
+  - **Quality**: Only line numbers
+  - **Build**: Slowest
+  - **Rebuild**: Slowest
+  - **Production**: Yes
+  - **File**: Separate `.map` file
+  
+  Shows stack traces without exposing source code. Good for privacy.
+</Accordion>
+
+### Development
+
+Recommended for development builds:
+
+<Accordion title="eval-source-map (Recommended for Development)">
+  Each module is executed with `eval()` with a source map.
+  
+  ```javascript
+  devtool: 'eval-source-map'
+  ```
+  
+  - **Quality**: Original source
+  - **Build**: Slowest
+  - **Rebuild**: Fast
+  - **Production**: No
+  - **File**: Inline
+  
+  Best for development - high quality with reasonable rebuild performance.
+</Accordion>
+
+<Accordion title="eval-cheap-source-map">
+  Similar to `eval-source-map`, each module is executed with `eval()` but with lower quality.
+  
+  ```javascript
+  devtool: 'eval-cheap-source-map'
+  ```
+  
+  - **Quality**: Transformed code (loader output)
+  - **Build**: Fast
+  - **Rebuild**: Fast
+  - **Production**: No
+  - **File**: Inline
+  
+  Maps to transformed code (after loaders). Line-only mapping.
+</Accordion>
+
+<Accordion title="eval-cheap-module-source-map">
+  Like `eval-cheap-source-map` but with better quality.
+  
+  ```javascript
+  devtool: 'eval-cheap-module-source-map'
+  ```
+  
+  - **Quality**: Original source (loader input)
+  - **Build**: Medium
+  - **Rebuild**: Fast
+  - **Production**: No
+  - **File**: Inline
+  
+  Maps to original source (before loaders). Line-only mapping. Good balance for development.
+</Accordion>
+
+<Accordion title="eval">
+  Each module is executed with `eval()` without source map.
+  
+  ```javascript
+  devtool: 'eval'
+  ```
+  
+  - **Quality**: Generated code
+  - **Build**: Fastest
+  - **Rebuild**: Fastest
+  - **Production**: No
+  - **File**: None
+  
+  Fastest option but no source mapping. Only shows generated code.
+</Accordion>
+
+### Other Options
+
+<Accordion title="inline-source-map">
+  Source map as a DataUrl in the bundle.
+  
+  ```javascript
+  devtool: 'inline-source-map'
+  ```
+  
+  - **Quality**: Original source
+  - **Build**: Slowest
+  - **Rebuild**: Slowest
+  - **Production**: No
+  - **File**: Inline DataUrl
+  
+  Embeds the entire source map as a data URL. Large bundle size.
+</Accordion>
+
+<Accordion title="cheap-source-map">
+  Source map without column mappings.
+  
+  ```javascript
+  devtool: 'cheap-source-map'
+  ```
+  
+  - **Quality**: Transformed code
+  - **Build**: Fast
+  - **Rebuild**: Medium
+  - **Production**: No
+  - **File**: Separate `.map` file
+  
+  Line-only mapping to transformed code.
+</Accordion>
+
+<Accordion title="cheap-module-source-map">
+  Source map without column mappings from original source.
+  
+  ```javascript
+  devtool: 'cheap-module-source-map'
+  ```
+  
+  - **Quality**: Original source
+  - **Build**: Medium
+  - **Rebuild**: Medium
+  - **Production**: No
+  - **File**: Separate `.map` file
+  
+  Line-only mapping to original source.
+</Accordion>
+
+## Source Map Naming
+
+Source map options follow this naming pattern:
+
+```
+[inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map
+```
+
+- **inline**: Embed source map as DataUrl
+- **hidden**: Generate source map but don't reference it
+- **eval**: Wrap modules in `eval()` (fast rebuilds)
+- **nosources**: Exclude source content (only stack traces)
+- **cheap**: Line-only mapping (no columns)
+- **module**: Map to original source (before loaders)
+
+## Configuration by Environment
+
+### Production Configuration
+
+```javascript webpack.prod.js
+module.exports = {
+  mode: 'production',
+  devtool: 'source-map',
+  output: {
+    sourceMapFilename: '[file].map'
+  }
+};
+```
+
+### Development Configuration
+
+```javascript webpack.dev.js
+module.exports = {
+  mode: 'development',
+  devtool: 'eval-source-map'
+};
+```
+
+### Conditional Configuration
+
+```javascript webpack.config.js
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+  
+  return {
+    devtool: isProduction ? 'source-map' : 'eval-source-map'
+  };
+};
+```
+
+## Source Map Output
+
+<ParamField path="output.sourceMapFilename" type="string">
+  Customize source map filename.
+  
+  ```javascript
+  output: {
+    sourceMapFilename: '[file].map'
+    // or
+    sourceMapFilename: 'sourcemaps/[file].map[query]'
+  }
+  ```
+  
+  Default: `'[file].map[query]'`
+</ParamField>
+
+<ParamField path="output.devtoolModuleFilenameTemplate" type="string | function">
+  Customize module filenames in source maps.
+  
+  ```javascript
+  output: {
+    devtoolModuleFilenameTemplate: 'webpack://[namespace]/[resource-path]?[loaders]'
+    // or function
+    devtoolModuleFilenameTemplate: (info) => {
+      return `webpack:///${info.resourcePath}`;
+    }
+  }
+  ```
+</ParamField>
+
+<ParamField path="output.devtoolNamespace" type="string">
+  Module namespace in source maps.
+  
+  ```javascript
+  output: {
+    devtoolNamespace: 'my-app'
+  }
+  ```
+</ParamField>
+
+## Asset-Specific Source Maps
+
+Webpack 5 allows different devtools per asset type:
+
+```javascript webpack.config.js
+module.exports = {
+  devtool: [
+    {
+      type: 'javascript',
+      use: 'source-map'
+    },
+    {
+      type: 'css',
+      use: 'source-map'
+    }
+  ]
+};
+```
+
+## Performance Comparison
+
+| devtool | build | rebuild | production | quality |
+|---------|-------|---------|------------|----------|
+| (none) | fastest | fastest | yes | bundle |
+| eval | fastest | fastest | no | generated |
+| eval-cheap-source-map | fast | fast | no | transformed |
+| eval-cheap-module-source-map | medium | fast | no | original lines |
+| eval-source-map | slowest | fast | no | original |
+| cheap-source-map | fast | medium | no | transformed |
+| cheap-module-source-map | medium | medium | no | original lines |
+| source-map | slowest | slowest | yes | original |
+| inline-source-map | slowest | slowest | no | original |
+| hidden-source-map | slowest | slowest | yes | original |
+| nosources-source-map | slowest | slowest | yes | no source |
+
+## Best Practices
+
+### Recommended Settings
+
+```javascript
+// Development
+devtool: 'eval-source-map'
+
+// Production
+devtool: 'source-map'
+
+// Production (faster builds)
+devtool: 'cheap-module-source-map'
+
+// Production (no source code exposure)
+devtool: 'hidden-source-map'
+
+// Production (privacy + error tracking)
+devtool: 'nosources-source-map'
+```
+
+### Error Monitoring Integration
+
+For services like Sentry:
+
+```javascript webpack.config.js
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+
+module.exports = {
+  devtool: 'hidden-source-map',
+  plugins: [
+    new SentryWebpackPlugin({
+      include: './dist',
+      ignore: ['node_modules', 'webpack.config.js'],
+      urlPrefix: '~/static/js'
+    })
+  ]
+};
+```
+
+### TypeScript Configuration
+
+For TypeScript projects, also configure `tsconfig.json`:
+
+```json tsconfig.json
+{
+  "compilerOptions": {
+    "sourceMap": true
+  }
+}
+```
+
+### CSS Source Maps
+
+Enable source maps in CSS loaders:
+
+```javascript webpack.config.js
+module.exports = {
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+## Disable Source Maps
+
+```javascript webpack.config.js
+module.exports = {
+  devtool: false
+  // or omit the option entirely
+};
+```
+
+## Common Patterns
+
+### Multi-Environment Setup
+
+```javascript webpack.config.js
+module.exports = (env) => {
+  const devtoolMap = {
+    production: 'source-map',
+    development: 'eval-source-map',
+    test: 'inline-source-map'
+  };
+  
+  return {
+    devtool: devtoolMap[env.NODE_ENV] || 'eval-source-map'
+  };
+};
+```
+
+### Conditional Source Maps
+
+```javascript webpack.config.js
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+
+module.exports = {
+  devtool: shouldUseSourceMap ? 'source-map' : false
+};
+```
+
+### Docker/Container Builds
+
+```javascript webpack.config.js
+module.exports = {
+  devtool: 'eval-cheap-module-source-map',
+  output: {
+    devtoolModuleFilenameTemplate: info => 
+      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+  }
+};
+```

@@ -1,0 +1,309 @@
+---
+title: Entry and Context
+description: Configure entry points and base directory for module resolution
+---
+
+The entry point tells webpack where to start building the dependency graph. The context option sets the base directory for resolving entry points and loaders.
+
+## Entry
+
+The entry configuration determines which module(s) webpack should use to begin building the dependency graph.
+
+<ParamField path="entry" type="string | string[] | object | function">
+  The entry point(s) for the application.
+</ParamField>
+
+### Single Entry (String)
+
+Simplest form - a single entry point:
+
+```javascript webpack.config.js
+module.exports = {
+  entry: './src/index.js'
+};
+```
+
+### Multiple Modules (Array)
+
+Combine multiple modules into a single chunk:
+
+```javascript webpack.config.js
+module.exports = {
+  entry: ['./src/polyfills.js', './src/index.js']
+};
+```
+
+### Multiple Entry Points (Object)
+
+Create separate bundles for different entry points:
+
+```javascript webpack.config.js
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    admin: './src/admin.js',
+    vendor: './src/vendor.js'
+  }
+};
+```
+
+### Entry Descriptor
+
+Use objects to configure entry points with additional options:
+
+```javascript webpack.config.js
+module.exports = {
+  entry: {
+    app: {
+      import: './src/app.js',
+      filename: 'pages/[name].js',
+      dependOn: 'shared',
+      chunkLoading: 'jsonp',
+      asyncChunks: true,
+      layer: 'client'
+    },
+    shared: ['react', 'react-dom']
+  }
+};
+```
+
+## Entry Descriptor Options
+
+<ParamField path="import" type="string | string[]" required>
+  Module(s) loaded on startup. The last one is exported.
+  
+  ```javascript
+  import: './src/index.js'
+  // or
+  import: ['./src/polyfills.js', './src/index.js']
+  ```
+</ParamField>
+
+<ParamField path="filename" type="string | function">
+  Specifies the name of each output file for this entry.
+  
+  ```javascript
+  filename: 'bundle-[name].js'
+  ```
+</ParamField>
+
+<ParamField path="dependOn" type="string | string[]">
+  Entry points that must be loaded before this entry.
+  
+  ```javascript
+  dependOn: 'vendor'
+  // or
+  dependOn: ['vendor', 'shared']
+  ```
+  
+  <Warning>
+    Cannot be used together with `runtime`.
+  </Warning>
+</ParamField>
+
+<ParamField path="runtime" type="string | false">
+  Name of the runtime chunk. Creates a new runtime chunk or uses an existing entry as runtime.
+  
+  ```javascript
+  runtime: 'runtime'
+  ```
+  
+  Set to `false` to avoid a new runtime chunk.
+</ParamField>
+
+<ParamField path="chunkLoading" type="string | false">
+  Method of loading chunks for this entry point.
+  
+  ```javascript
+  chunkLoading: 'jsonp' // or 'import', 'require', 'async-node'
+  ```
+  
+  Options: `'jsonp'`, `'import'`, `'require'`, `'async-node'`, `'import-scripts'`, `false`
+</ParamField>
+
+<ParamField path="asyncChunks" type="boolean">
+  Enable/disable creating async chunks that are loaded on demand.
+  
+  ```javascript
+  asyncChunks: true
+  ```
+  
+  Default: `true`
+</ParamField>
+
+<ParamField path="wasmLoading" type="string | false">
+  Method of loading WebAssembly modules.
+  
+  ```javascript
+  wasmLoading: 'fetch' // or 'async-node'
+  ```
+</ParamField>
+
+<ParamField path="publicPath" type="string | function">
+  Public path for this entry's assets when referenced in a browser.
+  
+  ```javascript
+  publicPath: 'https://cdn.example.com/assets/'
+  ```
+</ParamField>
+
+<ParamField path="baseUri" type="string">
+  Base URI for this entry.
+  
+  ```javascript
+  baseUri: 'https://example.com/'
+  ```
+</ParamField>
+
+<ParamField path="layer" type="string">
+  Layer in which modules of this entry point are placed.
+  
+  ```javascript
+  layer: 'client'
+  ```
+</ParamField>
+
+<ParamField path="library" type="object">
+  Options for building this entry as a library. See [Library Output](/configuration/output#library) for details.
+  
+  ```javascript
+  library: {
+    type: 'umd',
+    name: 'MyLibrary'
+  }
+  ```
+</ParamField>
+
+## Dynamic Entry
+
+Define entry points dynamically using a function:
+
+```javascript webpack.config.js
+module.exports = {
+  entry: () => './src/index.js'
+};
+```
+
+Return a promise for async entry configuration:
+
+```javascript webpack.config.js
+module.exports = {
+  entry: () => new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('./src/index.js');
+    }, 1000);
+  })
+};
+```
+
+Dynamic multi-entry:
+
+```javascript webpack.config.js
+module.exports = {
+  entry: async () => {
+    const entries = await getEntryPointsFromDB();
+    return {
+      app: entries.app,
+      admin: entries.admin
+    };
+  }
+};
+```
+
+## Context
+
+<ParamField path="context" type="string">
+  The base directory (absolute path) for resolving entry points and loaders.
+  
+  ```javascript
+  const path = require('path');
+  
+  module.exports = {
+    context: path.resolve(__dirname, 'src'),
+    entry: './index.js' // resolves to <context>/index.js
+  };
+  ```
+  
+  Default: `process.cwd()` (current working directory)
+  
+  <Note>
+    Must be an absolute path. Use `path.resolve()` to ensure this.
+  </Note>
+</ParamField>
+
+## Common Patterns
+
+### Single Page Application
+
+```javascript webpack.config.js
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js'
+  }
+};
+```
+
+### Multi-Page Application
+
+```javascript webpack.config.js
+module.exports = {
+  entry: {
+    home: './src/pages/home.js',
+    about: './src/pages/about.js',
+    contact: './src/pages/contact.js'
+  },
+  output: {
+    filename: '[name].bundle.js'
+  }
+};
+```
+
+### Vendor Code Splitting
+
+```javascript webpack.config.js
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    vendor: './src/vendor.js'
+  },
+  output: {
+    filename: '[name].bundle.js'
+  }
+};
+```
+
+### Code Splitting with Shared Dependencies
+
+```javascript webpack.config.js
+module.exports = {
+  entry: {
+    home: {
+      import: './src/pages/home.js',
+      dependOn: 'shared'
+    },
+    about: {
+      import: './src/pages/about.js',
+      dependOn: 'shared'
+    },
+    shared: ['react', 'react-dom', 'lodash']
+  }
+};
+```
+
+### Separate Runtime Chunk
+
+```javascript webpack.config.js
+module.exports = {
+  entry: {
+    app: {
+      import: './src/app.js',
+      runtime: 'runtime'
+    },
+    admin: {
+      import: './src/admin.js',
+      runtime: 'runtime'
+    }
+  }
+};
+```

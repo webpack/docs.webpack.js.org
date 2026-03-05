@@ -1,0 +1,402 @@
+---
+title: DllPlugin
+description: Split bundles to improve build performance with DLL bundles
+---
+
+The `DllPlugin` and `DllReferencePlugin` work together to split bundles in a way that drastically improves build time performance. The DLL (Dynamic Link Library) concept is used to pre-build vendor libraries that change infrequently.
+
+## Overview
+
+DllPlugin creates a manifest file and a DLL bundle. DllReferencePlugin then uses this manifest to reference the pre-built DLL, avoiding the need to rebuild vendor code.
+
+## Usage
+
+### Step 1: Create DLL Configuration
+
+Create a separate webpack configuration for building the DLL:
+
+```javascript
+// webpack.dll.config.js
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+  mode: 'development',
+  entry: {
+    vendor: ['react', 'react-dom', 'lodash']
+  },
+  output: {
+    path: path.resolve(__dirname, 'dll'),
+    filename: '[name].dll.js',
+    library: '[name]_lib'
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      name: '[name]_lib',
+      path: path.resolve(__dirname, 'dll/[name]-manifest.json')
+    })
+  ]
+};
+```
+
+### Step 2: Build the DLL
+
+```bash
+webpack --config webpack.dll.config.js
+```
+
+This creates:
+- `dll/vendor.dll.js` - The DLL bundle
+- `dll/vendor-manifest.json` - The manifest
+
+### Step 3: Reference DLL in Main Config
+
+```javascript
+// webpack.config.js
+const webpack = require('webpack');
+const path = require('path');
+
+module.exports = {
+  plugins: [
+    new webpack.DllReferencePlugin({
+      manifest: require('./dll/vendor-manifest.json')
+    })
+  ]
+};
+```
+
+### Step 4: Include DLL in HTML
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- Load DLL first -->
+    <script src="dll/vendor.dll.js"></script>
+    <!-- Then your app bundle -->
+    <script src="dist/app.js"></script>
+  </body>
+</html>
+```
+
+## DllPlugin Configuration
+
+<ParamField path="name" type="string" required>
+  Name of the exposed DLL function. Should match `output.library`
+</ParamField>
+
+<ParamField path="path" type="string" required>
+  Absolute path to the manifest JSON file
+</ParamField>
+
+<ParamField path="entryOnly" type="boolean" default="true">
+  If true, only entry modules are exposed
+</ParamField>
+
+<ParamField path="context" type="string">
+  Context for the manifest file (defaults to webpack context)
+</ParamField>
+
+<ParamField path="format" type="boolean">
+  If true, manifest is formatted for readability
+</ParamField>
+
+## Examples
+
+### Multiple DLL Bundles
+
+```javascript
+// webpack.dll.config.js
+module.exports = {
+  entry: {
+    react: ['react', 'react-dom'],
+    vendor: ['lodash', 'axios', 'moment']
+  },
+  output: {
+    path: path.resolve(__dirname, 'dll'),
+    filename: '[name].dll.js',
+    library: '[name]_lib'
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      name: '[name]_lib',
+      path: path.resolve(__dirname, 'dll/[name]-manifest.json')
+    })
+  ]
+};
+```
+
+Reference both:
+
+```javascript
+// webpack.config.js
+module.exports = {
+  plugins: [
+    new webpack.DllReferencePlugin({
+      manifest: require('./dll/react-manifest.json')
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: require('./dll/vendor-manifest.json')
+    })
+  ]
+};
+```
+
+### Production DLL
+
+```javascript
+// webpack.dll.prod.config.js
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  mode: 'production',
+  entry: {
+    vendor: ['react', 'react-dom', 'lodash']
+  },
+  output: {
+    path: path.resolve(__dirname, 'dll'),
+    filename: '[name].[contenthash].dll.js',
+    library: '[name]_[contenthash]_lib'
+  },
+  optimization: {
+    minimizer: [new TerserPlugin()]
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      name: '[name]_[contenthash]_lib',
+      path: path.resolve(__dirname, 'dll/[name]-manifest.json')
+    })
+  ]
+};
+```
+
+### With Add-ons
+
+Combine with HtmlWebpackPlugin:
+
+```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new webpack.DllReferencePlugin({
+      manifest: require('./dll/vendor-manifest.json')
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new AddAssetHtmlPlugin({
+      filepath: path.resolve(__dirname, 'dll/vendor.dll.js')
+    })
+  ]
+};
+```
+
+### Development vs Production
+
+```javascript
+const isDev = process.env.NODE_ENV === 'development';
+
+module.exports = {
+  plugins: [
+    isDev && new webpack.DllReferencePlugin({
+      manifest: require('./dll/vendor-manifest.json')
+    })
+  ].filter(Boolean)
+};
+```
+
+## Complete Example
+
+### Directory Structure
+
+```
+project/
+├── dll/
+│   ├── vendor.dll.js
+│   └── vendor-manifest.json
+├── src/
+│   ├── index.js
+│   └── App.js
+├── webpack.dll.config.js
+└── webpack.config.js
+```
+
+### Package.json Scripts
+
+```json
+{
+  "scripts": {
+    "dll": "webpack --config webpack.dll.config.js",
+    "build": "npm run dll && webpack --config webpack.config.js",
+    "dev": "webpack serve --config webpack.config.js"
+  }
+}
+```
+
+### Full DLL Config
+
+```javascript
+// webpack.dll.config.js
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+  mode: 'development',
+  entry: {
+    vendor: [
+      'react',
+      'react-dom',
+      'lodash',
+      'axios',
+      'moment'
+    ]
+  },
+  output: {
+    path: path.resolve(__dirname, 'dll'),
+    filename: '[name].dll.js',
+    library: '[name]_lib'
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      name: '[name]_lib',
+      path: path.resolve(__dirname, 'dll/[name]-manifest.json'),
+      context: __dirname
+    })
+  ]
+};
+```
+
+### Full Main Config
+
+```javascript
+// webpack.config.js
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app.js'
+  },
+  plugins: [
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./dll/vendor-manifest.json')
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ]
+};
+```
+
+## Performance Benefits
+
+<Note>
+Typical improvements:
+- Initial build: Similar to normal build
+- Rebuild time: 50-90% faster
+- Best for large vendor libraries that rarely change
+</Note>
+
+### Example Timings
+
+```
+Without DLL:
+- Initial build: 45s
+- Rebuild: 8s
+
+With DLL:
+- DLL build (once): 15s
+- Initial build: 12s
+- Rebuild: 2s
+```
+
+## When to Use
+
+DllPlugin is beneficial when:
+- You have large, stable vendor libraries
+- Development rebuild time is slow
+- Vendor code changes infrequently
+- Team is doing active development
+
+<Warning>
+DllPlugin is mainly for development. For production, modern techniques like SplitChunksPlugin and caching are often better.
+</Warning>
+
+## Modern Alternatives
+
+### Webpack 5 Caching
+
+```javascript
+module.exports = {
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename]
+    }
+  }
+};
+```
+
+### SplitChunksPlugin
+
+```javascript
+optimization: {
+  splitChunks: {
+    cacheGroups: {
+      vendor: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all'
+      }
+    }
+  }
+}
+```
+
+## Troubleshooting
+
+### Manifest Not Found
+
+Ensure DLL is built before main build:
+```json
+"scripts": {
+  "prebuild": "npm run dll",
+  "build": "webpack"
+}
+```
+
+### Module Not Found in DLL
+
+Add missing module to DLL entry:
+```javascript
+entry: {
+  vendor: ['react', 'react-dom', 'missing-module']
+}
+```
+
+### DLL Not Loading
+
+Verify HTML includes DLL before app:
+```html
+<script src="dll/vendor.dll.js"></script>
+<script src="app.js"></script>
+```
+
+## Best Practices
+
+- Rebuild DLL when dependencies change
+- Include only stable, frequently-used libraries
+- Use for development; consider alternatives for production
+- Automate DLL rebuilds in CI/CD
+- Document which libraries are in DLL

@@ -1,0 +1,418 @@
+---
+title: file-loader
+description: Emit files to the output directory and return public URLs (deprecated)
+---
+
+<Warning>
+  `file-loader` is deprecated in webpack 5. Use [Asset Modules](/guides/asset-modules) with `type: 'asset/resource'` instead.
+</Warning>
+
+## Overview
+
+`file-loader` resolves imports/requires of files into URLs and emits the files into the output directory. It was commonly used for handling images, fonts, and other file assets.
+
+## Migration to Asset Modules
+
+Webpack 5 introduced Asset Modules as a built-in replacement for `file-loader`, `url-loader`, and `raw-loader`.
+
+<CodeGroup>
+```javascript file-loader (Old - Deprecated)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: 'images/'
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript Asset Modules (New - Recommended)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash][ext]'
+        }
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+## Installation (Legacy)
+
+<Note>
+  Only install if you're maintaining a legacy webpack 4 project. For webpack 5, use Asset Modules.
+</Note>
+
+```bash
+npm install -D file-loader
+```
+
+## Basic Usage (Legacy)
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript app.js
+import logo from './logo.png';
+
+const img = document.createElement('img');
+img.src = logo; // '/dist/logo.png'
+document.body.appendChild(img);
+```
+</CodeGroup>
+
+## Options (Legacy)
+
+### `name`
+
+Configure the output filename:
+
+```javascript
+{
+  loader: 'file-loader',
+  options: {
+    name: '[path][name].[ext]'
+  }
+}
+```
+
+Available placeholders:
+- `[name]` - File basename
+- `[ext]` - File extension
+- `[path]` - File path
+- `[hash]` - Content hash
+- `[contenthash]` - Content hash
+- `[folder]` - Folder name
+
+### `outputPath`
+
+Specify output directory:
+
+```javascript
+{
+  loader: 'file-loader',
+  options: {
+    outputPath: 'images/'
+  }
+}
+```
+
+### `publicPath`
+
+Customize public path:
+
+```javascript
+{
+  loader: 'file-loader',
+  options: {
+    publicPath: '/assets/'
+  }
+}
+```
+
+### `context`
+
+Set context for `[path]`:
+
+```javascript
+{
+  loader: 'file-loader',
+  options: {
+    name: '[path][name].[ext]',
+    context: 'src'
+  }
+}
+```
+
+## Common Patterns (Legacy)
+
+### Images
+
+```javascript
+{
+  test: /\.(png|jpg|jpeg|gif|svg)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[contenthash].[ext]',
+        outputPath: 'images/'
+      }
+    }
+  ]
+}
+```
+
+### Fonts
+
+```javascript
+{
+  test: /\.(woff|woff2|eot|ttf|otf)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+        outputPath: 'fonts/'
+      }
+    }
+  ]
+}
+```
+
+### Documents
+
+```javascript
+{
+  test: /\.(pdf|doc|docx)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+        outputPath: 'documents/'
+      }
+    }
+  ]
+}
+```
+
+## Complete Migration Guide
+
+### Images
+
+<CodeGroup>
+```javascript Before (file-loader)
+{
+  test: /\.(png|jpg|gif)$/i,
+  loader: 'file-loader',
+  options: {
+    name: 'images/[name].[hash:8].[ext]'
+  }
+}
+```
+
+```javascript After (Asset Modules)
+{
+  test: /\.(png|jpg|gif)$/i,
+  type: 'asset/resource',
+  generator: {
+    filename: 'images/[name].[hash:8][ext]'
+  }
+}
+```
+</CodeGroup>
+
+### Fonts
+
+<CodeGroup>
+```javascript Before (file-loader)
+{
+  test: /\.(woff|woff2|eot|ttf|otf)$/i,
+  loader: 'file-loader',
+  options: {
+    name: 'fonts/[name].[ext]'
+  }
+}
+```
+
+```javascript After (Asset Modules)
+{
+  test: /\.(woff|woff2|eot|ttf|otf)$/i,
+  type: 'asset/resource',
+  generator: {
+    filename: 'fonts/[name][ext]'
+  }
+}
+```
+</CodeGroup>
+
+### Custom Output Path
+
+<CodeGroup>
+```javascript Before (file-loader)
+{
+  loader: 'file-loader',
+  options: {
+    outputPath: 'assets/',
+    publicPath: '/static/assets/'
+  }
+}
+```
+
+```javascript After (Asset Modules)
+{
+  type: 'asset/resource',
+  generator: {
+    filename: 'assets/[name][ext]',
+    publicPath: '/static/assets/'
+  }
+}
+```
+</CodeGroup>
+
+## Asset Modules Advantages
+
+1. **Built-in** - No external loader required
+2. **Better Performance** - Native webpack implementation
+3. **Simpler Configuration** - Less boilerplate
+4. **Type Safety** - Better TypeScript support
+5. **Unified API** - Consistent with webpack 5 features
+
+## Asset Module Types
+
+Webpack 5 provides four asset module types:
+
+### `asset/resource`
+
+Replaces `file-loader` - emits file and returns URL:
+
+```javascript
+{
+  test: /\.png$/,
+  type: 'asset/resource'
+}
+```
+
+### `asset/inline`
+
+Replaces `url-loader` - inlines asset as data URI:
+
+```javascript
+{
+  test: /\.svg$/,
+  type: 'asset/inline'
+}
+```
+
+### `asset/source`
+
+Replaces `raw-loader` - exports source code:
+
+```javascript
+{
+  test: /\.txt$/,
+  type: 'asset/source'
+}
+```
+
+### `asset`
+
+Automatic choice between resource and inline:
+
+```javascript
+{
+  test: /\.png$/,
+  type: 'asset',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 8 * 1024 // 8kb
+    }
+  }
+}
+```
+
+## Complete Migration Example
+
+<CodeGroup>
+```javascript webpack 4 (file-loader)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[contenthash:8].[ext]',
+          outputPath: 'images/'
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'fonts/'
+        }
+      }
+    ]
+  }
+};
+```
+
+```javascript webpack 5 (Asset Modules)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[contenthash:8][ext]'
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+## Key Differences
+
+| Feature | file-loader | Asset Modules |
+|---------|-------------|---------------|
+| Installation | Required | Built-in |
+| Extension | Uses `[ext]` | Uses `[ext]` with dot |
+| Configuration | `options` object | `generator` object |
+| Performance | Good | Better |
+| Maintenance | Deprecated | Active |
+
+<Note>
+  In Asset Modules, `[ext]` includes the leading dot, so use `[name][ext]` instead of `[name].[ext]`.
+</Note>
+
+## Resources
+
+- [Asset Modules Guide](/guides/asset-modules)
+- [webpack 5 Asset Modules](https://webpack.js.org/guides/asset-modules/)
+- [Migration from webpack 4](/guides/asset-modules)
+- [file-loader GitHub](https://github.com/webpack-contrib/file-loader) (deprecated)

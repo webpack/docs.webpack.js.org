@@ -1,0 +1,548 @@
+---
+title: "TypeScript Integration"
+description: "Configure webpack to build TypeScript applications"
+icon: "t"
+---
+
+Webpack provides excellent support for TypeScript through loaders and plugins, enabling type-safe development with full build optimization.
+
+## Basic Setup
+
+<Steps>
+<Step title="Install dependencies">
+  ```bash
+  npm install --save-dev typescript ts-loader
+  ```
+</Step>
+
+<Step title="Create tsconfig.json">
+  ```json
+  {
+    "compilerOptions": {
+      "target": "ES2020",
+      "module": "ESNext",
+      "lib": ["ES2020", "DOM"],
+      "jsx": "react",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "sourceMap": true,
+      "outDir": "./dist"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+  }
+  ```
+</Step>
+
+<Step title="Configure webpack">
+  ```javascript
+  module.exports = {
+    entry: './src/index.ts',
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        }
+      ]
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js']
+    }
+  };
+  ```
+</Step>
+
+<Step title="Add build script">
+  In `package.json`:
+
+  ```json
+  {
+    "scripts": {
+      "build": "webpack",
+      "type-check": "tsc --noEmit"
+    }
+  }
+  ```
+</Step>
+</Steps>
+
+<Note>
+Set `"module": "ESNext"` in tsconfig.json to preserve ES modules for webpack's tree shaking.
+</Note>
+
+## ts-loader
+
+The standard TypeScript loader for webpack:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          // Faster builds in development
+          transpileOnly: true,
+          // Use specific tsconfig
+          configFile: 'tsconfig.build.json'
+        }
+      }
+    ]
+  }
+};
+```
+
+### transpileOnly Mode
+
+Skip type checking for faster builds:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
+      }
+    ]
+  }
+};
+```
+
+<Warning>
+With `transpileOnly: true`, type errors won't stop the build. Run `tsc --noEmit` separately to check types.
+</Warning>
+
+## Fork TS Checker Plugin
+
+Run type checking in a separate process for faster builds:
+
+<Steps>
+<Step title="Install plugin">
+  ```bash
+  npm install --save-dev fork-ts-checker-webpack-plugin
+  ```
+</Step>
+
+<Step title="Configure webpack">
+  ```javascript
+  const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+  module.exports = {
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true
+          }
+        }
+      ]
+    },
+    plugins: [
+      new ForkTsCheckerWebpackPlugin({
+        async: true // Don't block webpack in development
+      })
+    ]
+  };
+  ```
+</Step>
+</Steps>
+
+<Tip>
+This is the recommended setup for development - it provides fast rebuilds while still showing type errors.
+</Tip>
+
+## Babel with TypeScript
+
+Use Babel for transpilation and TypeScript only for type checking:
+
+<Steps>
+<Step title="Install dependencies">
+  ```bash
+  npm install --save-dev @babel/core @babel/preset-env @babel/preset-typescript babel-loader
+  ```
+</Step>
+
+<Step title="Create babel.config.js">
+  ```javascript
+  module.exports = {
+    presets: [
+      ['@babel/preset-env', { targets: { node: 'current' } }],
+      '@babel/preset-typescript'
+    ]
+  };
+  ```
+</Step>
+
+<Step title="Configure webpack">
+  ```javascript
+  module.exports = {
+    module: {
+      rules: [
+        {
+          test: /\.[jt]sx?$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
+          }
+        }
+      ]
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js', '.jsx']
+    }
+  };
+  ```
+</Step>
+</Steps>
+
+<Note>
+Babel is faster than ts-loader but doesn't type check. Use with ForkTsCheckerWebpackPlugin or run `tsc --noEmit` separately.
+</Note>
+
+## Development Configuration
+
+Optimize for fast development builds:
+
+```javascript
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  devtool: 'eval-source-map',
+  
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          transpileOnly: true // Fast builds
+        }
+      }
+    ]
+  },
+  
+  plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      async: true, // Non-blocking
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true
+        }
+      }
+    })
+  ],
+  
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  },
+  
+  cache: {
+    type: 'filesystem'
+  }
+};
+```
+
+## Production Configuration
+
+Optimize for production builds:
+
+```javascript
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  mode: 'production',
+  devtool: 'source-map',
+  
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          transpileOnly: false // Full type checking
+        }
+      }
+    ]
+  },
+  
+  plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      async: false // Block on errors
+    })
+  ],
+  
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  }
+};
+```
+
+## Path Mapping
+
+Use TypeScript path aliases:
+
+**tsconfig.json:**
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  }
+}
+```
+
+**webpack.config.js:**
+```javascript
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@utils': path.resolve(__dirname, 'src/utils/')
+    },
+    extensions: ['.tsx', '.ts', '.js']
+  }
+};
+```
+
+<Tip>
+Install `tsconfig-paths-webpack-plugin` to automatically sync webpack aliases with tsconfig paths.
+</Tip>
+
+## React with TypeScript
+
+```bash
+npm install --save react react-dom
+npm install --save-dev @types/react @types/react-dom
+```
+
+**tsconfig.json:**
+```json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+  }
+}
+```
+
+**webpack.config.js:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  }
+};
+```
+
+## Type Declarations
+
+### For Webpack Assets
+
+Create `src/types/assets.d.ts`:
+
+```typescript
+declare module '*.png' {
+  const value: string;
+  export default value;
+}
+
+declare module '*.jpg' {
+  const value: string;
+  export default value;
+}
+
+declare module '*.svg' {
+  const value: string;
+  export default value;
+}
+
+declare module '*.css' {
+  const classes: { [key: string]: string };
+  export default classes;
+}
+```
+
+### For Custom Modules
+
+```typescript
+declare module 'my-untyped-package' {
+  export function doSomething(value: string): void;
+}
+```
+
+## Environment-Specific Configs
+
+Use different tsconfig for different environments:
+
+**tsconfig.json** (base):
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "strict": true
+  }
+}
+```
+
+**tsconfig.build.json**:
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "exclude": ["**/*.test.ts"]
+}
+```
+
+**webpack.config.js:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          configFile: 'tsconfig.build.json'
+        }
+      }
+    ]
+  }
+};
+```
+
+## Project References
+
+For monorepos with multiple TypeScript projects:
+
+**tsconfig.base.json:**
+```json
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true
+  }
+}
+```
+
+**packages/app/tsconfig.json:**
+```json
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "references": [
+    { "path": "../shared" }
+  ]
+}
+```
+
+## Common Issues
+
+### Issue: Slow Builds
+
+**Solution:** Use `transpileOnly` with ForkTsCheckerWebpackPlugin:
+
+```javascript
+{
+  loader: 'ts-loader',
+  options: { transpileOnly: true }
+}
+```
+
+### Issue: Type Errors Not Showing
+
+**Solution:** Ensure type checking is enabled:
+
+```javascript
+new ForkTsCheckerWebpackPlugin({
+  async: false // Block on errors in production
+})
+```
+
+### Issue: Module Resolution Errors
+
+**Solution:** Check resolve extensions:
+
+```javascript
+resolve: {
+  extensions: ['.tsx', '.ts', '.js', '.json']
+}
+```
+
+<Warning>
+Always include `.js` in extensions array, as some dependencies may use JavaScript files.
+</Warning>
+
+## Best Practices
+
+<Steps>
+<Step title="Use transpileOnly in development">
+  Speed up builds and use ForkTsCheckerWebpackPlugin for type checking
+</Step>
+
+<Step title="Enable strict mode">
+  ```json
+  { "compilerOptions": { "strict": true } }
+  ```
+</Step>
+
+<Step title="Use ESNext modules">
+  Preserve ES modules for better tree shaking:
+  ```json
+  { "compilerOptions": { "module": "ESNext" } }
+  ```
+</Step>
+
+<Step title="Type your webpack config">
+  ```typescript
+  import type { Configuration } from 'webpack';
+
+  const config: Configuration = {
+    // ...
+  };
+  ```
+</Step>
+</Steps>

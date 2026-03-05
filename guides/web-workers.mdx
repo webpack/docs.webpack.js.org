@@ -1,0 +1,511 @@
+---
+title: "Web Workers"
+description: "Run JavaScript in background threads with webpack's Web Worker support"
+icon: "gears"
+---
+
+Web Workers allow you to run JavaScript in background threads, keeping your UI responsive during heavy computations. Webpack 5 provides built-in support for Web Workers.
+
+## What are Web Workers?
+
+Web Workers run scripts in background threads separate from the main execution thread, enabling:
+- Parallel processing without blocking the UI
+- Heavy computations without freezing the page
+- Better performance for CPU-intensive tasks
+
+<Note>
+Web Workers run in a separate global context and don't have access to the DOM or window object.
+</Note>
+
+## Basic Usage
+
+<Steps>
+<Step title="Create a worker file">
+  **worker.js:**
+  ```javascript
+  self.addEventListener('message', (event) => {
+    const result = heavyComputation(event.data);
+    self.postMessage(result);
+  });
+
+  function heavyComputation(data) {
+    // Perform CPU-intensive work
+    let result = 0;
+    for (let i = 0; i < data; i++) {
+      result += Math.sqrt(i);
+    }
+    return result;
+  }
+  ```
+</Step>
+
+<Step title="Use the worker in your code">
+  **main.js:**
+  ```javascript
+  const worker = new Worker(
+    new URL('./worker.js', import.meta.url)
+  );
+
+  worker.postMessage(1000000);
+
+  worker.addEventListener('message', (event) => {
+    console.log('Result:', event.data);
+  });
+  ```
+</Step>
+
+<Step title="Configure webpack">
+  ```javascript
+  module.exports = {
+    output: {
+      filename: '[name].js',
+      chunkFilename: '[name].js'
+    }
+  };
+  ```
+
+  No additional configuration needed - webpack 5 handles workers automatically!
+</Step>
+</Steps>
+
+<Tip>
+Use `new URL('./worker.js', import.meta.url)` syntax for webpack to automatically bundle the worker.
+</Tip>
+
+## Worker Syntax
+
+Webpack 5 supports multiple worker syntaxes:
+
+### Using new URL()
+
+```javascript
+const worker = new Worker(
+  new URL('./worker.js', import.meta.url)
+);
+```
+
+### With Type
+
+```javascript
+const worker = new Worker(
+  new URL('./worker.js', import.meta.url),
+  { type: 'module' }
+);
+```
+
+### Named Chunks
+
+```javascript
+const worker = new Worker(
+  new URL(
+    /* webpackChunkName: "my-worker" */
+    './worker.js',
+    import.meta.url
+  )
+);
+```
+
+## Worker Configuration
+
+Configure how workers are bundled:
+
+```javascript
+module.exports = {
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[name].worker.js',
+    workerChunkLoading: 'import', // or 'import-scripts'
+  },
+  optimization: {
+    concatenateModules: true,
+    usedExports: true
+  }
+};
+```
+
+## Shared Workers
+
+Shared Workers can be accessed by multiple scripts:
+
+**shared-worker.js:**
+```javascript
+let connections = 0;
+
+self.addEventListener('connect', (event) => {
+  const port = event.ports[0];
+  connections++;
+
+  port.addEventListener('message', (e) => {
+    // Broadcast to all connections
+    port.postMessage(`Total connections: ${connections}`);
+  });
+
+  port.start();
+});
+```
+
+**main.js:**
+```javascript
+const worker = new SharedWorker(
+  new URL('./shared-worker.js', import.meta.url)
+);
+
+worker.port.start();
+worker.port.postMessage('hello');
+
+worker.port.addEventListener('message', (event) => {
+  console.log(event.data);
+});
+```
+
+## Service Workers
+
+Service Workers provide offline capabilities and caching:
+
+```javascript
+// Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register(
+    new URL('./service-worker.js', import.meta.url)
+  );
+}
+```
+
+**service-worker.js:**
+```javascript
+const CACHE_NAME = 'my-app-v1';
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll([
+        '/',
+        '/styles.css',
+        '/script.js'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
+```
+
+<Warning>
+Service Workers require HTTPS in production (except for localhost).
+</Warning>
+
+## Worker Communication Patterns
+
+### Simple Request-Response
+
+```javascript
+// Main thread
+const worker = new Worker(new URL('./worker.js', import.meta.url));
+
+worker.postMessage({ type: 'calculate', data: 100 });
+
+worker.addEventListener('message', (event) => {
+  console.log('Result:', event.data);
+});
+
+// Worker
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'calculate') {
+    const result = performCalculation(event.data.data);
+    self.postMessage(result);
+  }
+});
+```
+
+### Promise-Based Communication
+
+```javascript
+class WorkerPool {
+  constructor(workerPath, poolSize = 4) {
+    this.workers = [];
+    this.taskQueue = [];
+    
+    for (let i = 0; i < poolSize; i++) {
+      const worker = new Worker(new URL(workerPath, import.meta.url));
+      this.workers.push({ worker, busy: false });
+    }
+  }
+
+  async execute(data) {
+    return new Promise((resolve, reject) => {
+      const availableWorker = this.workers.find(w => !w.busy);
+      
+      if (availableWorker) {
+        this.runTask(availableWorker, data, resolve, reject);
+      } else {
+        this.taskQueue.push({ data, resolve, reject });
+      }
+    });
+  }
+
+  runTask(workerObj, data, resolve, reject) {
+    workerObj.busy = true;
+    
+    const handleMessage = (event) => {
+      workerObj.worker.removeEventListener('message', handleMessage);
+      workerObj.busy = false;
+      resolve(event.data);
+      this.processQueue();
+    };
+    
+    workerObj.worker.addEventListener('message', handleMessage);
+    workerObj.worker.postMessage(data);
+  }
+
+  processQueue() {
+    if (this.taskQueue.length > 0) {
+      const availableWorker = this.workers.find(w => !w.busy);
+      if (availableWorker) {
+        const { data, resolve, reject } = this.taskQueue.shift();
+        this.runTask(availableWorker, data, resolve, reject);
+      }
+    }
+  }
+}
+
+// Usage
+const pool = new WorkerPool('./worker.js', 4);
+const result = await pool.execute({ task: 'compute', value: 1000 });
+```
+
+## Transferable Objects
+
+Transfer ownership of data for better performance:
+
+```javascript
+// Create large data
+const buffer = new ArrayBuffer(1024 * 1024); // 1MB
+const data = new Uint8Array(buffer);
+
+// Transfer buffer to worker (zero-copy)
+worker.postMessage(data, [buffer]);
+
+// buffer is now empty in main thread
+console.log(buffer.byteLength); // 0
+```
+
+**Worker:**
+```javascript
+self.addEventListener('message', (event) => {
+  const data = event.data;
+  // Process data
+  
+  // Transfer back
+  self.postMessage(data, [data.buffer]);
+});
+```
+
+<Tip>
+Use transferable objects for large ArrayBuffers to avoid copying and improve performance.
+</Tip>
+
+## TypeScript Support
+
+**worker.ts:**
+```typescript
+interface WorkerMessage {
+  type: 'calculate' | 'process';
+  data: number[];
+}
+
+interface WorkerResponse {
+  result: number;
+  duration: number;
+}
+
+self.addEventListener('message', (event: MessageEvent<WorkerMessage>) => {
+  const start = performance.now();
+  
+  let result = 0;
+  if (event.data.type === 'calculate') {
+    result = event.data.data.reduce((sum, n) => sum + n, 0);
+  }
+  
+  const response: WorkerResponse = {
+    result,
+    duration: performance.now() - start
+  };
+  
+  self.postMessage(response);
+});
+```
+
+**main.ts:**
+```typescript
+const worker = new Worker(
+  new URL('./worker.ts', import.meta.url)
+);
+
+worker.postMessage({
+  type: 'calculate',
+  data: [1, 2, 3, 4, 5]
+});
+
+worker.addEventListener('message', (event) => {
+  console.log('Result:', event.data.result);
+  console.log('Duration:', event.data.duration);
+});
+```
+
+## Error Handling
+
+```javascript
+const worker = new Worker(new URL('./worker.js', import.meta.url));
+
+// Handle messages
+worker.addEventListener('message', (event) => {
+  console.log('Success:', event.data);
+});
+
+// Handle errors
+worker.addEventListener('error', (error) => {
+  console.error('Worker error:', error.message);
+  console.error('File:', error.filename);
+  console.error('Line:', error.lineno);
+});
+
+// Handle unhandled rejections in worker
+worker.addEventListener('messageerror', (event) => {
+  console.error('Message error:', event);
+});
+
+// In worker
+self.addEventListener('error', (error) => {
+  console.error('Worker internal error:', error);
+});
+
+self.addEventListener('unhandledrejection', (event) => {
+  console.error('Unhandled promise rejection:', event.reason);
+});
+```
+
+## Use Cases
+
+### Image Processing
+
+```javascript
+// worker.js
+self.addEventListener('message', (event) => {
+  const { imageData, filter } = event.data;
+  
+  const processed = applyFilter(imageData, filter);
+  
+  self.postMessage(processed, [processed.data.buffer]);
+});
+
+function applyFilter(imageData, filter) {
+  // Process pixels
+  for (let i = 0; i < imageData.data.length; i += 4) {
+    // Apply filter transformations
+    imageData.data[i] *= filter.r;
+    imageData.data[i + 1] *= filter.g;
+    imageData.data[i + 2] *= filter.b;
+  }
+  return imageData;
+}
+```
+
+### Data Processing
+
+```javascript
+// worker.js
+self.addEventListener('message', async (event) => {
+  const { data, operation } = event.data;
+  
+  const result = await processLargeDataset(data, operation);
+  
+  self.postMessage({ result });
+});
+
+async function processLargeDataset(data, operation) {
+  // Process millions of records
+  return data.map(item => {
+    switch(operation) {
+      case 'transform':
+        return transformItem(item);
+      case 'filter':
+        return filterItem(item);
+      default:
+        return item;
+    }
+  });
+}
+```
+
+### Background Sync
+
+```javascript
+// worker.js
+let syncQueue = [];
+
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'sync') {
+    syncQueue.push(event.data.payload);
+    processSyncQueue();
+  }
+});
+
+async function processSyncQueue() {
+  while (syncQueue.length > 0) {
+    const item = syncQueue.shift();
+    try {
+      await fetch('/api/sync', {
+        method: 'POST',
+        body: JSON.stringify(item)
+      });
+      self.postMessage({ type: 'sync-complete', id: item.id });
+    } catch (error) {
+      // Retry later
+      syncQueue.push(item);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+  }
+}
+```
+
+## Best Practices
+
+<Steps>
+<Step title="Use for CPU-intensive tasks">
+  Offload heavy computations that would block the UI:
+  - Image/video processing
+  - Large data transformations
+  - Complex calculations
+  - Encryption/decryption
+</Step>
+
+<Step title="Transfer large data efficiently">
+  Use transferable objects for ArrayBuffers:
+  ```javascript
+  worker.postMessage(data, [data.buffer]);
+  ```
+</Step>
+
+<Step title="Handle errors gracefully">
+  Always add error listeners:
+  ```javascript
+  worker.addEventListener('error', handleError);
+  ```
+</Step>
+
+<Step title="Terminate workers when done">
+  ```javascript
+  worker.terminate();
+  ```
+</Step>
+</Steps>
+
+<Warning>
+Workers can't access the DOM, window object, or parent page directly. Communicate only through messages.
+</Warning>

@@ -1,0 +1,296 @@
+---
+title: "Caching"
+description: "Optimize build performance and enable long-term browser caching"
+icon: "database"
+---
+
+Webpack provides powerful caching mechanisms to speed up builds and enable efficient browser caching through content hashing.
+
+## Browser Caching with Content Hashes
+
+Use content hashes in filenames to enable long-term browser caching.
+
+<Steps>
+<Step title="Add content hashes to output">
+  Configure output filenames with hash placeholders:
+
+  ```javascript
+  const path = require('path');
+
+  module.exports = {
+    output: {
+      path: path.join(__dirname, 'dist'),
+      filename: '[name].[contenthash].js',
+      chunkFilename: '[name].[contenthash].js'
+    }
+  };
+  ```
+</Step>
+
+<Step title="Extract runtime chunk">
+  Separate the webpack runtime into its own chunk:
+
+  ```javascript
+  module.exports = {
+    optimization: {
+      runtimeChunk: 'single'
+    }
+  };
+  ```
+
+  This prevents vendor bundles from changing when app code changes.
+</Step>
+
+<Step title="Configure cache headers">
+  Set long cache times for hashed assets:
+
+  ```
+  Cache-Control: public, max-age=31536000, immutable
+  ```
+</Step>
+</Steps>
+
+## Hash Types
+
+Webpack supports different hash types for different use cases:
+
+### `[contenthash]`
+
+Hash based on file content - best for long-term caching:
+
+```javascript
+module.exports = {
+  output: {
+    filename: '[name].[contenthash].js'
+  }
+};
+```
+
+<Tip>
+Use `[contenthash]` in production for optimal cache invalidation - files only change when content changes.
+</Tip>
+
+### `[chunkhash]`
+
+Hash based on chunk content:
+
+```javascript
+module.exports = {
+  output: {
+    filename: '[name].[chunkhash].js'
+  }
+};
+```
+
+### `[fullhash]`
+
+Hash based on entire build - changes for any modification:
+
+```javascript
+module.exports = {
+  output: {
+    filename: '[name].[fullhash].js'
+  }
+};
+```
+
+<Warning>
+Avoid `[fullhash]` in production as it invalidates all files on any change, defeating the purpose of caching.
+</Warning>
+
+## Filesystem Caching
+
+Speed up rebuilds by caching to the filesystem:
+
+<Steps>
+<Step title="Enable filesystem cache">
+  ```javascript
+  const path = require('path');
+
+  module.exports = {
+    cache: {
+      type: 'filesystem',
+      cacheDirectory: path.resolve(__dirname, '.cache'),
+      buildDependencies: {
+        config: [__filename]
+      }
+    }
+  };
+  ```
+</Step>
+
+<Step title="Add cache directory to .gitignore">
+  ```
+  .cache/
+  node_modules/.cache/
+  ```
+</Step>
+</Steps>
+
+<Note>
+Filesystem caching is enabled by default in webpack 5 when mode is 'development'. The cache is stored in `node_modules/.cache/webpack`.
+</Note>
+
+## Cache Configuration Options
+
+### Basic Configuration
+
+```javascript
+module.exports = {
+  cache: {
+    type: 'filesystem',
+    
+    // Cache directory location
+    cacheDirectory: path.resolve(__dirname, '.cache'),
+    
+    // Dependencies that invalidate cache when changed
+    buildDependencies: {
+      config: [__filename],
+      // Add other files that affect the build
+    }
+  }
+};
+```
+
+### Advanced Options
+
+```javascript
+module.exports = {
+  cache: {
+    type: 'filesystem',
+    
+    // Compression for cache files
+    compression: 'gzip',
+    
+    // Cache profile for debugging
+    profile: true,
+    
+    // Time in ms to collect requests before storing cache
+    idleTimeout: 60000,
+    
+    // Maximum age of cache in milliseconds
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  }
+};
+```
+
+## Module IDs
+
+Stable module IDs prevent cache invalidation:
+
+```javascript
+module.exports = {
+  optimization: {
+    moduleIds: 'deterministic',
+    chunkIds: 'deterministic'
+  }
+};
+```
+
+<Tip>
+Webpack 5 uses `'deterministic'` IDs by default in production mode, which generates short numeric IDs that are stable across builds.
+</Tip>
+
+## Real Content Hash Plugin
+
+Ensure content hashes truly reflect content changes:
+
+```javascript
+module.exports = {
+  optimization: {
+    realContentHash: true
+  }
+};
+```
+
+This is enabled by default in production mode and ensures that the hash only changes when the actual file content changes, not when other files in the build change.
+
+## Best Practices
+
+### Split Vendor and App Code
+
+```javascript
+module.exports = {
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },
+  output: {
+    filename: '[name].[contenthash].js'
+  }
+};
+```
+
+### Asset Modules Hashing
+
+```javascript
+module.exports = {
+  output: {
+    assetModuleFilename: 'assets/[hash][ext][query]'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: 'asset/resource'
+      }
+    ]
+  }
+};
+```
+
+### Verbose Logging for Debugging
+
+```javascript
+module.exports = {
+  infrastructureLogging: {
+    level: 'verbose'
+  },
+  cache: {
+    type: 'filesystem',
+    profile: true
+  }
+};
+```
+
+<Note>
+Enable verbose logging during development to understand cache behavior and identify issues.
+</Note>
+
+## Cache Invalidation
+
+The cache is automatically invalidated when:
+
+- webpack configuration changes
+- `package.json` or lock file changes
+- Files in `buildDependencies` change
+- Node.js version changes
+- webpack version changes
+
+### Manual Cache Clearing
+
+```bash
+# Clear the cache directory
+rm -rf node_modules/.cache/webpack
+
+# Or your custom cache directory
+rm -rf .cache
+```
+
+## Performance Tips
+
+<Tip>
+For CI/CD environments, consider caching the `.cache` directory between builds to speed up pipelines.
+</Tip>
+
+<Warning>
+Don't commit cache directories to version control - they can be large and are machine-specific.
+</Warning>

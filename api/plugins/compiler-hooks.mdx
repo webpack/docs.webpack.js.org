@@ -1,0 +1,560 @@
+---
+title: Compiler Hooks
+description: Reference for all webpack Compiler lifecycle hooks
+---
+
+The `Compiler` module is the main engine that creates a compilation instance with all the options passed through the webpack configuration. It extends `Tapable` and provides lifecycle hooks.
+
+## Accessing Compiler Hooks
+
+Compiler hooks are accessed in your plugin's `apply` method:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.run.tap('MyPlugin', (compiler) => {
+      console.log('The webpack build process is starting');
+    });
+  }
+}
+```
+
+## Hook Types Reference
+
+Each hook is an instance of a Tapable hook class. The type determines how you can tap into it:
+
+- `SyncHook` - Use `.tap()` only
+- `SyncBailHook` - Use `.tap()`, can return value to exit early
+- `AsyncSeriesHook` - Use `.tap()`, `.tapAsync()`, or `.tapPromise()`
+- `AsyncParallelHook` - Use `.tap()`, `.tapAsync()`, or `.tapPromise()` (runs in parallel)
+
+## Lifecycle Hooks
+
+### `initialize`
+
+```typescript
+SyncHook<[]>
+```
+
+Called when the compiler is initialized.
+
+```javascript
+compiler.hooks.initialize.tap('MyPlugin', () => {
+  console.log('Compiler initialized');
+});
+```
+
+### `environment`
+
+```typescript
+SyncHook<[]>
+```
+
+Called after the environment is set up.
+
+```javascript
+compiler.hooks.environment.tap('MyPlugin', () => {
+  // Prepare environment
+});
+```
+
+### `afterEnvironment`
+
+```typescript
+SyncHook<[]>
+```
+
+Called after environment setup is complete.
+
+```javascript
+compiler.hooks.afterEnvironment.tap('MyPlugin', () => {
+  // Environment is ready
+});
+```
+
+### `afterPlugins`
+
+```typescript
+SyncHook<[Compiler]>
+```
+
+Called after all plugins from the configuration have been applied.
+
+```javascript
+compiler.hooks.afterPlugins.tap('MyPlugin', (compiler) => {
+  console.log('All plugins applied');
+});
+```
+
+### `afterResolvers`
+
+```typescript
+SyncHook<[Compiler]>
+```
+
+Called after the resolvers are set up.
+
+```javascript
+compiler.hooks.afterResolvers.tap('MyPlugin', (compiler) => {
+  // Modify resolvers if needed
+});
+```
+
+### `entryOption`
+
+```typescript
+SyncBailHook<[string, Entry]>
+```
+
+Called after the entry configuration has been processed. Return `true` to prevent default entry processing.
+
+```javascript
+compiler.hooks.entryOption.tap('MyPlugin', (context, entry) => {
+  // Custom entry handling
+});
+```
+
+## Build Lifecycle Hooks
+
+### `beforeRun`
+
+```typescript
+AsyncSeriesHook<[Compiler]>
+```
+
+Called before the compiler starts running. Perfect for cleanup or setup tasks.
+
+```javascript
+compiler.hooks.beforeRun.tapAsync('MyPlugin', (compiler, callback) => {
+  // Prepare for build
+  callback();
+});
+```
+
+**Example from source** (lib/Compiler.js:607):
+
+```javascript
+this.hooks.beforeRun.callAsync(this, (err) => {
+  if (err) return finalCallback(err);
+  this.hooks.run.callAsync(this, (err) => {
+    // Continue build process
+  });
+});
+```
+
+### `run`
+
+```typescript
+AsyncSeriesHook<[Compiler]>
+```
+
+Called when the compiler starts running.
+
+```javascript
+compiler.hooks.run.tapPromise('MyPlugin', async (compiler) => {
+  console.log('Build started');
+});
+```
+
+### `watchRun`
+
+```typescript
+AsyncSeriesHook<[Compiler]>
+```
+
+Called when watch mode is triggered. Receives the compiler instance.
+
+```javascript
+compiler.hooks.watchRun.tapAsync('MyPlugin', (compiler, callback) => {
+  console.log('Watch compilation started');
+  // Access changed files
+  const changedFiles = compiler.modifiedFiles;
+  callback();
+});
+```
+
+## Compilation Hooks
+
+### `beforeCompile`
+
+```typescript
+AsyncSeriesHook<[CompilationParams]>
+```
+
+Called before compilation parameters are created.
+
+```javascript
+compiler.hooks.beforeCompile.tapAsync(
+  'MyPlugin',
+  (params, callback) => {
+    // params.normalModuleFactory
+    // params.contextModuleFactory
+    callback();
+  }
+);
+```
+
+### `compile`
+
+```typescript
+SyncHook<[CompilationParams]>
+```
+
+Called immediately before a new compilation is created.
+
+```javascript
+compiler.hooks.compile.tap('MyPlugin', (params) => {
+  console.log('Creating new compilation');
+});
+```
+
+### `thisCompilation`
+
+```typescript
+SyncHook<[Compilation, CompilationParams]>
+```
+
+Called when a compilation is created, before `compilation` hook.
+
+```javascript
+compiler.hooks.thisCompilation.tap(
+  'MyPlugin',
+  (compilation, params) => {
+    // Called before compilation hook
+  }
+);
+```
+
+### `compilation`
+
+```typescript
+SyncHook<[Compilation, CompilationParams]>
+```
+
+Called when a compilation is created. This is your main entry point for compilation-level hooks.
+
+```javascript
+compiler.hooks.compilation.tap(
+  'MyPlugin',
+  (compilation, { normalModuleFactory }) => {
+    // Access compilation hooks
+    compilation.hooks.buildModule.tap('MyPlugin', (module) => {
+      // Module is being built
+    });
+  }
+);
+```
+
+**Example: DefinePlugin** (lib/DefinePlugin.js:388):
+
+```javascript
+compiler.hooks.compilation.tap(
+  'DefinePlugin',
+  (compilation, { normalModuleFactory }) => {
+    const handler = (parser) => {
+      // Walk definitions and hook into parser
+    };
+    normalModuleFactory.hooks.parser
+      .for('javascript/auto')
+      .tap('DefinePlugin', handler);
+  }
+);
+```
+
+### `make`
+
+```typescript
+AsyncParallelHook<[Compilation]>
+```
+
+Called when compilation starts. This is where entries are processed.
+
+```javascript
+compiler.hooks.make.tapAsync('MyPlugin', (compilation, callback) => {
+  // Add entries or process modules
+  callback();
+});
+```
+
+### `finishMake`
+
+```typescript
+AsyncSeriesHook<[Compilation]>
+```
+
+Called when make phase finishes.
+
+```javascript
+compiler.hooks.finishMake.tapAsync('MyPlugin', (compilation, callback) => {
+  // Make phase complete
+  callback();
+});
+```
+
+### `afterCompile`
+
+```typescript
+AsyncSeriesHook<[Compilation]>
+```
+
+Called after compilation finishes.
+
+```javascript
+compiler.hooks.afterCompile.tapAsync('MyPlugin', (compilation, callback) => {
+  // Compilation complete, before sealing
+  callback();
+});
+```
+
+## Module Factory Hooks
+
+### `normalModuleFactory`
+
+```typescript
+SyncHook<[NormalModuleFactory]>
+```
+
+Called after creating a NormalModuleFactory.
+
+```javascript
+compiler.hooks.normalModuleFactory.tap('MyPlugin', (factory) => {
+  factory.hooks.parser.for('javascript/auto').tap('MyPlugin', (parser) => {
+    // Customize parser
+  });
+});
+```
+
+### `contextModuleFactory`
+
+```typescript
+SyncHook<[ContextModuleFactory]>
+```
+
+Called after creating a ContextModuleFactory.
+
+```javascript
+compiler.hooks.contextModuleFactory.tap('MyPlugin', (factory) => {
+  // Customize context module creation
+});
+```
+
+## Emit Hooks
+
+### `shouldEmit`
+
+```typescript
+SyncBailHook<[Compilation], boolean | void>
+```
+
+Return `false` to prevent emitting assets.
+
+```javascript
+compiler.hooks.shouldEmit.tap('MyPlugin', (compilation) => {
+  // Return false to skip emit
+  if (compilation.errors.length > 0) {
+    return false;
+  }
+});
+```
+
+### `emit`
+
+```typescript
+AsyncSeriesHook<[Compilation]>
+```
+
+Called immediately before assets are emitted to output directory.
+
+```javascript
+compiler.hooks.emit.tapAsync('MyPlugin', (compilation, callback) => {
+  // Modify assets before writing to disk
+  for (const filename in compilation.assets) {
+    console.log(`Emitting ${filename}`);
+  }
+  callback();
+});
+```
+
+### `assetEmitted`
+
+```typescript
+AsyncSeriesHook<[string, AssetEmittedInfo]>
+```
+
+Called when an asset has been written to disk.
+
+```javascript
+compiler.hooks.assetEmitted.tap(
+  'MyPlugin',
+  (file, { content, outputPath, targetPath }) => {
+    console.log(`Asset emitted: ${file}`);
+  }
+);
+```
+
+### `afterEmit`
+
+```typescript
+AsyncSeriesHook<[Compilation]>
+```
+
+Called after assets have been emitted.
+
+```javascript
+compiler.hooks.afterEmit.tapAsync('MyPlugin', (compilation, callback) => {
+  // All assets written to disk
+  callback();
+});
+```
+
+## Completion Hooks
+
+### `done`
+
+```typescript
+AsyncSeriesHook<[Stats]>
+```
+
+Called when compilation completes successfully.
+
+```javascript
+compiler.hooks.done.tap('MyPlugin', (stats) => {
+  console.log('Build completed');
+  console.log(stats.toString());
+});
+```
+
+### `afterDone`
+
+```typescript
+SyncHook<[Stats]>
+```
+
+Called after `done` hook completes.
+
+```javascript
+compiler.hooks.afterDone.tap('MyPlugin', (stats) => {
+  // Final cleanup
+});
+```
+
+### `failed`
+
+```typescript
+SyncHook<[Error]>
+```
+
+Called when compilation fails.
+
+```javascript
+compiler.hooks.failed.tap('MyPlugin', (error) => {
+  console.error('Build failed:', error);
+});
+```
+
+## Watch Mode Hooks
+
+### `invalid`
+
+```typescript
+SyncHook<[string | null, number]>
+```
+
+Called when a watched file changes.
+
+```javascript
+compiler.hooks.invalid.tap('MyPlugin', (filename, changeTime) => {
+  console.log(`File changed: ${filename}`);
+});
+```
+
+### `watchClose`
+
+```typescript
+SyncHook<[]>
+```
+
+Called when watch mode stops.
+
+```javascript
+compiler.hooks.watchClose.tap('MyPlugin', () => {
+  console.log('Watch mode stopped');
+});
+```
+
+## Other Hooks
+
+### `shutdown`
+
+```typescript
+AsyncSeriesHook<[]>
+```
+
+Called when compiler is shutting down.
+
+```javascript
+compiler.hooks.shutdown.tapAsync('MyPlugin', (callback) => {
+  // Cleanup resources
+  callback();
+});
+```
+
+### `infrastructureLog`
+
+```typescript
+SyncBailHook<[string, string, any[]], true | void>
+```
+
+Custom infrastructure logging.
+
+```javascript
+compiler.hooks.infrastructureLog.tap(
+  'MyPlugin',
+  (origin, type, args) => {
+    // Custom logging
+  }
+);
+```
+
+## Complete Example
+
+```javascript
+class MyCompilerPlugin {
+  apply(compiler) {
+    // Setup phase
+    compiler.hooks.environment.tap('MyPlugin', () => {
+      console.log('Environment setup');
+    });
+
+    // Before build
+    compiler.hooks.beforeRun.tapAsync('MyPlugin', (compiler, callback) => {
+      console.log('Preparing to build');
+      callback();
+    });
+
+    // During compilation
+    compiler.hooks.compilation.tap('MyPlugin', (compilation) => {
+      compilation.hooks.buildModule.tap('MyPlugin', (module) => {
+        console.log('Building module:', module.identifier());
+      });
+    });
+
+    // After emit
+    compiler.hooks.afterEmit.tapAsync('MyPlugin', (compilation, callback) => {
+      console.log('Assets emitted');
+      callback();
+    });
+
+    // Build complete
+    compiler.hooks.done.tap('MyPlugin', (stats) => {
+      console.log('Build completed in', stats.endTime - stats.startTime, 'ms');
+    });
+  }
+}
+```
+
+## See Also
+
+- [Compilation Hooks](./compilation-hooks) - Hooks for the compilation phase
+- [Module Factories](./module-factories) - Module creation hooks
+- [Tapable](./tapable) - Understanding the hook system

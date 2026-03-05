@@ -1,0 +1,485 @@
+---
+title: MinChunkSizePlugin
+description: Merge small chunks to optimize bundle size and reduce overhead
+---
+
+The `MinChunkSizePlugin` merges chunks that are smaller than a specified size. This reduces the overhead of having many tiny chunks and improves loading performance.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000 // Minimum 10 KB
+    })
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="minChunkSize" type="number" required>
+  Minimum size in bytes for a chunk. Chunks smaller than this will be merged.
+</ParamField>
+
+## Examples
+
+### Basic Usage
+
+```javascript
+new webpack.optimize.MinChunkSizePlugin({
+  minChunkSize: 10000 // 10 KB minimum
+})
+```
+
+### Larger Minimum Size
+
+```javascript
+new webpack.optimize.MinChunkSizePlugin({
+  minChunkSize: 50000 // 50 KB minimum
+})
+```
+
+### Development vs Production
+
+```javascript
+const isDev = process.env.NODE_ENV === 'development';
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: isDev ? 0 : 30000 // Only in production
+    })
+  ]
+};
+```
+
+### With Code Splitting
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000
+    }
+  },
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000 // Merge chunks smaller than 10 KB
+    })
+  ]
+};
+```
+
+### HTTP/2 Optimization
+
+```javascript
+const isHTTP2 = process.env.HTTP_VERSION === '2';
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: isHTTP2 ? 5000 : 50000
+    })
+  ]
+};
+```
+
+### Mobile Optimization
+
+```javascript
+new webpack.optimize.MinChunkSizePlugin({
+  minChunkSize: 30000 // Larger chunks for mobile
+})
+```
+
+## How It Works
+
+The plugin:
+
+1. Identifies chunks smaller than `minChunkSize`
+2. Finds the best merge candidates
+3. Merges small chunks with compatible larger chunks
+4. Repeats until no small chunks remain (or no valid merges)
+
+### Merging Strategy
+
+Chunks are merged based on:
+
+1. **Size Reduction** - Minimize overhead from merging
+2. **Compatibility** - Only merge compatible chunks
+3. **Integrated Size** - Prefer smaller combined size
+
+## Use Cases
+
+### Reduce Chunk Overhead
+
+Many tiny chunks create overhead:
+
+```javascript
+// Before
+- chunk-a.js: 3 KB
+- chunk-b.js: 2 KB
+- chunk-c.js: 4 KB
+// Total overhead: ~3 KB (1 KB per chunk)
+
+// After MinChunkSizePlugin (minChunkSize: 10000)
+- chunk-abc.js: 9 KB
+// Total overhead: ~1 KB
+```
+
+```javascript
+new webpack.optimize.MinChunkSizePlugin({
+  minChunkSize: 10000
+})
+```
+
+### Dynamic Import Optimization
+
+Prevent tiny dynamic chunks:
+
+```javascript
+// Code with many small dynamic imports
+import('./smallModule1');
+import('./smallModule2');
+import('./smallModule3');
+
+// Configuration
+new webpack.optimize.MinChunkSizePlugin({
+  minChunkSize: 20000 // Merge small dynamic chunks
+})
+```
+
+### Library Code Splitting
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all'
+        }
+      }
+    }
+  },
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 30000 // Avoid tiny vendor chunks
+    })
+  ]
+};
+```
+
+## Performance Considerations
+
+<Note>
+Benefits of merging small chunks:
+- Reduced HTTP overhead (fewer requests)
+- Less browser parsing overhead
+- Improved compression ratio
+- Better caching efficiency
+</Note>
+
+### Example Impact
+
+```
+Before MinChunkSizePlugin:
+- 20 chunks
+- 10 chunks < 10 KB
+- Load time: 3.2s (HTTP/1.1)
+
+After MinChunkSizePlugin (minChunkSize: 10000):
+- 12 chunks
+- 0 chunks < 10 KB
+- Load time: 2.1s (HTTP/1.1)
+```
+
+## Combining with Other Plugins
+
+### With SplitChunksPlugin
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000, // Initial split threshold
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors'
+        }
+      }
+    }
+  },
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000 // Merge if still too small
+    })
+  ]
+};
+```
+
+### With LimitChunkCountPlugin
+
+```javascript
+module.exports = {
+  plugins: [
+    // First: Merge small chunks
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 30000
+    }),
+    // Then: Limit total chunks
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 10
+    })
+  ]
+};
+```
+
+## Advanced Configuration
+
+### Environment-Based Sizes
+
+```javascript
+const getMinChunkSize = () => {
+  const env = process.env.NODE_ENV;
+  const target = process.env.TARGET;
+  
+  if (env === 'development') return 0; // Disable in dev
+  if (target === 'mobile') return 50000; // Larger for mobile
+  if (target === 'desktop') return 30000;
+  return 20000; // Default
+};
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: getMinChunkSize()
+    })
+  ]
+};
+```
+
+### Conditional Application
+
+```javascript
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  plugins: [
+    isProduction && new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 20000
+    })
+  ].filter(Boolean)
+};
+```
+
+### Progressive Web App
+
+```javascript
+module.exports = {
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 15000 // Balance between caching and overhead
+    })
+  ]
+};
+```
+
+## Debugging
+
+### Analyze Chunk Sizes
+
+```javascript
+module.exports = {
+  stats: {
+    chunks: true,
+    chunkModules: true,
+    assets: true
+  },
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000
+    })
+  ]
+};
+```
+
+### Using webpack-bundle-analyzer
+
+```javascript
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 20000
+    }),
+    new BundleAnalyzerPlugin() // Visualize chunk sizes
+  ]
+};
+```
+
+### Log Chunk Information
+
+Build and check output:
+
+```bash
+webpack --json > stats.json
+```
+
+Analyze chunk sizes:
+```javascript
+const stats = require('./stats.json');
+const smallChunks = stats.chunks.filter(
+  chunk => chunk.size < 10000
+);
+console.log('Small chunks:', smallChunks.length);
+```
+
+## Choosing the Right Size
+
+### Guidelines
+
+<ParamField path="5-10 KB" type="range">
+  Very small, may create too many requests
+</ParamField>
+
+<ParamField path="10-30 KB" type="range">
+  Good balance for most applications
+</ParamField>
+
+<ParamField path="30-50 KB" type="range">
+  Larger chunks, fewer requests
+</ParamField>
+
+<ParamField path="50+ KB" type="range">
+  May prevent effective code splitting
+</ParamField>
+
+### Recommendations by Environment
+
+```javascript
+// HTTP/1.1
+minChunkSize: 50000
+
+// HTTP/2
+minChunkSize: 10000
+
+// Mobile
+minChunkSize: 30000
+
+// Desktop
+minChunkSize: 20000
+```
+
+## Common Patterns
+
+### Aggressive Merging
+
+```javascript
+new webpack.optimize.MinChunkSizePlugin({
+  minChunkSize: 100000 // 100 KB minimum
+})
+```
+
+### Conservative Merging
+
+```javascript
+new webpack.optimize.MinChunkSizePlugin({
+  minChunkSize: 5000 // 5 KB minimum
+})
+```
+
+### Balanced Approach
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+      maxSize: 250000
+    }
+  },
+  plugins: [
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 20000 // Catch remaining small chunks
+    })
+  ]
+};
+```
+
+<Warning>
+Setting `minChunkSize` too high can:
+- Reduce effectiveness of code splitting
+- Create larger initial bundles
+- Hurt caching strategy
+
+Find the right balance for your application.
+</Warning>
+
+## Best Practices
+
+1. **Start with Reasonable Values**
+   ```javascript
+   minChunkSize: 20000 // 20 KB is a good starting point
+   ```
+
+2. **Consider Your Protocol**
+   - HTTP/1.1: Higher values (30-50 KB)
+   - HTTP/2: Lower values (10-20 KB)
+
+3. **Test Real-World Performance**
+   - Measure actual load times
+   - Monitor cache hit rates
+   - Consider your user's connection speeds
+
+4. **Use with Code Splitting**
+   ```javascript
+   optimization: {
+     splitChunks: { chunks: 'all' }
+   },
+   plugins: [
+     new webpack.optimize.MinChunkSizePlugin({
+       minChunkSize: 15000
+     })
+   ]
+   ```
+
+5. **Document Your Configuration**
+   ```javascript
+   // Merge chunks < 20 KB to reduce HTTP overhead
+   // Tested with HTTP/1.1 target environment
+   minChunkSize: 20000
+   ```
+
+## Troubleshooting
+
+### Chunks Still Too Small
+
+Increase the threshold:
+```javascript
+minChunkSize: 50000 // Increase from 20000
+```
+
+### Too Much Merging
+
+Decrease the threshold:
+```javascript
+minChunkSize: 10000 // Decrease from 30000
+```
+
+### No Effect
+
+Check that:
+- You're building in production mode
+- Code splitting is enabled
+- Chunks exist that are smaller than threshold

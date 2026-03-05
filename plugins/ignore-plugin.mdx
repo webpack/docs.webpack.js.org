@@ -1,0 +1,239 @@
+---
+title: IgnorePlugin
+description: Exclude modules from bundles by matching import patterns
+---
+
+The `IgnorePlugin` prevents webpack from bundling certain modules. This is useful for excluding optional dependencies, locale files, or modules that should not be included in the bundle.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/
+    })
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="resourceRegExp" type="RegExp" required>
+  Regular expression to test against the resource (import path)
+</ParamField>
+
+<ParamField path="contextRegExp" type="RegExp">
+  Regular expression to test against the context (directory containing the import). If provided, both regexps must match.
+</ParamField>
+
+<ParamField path="checkResource" type="function">
+  Custom function to determine if a resource should be ignored. Receives `(resource, context)` as arguments.
+</ParamField>
+
+## Examples
+
+### Ignore Moment.js Locales
+
+Moment.js includes all locales by default. Ignore them and load only what you need:
+
+```javascript
+new webpack.IgnorePlugin({
+  resourceRegExp: /^\.\/locale$/,
+  contextRegExp: /moment$/
+})
+```
+
+Then manually import needed locales:
+
+```javascript
+import moment from 'moment';
+import 'moment/locale/fr';
+import 'moment/locale/es';
+```
+
+### Ignore Optional Dependencies
+
+```javascript
+new webpack.IgnorePlugin({
+  resourceRegExp: /^fsevents$/
+})
+```
+
+### Custom Check Function
+
+```javascript
+new webpack.IgnorePlugin({
+  checkResource: (resource, context) => {
+    // Ignore all test files
+    if (resource.includes('.test.')) {
+      return true;
+    }
+    
+    // Ignore development-only modules
+    if (resource.includes('dev-tools')) {
+      return true;
+    }
+    
+    return false;
+  }
+})
+```
+
+### Ignore All Node Modules in Specific Directory
+
+```javascript
+new webpack.IgnorePlugin({
+  resourceRegExp: /.*/,
+  contextRegExp: /node_modules\/some-package\/optional/
+})
+```
+
+### Conditional Ignoring
+
+```javascript
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  plugins: [
+    isProduction && new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/dev/,
+      contextRegExp: /utils$/
+    })
+  ].filter(Boolean)
+};
+```
+
+### Ignore Multiple Patterns
+
+Create multiple plugin instances:
+
+```javascript
+module.exports = {
+  plugins: [
+    // Ignore moment locales
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/
+    }),
+    // Ignore source maps in production
+    process.env.NODE_ENV === 'production' &&
+      new webpack.IgnorePlugin({
+        resourceRegExp: /\.map$/
+      })
+  ].filter(Boolean)
+};
+```
+
+### Ignore Specific Imports
+
+```javascript
+new webpack.IgnorePlugin({
+  checkResource: (resource) => {
+    const ignoredModules = [
+      'canvas',
+      'encoding',
+      'bufferutil',
+      'utf-8-validate'
+    ];
+    
+    return ignoredModules.some(module => 
+      resource.includes(module)
+    );
+  }
+})
+```
+
+## Common Use Cases
+
+### Reduce Bundle Size
+
+Ignore unnecessary locale files:
+
+```javascript
+// Before: ~500KB
+// After: ~100KB
+new webpack.IgnorePlugin({
+  resourceRegExp: /^\.\/locale$/,
+  contextRegExp: /moment$/
+})
+```
+
+### Platform-Specific Code
+
+Ignore platform-specific modules:
+
+```javascript
+const isBrowser = process.env.PLATFORM === 'browser';
+
+new webpack.IgnorePlugin({
+  checkResource: (resource) => {
+    // Ignore Node.js specific modules in browser builds
+    if (isBrowser && resource.match(/^(fs|path|os)$/)) {
+      return true;
+    }
+    return false;
+  }
+})
+```
+
+### Development Dependencies
+
+Exclude development tools from production:
+
+```javascript
+if (process.env.NODE_ENV === 'production') {
+  new webpack.IgnorePlugin({
+    resourceRegExp: /^\.\/devtools$/
+  })
+}
+```
+
+## How It Works
+
+The plugin intercepts module resolution and:
+
+1. Tests the resource against `resourceRegExp`
+2. If `contextRegExp` is provided, tests the context
+3. If both match (or only resource if context not provided), prevents bundling
+4. For entry modules, creates an empty ignored module instead
+
+## Performance Impact
+
+<Note>
+Ignoring modules can significantly reduce bundle size:
+- Moment.js locales: ~400KB savings
+- Optional dependencies: varies
+- Unused platform code: varies
+</Note>
+
+## Debugging
+
+To see which modules are being ignored:
+
+```javascript
+new webpack.IgnorePlugin({
+  checkResource: (resource, context) => {
+    const shouldIgnore = someCondition(resource, context);
+    if (shouldIgnore) {
+      console.log(`Ignoring: ${resource} from ${context}`);
+    }
+    return shouldIgnore;
+  }
+})
+```
+
+<Warning>
+Be careful when ignoring modules. Make sure the ignored modules are truly optional or you provide alternatives. Ignoring required dependencies will cause runtime errors.
+</Warning>
+
+## Alternatives
+
+Instead of IgnorePlugin, consider:
+
+- **ContextReplacementPlugin** - For replacing context instead of ignoring
+- **NormalModuleReplacementPlugin** - For replacing modules with alternatives
+- **externals** configuration - For excluding dependencies entirely

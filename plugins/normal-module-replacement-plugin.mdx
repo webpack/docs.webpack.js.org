@@ -1,0 +1,335 @@
+---
+title: NormalModuleReplacementPlugin
+description: Replace modules matching a pattern with alternative modules
+---
+
+The `NormalModuleReplacementPlugin` allows you to replace resources that match a regular expression with another resource. This is useful for swapping implementations based on environment or platform.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.NormalModuleReplacementPlugin(
+      /resource-to-replace/,
+      'replacement-resource'
+    )
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="resourceRegExp" type="RegExp" required>
+  Regular expression to match against the resource path
+</ParamField>
+
+<ParamField path="newResource" type="string | function" required>
+  - String: Path to the replacement resource
+  - Function: Callback to modify the resource data
+</ParamField>
+
+## Examples
+
+### Simple Replacement
+
+Replace one module with another:
+
+```javascript
+new webpack.NormalModuleReplacementPlugin(
+  /module-a/,
+  './module-b.js'
+)
+```
+
+### Environment-Specific Modules
+
+Replace modules based on environment:
+
+```javascript
+const isProduction = process.env.NODE_ENV === 'production';
+
+new webpack.NormalModuleReplacementPlugin(
+  /\.dev\.js$/,
+  (resource) => {
+    if (isProduction) {
+      resource.request = resource.request.replace(/\.dev\.js$/, '.prod.js');
+    }
+  }
+)
+```
+
+Usage:
+```javascript
+// Development
+import config from './config.dev.js';
+
+// In production, automatically uses:
+// import config from './config.prod.js';
+```
+
+### Platform-Specific Implementations
+
+```javascript
+const isBrowser = process.env.PLATFORM === 'browser';
+
+new webpack.NormalModuleReplacementPlugin(
+  /\/node\//,
+  (resource) => {
+    if (isBrowser) {
+      resource.request = resource.request.replace('/node/', '/browser/');
+    }
+  }
+)
+```
+
+### Mocking Modules for Testing
+
+```javascript
+if (process.env.NODE_ENV === 'test') {
+  new webpack.NormalModuleReplacementPlugin(
+    /\/api\/real-api/,
+    './api/mock-api.js'
+  )
+}
+```
+
+### Conditional Polyfills
+
+```javascript
+const needsPolyfill = parseInt(process.env.TARGET_BROWSER_VERSION) < 12;
+
+if (needsPolyfill) {
+  new webpack.NormalModuleReplacementPlugin(
+    /^promise$/,
+    'es6-promise'
+  )
+}
+```
+
+### Using Callback Function
+
+Advanced replacement logic:
+
+```javascript
+new webpack.NormalModuleReplacementPlugin(
+  /\/components\//,
+  (resource) => {
+    const isMobile = process.env.PLATFORM === 'mobile';
+    
+    // Replace with mobile versions
+    if (isMobile && resource.request.includes('/components/')) {
+      resource.request = resource.request.replace(
+        '/components/',
+        '/components/mobile/'
+      );
+    }
+  }
+)
+```
+
+### Multiple Replacements
+
+```javascript
+module.exports = {
+  plugins: [
+    // Replace development logger
+    new webpack.NormalModuleReplacementPlugin(
+      /\/logger\.dev/,
+      './logger.prod'
+    ),
+    // Replace analytics
+    new webpack.NormalModuleReplacementPlugin(
+      /\/analytics\.js$/,
+      process.env.DISABLE_ANALYTICS 
+        ? './analytics-noop.js'
+        : './analytics.js'
+    )
+  ]
+};
+```
+
+### Replacing Node.js Modules with Browser Equivalents
+
+```javascript
+module.exports = {
+  plugins: [
+    new webpack.NormalModuleReplacementPlugin(
+      /^fs$/,
+      'browserify-fs'
+    ),
+    new webpack.NormalModuleReplacementPlugin(
+      /^path$/,
+      'path-browserify'
+    )
+  ]
+};
+```
+
+## Modify Resource Data
+
+The callback receives a resource object that you can modify:
+
+```javascript
+new webpack.NormalModuleReplacementPlugin(
+  /\/config/,
+  (resource) => {
+    // resource.request - the import path
+    // resource.context - the directory containing the import
+    
+    console.log('Original:', resource.request);
+    console.log('Context:', resource.context);
+    
+    // Modify the request
+    resource.request = './new-config.js';
+  }
+)
+```
+
+## Advanced Patterns
+
+### Feature Flags
+
+```javascript
+const features = {
+  newUI: process.env.ENABLE_NEW_UI === 'true',
+  beta: process.env.ENABLE_BETA === 'true'
+};
+
+if (features.newUI) {
+  new webpack.NormalModuleReplacementPlugin(
+    /\/ui\/old\//,
+    (resource) => {
+      resource.request = resource.request.replace('/ui/old/', '/ui/new/');
+    }
+  )
+}
+```
+
+### Dynamic Replacement Based on Context
+
+```javascript
+new webpack.NormalModuleReplacementPlugin(
+  /\/utils\.js$/,
+  (resource) => {
+    // Different utils based on where they're imported from
+    if (resource.context.includes('/admin/')) {
+      resource.request = './utils.admin.js';
+    } else if (resource.context.includes('/public/')) {
+      resource.request = './utils.public.js';
+    }
+  }
+)
+```
+
+### Absolute Path Replacement
+
+```javascript
+const path = require('path');
+
+new webpack.NormalModuleReplacementPlugin(
+  /old-module/,
+  (resource) => {
+    resource.request = path.resolve(__dirname, 'src/new-module.js');
+  }
+)
+```
+
+## Use Cases
+
+### Server-Side Rendering (SSR)
+
+Replace client-specific modules for server builds:
+
+```javascript
+const isServer = process.env.BUILD_TARGET === 'server';
+
+if (isServer) {
+  new webpack.NormalModuleReplacementPlugin(
+    /\/client\//,
+    (resource) => {
+      resource.request = resource.request.replace('/client/', '/server/');
+    }
+  )
+}
+```
+
+### A/B Testing Builds
+
+```javascript
+const variant = process.env.VARIANT || 'A';
+
+new webpack.NormalModuleReplacementPlugin(
+  /\/variant\//,
+  `./variant${variant}.js`
+)
+```
+
+### Localization
+
+```javascript
+const locale = process.env.LOCALE || 'en';
+
+new webpack.NormalModuleReplacementPlugin(
+  /\/i18n\/messages/,
+  `./i18n/messages.${locale}.js`
+)
+```
+
+## Debugging
+
+Log replacements to understand what's happening:
+
+```javascript
+new webpack.NormalModuleReplacementPlugin(
+  /pattern/,
+  (resource) => {
+    const original = resource.request;
+    resource.request = './replacement.js';
+    console.log(`Replaced: ${original} -> ${resource.request}`);
+  }
+)
+```
+
+<Note>
+The plugin hooks into both `beforeResolve` and `afterResolve` stages, allowing it to modify resources before and after path resolution.
+</Note>
+
+<Warning>
+Be careful with regular expressions. Too broad patterns may replace unintended modules. Always test thoroughly.
+</Warning>
+
+## Comparison with Alternatives
+
+### NormalModuleReplacementPlugin
+- Replaces modules during build
+- Works on any module
+- Build-time decision
+
+### resolve.alias
+- Simple module aliasing
+- Limited to exact matches or prefixes
+- Configuration-based
+
+```javascript
+// resolve.alias alternative
+resolve: {
+  alias: {
+    'old-module': 'new-module'
+  }
+}
+```
+
+### IgnorePlugin
+- Excludes modules completely
+- No replacement provided
+
+## Best Practices
+
+- Use specific patterns to avoid unintended replacements
+- Document replacements in your configuration
+- Test both original and replaced modules
+- Consider using resolve.alias for simple cases
+- Use environment variables to control replacements

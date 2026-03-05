@@ -1,0 +1,238 @@
+---
+title: Configuration Overview
+description: Overview of webpack configuration options and structure
+---
+
+Webpack can be configured using a JavaScript configuration file that exports a configuration object. This section provides an overview of all available configuration options.
+
+## Configuration File
+
+Webpack uses a `webpack.config.js` file (or other variants) to define how your application should be bundled:
+
+```javascript webpack.config.js
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  module: {
+    rules: [/* ... */]
+  },
+  plugins: [/* ... */]
+};
+```
+
+## Core Configuration Options
+
+<CardGroup cols={2}>
+  <Card title="Entry and Context" icon="door-open" href="/configuration/entry-context">
+    Configure entry points and base directory for resolving modules
+  </Card>
+  <Card title="Output" icon="box" href="/configuration/output">
+    Control how webpack writes compiled files to disk
+  </Card>
+  <Card title="Module" icon="cube" href="/configuration/module">
+    Configure how different module types are processed
+  </Card>
+  <Card title="Resolve" icon="magnifying-glass" href="/configuration/resolve">
+    Configure how modules are resolved
+  </Card>
+  <Card title="Optimization" icon="gauge-high" href="/configuration/optimization">
+    Customize webpack's optimization behavior
+  </Card>
+  <Card title="Plugins" icon="plug" href="/configuration/plugins">
+    Add additional functionality through plugins
+  </Card>
+  <Card title="Dev Server" icon="server" href="/configuration/devserver">
+    Configure the webpack development server
+  </Card>
+  <Card title="DevTool" icon="bug" href="/configuration/devtool">
+    Control source map generation for debugging
+  </Card>
+</CardGroup>
+
+## Advanced Configuration
+
+<CardGroup cols={2}>
+  <Card title="Externals" icon="arrow-up-right-from-square" href="/configuration/externals">
+    Exclude dependencies from the output bundles
+  </Card>
+  <Card title="Performance" icon="chart-line" href="/configuration/performance">
+    Configure performance hints and budgets
+  </Card>
+  <Card title="Node" icon="node-js" href="/configuration/node">
+    Configure Node.js polyfills and mocks
+  </Card>
+  <Card title="Stats" icon="chart-bar" href="/configuration/stats">
+    Control compilation output statistics
+  </Card>
+</CardGroup>
+
+## Top-Level Options
+
+<ParamField path="mode" type="'development' | 'production' | 'none'">
+  Sets the mode webpack will use. This enables different default optimizations.
+  
+  ```javascript
+  mode: 'production'
+  ```
+</ParamField>
+
+<ParamField path="context" type="string">
+  The base directory (absolute path) for resolving entry points and loaders.
+  
+  ```javascript
+  context: path.resolve(__dirname, 'src')
+  ```
+  
+  Default: `process.cwd()`
+</ParamField>
+
+<ParamField path="target" type="string | string[]">
+  Environment to build for (e.g., 'web', 'node', 'electron-main').
+  
+  ```javascript
+  target: 'web'
+  ```
+</ParamField>
+
+<ParamField path="bail" type="boolean">
+  Fail out on the first error instead of tolerating it.
+  
+  ```javascript
+  bail: true
+  ```
+  
+  Default: `false`
+</ParamField>
+
+<ParamField path="watch" type="boolean">
+  Enable watch mode to rebuild on file changes.
+  
+  ```javascript
+  watch: true
+  ```
+  
+  Default: `false`
+</ParamField>
+
+<ParamField path="watchOptions" type="object">
+  Customize watch mode behavior. See [Watch Options](#watch-options) below.
+</ParamField>
+
+<ParamField path="name" type="string">
+  Name of the configuration, used when loading multiple configurations.
+  
+  ```javascript
+  name: 'my-app'
+  ```
+</ParamField>
+
+<ParamField path="parallelism" type="number">
+  Limit the number of parallel processed modules.
+  
+  ```javascript
+  parallelism: 100
+  ```
+  
+  Default: `100`
+</ParamField>
+
+<ParamField path="profile" type="boolean">
+  Capture timing information for each module.
+  
+  ```javascript
+  profile: true
+  ```
+  
+  Default: `false`
+</ParamField>
+
+## Watch Options
+
+<ParamField path="watchOptions.aggregateTimeout" type="number">
+  Delay rebuilds after the first change (in milliseconds).
+  
+  ```javascript
+  watchOptions: {
+    aggregateTimeout: 300
+  }
+  ```
+  
+  Default: `200`
+</ParamField>
+
+<ParamField path="watchOptions.poll" type="boolean | number">
+  Enable polling for file changes. Can specify interval in milliseconds.
+  
+  ```javascript
+  watchOptions: {
+    poll: 1000 // Check for changes every second
+  }
+  ```
+</ParamField>
+
+<ParamField path="watchOptions.ignored" type="string | RegExp | string[]">
+  Files or directories to exclude from watching.
+  
+  ```javascript
+  watchOptions: {
+    ignored: /node_modules/
+  }
+  ```
+</ParamField>
+
+## Multiple Configurations
+
+You can export an array of configurations to run multiple builds:
+
+```javascript webpack.config.js
+module.exports = [
+  {
+    name: 'client',
+    entry: './src/client.js',
+    output: { filename: 'client.js' }
+  },
+  {
+    name: 'server',
+    entry: './src/server.js',
+    output: { filename: 'server.js' },
+    target: 'node'
+  }
+];
+```
+
+## Configuration as a Function
+
+Export a function to dynamically generate configuration:
+
+```javascript webpack.config.js
+module.exports = (env, argv) => {
+  return {
+    mode: env.production ? 'production' : 'development',
+    entry: './src/index.js',
+    // ... other options
+  };
+};
+```
+
+## Environment Variables
+
+Access environment variables in your configuration:
+
+```bash
+webpack --env production --env api=http://api.example.com
+```
+
+```javascript webpack.config.js
+module.exports = (env) => {
+  console.log(env.production); // true
+  console.log(env.api); // 'http://api.example.com'
+  
+  return {
+    // configuration
+  };
+};
+```

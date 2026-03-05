@@ -1,0 +1,490 @@
+---
+title: Output
+description: Control how webpack writes compiled files to disk
+---
+
+The output configuration tells webpack how and where to write the compiled files to disk.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+const path = require('path');
+
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  }
+};
+```
+
+## Output Options
+
+<ParamField path="output.path" type="string">
+  The output directory as an absolute path (required).
+  
+  ```javascript
+  path: path.resolve(__dirname, 'dist')
+  ```
+  
+  Default: `path.resolve(process.cwd(), 'dist')`
+  
+  <Warning>
+    Must be an absolute path. Use `path.resolve()` or `path.join()` with `__dirname`.
+  </Warning>
+</ParamField>
+
+<ParamField path="output.filename" type="string | function">
+  Name of each output bundle.
+  
+  ```javascript
+  filename: '[name].[contenthash].js'
+  ```
+  
+  Default: `'[name].js'`
+  
+  See [Filename Templates](#filename-templates) for available substitutions.
+</ParamField>
+
+<ParamField path="output.publicPath" type="string | 'auto' | function">
+  Public URL of the output directory when referenced in a browser.
+  
+  ```javascript
+  publicPath: 'https://cdn.example.com/assets/'
+  // or
+  publicPath: '/assets/'
+  // or
+  publicPath: 'auto' // automatically determine
+  ```
+  
+  Default: `'auto'`
+</ParamField>
+
+<ParamField path="output.chunkFilename" type="string | function">
+  Name of non-entry chunk files.
+  
+  ```javascript
+  chunkFilename: '[id].[contenthash].js'
+  ```
+  
+  Default: `'[id].js'` or derived from `output.filename`
+</ParamField>
+
+<ParamField path="output.assetModuleFilename" type="string | function">
+  Filename template for asset modules.
+  
+  ```javascript
+  assetModuleFilename: 'assets/[hash][ext][query]'
+  ```
+  
+  Default: `'[hash][ext][query]'`
+</ParamField>
+
+<ParamField path="output.clean" type="boolean | object">
+  Clean the output directory before emit.
+  
+  ```javascript
+  clean: true
+  // or with options
+  clean: {
+    dry: false, // Log assets to be removed instead of deleting
+    keep: /\.git/ // Keep specific assets
+  }
+  ```
+  
+  Default: `false`
+</ParamField>
+
+## Filename Templates
+
+Templates can use these substitutions:
+
+- `[name]` - Module name
+- `[id]` - Module identifier
+- `[hash]` - Module hash
+- `[contenthash]` - Hash of the content
+- `[chunkhash]` - Hash of the chunk content
+- `[fullhash]` - Full hash of the compilation
+- `[ext]` - File extension (includes `.`)
+- `[query]` - Query string (includes `?`)
+- `[base]` - Base filename
+- `[path]` - File path
+- `[file]` - Filename with extension
+
+You can combine them:
+
+```javascript
+filename: '[name].[contenthash:8].js'
+chunkFilename: 'chunks/[name].[chunkhash:8].js'
+assetModuleFilename: 'assets/[name].[hash:8][ext]'
+```
+
+## Advanced Options
+
+<Accordion title="Chunk Loading">
+  <ParamField path="output.chunkLoading" type="string | false">
+    Method of loading chunks.
+    
+    ```javascript
+    chunkLoading: 'jsonp' // web
+    chunkLoading: 'import' // ESM
+    chunkLoading: 'require' // Node.js
+    chunkLoading: 'async-node' // async Node.js
+    chunkLoading: false // disable
+    ```
+    
+    Default: Determined by `target`
+  </ParamField>
+  
+  <ParamField path="output.chunkLoadTimeout" type="number">
+    Timeout for chunk requests in milliseconds.
+    
+    ```javascript
+    chunkLoadTimeout: 120000 // 2 minutes
+    ```
+    
+    Default: `120000`
+  </ParamField>
+  
+  <ParamField path="output.chunkLoadingGlobal" type="string">
+    Global variable used for loading chunks.
+    
+    ```javascript
+    chunkLoadingGlobal: 'webpackJsonp'
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Hashing">
+  <ParamField path="output.hashFunction" type="string | function">
+    Hashing algorithm to use.
+    
+    ```javascript
+    hashFunction: 'md4' // or 'sha256', custom function
+    ```
+    
+    Default: `'md4'`
+  </ParamField>
+  
+  <ParamField path="output.hashDigest" type="string">
+    Encoding to use for generating the hash.
+    
+    ```javascript
+    hashDigest: 'hex' // or 'base64', 'base26'
+    ```
+    
+    Default: `'hex'`
+  </ParamField>
+  
+  <ParamField path="output.hashDigestLength" type="number">
+    Length of the hash digest to use.
+    
+    ```javascript
+    hashDigestLength: 20
+    ```
+    
+    Default: `20`
+  </ParamField>
+  
+  <ParamField path="output.hashSalt" type="string">
+    Salt to update the hash.
+    
+    ```javascript
+    hashSalt: 'my-unique-salt'
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Module Output">
+  <ParamField path="output.module" type="boolean">
+    Output JavaScript files as ES module.
+    
+    ```javascript
+    module: true
+    ```
+    
+    Default: `false`
+    
+    <Note>
+      Requires `experiments.outputModule` to be enabled.
+    </Note>
+  </ParamField>
+  
+  <ParamField path="output.iife" type="boolean">
+    Wrap output in an IIFE to avoid global scope pollution.
+    
+    ```javascript
+    iife: true
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="output.environment" type="object">
+    Define the capabilities of the target environment.
+    
+    ```javascript
+    environment: {
+      arrowFunction: true,
+      const: true,
+      destructuring: true,
+      forOf: true,
+      dynamicImport: true,
+      module: true
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Library Output">
+  <ParamField path="output.library" type="string | object">
+    Expose the output as a library.
+    
+    ```javascript
+    // String (simple)
+    library: 'MyLibrary'
+    
+    // Object (advanced)
+    library: {
+      name: 'MyLibrary',
+      type: 'umd',
+      export: 'default',
+      umdNamedDefine: true
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="output.library.type" type="string">
+    Type of library.
+    
+    Options: `'var'`, `'module'`, `'assign'`, `'this'`, `'window'`, `'self'`, `'global'`, `'commonjs'`, `'commonjs2'`, `'amd'`, `'umd'`, `'jsonp'`, `'system'`
+    
+    ```javascript
+    library: {
+      type: 'umd'
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="output.library.name" type="string | object">
+    Name of the library.
+    
+    ```javascript
+    library: {
+      name: 'MyLibrary'
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="output.library.export" type="string | string[]">
+    Specify which export to expose.
+    
+    ```javascript
+    library: {
+      export: 'default'
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Cross-Origin Loading">
+  <ParamField path="output.crossOriginLoading" type="false | 'anonymous' | 'use-credentials'">
+    Enable cross-origin loading of chunks.
+    
+    ```javascript
+    crossOriginLoading: 'anonymous'
+    ```
+    
+    Default: `false`
+  </ParamField>
+  
+  <ParamField path="output.trustedTypes" type="boolean | string | object">
+    Use Trusted Types policy to create URLs.
+    
+    ```javascript
+    trustedTypes: true
+    // or
+    trustedTypes: 'my-policy-name'
+    // or
+    trustedTypes: {
+      policyName: 'my-webpack-app',
+      onPolicyCreationFailure: 'continue'
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Source Maps">
+  <ParamField path="output.sourceMapFilename" type="string">
+    Filename template for source map files.
+    
+    ```javascript
+    sourceMapFilename: '[file].map[query]'
+    ```
+    
+    Default: `'[file].map[query]'`
+  </ParamField>
+  
+  <ParamField path="output.devtoolModuleFilenameTemplate" type="string | function">
+    Template for module filenames in source maps.
+    
+    ```javascript
+    devtoolModuleFilenameTemplate: 'webpack://[namespace]/[resource-path]?[loaders]'
+    ```
+  </ParamField>
+  
+  <ParamField path="output.devtoolNamespace" type="string">
+    Module namespace for source maps.
+    
+    ```javascript
+    devtoolNamespace: 'my-library'
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Hot Module Replacement">
+  <ParamField path="output.hotUpdateChunkFilename" type="string">
+    Filename for hot update chunks.
+    
+    ```javascript
+    hotUpdateChunkFilename: '[id].[fullhash].hot-update.js'
+    ```
+    
+    Default: `'[id].[fullhash].hot-update.js'`
+  </ParamField>
+  
+  <ParamField path="output.hotUpdateMainFilename" type="string">
+    Filename for hot update main file.
+    
+    ```javascript
+    hotUpdateMainFilename: '[runtime].[fullhash].hot-update.json'
+    ```
+    
+    Default: `'[runtime].[fullhash].hot-update.json'`
+  </ParamField>
+  
+  <ParamField path="output.hotUpdateGlobal" type="string">
+    Global variable for hot updates.
+    
+    ```javascript
+    hotUpdateGlobal: 'webpackHotUpdate'
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="CSS Output">
+  <ParamField path="output.cssFilename" type="string | function">
+    Filename template for CSS files.
+    
+    ```javascript
+    cssFilename: '[name].[contenthash].css'
+    ```
+  </ParamField>
+  
+  <ParamField path="output.cssChunkFilename" type="string | function">
+    Filename template for non-entry CSS chunks.
+    
+    ```javascript
+    cssChunkFilename: '[id].[contenthash].css'
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Other Options">
+  <ParamField path="output.globalObject" type="string">
+    Expression for the global object.
+    
+    ```javascript
+    globalObject: 'this' // or 'self', 'window', 'global'
+    ```
+    
+    Default: `'self'` (web), `'global'` (Node.js)
+  </ParamField>
+  
+  <ParamField path="output.uniqueName" type="string">
+    Unique name to avoid conflicts between multiple webpack runtimes.
+    
+    ```javascript
+    uniqueName: 'my-app'
+    ```
+  </ParamField>
+  
+  <ParamField path="output.compareBeforeEmit" type="boolean">
+    Check if files changed before writing to filesystem.
+    
+    ```javascript
+    compareBeforeEmit: true
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="output.pathinfo" type="boolean | 'verbose'">
+    Include path info in bundles.
+    
+    ```javascript
+    pathinfo: true // or 'verbose'
+    ```
+    
+    Default: `true` in development, `false` in production
+  </ParamField>
+</Accordion>
+
+## Common Patterns
+
+### Production Build with Cache Busting
+
+```javascript webpack.config.js
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].chunk.js',
+    assetModuleFilename: 'assets/[hash:8][ext][query]',
+    clean: true
+  }
+};
+```
+
+### Development with Source Maps
+
+```javascript webpack.config.js
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    pathinfo: true,
+    sourceMapFilename: '[file].map'
+  }
+};
+```
+
+### CDN Deployment
+
+```javascript webpack.config.js
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
+    publicPath: 'https://cdn.example.com/assets/',
+    crossOriginLoading: 'anonymous'
+  }
+};
+```
+
+### Library Output
+
+```javascript webpack.config.js
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'my-library.js',
+    library: {
+      name: 'MyLibrary',
+      type: 'umd',
+      export: 'default'
+    },
+    globalObject: 'this'
+  }
+};
+```

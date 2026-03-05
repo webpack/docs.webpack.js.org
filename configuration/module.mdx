@@ -1,0 +1,532 @@
+---
+title: Module
+description: Configure how different module types are processed with rules and loaders
+---
+
+The `module` configuration determines how different types of modules within a project are treated. This includes configuring loaders, parser options, and generator settings.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      }
+    ]
+  }
+};
+```
+
+## Module Options
+
+<ParamField path="module.rules" type="array">
+  An array of rules that are matched to requests when modules are created.
+  
+  ```javascript
+  module: {
+    rules: [
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.ts$/, use: 'ts-loader' }
+    ]
+  }
+  ```
+</ParamField>
+
+<ParamField path="module.noParse" type="RegExp | RegExp[] | function | string">
+  Prevent parsing of matched files. Useful for large libraries.
+  
+  ```javascript
+  module: {
+    noParse: /jquery|lodash/
+  }
+  ```
+</ParamField>
+
+<ParamField path="module.parser" type="object">
+  Parser options by module type.
+  
+  ```javascript
+  module: {
+    parser: {
+      javascript: {
+        commonjs: true,
+        amd: false
+      }
+    }
+  }
+  ```
+</ParamField>
+
+<ParamField path="module.generator" type="object">
+  Generator options by module type.
+  
+  ```javascript
+  module: {
+    generator: {
+      asset: {
+        filename: 'assets/[hash][ext][query]'
+      }
+    }
+  }
+  ```
+</ParamField>
+
+## Rule Configuration
+
+Each rule can have the following properties:
+
+<Accordion title="Matching Conditions">
+  <ParamField path="test" type="RegExp | string | function | array">
+    Match files by their resource path.
+    
+    ```javascript
+    { test: /\.js$/ }
+    { test: /\.(png|jpg|gif)$/ }
+    ```
+  </ParamField>
+  
+  <ParamField path="include" type="RegExp | string | function | array">
+    Include only these files/directories.
+    
+    ```javascript
+    { include: path.resolve(__dirname, 'src') }
+    { include: [/src/, /lib/] }
+    ```
+  </ParamField>
+  
+  <ParamField path="exclude" type="RegExp | string | function | array">
+    Exclude these files/directories.
+    
+    ```javascript
+    { exclude: /node_modules/ }
+    { exclude: [/node_modules/, /vendor/] }
+    ```
+  </ParamField>
+  
+  <ParamField path="resource" type="condition">
+    Match the resource path.
+    
+    ```javascript
+    { resource: { and: [/\.js$/, /src/] } }
+    ```
+  </ParamField>
+  
+  <ParamField path="resourceQuery" type="condition">
+    Match the resource query string.
+    
+    ```javascript
+    { resourceQuery: /inline/ } // matches '?inline'
+    ```
+  </ParamField>
+  
+  <ParamField path="issuer" type="condition">
+    Match the module that imports this module.
+    
+    ```javascript
+    { issuer: /\.js$/ } // imported by .js files
+    ```
+  </ParamField>
+  
+  <ParamField path="dependency" type="condition">
+    Match by dependency type.
+    
+    ```javascript
+    { dependency: 'url' } // match url() in CSS
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Loader Configuration">
+  <ParamField path="use" type="string | object | array">
+    Apply loaders to the module.
+    
+    ```javascript
+    // String
+    { use: 'babel-loader' }
+    
+    // Object
+    { use: {
+      loader: 'babel-loader',
+      options: { presets: ['@babel/preset-env'] }
+    }}
+    
+    // Array (applied right to left)
+    { use: ['style-loader', 'css-loader', 'sass-loader'] }
+    ```
+  </ParamField>
+  
+  <ParamField path="loader" type="string">
+    Shortcut for `use: [{ loader }]`.
+    
+    ```javascript
+    { loader: 'babel-loader' }
+    ```
+  </ParamField>
+  
+  <ParamField path="options" type="object | string">
+    Shortcut for `use: [{ options }]`.
+    
+    ```javascript
+    {
+      loader: 'babel-loader',
+      options: { presets: ['@babel/preset-env'] }
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Module Type and Processing">
+  <ParamField path="type" type="string">
+    Set the module type.
+    
+    ```javascript
+    { type: 'asset/resource' }
+    ```
+    
+    Types: `'javascript/auto'`, `'javascript/esm'`, `'javascript/dynamic'`, `'json'`, `'webassembly/async'`, `'webassembly/sync'`, `'asset'`, `'asset/source'`, `'asset/resource'`, `'asset/inline'`, `'css'`, `'css/module'`
+  </ParamField>
+  
+  <ParamField path="parser" type="object">
+    Parser options for this rule.
+    
+    ```javascript
+    {
+      test: /\.js$/,
+      parser: {
+        amd: false,
+        commonjs: true
+      }
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="generator" type="object">
+    Generator options for this rule.
+    
+    ```javascript
+    {
+      test: /\.png$/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'images/[hash][ext][query]'
+      }
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Rule Organization">
+  <ParamField path="enforce" type="'pre' | 'post'">
+    Specify loader category.
+    
+    ```javascript
+    {
+      test: /\.js$/,
+      enforce: 'pre',
+      use: 'eslint-loader'
+    }
+    ```
+    
+    Order: `pre` loaders → normal loaders → `post` loaders
+  </ParamField>
+  
+  <ParamField path="oneOf" type="array">
+    Only use the first matching rule.
+    
+    ```javascript
+    {
+      oneOf: [
+        { resourceQuery: /inline/, type: 'asset/inline' },
+        { resourceQuery: /external/, type: 'asset/resource' },
+        { type: 'asset' }
+      ]
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="rules" type="array">
+    Nested rules that are applied when parent rule matches.
+    
+    ```javascript
+    {
+      test: /\.css$/,
+      rules: [
+        { use: 'css-loader' },
+        { resourceQuery: /module/, use: 'css-modules-loader' }
+      ]
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Advanced Options">
+  <ParamField path="sideEffects" type="boolean">
+    Flag module as having side effects.
+    
+    ```javascript
+    { test: /\.css$/, sideEffects: true }
+    ```
+  </ParamField>
+  
+  <ParamField path="layer" type="string">
+    Specify the layer for this module.
+    
+    ```javascript
+    { test: /\.css$/, layer: 'styles' }
+    ```
+  </ParamField>
+  
+  <ParamField path="resolve" type="object">
+    Resolve options for this rule.
+    
+    ```javascript
+    {
+      test: /\.ts$/,
+      resolve: {
+        extensions: ['.ts', '.tsx']
+      }
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+## Asset Modules
+
+Webpack 5 includes built-in asset modules:
+
+### asset/resource
+
+Emits a separate file and exports the URL:
+
+```javascript
+{
+  test: /\.(png|jpg|gif)$/,
+  type: 'asset/resource',
+  generator: {
+    filename: 'images/[hash][ext][query]'
+  }
+}
+```
+
+### asset/inline
+
+Inlines the asset as a data URI:
+
+```javascript
+{
+  test: /\.svg$/,
+  type: 'asset/inline'
+}
+```
+
+### asset/source
+
+Exports the source code as a string:
+
+```javascript
+{
+  test: /\.txt$/,
+  type: 'asset/source'
+}
+```
+
+### asset
+
+Automatically chooses between resource and inline:
+
+```javascript
+{
+  test: /\.(png|jpg|gif)$/,
+  type: 'asset',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 8 * 1024 // 8kb
+    }
+  }
+}
+```
+
+## Parser Options
+
+### JavaScript Parser
+
+```javascript
+module.exports = {
+  module: {
+    parser: {
+      javascript: {
+        commonjs: true,
+        amd: false,
+        harmony: true,
+        import: true,
+        requireContext: true,
+        requireEnsure: true,
+        requireInclude: true,
+        requireJs: false,
+        system: false,
+        dynamicImportMode: 'lazy',
+        dynamicImportPrefetch: false,
+        dynamicImportPreload: false,
+        url: true,
+        worker: true
+      }
+    }
+  }
+};
+```
+
+### CSS Parser
+
+```javascript
+module.exports = {
+  module: {
+    parser: {
+      'css/module': {
+        namedExports: true,
+        exportType: 'css-style-sheet'
+      }
+    }
+  }
+};
+```
+
+### Asset Parser
+
+```javascript
+module.exports = {
+  module: {
+    parser: {
+      asset: {
+        dataUrlCondition: {
+          maxSize: 8 * 1024
+        }
+      }
+    }
+  }
+};
+```
+
+## Common Patterns
+
+### JavaScript with Babel
+
+```javascript
+{
+  test: /\.jsx?$/,
+  exclude: /node_modules/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['@babel/preset-env', '@babel/preset-react']
+    }
+  }
+}
+```
+
+### TypeScript
+
+```javascript
+{
+  test: /\.tsx?$/,
+  use: 'ts-loader',
+  exclude: /node_modules/
+}
+```
+
+### CSS with PostCSS
+
+```javascript
+{
+  test: /\.css$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: ['autoprefixer']
+        }
+      }
+    }
+  ]
+}
+```
+
+### Sass/SCSS
+
+```javascript
+{
+  test: /\.s[ac]ss$/,
+  use: [
+    'style-loader',
+    'css-loader',
+    'sass-loader'
+  ]
+}
+```
+
+### Images
+
+```javascript
+{
+  test: /\.(png|svg|jpg|jpeg|gif)$/,
+  type: 'asset/resource',
+  generator: {
+    filename: 'images/[hash][ext][query]'
+  }
+}
+```
+
+### Fonts
+
+```javascript
+{
+  test: /\.(woff|woff2|eot|ttf|otf)$/,
+  type: 'asset/resource',
+  generator: {
+    filename: 'fonts/[hash][ext][query]'
+  }
+}
+```
+
+### SVG with SVGR
+
+```javascript
+{
+  test: /\.svg$/,
+  oneOf: [
+    {
+      resourceQuery: /react/,
+      use: ['@svgr/webpack']
+    },
+    {
+      type: 'asset/resource'
+    }
+  ]
+}
+```
+
+### Environment-Specific Loaders
+
+```javascript
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
+  }
+};
+```

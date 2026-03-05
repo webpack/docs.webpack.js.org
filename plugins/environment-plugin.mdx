@@ -1,0 +1,258 @@
+---
+title: EnvironmentPlugin
+description: Define environment variables using process.env syntax
+---
+
+The `EnvironmentPlugin` is a shorthand for using the `DefinePlugin` on `process.env` keys. It simplifies the process of exposing environment variables to your application code.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'API_URL'])
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="keys" type="string[] | object" required>
+  - Array of environment variable names
+  - Object with variable names as keys and default values
+</ParamField>
+
+## Examples
+
+### Basic Usage with Array
+
+```javascript
+new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG'])
+```
+
+This is equivalent to:
+
+```javascript
+new webpack.DefinePlugin({
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+  'process.env.DEBUG': JSON.stringify(process.env.DEBUG)
+})
+```
+
+### With Default Values
+
+```javascript
+new webpack.EnvironmentPlugin({
+  NODE_ENV: 'development',
+  DEBUG: false,
+  API_URL: 'http://localhost:3000'
+})
+```
+
+If the environment variable is not set, the default value will be used.
+
+### Common Configuration
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      API_URL: 'http://localhost:3000',
+      API_KEY: null, // Must be set in environment or error
+      FEATURE_FLAG: false,
+      VERSION: require('./package.json').version
+    })
+  ]
+};
+```
+
+### Multiple Environments
+
+```javascript
+const isDev = process.env.NODE_ENV === 'development';
+
+new webpack.EnvironmentPlugin({
+  NODE_ENV: 'production',
+  API_URL: isDev 
+    ? 'http://localhost:3000'
+    : 'https://api.production.com',
+  DEBUG: isDev
+})
+```
+
+### Using in Code
+
+Once configured, use the variables in your application:
+
+```javascript
+if (process.env.NODE_ENV === 'development') {
+  console.log('Development mode');
+}
+
+const apiUrl = process.env.API_URL;
+fetch(`${apiUrl}/api/data`);
+
+if (process.env.DEBUG) {
+  console.log('Debug info:', data);
+}
+```
+
+### TypeScript Support
+
+Define types for your environment variables:
+
+```typescript
+// env.d.ts
+declare namespace NodeJS {
+  interface ProcessEnv {
+    NODE_ENV: 'development' | 'production' | 'test';
+    API_URL: string;
+    DEBUG?: string;
+    FEATURE_FLAG?: string;
+  }
+}
+```
+
+## Loading from .env Files
+
+Combine with `dotenv` for loading from `.env` files:
+
+```javascript
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+
+// Load .env file
+dotenv.config();
+
+module.exports = {
+  plugins: [
+    new webpack.EnvironmentPlugin([
+      'NODE_ENV',
+      'API_URL',
+      'API_KEY'
+    ])
+  ]
+};
+```
+
+`.env` file:
+```bash
+NODE_ENV=development
+API_URL=http://localhost:3000
+API_KEY=abc123
+```
+
+## Error Handling
+
+If an environment variable is undefined and has no default:
+
+```javascript
+new webpack.EnvironmentPlugin(['REQUIRED_VAR'])
+// Error: EnvironmentPlugin - REQUIRED_VAR environment variable is undefined.
+```
+
+To make it required, use `undefined` as the default:
+
+```javascript
+new webpack.EnvironmentPlugin({
+  REQUIRED_VAR: undefined // Must be set or build fails
+})
+```
+
+## Common Patterns
+
+### Feature Flags
+
+```javascript
+new webpack.EnvironmentPlugin({
+  ENABLE_ANALYTICS: false,
+  ENABLE_BETA_FEATURES: false,
+  ENABLE_DEBUG_TOOLS: process.env.NODE_ENV === 'development'
+})
+```
+
+Usage:
+```javascript
+if (process.env.ENABLE_ANALYTICS) {
+  analytics.track('page_view');
+}
+```
+
+### API Configuration
+
+```javascript
+const API_ENDPOINTS = {
+  development: 'http://localhost:3000',
+  staging: 'https://staging-api.example.com',
+  production: 'https://api.example.com'
+};
+
+new webpack.EnvironmentPlugin({
+  NODE_ENV: 'development',
+  API_URL: API_ENDPOINTS[process.env.NODE_ENV || 'development']
+})
+```
+
+### Build Information
+
+```javascript
+const pkg = require('./package.json');
+const { execSync } = require('child_process');
+
+const gitHash = execSync('git rev-parse --short HEAD')
+  .toString()
+  .trim();
+
+new webpack.EnvironmentPlugin({
+  VERSION: pkg.version,
+  BUILD_TIME: new Date().toISOString(),
+  GIT_HASH: gitHash
+})
+```
+
+## import.meta.env Support
+
+The plugin also defines variables for `import.meta.env`:
+
+```javascript
+// Both work:
+console.log(process.env.NODE_ENV);
+console.log(import.meta.env.NODE_ENV);
+```
+
+## Comparison with DefinePlugin
+
+### EnvironmentPlugin
+```javascript
+new webpack.EnvironmentPlugin(['NODE_ENV'])
+```
+
+### Equivalent DefinePlugin
+```javascript
+new webpack.DefinePlugin({
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+  'import.meta.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+})
+```
+
+<Note>
+EnvironmentPlugin is more convenient for environment variables, while DefinePlugin is more flexible for arbitrary compile-time values.
+</Note>
+
+<Warning>
+Environment variables are inlined at build time. Changes to environment variables require a rebuild.
+</Warning>
+
+## Best Practices
+
+- Use default values for non-critical variables
+- Document required environment variables
+- Use TypeScript definitions for type safety
+- Don't commit sensitive values (use .env files ignored by git)
+- Validate environment variables at build time
+- Consider using a configuration management library for complex setups

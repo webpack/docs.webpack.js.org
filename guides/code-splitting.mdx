@@ -1,0 +1,212 @@
+---
+title: "Code Splitting"
+description: "Split your code into separate bundles and load them on demand"
+icon: "code-branch"
+---
+
+Code splitting allows you to split your code into various bundles which can then be loaded on demand or in parallel. This reduces initial load time and improves performance.
+
+## Why Code Splitting?
+
+Code splitting helps you:
+- Reduce initial bundle size
+- Load code on demand
+- Improve page load performance
+- Better utilize browser caching
+
+## Dynamic Imports
+
+The most common way to implement code splitting is through dynamic `import()` syntax.
+
+<Steps>
+<Step title="Use dynamic imports">
+  Instead of static imports, use dynamic `import()` to split code:
+
+  **Before:**
+  ```javascript
+  import moduleA from 'a';
+  import moduleB from 'b';
+  ```
+
+  **After:**
+  ```javascript
+  import('a').then(moduleA => {
+    // Use moduleA
+  });
+
+  // Or with async/await
+  const moduleB = await import('b');
+  ```
+</Step>
+
+<Step title="Configure optimization">
+  Add chunk optimization to your webpack config:
+
+  ```javascript
+  module.exports = {
+    optimization: {
+      chunkIds: 'named', // Use readable chunk names
+      splitChunks: {
+        chunks: 'all'
+      }
+    }
+  };
+  ```
+</Step>
+
+<Step title="Name your chunks">
+  Use magic comments to name chunks:
+
+  ```javascript
+  import(/* webpackChunkName: "my-chunk" */ './module').then(module => {
+    // Module loaded
+  });
+  ```
+</Step>
+</Steps>
+
+## Entry Points
+
+Split code by defining multiple entry points:
+
+```javascript
+module.exports = {
+  entry: {
+    main: './src/index.js',
+    admin: './src/admin.js',
+    vendor: './src/vendor.js'
+  },
+  output: {
+    filename: '[name].bundle.js'
+  }
+};
+```
+
+## SplitChunksPlugin
+
+Webpack's built-in `SplitChunksPlugin` automatically splits chunks based on conditions:
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 244000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+};
+```
+
+<Note>
+The `SplitChunksPlugin` works out of the box with sensible defaults. You only need to configure it if you want to customize the splitting behavior.
+</Note>
+
+## Dynamic Import with Context
+
+Load modules dynamically based on runtime values:
+
+```javascript
+function loadComponent(name) {
+  return import(`./components/${name}`);
+}
+
+Promise.all([
+  loadComponent('Header'),
+  loadComponent('Footer')
+]).then(([Header, Footer]) => {
+  // Components loaded
+});
+```
+
+<Warning>
+Dynamic imports with variables create a context that includes all possible modules. Be specific with your paths to avoid bundling unnecessary code.
+</Warning>
+
+## Prefetching and Preloading
+
+Optimize loading with resource hints:
+
+```javascript
+// Prefetch - load during idle time
+import(/* webpackPrefetch: true */ './future-module');
+
+// Preload - load in parallel with parent
+import(/* webpackPreload: true */ './critical-module');
+```
+
+<Tip>
+Use `webpackPrefetch` for modules that might be needed soon, and `webpackPreload` for modules that are needed for the current navigation.
+</Tip>
+
+## Common Patterns
+
+### Route-based Splitting
+
+```javascript
+const routes = [
+  {
+    path: '/home',
+    component: () => import('./views/Home')
+  },
+  {
+    path: '/about',
+    component: () => import('./views/About')
+  }
+];
+```
+
+### Vendor Splitting
+
+```javascript
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+```
+
+## Bundle Analysis
+
+Analyze your bundles to optimize splitting:
+
+```bash
+npm install --save-dev webpack-bundle-analyzer
+```
+
+```javascript
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+};
+```
+
+<Tip>
+Run the analyzer after major changes to identify optimization opportunities and ensure your splitting strategy is effective.
+</Tip>

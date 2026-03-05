@@ -1,0 +1,492 @@
+---
+title: CLI Flags
+description: Complete reference for webpack CLI flags and options
+---
+
+Webpack CLI provides numerous flags to customize the build process, output, optimization, and more.
+
+## Entry and Output
+
+<ParamField path="--entry" type="string">
+  Entry point(s) for the bundle.
+  
+  ```bash
+  webpack --entry ./src/index.js
+  webpack --entry ./src/app.js --entry ./src/vendor.js
+  ```
+</ParamField>
+
+<ParamField path="--output-path" type="path">
+  Output directory for all build files.
+  
+  ```bash
+  webpack --output-path ./dist
+  ```
+</ParamField>
+
+<ParamField path="--output-filename" type="string">
+  Filename template for entry chunks.
+  
+  ```bash
+  webpack --output-filename [name].[contenthash].js
+  ```
+</ParamField>
+
+<ParamField path="--output-public-path" type="string">
+  Public URL of the output directory when referenced in a browser.
+  
+  ```bash
+  webpack --output-public-path /assets/
+  ```
+</ParamField>
+
+<ParamField path="--output-clean" type="boolean">
+  Clean the output directory before emit. Default: `false`
+  
+  ```bash
+  webpack --output-clean
+  ```
+</ParamField>
+
+---
+
+## Mode and Environment
+
+<ParamField path="--mode" type="enum">
+  Build mode. Sets defaults and `process.env.NODE_ENV`.
+  
+  **Values:** `development` | `production` | `none`
+  
+  ```bash
+  webpack --mode production
+  ```
+</ParamField>
+
+<ParamField path="--env" type="object">
+  Environment variables passed to config function.
+  
+  ```bash
+  webpack --env production
+  webpack --env.production --env.platform=web
+  ```
+</ParamField>
+
+<ParamField path="--node-env" type="string">
+  Sets `process.env.NODE_ENV` to the specified value.
+  
+  ```bash
+  webpack --node-env production
+  ```
+</ParamField>
+
+---
+
+## Configuration
+
+<ParamField path="--config" type="path">
+  Path to webpack configuration file.
+  
+  ```bash
+  webpack --config webpack.prod.js
+  webpack --config config/webpack.config.js
+  ```
+</ParamField>
+
+<ParamField path="--config-name" type="string">
+  Name of the configuration to use (for multi-config exports).
+  
+  ```bash
+  webpack --config-name production
+  ```
+</ParamField>
+
+<ParamField path="--merge" type="boolean">
+  Merge two or more configurations.
+  
+  ```bash
+  webpack --config webpack.base.js --config webpack.prod.js --merge
+  ```
+</ParamField>
+
+---
+
+## Development
+
+<ParamField path="--watch" type="boolean">
+  Watch files for changes and rebuild. Default: `false`
+  
+  ```bash
+  webpack --watch
+  ```
+</ParamField>
+
+<ParamField path="--watch-options-stdin" type="boolean">
+  Stop watching when stdin stream ends.
+  
+  ```bash
+  webpack --watch --watch-options-stdin
+  ```
+</ParamField>
+
+<ParamField path="--devtool" type="string">
+  Source map generation method.
+  
+  ```bash
+  webpack --devtool source-map
+  webpack --devtool eval-source-map
+  ```
+</ParamField>
+
+<ParamField path="--hot" type="boolean">
+  Enable Hot Module Replacement. Default: `false`
+  
+  ```bash
+  webpack serve --hot
+  ```
+</ParamField>
+
+---
+
+## Optimization
+
+<ParamField path="--optimization-minimize" type="boolean">
+  Minimize the output. Default: `true` in production mode.
+  
+  ```bash
+  webpack --optimization-minimize
+  webpack --no-optimization-minimize
+  ```
+</ParamField>
+
+<ParamField path="--optimization-concatenate-modules" type="boolean">
+  Enable module concatenation (scope hoisting).
+  
+  ```bash
+  webpack --optimization-concatenate-modules
+  ```
+</ParamField>
+
+<ParamField path="--optimization-runtime-chunk" type="boolean | string">
+  Create a separate chunk for the webpack runtime.
+  
+  ```bash
+  webpack --optimization-runtime-chunk single
+  ```
+</ParamField>
+
+<ParamField path="--optimization-split-chunks" type="boolean">
+  Enable/disable code splitting.
+  
+  ```bash
+  webpack --optimization-split-chunks
+  ```
+</ParamField>
+
+---
+
+## Module Resolution
+
+<ParamField path="--resolve-alias" type="object">
+  Create aliases for module imports.
+  
+  ```bash
+  webpack --resolve-alias @=./src
+  ```
+</ParamField>
+
+<ParamField path="--resolve-extensions" type="array">
+  Extensions to resolve.
+  
+  ```bash
+  webpack --resolve-extensions .js --resolve-extensions .jsx
+  ```
+</ParamField>
+
+<ParamField path="--resolve-modules" type="array">
+  Directories to search for modules.
+  
+  ```bash
+  webpack --resolve-modules node_modules --resolve-modules src
+  ```
+</ParamField>
+
+---
+
+## Performance
+
+<ParamField path="--performance-hints" type="enum">
+  Show performance hints.
+  
+  **Values:** `warning` | `error` | `false`
+  
+  ```bash
+  webpack --performance-hints warning
+  ```
+</ParamField>
+
+<ParamField path="--performance-max-entrypoint-size" type="number">
+  Max size (in bytes) for entrypoint assets.
+  
+  ```bash
+  webpack --performance-max-entrypoint-size 250000
+  ```
+</ParamField>
+
+<ParamField path="--performance-max-asset-size" type="number">
+  Max size (in bytes) for individual assets.
+  
+  ```bash
+  webpack --performance-max-asset-size 250000
+  ```
+</ParamField>
+
+---
+
+## Stats and Output
+
+<ParamField path="--stats" type="string | boolean">
+  Stats output preset.
+  
+  **Presets:** `none` | `errors-only` | `errors-warnings` | `minimal` | `normal` | `verbose` | `detailed`
+  
+  ```bash
+  webpack --stats verbose
+  webpack --stats detailed
+  ```
+</ParamField>
+
+<ParamField path="--stats-error-details" type="boolean">
+  Show details for errors.
+  
+  ```bash
+  webpack --stats-error-details
+  ```
+</ParamField>
+
+<ParamField path="--progress" type="boolean">
+  Show compilation progress percentage.
+  
+  ```bash
+  webpack --progress
+  ```
+</ParamField>
+
+<ParamField path="--json" type="boolean | string">
+  Output stats as JSON. Optionally specify output file path.
+  
+  ```bash
+  webpack --json
+  webpack --json=stats.json
+  ```
+</ParamField>
+
+<ParamField path="--color" type="boolean">
+  Enable/disable colors in console output.
+  
+  ```bash
+  webpack --color
+  webpack --no-color
+  ```
+</ParamField>
+
+---
+
+## Target and Platform
+
+<ParamField path="--target" type="string | array">
+  Build target environment.
+  
+  **Common values:** `web` | `node` | `async-node` | `electron-main` | `electron-renderer`
+  
+  ```bash
+  webpack --target node
+  webpack --target web --target es2020
+  ```
+</ParamField>
+
+---
+
+## Cache
+
+<ParamField path="--cache" type="boolean">
+  Enable/disable caching.
+  
+  ```bash
+  webpack --cache
+  webpack --no-cache
+  ```
+</ParamField>
+
+<ParamField path="--cache-type" type="enum">
+  Cache type.
+  
+  **Values:** `memory` | `filesystem`
+  
+  ```bash
+  webpack --cache-type filesystem
+  ```
+</ParamField>
+
+---
+
+## Analyze and Debug
+
+<ParamField path="--analyze" type="boolean">
+  Generate bundle analysis.
+  
+  ```bash
+  webpack --analyze
+  ```
+</ParamField>
+
+<ParamField path="--profile" type="boolean">
+  Capture timing information for each module.
+  
+  ```bash
+  webpack --profile
+  ```
+</ParamField>
+
+<ParamField path="--bail" type="boolean">
+  Abort compilation on first error.
+  
+  ```bash
+  webpack --bail
+  ```
+</ParamField>
+
+---
+
+## DevServer Options
+
+These flags are available when using `webpack serve`:
+
+<ParamField path="--port" type="number">
+  Port number for dev server. Default: `8080`
+  
+  ```bash
+  webpack serve --port 3000
+  ```
+</ParamField>
+
+<ParamField path="--host" type="string">
+  Host to use. Default: `localhost`
+  
+  ```bash
+  webpack serve --host 0.0.0.0
+  ```
+</ParamField>
+
+<ParamField path="--open" type="boolean | string">
+  Open browser. Optionally specify browser name or page path.
+  
+  ```bash
+  webpack serve --open
+  webpack serve --open chrome
+  webpack serve --open /about
+  ```
+</ParamField>
+
+<ParamField path="--static" type="string | array">
+  Directory to serve static files from.
+  
+  ```bash
+  webpack serve --static ./public
+  ```
+</ParamField>
+
+<ParamField path="--compress" type="boolean">
+  Enable gzip compression.
+  
+  ```bash
+  webpack serve --compress
+  ```
+</ParamField>
+
+<ParamField path="--https" type="boolean">
+  Enable HTTPS.
+  
+  ```bash
+  webpack serve --https
+  ```
+</ParamField>
+
+<ParamField path="--http2" type="boolean">
+  Enable HTTP/2.
+  
+  ```bash
+  webpack serve --http2
+  ```
+</ParamField>
+
+---
+
+## Utility Flags
+
+<ParamField path="--help" type="boolean">
+  Display help information.
+  
+  ```bash
+  webpack --help
+  webpack build --help
+  ```
+</ParamField>
+
+<ParamField path="--version" type="boolean">
+  Display webpack version.
+  
+  ```bash
+  webpack --version
+  ```
+</ParamField>
+
+<ParamField path="--silent" type="boolean">
+  Prevent output from being displayed in stdout.
+  
+  ```bash
+  webpack --silent
+  ```
+</ParamField>
+
+---
+
+## Negating Boolean Flags
+
+Boolean flags can be negated by prefixing with `no-`:
+
+```bash
+# Disable optimization
+webpack --no-optimization-minimize
+
+# Disable colors
+webpack --no-color
+
+# Disable cache
+webpack --no-cache
+```
+
+---
+
+## Flag Priority
+
+When the same option is specified multiple times, the last value takes precedence:
+
+```bash
+# Uses production mode
+webpack --mode development --mode production
+```
+
+CLI flags override configuration file settings:
+
+```bash
+# CLI flag overrides config
+webpack --config webpack.config.js --mode production
+```
+
+---
+
+## See Also
+
+- [CLI Commands](/api/cli/commands) - Available webpack commands
+- [Configuration](/configuration/overview) - Configuration file options
+- [Environment Variables](/plugins/environment-plugin) - Using environment variables

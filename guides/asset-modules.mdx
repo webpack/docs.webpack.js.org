@@ -1,0 +1,519 @@
+---
+title: "Asset Modules"
+description: "Handle images, fonts, and other assets with webpack's built-in asset modules"
+icon: "image"
+---
+
+Asset modules allow you to use asset files (fonts, icons, images, etc.) without configuring additional loaders.
+
+## Asset Module Types
+
+Webpack 5 provides four asset module types:
+
+| Type | Description | Old Equivalent |
+|------|-------------|----------------|
+| `asset/resource` | Emits file and exports URL | `file-loader` |
+| `asset/inline` | Exports data URI | `url-loader` |
+| `asset/source` | Exports source code | `raw-loader` |
+| `asset` | Auto-chooses between resource and inline | `url-loader` with limit |
+
+<Note>
+Asset modules are built into webpack 5. No need to install additional loaders.
+</Note>
+
+## Basic Usage
+
+<Steps>
+<Step title="Configure asset module types">
+  ```javascript
+  module.exports = {
+    module: {
+      rules: [
+        {
+          test: /\.(png|jpg|jpeg|gif|svg)$/,
+          type: 'asset/resource'
+        }
+      ]
+    }
+  };
+  ```
+</Step>
+
+<Step title="Import assets in your code">
+  ```javascript
+  import logo from './images/logo.png';
+
+  const img = document.createElement('img');
+  img.src = logo;
+  document.body.appendChild(img);
+  ```
+</Step>
+
+<Step title="Configure output location">
+  ```javascript
+  module.exports = {
+    output: {
+      assetModuleFilename: 'assets/[hash][ext][query]'
+    }
+  };
+  ```
+</Step>
+</Steps>
+
+## asset/resource
+
+Emits files to the output directory and returns the URL:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        type: 'asset/resource'
+      }
+    ]
+  },
+  output: {
+    assetModuleFilename: 'images/[hash][ext][query]'
+  }
+};
+```
+
+**Usage:**
+```javascript
+import imageUrl from './photo.jpg';
+// imageUrl is: 'images/a1b2c3d4.jpg'
+```
+
+<Tip>
+Use `asset/resource` for large images, videos, and other files that should be loaded separately.
+</Tip>
+
+## asset/inline
+
+Inlines assets as data URIs:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        type: 'asset/inline'
+      }
+    ]
+  }
+};
+```
+
+**Usage:**
+```javascript
+import svgData from './icon.svg';
+// svgData is: 'data:image/svg+xml;base64,...'
+```
+
+<Warning>
+Inlining large files increases bundle size. Only inline small assets (< 8-10 KB).
+</Warning>
+
+## asset/source
+
+Imports the raw source code of the asset:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        type: 'asset/source'
+      }
+    ]
+  }
+};
+```
+
+**Usage:**
+```javascript
+import textContent from './data.txt';
+// textContent is the text file content as a string
+console.log(textContent);
+```
+
+## asset (Automatic)
+
+Automatically chooses between inline and resource based on file size:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024 // 8kb
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+**Behavior:**
+- Files < 8 KB: Inlined as data URI
+- Files ≥ 8 KB: Emitted as separate files
+
+<Tip>
+The `asset` type is the most versatile. It optimizes automatically based on file size.
+</Tip>
+
+## Custom Output Filenames
+
+### Global Configuration
+
+```javascript
+module.exports = {
+  output: {
+    assetModuleFilename: 'assets/[name]-[hash][ext][query]'
+  }
+};
+```
+
+### Per-Rule Configuration
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[hash][ext][query]'
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
+      }
+    ]
+  }
+};
+```
+
+## Filename Placeholders
+
+| Placeholder | Description |
+|-------------|-------------|
+| `[name]` | Original filename |
+| `[hash]` | Content hash |
+| `[ext]` | Extension with dot |
+| `[query]` | Query string |
+| `[path]` | Original path |
+| `[contenthash]` | Content hash (alias) |
+
+**Example:**
+```javascript
+generator: {
+  filename: 'assets/[path][name]-[hash:8][ext]'
+}
+```
+
+## Common Asset Types
+
+### Images
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|jpeg|gif|webp)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024
+          }
+        },
+        generator: {
+          filename: 'images/[hash][ext][query]'
+        }
+      }
+    ]
+  }
+};
+```
+
+### SVG
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        type: 'asset/inline',
+        generator: {
+          dataUrl: content => {
+            content = content.toString();
+            return `data:image/svg+xml,${encodeURIComponent(content)}`;
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+### Fonts
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
+      }
+    ]
+  }
+};
+```
+
+**Usage in CSS:**
+```css
+@font-face {
+  font-family: 'MyFont';
+  src: url('./fonts/myfont.woff2') format('woff2');
+}
+```
+
+### Data Files
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(json|xml|csv)$/,
+        type: 'asset/source'
+      }
+    ]
+  }
+};
+```
+
+## Public Path
+
+Set the base path for assets in production:
+
+```javascript
+module.exports = {
+  output: {
+    publicPath: 'https://cdn.example.com/',
+    assetModuleFilename: 'assets/[hash][ext]'
+  }
+};
+```
+
+**Result:**
+```javascript
+import logo from './logo.png';
+// logo is: 'https://cdn.example.com/assets/a1b2c3d4.png'
+```
+
+<Note>
+The `publicPath` is prepended to all asset URLs. Use it when serving assets from a CDN.
+</Note>
+
+## Custom Data URL
+
+Customize how data URIs are generated:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        type: 'asset/inline',
+        generator: {
+          dataUrl: content => {
+            const svgContent = content.toString();
+            // Optimize or transform SVG
+            return `data:image/svg+xml;utf8,${encodeURIComponent(svgContent)}`;
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+## Migration from Loaders
+
+### From file-loader
+
+**Before:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: ['file-loader']
+      }
+    ]
+  }
+};
+```
+
+**After:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: 'asset/resource'
+      }
+    ]
+  }
+};
+```
+
+### From url-loader
+
+**Before:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+**After:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8192
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+### From raw-loader
+
+**Before:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        use: 'raw-loader'
+      }
+    ]
+  }
+};
+```
+
+**After:**
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.txt$/,
+        type: 'asset/source'
+      }
+    ]
+  }
+};
+```
+
+<Tip>
+Asset modules are simpler and faster than the old loader approach. Migrate when upgrading to webpack 5.
+</Tip>
+
+## Complete Example
+
+```javascript
+const path = require('path');
+
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    publicPath: '/'
+  },
+  module: {
+    rules: [
+      // Images - auto inline if < 8kb
+      {
+        test: /\.(png|jpg|jpeg|gif|webp)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024
+          }
+        },
+        generator: {
+          filename: 'images/[hash][ext][query]'
+        }
+      },
+      // SVG - inline as data URI
+      {
+        test: /\.svg$/,
+        type: 'asset/inline'
+      },
+      // Fonts - always separate files
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
+      },
+      // Text/data files - raw content
+      {
+        test: /\.(txt|md)$/,
+        type: 'asset/source'
+      }
+    ]
+  }
+};
+```

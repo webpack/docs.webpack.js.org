@@ -1,0 +1,454 @@
+---
+title: Resolve
+description: Configure how modules are resolved and located
+---
+
+The resolve configuration changes how modules are resolved. Webpack provides reasonable defaults, but you can customize resolution behavior.
+
+## Basic Configuration
+
+```javascript webpack.config.js
+module.exports = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  }
+};
+```
+
+## Resolve Options
+
+<ParamField path="resolve.extensions" type="string[]">
+  Extensions that are tried when resolving a file.
+  
+  ```javascript
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+  }
+  ```
+  
+  Default: `['.js', '.json', '.wasm']`
+  
+  <Note>
+    Users can now import modules without adding their extensions:
+    ```javascript
+    import App from './App' // resolves to ./App.js, ./App.jsx, etc.
+    ```
+  </Note>
+</ParamField>
+
+<ParamField path="resolve.alias" type="object | array">
+  Create aliases to import or require certain modules more easily.
+  
+  ```javascript
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      // Exact match
+      'react$': path.resolve(__dirname, 'node_modules/react/dist/react.min.js')
+    }
+  }
+  ```
+  
+  Usage:
+  ```javascript
+  import Button from '@/components/Button'
+  import { format } from '@utils/date'
+  ```
+</ParamField>
+
+<ParamField path="resolve.modules" type="string[]">
+  Directories where to look for modules.
+  
+  ```javascript
+  resolve: {
+    modules: ['node_modules', path.resolve(__dirname, 'src')]
+  }
+  ```
+  
+  Default: `['node_modules']`
+</ParamField>
+
+<ParamField path="resolve.mainFields" type="string[]">
+  Fields in package.json that are checked for the main entry point.
+  
+  ```javascript
+  resolve: {
+    mainFields: ['browser', 'module', 'main']
+  }
+  ```
+  
+  Default: `['browser', 'module', 'main']` (web), `['module', 'main']` (Node.js)
+</ParamField>
+
+<ParamField path="resolve.mainFiles" type="string[]">
+  Filenames used when resolving directories.
+  
+  ```javascript
+  resolve: {
+    mainFiles: ['index', 'main']
+  }
+  ```
+  
+  Default: `['index']`
+</ParamField>
+
+## Advanced Options
+
+<Accordion title="Conditional Exports">
+  <ParamField path="resolve.conditionNames" type="string[]">
+    Condition names for package.json exports field.
+    
+    ```javascript
+    resolve: {
+      conditionNames: ['import', 'module', 'browser', 'default']
+    }
+    ```
+    
+    Default: `['webpack', 'production', 'development']` + target-specific
+  </ParamField>
+  
+  <ParamField path="resolve.exportsFields" type="string[]">
+    Fields in package.json for entry points.
+    
+    ```javascript
+    resolve: {
+      exportsFields: ['exports']
+    }
+    ```
+    
+    Default: `['exports']`
+  </ParamField>
+  
+  <ParamField path="resolve.importsFields" type="string[]">
+    Fields in package.json for internal package imports.
+    
+    ```javascript
+    resolve: {
+      importsFields: ['imports']
+    }
+    ```
+    
+    Default: `['imports']`
+  </ParamField>
+</Accordion>
+
+<Accordion title="Extension Handling">
+  <ParamField path="resolve.extensionAlias" type="object">
+    Alias one extension to multiple alternatives.
+    
+    ```javascript
+    resolve: {
+      extensionAlias: {
+        '.js': ['.ts', '.js'],
+        '.mjs': ['.mts', '.mjs']
+      }
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="resolve.enforceExtension" type="boolean">
+    If true, extensions must be provided.
+    
+    ```javascript
+    resolve: {
+      enforceExtension: false
+    }
+    ```
+    
+    Default: `false`
+  </ParamField>
+</Accordion>
+
+<Accordion title="TypeScript Support">
+  <ParamField path="resolve.tsconfig" type="boolean | string | object">
+    Enable TypeScript paths mapping from tsconfig.json.
+    
+    ```javascript
+    // Use default tsconfig.json
+    resolve: {
+      tsconfig: true
+    }
+    
+    // Specify tsconfig path
+    resolve: {
+      tsconfig: path.resolve(__dirname, 'tsconfig.build.json')
+    }
+    
+    // Advanced configuration
+    resolve: {
+      tsconfig: {
+        configFile: path.resolve(__dirname, 'tsconfig.json'),
+        references: 'auto'
+      }
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Symlinks and Caching">
+  <ParamField path="resolve.symlinks" type="boolean">
+    Resolve symlinks to their real location.
+    
+    ```javascript
+    resolve: {
+      symlinks: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="resolve.cache" type="boolean">
+    Enable caching of module resolutions.
+    
+    ```javascript
+    resolve: {
+      cache: true
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+  
+  <ParamField path="resolve.cacheWithContext" type="boolean">
+    Include context in the cache key.
+    
+    ```javascript
+    resolve: {
+      cacheWithContext: false
+    }
+    ```
+    
+    Default: `true`
+  </ParamField>
+</Accordion>
+
+<Accordion title="Fallback and Restrictions">
+  <ParamField path="resolve.fallback" type="object">
+    Redirect module requests when normal resolving fails.
+    
+    ```javascript
+    resolve: {
+      fallback: {
+        "crypto": require.resolve("crypto-browserify"),
+        "stream": require.resolve("stream-browserify"),
+        "path": false // disable polyfill
+      }
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="resolve.restrictions" type="(RegExp | string)[]">
+    Restrict paths that resolve results must match.
+    
+    ```javascript
+    resolve: {
+      restrictions: [/\/(src|node_modules)\//]
+    }
+    ```
+  </ParamField>
+  
+  <ParamField path="resolve.roots" type="string[]">
+    Directories for server-relative URLs (starting with '/').
+    
+    ```javascript
+    resolve: {
+      roots: [path.resolve(__dirname, 'public')]
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Path Resolution">
+  <ParamField path="resolve.preferAbsolute" type="boolean">
+    Prefer absolute paths over resolve.roots.
+    
+    ```javascript
+    resolve: {
+      preferAbsolute: true
+    }
+    ```
+    
+    Default: `false`
+  </ParamField>
+  
+  <ParamField path="resolve.preferRelative" type="boolean">
+    Prefer relative resolution over module resolution.
+    
+    ```javascript
+    resolve: {
+      preferRelative: true
+    }
+    ```
+    
+    Default: `false`
+  </ParamField>
+  
+  <ParamField path="resolve.fullySpecified" type="boolean">
+    Require fully specified imports (no extensions/mainFiles).
+    
+    ```javascript
+    resolve: {
+      fullySpecified: false
+    }
+    ```
+    
+    Default: `false`
+  </ParamField>
+</Accordion>
+
+<Accordion title="Plugins">
+  <ParamField path="resolve.plugins" type="array">
+    Plugins for the resolver.
+    
+    ```javascript
+    const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+    
+    resolve: {
+      plugins: [new TsconfigPathsPlugin()]
+    }
+    ```
+  </ParamField>
+</Accordion>
+
+<Accordion title="Package.json Fields">
+  <ParamField path="resolve.aliasFields" type="string[]">
+    Fields in package.json to check for aliases.
+    
+    ```javascript
+    resolve: {
+      aliasFields: ['browser']
+    }
+    ```
+    
+    Default: `['browser']` (web target)
+  </ParamField>
+  
+  <ParamField path="resolve.descriptionFiles" type="string[]">
+    Files to read for package description.
+    
+    ```javascript
+    resolve: {
+      descriptionFiles: ['package.json', 'bower.json']
+    }
+    ```
+    
+    Default: `['package.json']`
+  </ParamField>
+</Accordion>
+
+## Resolve Loader
+
+Separate resolve options for loaders:
+
+```javascript webpack.config.js
+module.exports = {
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')],
+    extensions: ['.js', '.json'],
+    mainFields: ['loader', 'main']
+  }
+};
+```
+
+## Common Patterns
+
+### Aliases for Clean Imports
+
+```javascript webpack.config.js
+module.exports = {
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@assets': path.resolve(__dirname, 'src/assets')
+    }
+  }
+};
+```
+
+Usage:
+```javascript
+import Button from '@components/Button'
+import { api } from '@utils/api'
+import logo from '@assets/logo.png'
+```
+
+### TypeScript Project
+
+```javascript webpack.config.js
+module.exports = {
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    tsconfig: path.resolve(__dirname, 'tsconfig.json')
+  }
+};
+```
+
+### Monorepo Setup
+
+```javascript webpack.config.js
+module.exports = {
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, '../../node_modules')
+    ],
+    symlinks: true
+  }
+};
+```
+
+### Node.js Polyfills for Browser
+
+```javascript webpack.config.js
+module.exports = {
+  resolve: {
+    fallback: {
+      "assert": require.resolve("assert/"),
+      "buffer": require.resolve("buffer/"),
+      "console": require.resolve("console-browserify"),
+      "crypto": require.resolve("crypto-browserify"),
+      "http": require.resolve("stream-http"),
+      "https": require.resolve("https-browserify"),
+      "os": require.resolve("os-browserify/browser"),
+      "path": require.resolve("path-browserify"),
+      "stream": require.resolve("stream-browserify"),
+      "url": require.resolve("url/"),
+      "util": require.resolve("util/"),
+      "zlib": require.resolve("browserify-zlib")
+    }
+  }
+};
+```
+
+### Conditional Package Resolution
+
+```javascript webpack.config.js
+module.exports = {
+  resolve: {
+    conditionNames: ['webpack', 'production', 'browser', 'import'],
+    mainFields: ['browser', 'module', 'main']
+  }
+};
+```
+
+### Custom Loader Directory
+
+```javascript webpack.config.js
+module.exports = {
+  resolveLoader: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'custom-loaders')
+    ]
+  }
+};
+```

@@ -1,0 +1,583 @@
+---
+title: "Progressive Web Application (PWA)"
+description: "Build offline-capable, installable web apps with webpack"
+icon: "mobile"
+---
+
+Progressive Web Applications (PWAs) are web apps that use modern capabilities to deliver app-like experiences. Webpack provides tools to build PWAs with offline support, background sync, and installability.
+
+## What is a PWA?
+
+A PWA is a web application that:
+- Works offline or on low-quality networks
+- Can be installed on the home screen
+- Sends push notifications
+- Loads quickly
+- Feels like a native app
+
+<Note>
+PWAs require HTTPS in production (except localhost) and a valid service worker.
+</Note>
+
+## Getting Started
+
+<Steps>
+<Step title="Install Workbox plugin">
+  Workbox is the recommended tool for service worker generation:
+
+  ```bash
+  npm install --save-dev workbox-webpack-plugin
+  ```
+</Step>
+
+<Step title="Create a manifest file">
+  **public/manifest.json:**
+  ```json
+  {
+    "name": "My Progressive Web App",
+    "short_name": "My PWA",
+    "description": "An awesome progressive web application",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3367D6",
+    "icons": [
+      {
+        "src": "/icons/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/icons/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  ```
+</Step>
+
+<Step title="Configure webpack">
+  ```javascript
+  const { GenerateSW } = require('workbox-webpack-plugin');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const CopyPlugin = require('copy-webpack-plugin');
+
+  module.exports = {
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './public/index.html'
+      }),
+      new CopyPlugin({
+        patterns: [
+          { from: 'public/manifest.json', to: 'manifest.json' },
+          { from: 'public/icons', to: 'icons' }
+        ]
+      }),
+      new GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/api\.example\.com/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 300
+              }
+            }
+          }
+        ]
+      })
+    ]
+  };
+  ```
+</Step>
+
+<Step title="Link manifest in HTML">
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#3367D6">
+    <link rel="manifest" href="/manifest.json">
+    <title>My PWA</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  </html>
+  ```
+</Step>
+
+<Step title="Register service worker">
+  **src/index.js:**
+  ```javascript
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('SW registered:', registration);
+        })
+        .catch(error => {
+          console.log('SW registration failed:', error);
+        });
+    });
+  }
+  ```
+</Step>
+</Steps>
+
+## Workbox Strategies
+
+Workbox provides caching strategies for different types of resources:
+
+### Network First
+
+Try network first, fall back to cache:
+
+```javascript
+const { GenerateSW } = require('workbox-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new GenerateSW({
+      runtimeCaching: [
+        {
+          urlPattern: /\/api\//,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api-cache',
+            networkTimeoutSeconds: 3,
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 5 * 60 // 5 minutes
+            }
+          }
+        }
+      ]
+    })
+  ]
+};
+```
+
+<Tip>
+Use NetworkFirst for API calls and frequently updated content.
+</Tip>
+
+### Cache First
+
+Try cache first, fall back to network:
+
+```javascript
+runtimeCaching: [
+  {
+    urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+    handler: 'CacheFirst',
+    options: {
+      cacheName: 'images',
+      expiration: {
+        maxEntries: 100,
+        maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+      }
+    }
+  }
+]
+```
+
+<Tip>
+Use CacheFirst for static assets like images, fonts, and CSS.
+</Tip>
+
+### Stale While Revalidate
+
+Use cache immediately, update in background:
+
+```javascript
+runtimeCaching: [
+  {
+    urlPattern: /\.(?:js|css)$/,
+    handler: 'StaleWhileRevalidate',
+    options: {
+      cacheName: 'static-resources'
+    }
+  }
+]
+```
+
+### Network Only
+
+Always use network, never cache:
+
+```javascript
+runtimeCaching: [
+  {
+    urlPattern: /\/auth\//,
+    handler: 'NetworkOnly'
+  }
+]
+```
+
+### Cache Only
+
+Only serve from cache:
+
+```javascript
+runtimeCaching: [
+  {
+    urlPattern: /\/offline\.html$/,
+    handler: 'CacheOnly'
+  }
+]
+```
+
+## Custom Service Worker
+
+For more control, use `InjectManifest` to customize your service worker:
+
+<Steps>
+<Step title="Create service worker file">
+  **src/service-worker.js:**
+  ```javascript
+  import { precacheAndRoute } from 'workbox-precaching';
+  import { registerRoute } from 'workbox-routing';
+  import { NetworkFirst, CacheFirst } from 'workbox-strategies';
+  import { ExpirationPlugin } from 'workbox-expiration';
+
+  // Precache assets
+  precacheAndRoute(self.__WB_MANIFEST);
+
+  // Cache API calls
+  registerRoute(
+    ({ url }) => url.pathname.startsWith('/api/'),
+    new NetworkFirst({
+      cacheName: 'api-cache',
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 50,
+          maxAgeSeconds: 5 * 60
+        })
+      ]
+    })
+  );
+
+  // Cache images
+  registerRoute(
+    ({ request }) => request.destination === 'image',
+    new CacheFirst({
+      cacheName: 'images',
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 100,
+          maxAgeSeconds: 30 * 24 * 60 * 60
+        })
+      ]
+    })
+  );
+  ```
+</Step>
+
+<Step title="Configure InjectManifest">
+  ```javascript
+  const { InjectManifest } = require('workbox-webpack-plugin');
+
+  module.exports = {
+    plugins: [
+      new InjectManifest({
+        swSrc: './src/service-worker.js',
+        swDest: 'service-worker.js',
+        exclude: [/\.map$/, /^manifest.*\.js$/]
+      })
+    ]
+  };
+  ```
+</Step>
+</Steps>
+
+## Offline Fallback
+
+Provide offline pages when network is unavailable:
+
+```javascript
+import { setCatchHandler } from 'workbox-routing';
+import { precacheAndRoute, matchPrecache } from 'workbox-precaching';
+
+precacheAndRoute([
+  ...self.__WB_MANIFEST,
+  { url: '/offline.html', revision: '1' }
+]);
+
+setCatchHandler(async ({ event }) => {
+  if (event.request.destination === 'document') {
+    return matchPrecache('/offline.html');
+  }
+  return Response.error();
+});
+```
+
+## Background Sync
+
+Queue failed requests and retry when online:
+
+```javascript
+import { BackgroundSyncPlugin } from 'workbox-background-sync';
+import { registerRoute } from 'workbox-routing';
+import { NetworkOnly } from 'workbox-strategies';
+
+const bgSyncPlugin = new BackgroundSyncPlugin('api-queue', {
+  maxRetentionTime: 24 * 60 // Retry for up to 24 hours
+});
+
+registerRoute(
+  /\/api\/save/,
+  new NetworkOnly({
+    plugins: [bgSyncPlugin]
+  }),
+  'POST'
+);
+```
+
+**Usage in app:**
+```javascript
+async function saveData(data) {
+  try {
+    await fetch('/api/save', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+  } catch (error) {
+    // Will be retried by background sync
+    console.log('Queued for background sync');
+  }
+}
+```
+
+## Push Notifications
+
+Send notifications to users:
+
+<Steps>
+<Step title="Request permission">
+  ```javascript
+  async function requestNotificationPermission() {
+    const permission = await Notification.requestPermission();
+    
+    if (permission === 'granted') {
+      const registration = await navigator.serviceWorker.ready;
+      const subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: 'YOUR_VAPID_PUBLIC_KEY'
+      });
+      
+      // Send subscription to server
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        body: JSON.stringify(subscription)
+      });
+    }
+  }
+  ```
+</Step>
+
+<Step title="Handle push events in service worker">
+  ```javascript
+  self.addEventListener('push', (event) => {
+    const data = event.data.json();
+    
+    event.waitUntil(
+      self.registration.showNotification(data.title, {
+        body: data.body,
+        icon: '/icons/icon-192.png',
+        badge: '/icons/badge-72.png',
+        data: data.url
+      })
+    );
+  });
+
+  self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    
+    event.waitUntil(
+      clients.openWindow(event.notification.data)
+    );
+  });
+  ```
+</Step>
+</Steps>
+
+## App Installation
+
+Prompt users to install your PWA:
+
+```javascript
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  // Prevent default install prompt
+  event.preventDefault();
+  
+  // Store event for later
+  deferredPrompt = event;
+  
+  // Show custom install button
+  document.getElementById('install-button').style.display = 'block';
+});
+
+document.getElementById('install-button').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  
+  // Show install prompt
+  deferredPrompt.prompt();
+  
+  // Wait for user choice
+  const { outcome } = await deferredPrompt.userChoice;
+  
+  console.log(`User ${outcome} the install prompt`);
+  deferredPrompt = null;
+});
+
+window.addEventListener('appinstalled', () => {
+  console.log('PWA installed');
+  deferredPrompt = null;
+});
+```
+
+## Complete PWA Configuration
+
+```javascript
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
+
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
+    clean: true
+  },
+  
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      inject: 'body'
+    }),
+    
+    new CopyPlugin({
+      patterns: [
+        { from: 'public/manifest.json', to: 'manifest.json' },
+        { from: 'public/icons', to: 'icons' },
+        { from: 'public/offline.html', to: 'offline.html' }
+      ]
+    }),
+    
+    new InjectManifest({
+      swSrc: './src/service-worker.js',
+      swDest: 'service-worker.js',
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+      exclude: [
+        /\.map$/,
+        /^manifest.*\.js$/,
+        /\.LICENSE\.txt$/
+      ]
+    })
+  ],
+  
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+```
+
+## Testing PWAs
+
+### Local Testing
+
+```bash
+# Build production version
+npm run build
+
+# Serve with HTTPS
+npx http-server dist -p 8080 --ssl
+```
+
+### Lighthouse Audit
+
+1. Open Chrome DevTools
+2. Go to Lighthouse tab
+3. Select "Progressive Web App"
+4. Click "Generate report"
+
+<Tip>
+Aim for a Lighthouse PWA score of 100 for the best user experience.
+</Tip>
+
+## PWA Checklist
+
+<Steps>
+<Step title="HTTPS enabled">
+  Deploy with valid SSL certificate
+</Step>
+
+<Step title="Service worker registered">
+  Handles offline functionality and caching
+</Step>
+
+<Step title="Web app manifest">
+  Includes name, icons, start_url, and display mode
+</Step>
+
+<Step title="Icons provided">
+  At least 192x192 and 512x512 PNG icons
+</Step>
+
+<Step title="Responsive design">
+  Works on all screen sizes
+</Step>
+
+<Step title="Fast load time">
+  First contentful paint < 2s on 3G
+</Step>
+
+<Step title="Works offline">
+  Shows cached content when offline
+</Step>
+
+<Step title="Installable">
+  Triggers install prompt on supported browsers
+</Step>
+</Steps>
+
+## Best Practices
+
+<Warning>
+Always test service worker updates carefully - bugs in service workers can break your entire app.
+</Warning>
+
+<Tip>
+Use different caching strategies for different resource types:
+- Static assets: CacheFirst
+- API calls: NetworkFirst
+- CSS/JS: StaleWhileRevalidate
+</Tip>
+
+<Note>
+Service workers require HTTPS in production. Use `localhost` for local development.
+</Note>

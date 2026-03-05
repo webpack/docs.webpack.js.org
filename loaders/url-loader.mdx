@@ -1,0 +1,559 @@
+---
+title: url-loader
+description: Transform files into base64 URIs (deprecated)
+---
+
+<Warning>
+  `url-loader` is deprecated in webpack 5. Use [Asset Modules](/guides/asset-modules) with `type: 'asset'` or `type: 'asset/inline'` instead.
+</Warning>
+
+## Overview
+
+`url-loader` works like `file-loader`, but can return a data URI if the file is smaller than a specified limit. This was useful for reducing HTTP requests by inlining small files.
+
+## Migration to Asset Modules
+
+Webpack 5 Asset Modules provide the same functionality with better performance and no external dependencies.
+
+<CodeGroup>
+```javascript url-loader (Old - Deprecated)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'images/[name].[hash:8].[ext]'
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript Asset Modules (New - Recommended)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024 // 8kb
+          }
+        },
+        generator: {
+          filename: 'images/[name].[hash:8][ext]'
+        }
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+## Installation (Legacy)
+
+<Note>
+  Only install if you're maintaining a legacy webpack 4 project. For webpack 5, use Asset Modules.
+</Note>
+
+```bash
+npm install -D url-loader file-loader
+```
+
+<Note>
+  `url-loader` requires `file-loader` as a peer dependency for files that exceed the size limit.
+</Note>
+
+## Basic Usage (Legacy)
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+```
+
+```javascript app.js
+import smallIcon from './small-icon.png'; // < 8kb - data URI
+import largeImage from './large-image.png'; // > 8kb - file path
+
+console.log(smallIcon); // 'data:image/png;base64,iVBORw0KGgo...'
+console.log(largeImage); // '/dist/large-image.png'
+```
+</CodeGroup>
+
+## How It Works
+
+1. File size is checked against the `limit` option
+2. If size < limit: File is converted to base64 data URI
+3. If size >= limit: Falls back to `file-loader` behavior
+
+## Options (Legacy)
+
+### `limit`
+
+Maximum file size (in bytes) to inline:
+
+```javascript
+{
+  loader: 'url-loader',
+  options: {
+    limit: 8192 // 8kb
+  }
+}
+```
+
+<Note>
+  Files smaller than `limit` are inlined. Larger files are emitted as separate files.
+</Note>
+
+### `mimetype`
+
+Specify MIME type:
+
+```javascript
+{
+  loader: 'url-loader',
+  options: {
+    limit: 8192,
+    mimetype: 'image/png'
+  }
+}
+```
+
+### `encoding`
+
+Specify encoding (default: `base64`):
+
+```javascript
+{
+  loader: 'url-loader',
+  options: {
+    limit: 8192,
+    encoding: 'base64'
+  }
+}
+```
+
+### `fallback`
+
+Specify fallback loader (default: `file-loader`):
+
+```javascript
+{
+  loader: 'url-loader',
+  options: {
+    limit: 8192,
+    fallback: 'file-loader'
+  }
+}
+```
+
+### File-loader Options
+
+Pass options to `file-loader` for files exceeding limit:
+
+```javascript
+{
+  loader: 'url-loader',
+  options: {
+    limit: 8192,
+    name: '[name].[hash:8].[ext]',
+    outputPath: 'images/',
+    publicPath: '/assets/images/'
+  }
+}
+```
+
+## Common Patterns (Legacy)
+
+### Images with Size Limit
+
+```javascript
+{
+  test: /\.(png|jpg|gif)$/i,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 8192,
+        name: 'images/[name].[contenthash:8].[ext]'
+      }
+    }
+  ]
+}
+```
+
+### SVG Icons
+
+```javascript
+{
+  test: /\.svg$/i,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: 'image/svg+xml'
+      }
+    }
+  ]
+}
+```
+
+### Fonts
+
+```javascript
+{
+  test: /\.(woff|woff2)$/i,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 50000,
+        mimetype: 'application/font-woff',
+        name: 'fonts/[name].[ext]'
+      }
+    }
+  ]
+}
+```
+
+## Complete Migration Guide
+
+### Inline Small Images
+
+<CodeGroup>
+```javascript Before (url-loader)
+{
+  test: /\.(png|jpg|gif)$/i,
+  loader: 'url-loader',
+  options: {
+    limit: 8192
+  }
+}
+```
+
+```javascript After (Asset Modules)
+{
+  test: /\.(png|jpg|gif)$/i,
+  type: 'asset',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 8 * 1024
+  }
+  }
+}
+```
+</CodeGroup>
+
+### Always Inline
+
+<CodeGroup>
+```javascript Before (url-loader)
+{
+  test: /\.svg$/i,
+  loader: 'url-loader',
+  options: {
+    limit: Infinity
+  }
+}
+```
+
+```javascript After (Asset Modules)
+{
+  test: /\.svg$/i,
+  type: 'asset/inline'
+}
+```
+</CodeGroup>
+
+### Custom MIME Type
+
+<CodeGroup>
+```javascript Before (url-loader)
+{
+  test: /\.svg$/i,
+  loader: 'url-loader',
+  options: {
+    limit: 10000,
+    mimetype: 'image/svg+xml'
+  }
+}
+```
+
+```javascript After (Asset Modules)
+{
+  test: /\.svg$/i,
+  type: 'asset',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 10 * 1024
+    }
+  },
+  generator: {
+    dataUrl: {
+      mimetype: 'image/svg+xml'
+    }
+  }
+}
+```
+</CodeGroup>
+
+### With Output Path
+
+<CodeGroup>
+```javascript Before (url-loader)
+{
+  test: /\.(png|jpg)$/i,
+  loader: 'url-loader',
+  options: {
+    limit: 8192,
+    name: '[name].[hash:8].[ext]',
+    outputPath: 'images/'
+  }
+}
+```
+
+```javascript After (Asset Modules)
+{
+  test: /\.(png|jpg)$/i,
+  type: 'asset',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 8 * 1024
+    }
+  },
+  generator: {
+    filename: 'images/[name].[hash:8][ext]'
+  }
+}
+```
+</CodeGroup>
+
+## Asset Module Options
+
+### Automatic Choice (asset)
+
+Replaces `url-loader` with limit:
+
+```javascript
+{
+  test: /\.png$/,
+  type: 'asset',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 8 * 1024 // 8kb
+    }
+  }
+}
+```
+
+### Always Inline (asset/inline)
+
+Replaces `url-loader` with no limit:
+
+```javascript
+{
+  test: /\.svg$/,
+  type: 'asset/inline'
+}
+```
+
+### Custom Data URL Generator
+
+```javascript
+{
+  test: /\.svg$/,
+  type: 'asset/inline',
+  generator: {
+    dataUrl: content => {
+      return svgToMiniDataURI(content.toString());
+    }
+  }
+}
+```
+
+## Performance Considerations
+
+### Benefits of Inlining
+
+- Reduces HTTP requests
+- Eliminates separate file loading
+- Useful for small assets
+
+### Drawbacks of Inlining
+
+- Increases bundle size
+- Cannot be cached separately
+- Larger bundle = slower initial load
+- Base64 encoding adds ~33% size overhead
+
+### Best Practices
+
+<Note>
+  Only inline very small files (< 10kb). Larger files should be loaded separately for better caching.
+</Note>
+
+```javascript
+// Good: Small icons and fonts
+{
+  test: /\.(woff2|svg)$/,
+  type: 'asset',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 8 * 1024
+    }
+  }
+}
+
+// Bad: Large images
+{
+  test: /\.(jpg|png)$/,
+  type: 'asset/inline' // Bloats bundle!
+}
+```
+
+## Complete Migration Example
+
+<CodeGroup>
+```javascript webpack 4 (url-loader)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: '[name].[contenthash:8].[ext]',
+          outputPath: 'images/'
+        }
+      },
+      {
+        test: /\.svg$/i,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          mimetype: 'image/svg+xml'
+        }
+      }
+    ]
+  }
+};
+```
+
+```javascript webpack 5 (Asset Modules)
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024
+          }
+        },
+        generator: {
+          filename: 'images/[name].[contenthash:8][ext]'
+        }
+      },
+      {
+        test: /\.svg$/i,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024
+          }
+        },
+        generator: {
+          dataUrl: {
+            mimetype: 'image/svg+xml'
+          }
+        }
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+## Common Issues
+
+### Issue: Bundle Size Too Large
+
+**Cause:** Too many or too large files inlined.
+
+**Solution:** Reduce `maxSize` limit:
+
+```javascript
+parser: {
+  dataUrlCondition: {
+    maxSize: 4 * 1024 // Reduce from 8kb to 4kb
+  }
+}
+```
+
+### Issue: File Not Inlined
+
+**Cause:** File exceeds size limit.
+
+**Solution:** Increase limit or use `asset/inline`:
+
+```javascript
+type: 'asset/inline' // Always inline
+```
+
+### Issue: Wrong MIME Type
+
+**Solution:** Specify correct MIME type:
+
+```javascript
+generator: {
+  dataUrl: {
+    mimetype: 'image/svg+xml'
+  }
+}
+```
+
+## Key Differences
+
+| Feature | url-loader | Asset Modules |
+|---------|------------|---------------|
+| Installation | Required | Built-in |
+| Size limit | `limit` option | `maxSize` in bytes |
+| Always inline | `limit: Infinity` | `type: 'asset/inline'` |
+| Fallback | `file-loader` | `asset/resource` |
+| Configuration | `options` | `parser` + `generator` |
+
+## Resources
+
+- [Asset Modules Guide](/guides/asset-modules)
+- [webpack 5 Asset Modules](https://webpack.js.org/guides/asset-modules/)
+- [Migration from webpack 4](/guides/asset-modules)
+- [url-loader GitHub](https://github.com/webpack-contrib/url-loader) (deprecated)
+- [file-loader](/loaders/file-loader)

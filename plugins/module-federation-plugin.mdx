@@ -1,0 +1,228 @@
+---
+title: ModuleFederationPlugin
+description: Enable Module Federation for micro-frontends architecture
+---
+
+The `ModuleFederationPlugin` enables multiple separate builds to form a single application. These separate builds act like containers and can expose and consume code between builds.
+
+## Usage
+
+```javascript
+const { ModuleFederationPlugin } = require('webpack').container;
+
+module.exports = {
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'app1',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Component': './src/Component'
+      },
+      shared: ['react', 'react-dom']
+    })
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="name" type="string" required>
+  Unique name for this container
+</ParamField>
+
+<ParamField path="filename" type="string">
+  Filename of the container entry
+</ParamField>
+
+<ParamField path="exposes" type="object">
+  Modules that should be exposed from this container
+</ParamField>
+
+<ParamField path="remotes" type="object">
+  Containers to consume as remote
+</ParamField>
+
+<ParamField path="shared" type="array | object">
+  Modules that should be shared between containers
+</ParamField>
+
+<ParamField path="library" type="object">
+  Library configuration for the container
+</ParamField>
+
+<ParamField path="runtime" type="string | false">
+  Custom runtime chunk name
+</ParamField>
+
+<ParamField path="shareScope" type="string" default="default">
+  Name of the share scope
+</ParamField>
+
+## Examples
+
+### Exposing Modules (Host)
+
+```javascript
+new ModuleFederationPlugin({
+  name: 'host',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './Button': './src/components/Button',
+    './Header': './src/components/Header'
+  },
+  shared: {
+    react: { singleton: true },
+    'react-dom': { singleton: true }
+  }
+})
+```
+
+### Consuming Remote Modules
+
+```javascript
+new ModuleFederationPlugin({
+  name: 'consumer',
+  remotes: {
+    host: 'host@http://localhost:3001/remoteEntry.js'
+  },
+  shared: {
+    react: { singleton: true },
+    'react-dom': { singleton: true }
+  }
+})
+```
+
+Then use the remote module:
+
+```javascript
+import Button from 'host/Button';
+
+function App() {
+  return <Button>Click me</Button>;
+}
+```
+
+### Bidirectional Hosts
+
+```javascript
+// App 1
+new ModuleFederationPlugin({
+  name: 'app1',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './ComponentA': './src/ComponentA'
+  },
+  remotes: {
+    app2: 'app2@http://localhost:3002/remoteEntry.js'
+  },
+  shared: ['react', 'react-dom']
+})
+
+// App 2
+new ModuleFederationPlugin({
+  name: 'app2',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './ComponentB': './src/ComponentB'
+  },
+  remotes: {
+    app1: 'app1@http://localhost:3001/remoteEntry.js'
+  },
+  shared: ['react', 'react-dom']
+})
+```
+
+### Advanced Sharing
+
+```javascript
+new ModuleFederationPlugin({
+  name: 'app',
+  shared: {
+    react: {
+      singleton: true,
+      requiredVersion: '^18.0.0',
+      eager: false
+    },
+    'react-dom': {
+      singleton: true,
+      requiredVersion: '^18.0.0'
+    },
+    lodash: {
+      requiredVersion: false
+    }
+  }
+})
+```
+
+## Shared Module Options
+
+<ParamField path="singleton" type="boolean" default="false">
+  Only a single version of the shared module is allowed
+</ParamField>
+
+<ParamField path="strictVersion" type="boolean" default="false">
+  Reject shared module if version is not valid
+</ParamField>
+
+<ParamField path="requiredVersion" type="string | false">
+  Required version of shared module
+</ParamField>
+
+<ParamField path="eager" type="boolean" default="false">
+  Include shared module in initial chunk instead of async
+</ParamField>
+
+## Dynamic Remote Containers
+
+```javascript
+const loadComponent = (scope, module) => {
+  return async () => {
+    await __webpack_init_sharing__('default');
+    const container = window[scope];
+    await container.init(__webpack_share_scopes__.default);
+    const factory = await container.get(module);
+    return factory();
+  };
+};
+
+loadComponent('host', './Button')().then(module => {
+  // Use the module
+});
+```
+
+## Use Cases
+
+### Micro-Frontends
+
+Share components between different applications:
+
+```javascript
+// Shell app
+new ModuleFederationPlugin({
+  name: 'shell',
+  remotes: {
+    dashboard: 'dashboard@http://localhost:3001/remoteEntry.js',
+    profile: 'profile@http://localhost:3002/remoteEntry.js'
+  }
+})
+```
+
+### Library Sharing
+
+Reduce bundle size by sharing common libraries:
+
+```javascript
+shared: {
+  react: { singleton: true },
+  'react-dom': { singleton: true },
+  'react-router-dom': { singleton: true }
+}
+```
+
+<Note>
+Module Federation works best when combined with proper versioning and deployment strategies.
+</Note>
+
+<Warning>
+Be cautious with singleton shared modules. Ensure all federated modules are compatible with the shared version.
+</Warning>

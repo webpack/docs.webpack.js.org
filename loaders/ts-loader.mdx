@@ -1,0 +1,585 @@
+---
+title: ts-loader
+description: Compile TypeScript to JavaScript in webpack
+---
+
+## Overview
+
+`ts-loader` is a TypeScript loader for webpack that compiles TypeScript files (`.ts` and `.tsx`) to JavaScript. It uses the official TypeScript compiler and provides full type checking during the webpack build process.
+
+<Note>
+  This is an external loader maintained by the TypeScript community. Install it from npm to use in your webpack configuration.
+</Note>
+
+## Installation
+
+<CodeGroup>
+```bash npm
+npm install -D ts-loader typescript
+```
+
+```bash yarn
+yarn add -D ts-loader typescript
+```
+
+```bash pnpm
+pnpm add -D ts-loader typescript
+```
+</CodeGroup>
+
+## Basic Usage
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  entry: './src/index.ts',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  }
+};
+```
+
+```json tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false
+  },
+  "include": ["src"]
+}
+```
+
+```typescript src/index.ts
+interface User {
+  name: string;
+  age: number;
+}
+
+const greet = (user: User): string => {
+  return `Hello, ${user.name}!`;
+};
+
+console.log(greet({ name: 'John', age: 30 }));
+```
+</CodeGroup>
+
+## Options
+
+### `configFile`
+
+Specify a custom TypeScript config file:
+
+```javascript
+{
+  loader: 'ts-loader',
+  options: {
+    configFile: path.resolve(__dirname, 'tsconfig.build.json')
+  }
+}
+```
+
+### `transpileOnly`
+
+Disable type checking for faster builds:
+
+```javascript
+{
+  loader: 'ts-loader',
+  options: {
+    transpileOnly: true
+  }
+}
+```
+
+<Warning>
+  `transpileOnly: true` skips type checking. Use `fork-ts-checker-webpack-plugin` to run type checking in a separate process.
+</Warning>
+
+### `compilerOptions`
+
+Override `tsconfig.json` options:
+
+```javascript
+{
+  loader: 'ts-loader',
+  options: {
+    compilerOptions: {
+      target: 'es6',
+      module: 'esnext'
+    }
+  }
+}
+```
+
+### `happyPackMode`
+
+Enable for use with thread-loader or HappyPack:
+
+```javascript
+{
+  loader: 'ts-loader',
+  options: {
+    happyPackMode: true
+  }
+}
+```
+
+## React/JSX Support
+
+<CodeGroup>
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  }
+};
+```
+
+```json tsconfig.json
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "strict": true
+  }
+}
+```
+
+```tsx component.tsx
+import React from 'react';
+
+interface Props {
+  title: string;
+}
+
+const Header: React.FC<Props> = ({ title }) => {
+  return <h1>{title}</h1>;
+};
+
+export default Header;
+```
+</CodeGroup>
+
+## Performance Optimization
+
+### Fork TS Checker Plugin
+
+Run type checking in a separate process:
+
+```bash
+npm install -D fork-ts-checker-webpack-plugin
+```
+
+```javascript
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true
+          }
+        },
+        exclude: /node_modules/
+      }
+    ]
+  },
+  plugins: [
+    new ForkTsCheckerWebpackPlugin()
+  ]
+};
+```
+
+<Note>
+  This significantly improves build speed by running type checking in parallel with transpilation.
+</Note>
+
+### Thread Loader
+
+Run ts-loader in parallel:
+
+```bash
+npm install -D thread-loader
+```
+
+```javascript
+{
+  test: /\.tsx?$/,
+  use: [
+    'thread-loader',
+    {
+      loader: 'ts-loader',
+      options: {
+        happyPackMode: true
+      }
+    }
+  ],
+  exclude: /node_modules/
+}
+```
+
+### Cache
+
+Webpack 5 has built-in caching:
+
+```javascript
+module.exports = {
+  cache: {
+    type: 'filesystem'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  }
+};
+```
+
+## Common Patterns
+
+### Development vs Production
+
+<CodeGroup>
+```javascript Development
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true
+          }
+        },
+        exclude: /node_modules/
+      }
+    ]
+  },
+  plugins: [
+    new ForkTsCheckerWebpackPlugin()
+  ]
+};
+```
+
+```javascript Production
+module.exports = {
+  mode: 'production',
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+### Monorepo Setup
+
+```javascript
+{
+  test: /\.tsx?$/,
+  use: {
+    loader: 'ts-loader',
+    options: {
+      projectReferences: true
+    }
+  },
+  exclude: /node_modules/
+}
+```
+
+```json tsconfig.json
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true
+  },
+  "references": [
+    { "path": "../shared" },
+    { "path": "../utils" }
+  ]
+}
+```
+
+### Path Mapping
+
+<CodeGroup>
+```json tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"]
+    }
+  }
+}
+```
+
+```javascript webpack.config.js
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@utils': path.resolve(__dirname, 'src/utils')
+    }
+  }
+};
+```
+
+```typescript
+import Button from '@components/Button';
+import { formatDate } from '@utils/date';
+```
+</CodeGroup>
+
+## TypeScript Configuration
+
+### Strict Mode
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
+  }
+}
+```
+
+### Module Resolution
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  }
+}
+```
+
+### Output Options
+
+```json
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  }
+}
+```
+
+## Alternative: babel-loader
+
+For faster builds without type checking:
+
+<CodeGroup>
+```bash Installation
+npm install -D @babel/preset-typescript
+```
+
+```javascript webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-typescript',
+              '@babel/preset-react'
+            ]
+          }
+        },
+        exclude: /node_modules/
+      }
+    ]
+  }
+};
+```
+</CodeGroup>
+
+<Warning>
+  Babel does not perform type checking. Use `tsc --noEmit` or `fork-ts-checker-webpack-plugin` for type checking.
+</Warning>
+
+## Common Issues
+
+### Issue: Slow Build Times
+
+**Solution:** Use `transpileOnly` with `fork-ts-checker-webpack-plugin`:
+
+```javascript
+{
+  loader: 'ts-loader',
+  options: {
+    transpileOnly: true
+  }
+}
+```
+
+### Issue: Cannot Find Module
+
+**Solution:** Add file extensions to `resolve.extensions`:
+
+```javascript
+resolve: {
+  extensions: ['.tsx', '.ts', '.js', '.json']
+}
+```
+
+### Issue: Type Errors Not Shown
+
+**Solution:** Ensure type checking is enabled:
+
+```javascript
+// Remove transpileOnly or add fork-ts-checker-webpack-plugin
+{
+  loader: 'ts-loader'
+  // options: { transpileOnly: true } // Remove this
+}
+```
+
+### Issue: Path Aliases Not Working
+
+**Solution:** Configure both `tsconfig.json` and webpack:
+
+```json tsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+```javascript webpack.config.js
+resolve: {
+  alias: {
+    '@': path.resolve(__dirname, 'src')
+  }
+}
+```
+
+## ts-loader vs babel-loader
+
+| Feature | ts-loader | babel-loader |
+|---------|-----------|-------------|
+| Type Checking | Yes (optional) | No |
+| Performance | Slower | Faster |
+| TypeScript Features | Full support | Limited |
+| Setup Complexity | Simple | More config |
+| Best For | Type safety | Speed |
+
+## Complete Example
+
+```javascript webpack.config.js
+const path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.ts',
+  devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+            configFile: path.resolve(__dirname, 'tsconfig.json')
+          }
+        },
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
+  plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      async: true,
+      typescript: {
+        configFile: path.resolve(__dirname, 'tsconfig.json')
+      }
+    })
+  ],
+  cache: {
+    type: 'filesystem'
+  }
+};
+```
+
+## Resources
+
+- [ts-loader GitHub](https://github.com/TypeStrong/ts-loader)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [fork-ts-checker-webpack-plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin)
+- [TypeScript with webpack](https://webpack.js.org/guides/typescript/)

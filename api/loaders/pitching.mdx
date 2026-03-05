@@ -1,0 +1,584 @@
+---
+title: Pitching Loaders
+description: Understand the pitching phase and advanced loader execution flow
+---
+
+## What is Pitching?
+
+The pitching phase is an advanced loader feature that allows loaders to execute **before** the normal loader chain. Loaders run in two phases:
+
+1. **Pitching phase**: Left to right (or top to bottom)
+2. **Normal phase**: Right to left (or bottom to top)
+
+## Execution Flow
+
+Given this loader configuration:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: ['loader1', 'loader2', 'loader3']
+      }
+    ]
+  }
+};
+```
+
+The execution order is:
+
+```
+┌─────────────────────────────────────────────────────┐
+│                  Pitching Phase                     │
+│  (left to right / top to bottom)                    │
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│  loader1.pitch → loader2.pitch → loader3.pitch     │
+│                                              ↓      │
+│                                         Read File   │
+│                                              ↓      │
+│  loader1 ← loader2 ← loader3 ← file content        │
+│                                                     │
+├─────────────────────────────────────────────────────┤
+│                   Normal Phase                      │
+│  (right to left / bottom to top)                    │
+└─────────────────────────────────────────────────────┘
+```
+
+## Defining a Pitch Function
+
+A pitch function is defined as a property on the loader:
+
+```javascript
+module.exports = function(source) {
+  // Normal loader
+  return transform(source);
+};
+
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  // Pitch loader
+  console.log('Pitching!');
+};
+```
+
+## Pitch Function Parameters
+
+The pitch function receives three parameters:
+
+<ParamField name="remainingRequest" type="string">
+  The request string for loaders to the right (plus the resource)
+  
+  Example: `loader3!/path/to/file.js`
+</ParamField>
+
+<ParamField name="precedingRequest" type="string">
+  The request string for loaders to the left (already executed pitches)
+  
+  Example: `loader1`
+</ParamField>
+
+<ParamField name="data" type="object">
+  A data object shared between pitch and normal execution. Use this to pass information from the pitch phase to the normal phase.
+</ParamField>
+
+### Example: Inspecting Parameters
+
+```javascript
+// loader2.js
+module.exports = function(source) {
+  console.log('Normal phase - data:', this.data);
+  return source;
+};
+
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  console.log('Pitching phase');
+  console.log('Remaining:', remainingRequest);
+  // loader3!/path/to/file.js
+  
+  console.log('Preceding:', precedingRequest);
+  // loader1
+  
+  // Store data for normal phase
+  data.value = 'shared data';
+};
+```
+
+## Short-Circuiting the Loader Chain
+
+If a pitch function returns a value, it **short-circuits** the loader chain:
+
+1. Remaining pitches are skipped
+2. The resource file is not read
+3. Execution jumps back to preceding loaders
+
+### Example: Short-Circuiting
+
+```javascript
+// style-loader.js (simplified)
+module.exports.pitch = function(remainingRequest) {
+  // Return early with inline require
+  return (
+    `var content = require(${JSON.stringify(remainingRequest)});` +
+    `if (typeof content === 'string') content = [[module.id, content]];` +
+    `var update = require('style-loader/addStyles')(content);` +
+    `if (content.locals) module.exports = content.locals;`
+  );
+};
+```
+
+**Execution flow when loader1 returns in pitch:**
+
+```
+loader1.pitch (returns value) ───────┐
+                                     │
+                                     ↓
+                             Skip loader2.pitch
+                             Skip loader3.pitch
+                             Skip reading file
+                                     │
+                                     ↓
+                             (no preceding loaders)
+                                     │
+                                     ↓
+                                  Webpack
+```
+
+**Execution flow when loader2 returns in pitch:**
+
+```
+loader1.pitch ────────────────────────┐
+                                      │
+                                      ↓
+loader2.pitch (returns value) ────────┼──────┐
+                                      │      │
+                                      ↓      │
+                             Skip loader3.pitch
+                             Skip reading file
+                                             │
+                                             ↓
+                                        loader1
+                                             │
+                                             ↓
+                                         Webpack
+```
+
+## Use Cases
+
+### 1. Inline Requests
+
+Process the remaining loaders inline instead of separately:
+
+```javascript
+module.exports.pitch = function(remainingRequest) {
+  return `
+    import content from ${JSON.stringify('-!' + remainingRequest)};
+    export default content;
+  `;
+};
+```
+
+The `-!` prefix disables all configured loaders.
+
+### 2. Early Validation
+
+Validate inputs before processing:
+
+```javascript
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  const options = this.getOptions();
+  
+  // Validate early
+  if (!options.required) {
+    throw new Error('Required option missing');
+  }
+  
+  // Store for normal phase
+  data.options = options;
+};
+
+module.exports = function(source) {
+  const options = this.data.options;
+  return transform(source, options);
+};
+```
+
+### 3. Caching Information
+
+Collect information during pitching for use in the normal phase:
+
+```javascript
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  // Cache expensive computations
+  data.startTime = Date.now();
+  data.resourcePath = this.resourcePath;
+};
+
+module.exports = function(source) {
+  const duration = Date.now() - this.data.startTime;
+  console.log(`Processed ${this.data.resourcePath} in ${duration}ms`);
+  return source;
+};
+```
+
+### 4. Conditional Loading
+
+Decide whether to process based on file metadata:
+
+```javascript
+module.exports.pitch = function(remainingRequest) {
+  const callback = this.async();
+  
+  this.fs.stat(this.resourcePath, (err, stats) => {
+    if (err) return callback(err);
+    
+    // Skip large files
+    if (stats.size > 1024 * 1024) {
+      return callback(
+        null,
+        `module.exports = 'File too large'`
+      );
+    }
+    
+    // Continue normal execution
+    callback();
+  });
+};
+```
+
+## Real-World Example: style-loader
+
+The `style-loader` uses pitching to inject CSS into the DOM:
+
+```javascript
+// style-loader (simplified)
+module.exports = function() {};
+
+module.exports.pitch = function(remainingRequest) {
+  // This runs BEFORE css-loader
+  // It returns code that will require() the result of css-loader
+  return `
+    var content = require(${JSON.stringify('!!' + remainingRequest)});
+    var api = require('style-loader/runtime/injectStylesIntoStyleTag');
+    var update = api(content);
+    
+    if (module.hot) {
+      module.hot.accept(${JSON.stringify('!!' + remainingRequest)}, function() {
+        var newContent = require(${JSON.stringify('!!' + remainingRequest)});
+        update(newContent);
+      });
+      
+      module.hot.dispose(function() {
+        update();
+      });
+    }
+    
+    module.exports = content.locals || {};
+  `;
+};
+```
+
+**Why use pitching?**
+
+1. `style-loader` needs the output of `css-loader`, not the input
+2. By returning in the pitch phase, it can inline a `require()` call
+3. The `require()` goes through the remaining loaders (`css-loader`)
+4. The result is injected into the DOM
+
+## Data Sharing Between Phases
+
+Use the `data` parameter to share information:
+
+```javascript
+module.exports = function(source) {
+  // Access data from pitch phase
+  const { count, timestamp } = this.data;
+  
+  console.log(`Processing file #${count} at ${timestamp}`);
+  return source;
+};
+
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  // Store data for normal phase
+  data.count = ++globalCount;
+  data.timestamp = Date.now();
+  data.remainingRequest = remainingRequest;
+};
+```
+
+<Note>
+  The `data` object is available as `this.data` in the normal loader function.
+</Note>
+
+## Async Pitching
+
+Pitch functions can be asynchronous:
+
+```javascript
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  const callback = this.async();
+  
+  someAsyncOperation(this.resourcePath, (err, result) => {
+    if (err) return callback(err);
+    
+    if (result.shouldSkip) {
+      // Short-circuit
+      return callback(null, result.code);
+    }
+    
+    // Continue to next pitch/loader
+    callback();
+  });
+};
+```
+
+**Or with Promises:**
+
+```javascript
+module.exports.pitch = async function(remainingRequest) {
+  const metadata = await fetchMetadata(this.resourcePath);
+  
+  if (metadata.shouldSkip) {
+    // Short-circuit
+    return generateCode(metadata);
+  }
+  
+  // Continue to next pitch/loader (return undefined)
+};
+```
+
+## Modifying the Loader Chain
+
+During pitching, the `loaders` array is writeable:
+
+```javascript
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  // Add options to the next loader
+  const nextLoader = this.loaders[this.loaderIndex + 1];
+  if (nextLoader) {
+    nextLoader.options = {
+      ...nextLoader.options,
+      customFlag: true
+    };
+  }
+};
+```
+
+<Warning>
+  Modifying the loader chain is an advanced technique. Use with caution as it can make your loader harder to understand and maintain.
+</Warning>
+
+## Complete Example: Custom Inline Loader
+
+```javascript
+// inline-loader.js
+const path = require('path');
+
+module.exports = function(source) {
+  // This won't be called if pitch returns
+  return source;
+};
+
+module.exports.pitch = function(remainingRequest) {
+  const callback = this.async();
+  
+  // Get the absolute path
+  const resourcePath = this.resourcePath;
+  
+  // Check if we should inline this file
+  this.fs.stat(resourcePath, (err, stats) => {
+    if (err) return callback(err);
+    
+    // Inline small files
+    if (stats.size < 8192) {
+      this.fs.readFile(resourcePath, (err, content) => {
+        if (err) return callback(err);
+        
+        // Return as base64 data URL
+        const ext = path.extname(resourcePath).slice(1);
+        const mimeType = getMimeType(ext);
+        const base64 = content.toString('base64');
+        
+        callback(
+          null,
+          `module.exports = "data:${mimeType};base64,${base64}"`
+        );
+      });
+    } else {
+      // Continue normal processing for large files
+      callback();
+    }
+  });
+};
+
+function getMimeType(ext) {
+  const types = {
+    'png': 'image/png',
+    'jpg': 'image/jpeg',
+    'svg': 'image/svg+xml'
+  };
+  return types[ext] || 'application/octet-stream';
+}
+```
+
+## Debugging Pitching
+
+Log execution flow to understand pitching:
+
+```javascript
+module.exports = function(source) {
+  console.log('[NORMAL]', this.resourcePath);
+  return source;
+};
+
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  console.log('[PITCH]', {
+    resource: this.resourcePath,
+    remaining: remainingRequest,
+    preceding: precedingRequest,
+    loaderIndex: this.loaderIndex
+  });
+};
+```
+
+## Best Practices
+
+### 1. Use Pitching Sparingly
+
+Most loaders don't need pitching. Only use it when you need to:
+- Short-circuit the chain
+- Process loader output inline
+- Share data between phases
+
+### 2. Document Pitching Behavior
+
+```javascript
+/**
+ * This loader uses pitching to inline small files.
+ * Files < 8KB are converted to base64 data URLs during the pitch phase.
+ * Larger files continue through the normal loader chain.
+ */
+module.exports.pitch = function(remainingRequest) {
+  // ...
+};
+```
+
+### 3. Handle Both Phases
+
+If you use pitching, handle both phases gracefully:
+
+```javascript
+module.exports = function(source) {
+  // Normal phase (for files not handled in pitch)
+  return transform(source);
+};
+
+module.exports.pitch = function(remainingRequest) {
+  // Pitch phase (optional short-circuit)
+  if (shouldShortCircuit()) {
+    return generateCode();
+  }
+  // Continue to normal phase
+};
+```
+
+### 4. Test Thoroughly
+
+Test both short-circuit and normal execution paths:
+
+```javascript
+it('should short-circuit for small files', async () => {
+  const stats = await compile('small-file.png');
+  expect(stats.modules[0].source).toContain('data:');
+});
+
+it('should use normal phase for large files', async () => {
+  const stats = await compile('large-file.png');
+  expect(stats.modules[0].source).not.toContain('data:');
+});
+```
+
+## Common Patterns
+
+### Pattern 1: Inline Require
+
+```javascript
+module.exports.pitch = function(remainingRequest) {
+  return `
+    var content = require(${JSON.stringify('!!' + remainingRequest)});
+    module.exports = processContent(content);
+  `;
+};
+```
+
+### Pattern 2: Conditional Short-Circuit
+
+```javascript
+module.exports.pitch = function(remainingRequest) {
+  if (this.resourceQuery.includes('inline')) {
+    return inlineContent(this.resourcePath);
+  }
+  // Continue normal execution
+};
+```
+
+### Pattern 3: Metadata Collection
+
+```javascript
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  data.startTime = Date.now();
+  data.loaderCount = this.loaders.length;
+};
+
+module.exports = function(source) {
+  const duration = Date.now() - this.data.startTime;
+  this.getLogger().info(`Processed in ${duration}ms`);
+  return source;
+};
+```
+
+## Pitfall: Infinite Loops
+
+Be careful not to create infinite loops:
+
+```javascript
+// ❌ Bad - infinite loop!
+module.exports.pitch = function(remainingRequest) {
+  // This creates an infinite loop
+  return `require(${JSON.stringify(remainingRequest)})`;
+};
+
+// ✅ Good - use prefix to disable loaders
+module.exports.pitch = function(remainingRequest) {
+  return `require(${JSON.stringify('!!' + remainingRequest)})`;
+};
+```
+
+The `!!` prefix disables all loaders (both pre and normal), preventing the loop.
+
+## Prefix Meanings
+
+- `!` - Disable normal loaders
+- `!!` - Disable all loaders (pre, normal, post)
+- `-!` - Disable pre and normal loaders
+
+```javascript
+module.exports.pitch = function(remainingRequest) {
+  // Use the appropriate prefix
+  return `
+    // Disable all loaders
+    var content = require(${JSON.stringify('!!' + remainingRequest)});
+    
+    // Or disable only normal loaders
+    var content2 = require(${JSON.stringify('!' + remainingRequest)});
+  `;
+};
+```
+
+## See Also
+
+- [Loader Overview](./overview) - Introduction to loaders
+- [LoaderContext API](./api) - Complete API reference
+- [Writing a Loader](/api/loaders/api) - Step-by-step tutorial
+- [loader-runner](https://github.com/webpack/loader-runner) - The execution engine

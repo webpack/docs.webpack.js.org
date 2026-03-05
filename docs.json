@@ -7,142 +7,157 @@
     "light": "#50A5E0",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg",
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/webpack/webpack"
+    }
+  },
   "navigation": {
     "tabs": [
       {
         "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Get Started",
             "pages": [
-              "index"
+              "introduction",
+              "installation",
+              "quickstart"
             ]
           },
           {
-            "group": "Concepts",
+            "group": "Core Concepts",
             "pages": [
-              "concepts/index",
-              "concepts/entry-points",
-              "concepts/loaders",
+              "concepts/entry",
               "concepts/output",
+              "concepts/loaders",
               "concepts/plugins",
-              "concepts/configuration",
+              "concepts/mode",
               "concepts/modules",
-              "concepts/module-resolution/",
-              "concepts/module-federation",
+              "concepts/module-resolution",
               "concepts/dependency-graph",
               "concepts/targets",
-              "concepts/manifest",
-              "concepts/hot-module-replacement",
-              "concepts/why-webpack"
+              "concepts/hot-module-replacement"
             ]
           },
           {
             "group": "Configuration",
             "pages": [
-              "configuration/index",
-              "configuration/configuration-languages",
-              "configuration/configuration-types",
+              "configuration/overview",
               "configuration/entry-context",
-              "configuration/mode",
+              "configuration/output",
               "configuration/module",
               "configuration/resolve",
               "configuration/optimization",
               "configuration/plugins",
-              "configuration/dev-server",
-              "configuration/cache",
+              "configuration/devserver",
               "configuration/devtool",
-              "configuration/extending-configurations",
-              "configuration/target",
-              "configuration/watch",
               "configuration/externals",
-              "configuration/dotenv",
-              "configuration/node",
-              "configuration/stats",
-              "configuration/experiments",
-              "configuration/infrastructureLogging",
               "configuration/performance",
-              "configuration/other-options"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api/index",
-              "api/cli",
-              "api/node",
-              "api/stats",
-              "api/webpack-dev-server",
-              "api/hot-module-replacement",
-              "api/loaders",
-              "api/logging"
+              "configuration/node",
+              "configuration/stats"
             ]
           },
-          {
-            "group": "Modules",
-            "pages": [
-              "api/module-methods",
-              "api/module-variables"
-            ]
-          },
-          {
-            "group": "Objects",
-            "pages": [
-              "api/compilation-object"
-            ]
-          },
-          {
-            "group": "Plugins",
-            "pages": [
-              "api/compiler-hooks",
-              "api/compilation-hooks",
-              "api/context-module-factory-hooks",
-              "api/parser"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Guides",
-        "groups": [
           {
             "group": "Guides",
             "pages": [
-              "guides/index",
-              "guides/getting-started",
-              "guides/asset-management",
-              "guides/output-management",
-              "guides/development",
               "guides/code-splitting",
               "guides/caching",
-              "guides/author-libraries",
-              "guides/environment-variables",
-              "guides/build-performance",
-              "guides/csp",
-              "guides/development-vagrant",
-              "guides/dependency-management",
-              "guides/installation",
-              "guides/hot-module-replacement",
               "guides/tree-shaking",
               "guides/production",
+              "guides/development",
+              "guides/asset-modules",
               "guides/lazy-loading",
-              "guides/ecma-script-modules",
-              "guides/shimming",
               "guides/typescript",
               "guides/web-workers",
               "guides/progressive-web-application",
-              "guides/public-path",
-              "guides/integrations",
-              "guides/asset-modules",
-              "guides/entry-advanced",
-              "guides/package-exports"
-              
+              "guides/module-federation"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Node API",
+            "pages": [
+              "api/node",
+              "api/compiler",
+              "api/compilation",
+              "api/stats",
+              "api/resolvers"
+            ]
+          },
+          {
+            "group": "Plugin API",
+            "pages": [
+              "api/plugins/overview",
+              "api/plugins/compiler-hooks",
+              "api/plugins/compilation-hooks",
+              "api/plugins/module-factories",
+              "api/plugins/parser",
+              "api/plugins/tapable"
+            ]
+          },
+          {
+            "group": "Loader API",
+            "pages": [
+              "api/loaders/overview",
+              "api/loaders/api",
+              "api/loaders/pitching"
+            ]
+          },
+          {
+            "group": "CLI",
+            "pages": [
+              "api/cli/commands",
+              "api/cli/flags"
+            ]
+          },
+          {
+            "group": "Module Methods",
+            "pages": [
+              "api/module-methods/import",
+              "api/module-methods/require",
+              "api/module-methods/require-context",
+              "api/module-methods/module-variables"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Plugins",
+        "groups": [
+          {
+            "group": "Built-in Plugins",
+            "pages": [
+              "plugins/overview",
+              "plugins/define-plugin",
+              "plugins/html-webpack-plugin",
+              "plugins/hot-module-replacement-plugin",
+              "plugins/mini-css-extract-plugin",
+              "plugins/module-federation-plugin",
+              "plugins/provide-plugin",
+              "plugins/banner-plugin",
+              "plugins/clean-plugin",
+              "plugins/dotenv-plugin",
+              "plugins/ignore-plugin",
+              "plugins/environment-plugin",
+              "plugins/normal-module-replacement-plugin",
+              "plugins/context-replacement-plugin",
+              "plugins/dll-plugin",
+              "plugins/progress-plugin"
+            ]
+          },
+          {
+            "group": "Optimization",
+            "pages": [
+              "plugins/split-chunks-plugin",
+              "plugins/module-concatenation-plugin",
+              "plugins/limit-chunk-count-plugin",
+              "plugins/min-chunk-size-plugin"
             ]
           }
         ]
@@ -153,82 +168,15 @@
           {
             "group": "Loaders",
             "pages": [
-              "loaders/index",
+              "loaders/overview",
               "loaders/babel-loader",
-              "loaders/coffee-loader",
-              "loaders/exports-loader",
-              "loaders/expose-loader",
-              "loaders/html-loader",
-              "loaders/imports-loader",
-              "loaders/remark-loader",
-              "loaders/thread-loader"
-            ]
-          },
-          {
-            "group": "CSS",
-            "pages": [
               "loaders/css-loader",
-              "loaders/less-loader",
-              "loaders/postcss-loader",
-              "loaders/sass-loader",
               "loaders/style-loader",
-              "loaders/stylus-loader"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Plugins",
-        "groups": [
-          {
-            "group": "Official plugins",
-            "pages": [
-              "plugins/index",
-              "plugins/automatic-prefetch-plugin",
-              "plugins/banner-plugin",
-              "plugins/context-exclusion-plugin",
-              "plugins/context-replacement-plugin",
-              "plugins/compression-webpack-plugin",
-              "plugins/copy-webpack-plugin",
-              "plugins/css-minimizer-webpack-plugin",
-              "plugins/define-plugin",
-              "plugins/dll-plugin",
-              "plugins/environment-plugin",
-              "plugins/eslint-webpack-plugin",
-              "plugins/eval-source-map-dev-tool-plugin",
-              "plugins/hashed-module-ids-plugin",
-              "plugins/hot-module-replacement-plugin",
-              "plugins/html-minimizer-webpack-plugin",
-              "plugins/ignore-plugin",
-              "plugins/internal-plugins",
-              "plugins/image-minimizer-webpack-plugin",
-              "plugins/json-minimizer-webpack-plugin",
-              "plugins/limit-chunk-count-plugin",
-              "plugins/manifest-plugin",
-              "plugins/min-chunk-size-plugin",
-              "plugins/mini-css-extract-plugin",
-              "plugins/module-concatenation-plugin",
-              "plugins/module-federation-plugin",
-              "plugins/NoEmitOnErrorsPlugin",
-              "plugins/normal-module-replacement-plugin",
-              "plugins/prefetch-plugin",
-              "plugins/profiling-plugin",
-              "plugins/progress-plugin",
-              "plugins/provide-plugin",
-              "plugins/source-map-dev-tool-plugin",
-              "plugins/split-chunks-plugin",
-              "plugins/stylelint-webpack-plugin",
-              "plugins/terser-webpack-plugin",
-              "plugins/virtual-url-plugin",
-              "plugins/watch-ignore-plugin"
-            ]
-          },
-          {
-            "group": "Community plugins",
-            "pages": [
-              "plugins/chunks-webpack-plugin",
-              "plugins/html-webpack-plugin",
-              "plugins/svg-chunk-webpack-plugin"
+              "loaders/sass-loader",
+              "loaders/file-loader",
+              "loaders/url-loader",
+              "loaders/raw-loader",
+              "loaders/ts-loader"
             ]
           }
         ]
@@ -238,8 +186,6 @@
   "logo": {
     "light": "/images/logo-light.svg",
     "dark": "/images/logo-dark.svg"
-  },
-  "navbar": {
   },
   "contextual": {
     "options": [

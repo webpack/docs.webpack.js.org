@@ -1,0 +1,719 @@
+---
+title: Parser Hooks
+description: Customize how webpack parses your code with parser hooks
+---
+
+Parser hooks allow you to customize how webpack parses and analyzes your code. These hooks are primarily used for JavaScript/TypeScript files but can also apply to other module types.
+
+## Accessing Parser Hooks
+
+Parser hooks are accessed through the NormalModuleFactory:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.compilation.tap(
+      'MyPlugin',
+      (compilation, { normalModuleFactory }) => {
+        normalModuleFactory.hooks.parser
+          .for('javascript/auto')
+          .tap('MyPlugin', (parser) => {
+            // Access parser hooks here
+          });
+      }
+    );
+  }
+}
+```
+
+## Program-Level Hooks
+
+### `program`
+
+```typescript
+SyncBailHook<[Program, Comment[]]>
+```
+
+Called when parsing begins with the AST root node.
+
+```javascript
+parser.hooks.program.tap('MyPlugin', (ast, comments) => {
+  console.log('Parsing started');
+  console.log('Number of comments:', comments.length);
+});
+```
+
+### `finish`
+
+```typescript
+SyncHook<[Program, Comment[]]>
+```
+
+Called when parsing finishes.
+
+```javascript
+parser.hooks.finish.tap('MyPlugin', (ast, comments) => {
+  console.log('Parsing complete');
+});
+```
+
+## Statement Hooks
+
+### `statement`
+
+```typescript
+SyncBailHook<[Statement]>
+```
+
+Called for every statement in the code.
+
+```javascript
+parser.hooks.statement.tap('MyPlugin', (statement) => {
+  if (statement.type === 'IfStatement') {
+    console.log('Found if statement');
+  }
+});
+```
+
+### `statementIf`
+
+```typescript
+SyncBailHook<[IfStatement]>
+```
+
+Called for if statements.
+
+```javascript
+parser.hooks.statementIf.tap('MyPlugin', (statement) => {
+  console.log('If statement condition:', statement.test);
+});
+```
+
+### `label`
+
+```typescript
+HookMap<SyncBailHook<[LabeledStatement]>>
+```
+
+Called for labeled statements.
+
+```javascript
+parser.hooks.label.for('myLabel').tap('MyPlugin', (statement) => {
+  console.log('Found labeled statement');
+});
+```
+
+## Expression Hooks
+
+### `expression`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Called when an expression matching the key is encountered. This is one of the most powerful hooks.
+
+```javascript
+// Replace process.env.NODE_ENV with a constant
+parser.hooks.expression
+  .for('process.env.NODE_ENV')
+  .tap('MyPlugin', (expr) => {
+    const dep = new ConstDependency(
+      JSON.stringify('production'),
+      expr.range
+    );
+    dep.loc = expr.loc;
+    parser.state.module.addDependency(dep);
+    return true; // Handled
+  });
+```
+
+**Example: DefinePlugin** (lib/DefinePlugin.js:628):
+
+```javascript
+parser.hooks.expression.for(key).tap('DefinePlugin', (expr) => {
+  const strCode = toCode(
+    code,
+    parser,
+    compilation.valueCacheVersions,
+    key,
+    runtimeTemplate,
+    logger,
+    !parser.isAsiPosition(expr.range[0])
+  );
+  return toConstantDependency(parser, strCode)(expr);
+});
+```
+
+### `expressionAnyMember`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Called for member expressions with any property.
+
+```javascript
+parser.hooks.expressionAnyMember
+  .for('process.env')
+  .tap('MyPlugin', (expr) => {
+    // Handle process.env.ANYTHING
+  });
+```
+
+### `expressionConditionalOperator`
+
+```typescript
+SyncBailHook<[ConditionalExpression]>
+```
+
+Called for ternary operators.
+
+```javascript
+parser.hooks.expressionConditionalOperator.tap(
+  'MyPlugin',
+  (expr) => {
+    console.log('Found ternary:', expr);
+  }
+);
+```
+
+### `expressionLogicalOperator`
+
+```typescript
+SyncBailHook<[LogicalExpression]>
+```
+
+Called for logical operators (`&&`, `||`, `??`).
+
+```javascript
+parser.hooks.expressionLogicalOperator.tap('MyPlugin', (expr) => {
+  if (expr.operator === '&&') {
+    console.log('Found AND operator');
+  }
+});
+```
+
+## Call Expression Hooks
+
+### `call`
+
+```typescript
+HookMap<SyncBailHook<[CallExpression]>>
+```
+
+Called when a function call is encountered.
+
+```javascript
+parser.hooks.call.for('require').tap('MyPlugin', (expr) => {
+  if (expr.arguments.length === 1) {
+    const arg = parser.evaluateExpression(expr.arguments[0]);
+    if (arg.isString()) {
+      console.log('Requiring:', arg.string);
+    }
+  }
+});
+```
+
+**Example: ProvidePlugin** (lib/ProvidePlugin.js:90):
+
+```javascript
+parser.hooks.call.for(name).tap('ProvidePlugin', (expr) => {
+  const dep = new ProvidedDependency(
+    request[0],
+    nameIdentifier,
+    request.slice(1),
+    expr.callee.range
+  );
+  dep.loc = expr.callee.loc;
+  parser.state.module.addDependency(dep);
+  parser.walkExpressions(expr.arguments);
+  return true;
+});
+```
+
+### `callAnyMember`
+
+```typescript
+HookMap<SyncBailHook<[CallExpression]>>
+```
+
+Called for method calls on objects.
+
+```javascript
+parser.hooks.callAnyMember
+  .for('console')
+  .tap('MyPlugin', (expr) => {
+    // Matches console.log(), console.error(), etc.
+  });
+```
+
+### `new`
+
+```typescript
+HookMap<SyncBailHook<[NewExpression]>>
+```
+
+Called for `new` expressions.
+
+```javascript
+parser.hooks.new.for('Worker').tap('MyPlugin', (expr) => {
+  console.log('Creating new Worker');
+});
+```
+
+## Member Expression Hooks
+
+### `member`
+
+```typescript
+HookMap<SyncBailHook<[MemberExpression]>>
+```
+
+Called for member access expressions.
+
+```javascript
+parser.hooks.member
+  .for('module.exports')
+  .tap('MyPlugin', (expr) => {
+    console.log('Accessing module.exports');
+  });
+```
+
+### `memberChain`
+
+```typescript
+HookMap<SyncBailHook<[Expression, string[]]>>
+```
+
+Called for chained member expressions.
+
+```javascript
+parser.hooks.memberChain
+  .for('process')
+  .tap('MyPlugin', (expr, members) => {
+    // members might be ['env', 'NODE_ENV']
+    console.log('Process chain:', members);
+  });
+```
+
+## Import/Export Hooks
+
+### `import`
+
+```typescript
+SyncBailHook<[Statement, ImportSource]>
+```
+
+Called for ES6 import statements.
+
+```javascript
+parser.hooks.import.tap('MyPlugin', (statement, source) => {
+  console.log('Importing from:', source);
+});
+```
+
+### `export`
+
+```typescript
+SyncBailHook<[Statement]>
+```
+
+Called for export statements.
+
+```javascript
+parser.hooks.export.tap('MyPlugin', (statement) => {
+  console.log('Export statement found');
+});
+```
+
+### `exportImport`
+
+```typescript
+SyncBailHook<[Statement, ImportSource]>
+```
+
+Called for `export ... from` statements.
+
+```javascript
+parser.hooks.exportImport.tap('MyPlugin', (statement, source) => {
+  console.log('Re-exporting from:', source);
+});
+```
+
+### `exportExpression`
+
+```typescript
+SyncBailHook<[Statement, Declaration]>
+```
+
+Called for export expressions.
+
+```javascript
+parser.hooks.exportExpression.tap('MyPlugin', (statement, declaration) => {
+  console.log('Exporting expression');
+});
+```
+
+### `exportSpecifier`
+
+```typescript
+SyncBailHook<[Statement, string, string, number]>
+```
+
+Called for each export specifier.
+
+```javascript
+parser.hooks.exportSpecifier.tap(
+  'MyPlugin',
+  (statement, localName, exportedName, index) => {
+    console.log(`Exporting ${localName} as ${exportedName}`);
+  }
+);
+```
+
+### `importSpecifier`
+
+```typescript
+SyncBailHook<[Statement, ImportSource, string, string]>
+```
+
+Called for each import specifier.
+
+```javascript
+parser.hooks.importSpecifier.tap(
+  'MyPlugin',
+  (statement, source, importedName, localName) => {
+    console.log(`Importing ${importedName} as ${localName} from ${source}`);
+  }
+);
+```
+
+## Evaluation Hooks
+
+### `evaluate`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Evaluate expressions at build time.
+
+```javascript
+parser.hooks.evaluate
+  .for('Identifier')
+  .tap('MyPlugin', (expr) => {
+    if (expr.name === 'MY_CONSTANT') {
+      return new BasicEvaluatedExpression()
+        .setString('my value')
+        .setRange(expr.range);
+    }
+  });
+```
+
+### `evaluateTypeof`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Evaluate typeof expressions.
+
+```javascript
+parser.hooks.evaluateTypeof
+  .for('MY_VAR')
+  .tap('MyPlugin', (expr) => {
+    return new BasicEvaluatedExpression()
+      .setString('object')
+      .setRange(expr.range);
+  });
+```
+
+### `evaluateIdentifier`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Evaluate identifiers.
+
+```javascript
+parser.hooks.evaluateIdentifier
+  .for('MY_VAR')
+  .tap('MyPlugin', (expr) => {
+    return new BasicEvaluatedExpression()
+      .setBoolean(true)
+      .setRange(expr.range);
+  });
+```
+
+### `evaluateDefinedIdentifier`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Evaluate defined identifiers.
+
+```javascript
+parser.hooks.evaluateDefinedIdentifier
+  .for('MY_VAR')
+  .tap('MyPlugin', (expr) => {
+    return new BasicEvaluatedExpression()
+      .setBoolean(true)
+      .setRange(expr.range);
+  });
+```
+
+## Type Detection Hooks
+
+### `typeof`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Customize typeof operator results.
+
+```javascript
+parser.hooks.typeof
+  .for('MY_VAR')
+  .tap('MyPlugin', (expr) => {
+    return toConstantDependency(parser, JSON.stringify('string'))(expr);
+  });
+```
+
+## Variable Hooks
+
+### `varDeclaration`
+
+```typescript
+HookMap<SyncBailHook<[Declaration]>>
+```
+
+Called for variable declarations.
+
+```javascript
+parser.hooks.varDeclaration
+  .for('myVar')
+  .tap('MyPlugin', (declaration) => {
+    console.log('Variable declared:', declaration);
+  });
+```
+
+### `pattern`
+
+```typescript
+HookMap<SyncBailHook<[Identifier]>>
+```
+
+Called for pattern matching in destructuring.
+
+```javascript
+parser.hooks.pattern
+  .for('myVar')
+  .tap('MyPlugin', (identifier) => {
+    console.log('Pattern match:', identifier);
+  });
+```
+
+### `canRename`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Determines if an identifier can be renamed.
+
+```javascript
+parser.hooks.canRename
+  .for('MY_VAR')
+  .tap('MyPlugin', () => {
+    return true; // Allow renaming
+  });
+```
+
+### `rename`
+
+```typescript
+HookMap<SyncBailHook<[Expression]>>
+```
+
+Rename an identifier.
+
+```javascript
+parser.hooks.rename
+  .for('oldName')
+  .tap('MyPlugin', (expr) => {
+    return 'newName';
+  });
+```
+
+## Assign Hooks
+
+### `assign`
+
+```typescript
+HookMap<SyncBailHook<[AssignmentExpression]>>
+```
+
+Called for assignment expressions.
+
+```javascript
+parser.hooks.assign
+  .for('module.exports')
+  .tap('MyPlugin', (expr) => {
+    console.log('Assigning to module.exports');
+  });
+```
+
+### `assignMemberChain`
+
+```typescript
+HookMap<SyncBailHook<[AssignmentExpression, string[]]>>
+```
+
+Called for chained member assignments.
+
+```javascript
+parser.hooks.assignMemberChain
+  .for('module')
+  .tap('MyPlugin', (expr, members) => {
+    // members might be ['exports', 'default']
+  });
+```
+
+## Import Meta Hooks
+
+### `importMeta`
+
+```typescript
+SyncBailHook<[MemberExpression]>
+```
+
+Called for `import.meta` expressions.
+
+```javascript
+parser.hooks.importMeta.tap('MyPlugin', (expr) => {
+  console.log('import.meta accessed');
+});
+```
+
+## Complete Example: Environment Variables Plugin
+
+```javascript
+const ConstDependency = require('webpack/lib/dependencies/ConstDependency');
+
+class EnvironmentPlugin {
+  constructor(env) {
+    this.env = env;
+  }
+
+  apply(compiler) {
+    compiler.hooks.compilation.tap(
+      'EnvironmentPlugin',
+      (compilation, { normalModuleFactory }) => {
+        const handler = (parser) => {
+          // Handle process.env.VAR_NAME
+          parser.hooks.expressionAnyMember
+            .for('process.env')
+            .tap('EnvironmentPlugin', (expr) => {
+              if (expr.property.type === 'Identifier') {
+                const name = expr.property.name;
+                const value = this.env[name];
+                
+                if (value !== undefined) {
+                  const dep = new ConstDependency(
+                    JSON.stringify(value),
+                    expr.range
+                  );
+                  dep.loc = expr.loc;
+                  parser.state.module.addDependency(dep);
+                  return true;
+                }
+              }
+            });
+
+          // Handle typeof process.env.VAR_NAME
+          parser.hooks.typeof
+            .for('process.env')
+            .tap('EnvironmentPlugin', (expr) => {
+              // Return 'object' for process.env
+              const dep = new ConstDependency(
+                JSON.stringify('object'),
+                expr.range
+              );
+              dep.loc = expr.loc;
+              parser.state.module.addDependency(dep);
+              return true;
+            });
+        };
+
+        normalModuleFactory.hooks.parser
+          .for('javascript/auto')
+          .tap('EnvironmentPlugin', handler);
+        normalModuleFactory.hooks.parser
+          .for('javascript/dynamic')
+          .tap('EnvironmentPlugin', handler);
+        normalModuleFactory.hooks.parser
+          .for('javascript/esm')
+          .tap('EnvironmentPlugin', handler);
+      }
+    );
+  }
+}
+
+// Usage
+new EnvironmentPlugin({
+  NODE_ENV: 'production',
+  API_URL: 'https://api.example.com'
+});
+```
+
+## Parser State
+
+The parser maintains state during parsing:
+
+```javascript
+parser.state.module         // Current module being parsed
+parser.state.compilation    // Current compilation
+parser.scope               // Current scope information
+```
+
+## Helper Functions
+
+### `evaluateExpression`
+
+Evaluate an expression at build time:
+
+```javascript
+const result = parser.evaluateExpression(expr);
+if (result.isString()) {
+  console.log('String value:', result.string);
+}
+```
+
+### `walkExpressions`
+
+Walk through an array of expressions:
+
+```javascript
+parser.walkExpressions(node.arguments);
+```
+
+### `getNameForExpression`
+
+Get the name for an expression:
+
+```javascript
+const nameInfo = parser.getNameForExpression(expr);
+if (nameInfo) {
+  console.log('Name:', nameInfo.name);
+}
+```
+
+## See Also
+
+- [Module Factories](./module-factories) - Module creation hooks
+- [Compilation Hooks](./compilation-hooks) - Compilation lifecycle
+- [DefinePlugin Source](https://github.com/webpack/webpack/blob/main/lib/DefinePlugin.js) - Real-world example

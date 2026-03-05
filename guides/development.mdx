@@ -1,0 +1,464 @@
+---
+title: "Development Setup"
+description: "Configure webpack for an optimal development experience"
+icon: "code"
+---
+
+A good development setup improves productivity with fast rebuilds, hot reloading, and helpful debugging tools.
+
+## Development Mode
+
+Set mode to development for better debugging and faster builds:
+
+```javascript
+module.exports = {
+  mode: 'development'
+};
+```
+
+This automatically enables:
+- Named module IDs for better debugging
+- Faster builds without minification
+- Useful development plugins
+- Better error messages
+
+<Tip>
+Development mode optimizes for build speed and debugging experience, not bundle size.
+</Tip>
+
+## Webpack Dev Server
+
+The dev server provides live reloading and hot module replacement.
+
+<Steps>
+<Step title="Install webpack-dev-server">
+  ```bash
+  npm install --save-dev webpack-dev-server
+  ```
+</Step>
+
+<Step title="Configure dev server">
+  ```javascript
+  const path = require('path');
+
+  module.exports = {
+    mode: 'development',
+    devServer: {
+      static: {
+        directory: path.join(__dirname, 'public')
+      },
+      port: 3000,
+      hot: true,
+      open: true,
+      compress: true,
+      historyApiFallback: true
+    }
+  };
+  ```
+</Step>
+
+<Step title="Add dev script">
+  In `package.json`:
+
+  ```json
+  {
+    "scripts": {
+      "dev": "webpack serve --config webpack.config.js"
+    }
+  }
+  ```
+</Step>
+
+<Step title="Start development server">
+  ```bash
+  npm run dev
+  ```
+</Step>
+</Steps>
+
+## Source Maps
+
+Source maps help debug bundled code by mapping it back to the original source.
+
+### Recommended for Development
+
+```javascript
+module.exports = {
+  devtool: 'eval-source-map' // Fast rebuilds with good quality
+};
+```
+
+### Source Map Options
+
+| Option | Build Speed | Rebuild Speed | Quality | Production |
+|--------|-------------|---------------|---------|------------|
+| `eval` | +++ | +++ | - | No |
+| `eval-source-map` | -- | + | +++ | No |
+| `cheap-module-source-map` | + | ++ | ++ | No |
+| `source-map` | -- | -- | +++ | Yes |
+| `hidden-source-map` | -- | -- | +++ | Yes |
+
+<Note>
+For the fastest rebuilds, use `eval-source-map`. For the best quality debugging, use `source-map`.
+</Note>
+
+## Hot Module Replacement (HMR)
+
+HMR updates modules without a full page reload:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  devServer: {
+    hot: true
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
+};
+```
+
+### Enable HMR in Code
+
+```javascript
+// main.js
+import { render } from './app';
+
+render();
+
+if (module.hot) {
+  module.hot.accept('./app', () => {
+    render();
+  });
+}
+```
+
+<Tip>
+Most frameworks (React, Vue) have HMR support built into their loaders. You usually don't need to write HMR code manually.
+</Tip>
+
+## Lazy Compilation
+
+Compile dynamic imports only when they're requested:
+
+```javascript
+module.exports = {
+  mode: 'development',
+  experiments: {
+    lazyCompilation: true
+  },
+  cache: {
+    type: 'filesystem'
+  }
+};
+```
+
+<Note>
+Lazy compilation can dramatically speed up development server start time for large applications with many routes or dynamic imports.
+</Note>
+
+## Watch Mode
+
+Automatic rebuilds on file changes:
+
+```javascript
+module.exports = {
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 300,
+    poll: 1000 // Enable polling for certain file systems
+  }
+};
+```
+
+Or use the CLI:
+
+```bash
+webpack --watch
+```
+
+## Dev Server Configuration
+
+### Proxy API Requests
+
+```javascript
+module.exports = {
+  devServer: {
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' }
+      }
+    ]
+  }
+};
+```
+
+### HTTPS Support
+
+```javascript
+module.exports = {
+  devServer: {
+    https: true,
+    // Or with custom certificates
+    https: {
+      key: fs.readFileSync('/path/to/server.key'),
+      cert: fs.readFileSync('/path/to/server.crt')
+    }
+  }
+};
+```
+
+### Custom Headers
+
+```javascript
+module.exports = {
+  devServer: {
+    headers: {
+      'X-Custom-Header': 'value',
+      'Access-Control-Allow-Origin': '*'
+    }
+  }
+};
+```
+
+## Filesystem Caching
+
+Dramatically speed up rebuilds:
+
+```javascript
+const path = require('path');
+
+module.exports = {
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: path.resolve(__dirname, '.cache'),
+    buildDependencies: {
+      config: [__filename]
+    }
+  },
+  infrastructureLogging: {
+    level: 'verbose' // See cache activity
+  }
+};
+```
+
+<Tip>
+Filesystem caching is enabled by default in development mode and can reduce rebuild times by 90%+.
+</Tip>
+
+## Error Handling
+
+### Better Error Messages
+
+```javascript
+module.exports = {
+  stats: 'errors-warnings',
+  infrastructureLogging: {
+    level: 'error'
+  }
+};
+```
+
+### Error Overlay
+
+```javascript
+module.exports = {
+  devServer: {
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false
+      }
+    }
+  }
+};
+```
+
+## Complete Development Config
+
+Here's a complete development configuration:
+
+```javascript
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  
+  entry: './src/index.js',
+  
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    clean: true
+  },
+  
+  devtool: 'eval-source-map',
+  
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public')
+    },
+    port: 3000,
+    hot: true,
+    open: true,
+    compress: true,
+    historyApiFallback: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false
+      }
+    },
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:8080',
+        changeOrigin: true
+      }
+    ]
+  },
+  
+  cache: {
+    type: 'filesystem'
+  },
+  
+  experiments: {
+    lazyCompilation: true
+  },
+  
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        type: 'asset/resource'
+      }
+    ]
+  },
+  
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  
+  stats: 'errors-warnings',
+  
+  infrastructureLogging: {
+    level: 'warn'
+  }
+};
+```
+
+## Environment Variables
+
+Use different values for development:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.API_URL': JSON.stringify('http://localhost:8080')
+    })
+  ]
+};
+```
+
+Or use dotenv:
+
+```bash
+npm install --save-dev dotenv-webpack
+```
+
+```javascript
+const Dotenv = require('dotenv-webpack');
+
+module.exports = {
+  plugins: [
+    new Dotenv({
+      path: './.env.development'
+    })
+  ]
+};
+```
+
+## Performance Tips
+
+### Skip Type Checking in Dev
+
+For TypeScript, skip type checking during builds:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true // Skip type checking
+        }
+      }
+    ]
+  }
+};
+```
+
+Run type checking separately:
+
+```json
+{
+  "scripts": {
+    "dev": "webpack serve",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
+  }
+}
+```
+
+### Reduce Plugins in Development
+
+Only use essential plugins during development:
+
+```javascript
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin(),
+    // Only in production
+    ...(isProduction ? [
+      new MiniCssExtractPlugin(),
+      new CompressionPlugin()
+    ] : [])
+  ]
+};
+```
+
+<Warning>
+Don't use minification, compression, or complex optimizations in development - they slow down builds significantly.
+</Warning>

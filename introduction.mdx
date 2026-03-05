@@ -1,0 +1,103 @@
+---
+title: Introduction to webpack
+description: A powerful JavaScript module bundler for modern web applications
+---
+
+# Welcome to webpack
+
+Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+
+## What is webpack?
+
+Webpack takes modules with dependencies and generates static assets representing those modules. It analyzes your project structure, creates a dependency graph, and bundles everything your application needs to run efficiently in the browser.
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Get started with webpack in minutes
+  </Card>
+  <Card title="Core Concepts" icon="book" href="/concepts/entry">
+    Learn about entry points, output, loaders, and plugins
+  </Card>
+  <Card title="Code Splitting" icon="scissors" href="/guides/code-splitting">
+    Split your code into smaller bundles for better performance
+  </Card>
+  <Card title="Node API" icon="code" href="/api/node">
+    Use webpack programmatically in Node.js
+  </Card>
+</CardGroup>
+
+## Key Features
+
+### Module Bundling
+Webpack bundles ES Modules, CommonJS, and AMD modules - even combined in a single project. This allows you to use the module system that best fits your needs.
+
+### Code Splitting
+Create a single bundle or multiple chunks that are asynchronously loaded at runtime to reduce initial loading time. Dependencies are resolved during compilation, reducing the runtime size.
+
+### Loaders
+Loaders can preprocess files while compiling:
+- Transpile TypeScript to JavaScript
+- Transform JSX to JavaScript
+- Convert images to Base64
+- Import CSS files as modules
+- And much more
+
+### Powerful Plugin System
+Highly modular plugin system to do whatever else your application requires. Webpack has a rich plugin interface that makes it extremely flexible.
+
+### Performance Optimizations
+- **Tree Shaking**: Remove unused code from your bundles
+- **Minification**: Reduce file sizes automatically
+- **Caching**: Use hashes to make bundles cache-friendly
+- **Async Loading**: Load resources on demand
+
+### Developer Experience
+- **Hot Module Replacement**: Update modules in the browser without a full reload
+- **Source Maps**: Debug your original source code in the browser
+- **Watch Mode**: Automatically rebuild on file changes
+
+## Real-World Use Cases
+
+<Info>
+Webpack is used by major companies and projects worldwide to build production-grade applications.
+</Info>
+
+### Single Page Applications (SPAs)
+Bundle your React, Vue, Angular, or vanilla JavaScript application with all dependencies, styles, and assets into optimized bundles.
+
+### Progressive Web Apps (PWAs)
+Create offline-capable applications with service workers and optimized asset loading strategies.
+
+### Multi-Page Applications
+Generate multiple HTML pages with shared chunks to optimize caching across your entire site.
+
+### Library Development
+Package your JavaScript libraries for distribution on npm with multiple output formats (UMD, CommonJS, ES Modules).
+
+### Micro-frontends
+Build modular frontend architectures where different teams can work independently on different parts of the application.
+
+## Browser Compatibility
+
+Webpack supports all browsers that are ES5-compliant (IE8 and below are not supported). For `import()` and `require.ensure()`, webpack needs `Promise` support. If you want to support older browsers, you will need to load a polyfill before using these expressions.
+
+## Getting Started
+
+Ready to start bundling? Check out our [installation guide](/installation) to set up webpack in your project, or jump straight to the [quick start guide](/quickstart) to see webpack in action.
+
+<Note>
+Webpack requires Node.js version 10.13.0 or higher.
+</Note>
+
+## Community and Support
+
+Webpack has a vibrant community of contributors and users. Get help, share ideas, and contribute:
+
+- **GitHub Discussions**: Ask questions and share knowledge
+- **Discord**: Join real-time conversations
+- **Stack Overflow**: Search existing solutions or ask new questions
+- **Twitter**: Follow [@webpack](https://twitter.com/webpack) for updates
+
+## Open Source
+
+Webpack is MIT licensed and developed by a dedicated team of maintainers and contributors. We welcome contributions of all kinds - from documentation improvements to core features.

@@ -1,0 +1,155 @@
+---
+title: Define a Plugin
+description: Learn how to create custom webpack plugins
+---
+
+Webpack plugins are JavaScript objects with an `apply` method. This method is called by the webpack compiler, giving plugins access to the entire compilation lifecycle.
+
+## Basic Plugin Structure
+
+A minimal webpack plugin looks like this:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    // Plugin logic here
+  }
+}
+
+module.exports = MyPlugin;
+```
+
+## Using Compiler Hooks
+
+The compiler exposes hooks that allow you to tap into different stages of the build process:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.compile.tap('MyPlugin', (params) => {
+      console.log('The compiler is starting to compile...');
+    });
+
+    compiler.hooks.done.tap('MyPlugin', (stats) => {
+      console.log('The compilation has finished!');
+    });
+  }
+}
+```
+
+## Available Hooks
+
+Common compiler hooks include:
+
+- `entryOption` - Called after entry configuration is processed
+- `beforeRun` - Called before running the compiler
+- `run` - Called when the compiler starts running
+- `compile` - Called before a new compilation is created
+- `compilation` - Called when a compilation is created
+- `emit` - Called before assets are emitted to output directory
+- `done` - Called when compilation finishes
+
+## Accessing Compilation
+
+For more detailed control, tap into the `compilation` hook:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.compilation.tap('MyPlugin', (compilation) => {
+      compilation.hooks.optimize.tap('MyPlugin', () => {
+        console.log('Assets are being optimized.');
+      });
+    });
+  }
+}
+```
+
+## Async Hooks
+
+Some hooks support asynchronous operations:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.emit.tapAsync('MyPlugin', (compilation, callback) => {
+      setTimeout(() => {
+        console.log('Async operation complete');
+        callback();
+      }, 1000);
+    });
+  }
+}
+```
+
+## Using Promises
+
+You can also use promises with `tapPromise`:
+
+```javascript
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.emit.tapPromise('MyPlugin', async (compilation) => {
+      await someAsyncOperation();
+      console.log('Promise resolved');
+    });
+  }
+}
+```
+
+## Example: Adding Custom Assets
+
+```javascript
+const { RawSource } = require('webpack-sources');
+
+class CreateFilePlugin {
+  apply(compiler) {
+    compiler.hooks.thisCompilation.tap('CreateFilePlugin', (compilation) => {
+      compilation.hooks.processAssets.tap(
+        {
+          name: 'CreateFilePlugin',
+          stage: compilation.PROCESS_ASSETS_STAGE_ADDITIONAL
+        },
+        () => {
+          compilation.emitAsset(
+            'custom-file.txt',
+            new RawSource('This is custom content')
+          );
+        }
+      );
+    });
+  }
+}
+```
+
+## Plugin Options
+
+Plugins typically accept options in their constructor:
+
+```javascript
+class MyPlugin {
+  constructor(options = {}) {
+    this.options = options;
+  }
+
+  apply(compiler) {
+    const { message = 'Hello!' } = this.options;
+    compiler.hooks.done.tap('MyPlugin', () => {
+      console.log(message);
+    });
+  }
+}
+
+// Usage
+new MyPlugin({ message: 'Build complete!' });
+```
+
+## Best Practices
+
+<Note>
+Always give your plugin a clear, descriptive name when using `.tap()` - this helps with debugging and understanding the build process.
+</Note>
+
+<Warning>
+Be careful with asynchronous operations. Always call the callback or resolve the promise to avoid hanging the build process.
+</Warning>

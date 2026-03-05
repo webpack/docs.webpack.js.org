@@ -1,0 +1,342 @@
+---
+title: ContextReplacementPlugin
+description: Override the context module resolution behavior
+---
+
+The `ContextReplacementPlugin` allows you to override the inferred context of a `require.context` or dynamic `import()` expression. This is particularly useful for reducing bundle size by limiting the files webpack includes.
+
+## Usage
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    new webpack.ContextReplacementPlugin(
+      /context-directory/,
+      './new-directory'
+    )
+  ]
+};
+```
+
+## Configuration
+
+<ParamField path="resourceRegExp" type="RegExp" required>
+  Regular expression to match the context resource
+</ParamField>
+
+<ParamField path="newContentResource" type="string">
+  New resource path to use
+</ParamField>
+
+<ParamField path="newContentRecursive" type="boolean">
+  Whether to search subdirectories recursively
+</ParamField>
+
+<ParamField path="newContentRegExp" type="RegExp">
+  Regular expression to filter files in the new context
+</ParamField>
+
+## Examples
+
+### Limit Moment.js Locales
+
+One of the most common uses - reduce moment.js bundle size:
+
+```javascript
+const webpack = require('webpack');
+
+module.exports = {
+  plugins: [
+    // Only include English, French, and Spanish locales
+    new webpack.ContextReplacementPlugin(
+      /moment[\\/]locale$/,
+      /en|fr|es/
+    )
+  ]
+};
+```
+
+This reduces the moment.js bundle from ~500KB to ~150KB.
+
+### Limit Angular i18n
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /\@angular\b.*\b(bundles|linker)/,
+  path.resolve(__dirname, 'src')
+)
+```
+
+### Filter Files in Directory
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /\/components$/,
+  /Button|Input|Select/ // Only include these components
+)
+```
+
+### Change Context Directory
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /old-directory/,
+  './new-directory'
+)
+```
+
+### Disable Recursive Search
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /my-directory/,
+  './my-directory',
+  false // Don't search subdirectories
+)
+```
+
+### With Custom Callback
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /context/,
+  (context) => {
+    // Modify context properties
+    context.regExp = /^\.\/.*\.js$/;
+    context.recursive = false;
+  }
+)
+```
+
+### Multiple Locales
+
+```javascript
+const supportedLocales = process.env.LOCALES?.split(',') || ['en'];
+const localePattern = new RegExp(supportedLocales.join('|'));
+
+new webpack.ContextReplacementPlugin(
+  /moment[\\/]locale$/,
+  localePattern
+)
+```
+
+Usage:
+```bash
+LOCALES=en,fr,de npm run build
+```
+
+### Filter by File Extension
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /\/images$/,
+  /\.(png|jpe?g|svg)$/ // Only include these image types
+)
+```
+
+## Advanced Usage
+
+### Conditional Replacement
+
+```javascript
+const isDev = process.env.NODE_ENV === 'development';
+
+module.exports = {
+  plugins: [
+    isDev
+      ? new webpack.ContextReplacementPlugin(
+          /components/,
+          /.*/ // Include all in development
+        )
+      : new webpack.ContextReplacementPlugin(
+          /components/,
+          /Button|Input/ // Only essential in production
+        )
+  ]
+};
+```
+
+### Dynamic Import Context
+
+```javascript
+// Your code with dynamic import
+const locale = getUserLocale();
+import(`./locales/${locale}.json`);
+
+// Limit which locales are bundled
+new webpack.ContextReplacementPlugin(
+  /\.[\\/]locales$/,
+  /en|fr|es/
+)
+```
+
+### Replace with Custom Map
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /moment[\\/]locale$/,
+  './node_modules/moment/locale',
+  (context, callback) => {
+    // Manually specify which files to include
+    const dependencies = {
+      './en': './en',
+      './fr': './fr'
+    };
+    callback(null, dependencies);
+  }
+)
+```
+
+## Use Cases
+
+### Reduce Third-Party Library Size
+
+Many libraries include optional files:
+
+```javascript
+// Only include needed Chart.js components
+new webpack.ContextReplacementPlugin(
+  /chart\.js[\\/]dist[\\/]components/,
+  /BarController|LineController/
+)
+```
+
+### Locale Management
+
+```javascript
+const moment = require('moment');
+
+// Before optimization: All locales (~500KB)
+// After optimization: Only specified locales (~150KB)
+
+new webpack.ContextReplacementPlugin(
+  /moment[\\/]locale$/,
+  /(en-gb|fr|de)/
+)
+```
+
+### Component Library
+
+Only bundle used components:
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /@my-company[\\/]components/,
+  /Button|Input|Modal/ // Only include these
+)
+```
+
+### Test Files
+
+Exclude test files from production:
+
+```javascript
+if (process.env.NODE_ENV === 'production') {
+  new webpack.ContextReplacementPlugin(
+    /src/,
+    /^(?!.*\.test\.js$).*$/ // Exclude .test.js files
+  )
+}
+```
+
+## How It Works
+
+When webpack encounters dynamic imports:
+
+```javascript
+require.context('./locales', true, /\.json$/);
+// or
+import(`./locales/${name}.json`);
+```
+
+It creates a context module that includes all matching files. The plugin modifies this behavior:
+
+1. Matches the context directory with `resourceRegExp`
+2. Applies the new content filter with `newContentRegExp`
+3. Changes the directory with `newContentResource` if provided
+4. Updates recursive setting if specified
+
+## Performance Impact
+
+<Note>
+Bundle size reduction examples:
+- Moment.js locales: 400KB → 150KB (limit to 5 locales)
+- Component library: 2MB → 500KB (limit to used components)
+- Icon library: 1MB → 100KB (limit to needed icons)
+</Note>
+
+## Debugging
+
+Log context information:
+
+```javascript
+new webpack.ContextReplacementPlugin(
+  /context/,
+  (context) => {
+    console.log('Context:', {
+      resource: context.resource,
+      regExp: context.regExp,
+      recursive: context.recursive
+    });
+    
+    // Modify context
+    context.regExp = /new-pattern/;
+  }
+)
+```
+
+## Common Patterns
+
+### Environment-Specific Files
+
+```javascript
+const env = process.env.NODE_ENV;
+
+new webpack.ContextReplacementPlugin(
+  /\/config$/,
+  new RegExp(env) // Only include current environment config
+)
+```
+
+### Feature Flags
+
+```javascript
+const enabledFeatures = process.env.FEATURES?.split(',') || [];
+const pattern = new RegExp(enabledFeatures.join('|'));
+
+new webpack.ContextReplacementPlugin(
+  /\/features$/,
+  pattern
+)
+```
+
+<Warning>
+Changing the context can break imports if the new context doesn't contain expected files. Always verify the replacement works with your use case.
+</Warning>
+
+## Comparison with Alternatives
+
+### ContextReplacementPlugin
+- Modifies what files are included in context
+- Reduces bundle size
+- Works with dynamic imports
+
+### IgnorePlugin
+- Completely excludes modules
+- No replacement provided
+- Good for optional dependencies
+
+### NormalModuleReplacementPlugin
+- Replaces specific modules
+- Not for context/directory replacements
+- More precise control
+
+## Best Practices
+
+- Test bundle contents after replacement
+- Document why replacements are needed
+- Use specific patterns to avoid breaking imports
+- Monitor bundle size with webpack-bundle-analyzer
+- Consider tree-shaking as an alternative for ES modules

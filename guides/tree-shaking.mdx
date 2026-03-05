@@ -1,0 +1,329 @@
+---
+title: "Tree Shaking"
+description: "Remove unused code from your bundles"
+icon: "tree"
+---
+
+Tree shaking eliminates dead code from your JavaScript bundles, significantly reducing bundle size.
+
+## What is Tree Shaking?
+
+Tree shaking is a term for dead code elimination in JavaScript. It relies on ES2015 module syntax (`import` and `export`) to detect which exports are used and remove the rest.
+
+<Note>
+Tree shaking only works with ES2015 module syntax (static `import`/`export`). It doesn't work with CommonJS (`require`/`module.exports`).
+</Note>
+
+## Enable Tree Shaking
+
+<Steps>
+<Step title="Use production mode">
+  Tree shaking is automatically enabled in production mode:
+
+  ```javascript
+  module.exports = {
+    mode: 'production'
+  };
+  ```
+</Step>
+
+<Step title="Use ES2015 modules">
+  Ensure your code uses ES2015 import/export syntax:
+
+  **Good:**
+  ```javascript
+  // math.js
+  export function square(x) {
+    return x * x;
+  }
+
+  export function cube(x) {
+    return x * x * x;
+  }
+
+  // main.js
+  import { square } from './math';
+  console.log(square(5)); // cube is tree-shaken
+  ```
+
+  **Bad:**
+  ```javascript
+  // math.js
+  module.exports = {
+    square: (x) => x * x,
+    cube: (x) => x * x * x
+  };
+
+  // main.js
+  const { square } = require('./math');
+  // cube is NOT tree-shaken with CommonJS
+  ```
+</Step>
+
+<Step title="Configure optimization">
+  Explicitly enable tree shaking options:
+
+  ```javascript
+  module.exports = {
+    optimization: {
+      usedExports: true,
+      minimize: true,
+      sideEffects: true
+    }
+  };
+  ```
+</Step>
+</Steps>
+
+## Side Effects
+
+Side effects are code that affects the environment when imported, even if nothing is used from the module.
+
+### Mark Side-Effect-Free Packages
+
+In `package.json`, declare which files have side effects:
+
+```json
+{
+  "name": "my-library",
+  "sideEffects": false
+}
+```
+
+Or specify files with side effects:
+
+```json
+{
+  "name": "my-library",
+  "sideEffects": [
+    "./src/polyfills.js",
+    "*.css"
+  ]
+}
+```
+
+<Warning>
+Incorrectly marking modules as side-effect-free can break your application. Only set `"sideEffects": false` if you're certain the code has no side effects.
+</Warning>
+
+### Examples of Side Effects
+
+**Has side effects:**
+```javascript
+// Modifies global state
+import './polyfill.js';
+
+// Modifies prototype
+Array.prototype.myMethod = function() { };
+
+// CSS imports
+import './styles.css';
+```
+
+**No side effects:**
+```javascript
+// Pure exports only
+export function add(a, b) {
+  return a + b;
+}
+
+export const PI = 3.14159;
+```
+
+## Module Concatenation
+
+Also known as "scope hoisting", this optimization merges modules into a single scope:
+
+```javascript
+module.exports = {
+  optimization: {
+    concatenateModules: true,
+    usedExports: true,
+    providedExports: true
+  }
+};
+```
+
+<Tip>
+Module concatenation is automatically enabled in production mode and works best with ES2015 modules.
+</Tip>
+
+## Best Practices
+
+### Use Named Exports
+
+Named exports enable better tree shaking:
+
+**Better:**
+```javascript
+// utils.js
+export function formatDate(date) { }
+export function formatCurrency(value) { }
+
+// main.js
+import { formatDate } from './utils';
+// formatCurrency is tree-shaken
+```
+
+**Worse:**
+```javascript
+// utils.js
+export default {
+  formatDate: (date) => { },
+  formatCurrency: (value) => { }
+};
+
+// main.js
+import utils from './utils';
+utils.formatDate();
+// formatCurrency is NOT tree-shaken
+```
+
+### Avoid Barrel Exports with Side Effects
+
+**Problematic:**
+```javascript
+// index.js - barrel file
+export * from './moduleA';
+export * from './moduleB';
+export * from './moduleC';
+```
+
+If any module has side effects, all might be included.
+
+**Better:**
+```javascript
+// Import specific modules directly
+import { funcA } from './moduleA';
+```
+
+### Configure Babel Carefully
+
+Ensure Babel doesn't transform ES2015 modules to CommonJS:
+
+```json
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ]
+  ]
+}
+```
+
+<Warning>
+If Babel transforms modules to CommonJS, tree shaking won't work. Set `"modules": false` in your Babel config.
+</Warning>
+
+## Analyze Bundle
+
+Check what's included in your bundles:
+
+```bash
+npm install --save-dev webpack-bundle-analyzer
+```
+
+```javascript
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+};
+```
+
+## Library Authors
+
+If you're publishing a library:
+
+### Provide ES2015 Modules
+
+```json
+{
+  "name": "my-library",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "sideEffects": false
+}
+```
+
+### Document Side Effects
+
+Clearly document any side effects in your library:
+
+```json
+{
+  "sideEffects": [
+    "./src/register-global.js"
+  ]
+}
+```
+
+## Optimization Flags
+
+Complete configuration for maximum tree shaking:
+
+```javascript
+module.exports = {
+  mode: 'production',
+  optimization: {
+    // Identify used exports
+    usedExports: true,
+    
+    // Identify provided exports
+    providedExports: true,
+    
+    // Respect sideEffects flag
+    sideEffects: true,
+    
+    // Enable scope hoisting
+    concatenateModules: true,
+    
+    // Minimize code
+    minimize: true,
+    
+    // Minifier options
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            dead_code: true,
+            unused: true
+          }
+        }
+      })
+    ]
+  }
+};
+```
+
+<Tip>
+All these optimizations are enabled by default when using `mode: 'production'`.
+</Tip>
+
+## Common Issues
+
+### Issue: Code Not Being Tree Shaken
+
+**Check:**
+1. Are you using ES2015 modules?
+2. Is `mode` set to `'production'`?
+3. Is Babel transforming modules to CommonJS?
+4. Are there unintended side effects?
+
+### Issue: Application Breaking After Tree Shaking
+
+**Solution:** Check `sideEffects` configuration - you may have marked code with side effects as side-effect-free.
+
+```json
+{
+  "sideEffects": [
+    "*.css",
+    "./src/polyfills.js"
+  ]
+}
+```
