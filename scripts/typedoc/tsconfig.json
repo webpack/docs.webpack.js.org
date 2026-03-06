@@ -1,0 +1,10 @@
+{
+    "include": ["../../../webpack/lib/*"],
+    "compilerOptions": {
+        "allowJs": true,
+        "esModuleInterop": true,
+        "paths": {
+            "webpack": ["../../node_modules/webpack"]
+        }
+    },
+}
