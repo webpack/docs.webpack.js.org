@@ -2,15 +2,11 @@
 title: Argument
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / Argument
+[webpack](../globals.md) / Argument
 
 # Interface: Argument
 
-Defined in: [lib/cli.js:63](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/cli.js#L63)
+Defined in: [webpack/types.d.ts:317](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L317)
 
 ## Properties
 
@@ -18,15 +14,15 @@ Defined in: [lib/cli.js:63](https://github.com/webpack/webpack/blob/e3298f1e7776
 
 > **configs**: `ArgumentConfig`[]
 
-Defined in: [lib/cli.js:67](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/cli.js#L67)
+Defined in: [webpack/types.d.ts:321](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L321)
 
 ***
 
-### description
+### description?
 
-> **description**: `string`
+> `optional` **description**: `string`
 
-Defined in: [lib/cli.js:64](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/cli.js#L64)
+Defined in: [webpack/types.d.ts:318](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L318)
 
 ***
 
@@ -34,7 +30,7 @@ Defined in: [lib/cli.js:64](https://github.com/webpack/webpack/blob/e3298f1e7776
 
 > **multiple**: `boolean`
 
-Defined in: [lib/cli.js:66](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/cli.js#L66)
+Defined in: [webpack/types.d.ts:320](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L320)
 
 ***
 
@@ -42,4 +38,4 @@ Defined in: [lib/cli.js:66](https://github.com/webpack/webpack/blob/e3298f1e7776
 
 > **simpleType**: `SimpleType`
 
-Defined in: [lib/cli.js:65](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/cli.js#L65)
+Defined in: [webpack/types.d.ts:319](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L319)

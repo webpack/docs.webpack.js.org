@@ -16,6 +16,825 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Namespaces",
+            "pages": [
+              {
+                "group": "export=",
+                "pages": [
+                  {
+                    "group": "Namespaces",
+                    "pages": [
+                      {
+                        "group": "cache",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/cache/classes/MemoryCachePlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "cli",
+                        "pages": [
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/cli/variables/createColors.md",
+                              "webpack/namespaces/export=/namespaces/cli/variables/getArguments.md",
+                              "webpack/namespaces/export=/namespaces/cli/variables/isColorSupported.md",
+                              "webpack/namespaces/export=/namespaces/cli/variables/processArguments.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "config",
+                        "pages": [
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/config/variables/applyWebpackOptionsDefaults.md",
+                              "webpack/namespaces/export=/namespaces/config/variables/getNormalizedWebpackOptions.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "container",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/container/classes/ContainerPlugin.md",
+                              "webpack/namespaces/export=/namespaces/container/classes/ContainerReferencePlugin.md",
+                              "webpack/namespaces/export=/namespaces/container/classes/ModuleFederationPlugin.md"
+                            ]
+                          },
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/container/variables/scope.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "css",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/css/classes/CssModulesPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "debug",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/debug/classes/ProfilingPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "dependencies",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/dependencies/classes/ConstDependency.md",
+                              "webpack/namespaces/export=/namespaces/dependencies/classes/HarmonyImportDependency.md",
+                              "webpack/namespaces/export=/namespaces/dependencies/classes/ModuleDependency.md",
+                              "webpack/namespaces/export=/namespaces/dependencies/classes/NullDependency.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "electron",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/electron/classes/ElectronTargetPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "esm",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "experiments",
+                        "pages": [
+                          {
+                            "group": "Namespaces",
+                            "pages": [
+                              {
+                                "group": "ids",
+                                "pages": [
+                                  {
+                                    "group": "Classes",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/experiments/namespaces/ids/classes/SyncModuleIdsPlugin.md"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "group": "schemes",
+                                "pages": [
+                                  {
+                                    "group": "Classes",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/experiments/namespaces/schemes/classes/HttpUriPlugin.md",
+                                      "webpack/namespaces/export=/namespaces/experiments/namespaces/schemes/classes/VirtualUrlPlugin.md"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "ids",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/ids/classes/ChunkModuleIdRangePlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/DeterministicChunkIdsPlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/DeterministicModuleIdsPlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/HashedModuleIdsPlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/NamedChunkIdsPlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/NamedModuleIdsPlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/NaturalModuleIdsPlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/OccurrenceChunkIdsPlugin.md",
+                              "webpack/namespaces/export=/namespaces/ids/classes/OccurrenceModuleIdsPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "javascript",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/javascript/classes/EnableChunkLoadingPlugin.md",
+                              "webpack/namespaces/export=/namespaces/javascript/classes/JavascriptParser.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "library",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/library/classes/AbstractLibraryPlugin.md",
+                              "webpack/namespaces/export=/namespaces/library/classes/EnableLibraryPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "ModuleFilenameHelpers",
+                        "pages": [
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/ABSOLUTE_RESOURCE_PATH.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/ALL_LOADERS.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/ALL_LOADERS_RESOURCE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/createFilename.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/HASH.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/ID.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/LOADERS.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/LOADERS_RESOURCE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/matchObject.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/matchPart.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/NAMESPACE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/QUERY.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_ABSOLUTE_RESOURCE_PATH.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_ALL_LOADERS.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_ALL_LOADERS_RESOURCE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_HASH.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_ID.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_LOADERS.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_LOADERS_RESOURCE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_NAMESPACE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_QUERY.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_RESOURCE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/REGEXP_RESOURCE_PATH.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/replaceDuplicates.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/RESOURCE.md",
+                              "webpack/namespaces/export=/namespaces/ModuleFilenameHelpers/variables/RESOURCE_PATH.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "node",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/node/classes/NodeEnvironmentPlugin.md",
+                              "webpack/namespaces/export=/namespaces/node/classes/NodeSourcePlugin.md",
+                              "webpack/namespaces/export=/namespaces/node/classes/NodeTargetPlugin.md",
+                              "webpack/namespaces/export=/namespaces/node/classes/NodeTemplatePlugin.md",
+                              "webpack/namespaces/export=/namespaces/node/classes/ReadFileCompileAsyncWasmPlugin.md",
+                              "webpack/namespaces/export=/namespaces/node/classes/ReadFileCompileWasmPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "OptimizationStages",
+                        "pages": [
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/OptimizationStages/variables/STAGE_ADVANCED.md",
+                              "webpack/namespaces/export=/namespaces/OptimizationStages/variables/STAGE_BASIC.md",
+                              "webpack/namespaces/export=/namespaces/OptimizationStages/variables/STAGE_DEFAULT.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "optimize",
+                        "pages": [
+                          {
+                            "group": "Namespaces",
+                            "pages": [
+                              {
+                                "group": "InnerGraph",
+                                "pages": [
+                                  {
+                                    "group": "Classes",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/classes/TopLevelSymbol.md"
+                                    ]
+                                  },
+                                  {
+                                    "group": "Variables",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/addUsage.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/addVariableUsage.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/bailout.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/enable.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/getDependencyUsedByExportsCondition.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/getTopLevelSymbol.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/inferDependencyUsage.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/isDependencyUsedByExports.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/isEnabled.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/onUsage.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/setTopLevelSymbol.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/tagTopLevelSymbol.md",
+                                      "webpack/namespaces/export=/namespaces/optimize/namespaces/InnerGraph/variables/topLevelSymbolTag.md"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/optimize/classes/AggressiveMergingPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/AggressiveSplittingPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/LimitChunkCountPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/MergeDuplicateChunksPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/MinChunkSizePlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/ModuleConcatenationPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/RealContentHashPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/RuntimeChunkPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/SideEffectsFlagPlugin.md",
+                              "webpack/namespaces/export=/namespaces/optimize/classes/SplitChunksPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "prefetch",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/prefetch/classes/ChunkPrefetchPreloadPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "runtime",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/runtime/classes/GetChunkFilenameRuntimeModule.md",
+                              "webpack/namespaces/export=/namespaces/runtime/classes/LoadScriptRuntimeModule.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "RuntimeGlobals",
+                        "pages": [
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/amdDefine.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/amdOptions.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/asyncModule.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/asyncModuleDoneSymbol.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/asyncModuleExportSymbol.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/baseURI.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/chunkCallback.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/chunkName.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/compatGetDefaultExport.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/createFakeNamespaceObject.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/createScript.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/createScriptUrl.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/cssMergeStyleSheets.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/currentRemoteGetScope.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/deferredModuleAsyncTransitiveDependencies.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/deferredModuleAsyncTransitiveDependenciesSymbol.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/definePropertyGetters.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/ensureChunk.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/ensureChunkHandlers.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/ensureChunkIncludeEntries.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/entryModuleId.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/esmId.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/esmIds.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/esmModules.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/esmRuntime.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/exports.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/externalInstallChunk.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/getChunkCssFilename.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/getChunkScriptFilename.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/getChunkUpdateCssFilename.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/getChunkUpdateScriptFilename.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/getFullHash.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/getTrustedTypesPolicy.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/getUpdateManifestFilename.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/global.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/harmonyModuleDecorator.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hasCssModules.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hasFetchPriority.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hasOwnProperty.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hmrDownloadManifest.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hmrDownloadUpdateHandlers.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hmrInvalidateModuleHandlers.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hmrModuleData.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/hmrRuntimeStatePrefix.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/initializeSharing.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/instantiateWasm.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/interceptModuleExecution.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/loadScript.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/makeDeferredNamespaceObject.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/makeNamespaceObject.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/makeOptimizedDeferredNamespaceObject.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/module.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/moduleCache.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/moduleFactories.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/moduleFactoriesAddOnly.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/moduleId.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/moduleLoaded.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/nodeModuleDecorator.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/onChunksLoaded.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/prefetchChunk.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/prefetchChunkHandlers.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/preloadChunk.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/preloadChunkHandlers.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/publicPath.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/relativeUrl.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/require.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/requireScope.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/returnExportsFromRuntime.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/runtimeId.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/scriptNonce.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/shareScopeMap.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/startup.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/startupEntrypoint.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/startupNoDefault.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/startupOnlyAfter.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/startupOnlyBefore.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/system.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/systemContext.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/thisAsExports.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/toBinary.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/uncaughtErrorHandler.md",
+                              "webpack/namespaces/export=/namespaces/RuntimeGlobals/variables/wasmInstances.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "sharing",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/sharing/classes/ConsumeSharedPlugin.md",
+                              "webpack/namespaces/export=/namespaces/sharing/classes/ProvideSharedPlugin.md",
+                              "webpack/namespaces/export=/namespaces/sharing/classes/SharePlugin.md"
+                            ]
+                          },
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/sharing/variables/scope.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "sources",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/sources/classes/CachedSource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/CompatSource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/ConcatSource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/OriginalSource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/PrefixSource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/RawSource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/ReplaceSource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/SizeOnlySource.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/Source.md",
+                              "webpack/namespaces/export=/namespaces/sources/classes/SourceMapSource.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "util",
+                        "pages": [
+                          {
+                            "group": "Namespaces",
+                            "pages": [
+                              {
+                                "group": "comparators",
+                                "pages": [
+                                  {
+                                    "group": "Variables",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareChunkGroupsByIndex.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareChunks.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareChunksById.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareChunksNatural.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareIds.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareIterables.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareLocations.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareModulesByFullName.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareModulesById.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareModulesByIdentifier.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareModulesByIdOrIdentifier.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareModulesByPostOrderIndexOrIdentifier.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareModulesByPreOrderIndexOrIdentifier.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareNumbers.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareSelect.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareStrings.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/compareStringsNumeric.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/concatComparators.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/keepOriginalOrder.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/comparators/variables/sortWithSourceOrder.md"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "group": "compileBooleanMatcher",
+                                "pages": [
+                                  {
+                                    "group": "Variables",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/compileBooleanMatcher/variables/fromLists.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/compileBooleanMatcher/variables/itemsToRegexp.md"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "group": "runtime",
+                                "pages": [
+                                  {
+                                    "group": "Classes",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecMap.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet.md"
+                                    ]
+                                  },
+                                  {
+                                    "group": "Variables",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/compareRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/filterRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/forEachRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/getEntryRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/getRuntimeKey.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/intersectRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/keyToRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/mergeRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/mergeRuntimeCondition.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/mergeRuntimeConditionNonFalse.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/mergeRuntimeOwned.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/runtimeConditionToString.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/runtimeEqual.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/runtimeToString.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/subtractRuntime.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/runtime/variables/subtractRuntimeCondition.md"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "group": "serialization",
+                                "pages": [
+                                  {
+                                    "group": "Variables",
+                                    "pages": [
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/buffersSerializer.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/createFileSerializer.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/MEASURE_END_OPERATION.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/MEASURE_START_OPERATION.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/NOT_SERIALIZABLE.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/register.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/registerLoader.md",
+                                      "webpack/namespaces/export=/namespaces/util/namespaces/serialization/variables/registerNotSerializable.md"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/util/classes/LazySet.md"
+                            ]
+                          },
+                          {
+                            "group": "Variables",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/util/variables/cleverMerge.md",
+                              "webpack/namespaces/export=/namespaces/util/variables/createHash.md"
+                            ]
+                          },
+                          {
+                            "group": "Functions",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/util/functions/compileBooleanMatcher.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "wasm",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/wasm/classes/AsyncWebAssemblyModulesPlugin.md",
+                              "webpack/namespaces/export=/namespaces/wasm/classes/EnableWasmLoadingPlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "web",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/web/classes/CssLoadingRuntimeModule.md",
+                              "webpack/namespaces/export=/namespaces/web/classes/FetchCompileAsyncWasmPlugin.md",
+                              "webpack/namespaces/export=/namespaces/web/classes/FetchCompileWasmPlugin.md",
+                              "webpack/namespaces/export=/namespaces/web/classes/JsonpChunkLoadingRuntimeModule.md",
+                              "webpack/namespaces/export=/namespaces/web/classes/JsonpTemplatePlugin.md"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "webworker",
+                        "pages": [
+                          {
+                            "group": "Classes",
+                            "pages": [
+                              "webpack/namespaces/export=/namespaces/webworker/classes/WebWorkerTemplatePlugin.md"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Classes",
+                    "pages": [
+                      "webpack/namespaces/export=/classes/WebpackOptionsValidationError.md"
+                    ]
+                  },
+                  {
+                    "group": "Variables",
+                    "pages": [
+                      "webpack/namespaces/export=/variables/UsageState.md",
+                      "webpack/namespaces/export=/variables/validate.md",
+                      "webpack/namespaces/export=/variables/validateSchema.md",
+                      "webpack/namespaces/export=/variables/version.md",
+                      "webpack/namespaces/export=/variables/webpack.md"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Classes",
+            "pages": [
+              "classes/AsyncDependenciesBlock.md",
+              "classes/AutomaticPrefetchPlugin.md",
+              "classes/BannerPlugin.md",
+              "classes/Cache.md",
+              "classes/Chunk.md",
+              "classes/ChunkGraph.md",
+              "classes/ChunkGroup.md",
+              "classes/CleanPlugin.md",
+              "classes/CodeGenerationResults.md",
+              "classes/Compilation.md",
+              "classes/Compiler.md",
+              "classes/ConcatenationScope.md",
+              "classes/ContextExclusionPlugin.md",
+              "classes/ContextReplacementPlugin.md",
+              "classes/DefinePlugin.md",
+              "classes/DelegatedPlugin.md",
+              "classes/Dependency.md",
+              "classes/DllPlugin.md",
+              "classes/DllReferencePlugin.md",
+              "classes/DotenvPlugin.md",
+              "classes/DynamicEntryPlugin.md",
+              "classes/EntryOptionPlugin.md",
+              "classes/EntryPlugin.md",
+              "classes/Entrypoint.md",
+              "classes/EnvironmentPlugin.md",
+              "classes/EvalDevToolModulePlugin.md",
+              "classes/EvalSourceMapDevToolPlugin.md",
+              "classes/ExternalModule.md",
+              "classes/ExternalsPlugin.md",
+              "classes/Generator.md",
+              "classes/HotModuleReplacementPlugin.md",
+              "classes/HotUpdateChunk.md",
+              "classes/IgnorePlugin.md",
+              "classes/InitFragment.md",
+              "classes/JavascriptModulesPlugin.md",
+              "classes/LibManifestPlugin.md",
+              "classes/LibraryTemplatePlugin.md",
+              "classes/LoaderOptionsPlugin.md",
+              "classes/LoaderTargetPlugin.md",
+              "classes/ManifestPlugin.md",
+              "classes/Module.md",
+              "classes/ModuleFactory.md",
+              "classes/ModuleGraph.md",
+              "classes/ModuleGraphConnection.md",
+              "classes/MultiCompiler.md",
+              "classes/MultiStats.md",
+              "classes/NoEmitOnErrorsPlugin.md",
+              "classes/NormalModule.md",
+              "classes/NormalModuleReplacementPlugin.md",
+              "classes/Parser.md",
+              "classes/PlatformPlugin.md",
+              "classes/PrefetchPlugin.md",
+              "classes/ProgressPlugin.md",
+              "classes/ProvidePlugin.md",
+              "classes/Resolver.md",
+              "classes/RuntimeModule.md",
+              "classes/SourceMapDevToolPlugin.md",
+              "classes/Stats.md",
+              "classes/Template.md",
+              "classes/WatchIgnorePlugin.md",
+              "classes/Watching.md",
+              "classes/WebpackError.md",
+              "classes/WebpackOptionsApply.md",
+              "classes/WebpackOptionsDefaulter.md"
+            ]
+          },
+          {
+            "group": "Interfaces",
+            "pages": [
+              "interfaces/Argument.md",
+              "interfaces/Asset.md",
+              "interfaces/AssetEmittedInfo.md",
+              "interfaces/Colors.md",
+              "interfaces/ColorsOptions.md",
+              "interfaces/Configuration.md",
+              "interfaces/EntryObject.md",
+              "interfaces/ExternalItemFunctionData.md",
+              "interfaces/ExternalItemObjectKnown.md",
+              "interfaces/ExternalItemObjectUnknown.md",
+              "interfaces/FileCacheOptions.md",
+              "interfaces/GeneratorOptionsByModuleTypeKnown.md",
+              "interfaces/InputFileSystem.md",
+              "interfaces/LibraryOptions.md",
+              "interfaces/LoaderDefinitionFunction.md",
+              "interfaces/LoaderModule.md",
+              "interfaces/MemoryCacheOptions.md",
+              "interfaces/ModuleOptions.md",
+              "interfaces/MultiCompilerOptions.md",
+              "interfaces/ObjectDeserializerContext.md",
+              "interfaces/ObjectSerializerContext.md",
+              "interfaces/OutputFileSystem.md",
+              "interfaces/ParserOptionsByModuleTypeKnown.md",
+              "interfaces/PathData.md",
+              "interfaces/PitchLoaderDefinitionFunction.md",
+              "interfaces/Problem.md",
+              "interfaces/RawLoaderDefinitionFunction.md",
+              "interfaces/RenderManifestOptions.md",
+              "interfaces/ResolveData.md",
+              "interfaces/ResolveOptions.md",
+              "interfaces/RuleSetRule.md",
+              "interfaces/StatsOptions.md",
+              "interfaces/WebpackOptionsNormalized.md",
+              "interfaces/WebpackPluginInstance.md"
+            ]
+          },
+          {
+            "group": "Type Aliases",
+            "pages": [
+              "type-aliases/AssetInfo.md",
+              "type-aliases/Entry.md",
+              "type-aliases/EntryNormalized.md",
+              "type-aliases/EntryOptions.md",
+              "type-aliases/ExternalItem.md",
+              "type-aliases/ExternalItemFunction.md",
+              "type-aliases/ExternalItemFunctionCallback.md",
+              "type-aliases/ExternalItemFunctionDataGetResolve.md",
+              "type-aliases/ExternalItemFunctionDataGetResolveCallbackResult.md",
+              "type-aliases/ExternalItemFunctionDataGetResolveResult.md",
+              "type-aliases/ExternalItemFunctionPromise.md",
+              "type-aliases/ExternalItemValue.md",
+              "type-aliases/Externals.md",
+              "type-aliases/LoaderContext.md",
+              "type-aliases/LoaderDefinition.md",
+              "type-aliases/MultiConfiguration.md",
+              "type-aliases/ParserState.md",
+              "type-aliases/RawLoaderDefinition.md",
+              "type-aliases/RenderManifestEntry.md",
+              "type-aliases/ResolvePluginInstance.md",
+              "type-aliases/RuleSetCondition.md",
+              "type-aliases/RuleSetConditionAbsolute.md",
+              "type-aliases/RuleSetUse.md",
+              "type-aliases/RuleSetUseFunction.md",
+              "type-aliases/RuleSetUseItem.md",
+              "type-aliases/StatsAsset.md",
+              "type-aliases/StatsChunk.md",
+              "type-aliases/StatsChunkGroup.md",
+              "type-aliases/StatsChunkOrigin.md",
+              "type-aliases/StatsCompilation.md",
+              "type-aliases/StatsError.md",
+              "type-aliases/StatsLogging.md",
+              "type-aliases/StatsLoggingEntry.md",
+              "type-aliases/StatsModule.md",
+              "type-aliases/StatsModuleIssuer.md",
+              "type-aliases/StatsModuleReason.md",
+              "type-aliases/StatsModuleTraceDependency.md",
+              "type-aliases/StatsModuleTraceItem.md",
+              "type-aliases/StatsProfile.md",
+              "type-aliases/TemplatePath.md",
+              "type-aliases/WebpackPluginFunction.md"
+            ]
+          },
+          {
+            "group": "Functions",
+            "pages": [
+              "functions/export=.md"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Documentation",
         "groups": [
           {
@@ -73,56 +892,6 @@
               "guides/web-workers",
               "guides/progressive-web-application",
               "guides/module-federation"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Node API",
-            "pages": [
-              "api/node",
-              "api/compiler",
-              "api/compilation",
-              "api/stats",
-              "api/resolvers"
-            ]
-          },
-          {
-            "group": "Plugin API",
-            "pages": [
-              "api/plugins/overview",
-              "api/plugins/compiler-hooks",
-              "api/plugins/compilation-hooks",
-              "api/plugins/module-factories",
-              "api/plugins/parser",
-              "api/plugins/tapable"
-            ]
-          },
-          {
-            "group": "Loader API",
-            "pages": [
-              "api/loaders/overview",
-              "api/loaders/api",
-              "api/loaders/pitching"
-            ]
-          },
-          {
-            "group": "CLI",
-            "pages": [
-              "api/cli/commands",
-              "api/cli/flags"
-            ]
-          },
-          {
-            "group": "Module Methods",
-            "pages": [
-              "api/module-methods/import",
-              "api/module-methods/require",
-              "api/module-methods/require-context",
-              "api/module-methods/module-variables"
             ]
           }
         ]

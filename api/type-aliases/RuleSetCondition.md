@@ -2,16 +2,10 @@
 title: RuleSetCondition
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / RuleSetCondition
+[webpack](../globals.md) / RuleSetCondition
 
 # Type Alias: RuleSetCondition
 
-> **RuleSetCondition** = `RegExp` \| `string` \| `RuleSetConditionFn` \| `RuleSetLogicalConditions` \| `RuleSetConditions`
+> **RuleSetCondition** = `string` \| `RegExp` \| (`value`) => `boolean` \| `RuleSetLogicalConditions` \| `RuleSetCondition`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:296](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L296)
-
-A condition matcher.
+Defined in: [webpack/types.d.ts:16128](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16128)

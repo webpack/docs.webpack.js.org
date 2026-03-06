@@ -2,28 +2,34 @@
 title: WebpackPluginInstance
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / WebpackPluginInstance
+[webpack](../globals.md) / WebpackPluginInstance
 
 # Interface: WebpackPluginInstance
 
-Defined in: [declarations/WebpackOptions.d.ts:1903](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1903)
+Defined in: [webpack/types.d.ts:19442](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19442)
 
 Plugin instance.
 
 ## Indexable
 
-\[`k`: `string`\]: `any`
+\[`index`: `string`\]: `any`
 
 ## Properties
 
-### apply
+### apply()
 
-> **apply**: `WebpackPluginInstanceApplyFunction`
+> **apply**: (`compiler`) => `void`
 
-Defined in: [declarations/WebpackOptions.d.ts:1907](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1907)
+Defined in: [webpack/types.d.ts:19448](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19448)
 
 The run point of the plugin, required method.
+
+#### Parameters
+
+##### compiler
+
+[`Compiler`](../classes/Compiler.md)
+
+#### Returns
+
+`void`

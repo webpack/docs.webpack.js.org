@@ -2,15 +2,11 @@
 title: ExternalItemFunctionData
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ExternalItemFunctionData
+[webpack](../globals.md) / ExternalItemFunctionData
 
 # Interface: ExternalItemFunctionData
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:36](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L36)
+Defined in: [webpack/types.d.ts:5625](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5625)
 
 ## Properties
 
@@ -18,7 +14,7 @@ Defined in: [lib/ExternalModuleFactoryPlugin.js:36](https://github.com/webpack/w
 
 > **context**: `string`
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:37](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L37)
+Defined in: [webpack/types.d.ts:5629](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5629)
 
 the directory in which the request is placed
 
@@ -28,7 +24,7 @@ the directory in which the request is placed
 
 > **contextInfo**: `ModuleFactoryCreateDataContextInfo`
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:38](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L38)
+Defined in: [webpack/types.d.ts:5634](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5634)
 
 contextual information
 
@@ -38,19 +34,29 @@ contextual information
 
 > **dependencyType**: `string`
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:39](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L39)
+Defined in: [webpack/types.d.ts:5639](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5639)
 
 the category of the referencing dependency
 
 ***
 
-### getResolve
+### getResolve()
 
-> **getResolve**: [`ExternalItemFunctionDataGetResolve`](../type-aliases/ExternalItemFunctionDataGetResolve.md)
+> **getResolve**: (`options?`) => (`context`, `request`, `callback`) => `void` \| (`context`, `request`) => `Promise`\<`string`\>
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:40](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L40)
+Defined in: [webpack/types.d.ts:5644](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5644)
 
 get a resolve function with the current resolver options
+
+#### Parameters
+
+##### options?
+
+[`ResolveOptions`](ResolveOptions.md)
+
+#### Returns
+
+(`context`, `request`, `callback`) => `void` \| (`context`, `request`) => `Promise`\<`string`\>
 
 ***
 
@@ -58,6 +64,6 @@ get a resolve function with the current resolver options
 
 > **request**: `string`
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:41](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L41)
+Defined in: [webpack/types.d.ts:5661](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5661)
 
 the request as written by the user in the require/import expression/statement

@@ -2,15 +2,11 @@
 title: PathData
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / PathData
+[webpack](../globals.md) / PathData
 
 # Interface: PathData
 
-Defined in: [lib/Compilation.js:337](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L337)
+Defined in: [webpack/types.d.ts:14064](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14064)
 
 ## Properties
 
@@ -18,23 +14,23 @@ Defined in: [lib/Compilation.js:337](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **basename**: `string`
 
-Defined in: [lib/Compilation.js:345](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L345)
+Defined in: [webpack/types.d.ts:14072](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14072)
 
 ***
 
 ### chunk?
 
-> `optional` **chunk**: `Chunk` \| `ChunkPathData`
+> `optional` **chunk**: [`Chunk`](../classes/Chunk.md) \| `ChunkPathData`
 
-Defined in: [lib/Compilation.js:341](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L341)
+Defined in: [webpack/types.d.ts:14068](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14068)
 
 ***
 
 ### chunkGraph?
 
-> `optional` **chunkGraph**: `ChunkGraph`
+> `optional` **chunkGraph**: [`ChunkGraph`](../classes/ChunkGraph.md)
 
-Defined in: [lib/Compilation.js:338](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L338)
+Defined in: [webpack/types.d.ts:14065](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14065)
 
 ***
 
@@ -42,7 +38,7 @@ Defined in: [lib/Compilation.js:338](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **contentHash**: `string`
 
-Defined in: [lib/Compilation.js:348](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L348)
+Defined in: [webpack/types.d.ts:14075](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14075)
 
 ***
 
@@ -50,15 +46,25 @@ Defined in: [lib/Compilation.js:348](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **contentHashType**: `string`
 
-Defined in: [lib/Compilation.js:347](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L347)
+Defined in: [webpack/types.d.ts:14074](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14074)
 
 ***
 
-### contentHashWithLength?
+### contentHashWithLength()?
 
-> `optional` **contentHashWithLength**: `HashWithLengthFunction`
+> `optional` **contentHashWithLength**: (`length`) => `string`
 
-Defined in: [lib/Compilation.js:349](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L349)
+Defined in: [webpack/types.d.ts:14076](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14076)
+
+#### Parameters
+
+##### length
+
+`number`
+
+#### Returns
+
+`string`
 
 ***
 
@@ -66,7 +72,7 @@ Defined in: [lib/Compilation.js:349](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **filename**: `string`
 
-Defined in: [lib/Compilation.js:344](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L344)
+Defined in: [webpack/types.d.ts:14071](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14071)
 
 ***
 
@@ -74,23 +80,33 @@ Defined in: [lib/Compilation.js:344](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **hash**: `string`
 
-Defined in: [lib/Compilation.js:339](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L339)
+Defined in: [webpack/types.d.ts:14066](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14066)
 
 ***
 
-### hashWithLength?
+### hashWithLength()?
 
-> `optional` **hashWithLength**: `HashWithLengthFunction`
+> `optional` **hashWithLength**: (`length`) => `string`
 
-Defined in: [lib/Compilation.js:340](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L340)
+Defined in: [webpack/types.d.ts:14067](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14067)
+
+#### Parameters
+
+##### length
+
+`number`
+
+#### Returns
+
+`string`
 
 ***
 
 ### module?
 
-> `optional` **module**: `Module` \| `ModulePathData`
+> `optional` **module**: [`Module`](../classes/Module.md) \| `ModulePathData`
 
-Defined in: [lib/Compilation.js:342](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L342)
+Defined in: [webpack/types.d.ts:14069](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14069)
 
 ***
 
@@ -98,15 +114,25 @@ Defined in: [lib/Compilation.js:342](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **noChunkHash**: `boolean`
 
-Defined in: [lib/Compilation.js:350](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L350)
+Defined in: [webpack/types.d.ts:14077](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14077)
 
 ***
 
-### prepareId?
+### prepareId()?
 
-> `optional` **prepareId**: `PrepareIdFunction`
+> `optional` **prepareId**: (`id`) => `string` \| `number`
 
-Defined in: [lib/Compilation.js:352](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L352)
+Defined in: [webpack/types.d.ts:14079](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14079)
+
+#### Parameters
+
+##### id
+
+`string` | `number`
+
+#### Returns
+
+`string` \| `number`
 
 ***
 
@@ -114,7 +140,7 @@ Defined in: [lib/Compilation.js:352](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **query**: `string`
 
-Defined in: [lib/Compilation.js:346](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L346)
+Defined in: [webpack/types.d.ts:14073](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14073)
 
 ***
 
@@ -122,7 +148,7 @@ Defined in: [lib/Compilation.js:346](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **runtime**: `RuntimeSpec`
 
-Defined in: [lib/Compilation.js:343](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L343)
+Defined in: [webpack/types.d.ts:14070](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14070)
 
 ***
 
@@ -130,4 +156,4 @@ Defined in: [lib/Compilation.js:343](https://github.com/webpack/webpack/blob/e32
 
 > `optional` **url**: `string`
 
-Defined in: [lib/Compilation.js:351](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compilation.js#L351)
+Defined in: [webpack/types.d.ts:14078](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14078)

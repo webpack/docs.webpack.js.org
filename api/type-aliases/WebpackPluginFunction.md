@@ -2,16 +2,24 @@
 title: WebpackPluginFunction
 ---
 
-[**webpack**](../README.md)
+[webpack](../globals.md) / WebpackPluginFunction
 
-***
+# Type Alias: WebpackPluginFunction()
 
-[webpack](../README.md) / WebpackPluginFunction
+> **WebpackPluginFunction** = (`this`, `compiler`) => `void`
 
-# Type Alias: WebpackPluginFunction
+Defined in: [webpack/types.d.ts:20141](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L20141)
 
-> **WebpackPluginFunction** = `WebpackPluginFunction`
+## Parameters
 
-Defined in: [declarations/WebpackOptions.d.ts:441](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L441)
+### this
 
-Function acting as plugin.
+[`Compiler`](../classes/Compiler.md)
+
+### compiler
+
+[`Compiler`](../classes/Compiler.md)
+
+## Returns
+
+`void`

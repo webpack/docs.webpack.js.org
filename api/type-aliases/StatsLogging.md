@@ -2,16 +2,10 @@
 title: StatsLogging
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / StatsLogging
+[webpack](../globals.md) / StatsLogging
 
 # Type Alias: StatsLogging
 
-> **StatsLogging**\<\> = `KnownStatsLogging` & `Record`\<`string`, `EXPECTED_ANY`\>
+> **StatsLogging** = `KnownStatsLogging` & `Record`\<`string`, `any`\>
 
-Defined in: [lib/stats/DefaultStatsFactoryPlugin.js:96](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/stats/DefaultStatsFactoryPlugin.js#L96)
-
-## Type Parameters
+Defined in: [webpack/types.d.ts:17979](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L17979)

@@ -2,15 +2,11 @@
 title: ObjectSerializerContext
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ObjectSerializerContext
+[webpack](../globals.md) / ObjectSerializerContext
 
 # Interface: ObjectSerializerContext
 
-Defined in: [lib/serialization/ObjectMiddleware.js:63](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/serialization/ObjectMiddleware.js#L63)
+Defined in: [webpack/types.d.ts:12494](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12494)
 
 ## Properties
 
@@ -18,7 +14,7 @@ Defined in: [lib/serialization/ObjectMiddleware.js:63](https://github.com/webpac
 
 > **rollback**: (`snapshot`) => `void`
 
-Defined in: [lib/serialization/ObjectMiddleware.js:67](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/serialization/ObjectMiddleware.js#L67)
+Defined in: [webpack/types.d.ts:12498](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12498)
 
 #### Parameters
 
@@ -36,13 +32,13 @@ Defined in: [lib/serialization/ObjectMiddleware.js:67](https://github.com/webpac
 
 > **setCircularReference**: (`value`) => `void`
 
-Defined in: [lib/serialization/ObjectMiddleware.js:65](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/serialization/ObjectMiddleware.js#L65)
+Defined in: [webpack/types.d.ts:12496](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12496)
 
 #### Parameters
 
 ##### value
 
-`any`
+`ReferenceableItem`
 
 #### Returns
 
@@ -54,7 +50,7 @@ Defined in: [lib/serialization/ObjectMiddleware.js:65](https://github.com/webpac
 
 > **snapshot**: () => `ObjectSerializerSnapshot`
 
-Defined in: [lib/serialization/ObjectMiddleware.js:66](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/serialization/ObjectMiddleware.js#L66)
+Defined in: [webpack/types.d.ts:12497](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12497)
 
 #### Returns
 
@@ -64,15 +60,15 @@ Defined in: [lib/serialization/ObjectMiddleware.js:66](https://github.com/webpac
 
 ### write()
 
-> **write**: (`value`) => `void`
+> **write**: (`value?`) => `void`
 
-Defined in: [lib/serialization/ObjectMiddleware.js:64](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/serialization/ObjectMiddleware.js#L64)
+Defined in: [webpack/types.d.ts:12495](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12495)
 
 #### Parameters
 
-##### value
+##### value?
 
-`EXPECTED_ANY`
+`any`
 
 #### Returns
 
@@ -82,13 +78,13 @@ Defined in: [lib/serialization/ObjectMiddleware.js:64](https://github.com/webpac
 
 ### writeLazy()?
 
-> `optional` **writeLazy**: (`item`) => `void`
+> `optional` **writeLazy**: (`item?`) => `void`
 
-Defined in: [lib/serialization/ObjectMiddleware.js:68](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/serialization/ObjectMiddleware.js#L68)
+Defined in: [webpack/types.d.ts:12499](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12499)
 
 #### Parameters
 
-##### item
+##### item?
 
 `any`
 
@@ -100,9 +96,9 @@ Defined in: [lib/serialization/ObjectMiddleware.js:68](https://github.com/webpac
 
 ### writeSeparate()?
 
-> `optional` **writeSeparate**: (`item`, `obj`) => `LazyFunction`\<`EXPECTED_ANY`, `EXPECTED_ANY`, `EXPECTED_ANY`, `LazyOptions`\>
+> `optional` **writeSeparate**: (`item`, `obj?`) => `LazyFunction`\<`any`, `any`, `any`, `LazyOptions`\>
 
-Defined in: [lib/serialization/ObjectMiddleware.js:69](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/serialization/ObjectMiddleware.js#L69)
+Defined in: [webpack/types.d.ts:12500](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12500)
 
 #### Parameters
 
@@ -110,10 +106,10 @@ Defined in: [lib/serialization/ObjectMiddleware.js:69](https://github.com/webpac
 
 `any`
 
-##### obj
+##### obj?
 
 `LazyOptions`
 
 #### Returns
 
-`LazyFunction`\<`EXPECTED_ANY`, `EXPECTED_ANY`, `EXPECTED_ANY`, `LazyOptions`\>
+`LazyFunction`\<`any`, `any`, `any`, `LazyOptions`\>

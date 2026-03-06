@@ -2,15 +2,11 @@
 title: FileCacheOptions
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / FileCacheOptions
+[webpack](../globals.md) / FileCacheOptions
 
 # Interface: FileCacheOptions
 
-Defined in: [declarations/WebpackOptions.d.ts:1070](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1070)
+Defined in: [webpack/types.d.ts:5990](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5990)
 
 Options object for persistent file-based caching.
 
@@ -20,7 +16,7 @@ Options object for persistent file-based caching.
 
 > `optional` **allowCollectingMemory**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1074](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1074)
+Defined in: [webpack/types.d.ts:5994](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5994)
 
 Allows to collect unused memory allocated during deserialization. This requires copying data into smaller buffers and has a performance cost.
 
@@ -30,15 +26,13 @@ Allows to collect unused memory allocated during deserialization. This requires 
 
 > `optional` **buildDependencies**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1078](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1078)
+Defined in: [webpack/types.d.ts:5999](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5999)
 
 Dependencies the build depends on (in multiple categories, default categories: 'defaultWebpack').
 
 #### Index Signature
 
-\[`k`: `string`\]: `string`[]
-
-List of dependencies the build depends on.
+\[`index`: `string`\]: `string`[]
 
 ***
 
@@ -46,7 +40,7 @@ List of dependencies the build depends on.
 
 > `optional` **cacheDirectory**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1087](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1087)
+Defined in: [webpack/types.d.ts:6004](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6004)
 
 Base directory for the cache (defaults to node_modules/.cache/webpack).
 
@@ -56,7 +50,7 @@ Base directory for the cache (defaults to node_modules/.cache/webpack).
 
 > `optional` **cacheLocation**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1091](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1091)
+Defined in: [webpack/types.d.ts:6009](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6009)
 
 Locations for the cache (defaults to cacheDirectory / name).
 
@@ -66,7 +60,7 @@ Locations for the cache (defaults to cacheDirectory / name).
 
 > `optional` **compression**: `false` \| `"gzip"` \| `"brotli"`
 
-Defined in: [declarations/WebpackOptions.d.ts:1095](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1095)
+Defined in: [webpack/types.d.ts:6014](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6014)
 
 Compression type used for the cache files.
 
@@ -76,7 +70,7 @@ Compression type used for the cache files.
 
 > `optional` **hashAlgorithm**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1099](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1099)
+Defined in: [webpack/types.d.ts:6019](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6019)
 
 Algorithm used for generation the hash (see node.js crypto package).
 
@@ -86,7 +80,7 @@ Algorithm used for generation the hash (see node.js crypto package).
 
 > `optional` **idleTimeout**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:1103](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1103)
+Defined in: [webpack/types.d.ts:6024](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6024)
 
 Time in ms after which idle period the cache storing should happen.
 
@@ -96,7 +90,7 @@ Time in ms after which idle period the cache storing should happen.
 
 > `optional` **idleTimeoutAfterLargeChanges**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:1107](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1107)
+Defined in: [webpack/types.d.ts:6029](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6029)
 
 Time in ms after which idle period the cache storing should happen when larger changes has been detected (cumulative build time > 2 x avg cache store time).
 
@@ -106,7 +100,7 @@ Time in ms after which idle period the cache storing should happen when larger c
 
 > `optional` **idleTimeoutForInitialStore**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:1111](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1111)
+Defined in: [webpack/types.d.ts:6034](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6034)
 
 Time in ms after which idle period the initial cache storing should happen.
 
@@ -116,7 +110,7 @@ Time in ms after which idle period the initial cache storing should happen.
 
 > `optional` **immutablePaths**: (`string` \| `RegExp`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1115](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1115)
+Defined in: [webpack/types.d.ts:6039](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6039)
 
 List of paths that are managed by a package manager and contain a version or hash in its path so all files are immutable.
 
@@ -126,7 +120,7 @@ List of paths that are managed by a package manager and contain a version or has
 
 > `optional` **managedPaths**: (`string` \| `RegExp`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1119](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1119)
+Defined in: [webpack/types.d.ts:6044](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6044)
 
 List of paths that are managed by a package manager and can be trusted to not be modified otherwise.
 
@@ -136,7 +130,7 @@ List of paths that are managed by a package manager and can be trusted to not be
 
 > `optional` **maxAge**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:1123](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1123)
+Defined in: [webpack/types.d.ts:6049](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6049)
 
 Time for which unused cache entries stay in the filesystem cache at minimum (in milliseconds).
 
@@ -146,7 +140,7 @@ Time for which unused cache entries stay in the filesystem cache at minimum (in 
 
 > `optional` **maxMemoryGenerations**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:1127](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1127)
+Defined in: [webpack/types.d.ts:6054](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6054)
 
 Number of generations unused cache entries stay in memory cache at minimum (0 = no memory cache used, 1 = may be removed after unused for a single compilation, ..., Infinity: kept forever). Cache entries will be deserialized from disk when removed from memory cache.
 
@@ -156,7 +150,7 @@ Number of generations unused cache entries stay in memory cache at minimum (0 = 
 
 > `optional` **memoryCacheUnaffected**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1131](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1131)
+Defined in: [webpack/types.d.ts:6059](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6059)
 
 Additionally cache computation of modules that are unchanged and reference only unchanged modules in memory.
 
@@ -166,7 +160,7 @@ Additionally cache computation of modules that are unchanged and reference only 
 
 > `optional` **name**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1135](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1135)
+Defined in: [webpack/types.d.ts:6064](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6064)
 
 Name for the cache. Different names will lead to different coexisting caches.
 
@@ -176,7 +170,7 @@ Name for the cache. Different names will lead to different coexisting caches.
 
 > `optional` **profile**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1139](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1139)
+Defined in: [webpack/types.d.ts:6069](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6069)
 
 Track and log detailed timing information for individual cache items.
 
@@ -186,7 +180,7 @@ Track and log detailed timing information for individual cache items.
 
 > `optional` **readonly**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1143](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1143)
+Defined in: [webpack/types.d.ts:6074](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6074)
 
 Enable/disable readonly mode.
 
@@ -196,7 +190,7 @@ Enable/disable readonly mode.
 
 > `optional` **store**: `"pack"`
 
-Defined in: [declarations/WebpackOptions.d.ts:1147](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1147)
+Defined in: [webpack/types.d.ts:6079](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6079)
 
 When to store data to the filesystem. (pack: Store data when compiler is idle in a single file).
 
@@ -206,7 +200,7 @@ When to store data to the filesystem. (pack: Store data when compiler is idle in
 
 > **type**: `"filesystem"`
 
-Defined in: [declarations/WebpackOptions.d.ts:1151](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1151)
+Defined in: [webpack/types.d.ts:6084](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6084)
 
 Filesystem caching.
 
@@ -216,6 +210,6 @@ Filesystem caching.
 
 > `optional` **version**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1155](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1155)
+Defined in: [webpack/types.d.ts:6089](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6089)
 
 Version of the cache data. Different versions won't allow to reuse the cache and override existing content. Update the version when config changed in a way which doesn't allow to reuse cache. This will invalidate the cache.

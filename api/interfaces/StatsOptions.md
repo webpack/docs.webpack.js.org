@@ -2,15 +2,11 @@
 title: StatsOptions
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / StatsOptions
+[webpack](../globals.md) / StatsOptions
 
 # Interface: StatsOptions
 
-Defined in: [declarations/WebpackOptions.d.ts:2567](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2567)
+Defined in: [webpack/types.d.ts:18014](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18014)
 
 Stats options object.
 
@@ -20,7 +16,7 @@ Stats options object.
 
 > `optional` **all**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2571](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2571)
+Defined in: [webpack/types.d.ts:18018](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18018)
 
 Fallback value for stats options when an option is not defined (has precedence over local webpack defaults).
 
@@ -30,7 +26,7 @@ Fallback value for stats options when an option is not defined (has precedence o
 
 > `optional` **assets**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2575](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2575)
+Defined in: [webpack/types.d.ts:18023](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18023)
 
 Add assets information.
 
@@ -40,7 +36,7 @@ Add assets information.
 
 > `optional` **assetsSort**: `string` \| `false`
 
-Defined in: [declarations/WebpackOptions.d.ts:2579](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2579)
+Defined in: [webpack/types.d.ts:18028](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18028)
 
 Sort the assets by that field.
 
@@ -50,7 +46,7 @@ Sort the assets by that field.
 
 > `optional` **assetsSpace**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2583](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2583)
+Defined in: [webpack/types.d.ts:18033](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18033)
 
 Space to display assets (groups will be collapsed to fit this space).
 
@@ -60,7 +56,7 @@ Space to display assets (groups will be collapsed to fit this space).
 
 > `optional` **builtAt**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2587](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2587)
+Defined in: [webpack/types.d.ts:18038](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18038)
 
 Add built at time information.
 
@@ -70,7 +66,7 @@ Add built at time information.
 
 > `optional` **cached**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2591](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2591)
+Defined in: [webpack/types.d.ts:18043](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18043)
 
 Add information about cached (not built) modules (deprecated: use 'cachedModules' instead).
 
@@ -80,7 +76,7 @@ Add information about cached (not built) modules (deprecated: use 'cachedModules
 
 > `optional` **cachedAssets**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2595](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2595)
+Defined in: [webpack/types.d.ts:18048](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18048)
 
 Show cached assets (setting this to `false` only shows emitted files).
 
@@ -90,7 +86,7 @@ Show cached assets (setting this to `false` only shows emitted files).
 
 > `optional` **cachedModules**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2599](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2599)
+Defined in: [webpack/types.d.ts:18053](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18053)
 
 Add information about cached (not built) modules.
 
@@ -98,9 +94,9 @@ Add information about cached (not built) modules.
 
 ### children?
 
-> `optional` **children**: `StatsValue` \| `StatsValue`[]
+> `optional` **children**: `boolean` \| `"none"` \| `"normal"` \| `"summary"` \| `"verbose"` \| `"errors-only"` \| `"errors-warnings"` \| `"minimal"` \| `"detailed"` \| `StatsOptions` \| `StatsValue`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:2603](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2603)
+Defined in: [webpack/types.d.ts:18058](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18058)
 
 Add children information.
 
@@ -110,7 +106,7 @@ Add children information.
 
 > `optional` **chunkGroupAuxiliary**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2607](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2607)
+Defined in: [webpack/types.d.ts:18074](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18074)
 
 Display auxiliary assets in chunk groups.
 
@@ -120,7 +116,7 @@ Display auxiliary assets in chunk groups.
 
 > `optional` **chunkGroupChildren**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2611](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2611)
+Defined in: [webpack/types.d.ts:18079](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18079)
 
 Display children of chunk groups.
 
@@ -130,7 +126,7 @@ Display children of chunk groups.
 
 > `optional` **chunkGroupMaxAssets**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2615](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2615)
+Defined in: [webpack/types.d.ts:18084](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18084)
 
 Limit of assets displayed in chunk groups.
 
@@ -140,7 +136,7 @@ Limit of assets displayed in chunk groups.
 
 > `optional` **chunkGroups**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2619](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2619)
+Defined in: [webpack/types.d.ts:18089](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18089)
 
 Display all chunk groups with the corresponding bundles.
 
@@ -150,7 +146,7 @@ Display all chunk groups with the corresponding bundles.
 
 > `optional` **chunkModules**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2623](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2623)
+Defined in: [webpack/types.d.ts:18094](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18094)
 
 Add built modules information to chunk information.
 
@@ -160,7 +156,7 @@ Add built modules information to chunk information.
 
 > `optional` **chunkModulesSpace**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2627](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2627)
+Defined in: [webpack/types.d.ts:18099](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18099)
 
 Space to display chunk modules (groups will be collapsed to fit this space, value is in number of modules/group).
 
@@ -170,7 +166,7 @@ Space to display chunk modules (groups will be collapsed to fit this space, valu
 
 > `optional` **chunkOrigins**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2631](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2631)
+Defined in: [webpack/types.d.ts:18104](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18104)
 
 Add the origins of chunks and chunk merging info.
 
@@ -180,7 +176,7 @@ Add the origins of chunks and chunk merging info.
 
 > `optional` **chunkRelations**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2635](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2635)
+Defined in: [webpack/types.d.ts:18109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18109)
 
 Add information about parent, children and sibling chunks to chunk information.
 
@@ -190,7 +186,7 @@ Add information about parent, children and sibling chunks to chunk information.
 
 > `optional` **chunks**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2639](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2639)
+Defined in: [webpack/types.d.ts:18114](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18114)
 
 Add chunk information.
 
@@ -200,7 +196,7 @@ Add chunk information.
 
 > `optional` **chunksSort**: `string` \| `false`
 
-Defined in: [declarations/WebpackOptions.d.ts:2643](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2643)
+Defined in: [webpack/types.d.ts:18119](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18119)
 
 Sort the chunks by that field.
 
@@ -210,7 +206,7 @@ Sort the chunks by that field.
 
 > `optional` **colors**: `boolean` \| \{ `bold?`: `string`; `cyan?`: `string`; `green?`: `string`; `magenta?`: `string`; `red?`: `string`; `yellow?`: `string`; \}
 
-Defined in: [declarations/WebpackOptions.d.ts:2647](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2647)
+Defined in: [webpack/types.d.ts:18124](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18124)
 
 Enables/Disables colorful output.
 
@@ -262,7 +258,7 @@ Custom color for yellow text.
 
 > `optional` **context**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:2678](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2678)
+Defined in: [webpack/types.d.ts:18156](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18156)
 
 Context directory for request shortening.
 
@@ -272,7 +268,7 @@ Context directory for request shortening.
 
 > `optional` **dependentModules**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2682](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2682)
+Defined in: [webpack/types.d.ts:18161](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18161)
 
 Show chunk modules that are dependencies of other modules of the chunk.
 
@@ -282,7 +278,7 @@ Show chunk modules that are dependencies of other modules of the chunk.
 
 > `optional` **depth**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2686](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2686)
+Defined in: [webpack/types.d.ts:18166](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18166)
 
 Add module depth in module graph.
 
@@ -292,7 +288,7 @@ Add module depth in module graph.
 
 > `optional` **entrypoints**: `boolean` \| `"auto"`
 
-Defined in: [declarations/WebpackOptions.d.ts:2690](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2690)
+Defined in: [webpack/types.d.ts:18171](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18171)
 
 Display the entry points with the corresponding bundles.
 
@@ -302,7 +298,7 @@ Display the entry points with the corresponding bundles.
 
 > `optional` **env**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2694](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2694)
+Defined in: [webpack/types.d.ts:18176](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18176)
 
 Add --env information.
 
@@ -312,7 +308,7 @@ Add --env information.
 
 > `optional` **errorCause**: `boolean` \| `"auto"`
 
-Defined in: [declarations/WebpackOptions.d.ts:2698](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2698)
+Defined in: [webpack/types.d.ts:18181](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18181)
 
 Add cause to errors.
 
@@ -322,7 +318,7 @@ Add cause to errors.
 
 > `optional` **errorDetails**: `boolean` \| `"auto"`
 
-Defined in: [declarations/WebpackOptions.d.ts:2702](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2702)
+Defined in: [webpack/types.d.ts:18186](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18186)
 
 Add details to errors (like resolving log).
 
@@ -332,7 +328,7 @@ Add details to errors (like resolving log).
 
 > `optional` **errorErrors**: `boolean` \| `"auto"`
 
-Defined in: [declarations/WebpackOptions.d.ts:2706](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2706)
+Defined in: [webpack/types.d.ts:18191](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18191)
 
 Add nested errors to errors (like in AggregateError).
 
@@ -342,7 +338,7 @@ Add nested errors to errors (like in AggregateError).
 
 > `optional` **errors**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2714](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2714)
+Defined in: [webpack/types.d.ts:18201](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18201)
 
 Add errors.
 
@@ -352,7 +348,7 @@ Add errors.
 
 > `optional` **errorsCount**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2718](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2718)
+Defined in: [webpack/types.d.ts:18206](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18206)
 
 Add errors count.
 
@@ -362,7 +358,7 @@ Add errors count.
 
 > `optional` **errorsSpace**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2722](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2722)
+Defined in: [webpack/types.d.ts:18211](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18211)
 
 Space to display errors (value is in number of lines).
 
@@ -372,7 +368,7 @@ Space to display errors (value is in number of lines).
 
 > `optional` **errorStack**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2710](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2710)
+Defined in: [webpack/types.d.ts:18196](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18196)
 
 Add internal stack trace to errors.
 
@@ -380,9 +376,9 @@ Add internal stack trace to errors.
 
 ### exclude?
 
-> `optional` **exclude**: `boolean` \| `ModuleFilterTypes`
+> `optional` **exclude**: `string` \| `boolean` \| `RegExp` \| `ModuleFilterItemTypes`[] \| (`name`, `module`, `type`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2726](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2726)
+Defined in: [webpack/types.d.ts:18216](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18216)
 
 Please use excludeModules instead.
 
@@ -390,9 +386,9 @@ Please use excludeModules instead.
 
 ### excludeAssets?
 
-> `optional` **excludeAssets**: `AssetFilterTypes`
+> `optional` **excludeAssets**: `string` \| `RegExp` \| `AssetFilterItemTypes`[] \| (`name`, `asset`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2730](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2730)
+Defined in: [webpack/types.d.ts:18230](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18230)
 
 Suppress assets that match the specified filters. Filters can be Strings, RegExps or Functions.
 
@@ -400,9 +396,9 @@ Suppress assets that match the specified filters. Filters can be Strings, RegExp
 
 ### excludeModules?
 
-> `optional` **excludeModules**: `boolean` \| `ModuleFilterTypes`
+> `optional` **excludeModules**: `string` \| `boolean` \| `RegExp` \| `ModuleFilterItemTypes`[] \| (`name`, `module`, `type`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2734](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2734)
+Defined in: [webpack/types.d.ts:18239](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18239)
 
 Suppress modules that match the specified filters. Filters can be Strings, RegExps, Booleans or Functions.
 
@@ -412,7 +408,7 @@ Suppress modules that match the specified filters. Filters can be Strings, RegEx
 
 > `optional` **groupAssetsByChunk**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2738](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2738)
+Defined in: [webpack/types.d.ts:18253](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18253)
 
 Group assets by how their are related to chunks.
 
@@ -422,7 +418,7 @@ Group assets by how their are related to chunks.
 
 > `optional` **groupAssetsByEmitStatus**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2742](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2742)
+Defined in: [webpack/types.d.ts:18258](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18258)
 
 Group assets by their status (emitted, compared for emit or cached).
 
@@ -432,7 +428,7 @@ Group assets by their status (emitted, compared for emit or cached).
 
 > `optional` **groupAssetsByExtension**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2746](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2746)
+Defined in: [webpack/types.d.ts:18263](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18263)
 
 Group assets by their extension.
 
@@ -442,7 +438,7 @@ Group assets by their extension.
 
 > `optional` **groupAssetsByInfo**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2750](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2750)
+Defined in: [webpack/types.d.ts:18268](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18268)
 
 Group assets by their asset info (immutable, development, hotModuleReplacement, etc).
 
@@ -452,7 +448,7 @@ Group assets by their asset info (immutable, development, hotModuleReplacement, 
 
 > `optional` **groupAssetsByPath**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2754](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2754)
+Defined in: [webpack/types.d.ts:18273](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18273)
 
 Group assets by their path.
 
@@ -462,7 +458,7 @@ Group assets by their path.
 
 > `optional` **groupModulesByAttributes**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2758](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2758)
+Defined in: [webpack/types.d.ts:18278](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18278)
 
 Group modules by their attributes (errors, warnings, assets, optional, orphan, or dependent).
 
@@ -472,7 +468,7 @@ Group modules by their attributes (errors, warnings, assets, optional, orphan, o
 
 > `optional` **groupModulesByCacheStatus**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2762](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2762)
+Defined in: [webpack/types.d.ts:18283](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18283)
 
 Group modules by their status (cached or built and cacheable).
 
@@ -482,7 +478,7 @@ Group modules by their status (cached or built and cacheable).
 
 > `optional` **groupModulesByExtension**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2766](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2766)
+Defined in: [webpack/types.d.ts:18288](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18288)
 
 Group modules by their extension.
 
@@ -492,7 +488,7 @@ Group modules by their extension.
 
 > `optional` **groupModulesByLayer**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2770](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2770)
+Defined in: [webpack/types.d.ts:18293](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18293)
 
 Group modules by their layer.
 
@@ -502,7 +498,7 @@ Group modules by their layer.
 
 > `optional` **groupModulesByPath**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2774](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2774)
+Defined in: [webpack/types.d.ts:18298](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18298)
 
 Group modules by their path.
 
@@ -512,7 +508,7 @@ Group modules by their path.
 
 > `optional` **groupModulesByType**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2778](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2778)
+Defined in: [webpack/types.d.ts:18303](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18303)
 
 Group modules by their type.
 
@@ -522,7 +518,7 @@ Group modules by their type.
 
 > `optional` **groupReasonsByOrigin**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2782](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2782)
+Defined in: [webpack/types.d.ts:18308](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18308)
 
 Group reasons by their origin module.
 
@@ -532,7 +528,7 @@ Group reasons by their origin module.
 
 > `optional` **hash**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2786](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2786)
+Defined in: [webpack/types.d.ts:18313](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18313)
 
 Add the hash of the compilation.
 
@@ -542,7 +538,7 @@ Add the hash of the compilation.
 
 > `optional` **ids**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2790](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2790)
+Defined in: [webpack/types.d.ts:18318](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18318)
 
 Add ids.
 
@@ -552,7 +548,7 @@ Add ids.
 
 > `optional` **logging**: `boolean` \| `"none"` \| `"error"` \| `"warn"` \| `"info"` \| `"log"` \| `"verbose"`
 
-Defined in: [declarations/WebpackOptions.d.ts:2794](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2794)
+Defined in: [webpack/types.d.ts:18323](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18323)
 
 Add logging output.
 
@@ -560,9 +556,9 @@ Add logging output.
 
 ### loggingDebug?
 
-> `optional` **loggingDebug**: `boolean` \| `FilterTypes`
+> `optional` **loggingDebug**: `string` \| `boolean` \| `RegExp` \| `FilterItemTypes`[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2798](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2798)
+Defined in: [webpack/types.d.ts:18328](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18328)
 
 Include debug logging of specified loggers (i. e. for plugins or loaders). Filters can be Strings, RegExps or Functions.
 
@@ -572,7 +568,7 @@ Include debug logging of specified loggers (i. e. for plugins or loaders). Filte
 
 > `optional` **loggingTrace**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2802](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2802)
+Defined in: [webpack/types.d.ts:18338](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18338)
 
 Add stack traces to logging output.
 
@@ -582,7 +578,7 @@ Add stack traces to logging output.
 
 > `optional` **moduleAssets**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2806](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2806)
+Defined in: [webpack/types.d.ts:18343](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18343)
 
 Add information about assets inside modules.
 
@@ -592,7 +588,7 @@ Add information about assets inside modules.
 
 > `optional` **modules**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2814](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2814)
+Defined in: [webpack/types.d.ts:18353](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18353)
 
 Add built modules information.
 
@@ -602,7 +598,7 @@ Add built modules information.
 
 > `optional` **modulesSort**: `string` \| `false`
 
-Defined in: [declarations/WebpackOptions.d.ts:2818](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2818)
+Defined in: [webpack/types.d.ts:18358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18358)
 
 Sort the modules by that field.
 
@@ -612,7 +608,7 @@ Sort the modules by that field.
 
 > `optional` **modulesSpace**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2822](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2822)
+Defined in: [webpack/types.d.ts:18363](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18363)
 
 Space to display modules (groups will be collapsed to fit this space, value is in number of modules/groups).
 
@@ -622,7 +618,7 @@ Space to display modules (groups will be collapsed to fit this space, value is i
 
 > `optional` **moduleTrace**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2810](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2810)
+Defined in: [webpack/types.d.ts:18348](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18348)
 
 Add dependencies and origin of warnings/errors.
 
@@ -632,7 +628,7 @@ Add dependencies and origin of warnings/errors.
 
 > `optional` **nestedModules**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2826](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2826)
+Defined in: [webpack/types.d.ts:18368](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18368)
 
 Add information about modules nested in other modules (like with module concatenation).
 
@@ -642,7 +638,7 @@ Add information about modules nested in other modules (like with module concaten
 
 > `optional` **nestedModulesSpace**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2830](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2830)
+Defined in: [webpack/types.d.ts:18373](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18373)
 
 Space to display modules nested within other modules (groups will be collapsed to fit this space, value is in number of modules/group).
 
@@ -652,7 +648,7 @@ Space to display modules nested within other modules (groups will be collapsed t
 
 > `optional` **optimizationBailout**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2834](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2834)
+Defined in: [webpack/types.d.ts:18378](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18378)
 
 Show reasons why optimization bailed out for modules.
 
@@ -662,7 +658,7 @@ Show reasons why optimization bailed out for modules.
 
 > `optional` **orphanModules**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2838](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2838)
+Defined in: [webpack/types.d.ts:18383](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18383)
 
 Add information about orphan modules.
 
@@ -672,7 +668,7 @@ Add information about orphan modules.
 
 > `optional` **outputPath**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2842](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2842)
+Defined in: [webpack/types.d.ts:18388](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18388)
 
 Add output path information.
 
@@ -682,7 +678,7 @@ Add output path information.
 
 > `optional` **performance**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2846](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2846)
+Defined in: [webpack/types.d.ts:18393](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18393)
 
 Add performance hint flags.
 
@@ -692,7 +688,7 @@ Add performance hint flags.
 
 > `optional` **preset**: `string` \| `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2850](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2850)
+Defined in: [webpack/types.d.ts:18398](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18398)
 
 Preset for the default values.
 
@@ -702,7 +698,7 @@ Preset for the default values.
 
 > `optional` **providedExports**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2854](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2854)
+Defined in: [webpack/types.d.ts:18403](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18403)
 
 Show exports provided by modules.
 
@@ -712,7 +708,7 @@ Show exports provided by modules.
 
 > `optional` **publicPath**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2858](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2858)
+Defined in: [webpack/types.d.ts:18408](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18408)
 
 Add public path information.
 
@@ -722,7 +718,7 @@ Add public path information.
 
 > `optional` **reasons**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2862](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2862)
+Defined in: [webpack/types.d.ts:18413](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18413)
 
 Add information about the reasons why modules are included.
 
@@ -732,7 +728,7 @@ Add information about the reasons why modules are included.
 
 > `optional` **reasonsSpace**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2866](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2866)
+Defined in: [webpack/types.d.ts:18418](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18418)
 
 Space to display reasons (groups will be collapsed to fit this space).
 
@@ -742,7 +738,7 @@ Space to display reasons (groups will be collapsed to fit this space).
 
 > `optional` **relatedAssets**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2870](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2870)
+Defined in: [webpack/types.d.ts:18423](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18423)
 
 Add information about assets that are related to other assets (like SourceMaps for assets).
 
@@ -752,7 +748,7 @@ Add information about assets that are related to other assets (like SourceMaps f
 
 > `optional` **runtime**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2874](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2874)
+Defined in: [webpack/types.d.ts:18428](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18428)
 
 Add information about runtime modules (deprecated: use 'runtimeModules' instead).
 
@@ -762,7 +758,7 @@ Add information about runtime modules (deprecated: use 'runtimeModules' instead)
 
 > `optional` **runtimeModules**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2878](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2878)
+Defined in: [webpack/types.d.ts:18433](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18433)
 
 Add information about runtime modules.
 
@@ -772,7 +768,7 @@ Add information about runtime modules.
 
 > `optional` **source**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2882](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2882)
+Defined in: [webpack/types.d.ts:18438](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18438)
 
 Add the source code of modules.
 
@@ -782,7 +778,7 @@ Add the source code of modules.
 
 > `optional` **timings**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2886](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2886)
+Defined in: [webpack/types.d.ts:18443](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18443)
 
 Add timing information.
 
@@ -792,7 +788,7 @@ Add timing information.
 
 > `optional` **usedExports**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2890](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2890)
+Defined in: [webpack/types.d.ts:18448](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18448)
 
 Show exports used by modules.
 
@@ -802,7 +798,7 @@ Show exports used by modules.
 
 > `optional` **version**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2894](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2894)
+Defined in: [webpack/types.d.ts:18453](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18453)
 
 Add webpack version information.
 
@@ -812,7 +808,7 @@ Add webpack version information.
 
 > `optional` **warnings**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2898](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2898)
+Defined in: [webpack/types.d.ts:18458](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18458)
 
 Add warnings.
 
@@ -822,7 +818,7 @@ Add warnings.
 
 > `optional` **warningsCount**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2902](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2902)
+Defined in: [webpack/types.d.ts:18463](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18463)
 
 Add warnings count.
 
@@ -830,9 +826,9 @@ Add warnings count.
 
 ### warningsFilter?
 
-> `optional` **warningsFilter**: `WarningFilterTypes`
+> `optional` **warningsFilter**: `string` \| `RegExp` \| `WarningFilterItemTypes`[] \| (`warning`, `warningString`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:2906](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2906)
+Defined in: [webpack/types.d.ts:18468](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18468)
 
 Suppress listing warnings that match the specified filters (they will still be counted). Filters can be Strings, RegExps or Functions.
 
@@ -842,6 +838,6 @@ Suppress listing warnings that match the specified filters (they will still be c
 
 > `optional` **warningsSpace**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:2910](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L2910)
+Defined in: [webpack/types.d.ts:18477](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18477)
 
 Space to display warnings (value is in number of lines).

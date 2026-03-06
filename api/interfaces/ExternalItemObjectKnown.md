@@ -2,15 +2,11 @@
 title: ExternalItemObjectKnown
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ExternalItemObjectKnown
+[webpack](../globals.md) / ExternalItemObjectKnown
 
 # Interface: ExternalItemObjectKnown
 
-Defined in: [declarations/WebpackOptions.d.ts:4027](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4027)
+Defined in: [webpack/types.d.ts:5667](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5667)
 
 If an dependency matches exactly a property of the object, the property value is used as dependency.
 
@@ -18,8 +14,8 @@ If an dependency matches exactly a property of the object, the property value is
 
 ### byLayer?
 
-> `optional` **byLayer**: \{\[`k`: `string`\]: [`ExternalItem`](../type-aliases/ExternalItem.md); \} \| `ExternalItemByLayerFn`
+> `optional` **byLayer**: \{\[`index`: `string`\]: [`ExternalItem`](../type-aliases/ExternalItem.md); \} \| (`layer`) => [`ExternalItem`](../type-aliases/ExternalItem.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:4031](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4031)
+Defined in: [webpack/types.d.ts:5671](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5671)
 
 Specify externals depending on the layer.

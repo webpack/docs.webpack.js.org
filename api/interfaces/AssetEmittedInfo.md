@@ -2,31 +2,27 @@
 title: AssetEmittedInfo
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / AssetEmittedInfo
+[webpack](../globals.md) / AssetEmittedInfo
 
 # Interface: AssetEmittedInfo
 
-Defined in: [lib/Compiler.js:108](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compiler.js#L108)
+Defined in: [webpack/types.d.ts:358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L358)
 
 ## Properties
 
 ### compilation
 
-> **compilation**: `Compilation`
+> **compilation**: [`Compilation`](../classes/Compilation.md)
 
-Defined in: [lib/Compiler.js:111](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compiler.js#L111)
+Defined in: [webpack/types.d.ts:361](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L361)
 
 ***
 
 ### content
 
-> **content**: `Buffer`\<`ArrayBufferLike`\>
+> **content**: `Buffer`
 
-Defined in: [lib/Compiler.js:109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compiler.js#L109)
+Defined in: [webpack/types.d.ts:359](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L359)
 
 ***
 
@@ -34,15 +30,15 @@ Defined in: [lib/Compiler.js:109](https://github.com/webpack/webpack/blob/e3298f
 
 > **outputPath**: `string`
 
-Defined in: [lib/Compiler.js:112](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compiler.js#L112)
+Defined in: [webpack/types.d.ts:362](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L362)
 
 ***
 
 ### source
 
-> **source**: `Source`
+> **source**: [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
 
-Defined in: [lib/Compiler.js:110](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compiler.js#L110)
+Defined in: [webpack/types.d.ts:360](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L360)
 
 ***
 
@@ -50,4 +46,4 @@ Defined in: [lib/Compiler.js:110](https://github.com/webpack/webpack/blob/e3298f
 
 > **targetPath**: `string`
 
-Defined in: [lib/Compiler.js:113](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Compiler.js#L113)
+Defined in: [webpack/types.d.ts:363](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L363)

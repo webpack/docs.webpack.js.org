@@ -2,15 +2,11 @@
 title: ResolveOptions
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ResolveOptions
+[webpack](../globals.md) / ResolveOptions
 
 # Interface: ResolveOptions
 
-Defined in: [declarations/WebpackOptions.d.ts:1624](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1624)
+Defined in: [webpack/types.d.ts:15461](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15461)
 
 Options object for resolving requests.
 
@@ -18,11 +14,21 @@ Options object for resolving requests.
 
 ### alias?
 
-> `optional` **alias**: `ResolveAlias`
+> `optional` **alias**: \{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \} \| `object`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1628](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1628)
+Defined in: [webpack/types.d.ts:15465](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15465)
 
 Redirect module requests.
+
+#### Type Declaration
+
+\{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \}
+
+#### Index Signature
+
+\[`index`: `string`\]: `string` \| `false` \| `string`[]
+
+`object`[]
 
 ***
 
@@ -30,7 +36,7 @@ Redirect module requests.
 
 > `optional` **aliasFields**: (`string` \| `string`[])[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1632](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1632)
+Defined in: [webpack/types.d.ts:15485](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15485)
 
 Fields in the description file (usually package.json) which are used to redirect requests inside the module.
 
@@ -40,15 +46,13 @@ Fields in the description file (usually package.json) which are used to redirect
 
 > `optional` **byDependency**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1636](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1636)
+Defined in: [webpack/types.d.ts:15490](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15490)
 
 Extra resolve options per dependency category. Typical categories are "commonjs", "amd", "esm".
 
 #### Index Signature
 
-\[`k`: `string`\]: `ResolveOptions`
-
-Options object for resolving requests.
+\[`index`: `string`\]: `ResolveOptions`
 
 ***
 
@@ -56,7 +60,7 @@ Options object for resolving requests.
 
 > `optional` **cache**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1645](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1645)
+Defined in: [webpack/types.d.ts:15495](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15495)
 
 Enable caching of successfully resolved requests (cache entries are revalidated).
 
@@ -66,7 +70,7 @@ Enable caching of successfully resolved requests (cache entries are revalidated)
 
 > `optional` **cachePredicate**: (`request`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1649](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1649)
+Defined in: [webpack/types.d.ts:15500](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15500)
 
 Predicate function to decide which requests should be cached.
 
@@ -86,7 +90,7 @@ Predicate function to decide which requests should be cached.
 
 > `optional` **cacheWithContext**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1655](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1655)
+Defined in: [webpack/types.d.ts:15505](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15505)
 
 Include the context information in the cache identifier when caching.
 
@@ -96,7 +100,7 @@ Include the context information in the cache identifier when caching.
 
 > `optional` **conditionNames**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1659](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1659)
+Defined in: [webpack/types.d.ts:15510](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15510)
 
 Condition names for exports field entry point.
 
@@ -106,7 +110,7 @@ Condition names for exports field entry point.
 
 > `optional` **descriptionFiles**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1663](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1663)
+Defined in: [webpack/types.d.ts:15515](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15515)
 
 Filenames used to find a description file (like a package.json).
 
@@ -116,7 +120,7 @@ Filenames used to find a description file (like a package.json).
 
 > `optional` **enforceExtension**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1667](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1667)
+Defined in: [webpack/types.d.ts:15520](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15520)
 
 Enforce the resolver to use one of the extensions from the extensions option (User must specify requests without extension).
 
@@ -126,7 +130,7 @@ Enforce the resolver to use one of the extensions from the extensions option (Us
 
 > `optional` **exportsFields**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1671](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1671)
+Defined in: [webpack/types.d.ts:15525](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15525)
 
 Field names from the description file (usually package.json) which are used to provide entry points of a package.
 
@@ -136,15 +140,13 @@ Field names from the description file (usually package.json) which are used to p
 
 > `optional` **extensionAlias**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1675](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1675)
+Defined in: [webpack/types.d.ts:15530](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15530)
 
 An object which maps extension to extension aliases.
 
 #### Index Signature
 
-\[`k`: `string`\]: `string` \| `string`[]
-
-Extension alias.
+\[`index`: `string`\]: `string` \| `string`[]
 
 ***
 
@@ -152,7 +154,7 @@ Extension alias.
 
 > `optional` **extensions**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1684](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1684)
+Defined in: [webpack/types.d.ts:15535](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15535)
 
 Extensions added to the request when trying to find the file.
 
@@ -160,11 +162,21 @@ Extensions added to the request when trying to find the file.
 
 ### fallback?
 
-> `optional` **fallback**: `ResolveAlias`
+> `optional` **fallback**: \{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \} \| `object`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1688](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1688)
+Defined in: [webpack/types.d.ts:15540](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15540)
 
 Redirect module requests when normal resolving fails.
+
+#### Type Declaration
+
+\{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \}
+
+#### Index Signature
+
+\[`index`: `string`\]: `string` \| `false` \| `string`[]
+
+`object`[]
 
 ***
 
@@ -172,7 +184,7 @@ Redirect module requests when normal resolving fails.
 
 > `optional` **fileSystem**: [`InputFileSystem`](InputFileSystem.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:1692](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1692)
+Defined in: [webpack/types.d.ts:15560](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15560)
 
 Filesystem for the resolver.
 
@@ -182,7 +194,7 @@ Filesystem for the resolver.
 
 > `optional` **fullySpecified**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1696](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1696)
+Defined in: [webpack/types.d.ts:15565](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15565)
 
 Treats the request specified by the user as fully specified, meaning no extensions are added and the mainFiles in directories are not resolved (This doesn't affect requests from mainFields, aliasFields or aliases).
 
@@ -192,7 +204,7 @@ Treats the request specified by the user as fully specified, meaning no extensio
 
 > `optional` **importsFields**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1700](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1700)
+Defined in: [webpack/types.d.ts:15570](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15570)
 
 Field names from the description file (usually package.json) which are used to provide internal request of a package (requests starting with # are considered as internal).
 
@@ -202,7 +214,7 @@ Field names from the description file (usually package.json) which are used to p
 
 > `optional` **mainFields**: (`string` \| `string`[])[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1704](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1704)
+Defined in: [webpack/types.d.ts:15575](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15575)
 
 Field names from the description file (package.json) which are used to find the default entry point.
 
@@ -212,7 +224,7 @@ Field names from the description file (package.json) which are used to find the 
 
 > `optional` **mainFiles**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1708](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1708)
+Defined in: [webpack/types.d.ts:15580](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15580)
 
 Filenames used to find the default entry point if there is no description file or main field.
 
@@ -222,7 +234,7 @@ Filenames used to find the default entry point if there is no description file o
 
 > `optional` **modules**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1712](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1712)
+Defined in: [webpack/types.d.ts:15585](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15585)
 
 Folder names or directory paths where to find modules.
 
@@ -230,9 +242,9 @@ Folder names or directory paths where to find modules.
 
 ### plugins?
 
-> `optional` **plugins**: (`"..."` \| [`ResolvePluginInstance`](../type-aliases/ResolvePluginInstance.md) \| `Falsy`)[]
+> `optional` **plugins**: (`false` \| `""` \| `0` \| `"..."` \| \{\[`index`: `string`\]: `any`; `apply`: (`arg0`) => `void`; \} \| (`this`, `arg1`) => `void`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1716](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1716)
+Defined in: [webpack/types.d.ts:15590](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15590)
 
 Plugins for the resolver.
 
@@ -242,7 +254,7 @@ Plugins for the resolver.
 
 > `optional` **preferAbsolute**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1720](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1720)
+Defined in: [webpack/types.d.ts:15610](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15610)
 
 Prefer to resolve server-relative URLs (starting with '/') as absolute paths before falling back to resolve in 'resolve.roots'.
 
@@ -252,7 +264,7 @@ Prefer to resolve server-relative URLs (starting with '/') as absolute paths bef
 
 > `optional` **preferRelative**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1724](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1724)
+Defined in: [webpack/types.d.ts:15615](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15615)
 
 Prefer to resolve module requests as relative request and fallback to resolving as module.
 
@@ -260,9 +272,9 @@ Prefer to resolve module requests as relative request and fallback to resolving 
 
 ### resolver?
 
-> `optional` **resolver**: `Resolver`
+> `optional` **resolver**: [`Resolver`](../classes/Resolver.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:1728](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1728)
+Defined in: [webpack/types.d.ts:15620](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15620)
 
 Custom resolver.
 
@@ -272,7 +284,7 @@ Custom resolver.
 
 > `optional` **restrictions**: (`string` \| `RegExp`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1732](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1732)
+Defined in: [webpack/types.d.ts:15625](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15625)
 
 A list of resolve restrictions. Resolve results must fulfill all of these restrictions to resolve successfully. Other resolve paths are taken when restrictions are not met.
 
@@ -282,7 +294,7 @@ A list of resolve restrictions. Resolve results must fulfill all of these restri
 
 > `optional` **roots**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1736](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1736)
+Defined in: [webpack/types.d.ts:15630](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15630)
 
 A list of directories in which requests that are server-relative URLs (starting with '/') are resolved.
 
@@ -292,7 +304,7 @@ A list of directories in which requests that are server-relative URLs (starting 
 
 > `optional` **symlinks**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1740](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1740)
+Defined in: [webpack/types.d.ts:15635](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15635)
 
 Enable resolving symlinks to the original location.
 
@@ -302,7 +314,7 @@ Enable resolving symlinks to the original location.
 
 > `optional` **tsconfig**: `string` \| `boolean` \| \{ `configFile?`: `string`; `references?`: `string`; \}
 
-Defined in: [declarations/WebpackOptions.d.ts:1744](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1744)
+Defined in: [webpack/types.d.ts:15640](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15640)
 
 TypeScript config for paths mapping. Can be `false` (disabled), `true` (use default `tsconfig.json`), a string path to `tsconfig.json`, or an object with `configFile` and `references` options.
 
@@ -330,9 +342,9 @@ References to other tsconfig files. 'auto' inherits from TypeScript config, or a
 
 ### unsafeCache?
 
-> `optional` **unsafeCache**: `boolean` \| \{\[`k`: `string`\]: `any`; \}
+> `optional` **unsafeCache**: `boolean` \| \{\[`index`: `string`\]: `any`; \}
 
-Defined in: [declarations/WebpackOptions.d.ts:1760](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1760)
+Defined in: [webpack/types.d.ts:15657](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15657)
 
 Enable caching of successfully resolved requests (cache entries are not revalidated).
 
@@ -342,6 +354,6 @@ Enable caching of successfully resolved requests (cache entries are not revalida
 
 > `optional` **useSyncFileSystemCalls**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1768](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1768)
+Defined in: [webpack/types.d.ts:15662](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15662)
 
 Use synchronous filesystem calls for the resolver.

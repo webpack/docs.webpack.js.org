@@ -2,15 +2,11 @@
 title: ModuleOptions
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ModuleOptions
+[webpack](../globals.md) / ModuleOptions
 
 # Interface: ModuleOptions
 
-Defined in: [declarations/WebpackOptions.d.ts:1378](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1378)
+Defined in: [webpack/types.d.ts:11256](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11256)
 
 Options affecting the normal modules (`NormalModuleFactory`).
 
@@ -18,9 +14,9 @@ Options affecting the normal modules (`NormalModuleFactory`).
 
 ### defaultRules?
 
-> `optional` **defaultRules**: `RuleSetRules`
+> `optional` **defaultRules**: (`false` \| `""` \| `0` \| `"..."` \| [`RuleSetRule`](RuleSetRule.md))[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1382](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1382)
+Defined in: [webpack/types.d.ts:11260](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11260)
 
 An array of rules applied by default for modules.
 
@@ -30,7 +26,7 @@ An array of rules applied by default for modules.
 
 > `optional` **exprContextCritical**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1386](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1386)
+Defined in: [webpack/types.d.ts:11265](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11265)
 
 Enable warnings for full dynamic dependencies.
 
@@ -40,7 +36,7 @@ Enable warnings for full dynamic dependencies.
 
 > `optional` **exprContextRecursive**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1390](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1390)
+Defined in: [webpack/types.d.ts:11270](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11270)
 
 Enable recursive directory lookup for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRecursive'.
 
@@ -50,7 +46,7 @@ Enable recursive directory lookup for full dynamic dependencies. Deprecated: Thi
 
 > `optional` **exprContextRegExp**: `boolean` \| `RegExp`
 
-Defined in: [declarations/WebpackOptions.d.ts:1394](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1394)
+Defined in: [webpack/types.d.ts:11275](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11275)
 
 Sets the default regular expression for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRegExp'.
 
@@ -60,7 +56,7 @@ Sets the default regular expression for full dynamic dependencies. Deprecated: T
 
 > `optional` **exprContextRequest**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1398](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1398)
+Defined in: [webpack/types.d.ts:11280](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11280)
 
 Set the default request for full dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.exprContextRequest'.
 
@@ -70,7 +66,7 @@ Set the default request for full dynamic dependencies. Deprecated: This option h
 
 > `optional` **generator**: `GeneratorOptionsByModuleType`
 
-Defined in: [declarations/WebpackOptions.d.ts:1402](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1402)
+Defined in: [webpack/types.d.ts:11285](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11285)
 
 Specify options for each generator.
 
@@ -78,9 +74,9 @@ Specify options for each generator.
 
 ### noParse?
 
-> `optional` **noParse**: `NoParse`
+> `optional` **noParse**: `string` \| `RegExp` \| (`content`) => `boolean` \| (`string` \| `RegExp` \| (`content`) => `boolean`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1406](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1406)
+Defined in: [webpack/types.d.ts:11290](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11290)
 
 Don't parse files matching. It's matched against the full resolved request.
 
@@ -90,7 +86,7 @@ Don't parse files matching. It's matched against the full resolved request.
 
 > `optional` **parser**: `ParserOptionsByModuleType`
 
-Defined in: [declarations/WebpackOptions.d.ts:1410](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1410)
+Defined in: [webpack/types.d.ts:11299](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11299)
 
 Specify options for each parser.
 
@@ -98,9 +94,9 @@ Specify options for each parser.
 
 ### rules?
 
-> `optional` **rules**: `RuleSetRules`
+> `optional` **rules**: (`false` \| `""` \| `0` \| `"..."` \| [`RuleSetRule`](RuleSetRule.md))[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1414](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1414)
+Defined in: [webpack/types.d.ts:11304](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11304)
 
 An array of rules applied for modules.
 
@@ -110,7 +106,7 @@ An array of rules applied for modules.
 
 > `optional` **strictExportPresence**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1418](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1418)
+Defined in: [webpack/types.d.ts:11309](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11309)
 
 Emit errors instead of warnings when imported names don't exist in imported module. Deprecated: This option has moved to 'module.parser.javascript.strictExportPresence'.
 
@@ -120,7 +116,7 @@ Emit errors instead of warnings when imported names don't exist in imported modu
 
 > `optional` **strictThisContextOnImports**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1422](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1422)
+Defined in: [webpack/types.d.ts:11314](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11314)
 
 Handle the this context correctly according to the spec for namespace objects. Deprecated: This option has moved to 'module.parser.javascript.strictThisContextOnImports'.
 
@@ -130,7 +126,7 @@ Handle the this context correctly according to the spec for namespace objects. D
 
 > `optional` **unknownContextCritical**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1426](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1426)
+Defined in: [webpack/types.d.ts:11319](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11319)
 
 Enable warnings when using the require function in a not statically analyse-able way. Deprecated: This option has moved to 'module.parser.javascript.unknownContextCritical'.
 
@@ -140,7 +136,7 @@ Enable warnings when using the require function in a not statically analyse-able
 
 > `optional` **unknownContextRecursive**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1430](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1430)
+Defined in: [webpack/types.d.ts:11324](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11324)
 
 Enable recursive directory lookup when using the require function in a not statically analyse-able way. Deprecated: This option has moved to 'module.parser.javascript.unknownContextRecursive'.
 
@@ -150,7 +146,7 @@ Enable recursive directory lookup when using the require function in a not stati
 
 > `optional` **unknownContextRegExp**: `boolean` \| `RegExp`
 
-Defined in: [declarations/WebpackOptions.d.ts:1434](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1434)
+Defined in: [webpack/types.d.ts:11329](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11329)
 
 Sets the regular expression when using the require function in a not statically analyse-able way. Deprecated: This option has moved to 'module.parser.javascript.unknownContextRegExp'.
 
@@ -160,7 +156,7 @@ Sets the regular expression when using the require function in a not statically 
 
 > `optional` **unknownContextRequest**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1438](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1438)
+Defined in: [webpack/types.d.ts:11334](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11334)
 
 Sets the request when using the require function in a not statically analyse-able way. Deprecated: This option has moved to 'module.parser.javascript.unknownContextRequest'.
 
@@ -168,9 +164,9 @@ Sets the request when using the require function in a not statically analyse-abl
 
 ### unsafeCache?
 
-> `optional` **unsafeCache**: `boolean` \| `UnsafeCachePredicate`
+> `optional` **unsafeCache**: `boolean` \| (`module`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1442](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1442)
+Defined in: [webpack/types.d.ts:11339](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11339)
 
 Cache the resolving of module requests.
 
@@ -180,7 +176,7 @@ Cache the resolving of module requests.
 
 > `optional` **wrappedContextCritical**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1446](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1446)
+Defined in: [webpack/types.d.ts:11344](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11344)
 
 Enable warnings for partial dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.wrappedContextCritical'.
 
@@ -190,7 +186,7 @@ Enable warnings for partial dynamic dependencies. Deprecated: This option has mo
 
 > `optional` **wrappedContextRecursive**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1450](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1450)
+Defined in: [webpack/types.d.ts:11349](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11349)
 
 Enable recursive directory lookup for partial dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.wrappedContextRecursive'.
 
@@ -200,6 +196,6 @@ Enable recursive directory lookup for partial dynamic dependencies. Deprecated: 
 
 > `optional` **wrappedContextRegExp**: `RegExp`
 
-Defined in: [declarations/WebpackOptions.d.ts:1454](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1454)
+Defined in: [webpack/types.d.ts:11354](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11354)
 
 Set the inner regular expression for partial dynamic dependencies. Deprecated: This option has moved to 'module.parser.javascript.wrappedContextRegExp'.

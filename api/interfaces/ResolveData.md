@@ -2,23 +2,19 @@
 title: ResolveData
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ResolveData
+[webpack](../globals.md) / ResolveData
 
 # Interface: ResolveData
 
-Defined in: [lib/NormalModuleFactory.js:70](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L70)
+Defined in: [webpack/types.d.ts:15422](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15422)
 
 ## Properties
 
-### attributes
+### attributes?
 
-> **attributes**: `ImportAttributes`
+> `optional` **attributes**: `ImportAttributes`
 
-Defined in: [lib/NormalModuleFactory.js:75](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L75)
+Defined in: [webpack/types.d.ts:15427](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15427)
 
 ***
 
@@ -26,7 +22,7 @@ Defined in: [lib/NormalModuleFactory.js:75](https://github.com/webpack/webpack/b
 
 > **cacheable**: `boolean`
 
-Defined in: [lib/NormalModuleFactory.js:83](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L83)
+Defined in: [webpack/types.d.ts:15439](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15439)
 
 allow to use the unsafe cache
 
@@ -36,15 +32,15 @@ allow to use the unsafe cache
 
 > **context**: `string`
 
-Defined in: [lib/NormalModuleFactory.js:73](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L73)
+Defined in: [webpack/types.d.ts:15425](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15425)
 
 ***
 
 ### contextDependencies
 
-> **contextDependencies**: `FileSystemDependencies`
+> **contextDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
 
-Defined in: [lib/NormalModuleFactory.js:81](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L81)
+Defined in: [webpack/types.d.ts:15433](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15433)
 
 ***
 
@@ -52,7 +48,7 @@ Defined in: [lib/NormalModuleFactory.js:81](https://github.com/webpack/webpack/b
 
 > **contextInfo**: `ModuleFactoryCreateDataContextInfo`
 
-Defined in: [lib/NormalModuleFactory.js:71](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L71)
+Defined in: [webpack/types.d.ts:15423](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15423)
 
 ***
 
@@ -60,15 +56,15 @@ Defined in: [lib/NormalModuleFactory.js:71](https://github.com/webpack/webpack/b
 
 > **createData**: `Partial`\<`NormalModuleCreateData` & `object`\>
 
-Defined in: [lib/NormalModuleFactory.js:78](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L78)
+Defined in: [webpack/types.d.ts:15430](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15430)
 
 ***
 
 ### dependencies
 
-> **dependencies**: `ModuleDependency`[]
+> **dependencies**: [`ModuleDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/ModuleDependency.md)[]
 
-Defined in: [lib/NormalModuleFactory.js:76](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L76)
+Defined in: [webpack/types.d.ts:15428](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15428)
 
 ***
 
@@ -76,31 +72,31 @@ Defined in: [lib/NormalModuleFactory.js:76](https://github.com/webpack/webpack/b
 
 > **dependencyType**: `string`
 
-Defined in: [lib/NormalModuleFactory.js:77](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L77)
+Defined in: [webpack/types.d.ts:15429](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15429)
 
 ***
 
 ### fileDependencies
 
-> **fileDependencies**: `FileSystemDependencies`
+> **fileDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
 
-Defined in: [lib/NormalModuleFactory.js:79](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L79)
+Defined in: [webpack/types.d.ts:15431](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15431)
 
 ***
 
 ### ignoredModule?
 
-> `optional` **ignoredModule**: `Module`
+> `optional` **ignoredModule**: [`Module`](../classes/Module.md)
 
-Defined in: [lib/NormalModuleFactory.js:82](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L82)
+Defined in: [webpack/types.d.ts:15434](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15434)
 
 ***
 
 ### missingDependencies
 
-> **missingDependencies**: `FileSystemDependencies`
+> **missingDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
 
-Defined in: [lib/NormalModuleFactory.js:80](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L80)
+Defined in: [webpack/types.d.ts:15432](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15432)
 
 ***
 
@@ -108,12 +104,12 @@ Defined in: [lib/NormalModuleFactory.js:80](https://github.com/webpack/webpack/b
 
 > **request**: `string`
 
-Defined in: [lib/NormalModuleFactory.js:74](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L74)
+Defined in: [webpack/types.d.ts:15426](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15426)
 
 ***
 
-### resolveOptions
+### resolveOptions?
 
-> **resolveOptions**: [`ResolveOptions`](ResolveOptions.md)
+> `optional` **resolveOptions**: [`ResolveOptions`](ResolveOptions.md)
 
-Defined in: [lib/NormalModuleFactory.js:72](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/NormalModuleFactory.js#L72)
+Defined in: [webpack/types.d.ts:15424](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15424)

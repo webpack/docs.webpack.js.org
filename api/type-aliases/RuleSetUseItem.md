@@ -2,23 +2,21 @@
 title: RuleSetUseItem
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / RuleSetUseItem
+[webpack](../globals.md) / RuleSetUseItem
 
 # Type Alias: RuleSetUseItem
 
-> **RuleSetUseItem** = \{ `ident?`: `string`; `loader?`: `RuleSetLoader`; `options?`: `RuleSetLoaderOptions`; \} \| [`RuleSetUseFunction`](RuleSetUseFunction.md) \| `RuleSetLoader`
+> **RuleSetUseItem** = `string` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \}
 
-Defined in: [declarations/WebpackOptions.d.ts:386](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L386)
-
-A description of an applied loader.
+Defined in: [webpack/types.d.ts:16528](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16528)
 
 ## Type Declaration
 
-\{ `ident?`: `string`; `loader?`: `RuleSetLoader`; `options?`: `RuleSetLoaderOptions`; \}
+`string`
+
+`RuleSetUseFunction`
+
+\{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \}
 
 ### ident?
 
@@ -28,16 +26,12 @@ Unique loader options identifier.
 
 ### loader?
 
-> `optional` **loader**: `RuleSetLoader`
+> `optional` **loader**: `string`
 
 Loader name.
 
 ### options?
 
-> `optional` **options**: `RuleSetLoaderOptions`
+> `optional` **options**: `string` \| \{\[`index`: `string`\]: `any`; \}
 
 Loader options.
-
-[`RuleSetUseFunction`](RuleSetUseFunction.md)
-
-`RuleSetLoader`

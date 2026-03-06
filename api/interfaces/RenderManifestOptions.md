@@ -2,23 +2,19 @@
 title: RenderManifestOptions
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / RenderManifestOptions
+[webpack](../globals.md) / RenderManifestOptions
 
 # Interface: RenderManifestOptions
 
-Defined in: [lib/Template.js:46](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L46)
+Defined in: [webpack/types.d.ts:15308](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15308)
 
 ## Properties
 
 ### chunk
 
-> **chunk**: `Chunk`
+> **chunk**: [`Chunk`](../classes/Chunk.md)
 
-Defined in: [lib/Template.js:47](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L47)
+Defined in: [webpack/types.d.ts:15312](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15312)
 
 the chunk used to render
 
@@ -26,17 +22,17 @@ the chunk used to render
 
 ### chunkGraph
 
-> **chunkGraph**: `ChunkGraph`
+> **chunkGraph**: [`ChunkGraph`](../classes/ChunkGraph.md)
 
-Defined in: [lib/Template.js:56](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L56)
+Defined in: [webpack/types.d.ts:15321](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15321)
 
 ***
 
 ### codeGenerationResults
 
-> **codeGenerationResults**: `CodeGenerationResults`
+> **codeGenerationResults**: [`CodeGenerationResults`](../classes/CodeGenerationResults.md)
 
-Defined in: [lib/Template.js:51](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L51)
+Defined in: [webpack/types.d.ts:15316](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15316)
 
 ***
 
@@ -44,7 +40,7 @@ Defined in: [lib/Template.js:51](https://github.com/webpack/webpack/blob/e3298f1
 
 > **dependencyTemplates**: `DependencyTemplates`
 
-Defined in: [lib/Template.js:53](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L53)
+Defined in: [webpack/types.d.ts:15318](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15318)
 
 ***
 
@@ -52,7 +48,7 @@ Defined in: [lib/Template.js:53](https://github.com/webpack/webpack/blob/e3298f1
 
 > **fullHash**: `string`
 
-Defined in: [lib/Template.js:49](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L49)
+Defined in: [webpack/types.d.ts:15314](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15314)
 
 ***
 
@@ -60,15 +56,15 @@ Defined in: [lib/Template.js:49](https://github.com/webpack/webpack/blob/e3298f1
 
 > **hash**: `string`
 
-Defined in: [lib/Template.js:48](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L48)
+Defined in: [webpack/types.d.ts:15313](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15313)
 
 ***
 
 ### moduleGraph
 
-> **moduleGraph**: `ModuleGraph`
+> **moduleGraph**: [`ModuleGraph`](../classes/ModuleGraph.md)
 
-Defined in: [lib/Template.js:55](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L55)
+Defined in: [webpack/types.d.ts:15320](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15320)
 
 ***
 
@@ -76,7 +72,7 @@ Defined in: [lib/Template.js:55](https://github.com/webpack/webpack/blob/e3298f1
 
 > **moduleTemplates**: `object`
 
-Defined in: [lib/Template.js:52](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L52)
+Defined in: [webpack/types.d.ts:15317](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15317)
 
 #### javascript
 
@@ -88,7 +84,7 @@ Defined in: [lib/Template.js:52](https://github.com/webpack/webpack/blob/e3298f1
 
 > **outputOptions**: `OutputNormalizedWithDefaults`
 
-Defined in: [lib/Template.js:50](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L50)
+Defined in: [webpack/types.d.ts:15315](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15315)
 
 ***
 
@@ -96,4 +92,4 @@ Defined in: [lib/Template.js:50](https://github.com/webpack/webpack/blob/e3298f1
 
 > **runtimeTemplate**: `RuntimeTemplate`
 
-Defined in: [lib/Template.js:54](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/Template.js#L54)
+Defined in: [webpack/types.d.ts:15319](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15319)

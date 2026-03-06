@@ -2,15 +2,11 @@
 title: RuleSetRule
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / RuleSetRule
+[webpack](../globals.md) / RuleSetRule
 
 # Interface: RuleSetRule
 
-Defined in: [declarations/WebpackOptions.d.ts:1459](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1459)
+Defined in: [webpack/types.d.ts:16201](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16201)
 
 A rule description with conditions and effects for modules.
 
@@ -20,21 +16,21 @@ A rule description with conditions and effects for modules.
 
 > `optional` **assert**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1463](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1463)
+Defined in: [webpack/types.d.ts:16205](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16205)
 
 Match on import assertions of the dependency.
 
 #### Index Signature
 
-\[`k`: `string`\]: `RuleSetConditionOrConditions`
+\[`index`: `string`\]: `RuleSetConditionOrConditions`
 
 ***
 
 ### compiler?
 
-> `optional` **compiler**: `RuleSetConditionOrConditions`
+> `optional` **compiler**: `string` \| `RegExp` \| `RuleSetLogicalConditions` \| [`RuleSetCondition`](../type-aliases/RuleSetCondition.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1469](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1469)
+Defined in: [webpack/types.d.ts:16210](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16210)
 
 Match the child compiler name.
 
@@ -42,9 +38,9 @@ Match the child compiler name.
 
 ### dependency?
 
-> `optional` **dependency**: `RuleSetConditionOrConditions`
+> `optional` **dependency**: `string` \| `RegExp` \| `RuleSetLogicalConditions` \| [`RuleSetCondition`](../type-aliases/RuleSetCondition.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1473](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1473)
+Defined in: [webpack/types.d.ts:16220](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16220)
 
 Match dependency type.
 
@@ -54,13 +50,13 @@ Match dependency type.
 
 > `optional` **descriptionData**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1477](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1477)
+Defined in: [webpack/types.d.ts:16230](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16230)
 
 Match values of properties in the description file (usually package.json).
 
 #### Index Signature
 
-\[`k`: `string`\]: `RuleSetConditionOrConditions`
+\[`index`: `string`\]: `RuleSetConditionOrConditions`
 
 ***
 
@@ -68,7 +64,7 @@ Match values of properties in the description file (usually package.json).
 
 > `optional` **enforce**: `"pre"` \| `"post"`
 
-Defined in: [declarations/WebpackOptions.d.ts:1483](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1483)
+Defined in: [webpack/types.d.ts:16235](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16235)
 
 Enforce this rule as pre or post step.
 
@@ -76,9 +72,9 @@ Enforce this rule as pre or post step.
 
 ### exclude?
 
-> `optional` **exclude**: `RuleSetConditionOrConditionsAbsolute`
+> `optional` **exclude**: `string` \| `RegExp` \| `RuleSetLogicalConditionsAbsolute` \| [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1487](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1487)
+Defined in: [webpack/types.d.ts:16240](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16240)
 
 Shortcut for resource.exclude.
 
@@ -88,7 +84,7 @@ Shortcut for resource.exclude.
 
 > `optional` **extractSourceMap**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1491](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1491)
+Defined in: [webpack/types.d.ts:16250](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16250)
 
 Enable/Disable extracting source map.
 
@@ -98,21 +94,21 @@ Enable/Disable extracting source map.
 
 > `optional` **generator**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1495](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1495)
+Defined in: [webpack/types.d.ts:16255](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16255)
 
 The options for the module generator.
 
 #### Index Signature
 
-\[`k`: `string`\]: `any`
+\[`index`: `string`\]: `any`
 
 ***
 
 ### include?
 
-> `optional` **include**: `RuleSetConditionOrConditionsAbsolute`
+> `optional` **include**: `string` \| `RegExp` \| `RuleSetLogicalConditionsAbsolute` \| [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1501](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1501)
+Defined in: [webpack/types.d.ts:16260](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16260)
 
 Shortcut for resource.include.
 
@@ -120,9 +116,9 @@ Shortcut for resource.include.
 
 ### issuer?
 
-> `optional` **issuer**: `RuleSetConditionOrConditionsAbsolute`
+> `optional` **issuer**: `string` \| `RegExp` \| `RuleSetLogicalConditionsAbsolute` \| [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1505](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1505)
+Defined in: [webpack/types.d.ts:16270](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16270)
 
 Match the issuer of the module (The module pointing to this module).
 
@@ -130,9 +126,9 @@ Match the issuer of the module (The module pointing to this module).
 
 ### issuerLayer?
 
-> `optional` **issuerLayer**: `RuleSetConditionOrConditions`
+> `optional` **issuerLayer**: `string` \| `RegExp` \| `RuleSetLogicalConditions` \| [`RuleSetCondition`](../type-aliases/RuleSetCondition.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1509](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1509)
+Defined in: [webpack/types.d.ts:16280](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16280)
 
 Match layer of the issuer of this module (The module pointing to this module).
 
@@ -142,7 +138,7 @@ Match layer of the issuer of this module (The module pointing to this module).
 
 > `optional` **layer**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1513](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1513)
+Defined in: [webpack/types.d.ts:16290](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16290)
 
 Specifies the layer in which the module should be placed in.
 
@@ -152,7 +148,7 @@ Specifies the layer in which the module should be placed in.
 
 > `optional` **loader**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1517](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1517)
+Defined in: [webpack/types.d.ts:16295](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16295)
 
 Shortcut for use.loader.
 
@@ -160,9 +156,9 @@ Shortcut for use.loader.
 
 ### mimetype?
 
-> `optional` **mimetype**: `RuleSetConditionOrConditions`
+> `optional` **mimetype**: `string` \| `RegExp` \| `RuleSetLogicalConditions` \| [`RuleSetCondition`](../type-aliases/RuleSetCondition.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1521](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1521)
+Defined in: [webpack/types.d.ts:16300](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16300)
 
 Match module mimetype when load from Data URI.
 
@@ -170,9 +166,9 @@ Match module mimetype when load from Data URI.
 
 ### oneOf?
 
-> `optional` **oneOf**: (`Falsy` \| `RuleSetRule`)[]
+> `optional` **oneOf**: (`false` \| `""` \| `0` \| `RuleSetRule`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1525](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1525)
+Defined in: [webpack/types.d.ts:16310](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16310)
 
 Only execute the first matching rule in this array.
 
@@ -180,9 +176,9 @@ Only execute the first matching rule in this array.
 
 ### options?
 
-> `optional` **options**: `RuleSetLoaderOptions`
+> `optional` **options**: `string` \| \{\[`index`: `string`\]: `any`; \}
 
-Defined in: [declarations/WebpackOptions.d.ts:1529](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1529)
+Defined in: [webpack/types.d.ts:16315](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16315)
 
 Shortcut for use.options.
 
@@ -192,21 +188,21 @@ Shortcut for use.options.
 
 > `optional` **parser**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1533](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1533)
+Defined in: [webpack/types.d.ts:16320](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16320)
 
 Options for parsing.
 
 #### Index Signature
 
-\[`k`: `string`\]: `any`
+\[`index`: `string`\]: `any`
 
 ***
 
 ### realResource?
 
-> `optional` **realResource**: `RuleSetConditionOrConditionsAbsolute`
+> `optional` **realResource**: `string` \| `RegExp` \| `RuleSetLogicalConditionsAbsolute` \| [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1539](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1539)
+Defined in: [webpack/types.d.ts:16325](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16325)
 
 Match the real resource path of the module.
 
@@ -216,7 +212,7 @@ Match the real resource path of the module.
 
 > `optional` **resolve**: [`ResolveOptions`](ResolveOptions.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:1543](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1543)
+Defined in: [webpack/types.d.ts:16335](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16335)
 
 Options for the resolver.
 
@@ -224,9 +220,9 @@ Options for the resolver.
 
 ### resource?
 
-> `optional` **resource**: `RuleSetConditionOrConditionsAbsolute`
+> `optional` **resource**: `string` \| `RegExp` \| `RuleSetLogicalConditionsAbsolute` \| [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1547](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1547)
+Defined in: [webpack/types.d.ts:16340](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16340)
 
 Match the resource path of the module.
 
@@ -234,9 +230,9 @@ Match the resource path of the module.
 
 ### resourceFragment?
 
-> `optional` **resourceFragment**: `RuleSetConditionOrConditions`
+> `optional` **resourceFragment**: `string` \| `RegExp` \| `RuleSetLogicalConditions` \| [`RuleSetCondition`](../type-aliases/RuleSetCondition.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1551](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1551)
+Defined in: [webpack/types.d.ts:16350](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16350)
 
 Match the resource fragment of the module.
 
@@ -244,9 +240,9 @@ Match the resource fragment of the module.
 
 ### resourceQuery?
 
-> `optional` **resourceQuery**: `RuleSetConditionOrConditions`
+> `optional` **resourceQuery**: `string` \| `RegExp` \| `RuleSetLogicalConditions` \| [`RuleSetCondition`](../type-aliases/RuleSetCondition.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1555](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1555)
+Defined in: [webpack/types.d.ts:16360](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16360)
 
 Match the resource query of the module.
 
@@ -254,9 +250,9 @@ Match the resource query of the module.
 
 ### rules?
 
-> `optional` **rules**: (`Falsy` \| `RuleSetRule`)[]
+> `optional` **rules**: (`false` \| `""` \| `0` \| `RuleSetRule`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1559](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1559)
+Defined in: [webpack/types.d.ts:16370](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16370)
 
 Match and execute these rules when this rule is matched.
 
@@ -264,9 +260,9 @@ Match and execute these rules when this rule is matched.
 
 ### scheme?
 
-> `optional` **scheme**: `RuleSetConditionOrConditions`
+> `optional` **scheme**: `string` \| `RegExp` \| `RuleSetLogicalConditions` \| [`RuleSetCondition`](../type-aliases/RuleSetCondition.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1563](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1563)
+Defined in: [webpack/types.d.ts:16375](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16375)
 
 Match module scheme.
 
@@ -276,7 +272,7 @@ Match module scheme.
 
 > `optional` **sideEffects**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1567](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1567)
+Defined in: [webpack/types.d.ts:16385](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16385)
 
 Flags a module as with or without side effects.
 
@@ -284,9 +280,9 @@ Flags a module as with or without side effects.
 
 ### test?
 
-> `optional` **test**: `RuleSetConditionOrConditionsAbsolute`
+> `optional` **test**: `string` \| `RegExp` \| `RuleSetLogicalConditionsAbsolute` \| [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute.md)[] \| (`value`) => `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1571](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1571)
+Defined in: [webpack/types.d.ts:16390](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16390)
 
 Shortcut for resource.test.
 
@@ -296,7 +292,7 @@ Shortcut for resource.test.
 
 > `optional` **type**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1575](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1575)
+Defined in: [webpack/types.d.ts:16400](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16400)
 
 Module type to use for the module.
 
@@ -304,11 +300,39 @@ Module type to use for the module.
 
 ### use?
 
-> `optional` **use**: [`RuleSetUse`](../type-aliases/RuleSetUse.md)
+> `optional` **use**: `string` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \} \| (`string` \| `false` \| `0` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \})[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1579](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1579)
+Defined in: [webpack/types.d.ts:16405](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16405)
 
 Modifiers applied to the module when rule is matched.
+
+#### Type Declaration
+
+`string`
+
+`RuleSetUseFunction`
+
+\{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \}
+
+#### ident?
+
+> `optional` **ident**: `string`
+
+Unique loader options identifier.
+
+#### loader?
+
+> `optional` **loader**: `string`
+
+Loader name.
+
+#### options?
+
+> `optional` **options**: `string` \| \{\[`index`: `string`\]: `any`; \}
+
+Loader options.
+
+(`string` \| `false` \| `0` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \})[]
 
 ***
 
@@ -316,10 +340,10 @@ Modifiers applied to the module when rule is matched.
 
 > `optional` **with**: `object`
 
-Defined in: [declarations/WebpackOptions.d.ts:1583](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1583)
+Defined in: [webpack/types.d.ts:16448](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16448)
 
 Match on import attributes of the dependency.
 
 #### Index Signature
 
-\[`k`: `string`\]: `RuleSetConditionOrConditions`
+\[`index`: `string`\]: `RuleSetConditionOrConditions`

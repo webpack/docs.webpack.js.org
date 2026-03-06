@@ -2,15 +2,11 @@
 title: WebpackOptionsNormalized
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / WebpackOptionsNormalized
+[webpack](../globals.md) / WebpackOptionsNormalized
 
 # Interface: WebpackOptionsNormalized
 
-Defined in: [declarations/WebpackOptions.d.ts:3835](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3835)
+Defined in: [webpack/types.d.ts:19157](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19157)
 
 Normalized webpack options object.
 
@@ -18,9 +14,9 @@ Normalized webpack options object.
 
 ### amd?
 
-> `optional` **amd**: `Amd`
+> `optional` **amd**: `false` \| \{\[`index`: `string`\]: `any`; \}
 
-Defined in: [declarations/WebpackOptions.d.ts:3839](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3839)
+Defined in: [webpack/types.d.ts:19161](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19161)
 
 Set the value of `require.amd` and `define.amd`. Or disable AMD support.
 
@@ -30,7 +26,7 @@ Set the value of `require.amd` and `define.amd`. Or disable AMD support.
 
 > `optional` **bail**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:3843](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3843)
+Defined in: [webpack/types.d.ts:19166](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19166)
 
 Report the first error as a hard error instead of tolerating it.
 
@@ -40,7 +36,7 @@ Report the first error as a hard error instead of tolerating it.
 
 > **cache**: `CacheOptionsNormalized`
 
-Defined in: [declarations/WebpackOptions.d.ts:3847](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3847)
+Defined in: [webpack/types.d.ts:19171](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19171)
 
 Cache generated modules and chunks to improve performance for multiple incremental builds.
 
@@ -50,7 +46,7 @@ Cache generated modules and chunks to improve performance for multiple increment
 
 > `optional` **context**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:3851](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3851)
+Defined in: [webpack/types.d.ts:19176](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19176)
 
 The base directory (absolute path!) for resolving the `entry` option. If `output.pathinfo` is set, the included pathinfo is shortened to this directory.
 
@@ -58,9 +54,9 @@ The base directory (absolute path!) for resolving the `entry` option. If `output
 
 ### dependencies?
 
-> `optional` **dependencies**: `Dependencies`
+> `optional` **dependencies**: `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:3855](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3855)
+Defined in: [webpack/types.d.ts:19181](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19181)
 
 References to other configurations to depend on.
 
@@ -68,9 +64,9 @@ References to other configurations to depend on.
 
 ### devServer?
 
-> `optional` **devServer**: `DevServer`
+> `optional` **devServer**: `false` \| \{\[`index`: `string`\]: `any`; \}
 
-Defined in: [declarations/WebpackOptions.d.ts:3859](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3859)
+Defined in: [webpack/types.d.ts:19186](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19186)
 
 Options for the webpack-dev-server.
 
@@ -78,9 +74,9 @@ Options for the webpack-dev-server.
 
 ### devtool?
 
-> `optional` **devtool**: `DevTool`
+> `optional` **devtool**: `string` \| `false` \| `object`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:3863](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3863)
+Defined in: [webpack/types.d.ts:19191](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19191)
 
 A developer tool to enhance debugging (false | eval | [inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map).
 
@@ -88,9 +84,9 @@ A developer tool to enhance debugging (false | eval | [inline-|hidden-|eval-][no
 
 ### dotenv?
 
-> `optional` **dotenv**: `Dotenv`
+> `optional` **dotenv**: `boolean` \| `DotenvPluginOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:3867](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3867)
+Defined in: [webpack/types.d.ts:19208](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19208)
 
 Enable and configure the Dotenv plugin to load environment variables from .env files.
 
@@ -100,7 +96,7 @@ Enable and configure the Dotenv plugin to load environment variables from .env f
 
 > **entry**: [`EntryNormalized`](../type-aliases/EntryNormalized.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:3871](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3871)
+Defined in: [webpack/types.d.ts:19213](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19213)
 
 The entry point(s) of the compilation.
 
@@ -110,7 +106,7 @@ The entry point(s) of the compilation.
 
 > **experiments**: `ExperimentsNormalized`
 
-Defined in: [declarations/WebpackOptions.d.ts:3875](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3875)
+Defined in: [webpack/types.d.ts:19218](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19218)
 
 Enables/Disables experiments (experimental features with relax SemVer compatibility).
 
@@ -120,7 +116,7 @@ Enables/Disables experiments (experimental features with relax SemVer compatibil
 
 > **externals**: [`Externals`](../type-aliases/Externals.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:3879](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3879)
+Defined in: [webpack/types.d.ts:19223](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19223)
 
 Specify dependencies that shouldn't be resolved by webpack, but should become dependencies of the resulting bundle. The kind of the dependency depends on `output.libraryTarget`.
 
@@ -130,7 +126,7 @@ Specify dependencies that shouldn't be resolved by webpack, but should become de
 
 > **externalsPresets**: `ExternalsPresets`
 
-Defined in: [declarations/WebpackOptions.d.ts:3883](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3883)
+Defined in: [webpack/types.d.ts:19228](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19228)
 
 Enable presets of externals for specific targets.
 
@@ -138,9 +134,9 @@ Enable presets of externals for specific targets.
 
 ### externalsType?
 
-> `optional` **externalsType**: `ExternalsType`
+> `optional` **externalsType**: `"window"` \| `"promise"` \| `"module"` \| `"script"` \| `"var"` \| `"self"` \| `"global"` \| `"asset"` \| `"css-import"` \| `"css-url"` \| `"commonjs"` \| `"import"` \| `"jsonp"` \| `"this"` \| `"assign"` \| `"commonjs2"` \| `"commonjs-module"` \| `"commonjs-static"` \| `"amd"` \| `"amd-require"` \| `"umd"` \| `"umd2"` \| `"system"` \| `"module-import"` \| `"node-commonjs"`
 
-Defined in: [declarations/WebpackOptions.d.ts:3887](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3887)
+Defined in: [webpack/types.d.ts:19233](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19233)
 
 Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 
@@ -148,11 +144,25 @@ Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' de
 
 ### ignoreWarnings?
 
-> `optional` **ignoreWarnings**: `IgnoreWarningsNormalized`
+> `optional` **ignoreWarnings**: (`warning`, `compilation`) => `boolean`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:3891](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3891)
+Defined in: [webpack/types.d.ts:19263](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19263)
 
 Ignore specific warnings.
+
+#### Parameters
+
+##### warning
+
+`Error`
+
+##### compilation
+
+[`Compilation`](../classes/Compilation.md)
+
+#### Returns
+
+`boolean`
 
 ***
 
@@ -160,7 +170,7 @@ Ignore specific warnings.
 
 > **infrastructureLogging**: `InfrastructureLogging`
 
-Defined in: [declarations/WebpackOptions.d.ts:3895](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3895)
+Defined in: [webpack/types.d.ts:19268](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19268)
 
 Options for infrastructure level logging.
 
@@ -170,7 +180,7 @@ Options for infrastructure level logging.
 
 > `optional` **loader**: `Loader`
 
-Defined in: [declarations/WebpackOptions.d.ts:3899](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3899)
+Defined in: [webpack/types.d.ts:19273](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19273)
 
 Custom values available in the loader context.
 
@@ -178,9 +188,9 @@ Custom values available in the loader context.
 
 ### mode?
 
-> `optional` **mode**: `Mode`
+> `optional` **mode**: `"none"` \| `"development"` \| `"production"`
 
-Defined in: [declarations/WebpackOptions.d.ts:3903](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3903)
+Defined in: [webpack/types.d.ts:19278](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19278)
 
 Enable production optimizations or development hints.
 
@@ -190,7 +200,7 @@ Enable production optimizations or development hints.
 
 > **module**: `ModuleOptionsNormalized`
 
-Defined in: [declarations/WebpackOptions.d.ts:3907](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3907)
+Defined in: [webpack/types.d.ts:19283](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19283)
 
 Options affecting the normal modules (`NormalModuleFactory`).
 
@@ -200,7 +210,7 @@ Options affecting the normal modules (`NormalModuleFactory`).
 
 > `optional` **name**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:3911](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3911)
+Defined in: [webpack/types.d.ts:19288](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19288)
 
 Name of the configuration. Used when loading multiple configurations.
 
@@ -210,7 +220,7 @@ Name of the configuration. Used when loading multiple configurations.
 
 > **node**: `Node`
 
-Defined in: [declarations/WebpackOptions.d.ts:3915](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3915)
+Defined in: [webpack/types.d.ts:19293](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19293)
 
 Include polyfills or mocks for various node stuff.
 
@@ -220,7 +230,7 @@ Include polyfills or mocks for various node stuff.
 
 > **optimization**: `OptimizationNormalized`
 
-Defined in: [declarations/WebpackOptions.d.ts:3919](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3919)
+Defined in: [webpack/types.d.ts:19298](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19298)
 
 Enables/Disables integrated optimizations.
 
@@ -230,7 +240,7 @@ Enables/Disables integrated optimizations.
 
 > **output**: `OutputNormalized`
 
-Defined in: [declarations/WebpackOptions.d.ts:3923](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3923)
+Defined in: [webpack/types.d.ts:19303](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19303)
 
 Normalized options affecting the output of the compilation. `output` options tell webpack how to write the compiled files to disk.
 
@@ -240,7 +250,7 @@ Normalized options affecting the output of the compilation. `output` options tel
 
 > `optional` **parallelism**: `number`
 
-Defined in: [declarations/WebpackOptions.d.ts:3927](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3927)
+Defined in: [webpack/types.d.ts:19308](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19308)
 
 The number of parallel processed modules in the compilation.
 
@@ -248,9 +258,9 @@ The number of parallel processed modules in the compilation.
 
 ### performance?
 
-> `optional` **performance**: `Performance`
+> `optional` **performance**: `false` \| `PerformanceOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:3931](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3931)
+Defined in: [webpack/types.d.ts:19313](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19313)
 
 Configuration for web performance recommendations.
 
@@ -258,9 +268,9 @@ Configuration for web performance recommendations.
 
 ### plugins
 
-> **plugins**: `PluginsNormalized`
+> **plugins**: ([`WebpackPluginInstance`](WebpackPluginInstance.md) \| (`this`, `compiler`) => `void`)[]
 
-Defined in: [declarations/WebpackOptions.d.ts:3935](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3935)
+Defined in: [webpack/types.d.ts:19318](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19318)
 
 Add additional plugins to the compiler.
 
@@ -270,7 +280,7 @@ Add additional plugins to the compiler.
 
 > `optional` **profile**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:3939](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3939)
+Defined in: [webpack/types.d.ts:19326](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19326)
 
 Capture timing information for each module.
 
@@ -278,9 +288,9 @@ Capture timing information for each module.
 
 ### recordsInputPath?
 
-> `optional` **recordsInputPath**: `RecordsInputPath`
+> `optional` **recordsInputPath**: `string` \| `false`
 
-Defined in: [declarations/WebpackOptions.d.ts:3943](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3943)
+Defined in: [webpack/types.d.ts:19331](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19331)
 
 Store compiler state to a json file.
 
@@ -288,9 +298,9 @@ Store compiler state to a json file.
 
 ### recordsOutputPath?
 
-> `optional` **recordsOutputPath**: `RecordsOutputPath`
+> `optional` **recordsOutputPath**: `string` \| `false`
 
-Defined in: [declarations/WebpackOptions.d.ts:3947](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3947)
+Defined in: [webpack/types.d.ts:19336](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19336)
 
 Load compiler state from a json file.
 
@@ -300,7 +310,7 @@ Load compiler state from a json file.
 
 > **resolve**: [`ResolveOptions`](ResolveOptions.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:3951](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3951)
+Defined in: [webpack/types.d.ts:19341](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19341)
 
 Options for the resolver.
 
@@ -310,7 +320,7 @@ Options for the resolver.
 
 > **resolveLoader**: [`ResolveOptions`](ResolveOptions.md)
 
-Defined in: [declarations/WebpackOptions.d.ts:3955](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3955)
+Defined in: [webpack/types.d.ts:19346](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19346)
 
 Options for the resolver when resolving loaders.
 
@@ -318,9 +328,9 @@ Options for the resolver when resolving loaders.
 
 ### snapshot
 
-> **snapshot**: `SnapshotOptions`
+> **snapshot**: `SnapshotOptionsWebpackOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:3959](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3959)
+Defined in: [webpack/types.d.ts:19351](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19351)
 
 Options affecting how file system snapshots are created and validated.
 
@@ -330,7 +340,7 @@ Options affecting how file system snapshots are created and validated.
 
 > **stats**: `StatsValue`
 
-Defined in: [declarations/WebpackOptions.d.ts:3963](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3963)
+Defined in: [webpack/types.d.ts:19356](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19356)
 
 Stats options object or preset name.
 
@@ -338,9 +348,9 @@ Stats options object or preset name.
 
 ### target?
 
-> `optional` **target**: `Target`
+> `optional` **target**: `string` \| `false` \| `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:3967](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3967)
+Defined in: [webpack/types.d.ts:19361](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19361)
 
 Environment to build for. An array of environments to build for all of them when possible.
 
@@ -350,7 +360,7 @@ Environment to build for. An array of environments to build for all of them when
 
 > `optional` **validate**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:3971](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3971)
+Defined in: [webpack/types.d.ts:19366](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19366)
 
 Enable validation of webpack configuration. Defaults to true in development mode. In production mode, defaults to true unless futureDefaults is enabled, then defaults to false.
 
@@ -360,7 +370,7 @@ Enable validation of webpack configuration. Defaults to true in development mode
 
 > `optional` **watch**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:3975](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3975)
+Defined in: [webpack/types.d.ts:19371](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19371)
 
 Enter watch mode, which rebuilds on file change.
 
@@ -370,6 +380,6 @@ Enter watch mode, which rebuilds on file change.
 
 > **watchOptions**: `WatchOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:3979](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L3979)
+Defined in: [webpack/types.d.ts:19376](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19376)
 
 Options for the watcher.

@@ -2,15 +2,11 @@
 title: GeneratorOptionsByModuleTypeKnown
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / GeneratorOptionsByModuleTypeKnown
+[webpack](../globals.md) / GeneratorOptionsByModuleTypeKnown
 
 # Interface: GeneratorOptionsByModuleTypeKnown
 
-Defined in: [declarations/WebpackOptions.d.ts:4046](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4046)
+Defined in: [webpack/types.d.ts:6334](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6334)
 
 Specify options for each generator.
 
@@ -20,7 +16,7 @@ Specify options for each generator.
 
 > `optional` **asset**: `AssetGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4050](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4050)
+Defined in: [webpack/types.d.ts:6338](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6338)
 
 Generator options for asset modules.
 
@@ -30,7 +26,7 @@ Generator options for asset modules.
 
 > `optional` **asset/bytes**: `EmptyGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4054](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4054)
+Defined in: [webpack/types.d.ts:6343](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6343)
 
 No generator options are supported for this module type.
 
@@ -40,7 +36,7 @@ No generator options are supported for this module type.
 
 > `optional` **asset/inline**: `AssetInlineGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4058](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4058)
+Defined in: [webpack/types.d.ts:6348](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6348)
 
 Generator options for asset/inline modules.
 
@@ -50,7 +46,7 @@ Generator options for asset/inline modules.
 
 > `optional` **asset/resource**: `AssetResourceGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4062](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4062)
+Defined in: [webpack/types.d.ts:6353](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6353)
 
 Generator options for asset/resource modules.
 
@@ -60,7 +56,7 @@ Generator options for asset/resource modules.
 
 > `optional` **asset/source**: `EmptyGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4066](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4066)
+Defined in: [webpack/types.d.ts:6358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6358)
 
 No generator options are supported for this module type.
 
@@ -70,7 +66,7 @@ No generator options are supported for this module type.
 
 > `optional` **css**: `CssGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4070](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4070)
+Defined in: [webpack/types.d.ts:6363](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6363)
 
 Generator options for css modules.
 
@@ -80,7 +76,7 @@ Generator options for css modules.
 
 > `optional` **css/auto**: `CssModuleGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4074](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4074)
+Defined in: [webpack/types.d.ts:6368](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6368)
 
 Generator options for css/module modules.
 
@@ -90,7 +86,7 @@ Generator options for css/module modules.
 
 > `optional` **css/global**: `CssModuleGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4078](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4078)
+Defined in: [webpack/types.d.ts:6373](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6373)
 
 Generator options for css/module modules.
 
@@ -100,7 +96,7 @@ Generator options for css/module modules.
 
 > `optional` **css/module**: `CssModuleGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4082](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4082)
+Defined in: [webpack/types.d.ts:6378](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6378)
 
 Generator options for css/module modules.
 
@@ -110,7 +106,7 @@ Generator options for css/module modules.
 
 > `optional` **javascript**: `EmptyGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4086](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4086)
+Defined in: [webpack/types.d.ts:6383](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6383)
 
 No generator options are supported for this module type.
 
@@ -120,7 +116,7 @@ No generator options are supported for this module type.
 
 > `optional` **javascript/auto**: `EmptyGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4090](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4090)
+Defined in: [webpack/types.d.ts:6388](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6388)
 
 No generator options are supported for this module type.
 
@@ -130,7 +126,7 @@ No generator options are supported for this module type.
 
 > `optional` **javascript/dynamic**: `EmptyGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4094](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4094)
+Defined in: [webpack/types.d.ts:6393](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6393)
 
 No generator options are supported for this module type.
 
@@ -140,7 +136,7 @@ No generator options are supported for this module type.
 
 > `optional` **javascript/esm**: `EmptyGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4098](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4098)
+Defined in: [webpack/types.d.ts:6398](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6398)
 
 No generator options are supported for this module type.
 
@@ -150,6 +146,6 @@ No generator options are supported for this module type.
 
 > `optional` **json**: `JsonGeneratorOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4102](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4102)
+Defined in: [webpack/types.d.ts:6403](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6403)
 
 Generator options for json modules.

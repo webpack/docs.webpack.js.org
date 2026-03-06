@@ -2,15 +2,11 @@
 title: InputFileSystem
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / InputFileSystem
+[webpack](../globals.md) / InputFileSystem
 
 # Interface: InputFileSystem
 
-Defined in: [lib/util/fs.js:286](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L286)
+Defined in: [webpack/types.d.ts:7008](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7008)
 
 ## Properties
 
@@ -18,7 +14,7 @@ Defined in: [lib/util/fs.js:286](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **dirname**: (`dirname`) => `string`
 
-Defined in: [lib/util/fs.js:304](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L304)
+Defined in: [webpack/types.d.ts:7032](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7032)
 
 #### Parameters
 
@@ -36,7 +32,7 @@ Defined in: [lib/util/fs.js:304](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **join**: (`path1`, `path2`) => `string`
 
-Defined in: [lib/util/fs.js:302](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L302)
+Defined in: [webpack/types.d.ts:7030](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7030)
 
 #### Parameters
 
@@ -56,9 +52,9 @@ Defined in: [lib/util/fs.js:302](https://github.com/webpack/webpack/blob/e3298f1
 
 ### lstat?
 
-> `optional` **lstat**: `LStat`
+> `optional` **lstat**: `LStatFs`
 
-Defined in: [lib/util/fs.js:295](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L295)
+Defined in: [webpack/types.d.ts:7017](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7017)
 
 ***
 
@@ -66,23 +62,33 @@ Defined in: [lib/util/fs.js:295](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **lstatSync**: `LStatSync`
 
-Defined in: [lib/util/fs.js:296](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L296)
+Defined in: [webpack/types.d.ts:7018](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7018)
 
 ***
 
-### purge?
+### purge()?
 
-> `optional` **purge**: `Purge`
+> `optional` **purge**: (`value?`) => `void`
 
-Defined in: [lib/util/fs.js:301](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L301)
+Defined in: [webpack/types.d.ts:7029](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7029)
+
+#### Parameters
+
+##### value?
+
+`string` | `string`[] | `Set`\<`string`\>
+
+#### Returns
+
+`void`
 
 ***
 
 ### readdir
 
-> **readdir**: `Readdir`
+> **readdir**: `ReaddirFs`
 
-Defined in: [lib/util/fs.js:291](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L291)
+Defined in: [webpack/types.d.ts:7013](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7013)
 
 ***
 
@@ -90,15 +96,15 @@ Defined in: [lib/util/fs.js:291](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **readdirSync**: `ReaddirSync`
 
-Defined in: [lib/util/fs.js:292](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L292)
+Defined in: [webpack/types.d.ts:7014](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7014)
 
 ***
 
 ### readFile
 
-> **readFile**: `ReadFile`
+> **readFile**: `ReadFileFs`
 
-Defined in: [lib/util/fs.js:287](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L287)
+Defined in: [webpack/types.d.ts:7009](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7009)
 
 ***
 
@@ -106,31 +112,55 @@ Defined in: [lib/util/fs.js:287](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **readFileSync**: `ReadFileSync`
 
-Defined in: [lib/util/fs.js:288](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L288)
+Defined in: [webpack/types.d.ts:7010](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7010)
 
 ***
 
-### readJson?
+### readJson()?
 
-> `optional` **readJson**: `ReadJson`
+> `optional` **readJson**: (`pathOrFileDescriptor`, `callback`) => `void`
 
-Defined in: [lib/util/fs.js:299](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L299)
+Defined in: [webpack/types.d.ts:7021](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7021)
+
+#### Parameters
+
+##### pathOrFileDescriptor
+
+`PathOrFileDescriptorFs`
+
+##### callback
+
+(`err`, `result?`) => `void`
+
+#### Returns
+
+`void`
 
 ***
 
-### readJsonSync?
+### readJsonSync()?
 
-> `optional` **readJsonSync**: `ReadJsonSync`
+> `optional` **readJsonSync**: (`pathOrFileDescriptor`) => `JsonObjectFs`
 
-Defined in: [lib/util/fs.js:300](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L300)
+Defined in: [webpack/types.d.ts:7028](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7028)
+
+#### Parameters
+
+##### pathOrFileDescriptor
+
+`PathOrFileDescriptorFs`
+
+#### Returns
+
+`JsonObjectFs`
 
 ***
 
 ### readlink
 
-> **readlink**: `Readlink`
+> **readlink**: `ReadlinkFs`
 
-Defined in: [lib/util/fs.js:289](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L289)
+Defined in: [webpack/types.d.ts:7011](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7011)
 
 ***
 
@@ -138,15 +168,15 @@ Defined in: [lib/util/fs.js:289](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **readlinkSync**: `ReadlinkSync`
 
-Defined in: [lib/util/fs.js:290](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L290)
+Defined in: [webpack/types.d.ts:7012](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7012)
 
 ***
 
 ### realpath?
 
-> `optional` **realpath**: `RealPath`
+> `optional` **realpath**: `RealPathFs`
 
-Defined in: [lib/util/fs.js:297](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L297)
+Defined in: [webpack/types.d.ts:7019](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7019)
 
 ***
 
@@ -154,7 +184,7 @@ Defined in: [lib/util/fs.js:297](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **realpathSync**: `RealPathSync`
 
-Defined in: [lib/util/fs.js:298](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L298)
+Defined in: [webpack/types.d.ts:7020](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7020)
 
 ***
 
@@ -162,7 +192,7 @@ Defined in: [lib/util/fs.js:298](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **relative**: (`from`, `to`) => `string`
 
-Defined in: [lib/util/fs.js:303](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L303)
+Defined in: [webpack/types.d.ts:7031](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7031)
 
 #### Parameters
 
@@ -182,9 +212,9 @@ Defined in: [lib/util/fs.js:303](https://github.com/webpack/webpack/blob/e3298f1
 
 ### stat
 
-> **stat**: `Stat`
+> **stat**: `StatFs`
 
-Defined in: [lib/util/fs.js:293](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L293)
+Defined in: [webpack/types.d.ts:7015](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7015)
 
 ***
 
@@ -192,4 +222,4 @@ Defined in: [lib/util/fs.js:293](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **statSync**: `StatSync`
 
-Defined in: [lib/util/fs.js:294](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L294)
+Defined in: [webpack/types.d.ts:7016](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7016)

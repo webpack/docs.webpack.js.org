@@ -2,16 +2,10 @@
 title: Entry
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / Entry
+[webpack](../globals.md) / Entry
 
 # Type Alias: Entry
 
-> **Entry** = `EntryDynamic` \| `EntryStatic`
+> **Entry** = `string` \| () => `string` \| [`EntryObject`](../interfaces/EntryObject.md) \| `string`[] \| `Promise`\<`EntryStatic`\> \| [`EntryObject`](../interfaces/EntryObject.md) \| `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:72](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L72)
-
-The entry point(s) of the compilation.
+Defined in: [webpack/types.d.ts:4900](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4900)

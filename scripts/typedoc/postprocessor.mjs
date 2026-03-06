@@ -10,7 +10,7 @@ export function load(app) {
     (page) => {
       page.frontmatter = {
         title: page.model.name,
-        
+
       }
     },
   );

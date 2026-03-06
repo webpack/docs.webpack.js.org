@@ -2,16 +2,44 @@
 title: RuleSetUseFunction
 ---
 
-[**webpack**](../README.md)
+[webpack](../globals.md) / RuleSetUseFunction
 
-***
+# Type Alias: RuleSetUseFunction()
 
-[webpack](../README.md) / RuleSetUseFunction
+> **RuleSetUseFunction** = (`data`) => `string` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \} \| (`undefined` \| `null` \| `string` \| `false` \| `0` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \})[]
 
-# Type Alias: RuleSetUseFunction
+Defined in: [webpack/types.d.ts:20102](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L20102)
 
-> **RuleSetUseFunction** = `RuleSetUseFn`
+## Parameters
 
-Defined in: [declarations/WebpackOptions.d.ts:406](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L406)
+### data
 
-The function is called on each data and return rule set item.
+`EffectData`
+
+## Returns
+
+`string`
+
+`RuleSetUseFunction`
+
+\{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \}
+
+### ident?
+
+> `optional` **ident**: `string`
+
+Unique loader options identifier.
+
+### loader?
+
+> `optional` **loader**: `string`
+
+Loader name.
+
+### options?
+
+> `optional` **options**: `string` \| \{\[`index`: `string`\]: `any`; \}
+
+Loader options.
+
+(`undefined` \| `null` \| `string` \| `false` \| `0` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \})[]

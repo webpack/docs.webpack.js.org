@@ -2,23 +2,33 @@
 title: OutputFileSystem
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / OutputFileSystem
+[webpack](../globals.md) / OutputFileSystem
 
 # Interface: OutputFileSystem
 
-Defined in: [lib/util/fs.js:356](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L356)
+Defined in: [webpack/types.d.ts:13550](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13550)
 
 ## Properties
 
-### createReadStream?
+### createReadStream()?
 
-> `optional` **createReadStream**: `CreateReadStream`
+> `optional` **createReadStream**: (`path`, `options?`) => `ReadableStream`
 
-Defined in: [lib/util/fs.js:365](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L365)
+Defined in: [webpack/types.d.ts:13565](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13565)
+
+#### Parameters
+
+##### path
+
+`PathLikeFs`
+
+##### options?
+
+`"ascii"` | `"utf8"` | `"utf-8"` | `"utf16le"` | `"utf-16le"` | `"ucs2"` | `"ucs-2"` | `"base64"` | `"base64url"` | `"latin1"` | `"binary"` | `"hex"` | `ReadStreamOptions`
+
+#### Returns
+
+`ReadableStream`
 
 ***
 
@@ -26,7 +36,7 @@ Defined in: [lib/util/fs.js:365](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **dirname**: (`dirname`) => `string`
 
-Defined in: [lib/util/fs.js:368](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L368)
+Defined in: [webpack/types.d.ts:13584](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13584)
 
 #### Parameters
 
@@ -44,7 +54,7 @@ Defined in: [lib/util/fs.js:368](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **join**: (`path1`, `path2`) => `string`
 
-Defined in: [lib/util/fs.js:366](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L366)
+Defined in: [webpack/types.d.ts:13582](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13582)
 
 #### Parameters
 
@@ -64,9 +74,9 @@ Defined in: [lib/util/fs.js:366](https://github.com/webpack/webpack/blob/e3298f1
 
 ### lstat?
 
-> `optional` **lstat**: `LStat`
+> `optional` **lstat**: `LStatFs`
 
-Defined in: [lib/util/fs.js:363](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L363)
+Defined in: [webpack/types.d.ts:13563](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13563)
 
 ***
 
@@ -74,23 +84,23 @@ Defined in: [lib/util/fs.js:363](https://github.com/webpack/webpack/blob/e3298f1
 
 > **mkdir**: `Mkdir`
 
-Defined in: [lib/util/fs.js:357](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L357)
+Defined in: [webpack/types.d.ts:13551](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13551)
 
 ***
 
 ### readdir?
 
-> `optional` **readdir**: `Readdir`
+> `optional` **readdir**: `ReaddirFs`
 
-Defined in: [lib/util/fs.js:358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L358)
+Defined in: [webpack/types.d.ts:13552](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13552)
 
 ***
 
 ### readFile
 
-> **readFile**: `ReadFile`
+> **readFile**: `ReadFileFs`
 
-Defined in: [lib/util/fs.js:364](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L364)
+Defined in: [webpack/types.d.ts:13564](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13564)
 
 ***
 
@@ -98,7 +108,7 @@ Defined in: [lib/util/fs.js:364](https://github.com/webpack/webpack/blob/e3298f1
 
 > `optional` **relative**: (`from`, `to`) => `string`
 
-Defined in: [lib/util/fs.js:367](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L367)
+Defined in: [webpack/types.d.ts:13583](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13583)
 
 #### Parameters
 
@@ -116,27 +126,55 @@ Defined in: [lib/util/fs.js:367](https://github.com/webpack/webpack/blob/e3298f1
 
 ***
 
-### rmdir?
+### rmdir()?
 
-> `optional` **rmdir**: `Rmdir`
+> `optional` **rmdir**: (`file`, `callback`) => `void`
 
-Defined in: [lib/util/fs.js:359](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L359)
+Defined in: [webpack/types.d.ts:13553](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13553)
+
+#### Parameters
+
+##### file
+
+`PathLikeFs`
+
+##### callback
+
+(`err`) => `void`
+
+#### Returns
+
+`void`
 
 ***
 
 ### stat
 
-> **stat**: `Stat`
+> **stat**: `StatFs`
 
-Defined in: [lib/util/fs.js:362](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L362)
+Defined in: [webpack/types.d.ts:13562](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13562)
 
 ***
 
-### unlink?
+### unlink()?
 
-> `optional` **unlink**: `Unlink`
+> `optional` **unlink**: (`pathLike`, `callback`) => `void`
 
-Defined in: [lib/util/fs.js:361](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L361)
+Defined in: [webpack/types.d.ts:13558](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13558)
+
+#### Parameters
+
+##### pathLike
+
+`PathLikeFs`
+
+##### callback
+
+(`err`) => `void`
+
+#### Returns
+
+`void`
 
 ***
 
@@ -144,4 +182,4 @@ Defined in: [lib/util/fs.js:361](https://github.com/webpack/webpack/blob/e3298f1
 
 > **writeFile**: `WriteFile`
 
-Defined in: [lib/util/fs.js:360](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/util/fs.js#L360)
+Defined in: [webpack/types.d.ts:13557](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13557)

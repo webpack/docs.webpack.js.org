@@ -2,15 +2,11 @@
 title: LibraryOptions
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / LibraryOptions
+[webpack](../globals.md) / LibraryOptions
 
 # Interface: LibraryOptions
 
-Defined in: [declarations/WebpackOptions.d.ts:1235](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1235)
+Defined in: [webpack/types.d.ts:9821](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9821)
 
 Options for library.
 
@@ -20,7 +16,7 @@ Options for library.
 
 > `optional` **amdContainer**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1239](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1239)
+Defined in: [webpack/types.d.ts:9825](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9825)
 
 Add a container for define/require functions in the AMD module.
 
@@ -28,9 +24,9 @@ Add a container for define/require functions in the AMD module.
 
 ### auxiliaryComment?
 
-> `optional` **auxiliaryComment**: `AuxiliaryComment`
+> `optional` **auxiliaryComment**: `string` \| `LibraryCustomUmdCommentObject`
 
-Defined in: [declarations/WebpackOptions.d.ts:1243](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1243)
+Defined in: [webpack/types.d.ts:9830](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9830)
 
 Add a comment in the UMD wrapper.
 
@@ -38,9 +34,9 @@ Add a comment in the UMD wrapper.
 
 ### export?
 
-> `optional` **export**: `LibraryExport`
+> `optional` **export**: `string` \| `string`[]
 
-Defined in: [declarations/WebpackOptions.d.ts:1247](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1247)
+Defined in: [webpack/types.d.ts:9835](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9835)
 
 Specify which export should be exposed as library.
 
@@ -48,9 +44,9 @@ Specify which export should be exposed as library.
 
 ### name?
 
-> `optional` **name**: `LibraryName`
+> `optional` **name**: `string` \| `string`[] \| `LibraryCustomUmdObject`
 
-Defined in: [declarations/WebpackOptions.d.ts:1251](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1251)
+Defined in: [webpack/types.d.ts:9840](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9840)
 
 The name of the library (some types allow unnamed libraries too).
 
@@ -60,7 +56,7 @@ The name of the library (some types allow unnamed libraries too).
 
 > **type**: `string`
 
-Defined in: [declarations/WebpackOptions.d.ts:1255](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1255)
+Defined in: [webpack/types.d.ts:9845](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9845)
 
 Type of library (types included by default are 'var', 'module', 'assign', 'assign-properties', 'this', 'window', 'self', 'global', 'commonjs', 'commonjs2', 'commonjs-module', 'commonjs-static', 'amd', 'amd-require', 'umd', 'umd2', 'jsonp', 'system', but others might be added by plugins).
 
@@ -70,6 +66,6 @@ Type of library (types included by default are 'var', 'module', 'assign', 'assig
 
 > `optional` **umdNamedDefine**: `boolean`
 
-Defined in: [declarations/WebpackOptions.d.ts:1259](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L1259)
+Defined in: [webpack/types.d.ts:9850](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9850)
 
 If `output.libraryTarget` is set to umd and `output.library` is set, setting this to true will name the AMD module.

@@ -2,15 +2,11 @@
 title: ParserOptionsByModuleTypeKnown
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ParserOptionsByModuleTypeKnown
+[webpack](../globals.md) / ParserOptionsByModuleTypeKnown
 
 # Interface: ParserOptionsByModuleTypeKnown
 
-Defined in: [declarations/WebpackOptions.d.ts:4118](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4118)
+Defined in: [webpack/types.d.ts:13978](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13978)
 
 Specify options for each parser.
 
@@ -20,7 +16,7 @@ Specify options for each parser.
 
 > `optional` **asset**: `AssetParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4122](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4122)
+Defined in: [webpack/types.d.ts:13982](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13982)
 
 Parser options for asset modules.
 
@@ -30,7 +26,7 @@ Parser options for asset modules.
 
 > `optional` **asset/bytes**: `EmptyParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4126](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4126)
+Defined in: [webpack/types.d.ts:13987](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13987)
 
 No parser options are supported for this module type.
 
@@ -40,7 +36,7 @@ No parser options are supported for this module type.
 
 > `optional` **asset/inline**: `EmptyParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4130](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4130)
+Defined in: [webpack/types.d.ts:13992](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13992)
 
 No parser options are supported for this module type.
 
@@ -50,7 +46,7 @@ No parser options are supported for this module type.
 
 > `optional` **asset/resource**: `EmptyParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4134](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4134)
+Defined in: [webpack/types.d.ts:13997](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13997)
 
 No parser options are supported for this module type.
 
@@ -60,7 +56,7 @@ No parser options are supported for this module type.
 
 > `optional` **asset/source**: `EmptyParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4138](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4138)
+Defined in: [webpack/types.d.ts:14002](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14002)
 
 No parser options are supported for this module type.
 
@@ -70,7 +66,7 @@ No parser options are supported for this module type.
 
 > `optional` **css**: `CssParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4142](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4142)
+Defined in: [webpack/types.d.ts:14007](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14007)
 
 Parser options for css modules.
 
@@ -80,7 +76,7 @@ Parser options for css modules.
 
 > `optional` **css/auto**: `CssModuleParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4146](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4146)
+Defined in: [webpack/types.d.ts:14012](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14012)
 
 Parser options for css/module modules.
 
@@ -90,7 +86,7 @@ Parser options for css/module modules.
 
 > `optional` **css/global**: `CssModuleParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4150](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4150)
+Defined in: [webpack/types.d.ts:14017](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14017)
 
 Parser options for css/module modules.
 
@@ -100,7 +96,7 @@ Parser options for css/module modules.
 
 > `optional` **css/module**: `CssModuleParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4154](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4154)
+Defined in: [webpack/types.d.ts:14022](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14022)
 
 Parser options for css/module modules.
 
@@ -110,7 +106,7 @@ Parser options for css/module modules.
 
 > `optional` **javascript**: `JavascriptParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4158](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4158)
+Defined in: [webpack/types.d.ts:14027](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14027)
 
 Parser options for javascript modules.
 
@@ -120,7 +116,7 @@ Parser options for javascript modules.
 
 > `optional` **javascript/auto**: `JavascriptParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4162](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4162)
+Defined in: [webpack/types.d.ts:14032](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14032)
 
 Parser options for javascript modules.
 
@@ -130,7 +126,7 @@ Parser options for javascript modules.
 
 > `optional` **javascript/dynamic**: `JavascriptParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4166](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4166)
+Defined in: [webpack/types.d.ts:14037](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14037)
 
 Parser options for javascript modules.
 
@@ -140,7 +136,7 @@ Parser options for javascript modules.
 
 > `optional` **javascript/esm**: `JavascriptParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4170](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4170)
+Defined in: [webpack/types.d.ts:14042](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14042)
 
 Parser options for javascript modules.
 
@@ -150,6 +146,6 @@ Parser options for javascript modules.
 
 > `optional` **json**: `JsonParserOptions`
 
-Defined in: [declarations/WebpackOptions.d.ts:4174](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/declarations/WebpackOptions.d.ts#L4174)
+Defined in: [webpack/types.d.ts:14047](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14047)
 
 Parser options for JSON modules.

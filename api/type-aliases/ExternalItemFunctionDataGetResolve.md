@@ -2,26 +2,20 @@
 title: ExternalItemFunctionDataGetResolve
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ExternalItemFunctionDataGetResolve
+[webpack](../globals.md) / ExternalItemFunctionDataGetResolve
 
 # Type Alias: ExternalItemFunctionDataGetResolve()
 
-> **ExternalItemFunctionDataGetResolve**\<\> = (`options?`) => [`ExternalItemFunctionDataGetResolveCallbackResult`](ExternalItemFunctionDataGetResolveCallbackResult.md) \| [`ExternalItemFunctionDataGetResolveResult`](ExternalItemFunctionDataGetResolveResult.md)
+> **ExternalItemFunctionDataGetResolve** = (`options?`) => (`context`, `request`, `callback`) => `void` \| (`context`, `request`) => `Promise`\<`string`\>
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:33](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L33)
-
-## Type Parameters
+Defined in: [webpack/types.d.ts:20152](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L20152)
 
 ## Parameters
 
 ### options?
 
-`ResolveOptions`
+[`ResolveOptions`](../interfaces/ResolveOptions.md)
 
 ## Returns
 
-[`ExternalItemFunctionDataGetResolveCallbackResult`](ExternalItemFunctionDataGetResolveCallbackResult.md) \| [`ExternalItemFunctionDataGetResolveResult`](ExternalItemFunctionDataGetResolveResult.md)
+(`context`, `request`, `callback`) => `void` \| (`context`, `request`) => `Promise`\<`string`\>

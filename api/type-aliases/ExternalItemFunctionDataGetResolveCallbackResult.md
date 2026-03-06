@@ -2,19 +2,13 @@
 title: ExternalItemFunctionDataGetResolveCallbackResult
 ---
 
-[**webpack**](../README.md)
-
-***
-
-[webpack](../README.md) / ExternalItemFunctionDataGetResolveCallbackResult
+[webpack](../globals.md) / ExternalItemFunctionDataGetResolveCallbackResult
 
 # Type Alias: ExternalItemFunctionDataGetResolveCallbackResult()
 
-> **ExternalItemFunctionDataGetResolveCallbackResult**\<\> = (`context`, `request`, `callback`) => `void`
+> **ExternalItemFunctionDataGetResolveCallbackResult** = (`context`, `request`, `callback`) => `void`
 
-Defined in: [lib/ExternalModuleFactoryPlugin.js:31](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/lib/ExternalModuleFactoryPlugin.js#L31)
-
-## Type Parameters
+Defined in: [webpack/types.d.ts:20165](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L20165)
 
 ## Parameters
 
