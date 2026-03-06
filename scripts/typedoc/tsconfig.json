@@ -1,0 +1,14 @@
+{
+  "include": [
+    "../../../webpack/lib/**/*",
+    "../../../webpack/declarations/lib/**/*",
+    "../../../webpack/types.d.ts"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "paths": {
+      "webpack": ["../../node_modules/webpack"]
+    }
+  }
+}
