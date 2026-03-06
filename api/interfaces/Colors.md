@@ -2,7 +2,7 @@
 title: Colors
 ---
 
-[webpack](../globals.md) / Colors
+[webpack](../globals) / Colors
 
 # Interface: Colors
 

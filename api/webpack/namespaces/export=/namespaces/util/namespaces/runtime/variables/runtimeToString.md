@@ -2,7 +2,7 @@
 title: runtimeToString
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / runtimeToString
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / runtimeToString
 
 # Variable: runtimeToString()
 

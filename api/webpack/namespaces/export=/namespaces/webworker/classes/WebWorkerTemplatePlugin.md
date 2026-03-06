@@ -2,7 +2,7 @@
 title: WebWorkerTemplatePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [webworker](../index.md) / WebWorkerTemplatePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [webworker](../index) / WebWorkerTemplatePlugin
 
 # Class: WebWorkerTemplatePlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

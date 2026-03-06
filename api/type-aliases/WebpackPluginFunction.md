@@ -2,7 +2,7 @@
 title: WebpackPluginFunction
 ---
 
-[webpack](../globals.md) / WebpackPluginFunction
+[webpack](../globals) / WebpackPluginFunction
 
 # Type Alias: WebpackPluginFunction()
 
@@ -14,11 +14,11 @@ Defined in: [webpack/types.d.ts:20141](https://github.com/webpack/webpack/blob/e
 
 ### this
 
-[`Compiler`](../classes/Compiler.md)
+[`Compiler`](../classes/Compiler)
 
 ### compiler
 
-[`Compiler`](../classes/Compiler.md)
+[`Compiler`](../classes/Compiler)
 
 ## Returns
 

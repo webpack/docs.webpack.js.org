@@ -2,7 +2,7 @@
 title: STAGE_DEFAULT
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [OptimizationStages](../index.md) / STAGE\_DEFAULT
+[webpack](../../../../../../globals) / [export=](../../../index) / [OptimizationStages](../index) / STAGE\_DEFAULT
 
 # Variable: STAGE\_DEFAULT
 

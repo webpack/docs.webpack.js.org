@@ -2,7 +2,7 @@
 title: LibraryOptions
 ---
 
-[webpack](../globals.md) / LibraryOptions
+[webpack](../globals) / LibraryOptions
 
 # Interface: LibraryOptions
 
@@ -24,7 +24,7 @@ Add a container for define/require functions in the AMD module.
 
 ### auxiliaryComment?
 
-> `optional` **auxiliaryComment**: `string` \| `LibraryCustomUmdCommentObject`
+> `optional` **auxiliaryComment**: `string` | `LibraryCustomUmdCommentObject`
 
 Defined in: [webpack/types.d.ts:9830](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9830)
 
@@ -34,7 +34,7 @@ Add a comment in the UMD wrapper.
 
 ### export?
 
-> `optional` **export**: `string` \| `string`[]
+> `optional` **export**: `string` | `string`\[]
 
 Defined in: [webpack/types.d.ts:9835](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9835)
 
@@ -44,7 +44,7 @@ Specify which export should be exposed as library.
 
 ### name?
 
-> `optional` **name**: `string` \| `string`[] \| `LibraryCustomUmdObject`
+> `optional` **name**: `string` | `string`\[] | `LibraryCustomUmdObject`
 
 Defined in: [webpack/types.d.ts:9840](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9840)
 

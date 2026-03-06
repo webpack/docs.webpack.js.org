@@ -2,7 +2,7 @@
 title: ContextExclusionPlugin
 ---
 
-[webpack](../globals.md) / ContextExclusionPlugin
+[webpack](../globals) / ContextExclusionPlugin
 
 # Class: ContextExclusionPlugin
 

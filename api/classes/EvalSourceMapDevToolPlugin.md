@@ -2,7 +2,7 @@
 title: EvalSourceMapDevToolPlugin
 ---
 
-[webpack](../globals.md) / EvalSourceMapDevToolPlugin
+[webpack](../globals) / EvalSourceMapDevToolPlugin
 
 # Class: EvalSourceMapDevToolPlugin
 

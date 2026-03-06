@@ -2,7 +2,7 @@
 title: preloadChunkHandlers
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / preloadChunkHandlers
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / preloadChunkHandlers
 
 # Variable: preloadChunkHandlers
 

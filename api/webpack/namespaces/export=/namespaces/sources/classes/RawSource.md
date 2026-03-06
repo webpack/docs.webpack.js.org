@@ -2,7 +2,7 @@
 title: RawSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / RawSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / RawSource
 
 # Class: RawSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:14442](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:14443](https://github.com/webpack/webpack/blob/e
 
 ##### value
 
-`string` | `Buffer`\<`ArrayBufferLike`\>
+`string` | `Buffer`<`ArrayBufferLike`>
 
 ##### convertToString?
 

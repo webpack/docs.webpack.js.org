@@ -2,7 +2,7 @@
 title: NamedChunkIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / NamedChunkIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / NamedChunkIdsPlugin
 
 # Class: NamedChunkIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

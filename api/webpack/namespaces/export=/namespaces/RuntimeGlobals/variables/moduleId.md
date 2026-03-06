@@ -2,7 +2,7 @@
 title: moduleId
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / moduleId
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / moduleId
 
 # Variable: moduleId
 

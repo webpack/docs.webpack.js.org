@@ -2,7 +2,7 @@
 title: module
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / module
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / module
 
 # Variable: module
 

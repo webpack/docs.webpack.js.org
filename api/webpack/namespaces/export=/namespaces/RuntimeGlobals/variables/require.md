@@ -2,7 +2,7 @@
 title: require
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / require
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / require
 
 # Variable: require
 

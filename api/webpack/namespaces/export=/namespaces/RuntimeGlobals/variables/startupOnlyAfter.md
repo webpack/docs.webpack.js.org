@@ -2,7 +2,7 @@
 title: startupOnlyAfter
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / startupOnlyAfter
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / startupOnlyAfter
 
 # Variable: startupOnlyAfter
 

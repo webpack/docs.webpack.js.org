@@ -2,7 +2,7 @@
 title: LoaderTargetPlugin
 ---
 
-[webpack](../globals.md) / LoaderTargetPlugin
+[webpack](../globals) / LoaderTargetPlugin
 
 # Class: LoaderTargetPlugin
 

@@ -2,7 +2,7 @@
 title: asyncModule
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / asyncModule
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / asyncModule
 
 # Variable: asyncModule
 

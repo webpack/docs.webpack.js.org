@@ -2,7 +2,7 @@
 title: instantiateWasm
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / instantiateWasm
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / instantiateWasm
 
 # Variable: instantiateWasm
 

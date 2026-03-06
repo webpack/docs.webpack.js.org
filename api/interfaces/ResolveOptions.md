@@ -2,7 +2,7 @@
 title: ResolveOptions
 ---
 
-[webpack](../globals.md) / ResolveOptions
+[webpack](../globals) / ResolveOptions
 
 # Interface: ResolveOptions
 
@@ -14,7 +14,7 @@ Options object for resolving requests.
 
 ### alias?
 
-> `optional` **alias**: \{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \} \| `object`[]
+> `optional` **alias**: {\[`index`: `string`]: `string` | `false` | `string`\[]; } | `object`\[]
 
 Defined in: [webpack/types.d.ts:15465](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15465)
 
@@ -22,19 +22,19 @@ Redirect module requests.
 
 #### Type Declaration
 
-\{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \}
+{\[`index`: `string`]: `string` | `false` | `string`\[]; }
 
 #### Index Signature
 
-\[`index`: `string`\]: `string` \| `false` \| `string`[]
+\[`index`: `string`]: `string` | `false` | `string`\[]
 
-`object`[]
+`object`\[]
 
 ***
 
 ### aliasFields?
 
-> `optional` **aliasFields**: (`string` \| `string`[])[]
+> `optional` **aliasFields**: (`string` | `string`\[])\[]
 
 Defined in: [webpack/types.d.ts:15485](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15485)
 
@@ -52,7 +52,7 @@ Extra resolve options per dependency category. Typical categories are "commonjs"
 
 #### Index Signature
 
-\[`index`: `string`\]: `ResolveOptions`
+\[`index`: `string`]: `ResolveOptions`
 
 ***
 
@@ -98,7 +98,7 @@ Include the context information in the cache identifier when caching.
 
 ### conditionNames?
 
-> `optional` **conditionNames**: `string`[]
+> `optional` **conditionNames**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15510](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15510)
 
@@ -108,7 +108,7 @@ Condition names for exports field entry point.
 
 ### descriptionFiles?
 
-> `optional` **descriptionFiles**: `string`[]
+> `optional` **descriptionFiles**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15515](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15515)
 
@@ -128,7 +128,7 @@ Enforce the resolver to use one of the extensions from the extensions option (Us
 
 ### exportsFields?
 
-> `optional` **exportsFields**: `string`[]
+> `optional` **exportsFields**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15525](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15525)
 
@@ -146,13 +146,13 @@ An object which maps extension to extension aliases.
 
 #### Index Signature
 
-\[`index`: `string`\]: `string` \| `string`[]
+\[`index`: `string`]: `string` | `string`\[]
 
 ***
 
 ### extensions?
 
-> `optional` **extensions**: `string`[]
+> `optional` **extensions**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15535](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15535)
 
@@ -162,7 +162,7 @@ Extensions added to the request when trying to find the file.
 
 ### fallback?
 
-> `optional` **fallback**: \{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \} \| `object`[]
+> `optional` **fallback**: {\[`index`: `string`]: `string` | `false` | `string`\[]; } | `object`\[]
 
 Defined in: [webpack/types.d.ts:15540](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15540)
 
@@ -170,13 +170,13 @@ Redirect module requests when normal resolving fails.
 
 #### Type Declaration
 
-\{\[`index`: `string`\]: `string` \| `false` \| `string`[]; \}
+{\[`index`: `string`]: `string` | `false` | `string`\[]; }
 
 #### Index Signature
 
-\[`index`: `string`\]: `string` \| `false` \| `string`[]
+\[`index`: `string`]: `string` | `false` | `string`\[]
 
-`object`[]
+`object`\[]
 
 ***
 
@@ -202,7 +202,7 @@ Treats the request specified by the user as fully specified, meaning no extensio
 
 ### importsFields?
 
-> `optional` **importsFields**: `string`[]
+> `optional` **importsFields**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15570](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15570)
 
@@ -212,7 +212,7 @@ Field names from the description file (usually package.json) which are used to p
 
 ### mainFields?
 
-> `optional` **mainFields**: (`string` \| `string`[])[]
+> `optional` **mainFields**: (`string` | `string`\[])\[]
 
 Defined in: [webpack/types.d.ts:15575](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15575)
 
@@ -222,7 +222,7 @@ Field names from the description file (package.json) which are used to find the 
 
 ### mainFiles?
 
-> `optional` **mainFiles**: `string`[]
+> `optional` **mainFiles**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15580](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15580)
 
@@ -232,7 +232,7 @@ Filenames used to find the default entry point if there is no description file o
 
 ### modules?
 
-> `optional` **modules**: `string`[]
+> `optional` **modules**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15585](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15585)
 
@@ -242,7 +242,7 @@ Folder names or directory paths where to find modules.
 
 ### plugins?
 
-> `optional` **plugins**: (`false` \| `""` \| `0` \| `"..."` \| \{\[`index`: `string`\]: `any`; `apply`: (`arg0`) => `void`; \} \| (`this`, `arg1`) => `void`)[]
+> `optional` **plugins**: (`false` | `""` | `0` | `"..."` | {\[`index`: `string`]: `any`; `apply`: (`arg0`) => `void`; } | (`this`, `arg1`) => `void`)\[]
 
 Defined in: [webpack/types.d.ts:15590](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15590)
 
@@ -272,7 +272,7 @@ Prefer to resolve module requests as relative request and fallback to resolving 
 
 ### resolver?
 
-> `optional` **resolver**: [`Resolver`](../classes/Resolver.md)
+> `optional` **resolver**: [`Resolver`](../classes/Resolver)
 
 Defined in: [webpack/types.d.ts:15620](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15620)
 
@@ -282,7 +282,7 @@ Custom resolver.
 
 ### restrictions?
 
-> `optional` **restrictions**: (`string` \| `RegExp`)[]
+> `optional` **restrictions**: (`string` | `RegExp`)\[]
 
 Defined in: [webpack/types.d.ts:15625](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15625)
 
@@ -292,7 +292,7 @@ A list of resolve restrictions. Resolve results must fulfill all of these restri
 
 ### roots?
 
-> `optional` **roots**: `string`[]
+> `optional` **roots**: `string`\[]
 
 Defined in: [webpack/types.d.ts:15630](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15630)
 
@@ -312,7 +312,7 @@ Enable resolving symlinks to the original location.
 
 ### tsconfig?
 
-> `optional` **tsconfig**: `string` \| `boolean` \| \{ `configFile?`: `string`; `references?`: `string`; \}
+> `optional` **tsconfig**: `string` | `boolean` | { `configFile?`: `string`; `references?`: `string`; }
 
 Defined in: [webpack/types.d.ts:15640](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15640)
 
@@ -324,7 +324,7 @@ TypeScript config for paths mapping. Can be `false` (disabled), `true` (use defa
 
 `boolean`
 
-\{ `configFile?`: `string`; `references?`: `string`; \}
+{ `configFile?`: `string`; `references?`: `string`; }
 
 #### configFile?
 
@@ -342,7 +342,7 @@ References to other tsconfig files. 'auto' inherits from TypeScript config, or a
 
 ### unsafeCache?
 
-> `optional` **unsafeCache**: `boolean` \| \{\[`index`: `string`\]: `any`; \}
+> `optional` **unsafeCache**: `boolean` | {\[`index`: `string`]: `any`; }
 
 Defined in: [webpack/types.d.ts:15657](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15657)
 

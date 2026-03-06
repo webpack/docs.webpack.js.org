@@ -2,7 +2,7 @@
 title: QUERY
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / QUERY
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / QUERY
 
 # Variable: QUERY
 

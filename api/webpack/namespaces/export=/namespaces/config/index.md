@@ -2,11 +2,11 @@
 title: config
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / config
+[webpack](../../../../../globals) / [export=](../../index) / config
 
 # config
 
 ## Variables
 
-- [applyWebpackOptionsDefaults](variables/applyWebpackOptionsDefaults.md)
-- [getNormalizedWebpackOptions](variables/getNormalizedWebpackOptions.md)
+* [applyWebpackOptionsDefaults](variables/applyWebpackOptionsDefaults.md)
+* [getNormalizedWebpackOptions](variables/getNormalizedWebpackOptions.md)

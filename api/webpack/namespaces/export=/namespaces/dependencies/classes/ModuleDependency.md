@@ -2,7 +2,7 @@
 title: ModuleDependency
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [dependencies](../index.md) / ModuleDependency
+[webpack](../../../../../../globals) / [export=](../../../index) / [dependencies](../index) / ModuleDependency
 
 # Class: ModuleDependency
 
@@ -10,11 +10,11 @@ Defined in: [webpack/types.d.ts:10826](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- [`Dependency`](../../../../../../classes/Dependency.md)
+* [`Dependency`](../../../../../../classes/Dependency)
 
 ## Extended by
 
-- [`HarmonyImportDependency`](HarmonyImportDependency.md)
+* [`HarmonyImportDependency`](HarmonyImportDependency.md)
 
 ## Constructors
 
@@ -40,7 +40,7 @@ Defined in: [webpack/types.d.ts:10827](https://github.com/webpack/webpack/blob/e
 
 #### Overrides
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`constructor`](../../../../../../classes/Dependency.md#constructor)
+[`Dependency`](../../../../../../classes/Dependency).[`constructor`](../../../../../../classes/Dependency)
 
 ## Properties
 
@@ -52,7 +52,7 @@ Defined in: [webpack/types.d.ts:4140](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`loc`](../../../../../../classes/Dependency.md#loc)
+[`Dependency`](../../../../../../classes/Dependency).[`loc`](../../../../../../classes/Dependency)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [webpack/types.d.ts:4204](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`module`](../../../../../../classes/Dependency.md#module)
+[`Dependency`](../../../../../../classes/Dependency).[`module`](../../../../../../classes/Dependency)
 
 ***
 
@@ -76,13 +76,13 @@ Defined in: [webpack/types.d.ts:4137](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`optional`](../../../../../../classes/Dependency.md#optional)
+[`Dependency`](../../../../../../classes/Dependency).[`optional`](../../../../../../classes/Dependency)
 
 ***
 
 ### range?
 
-> `optional` **range**: \[`number`, `number`\]
+> `optional` **range**: \[`number`, `number`]
 
 Defined in: [webpack/types.d.ts:10831](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10831)
 
@@ -120,31 +120,31 @@ Defined in: [webpack/types.d.ts:4136](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`weak`](../../../../../../classes/Dependency.md#weak)
+[`Dependency`](../../../../../../classes/Dependency).[`weak`](../../../../../../classes/Dependency)
 
 ***
 
 ### EXPORTS\_OBJECT\_REFERENCED
 
-> `static` **EXPORTS\_OBJECT\_REFERENCED**: `string`[][]
+> `static` **EXPORTS\_OBJECT\_REFERENCED**: `string`\[]\[]
 
 Defined in: [webpack/types.d.ts:10834](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10834)
 
 #### Overrides
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`EXPORTS_OBJECT_REFERENCED`](../../../../../../classes/Dependency.md#exports_object_referenced)
+[`Dependency`](../../../../../../classes/Dependency).[`EXPORTS_OBJECT_REFERENCED`](../../../../../../classes/Dependency)
 
 ***
 
 ### NO\_EXPORTS\_REFERENCED
 
-> `static` **NO\_EXPORTS\_REFERENCED**: `string`[][]
+> `static` **NO\_EXPORTS\_REFERENCED**: `string`\[]\[]
 
 Defined in: [webpack/types.d.ts:10833](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10833)
 
 #### Overrides
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`NO_EXPORTS_REFERENCED`](../../../../../../classes/Dependency.md#no_exports_referenced)
+[`Dependency`](../../../../../../classes/Dependency).[`NO_EXPORTS_REFERENCED`](../../../../../../classes/Dependency)
 
 ***
 
@@ -164,7 +164,7 @@ Defined in: [webpack/types.d.ts:10836](https://github.com/webpack/webpack/blob/e
 
 #### Overrides
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`TRANSITIVE`](../../../../../../classes/Dependency.md#transitive)
+[`Dependency`](../../../../../../classes/Dependency).[`TRANSITIVE`](../../../../../../classes/Dependency)
 
 ## Accessors
 
@@ -182,7 +182,7 @@ Defined in: [webpack/types.d.ts:4139](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`category`](../../../../../../classes/Dependency.md#category)
+[`Dependency`](../../../../../../classes/Dependency).[`category`](../../../../../../classes/Dependency)
 
 ***
 
@@ -200,7 +200,7 @@ Defined in: [webpack/types.d.ts:4205](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`disconnect`](../../../../../../classes/Dependency.md#disconnect)
+[`Dependency`](../../../../../../classes/Dependency).[`disconnect`](../../../../../../classes/Dependency)
 
 ***
 
@@ -218,29 +218,29 @@ Defined in: [webpack/types.d.ts:4138](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`type`](../../../../../../classes/Dependency.md#type)
+[`Dependency`](../../../../../../classes/Dependency).[`type`](../../../../../../classes/Dependency)
 
 ## Methods
 
 ### couldAffectReferencingModule()
 
-> **couldAffectReferencingModule**(): `boolean` \| *typeof* `TRANSITIVE`
+> **couldAffectReferencingModule**(): `boolean` | *typeof* `TRANSITIVE`
 
 Defined in: [webpack/types.d.ts:4149](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4149)
 
 #### Returns
 
-`boolean` \| *typeof* `TRANSITIVE`
+`boolean` | *typeof* `TRANSITIVE`
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`couldAffectReferencingModule`](../../../../../../classes/Dependency.md#couldaffectreferencingmodule)
+[`Dependency`](../../../../../../classes/Dependency).[`couldAffectReferencingModule`](../../../../../../classes/Dependency)
 
 ***
 
 ### createIgnoredModule()
 
-> **createIgnoredModule**(`context`): [`Module`](../../../../../../classes/Module.md)
+> **createIgnoredModule**(`context`): [`Module`](../../../../../../classes/Module)
 
 Defined in: [webpack/types.d.ts:4201](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4201)
 
@@ -252,11 +252,11 @@ Defined in: [webpack/types.d.ts:4201](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Module`](../../../../../../classes/Module.md)
+[`Module`](../../../../../../classes/Module)
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`createIgnoredModule`](../../../../../../classes/Dependency.md#createignoredmodule)
+[`Dependency`](../../../../../../classes/Dependency).[`createIgnoredModule`](../../../../../../classes/Dependency)
 
 ***
 
@@ -270,7 +270,7 @@ Defined in: [webpack/types.d.ts:4203](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectDeserializerContext`](../../../../../../interfaces/ObjectDeserializerContext.md)
+[`ObjectDeserializerContext`](../../../../../../interfaces/ObjectDeserializerContext)
 
 #### Returns
 
@@ -278,13 +278,13 @@ Defined in: [webpack/types.d.ts:4203](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`deserialize`](../../../../../../classes/Dependency.md#deserialize)
+[`Dependency`](../../../../../../classes/Dependency).[`deserialize`](../../../../../../classes/Dependency)
 
 ***
 
 ### getCondition()
 
-> **getCondition**(`moduleGraph`): `false` \| (`moduleGraphConnection`, `runtime`) => `ConnectionState`
+> **getCondition**(`moduleGraph`): `false` | (`moduleGraphConnection`, `runtime`) => `ConnectionState`
 
 Defined in: [webpack/types.d.ts:4164](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4164)
 
@@ -292,15 +292,15 @@ Defined in: [webpack/types.d.ts:4164](https://github.com/webpack/webpack/blob/e3
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
-`false` \| (`moduleGraphConnection`, `runtime`) => `ConnectionState`
+`false` | (`moduleGraphConnection`, `runtime`) => `ConnectionState`
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getCondition`](../../../../../../classes/Dependency.md#getcondition)
+[`Dependency`](../../../../../../classes/Dependency).[`getCondition`](../../../../../../classes/Dependency)
 
 ***
 
@@ -316,13 +316,13 @@ Defined in: [webpack/types.d.ts:4147](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getContext`](../../../../../../classes/Dependency.md#getcontext)
+[`Dependency`](../../../../../../classes/Dependency).[`getContext`](../../../../../../classes/Dependency)
 
 ***
 
 ### getErrors()
 
-> **getErrors**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError.md)[]
+> **getErrors**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 Defined in: [webpack/types.d.ts:4187](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4187)
 
@@ -332,15 +332,15 @@ Returns errors
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
-[`WebpackError`](../../../../../../classes/WebpackError.md)[]
+[`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getErrors`](../../../../../../classes/Dependency.md#geterrors)
+[`Dependency`](../../../../../../classes/Dependency).[`getErrors`](../../../../../../classes/Dependency)
 
 ***
 
@@ -356,7 +356,7 @@ Returns the exported names
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
@@ -364,7 +364,7 @@ Returns the exported names
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getExports`](../../../../../../classes/Dependency.md#getexports)
+[`Dependency`](../../../../../../classes/Dependency).[`getExports`](../../../../../../classes/Dependency)
 
 ***
 
@@ -378,7 +378,7 @@ Defined in: [webpack/types.d.ts:4198](https://github.com/webpack/webpack/blob/e3
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
@@ -386,7 +386,7 @@ Defined in: [webpack/types.d.ts:4198](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getModuleEvaluationSideEffectsState`](../../../../../../classes/Dependency.md#getmoduleevaluationsideeffectsstate)
+[`Dependency`](../../../../../../classes/Dependency).[`getModuleEvaluationSideEffectsState`](../../../../../../classes/Dependency)
 
 ***
 
@@ -404,7 +404,7 @@ implement this method to allow the occurrence order plugin to count correctly
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getNumberOfIdOccurrences`](../../../../../../classes/Dependency.md#getnumberofidoccurrences)
+[`Dependency`](../../../../../../classes/Dependency).[`getNumberOfIdOccurrences`](../../../../../../classes/Dependency)
 
 ***
 
@@ -420,7 +420,7 @@ Returns the referenced module and export
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
@@ -430,13 +430,13 @@ Returns the referenced module and export
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getReference`](../../../../../../classes/Dependency.md#getreference)
+[`Dependency`](../../../../../../classes/Dependency).[`getReference`](../../../../../../classes/Dependency)
 
 ***
 
 ### getReferencedExports()
 
-> **getReferencedExports**(`moduleGraph`, `runtime`): (`string`[] \| `ReferencedExport`)[]
+> **getReferencedExports**(`moduleGraph`, `runtime`): (`string`\[] | `ReferencedExport`)\[]
 
 Defined in: [webpack/types.d.ts:4160](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4160)
 
@@ -446,7 +446,7 @@ Returns list of exports referenced by this dependency
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 ##### runtime
 
@@ -454,11 +454,11 @@ Returns list of exports referenced by this dependency
 
 #### Returns
 
-(`string`[] \| `ReferencedExport`)[]
+(`string`\[] | `ReferencedExport`)\[]
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getReferencedExports`](../../../../../../classes/Dependency.md#getreferencedexports)
+[`Dependency`](../../../../../../classes/Dependency).[`getReferencedExports`](../../../../../../classes/Dependency)
 
 ***
 
@@ -474,13 +474,13 @@ Defined in: [webpack/types.d.ts:4148](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getResourceIdentifier`](../../../../../../classes/Dependency.md#getresourceidentifier)
+[`Dependency`](../../../../../../classes/Dependency).[`getResourceIdentifier`](../../../../../../classes/Dependency)
 
 ***
 
 ### getWarnings()
 
-> **getWarnings**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError.md)[]
+> **getWarnings**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 Defined in: [webpack/types.d.ts:4182](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4182)
 
@@ -490,15 +490,15 @@ Returns warnings
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
-[`WebpackError`](../../../../../../classes/WebpackError.md)[]
+[`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`getWarnings`](../../../../../../classes/Dependency.md#getwarnings)
+[`Dependency`](../../../../../../classes/Dependency).[`getWarnings`](../../../../../../classes/Dependency)
 
 ***
 
@@ -512,7 +512,7 @@ Defined in: [webpack/types.d.ts:4202](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectSerializerContext`](../../../../../../interfaces/ObjectSerializerContext.md)
+[`ObjectSerializerContext`](../../../../../../interfaces/ObjectSerializerContext)
 
 #### Returns
 
@@ -520,7 +520,7 @@ Defined in: [webpack/types.d.ts:4202](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`serialize`](../../../../../../classes/Dependency.md#serialize)
+[`Dependency`](../../../../../../classes/Dependency).[`serialize`](../../../../../../classes/Dependency)
 
 ***
 
@@ -554,7 +554,7 @@ Defined in: [webpack/types.d.ts:4141](https://github.com/webpack/webpack/blob/e3
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`setLoc`](../../../../../../classes/Dependency.md#setloc)
+[`Dependency`](../../../../../../classes/Dependency).[`setLoc`](../../../../../../classes/Dependency)
 
 ***
 
@@ -582,7 +582,7 @@ Update the hash
 
 #### Inherited from
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`updateHash`](../../../../../../classes/Dependency.md#updatehash)
+[`Dependency`](../../../../../../classes/Dependency).[`updateHash`](../../../../../../classes/Dependency)
 
 ***
 
@@ -596,7 +596,7 @@ Defined in: [webpack/types.d.ts:10835](https://github.com/webpack/webpack/blob/e
 
 ##### dependency
 
-[`Dependency`](../../../../../../classes/Dependency.md)
+[`Dependency`](../../../../../../classes/Dependency)
 
 #### Returns
 
@@ -604,4 +604,4 @@ Defined in: [webpack/types.d.ts:10835](https://github.com/webpack/webpack/blob/e
 
 #### Overrides
 
-[`Dependency`](../../../../../../classes/Dependency.md).[`isLowPriorityDependency`](../../../../../../classes/Dependency.md#islowprioritydependency)
+[`Dependency`](../../../../../../classes/Dependency).[`isLowPriorityDependency`](../../../../../../classes/Dependency)

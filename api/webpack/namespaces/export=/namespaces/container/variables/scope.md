@@ -2,11 +2,11 @@
 title: scope
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [container](../index.md) / scope
+[webpack](../../../../../../globals) / [export=](../../../index) / [container](../index) / scope
 
 # Variable: scope()
 
-> `const` **scope**: \<`T`\>(`scope`, `options`) => `Record`\<`string`, `string` \| `string`[] \| `T`\>
+> `const` **scope**: <`T`>(`scope`, `options`) => `Record`<`string`, `string` | `string`\[] | `T`>
 
 Defined in: [webpack/types.d.ts:19905](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19905)
 
@@ -24,8 +24,8 @@ Defined in: [webpack/types.d.ts:19905](https://github.com/webpack/webpack/blob/e
 
 ### options
 
-`ContainerOptionsFormat`\<`T`\>
+`ContainerOptionsFormat`<`T`>
 
 ## Returns
 
-`Record`\<`string`, `string` \| `string`[] \| `T`\>
+`Record`<`string`, `string` | `string`\[] | `T`>

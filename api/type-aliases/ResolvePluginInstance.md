@@ -2,21 +2,21 @@
 title: ResolvePluginInstance
 ---
 
-[webpack](../globals.md) / ResolvePluginInstance
+[webpack](../globals) / ResolvePluginInstance
 
 # Type Alias: ResolvePluginInstance
 
-> **ResolvePluginInstance** = \{\[`index`: `string`\]: `any`; `apply`: (`arg0`) => `void`; \} \| (`this`, `arg1`) => `void`
+> **ResolvePluginInstance** = {\[`index`: `string`]: `any`; `apply`: (`arg0`) => `void`; } | (`this`, `arg1`) => `void`
 
 Defined in: [webpack/types.d.ts:15959](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15959)
 
 ## Type Declaration
 
-\{\[`index`: `string`\]: `any`; `apply`: (`arg0`) => `void`; \}
+{\[`index`: `string`]: `any`; `apply`: (`arg0`) => `void`; }
 
 ## Index Signature
 
-\[`index`: `string`\]: `any`
+\[`index`: `string`]: `any`
 
 ### apply()
 
@@ -28,7 +28,7 @@ The run point of the plugin, required method.
 
 ##### arg0
 
-[`Resolver`](../classes/Resolver.md)
+[`Resolver`](../classes/Resolver)
 
 #### Returns
 
@@ -40,11 +40,11 @@ The run point of the plugin, required method.
 
 ### this
 
-[`Resolver`](../classes/Resolver.md)
+[`Resolver`](../classes/Resolver)
 
 ### arg1
 
-[`Resolver`](../classes/Resolver.md)
+[`Resolver`](../classes/Resolver)
 
 ## Returns
 

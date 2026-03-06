@@ -2,7 +2,7 @@
 title: NodeSourcePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [node](../index.md) / NodeSourcePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [node](../index) / NodeSourcePlugin
 
 # Class: NodeSourcePlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

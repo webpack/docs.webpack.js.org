@@ -2,7 +2,7 @@
 title: NoEmitOnErrorsPlugin
 ---
 
-[webpack](../globals.md) / NoEmitOnErrorsPlugin
+[webpack](../globals) / NoEmitOnErrorsPlugin
 
 # Class: NoEmitOnErrorsPlugin
 

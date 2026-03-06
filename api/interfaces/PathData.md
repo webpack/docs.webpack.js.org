@@ -2,7 +2,7 @@
 title: PathData
 ---
 
-[webpack](../globals.md) / PathData
+[webpack](../globals) / PathData
 
 # Interface: PathData
 
@@ -20,7 +20,7 @@ Defined in: [webpack/types.d.ts:14072](https://github.com/webpack/webpack/blob/e
 
 ### chunk?
 
-> `optional` **chunk**: [`Chunk`](../classes/Chunk.md) \| `ChunkPathData`
+> `optional` **chunk**: [`Chunk`](../classes/Chunk) | `ChunkPathData`
 
 Defined in: [webpack/types.d.ts:14068](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14068)
 
@@ -28,7 +28,7 @@ Defined in: [webpack/types.d.ts:14068](https://github.com/webpack/webpack/blob/e
 
 ### chunkGraph?
 
-> `optional` **chunkGraph**: [`ChunkGraph`](../classes/ChunkGraph.md)
+> `optional` **chunkGraph**: [`ChunkGraph`](../classes/ChunkGraph)
 
 Defined in: [webpack/types.d.ts:14065](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14065)
 
@@ -104,7 +104,7 @@ Defined in: [webpack/types.d.ts:14067](https://github.com/webpack/webpack/blob/e
 
 ### module?
 
-> `optional` **module**: [`Module`](../classes/Module.md) \| `ModulePathData`
+> `optional` **module**: [`Module`](../classes/Module) | `ModulePathData`
 
 Defined in: [webpack/types.d.ts:14069](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14069)
 
@@ -120,7 +120,7 @@ Defined in: [webpack/types.d.ts:14077](https://github.com/webpack/webpack/blob/e
 
 ### prepareId()?
 
-> `optional` **prepareId**: (`id`) => `string` \| `number`
+> `optional` **prepareId**: (`id`) => `string` | `number`
 
 Defined in: [webpack/types.d.ts:14079](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14079)
 
@@ -132,7 +132,7 @@ Defined in: [webpack/types.d.ts:14079](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`string` \| `number`
+`string` | `number`
 
 ***
 

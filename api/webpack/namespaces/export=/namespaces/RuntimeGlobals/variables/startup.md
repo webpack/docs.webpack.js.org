@@ -2,7 +2,7 @@
 title: startup
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / startup
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / startup
 
 # Variable: startup
 

@@ -2,7 +2,7 @@
 title: Parser
 ---
 
-[webpack](../globals.md) / Parser
+[webpack](../globals) / Parser
 
 # Class: Parser
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:13962](https://github.com/webpack/webpack/blob/e
 
 ## Extended by
 
-- [`JavascriptParser`](../webpack/namespaces/export=/namespaces/javascript/classes/JavascriptParser.md)
+* [`JavascriptParser`](../webpack/namespaces/export=/namespaces/javascript/classes/JavascriptParser)
 
 ## Constructors
 
@@ -28,7 +28,7 @@ Defined in: [webpack/types.d.ts:13963](https://github.com/webpack/webpack/blob/e
 
 ### parse()
 
-> **parse**(`source`, `state`): [`ParserState`](../type-aliases/ParserState.md)
+> **parse**(`source`, `state`): [`ParserState`](../type-aliases/ParserState)
 
 Defined in: [webpack/types.d.ts:13964](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13964)
 
@@ -36,12 +36,12 @@ Defined in: [webpack/types.d.ts:13964](https://github.com/webpack/webpack/blob/e
 
 ##### source
 
-`string` | `Buffer`\<`ArrayBufferLike`\> | `PreparsedAst`
+`string` | `Buffer`<`ArrayBufferLike`> | `PreparsedAst`
 
 ##### state
 
-[`ParserState`](../type-aliases/ParserState.md)
+[`ParserState`](../type-aliases/ParserState)
 
 #### Returns
 
-[`ParserState`](../type-aliases/ParserState.md)
+[`ParserState`](../type-aliases/ParserState)

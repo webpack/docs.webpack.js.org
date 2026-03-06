@@ -2,7 +2,7 @@
 title: WebpackPluginInstance
 ---
 
-[webpack](../globals.md) / WebpackPluginInstance
+[webpack](../globals) / WebpackPluginInstance
 
 # Interface: WebpackPluginInstance
 
@@ -12,7 +12,7 @@ Plugin instance.
 
 ## Indexable
 
-\[`index`: `string`\]: `any`
+\[`index`: `string`]: `any`
 
 ## Properties
 
@@ -28,7 +28,7 @@ The run point of the plugin, required method.
 
 ##### compiler
 
-[`Compiler`](../classes/Compiler.md)
+[`Compiler`](../classes/Compiler)
 
 #### Returns
 

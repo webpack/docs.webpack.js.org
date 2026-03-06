@@ -2,9 +2,9 @@
 title: LoaderDefinitionFunction
 ---
 
-[webpack](../globals.md) / LoaderDefinitionFunction
+[webpack](../globals) / LoaderDefinitionFunction
 
-# Interface: LoaderDefinitionFunction()\<OptionsType, ContextAdditions\>
+# Interface: LoaderDefinitionFunction()\<OptionsType, ContextAdditions>
 
 Defined in: [webpack/types.d.ts:9946](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9946)
 
@@ -12,13 +12,13 @@ Defined in: [webpack/types.d.ts:9946](https://github.com/webpack/webpack/blob/e3
 
 ### OptionsType
 
-`OptionsType` = \{ \}
+`OptionsType` = { }
 
 ### ContextAdditions
 
-`ContextAdditions` = \{ \}
+`ContextAdditions` = { }
 
-> **LoaderDefinitionFunction**(`this`, `content`, `sourceMap?`, `additionalData?`): `string` \| `void` \| `Buffer`\<`ArrayBufferLike`\> \| `Promise`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
+> **LoaderDefinitionFunction**(`this`, `content`, `sourceMap?`, `additionalData?`): `string` | `void` | `Buffer`<`ArrayBufferLike`> | `Promise`<`string` | `Buffer`<`ArrayBufferLike`>>
 
 Defined in: [webpack/types.d.ts:9950](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9950)
 
@@ -26,7 +26,7 @@ Defined in: [webpack/types.d.ts:9950](https://github.com/webpack/webpack/blob/e3
 
 ### this
 
-`NormalModuleLoaderContext`\<`OptionsType`\> & `LoaderRunnerLoaderContext`\<`OptionsType`\> & `LoaderPluginLoaderContext` & `HotModuleReplacementPluginLoaderContext` & `ContextAdditions`
+`NormalModuleLoaderContext`<`OptionsType`> & `LoaderRunnerLoaderContext`<`OptionsType`> & `LoaderPluginLoaderContext` & `HotModuleReplacementPluginLoaderContext` & `ContextAdditions`
 
 ### content
 
@@ -42,4 +42,4 @@ Defined in: [webpack/types.d.ts:9950](https://github.com/webpack/webpack/blob/e3
 
 ## Returns
 
-`string` \| `void` \| `Buffer`\<`ArrayBufferLike`\> \| `Promise`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
+`string` | `void` | `Buffer`<`ArrayBufferLike`> | `Promise`<`string` | `Buffer`<`ArrayBufferLike`>>

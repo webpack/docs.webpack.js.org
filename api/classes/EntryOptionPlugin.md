@@ -2,7 +2,7 @@
 title: EntryOptionPlugin
 ---
 
-[webpack](../globals.md) / EntryOptionPlugin
+[webpack](../globals) / EntryOptionPlugin
 
 # Class: EntryOptionPlugin
 
@@ -58,7 +58,7 @@ Defined in: [webpack/types.d.ts:4918](https://github.com/webpack/webpack/blob/e3
 
 ##### entry
 
-[`EntryNormalized`](../type-aliases/EntryNormalized.md)
+[`EntryNormalized`](../type-aliases/EntryNormalized)
 
 #### Returns
 
@@ -68,7 +68,7 @@ Defined in: [webpack/types.d.ts:4918](https://github.com/webpack/webpack/blob/e3
 
 ### entryDescriptionToOptions()
 
-> `static` **entryDescriptionToOptions**(`compiler`, `name`, `desc`): [`EntryOptions`](../type-aliases/EntryOptions.md)
+> `static` **entryDescriptionToOptions**(`compiler`, `name`, `desc`): [`EntryOptions`](../type-aliases/EntryOptions)
 
 Defined in: [webpack/types.d.ts:4923](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4923)
 
@@ -88,4 +88,4 @@ Defined in: [webpack/types.d.ts:4923](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`EntryOptions`](../type-aliases/EntryOptions.md)
+[`EntryOptions`](../type-aliases/EntryOptions)

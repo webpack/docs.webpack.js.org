@@ -2,7 +2,7 @@
 title: REGEXP_ABSOLUTE_RESOURCE_PATH
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / REGEXP\_ABSOLUTE\_RESOURCE\_PATH
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / REGEXP\_ABSOLUTE\_RESOURCE\_PATH
 
 # Variable: REGEXP\_ABSOLUTE\_RESOURCE\_PATH
 

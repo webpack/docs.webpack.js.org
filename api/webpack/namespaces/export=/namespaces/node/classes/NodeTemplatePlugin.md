@@ -2,7 +2,7 @@
 title: NodeTemplatePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [node](../index.md) / NodeTemplatePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [node](../index) / NodeTemplatePlugin
 
 # Class: NodeTemplatePlugin
 
@@ -40,7 +40,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

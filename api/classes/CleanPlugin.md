@@ -2,7 +2,7 @@
 title: CleanPlugin
 ---
 
-[webpack](../globals.md) / CleanPlugin
+[webpack](../globals) / CleanPlugin
 
 # Class: CleanPlugin
 

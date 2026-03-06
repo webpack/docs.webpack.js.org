@@ -2,7 +2,7 @@
 title: validateSchema
 ---
 
-[webpack](../../../../globals.md) / [export=](../index.md) / validateSchema
+[webpack](../../../../globals) / [export=](../index) / validateSchema
 
 # Variable: validateSchema()
 
@@ -14,11 +14,11 @@ Defined in: [webpack/types.d.ts:19562](https://github.com/webpack/webpack/blob/e
 
 ### schema
 
-`Parameters`\<*typeof* `validateFunction`\>\[`0`\]
+`Parameters`<*typeof* `validateFunction`>\[`0`]
 
 ### options
 
-`Parameters`\<*typeof* `validateFunction`\>\[`1`\]
+`Parameters`<*typeof* `validateFunction`>\[`1`]
 
 ### validationConfiguration?
 

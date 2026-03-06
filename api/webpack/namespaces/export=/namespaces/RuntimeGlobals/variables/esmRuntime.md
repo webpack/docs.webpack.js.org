@@ -2,7 +2,7 @@
 title: esmRuntime
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / esmRuntime
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / esmRuntime
 
 # Variable: esmRuntime
 

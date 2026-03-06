@@ -2,7 +2,7 @@
 title: ChunkGraph
 ---
 
-[webpack](../globals.md) / ChunkGraph
+[webpack](../globals) / ChunkGraph
 
 # Class: ChunkGraph
 
@@ -54,7 +54,7 @@ Defined in: [webpack/types.d.ts:1539](https://github.com/webpack/webpack/blob/e3
 
 ##### items
 
-`Set`\<`string`\>
+`Set`<`string`>
 
 #### Returns
 
@@ -124,7 +124,7 @@ Defined in: [webpack/types.d.ts:1533](https://github.com/webpack/webpack/blob/e3
 
 ##### items
 
-`Set`\<`string`\>
+`Set`<`string`>
 
 ##### transferOwnership?
 
@@ -150,7 +150,7 @@ Defined in: [webpack/types.d.ts:1540](https://github.com/webpack/webpack/blob/e3
 
 ##### items
 
-`Iterable`\<`string`\>
+`Iterable`<`string`>
 
 #### Returns
 
@@ -172,7 +172,7 @@ Defined in: [webpack/types.d.ts:1404](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`\<[`RuntimeModule`](RuntimeModule.md)\>
+`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
 
 #### Returns
 
@@ -194,7 +194,7 @@ Defined in: [webpack/types.d.ts:1403](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`\<[`RuntimeModule`](RuntimeModule.md)\>
+`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
 
 #### Returns
 
@@ -216,7 +216,7 @@ Defined in: [webpack/types.d.ts:1401](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`\<[`Module`](Module.md)\>
+`Iterable`<[`Module`](Module.md)>
 
 #### Returns
 
@@ -238,7 +238,7 @@ Defined in: [webpack/types.d.ts:1402](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`\<[`RuntimeModule`](RuntimeModule.md)\>
+`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
 
 #### Returns
 
@@ -270,7 +270,7 @@ Defined in: [webpack/types.d.ts:1478](https://github.com/webpack/webpack/blob/e3
 
 ### compareChunks()
 
-> **compareChunks**(`chunkA`, `chunkB`): `-1` \| `0` \| `1`
+> **compareChunks**(`chunkA`, `chunkB`): `-1` | `0` | `1`
 
 Defined in: [webpack/types.d.ts:1468](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1468)
 
@@ -286,7 +286,7 @@ Defined in: [webpack/types.d.ts:1468](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`-1` \| `0` \| `1`
+`-1` | `0` | `1`
 
 ***
 
@@ -562,7 +562,7 @@ Defined in: [webpack/types.d.ts:1459](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkDependentHashModulesIterable()
 
-> **getChunkDependentHashModulesIterable**(`chunk`): `Iterable`\<[`RuntimeModule`](RuntimeModule.md), `any`, `any`\>
+> **getChunkDependentHashModulesIterable**(`chunk`): `Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1508](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1508)
 
@@ -574,13 +574,13 @@ Defined in: [webpack/types.d.ts:1508](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`RuntimeModule`](RuntimeModule.md), `any`, `any`\>
+`Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 ***
 
 ### getChunkEntryDependentChunksIterable()
 
-> **getChunkEntryDependentChunksIterable**(`chunk`): `Iterable`\<[`Chunk`](Chunk.md)\>
+> **getChunkEntryDependentChunksIterable**(`chunk`): `Iterable`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1497](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1497)
 
@@ -592,13 +592,13 @@ Defined in: [webpack/types.d.ts:1497](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`Chunk`](Chunk.md)\>
+`Iterable`<[`Chunk`](Chunk.md)>
 
 ***
 
 ### getChunkEntryModulesIterable()
 
-> **getChunkEntryModulesIterable**(`chunk`): `Iterable`\<[`Module`](Module.md)\>
+> **getChunkEntryModulesIterable**(`chunk`): `Iterable`<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1496](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1496)
 
@@ -610,13 +610,13 @@ Defined in: [webpack/types.d.ts:1496](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`Module`](Module.md)\>
+`Iterable`<[`Module`](Module.md)>
 
 ***
 
 ### getChunkEntryModulesWithChunkGroupIterable()
 
-> **getChunkEntryModulesWithChunkGroupIterable**(`chunk`): `Iterable`\<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)\]\>
+> **getChunkEntryModulesWithChunkGroupIterable**(`chunk`): `Iterable`<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)]>
 
 Defined in: [webpack/types.d.ts:1511](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1511)
 
@@ -628,13 +628,13 @@ Defined in: [webpack/types.d.ts:1511](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)\]\>
+`Iterable`<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)]>
 
 ***
 
 ### getChunkFullHashModulesIterable()
 
-> **getChunkFullHashModulesIterable**(`chunk`): `Iterable`\<[`RuntimeModule`](RuntimeModule.md), `any`, `any`\>
+> **getChunkFullHashModulesIterable**(`chunk`): `Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1502](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1502)
 
@@ -646,13 +646,13 @@ Defined in: [webpack/types.d.ts:1502](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`RuntimeModule`](RuntimeModule.md), `any`, `any`\>
+`Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 ***
 
 ### getChunkFullHashModulesSet()
 
-> **getChunkFullHashModulesSet**(`chunk`): `ReadonlySet`\<[`RuntimeModule`](RuntimeModule.md)\>
+> **getChunkFullHashModulesSet**(`chunk`): `ReadonlySet`<[`RuntimeModule`](RuntimeModule.md)>
 
 Defined in: [webpack/types.d.ts:1505](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1505)
 
@@ -664,7 +664,7 @@ Defined in: [webpack/types.d.ts:1505](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<[`RuntimeModule`](RuntimeModule.md)\>
+`ReadonlySet`<[`RuntimeModule`](RuntimeModule.md)>
 
 ***
 
@@ -726,7 +726,7 @@ Defined in: [webpack/types.d.ts:1453](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkModules()
 
-> **getChunkModules**(`chunk`): [`Module`](Module.md)[]
+> **getChunkModules**(`chunk`): [`Module`](Module.md)\[]
 
 Defined in: [webpack/types.d.ts:1443](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1443)
 
@@ -738,13 +738,13 @@ Defined in: [webpack/types.d.ts:1443](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Module`](Module.md)[]
+[`Module`](Module.md)\[]
 
 ***
 
 ### getChunkModulesIterable()
 
-> **getChunkModulesIterable**(`chunk`): `Iterable`\<[`Module`](Module.md)\>
+> **getChunkModulesIterable**(`chunk`): `Iterable`<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1422](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1422)
 
@@ -756,13 +756,13 @@ Defined in: [webpack/types.d.ts:1422](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`Module`](Module.md)\>
+`Iterable`<[`Module`](Module.md)>
 
 ***
 
 ### getChunkModulesIterableBySourceType()
 
-> **getChunkModulesIterableBySourceType**(`chunk`, `sourceType`): `Iterable`\<[`Module`](Module.md), `any`, `any`\>
+> **getChunkModulesIterableBySourceType**(`chunk`, `sourceType`): `Iterable`<[`Module`](Module.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1423](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1423)
 
@@ -778,13 +778,13 @@ Defined in: [webpack/types.d.ts:1423](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`Module`](Module.md), `any`, `any`\>
+`Iterable`<[`Module`](Module.md), `any`, `any`>
 
 ***
 
 ### getChunkModuleSourceTypes()
 
-> **getChunkModuleSourceTypes**(`chunk`, `module`): `ReadonlySet`\<`string`\>
+> **getChunkModuleSourceTypes**(`chunk`, `module`): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:1432](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1432)
 
@@ -800,7 +800,7 @@ Defined in: [webpack/types.d.ts:1432](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
@@ -824,7 +824,7 @@ Defined in: [webpack/types.d.ts:1469](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkModulesSizes()
 
-> **getChunkModulesSizes**(`chunk`): `Record`\<`string`, `number`\>
+> **getChunkModulesSizes**(`chunk`): `Record`<`string`, `number`>
 
 Defined in: [webpack/types.d.ts:1470](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1470)
 
@@ -836,13 +836,13 @@ Defined in: [webpack/types.d.ts:1470](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`\<`string`, `number`\>
+`Record`<`string`, `number`>
 
 ***
 
 ### getChunkRootModules()
 
-> **getChunkRootModules**(`chunk`): [`Module`](Module.md)[]
+> **getChunkRootModules**(`chunk`): [`Module`](Module.md)\[]
 
 Defined in: [webpack/types.d.ts:1471](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1471)
 
@@ -854,13 +854,13 @@ Defined in: [webpack/types.d.ts:1471](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Module`](Module.md)[]
+[`Module`](Module.md)\[]
 
 ***
 
 ### getChunkRuntimeModulesInOrder()
 
-> **getChunkRuntimeModulesInOrder**(`chunk`): [`RuntimeModule`](RuntimeModule.md)[]
+> **getChunkRuntimeModulesInOrder**(`chunk`): [`RuntimeModule`](RuntimeModule.md)\[]
 
 Defined in: [webpack/types.d.ts:1501](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1501)
 
@@ -872,13 +872,13 @@ Defined in: [webpack/types.d.ts:1501](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`RuntimeModule`](RuntimeModule.md)[]
+[`RuntimeModule`](RuntimeModule.md)\[]
 
 ***
 
 ### getChunkRuntimeModulesIterable()
 
-> **getChunkRuntimeModulesIterable**(`chunk`): `Iterable`\<[`RuntimeModule`](RuntimeModule.md)\>
+> **getChunkRuntimeModulesIterable**(`chunk`): `Iterable`<[`RuntimeModule`](RuntimeModule.md)>
 
 Defined in: [webpack/types.d.ts:1500](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1500)
 
@@ -890,13 +890,13 @@ Defined in: [webpack/types.d.ts:1500](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`RuntimeModule`](RuntimeModule.md)\>
+`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
 
 ***
 
 ### getChunkRuntimeRequirements()
 
-> **getChunkRuntimeRequirements**(`chunk`): `ReadonlySet`\<`string`\>
+> **getChunkRuntimeRequirements**(`chunk`): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:1545](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1545)
 
@@ -908,7 +908,7 @@ Defined in: [webpack/types.d.ts:1545](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
@@ -962,7 +962,7 @@ Defined in: [webpack/types.d.ts:1473](https://github.com/webpack/webpack/blob/e3
 
 ### getModuleChunks()
 
-> **getModuleChunks**(`module`): [`Chunk`](Chunk.md)[]
+> **getModuleChunks**(`module`): [`Chunk`](Chunk.md)\[]
 
 Defined in: [webpack/types.d.ts:1417](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1417)
 
@@ -974,13 +974,13 @@ Defined in: [webpack/types.d.ts:1417](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Chunk`](Chunk.md)[]
+[`Chunk`](Chunk.md)\[]
 
 ***
 
 ### getModuleChunksIterable()
 
-> **getModuleChunksIterable**(`module`): `Iterable`\<[`Chunk`](Chunk.md)\>
+> **getModuleChunksIterable**(`module`): `Iterable`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1412](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1412)
 
@@ -992,7 +992,7 @@ Defined in: [webpack/types.d.ts:1412](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`Chunk`](Chunk.md)\>
+`Iterable`<[`Chunk`](Chunk.md)>
 
 ***
 
@@ -1072,7 +1072,7 @@ Defined in: [webpack/types.d.ts:1525](https://github.com/webpack/webpack/blob/e3
 
 ### getModuleId()
 
-> **getModuleId**(`module`): `string` \| `number`
+> **getModuleId**(`module`): `string` | `number`
 
 Defined in: [webpack/types.d.ts:1520](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1520)
 
@@ -1084,13 +1084,13 @@ Defined in: [webpack/types.d.ts:1520](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`string` \| `number`
+`string` | `number`
 
 ***
 
 ### getModuleRuntimeRequirements()
 
-> **getModuleRuntimeRequirements**(`module`, `runtime`): `ReadonlySet`\<`string`\>
+> **getModuleRuntimeRequirements**(`module`, `runtime`): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:1541](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1541)
 
@@ -1106,13 +1106,13 @@ Defined in: [webpack/types.d.ts:1541](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
 ### getModuleRuntimes()
 
-> **getModuleRuntimes**(`module`): [`RuntimeSpecSet`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet.md)
+> **getModuleRuntimes**(`module`): [`RuntimeSpecSet`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet)
 
 Defined in: [webpack/types.d.ts:1419](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1419)
 
@@ -1124,13 +1124,13 @@ Defined in: [webpack/types.d.ts:1419](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`RuntimeSpecSet`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet.md)
+[`RuntimeSpecSet`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet)
 
 ***
 
 ### getModuleSourceTypes()
 
-> **getModuleSourceTypes**(`module`): `ReadonlySet`\<`string`\>
+> **getModuleSourceTypes**(`module`): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:1433](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1433)
 
@@ -1142,7 +1142,7 @@ Defined in: [webpack/types.d.ts:1433](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
@@ -1238,7 +1238,7 @@ Defined in: [webpack/types.d.ts:1495](https://github.com/webpack/webpack/blob/e3
 
 ### getOrderedChunkModules()
 
-> **getOrderedChunkModules**(`chunk`, `comparator`): [`Module`](Module.md)[]
+> **getOrderedChunkModules**(`chunk`, `comparator`): [`Module`](Module.md)\[]
 
 Defined in: [webpack/types.d.ts:1444](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1444)
 
@@ -1250,17 +1250,17 @@ Defined in: [webpack/types.d.ts:1444](https://github.com/webpack/webpack/blob/e3
 
 ##### comparator
 
-(`a`, `b`) => `-1` \| `0` \| `1`
+(`a`, `b`) => `-1` | `0` | `1`
 
 #### Returns
 
-[`Module`](Module.md)[]
+[`Module`](Module.md)\[]
 
 ***
 
 ### getOrderedChunkModulesIterable()
 
-> **getOrderedChunkModulesIterable**(`chunk`, `comparator`): `Iterable`\<[`Module`](Module.md)\>
+> **getOrderedChunkModulesIterable**(`chunk`, `comparator`): `Iterable`<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1434](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1434)
 
@@ -1272,17 +1272,17 @@ Defined in: [webpack/types.d.ts:1434](https://github.com/webpack/webpack/blob/e3
 
 ##### comparator
 
-(`a`, `b`) => `-1` \| `0` \| `1`
+(`a`, `b`) => `-1` | `0` | `1`
 
 #### Returns
 
-`Iterable`\<[`Module`](Module.md)\>
+`Iterable`<[`Module`](Module.md)>
 
 ***
 
 ### getOrderedChunkModulesIterableBySourceType()
 
-> **getOrderedChunkModulesIterableBySourceType**(`chunk`, `sourceType`, `comparator`): `Iterable`\<[`Module`](Module.md), `any`, `any`\>
+> **getOrderedChunkModulesIterableBySourceType**(`chunk`, `sourceType`, `comparator`): `Iterable`<[`Module`](Module.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1438](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1438)
 
@@ -1298,17 +1298,17 @@ Defined in: [webpack/types.d.ts:1438](https://github.com/webpack/webpack/blob/e3
 
 ##### comparator
 
-(`a`, `b`) => `-1` \| `0` \| `1`
+(`a`, `b`) => `-1` | `0` | `1`
 
 #### Returns
 
-`Iterable`\<[`Module`](Module.md), `any`, `any`\>
+`Iterable`<[`Module`](Module.md), `any`, `any`>
 
 ***
 
 ### getOrderedModuleChunksIterable()
 
-> **getOrderedModuleChunksIterable**(`module`, `sortFn`): `Iterable`\<[`Chunk`](Chunk.md)\>
+> **getOrderedModuleChunksIterable**(`module`, `sortFn`): `Iterable`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1413](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1413)
 
@@ -1320,11 +1320,11 @@ Defined in: [webpack/types.d.ts:1413](https://github.com/webpack/webpack/blob/e3
 
 ##### sortFn
 
-(`a`, `b`) => `-1` \| `0` \| `1`
+(`a`, `b`) => `-1` | `0` | `1`
 
 #### Returns
 
-`Iterable`\<[`Chunk`](Chunk.md)\>
+`Iterable`<[`Chunk`](Chunk.md)>
 
 ***
 
@@ -1352,7 +1352,7 @@ Defined in: [webpack/types.d.ts:1526](https://github.com/webpack/webpack/blob/e3
 
 ### getRuntimeChunkDependentChunksIterable()
 
-> **getRuntimeChunkDependentChunksIterable**(`chunk`): `Iterable`\<[`Chunk`](Chunk.md)\>
+> **getRuntimeChunkDependentChunksIterable**(`chunk`): `Iterable`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1498](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1498)
 
@@ -1364,7 +1364,7 @@ Defined in: [webpack/types.d.ts:1498](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`\<[`Chunk`](Chunk.md)\>
+`Iterable`<[`Chunk`](Chunk.md)>
 
 ***
 
@@ -1388,7 +1388,7 @@ Defined in: [webpack/types.d.ts:1522](https://github.com/webpack/webpack/blob/e3
 
 ### getTreeRuntimeRequirements()
 
-> **getTreeRuntimeRequirements**(`chunk`): `ReadonlySet`\<`string`\>
+> **getTreeRuntimeRequirements**(`chunk`): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:1556](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1556)
 
@@ -1400,7 +1400,7 @@ Defined in: [webpack/types.d.ts:1556](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
@@ -1616,7 +1616,7 @@ Defined in: [webpack/types.d.ts:1427](https://github.com/webpack/webpack/blob/e3
 
 ##### sourceTypes
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 #### Returns
 

@@ -2,7 +2,7 @@
 title: REGEXP_ALL_LOADERS_RESOURCE
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / REGEXP\_ALL\_LOADERS\_RESOURCE
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / REGEXP\_ALL\_LOADERS\_RESOURCE
 
 # Variable: REGEXP\_ALL\_LOADERS\_RESOURCE
 

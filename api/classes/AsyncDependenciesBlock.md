@@ -2,7 +2,7 @@
 title: AsyncDependenciesBlock
 ---
 
-[webpack](../globals.md) / AsyncDependenciesBlock
+[webpack](../globals) / AsyncDependenciesBlock
 
 # Class: AsyncDependenciesBlock
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:498](https://github.com/webpack/webpack/blob/e32
 
 ## Extends
 
-- `DependenciesBlock`
+* `DependenciesBlock`
 
 ## Constructors
 
@@ -46,7 +46,7 @@ Defined in: [webpack/types.d.ts:499](https://github.com/webpack/webpack/blob/e32
 
 ### blocks
 
-> **blocks**: `AsyncDependenciesBlock`[]
+> **blocks**: `AsyncDependenciesBlock`\[]
 
 Defined in: [webpack/types.d.ts:4110](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4110)
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:507](https://github.com/webpack/webpack/blob/e32
 
 ### dependencies
 
-> **dependencies**: [`Dependency`](Dependency.md)[]
+> **dependencies**: [`Dependency`](Dependency.md)\[]
 
 Defined in: [webpack/types.d.ts:4109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4109)
 
@@ -86,7 +86,7 @@ Defined in: [webpack/types.d.ts:504](https://github.com/webpack/webpack/blob/e32
 
 ### loc?
 
-> `optional` **loc**: `SyntheticDependencyLocation` \| `RealDependencyLocation`
+> `optional` **loc**: `SyntheticDependencyLocation` | `RealDependencyLocation`
 
 Defined in: [webpack/types.d.ts:505](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L505)
 
@@ -209,7 +209,7 @@ Defined in: [webpack/types.d.ts:4128](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext.md)
+[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext)
 
 #### Returns
 
@@ -269,7 +269,7 @@ Defined in: [webpack/types.d.ts:4127](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext.md)
+[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext)
 
 #### Returns
 

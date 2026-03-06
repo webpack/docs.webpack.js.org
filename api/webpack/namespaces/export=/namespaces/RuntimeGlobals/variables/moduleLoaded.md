@@ -2,7 +2,7 @@
 title: moduleLoaded
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / moduleLoaded
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / moduleLoaded
 
 # Variable: moduleLoaded
 

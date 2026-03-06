@@ -2,7 +2,7 @@
 title: STAGE_ADVANCED
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [OptimizationStages](../index.md) / STAGE\_ADVANCED
+[webpack](../../../../../../globals) / [export=](../../../index) / [OptimizationStages](../index) / STAGE\_ADVANCED
 
 # Variable: STAGE\_ADVANCED
 

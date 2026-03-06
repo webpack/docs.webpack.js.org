@@ -2,7 +2,7 @@
 title: ReplaceSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / ReplaceSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / ReplaceSource
 
 # Class: ReplaceSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:15323](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 
@@ -78,13 +78,13 @@ Defined in: [webpack/types.d.ts:15325](https://github.com/webpack/webpack/blob/e
 
 ### getReplacements()
 
-> **getReplacements**(): `Replacement`[]
+> **getReplacements**(): `Replacement`\[]
 
 Defined in: [webpack/types.d.ts:15326](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15326)
 
 #### Returns
 
-`Replacement`[]
+`Replacement`\[]
 
 ***
 

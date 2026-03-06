@@ -2,7 +2,7 @@
 title: REGEXP_RESOURCE_PATH
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / REGEXP\_RESOURCE\_PATH
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / REGEXP\_RESOURCE\_PATH
 
 # Variable: REGEXP\_RESOURCE\_PATH
 

@@ -2,7 +2,7 @@
 title: OccurrenceModuleIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / OccurrenceModuleIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / OccurrenceModuleIdsPlugin
 
 # Class: OccurrenceModuleIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

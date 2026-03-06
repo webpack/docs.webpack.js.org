@@ -2,7 +2,7 @@
 title: mergeRuntimeCondition
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / mergeRuntimeCondition
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / mergeRuntimeCondition
 
 # Variable: mergeRuntimeCondition()
 

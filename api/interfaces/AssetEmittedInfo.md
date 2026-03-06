@@ -2,7 +2,7 @@
 title: AssetEmittedInfo
 ---
 
-[webpack](../globals.md) / AssetEmittedInfo
+[webpack](../globals) / AssetEmittedInfo
 
 # Interface: AssetEmittedInfo
 
@@ -12,7 +12,7 @@ Defined in: [webpack/types.d.ts:358](https://github.com/webpack/webpack/blob/e32
 
 ### compilation
 
-> **compilation**: [`Compilation`](../classes/Compilation.md)
+> **compilation**: [`Compilation`](../classes/Compilation)
 
 Defined in: [webpack/types.d.ts:361](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L361)
 
@@ -36,7 +36,7 @@ Defined in: [webpack/types.d.ts:362](https://github.com/webpack/webpack/blob/e32
 
 ### source
 
-> **source**: [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **source**: [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:360](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L360)
 

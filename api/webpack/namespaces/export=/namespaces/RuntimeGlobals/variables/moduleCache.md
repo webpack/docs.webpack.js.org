@@ -2,7 +2,7 @@
 title: moduleCache
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / moduleCache
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / moduleCache
 
 # Variable: moduleCache
 

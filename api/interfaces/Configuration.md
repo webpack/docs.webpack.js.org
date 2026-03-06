@@ -2,7 +2,7 @@
 title: Configuration
 ---
 
-[webpack](../globals.md) / Configuration
+[webpack](../globals) / Configuration
 
 # Interface: Configuration
 
@@ -14,7 +14,7 @@ Options object as provided by the user.
 
 ### amd?
 
-> `optional` **amd**: `false` \| \{\[`index`: `string`\]: `any`; \}
+> `optional` **amd**: `false` | {\[`index`: `string`]: `any`; }
 
 Defined in: [webpack/types.d.ts:3145](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3145)
 
@@ -34,7 +34,7 @@ Report the first error as a hard error instead of tolerating it.
 
 ### cache?
 
-> `optional` **cache**: `boolean` \| [`FileCacheOptions`](FileCacheOptions.md) \| [`MemoryCacheOptions`](MemoryCacheOptions.md)
+> `optional` **cache**: `boolean` | [`FileCacheOptions`](FileCacheOptions.md) | [`MemoryCacheOptions`](MemoryCacheOptions.md)
 
 Defined in: [webpack/types.d.ts:3155](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3155)
 
@@ -54,7 +54,7 @@ The base directory (absolute path!) for resolving the `entry` option. If `output
 
 ### dependencies?
 
-> `optional` **dependencies**: `string`[]
+> `optional` **dependencies**: `string`\[]
 
 Defined in: [webpack/types.d.ts:3165](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3165)
 
@@ -64,17 +64,17 @@ References to other configurations to depend on.
 
 ### devtool?
 
-> `optional` **devtool**: `string` \| `false` \| `object`[]
+> `optional` **devtool**: `string` | `false` | `object`\[]
 
 Defined in: [webpack/types.d.ts:3170](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3170)
 
-A developer tool to enhance debugging (false | eval | [inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map).
+A developer tool to enhance debugging (false | eval | \[inline-|hidden-|eval-]\[nosources-]\[cheap-\[module-]]source-map).
 
 ***
 
 ### dotenv?
 
-> `optional` **dotenv**: `boolean` \| `DotenvPluginOptions`
+> `optional` **dotenv**: `boolean` | `DotenvPluginOptions`
 
 Defined in: [webpack/types.d.ts:3187](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3187)
 
@@ -84,7 +84,7 @@ Enable and configure the Dotenv plugin to load environment variables from .env f
 
 ### entry?
 
-> `optional` **entry**: `string` \| `string`[] \| [`EntryObject`](EntryObject.md) \| () => `string` \| `string`[] \| [`EntryObject`](EntryObject.md) \| `Promise`\<`EntryStatic`\>
+> `optional` **entry**: `string` | `string`\[] | [`EntryObject`](EntryObject.md) | () => `string` | `string`\[] | [`EntryObject`](EntryObject.md) | `Promise`<`EntryStatic`>
 
 Defined in: [webpack/types.d.ts:3192](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3192)
 
@@ -104,7 +104,7 @@ Enables/Disables experiments (experimental features with relax SemVer compatibil
 
 ### extends?
 
-> `optional` **extends**: `string` \| `string`[]
+> `optional` **extends**: `string` | `string`\[]
 
 Defined in: [webpack/types.d.ts:3206](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3206)
 
@@ -114,7 +114,7 @@ Extend configuration from another configuration (only works when using webpack-c
 
 ### externals?
 
-> `optional` **externals**: `string` \| `RegExp` \| [`ExternalItemObjectKnown`](ExternalItemObjectKnown.md) & [`ExternalItemObjectUnknown`](ExternalItemObjectUnknown.md) \| (`data`, `callback`) => `void` \| (`data`) => `Promise`\<[`ExternalItemValue`](../type-aliases/ExternalItemValue.md)\> \| [`ExternalItem`](../type-aliases/ExternalItem.md)[]
+> `optional` **externals**: `string` | `RegExp` | [`ExternalItemObjectKnown`](ExternalItemObjectKnown.md) & [`ExternalItemObjectUnknown`](ExternalItemObjectUnknown.md) | (`data`, `callback`) => `void` | (`data`) => `Promise`<[`ExternalItemValue`](../type-aliases/ExternalItemValue)> | [`ExternalItem`](../type-aliases/ExternalItem)\[]
 
 Defined in: [webpack/types.d.ts:3211](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3211)
 
@@ -134,17 +134,17 @@ Enable presets of externals for specific targets.
 
 ### externalsType?
 
-> `optional` **externalsType**: `"window"` \| `"promise"` \| `"module"` \| `"script"` \| `"var"` \| `"self"` \| `"global"` \| `"asset"` \| `"css-import"` \| `"css-url"` \| `"commonjs"` \| `"import"` \| `"jsonp"` \| `"this"` \| `"assign"` \| `"commonjs2"` \| `"commonjs-module"` \| `"commonjs-static"` \| `"amd"` \| `"amd-require"` \| `"umd"` \| `"umd2"` \| `"system"` \| `"module-import"` \| `"node-commonjs"`
+> `optional` **externalsType**: `"window"` | `"promise"` | `"module"` | `"script"` | `"var"` | `"self"` | `"global"` | `"asset"` | `"css-import"` | `"css-url"` | `"commonjs"` | `"import"` | `"jsonp"` | `"this"` | `"assign"` | `"commonjs2"` | `"commonjs-module"` | `"commonjs-static"` | `"amd"` | `"amd-require"` | `"umd"` | `"umd2"` | `"system"` | `"module-import"` | `"node-commonjs"`
 
 Defined in: [webpack/types.d.ts:3233](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3233)
 
-Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+Specifies the default type of externals ('amd\*', 'umd\*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 
 ***
 
 ### ignoreWarnings?
 
-> `optional` **ignoreWarnings**: (`RegExp` \| \{ `file?`: `RegExp`; `message?`: `RegExp`; `module?`: `RegExp`; \} \| (`warning`, `compilation`) => `boolean`)[]
+> `optional` **ignoreWarnings**: (`RegExp` | { `file?`: `RegExp`; `message?`: `RegExp`; `module?`: `RegExp`; } | (`warning`, `compilation`) => `boolean`)\[]
 
 Defined in: [webpack/types.d.ts:3263](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3263)
 
@@ -174,7 +174,7 @@ Custom values available in the loader context.
 
 ### mode?
 
-> `optional` **mode**: `"none"` \| `"development"` \| `"production"`
+> `optional` **mode**: `"none"` | `"development"` | `"production"`
 
 Defined in: [webpack/types.d.ts:3295](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3295)
 
@@ -204,7 +204,7 @@ Name of the configuration. Used when loading multiple configurations.
 
 ### node?
 
-> `optional` **node**: `false` \| `NodeOptions`
+> `optional` **node**: `false` | `NodeOptions`
 
 Defined in: [webpack/types.d.ts:3310](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3310)
 
@@ -244,7 +244,7 @@ The number of parallel processed modules in the compilation.
 
 ### performance?
 
-> `optional` **performance**: `false` \| `PerformanceOptions`
+> `optional` **performance**: `false` | `PerformanceOptions`
 
 Defined in: [webpack/types.d.ts:3330](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3330)
 
@@ -254,7 +254,7 @@ Configuration for web performance recommendations.
 
 ### plugins?
 
-> `optional` **plugins**: (`false` \| `""` \| `0` \| [`WebpackPluginInstance`](WebpackPluginInstance.md) \| (`this`, `compiler`) => `void`)[]
+> `optional` **plugins**: (`false` | `""` | `0` | [`WebpackPluginInstance`](WebpackPluginInstance.md) | (`this`, `compiler`) => `void`)\[]
 
 Defined in: [webpack/types.d.ts:3335](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3335)
 
@@ -274,7 +274,7 @@ Capture timing information for each module.
 
 ### recordsInputPath?
 
-> `optional` **recordsInputPath**: `string` \| `false`
+> `optional` **recordsInputPath**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:3353](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3353)
 
@@ -284,7 +284,7 @@ Store compiler state to a json file.
 
 ### recordsOutputPath?
 
-> `optional` **recordsOutputPath**: `string` \| `false`
+> `optional` **recordsOutputPath**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:3358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3358)
 
@@ -294,7 +294,7 @@ Load compiler state from a json file.
 
 ### recordsPath?
 
-> `optional` **recordsPath**: `string` \| `false`
+> `optional` **recordsPath**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:3363](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3363)
 
@@ -334,7 +334,7 @@ Options affecting how file system snapshots are created and validated.
 
 ### stats?
 
-> `optional` **stats**: `boolean` \| `"none"` \| `"normal"` \| `"summary"` \| `"verbose"` \| `"errors-only"` \| `"errors-warnings"` \| `"minimal"` \| `"detailed"` \| [`StatsOptions`](StatsOptions.md)
+> `optional` **stats**: `boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](StatsOptions.md)
 
 Defined in: [webpack/types.d.ts:3383](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3383)
 
@@ -344,7 +344,7 @@ Stats options object or preset name.
 
 ### target?
 
-> `optional` **target**: `string` \| `false` \| `string`[]
+> `optional` **target**: `string` | `false` | `string`\[]
 
 Defined in: [webpack/types.d.ts:3398](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3398)
 

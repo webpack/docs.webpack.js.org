@@ -2,7 +2,7 @@
 title: FetchCompileAsyncWasmPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [web](../index.md) / FetchCompileAsyncWasmPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [web](../index) / FetchCompileAsyncWasmPlugin
 
 # Class: FetchCompileAsyncWasmPlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

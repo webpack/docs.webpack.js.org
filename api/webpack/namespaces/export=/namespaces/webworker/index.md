@@ -2,10 +2,10 @@
 title: webworker
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / webworker
+[webpack](../../../../../globals) / [export=](../../index) / webworker
 
 # webworker
 
 ## Classes
 
-- [WebWorkerTemplatePlugin](classes/WebWorkerTemplatePlugin.md)
+* [WebWorkerTemplatePlugin](classes/WebWorkerTemplatePlugin.md)

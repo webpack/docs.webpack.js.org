@@ -2,7 +2,7 @@
 title: setTopLevelSymbol
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / setTopLevelSymbol
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / setTopLevelSymbol
 
 # Variable: setTopLevelSymbol()
 
@@ -14,11 +14,11 @@ Defined in: [webpack/types.d.ts:19838](https://github.com/webpack/webpack/blob/e
 
 ### state
 
-[`ParserState`](../../../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../../../type-aliases/ParserState)
 
 ### symbol?
 
-[`TopLevelSymbol`](../classes/TopLevelSymbol.md)
+[`TopLevelSymbol`](../classes/TopLevelSymbol)
 
 ## Returns
 

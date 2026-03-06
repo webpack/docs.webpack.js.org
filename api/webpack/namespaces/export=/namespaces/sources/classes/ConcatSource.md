@@ -2,7 +2,7 @@
 title: ConcatSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / ConcatSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / ConcatSource
 
 # Class: ConcatSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:3029](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:3030](https://github.com/webpack/webpack/blob/e3
 
 ##### args
 
-...`ConcatSourceChild`[]
+...`ConcatSourceChild`\[]
 
 #### Returns
 
@@ -64,7 +64,7 @@ Defined in: [webpack/types.d.ts:3033](https://github.com/webpack/webpack/blob/e3
 
 ##### items
 
-`ConcatSourceChild`[]
+`ConcatSourceChild`\[]
 
 #### Returns
 
@@ -90,13 +90,13 @@ Defined in: [webpack/types.d.ts:17445](https://github.com/webpack/webpack/blob/e
 
 ### getChildren()
 
-> **getChildren**(): [`Source`](Source.md)[]
+> **getChildren**(): [`Source`](Source.md)\[]
 
 Defined in: [webpack/types.d.ts:3031](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3031)
 
 #### Returns
 
-[`Source`](Source.md)[]
+[`Source`](Source.md)\[]
 
 ***
 

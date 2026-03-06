@@ -2,10 +2,10 @@
 title: prefetch
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / prefetch
+[webpack](../../../../../globals) / [export=](../../index) / prefetch
 
 # prefetch
 
 ## Classes
 
-- [ChunkPrefetchPreloadPlugin](classes/ChunkPrefetchPreloadPlugin.md)
+* [ChunkPrefetchPreloadPlugin](classes/ChunkPrefetchPreloadPlugin.md)

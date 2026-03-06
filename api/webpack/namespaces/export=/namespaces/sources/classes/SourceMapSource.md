@@ -2,7 +2,7 @@
 title: SourceMapSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / SourceMapSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / SourceMapSource
 
 # Class: SourceMapSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:17599](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:17600](https://github.com/webpack/webpack/blob/e
 
 ##### value
 
-`string` | `Buffer`\<`ArrayBufferLike`\>
+`string` | `Buffer`<`ArrayBufferLike`>
 
 ##### name
 
@@ -32,15 +32,15 @@ Defined in: [webpack/types.d.ts:17600](https://github.com/webpack/webpack/blob/e
 
 ##### sourceMap?
 
-`string` | `Buffer`\<`ArrayBufferLike`\> | `RawSourceMap`
+`string` | `Buffer`<`ArrayBufferLike`> | `RawSourceMap`
 
 ##### originalSource?
 
-`string` | `Buffer`\<`ArrayBufferLike`\>
+`string` | `Buffer`<`ArrayBufferLike`>
 
 ##### innerSourceMap?
 
-`string` | `Buffer`\<`ArrayBufferLike`\> | `RawSourceMap`
+`string` | `Buffer`<`ArrayBufferLike`> | `RawSourceMap`
 
 ##### removeOriginalSource?
 
@@ -74,13 +74,13 @@ Defined in: [webpack/types.d.ts:17445](https://github.com/webpack/webpack/blob/e
 
 ### getArgsAsBuffers()
 
-> **getArgsAsBuffers**(): \[`Buffer`\<`ArrayBufferLike`\>, `string`, `Buffer`\<`ArrayBufferLike`\>, `Buffer`\<`ArrayBufferLike`\>, `Buffer`\<`ArrayBufferLike`\>, `boolean`\]
+> **getArgsAsBuffers**(): \[`Buffer`<`ArrayBufferLike`>, `string`, `Buffer`<`ArrayBufferLike`>, `Buffer`<`ArrayBufferLike`>, `Buffer`<`ArrayBufferLike`>, `boolean`]
 
 Defined in: [webpack/types.d.ts:17608](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L17608)
 
 #### Returns
 
-\[`Buffer`\<`ArrayBufferLike`\>, `string`, `Buffer`\<`ArrayBufferLike`\>, `Buffer`\<`ArrayBufferLike`\>, `Buffer`\<`ArrayBufferLike`\>, `boolean`\]
+\[`Buffer`<`ArrayBufferLike`>, `string`, `Buffer`<`ArrayBufferLike`>, `Buffer`<`ArrayBufferLike`>, `Buffer`<`ArrayBufferLike`>, `boolean`]
 
 ***
 

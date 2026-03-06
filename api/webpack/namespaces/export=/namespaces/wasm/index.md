@@ -2,11 +2,11 @@
 title: wasm
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / wasm
+[webpack](../../../../../globals) / [export=](../../index) / wasm
 
 # wasm
 
 ## Classes
 
-- [AsyncWebAssemblyModulesPlugin](classes/AsyncWebAssemblyModulesPlugin.md)
-- [EnableWasmLoadingPlugin](classes/EnableWasmLoadingPlugin.md)
+* [AsyncWebAssemblyModulesPlugin](classes/AsyncWebAssemblyModulesPlugin.md)
+* [EnableWasmLoadingPlugin](classes/EnableWasmLoadingPlugin.md)

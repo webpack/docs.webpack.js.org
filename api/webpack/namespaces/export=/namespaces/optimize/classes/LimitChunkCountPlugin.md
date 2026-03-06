@@ -2,7 +2,7 @@
 title: LimitChunkCountPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / LimitChunkCountPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / LimitChunkCountPlugin
 
 # Class: LimitChunkCountPlugin
 
@@ -46,7 +46,7 @@ Defined in: [webpack/types.d.ts:9876](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

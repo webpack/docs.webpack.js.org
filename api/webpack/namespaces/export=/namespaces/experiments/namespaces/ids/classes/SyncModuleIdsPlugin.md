@@ -2,7 +2,7 @@
 title: SyncModuleIdsPlugin
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [experiments](../../../index.md) / [ids](../index.md) / SyncModuleIdsPlugin
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [experiments](../../../index) / [ids](../index) / SyncModuleIdsPlugin
 
 # Class: SyncModuleIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../../../classes/Compiler)
 
 #### Returns
 

@@ -2,7 +2,7 @@
 title: Entrypoint
 ---
 
-[webpack](../globals.md) / Entrypoint
+[webpack](../globals) / Entrypoint
 
 # Abstract Class: Entrypoint
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:4964](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`ChunkGroup`](ChunkGroup.md)
+* [`ChunkGroup`](ChunkGroup.md)
 
 ## Constructors
 
@@ -30,7 +30,7 @@ Defined in: [webpack/types.d.ts:4964](https://github.com/webpack/webpack/blob/e3
 
 ### chunks
 
-> **chunks**: [`Chunk`](Chunk.md)[]
+> **chunks**: [`Chunk`](Chunk.md)\[]
 
 Defined in: [webpack/types.d.ts:1599](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1599)
 
@@ -137,7 +137,7 @@ Defined in: [webpack/types.d.ts:1598](https://github.com/webpack/webpack/blob/e3
 
 ### origins
 
-> **origins**: `OriginRecord`[]
+> **origins**: `OriginRecord`\[]
 
 Defined in: [webpack/types.d.ts:1600](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1600)
 
@@ -151,13 +151,13 @@ Defined in: [webpack/types.d.ts:1600](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **asyncEntrypointsIterable**(): `SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+> **get** **asyncEntrypointsIterable**(): `SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 Defined in: [webpack/types.d.ts:1653](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1653)
 
 ##### Returns
 
-`SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+`SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 #### Inherited from
 
@@ -169,13 +169,13 @@ Defined in: [webpack/types.d.ts:1653](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **blocksIterable**(): `Iterable`\<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)\>
+> **get** **blocksIterable**(): `Iterable`<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)>
 
 Defined in: [webpack/types.d.ts:1657](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1657)
 
 ##### Returns
 
-`Iterable`\<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)\>
+`Iterable`<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)>
 
 #### Inherited from
 
@@ -187,13 +187,13 @@ Defined in: [webpack/types.d.ts:1657](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **childrenIterable**(): `SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+> **get** **childrenIterable**(): `SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 Defined in: [webpack/types.d.ts:1644](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1644)
 
 ##### Returns
 
-`SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+`SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 #### Inherited from
 
@@ -245,13 +245,13 @@ get a unique id for ChunkGroup, made up of its member Chunk id's
 
 #### Get Signature
 
-> **get** **parentsIterable**(): `SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+> **get** **parentsIterable**(): `SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 Defined in: [webpack/types.d.ts:1650](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1650)
 
 ##### Returns
 
-`SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+`SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 #### Inherited from
 
@@ -437,7 +437,7 @@ Defined in: [webpack/types.d.ts:1697](https://github.com/webpack/webpack/blob/e3
 
 ### compareTo()
 
-> **compareTo**(`chunkGraph`, `otherGroup`): `-1` \| `0` \| `1`
+> **compareTo**(`chunkGraph`, `otherGroup`): `-1` | `0` | `1`
 
 Defined in: [webpack/types.d.ts:1672](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1672)
 
@@ -456,7 +456,7 @@ Sorting values are based off of number of chunks in ChunkGroup.
 
 #### Returns
 
-`-1` \| `0` \| `1`
+`-1` | `0` | `1`
 
 #### Inherited from
 
@@ -484,13 +484,13 @@ Defined in: [webpack/types.d.ts:4986](https://github.com/webpack/webpack/blob/e3
 
 ### getBlocks()
 
-> **getBlocks**(): [`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)[]
+> **getBlocks**(): [`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)\[]
 
 Defined in: [webpack/types.d.ts:1654](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1654)
 
 #### Returns
 
-[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)[]
+[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)\[]
 
 #### Inherited from
 
@@ -500,13 +500,13 @@ Defined in: [webpack/types.d.ts:1654](https://github.com/webpack/webpack/blob/e3
 
 ### getChildren()
 
-> **getChildren**(): [`ChunkGroup`](ChunkGroup.md)[]
+> **getChildren**(): [`ChunkGroup`](ChunkGroup.md)\[]
 
 Defined in: [webpack/types.d.ts:1642](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1642)
 
 #### Returns
 
-[`ChunkGroup`](ChunkGroup.md)[]
+[`ChunkGroup`](ChunkGroup.md)\[]
 
 #### Inherited from
 
@@ -516,7 +516,7 @@ Defined in: [webpack/types.d.ts:1642](https://github.com/webpack/webpack/blob/e3
 
 ### getChildrenByOrders()
 
-> **getChildrenByOrders**(`moduleGraph`, `chunkGraph`): `Record`\<`string`, [`ChunkGroup`](ChunkGroup.md)[]\>
+> **getChildrenByOrders**(`moduleGraph`, `chunkGraph`): `Record`<`string`, [`ChunkGroup`](ChunkGroup.md)\[]>
 
 Defined in: [webpack/types.d.ts:1673](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1673)
 
@@ -532,7 +532,7 @@ Defined in: [webpack/types.d.ts:1673](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`\<`string`, [`ChunkGroup`](ChunkGroup.md)[]\>
+`Record`<`string`, [`ChunkGroup`](ChunkGroup.md)\[]>
 
 #### Inherited from
 
@@ -557,13 +557,13 @@ Returns the chunk which contains the entrypoint modules
 
 ### getFiles()
 
-> **getFiles**(): `string`[]
+> **getFiles**(): `string`\[]
 
 Defined in: [webpack/types.d.ts:1664](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1664)
 
 #### Returns
 
-`string`[]
+`string`\[]
 
 #### Inherited from
 
@@ -669,13 +669,13 @@ Defined in: [webpack/types.d.ts:1648](https://github.com/webpack/webpack/blob/e3
 
 ### getParents()
 
-> **getParents**(): [`ChunkGroup`](ChunkGroup.md)[]
+> **getParents**(): [`ChunkGroup`](ChunkGroup.md)\[]
 
 Defined in: [webpack/types.d.ts:1647](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1647)
 
 #### Returns
 
-[`ChunkGroup`](ChunkGroup.md)[]
+[`ChunkGroup`](ChunkGroup.md)\[]
 
 #### Inherited from
 

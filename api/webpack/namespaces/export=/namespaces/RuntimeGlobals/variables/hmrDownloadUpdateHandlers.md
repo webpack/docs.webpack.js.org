@@ -2,7 +2,7 @@
 title: hmrDownloadUpdateHandlers
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hmrDownloadUpdateHandlers
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hmrDownloadUpdateHandlers
 
 # Variable: hmrDownloadUpdateHandlers
 

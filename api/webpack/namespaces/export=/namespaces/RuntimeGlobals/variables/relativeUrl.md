@@ -2,7 +2,7 @@
 title: relativeUrl
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / relativeUrl
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / relativeUrl
 
 # Variable: relativeUrl
 

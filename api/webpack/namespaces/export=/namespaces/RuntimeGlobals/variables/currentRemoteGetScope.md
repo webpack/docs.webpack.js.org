@@ -2,7 +2,7 @@
 title: currentRemoteGetScope
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / currentRemoteGetScope
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / currentRemoteGetScope
 
 # Variable: currentRemoteGetScope
 

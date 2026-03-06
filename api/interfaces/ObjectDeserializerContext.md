@@ -2,7 +2,7 @@
 title: ObjectDeserializerContext
 ---
 
-[webpack](../globals.md) / ObjectDeserializerContext
+[webpack](../globals) / ObjectDeserializerContext
 
 # Interface: ObjectDeserializerContext
 

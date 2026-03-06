@@ -2,7 +2,7 @@
 title: CachedSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / CachedSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / CachedSource
 
 # Class: CachedSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:1229](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 
@@ -104,13 +104,13 @@ Defined in: [webpack/types.d.ts:1233](https://github.com/webpack/webpack/blob/e3
 
 ### originalLazy()
 
-> **originalLazy**(): [`Source`](Source.md) \| () => [`Source`](Source.md)
+> **originalLazy**(): [`Source`](Source.md) | () => [`Source`](Source.md)
 
 Defined in: [webpack/types.d.ts:1232](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1232)
 
 #### Returns
 
-[`Source`](Source.md) \| () => [`Source`](Source.md)
+[`Source`](Source.md) | () => [`Source`](Source.md)
 
 ***
 

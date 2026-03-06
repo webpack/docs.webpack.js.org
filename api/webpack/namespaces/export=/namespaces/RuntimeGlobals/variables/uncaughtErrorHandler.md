@@ -2,7 +2,7 @@
 title: uncaughtErrorHandler
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / uncaughtErrorHandler
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / uncaughtErrorHandler
 
 # Variable: uncaughtErrorHandler
 

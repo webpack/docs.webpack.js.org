@@ -2,7 +2,7 @@
 title: Compiler
 ---
 
-[webpack](../globals.md) / Compiler
+[webpack](../globals) / Compiler
 
 # Class: Compiler
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:2877](https://github.com/webpack/webpack/blob/e3
 
 ##### options?
 
-[`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized.md)
+[`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized)
 
 #### Returns
 
@@ -58,7 +58,7 @@ Defined in: [webpack/types.d.ts:2959](https://github.com/webpack/webpack/blob/e3
 
 ### contextTimestamps?
 
-> `optional` **contextTimestamps**: `Map`\<`string`, `"ignore"` \| `EntryTypesIndex` \| `OnlySafeTimeEntry` \| `ExistenceOnlyTimeEntryTypesIndex`\>
+> `optional` **contextTimestamps**: `Map`<`string`, `"ignore"` | `EntryTypesIndex` | `OnlySafeTimeEntry` | `ExistenceOnlyTimeEntryTypesIndex`>
 
 Defined in: [webpack/types.d.ts:2942](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2942)
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:2942](https://github.com/webpack/webpack/blob/e3
 
 ### fileTimestamps?
 
-> `optional` **fileTimestamps**: `Map`\<`string`, `"ignore"` \| `EntryTypesIndex` \| `OnlySafeTimeEntry` \| `ExistenceOnlyTimeEntryTypesIndex`\>
+> `optional` **fileTimestamps**: `Map`<`string`, `"ignore"` | `EntryTypesIndex` | `OnlySafeTimeEntry` | `ExistenceOnlyTimeEntryTypesIndex`>
 
 Defined in: [webpack/types.d.ts:2934](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2934)
 
@@ -82,7 +82,7 @@ Defined in: [webpack/types.d.ts:2950](https://github.com/webpack/webpack/blob/e3
 
 ### hooks
 
-> **hooks**: `Readonly`\<\{ `additionalPass`: `AsyncSeriesHook`\<\[\]\>; `afterCompile`: `AsyncSeriesHook`\<\[[`Compilation`](Compilation.md)\]\>; `afterDone`: `SyncHook`\<\[[`Stats`](Stats.md)\]\>; `afterEmit`: `AsyncSeriesHook`\<\[[`Compilation`](Compilation.md)\]\>; `afterEnvironment`: `SyncHook`\<\[\]\>; `afterPlugins`: `SyncHook`\<\[`Compiler`\]\>; `afterResolvers`: `SyncHook`\<\[`Compiler`\]\>; `assetEmitted`: `AsyncSeriesHook`\<\[`string`, [`AssetEmittedInfo`](../interfaces/AssetEmittedInfo.md)\]\>; `beforeCompile`: `AsyncSeriesHook`\<\[`CompilationParams`\]\>; `beforeRun`: `AsyncSeriesHook`\<\[`Compiler`\]\>; `compilation`: `SyncHook`\<\[[`Compilation`](Compilation.md), `CompilationParams`\]\>; `compile`: `SyncHook`\<\[`CompilationParams`\]\>; `contextModuleFactory`: `SyncHook`\<\[`ContextModuleFactory`\]\>; `done`: `AsyncSeriesHook`\<\[[`Stats`](Stats.md)\]\>; `emit`: `AsyncSeriesHook`\<\[[`Compilation`](Compilation.md)\]\>; `emitRecords`: `AsyncSeriesHook`\<\[\]\>; `entryOption`: `SyncBailHook`\<\[`string`, [`EntryNormalized`](../type-aliases/EntryNormalized.md)\], `boolean` \| `void`\>; `environment`: `SyncHook`\<\[\]\>; `failed`: `SyncHook`\<\[`Error`\]\>; `finishMake`: `AsyncParallelHook`\<\[[`Compilation`](Compilation.md)\]\>; `infrastructureLog`: `SyncBailHook`\<\[`string`, `string`, `undefined` \| `any`[]\], `true` \| `void`\>; `initialize`: `SyncHook`\<\[\]\>; `invalid`: `SyncHook`\<\[`null` \| `string`, `number`\]\>; `make`: `AsyncParallelHook`\<\[[`Compilation`](Compilation.md)\]\>; `normalModuleFactory`: `SyncHook`\<\[`NormalModuleFactory`\]\>; `readRecords`: `AsyncSeriesHook`\<\[\]\>; `run`: `AsyncSeriesHook`\<\[`Compiler`\]\>; `shouldEmit`: `SyncBailHook`\<\[[`Compilation`](Compilation.md)\], `boolean` \| `void`\>; `shutdown`: `AsyncSeriesHook`\<\[\]\>; `thisCompilation`: `SyncHook`\<\[[`Compilation`](Compilation.md), `CompilationParams`\]\>; `validate`: `SyncHook`\<\[\]\>; `watchClose`: `SyncHook`\<\[\]\>; `watchRun`: `AsyncSeriesHook`\<\[`Compiler`\]\>; \}\>
+> **hooks**: `Readonly`<{ `additionalPass`: `AsyncSeriesHook`<\[]>; `afterCompile`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `afterDone`: `SyncHook`<\[[`Stats`](Stats.md)]>; `afterEmit`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `afterEnvironment`: `SyncHook`<\[]>; `afterPlugins`: `SyncHook`<\[`Compiler`]>; `afterResolvers`: `SyncHook`<\[`Compiler`]>; `assetEmitted`: `AsyncSeriesHook`<\[`string`, [`AssetEmittedInfo`](../interfaces/AssetEmittedInfo)]>; `beforeCompile`: `AsyncSeriesHook`<\[`CompilationParams`]>; `beforeRun`: `AsyncSeriesHook`<\[`Compiler`]>; `compilation`: `SyncHook`<\[[`Compilation`](Compilation.md), `CompilationParams`]>; `compile`: `SyncHook`<\[`CompilationParams`]>; `contextModuleFactory`: `SyncHook`<\[`ContextModuleFactory`]>; `done`: `AsyncSeriesHook`<\[[`Stats`](Stats.md)]>; `emit`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `emitRecords`: `AsyncSeriesHook`<\[]>; `entryOption`: `SyncBailHook`<\[`string`, [`EntryNormalized`](../type-aliases/EntryNormalized)], `boolean` | `void`>; `environment`: `SyncHook`<\[]>; `failed`: `SyncHook`<\[`Error`]>; `finishMake`: `AsyncParallelHook`<\[[`Compilation`](Compilation.md)]>; `infrastructureLog`: `SyncBailHook`<\[`string`, `string`, `undefined` | `any`\[]], `true` | `void`>; `initialize`: `SyncHook`<\[]>; `invalid`: `SyncHook`<\[`null` | `string`, `number`]>; `make`: `AsyncParallelHook`<\[[`Compilation`](Compilation.md)]>; `normalModuleFactory`: `SyncHook`<\[`NormalModuleFactory`]>; `readRecords`: `AsyncSeriesHook`<\[]>; `run`: `AsyncSeriesHook`<\[`Compiler`]>; `shouldEmit`: `SyncBailHook`<\[[`Compilation`](Compilation.md)], `boolean` | `void`>; `shutdown`: `AsyncSeriesHook`<\[]>; `thisCompilation`: `SyncHook`<\[[`Compilation`](Compilation.md), `CompilationParams`]>; `validate`: `SyncHook`<\[]>; `watchClose`: `SyncHook`<\[]>; `watchRun`: `AsyncSeriesHook`<\[`Compiler`]>; }>
 
 Defined in: [webpack/types.d.ts:2878](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2878)
 
@@ -98,7 +98,7 @@ Defined in: [webpack/types.d.ts:2965](https://github.com/webpack/webpack/blob/e3
 
 ### immutablePaths
 
-> **immutablePaths**: `Set`\<`string` \| `RegExp`\>
+> **immutablePaths**: `Set`<`string` | `RegExp`>
 
 Defined in: [webpack/types.d.ts:2931](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2931)
 
@@ -122,7 +122,7 @@ Defined in: [webpack/types.d.ts:2952](https://github.com/webpack/webpack/blob/e3
 
 ##### args?
 
-`any`[]
+`any`\[]
 
 #### Returns
 
@@ -132,7 +132,7 @@ Defined in: [webpack/types.d.ts:2952](https://github.com/webpack/webpack/blob/e3
 
 ### inputFileSystem
 
-> **inputFileSystem**: [`InputFileSystem`](../interfaces/InputFileSystem.md)
+> **inputFileSystem**: [`InputFileSystem`](../interfaces/InputFileSystem)
 
 Defined in: [webpack/types.d.ts:2924](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2924)
 
@@ -148,7 +148,7 @@ Defined in: [webpack/types.d.ts:2923](https://github.com/webpack/webpack/blob/e3
 
 ### managedPaths
 
-> **managedPaths**: `Set`\<`string` \| `RegExp`\>
+> **managedPaths**: `Set`<`string` | `RegExp`>
 
 Defined in: [webpack/types.d.ts:2929](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2929)
 
@@ -156,7 +156,7 @@ Defined in: [webpack/types.d.ts:2929](https://github.com/webpack/webpack/blob/e3
 
 ### modifiedFiles?
 
-> `optional` **modifiedFiles**: `ReadonlySet`\<`string`\>
+> `optional` **modifiedFiles**: `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:2932](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2932)
 
@@ -164,7 +164,7 @@ Defined in: [webpack/types.d.ts:2932](https://github.com/webpack/webpack/blob/e3
 
 ### moduleMemCaches?
 
-> `optional` **moduleMemCaches**: `Map`\<[`Module`](Module.md), `ModuleMemCachesItem`\>
+> `optional` **moduleMemCaches**: `Map`<[`Module`](Module.md), `ModuleMemCachesItem`>
 
 Defined in: [webpack/types.d.ts:2962](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2962)
 
@@ -180,7 +180,7 @@ Defined in: [webpack/types.d.ts:2917](https://github.com/webpack/webpack/blob/e3
 
 ### options
 
-> **options**: [`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized.md)
+> **options**: [`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized)
 
 Defined in: [webpack/types.d.ts:2958](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2958)
 
@@ -188,7 +188,7 @@ Defined in: [webpack/types.d.ts:2958](https://github.com/webpack/webpack/blob/e3
 
 ### outputFileSystem
 
-> **outputFileSystem**: [`OutputFileSystem`](../interfaces/OutputFileSystem.md)
+> **outputFileSystem**: [`OutputFileSystem`](../interfaces/OutputFileSystem)
 
 Defined in: [webpack/types.d.ts:2922](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2922)
 
@@ -212,7 +212,7 @@ Defined in: [webpack/types.d.ts:2918](https://github.com/webpack/webpack/blob/e3
 
 ### platform
 
-> **platform**: `Readonly`\<`PlatformTargetProperties`\>
+> **platform**: `Readonly`<`PlatformTargetProperties`>
 
 Defined in: [webpack/types.d.ts:2957](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2957)
 
@@ -244,7 +244,7 @@ Defined in: [webpack/types.d.ts:2927](https://github.com/webpack/webpack/blob/e3
 
 ### removedFiles?
 
-> `optional` **removedFiles**: `ReadonlySet`\<`string`\>
+> `optional` **removedFiles**: `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:2933](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2933)
 
@@ -284,7 +284,7 @@ Defined in: [webpack/types.d.ts:2964](https://github.com/webpack/webpack/blob/e3
 
 ### unmanagedPaths
 
-> **unmanagedPaths**: `Set`\<`string` \| `RegExp`\>
+> **unmanagedPaths**: `Set`<`string` | `RegExp`>
 
 Defined in: [webpack/types.d.ts:2930](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2930)
 
@@ -316,7 +316,7 @@ Defined in: [webpack/types.d.ts:2966](https://github.com/webpack/webpack/blob/e3
 
 ### webpack
 
-> **webpack**: *typeof* [`export=`](../functions/export=.md)
+> **webpack**: *typeof* [`export=`](../functions/export=)
 
 Defined in: [webpack/types.d.ts:2916](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2916)
 
@@ -350,7 +350,7 @@ Defined in: [webpack/types.d.ts:3012](https://github.com/webpack/webpack/blob/e3
 
 ##### callback
 
-`CallbackWebpackFunction_2`\<[`Compilation`](Compilation.md), `void`\>
+`CallbackWebpackFunction_2`<[`Compilation`](Compilation.md), `void`>
 
 #### Returns
 
@@ -380,11 +380,11 @@ Defined in: [webpack/types.d.ts:2988](https://github.com/webpack/webpack/blob/e3
 
 ##### outputOptions?
 
-`Partial`\<`OutputNormalized`\>
+`Partial`<`OutputNormalized`>
 
 ##### plugins?
 
-(`false` \| `""` \| `0` \| [`WebpackPluginInstance`](../interfaces/WebpackPluginInstance.md) \| (`this`, `compiler`) => `void`)[]
+(`false` | `""` | `0` | [`WebpackPluginInstance`](../interfaces/WebpackPluginInstance) | (`this`, `compiler`) => `void`)\[]
 
 #### Returns
 
@@ -600,7 +600,7 @@ Defined in: [webpack/types.d.ts:2973](https://github.com/webpack/webpack/blob/e3
 
 ##### callback
 
-`CallbackWebpackFunction_2`\<[`Stats`](Stats.md), `void`\>
+`CallbackWebpackFunction_2`<[`Stats`](Stats.md), `void`>
 
 #### Returns
 
@@ -628,7 +628,7 @@ Defined in: [webpack/types.d.ts:2974](https://github.com/webpack/webpack/blob/e3
 
 ### validate()
 
-> **validate**\<`T`\>(`schema`, `value`, `options?`, `check?`): `void`
+> **validate**<`T`>(`schema`, `value`, `options?`, `check?`): `void`
 
 Defined in: [webpack/types.d.ts:3018](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3018)
 
@@ -638,7 +638,7 @@ Schema validation function with optional pre-compiled check
 
 ##### T
 
-`T` *extends* `object` \| `object`[] = `object`
+`T` *extends* `object` | `object`\[] = `object`
 
 #### Parameters
 
@@ -678,7 +678,7 @@ Defined in: [webpack/types.d.ts:2969](https://github.com/webpack/webpack/blob/e3
 
 ##### handler
 
-`CallbackWebpackFunction_2`\<[`Stats`](Stats.md), `void`\>
+`CallbackWebpackFunction_2`<[`Stats`](Stats.md), `void`>
 
 #### Returns
 

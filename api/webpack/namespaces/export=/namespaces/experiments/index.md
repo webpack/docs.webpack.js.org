@@ -2,11 +2,11 @@
 title: experiments
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / experiments
+[webpack](../../../../../globals) / [export=](../../index) / experiments
 
 # experiments
 
 ## Namespaces
 
-- [ids](namespaces/ids/index.md)
-- [schemes](namespaces/schemes/index.md)
+* [ids](namespaces/ids/index.md)
+* [schemes](namespaces/schemes/index.md)

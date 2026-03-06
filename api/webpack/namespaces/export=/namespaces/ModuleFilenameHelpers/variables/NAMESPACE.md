@@ -2,7 +2,7 @@
 title: NAMESPACE
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / NAMESPACE
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / NAMESPACE
 
 # Variable: NAMESPACE
 

@@ -2,7 +2,7 @@
 title: subtractRuntime
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / subtractRuntime
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / subtractRuntime
 
 # Variable: subtractRuntime()
 

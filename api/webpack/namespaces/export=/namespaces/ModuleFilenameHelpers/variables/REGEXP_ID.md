@@ -2,7 +2,7 @@
 title: REGEXP_ID
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / REGEXP\_ID
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / REGEXP\_ID
 
 # Variable: REGEXP\_ID
 

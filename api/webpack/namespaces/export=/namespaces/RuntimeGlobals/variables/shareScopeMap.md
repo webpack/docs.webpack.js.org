@@ -2,7 +2,7 @@
 title: shareScopeMap
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / shareScopeMap
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / shareScopeMap
 
 # Variable: shareScopeMap
 

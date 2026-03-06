@@ -2,7 +2,7 @@
 title: hmrRuntimeStatePrefix
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hmrRuntimeStatePrefix
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hmrRuntimeStatePrefix
 
 # Variable: hmrRuntimeStatePrefix
 

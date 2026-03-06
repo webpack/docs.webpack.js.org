@@ -2,7 +2,7 @@
 title: SizeOnlySource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / SizeOnlySource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / SizeOnlySource
 
 # Class: SizeOnlySource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:17220](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 

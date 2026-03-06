@@ -2,7 +2,7 @@
 title: NodeTargetPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [node](../index.md) / NodeTargetPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [node](../index) / NodeTargetPlugin
 
 # Class: NodeTargetPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

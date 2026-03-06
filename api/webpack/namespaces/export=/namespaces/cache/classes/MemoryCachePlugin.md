@@ -2,7 +2,7 @@
 title: MemoryCachePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [cache](../index.md) / MemoryCachePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [cache](../index) / MemoryCachePlugin
 
 # Class: MemoryCachePlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

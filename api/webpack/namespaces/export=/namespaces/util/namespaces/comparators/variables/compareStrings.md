@@ -2,11 +2,11 @@
 title: compareStrings
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [comparators](../index.md) / compareStrings
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [comparators](../index) / compareStrings
 
 # Variable: compareStrings()
 
-> **compareStrings**: (`a`, `b`) => `0` \| `1` \| `-1`
+> **compareStrings**: (`a`, `b`) => `0` | `1` | `-1`
 
 Defined in: [webpack/types.d.ts:19977](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19977)
 
@@ -22,4 +22,4 @@ Defined in: [webpack/types.d.ts:19977](https://github.com/webpack/webpack/blob/e
 
 ## Returns
 
-`0` \| `1` \| `-1`
+`0` | `1` | `-1`

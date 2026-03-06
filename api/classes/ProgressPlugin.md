@@ -2,7 +2,7 @@
 title: ProgressPlugin
 ---
 
-[webpack](../globals.md) / ProgressPlugin
+[webpack](../globals) / ProgressPlugin
 
 # Class: ProgressPlugin
 
@@ -54,7 +54,7 @@ Defined in: [webpack/types.d.ts:14281](https://github.com/webpack/webpack/blob/e
 
 ##### args
 
-...`string`[]
+...`string`\[]
 
 #### Returns
 
@@ -80,7 +80,7 @@ Defined in: [webpack/types.d.ts:14279](https://github.com/webpack/webpack/blob/e
 
 ### percentBy
 
-> **percentBy**: `"entries"` \| `"dependencies"` \| `"modules"`
+> **percentBy**: `"entries"` | `"dependencies"` | `"modules"`
 
 Defined in: [webpack/types.d.ts:14288](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14288)
 
@@ -158,7 +158,7 @@ Defined in: [webpack/types.d.ts:14294](https://github.com/webpack/webpack/blob/e
 
 ###### args
 
-...`string`[]
+...`string`\[]
 
 ##### Returns
 
@@ -168,7 +168,7 @@ Defined in: [webpack/types.d.ts:14294](https://github.com/webpack/webpack/blob/e
 
 ### defaultOptions
 
-> `static` **defaultOptions**: `Required`\<`Omit`\<`ProgressPluginOptions`, `"handler"`\>\>
+> `static` **defaultOptions**: `Required`<`Omit`<`ProgressPluginOptions`, `"handler"`>>
 
 Defined in: [webpack/types.d.ts:14293](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14293)
 
@@ -216,7 +216,7 @@ Defined in: [webpack/types.d.ts:14290](https://github.com/webpack/webpack/blob/e
 
 ###### args
 
-...`string`[]
+...`string`\[]
 
 ##### Returns
 

@@ -2,7 +2,7 @@
 title: bailout
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / bailout
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / bailout
 
 # Variable: bailout()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:19810](https://github.com/webpack/webpack/blob/e
 
 ### parserState
 
-[`ParserState`](../../../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../../../type-aliases/ParserState)
 
 ## Returns
 

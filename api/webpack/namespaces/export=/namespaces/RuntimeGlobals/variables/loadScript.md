@@ -2,7 +2,7 @@
 title: loadScript
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / loadScript
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / loadScript
 
 # Variable: loadScript
 

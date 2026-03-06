@@ -2,7 +2,7 @@
 title: onChunksLoaded
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / onChunksLoaded
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / onChunksLoaded
 
 # Variable: onChunksLoaded
 

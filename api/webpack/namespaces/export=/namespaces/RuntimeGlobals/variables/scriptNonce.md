@@ -2,7 +2,7 @@
 title: scriptNonce
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / scriptNonce
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / scriptNonce
 
 # Variable: scriptNonce
 

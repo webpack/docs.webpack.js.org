@@ -2,7 +2,7 @@
 title: getChunkCssFilename
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / getChunkCssFilename
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / getChunkCssFilename
 
 # Variable: getChunkCssFilename
 

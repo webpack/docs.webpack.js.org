@@ -2,7 +2,7 @@
 title: WebpackOptionsNormalized
 ---
 
-[webpack](../globals.md) / WebpackOptionsNormalized
+[webpack](../globals) / WebpackOptionsNormalized
 
 # Interface: WebpackOptionsNormalized
 
@@ -14,7 +14,7 @@ Normalized webpack options object.
 
 ### amd?
 
-> `optional` **amd**: `false` \| \{\[`index`: `string`\]: `any`; \}
+> `optional` **amd**: `false` | {\[`index`: `string`]: `any`; }
 
 Defined in: [webpack/types.d.ts:19161](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19161)
 
@@ -54,7 +54,7 @@ The base directory (absolute path!) for resolving the `entry` option. If `output
 
 ### dependencies?
 
-> `optional` **dependencies**: `string`[]
+> `optional` **dependencies**: `string`\[]
 
 Defined in: [webpack/types.d.ts:19181](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19181)
 
@@ -64,7 +64,7 @@ References to other configurations to depend on.
 
 ### devServer?
 
-> `optional` **devServer**: `false` \| \{\[`index`: `string`\]: `any`; \}
+> `optional` **devServer**: `false` | {\[`index`: `string`]: `any`; }
 
 Defined in: [webpack/types.d.ts:19186](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19186)
 
@@ -74,17 +74,17 @@ Options for the webpack-dev-server.
 
 ### devtool?
 
-> `optional` **devtool**: `string` \| `false` \| `object`[]
+> `optional` **devtool**: `string` | `false` | `object`\[]
 
 Defined in: [webpack/types.d.ts:19191](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19191)
 
-A developer tool to enhance debugging (false | eval | [inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map).
+A developer tool to enhance debugging (false | eval | \[inline-|hidden-|eval-]\[nosources-]\[cheap-\[module-]]source-map).
 
 ***
 
 ### dotenv?
 
-> `optional` **dotenv**: `boolean` \| `DotenvPluginOptions`
+> `optional` **dotenv**: `boolean` | `DotenvPluginOptions`
 
 Defined in: [webpack/types.d.ts:19208](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19208)
 
@@ -94,7 +94,7 @@ Enable and configure the Dotenv plugin to load environment variables from .env f
 
 ### entry
 
-> **entry**: [`EntryNormalized`](../type-aliases/EntryNormalized.md)
+> **entry**: [`EntryNormalized`](../type-aliases/EntryNormalized)
 
 Defined in: [webpack/types.d.ts:19213](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19213)
 
@@ -114,7 +114,7 @@ Enables/Disables experiments (experimental features with relax SemVer compatibil
 
 ### externals
 
-> **externals**: [`Externals`](../type-aliases/Externals.md)
+> **externals**: [`Externals`](../type-aliases/Externals)
 
 Defined in: [webpack/types.d.ts:19223](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19223)
 
@@ -134,17 +134,17 @@ Enable presets of externals for specific targets.
 
 ### externalsType?
 
-> `optional` **externalsType**: `"window"` \| `"promise"` \| `"module"` \| `"script"` \| `"var"` \| `"self"` \| `"global"` \| `"asset"` \| `"css-import"` \| `"css-url"` \| `"commonjs"` \| `"import"` \| `"jsonp"` \| `"this"` \| `"assign"` \| `"commonjs2"` \| `"commonjs-module"` \| `"commonjs-static"` \| `"amd"` \| `"amd-require"` \| `"umd"` \| `"umd2"` \| `"system"` \| `"module-import"` \| `"node-commonjs"`
+> `optional` **externalsType**: `"window"` | `"promise"` | `"module"` | `"script"` | `"var"` | `"self"` | `"global"` | `"asset"` | `"css-import"` | `"css-url"` | `"commonjs"` | `"import"` | `"jsonp"` | `"this"` | `"assign"` | `"commonjs2"` | `"commonjs-module"` | `"commonjs-static"` | `"amd"` | `"amd-require"` | `"umd"` | `"umd2"` | `"system"` | `"module-import"` | `"node-commonjs"`
 
 Defined in: [webpack/types.d.ts:19233](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19233)
 
-Specifies the default type of externals ('amd*', 'umd*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
+Specifies the default type of externals ('amd\*', 'umd\*', 'system' and 'jsonp' depend on output.libraryTarget set to the same value).
 
 ***
 
 ### ignoreWarnings?
 
-> `optional` **ignoreWarnings**: (`warning`, `compilation`) => `boolean`[]
+> `optional` **ignoreWarnings**: (`warning`, `compilation`) => `boolean`\[]
 
 Defined in: [webpack/types.d.ts:19263](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19263)
 
@@ -158,7 +158,7 @@ Ignore specific warnings.
 
 ##### compilation
 
-[`Compilation`](../classes/Compilation.md)
+[`Compilation`](../classes/Compilation)
 
 #### Returns
 
@@ -188,7 +188,7 @@ Custom values available in the loader context.
 
 ### mode?
 
-> `optional` **mode**: `"none"` \| `"development"` \| `"production"`
+> `optional` **mode**: `"none"` | `"development"` | `"production"`
 
 Defined in: [webpack/types.d.ts:19278](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19278)
 
@@ -258,7 +258,7 @@ The number of parallel processed modules in the compilation.
 
 ### performance?
 
-> `optional` **performance**: `false` \| `PerformanceOptions`
+> `optional` **performance**: `false` | `PerformanceOptions`
 
 Defined in: [webpack/types.d.ts:19313](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19313)
 
@@ -268,7 +268,7 @@ Configuration for web performance recommendations.
 
 ### plugins
 
-> **plugins**: ([`WebpackPluginInstance`](WebpackPluginInstance.md) \| (`this`, `compiler`) => `void`)[]
+> **plugins**: ([`WebpackPluginInstance`](WebpackPluginInstance.md) | (`this`, `compiler`) => `void`)\[]
 
 Defined in: [webpack/types.d.ts:19318](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19318)
 
@@ -288,7 +288,7 @@ Capture timing information for each module.
 
 ### recordsInputPath?
 
-> `optional` **recordsInputPath**: `string` \| `false`
+> `optional` **recordsInputPath**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:19331](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19331)
 
@@ -298,7 +298,7 @@ Store compiler state to a json file.
 
 ### recordsOutputPath?
 
-> `optional` **recordsOutputPath**: `string` \| `false`
+> `optional` **recordsOutputPath**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:19336](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19336)
 
@@ -348,7 +348,7 @@ Stats options object or preset name.
 
 ### target?
 
-> `optional` **target**: `string` \| `false` \| `string`[]
+> `optional` **target**: `string` | `false` | `string`\[]
 
 Defined in: [webpack/types.d.ts:19361](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19361)
 

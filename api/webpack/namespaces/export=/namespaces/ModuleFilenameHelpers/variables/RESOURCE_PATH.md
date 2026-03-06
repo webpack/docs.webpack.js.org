@@ -2,7 +2,7 @@
 title: RESOURCE_PATH
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / RESOURCE\_PATH
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / RESOURCE\_PATH
 
 # Variable: RESOURCE\_PATH
 

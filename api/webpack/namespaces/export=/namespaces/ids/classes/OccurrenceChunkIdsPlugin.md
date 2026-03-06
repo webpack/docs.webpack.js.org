@@ -2,7 +2,7 @@
 title: OccurrenceChunkIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / OccurrenceChunkIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / OccurrenceChunkIdsPlugin
 
 # Class: OccurrenceChunkIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

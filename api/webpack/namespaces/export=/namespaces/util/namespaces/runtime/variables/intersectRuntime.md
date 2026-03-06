@@ -2,7 +2,7 @@
 title: intersectRuntime
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / intersectRuntime
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / intersectRuntime
 
 # Variable: intersectRuntime()
 

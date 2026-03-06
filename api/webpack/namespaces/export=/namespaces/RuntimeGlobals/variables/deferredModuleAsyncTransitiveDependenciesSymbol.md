@@ -2,7 +2,7 @@
 title: deferredModuleAsyncTransitiveDependenciesSymbol
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / deferredModuleAsyncTransitiveDependenciesSymbol
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / deferredModuleAsyncTransitiveDependenciesSymbol
 
 # Variable: deferredModuleAsyncTransitiveDependenciesSymbol
 

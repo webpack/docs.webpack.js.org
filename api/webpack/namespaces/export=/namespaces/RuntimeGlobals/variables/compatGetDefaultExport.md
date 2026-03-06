@@ -2,7 +2,7 @@
 title: compatGetDefaultExport
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / compatGetDefaultExport
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / compatGetDefaultExport
 
 # Variable: compatGetDefaultExport
 

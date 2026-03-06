@@ -2,7 +2,7 @@
 title: NodeEnvironmentPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [node](../index.md) / NodeEnvironmentPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [node](../index) / NodeEnvironmentPlugin
 
 # Class: NodeEnvironmentPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

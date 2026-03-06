@@ -2,7 +2,7 @@
 title: asyncModuleExportSymbol
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / asyncModuleExportSymbol
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / asyncModuleExportSymbol
 
 # Variable: asyncModuleExportSymbol
 

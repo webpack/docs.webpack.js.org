@@ -2,7 +2,7 @@
 title: VirtualUrlPlugin
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [experiments](../../../index.md) / [schemes](../index.md) / VirtualUrlPlugin
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [experiments](../../../index) / [schemes](../index) / VirtualUrlPlugin
 
 # Class: VirtualUrlPlugin
 
@@ -68,7 +68,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../../../classes/Compiler)
 
 #### Returns
 

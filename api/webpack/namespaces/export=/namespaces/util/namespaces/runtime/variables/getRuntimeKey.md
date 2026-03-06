@@ -2,7 +2,7 @@
 title: getRuntimeKey
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / getRuntimeKey
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / getRuntimeKey
 
 # Variable: getRuntimeKey()
 

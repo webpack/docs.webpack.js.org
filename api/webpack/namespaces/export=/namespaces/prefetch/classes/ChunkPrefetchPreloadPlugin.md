@@ -2,7 +2,7 @@
 title: ChunkPrefetchPreloadPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [prefetch](../index.md) / ChunkPrefetchPreloadPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [prefetch](../index) / ChunkPrefetchPreloadPlugin
 
 # Class: ChunkPrefetchPreloadPlugin
 
@@ -32,7 +32,7 @@ Defined in: [webpack/types.d.ts:1801](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

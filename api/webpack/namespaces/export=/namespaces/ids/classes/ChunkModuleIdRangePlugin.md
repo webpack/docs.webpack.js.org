@@ -2,7 +2,7 @@
 title: ChunkModuleIdRangePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / ChunkModuleIdRangePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / ChunkModuleIdRangePlugin
 
 # Class: ChunkModuleIdRangePlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

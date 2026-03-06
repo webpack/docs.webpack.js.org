@@ -2,10 +2,10 @@
 title: electron
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / electron
+[webpack](../../../../../globals) / [export=](../../index) / electron
 
 # electron
 
 ## Classes
 
-- [ElectronTargetPlugin](classes/ElectronTargetPlugin.md)
+* [ElectronTargetPlugin](classes/ElectronTargetPlugin.md)

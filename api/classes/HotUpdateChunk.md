@@ -2,7 +2,7 @@
 title: HotUpdateChunk
 ---
 
-[webpack](../globals.md) / HotUpdateChunk
+[webpack](../globals) / HotUpdateChunk
 
 # Class: HotUpdateChunk
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:6733](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`Chunk`](Chunk.md)
+* [`Chunk`](Chunk.md)
 
 ## Constructors
 
@@ -32,7 +32,7 @@ Defined in: [webpack/types.d.ts:6734](https://github.com/webpack/webpack/blob/e3
 
 ### auxiliaryFiles
 
-> **auxiliaryFiles**: `Set`\<`string`\>
+> **auxiliaryFiles**: `Set`<`string`>
 
 Defined in: [webpack/types.d.ts:1306](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1306)
 
@@ -56,7 +56,7 @@ Defined in: [webpack/types.d.ts:1311](https://github.com/webpack/webpack/blob/e3
 
 ### contentHash
 
-> **contentHash**: `Record`\<`string`, `string`\>
+> **contentHash**: `Record`<`string`, `string`>
 
 Defined in: [webpack/types.d.ts:1309](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1309)
 
@@ -68,7 +68,7 @@ Defined in: [webpack/types.d.ts:1309](https://github.com/webpack/webpack/blob/e3
 
 ### cssFilenameTemplate?
 
-> `optional` **cssFilenameTemplate**: `string` \| (`pathData`, `assetInfo?`) => `string`
+> `optional` **cssFilenameTemplate**: `string` | (`pathData`, `assetInfo?`) => `string`
 
 Defined in: [webpack/types.d.ts:1301](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1301)
 
@@ -104,7 +104,7 @@ Defined in: [webpack/types.d.ts:1312](https://github.com/webpack/webpack/blob/e3
 
 ### filenameTemplate?
 
-> `optional` **filenameTemplate**: `string` \| (`pathData`, `assetInfo?`) => `string`
+> `optional` **filenameTemplate**: `string` | (`pathData`, `assetInfo?`) => `string`
 
 Defined in: [webpack/types.d.ts:1298](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1298)
 
@@ -116,7 +116,7 @@ Defined in: [webpack/types.d.ts:1298](https://github.com/webpack/webpack/blob/e3
 
 ### files
 
-> **files**: `Set`\<`string`\>
+> **files**: `Set`<`string`>
 
 Defined in: [webpack/types.d.ts:1305](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1305)
 
@@ -140,7 +140,7 @@ Defined in: [webpack/types.d.ts:1308](https://github.com/webpack/webpack/blob/e3
 
 ### id
 
-> **id**: `string` \| `number`
+> **id**: `string` | `number`
 
 Defined in: [webpack/types.d.ts:1292](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1292)
 
@@ -152,7 +152,7 @@ Defined in: [webpack/types.d.ts:1292](https://github.com/webpack/webpack/blob/e3
 
 ### idNameHints
 
-> **idNameHints**: `SortableSet`\<`string`\>
+> **idNameHints**: `SortableSet`<`string`>
 
 Defined in: [webpack/types.d.ts:1296](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1296)
 
@@ -164,7 +164,7 @@ Defined in: [webpack/types.d.ts:1296](https://github.com/webpack/webpack/blob/e3
 
 ### ids
 
-> **ids**: `ChunkId`[]
+> **ids**: `ChunkId`\[]
 
 Defined in: [webpack/types.d.ts:1293](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1293)
 
@@ -258,13 +258,13 @@ Defined in: [webpack/types.d.ts:1317](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **groupsIterable**(): `SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+> **get** **groupsIterable**(): `SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 Defined in: [webpack/types.d.ts:1352](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1352)
 
 ##### Returns
 
-`SortableSet`\<[`ChunkGroup`](ChunkGroup.md)\>
+`SortableSet`<[`ChunkGroup`](ChunkGroup.md)>
 
 #### Inherited from
 
@@ -276,13 +276,13 @@ Defined in: [webpack/types.d.ts:1352](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **modulesIterable**(): `Iterable`\<[`Module`](Module.md)\>
+> **get** **modulesIterable**(): `Iterable`<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1322](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1322)
 
 ##### Returns
 
-`Iterable`\<[`Module`](Module.md)\>
+`Iterable`<[`Module`](Module.md)>
 
 #### Inherited from
 
@@ -374,7 +374,7 @@ Defined in: [webpack/types.d.ts:1329](https://github.com/webpack/webpack/blob/e3
 
 ### compareTo()
 
-> **compareTo**(`otherChunk`): `-1` \| `0` \| `1`
+> **compareTo**(`otherChunk`): `-1` | `0` | `1`
 
 Defined in: [webpack/types.d.ts:1323](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1323)
 
@@ -386,7 +386,7 @@ Defined in: [webpack/types.d.ts:1323](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`-1` \| `0` \| `1`
+`-1` | `0` | `1`
 
 #### Inherited from
 
@@ -434,13 +434,13 @@ Defined in: [webpack/types.d.ts:1353](https://github.com/webpack/webpack/blob/e3
 
 ### getAllAsyncChunks()
 
-> **getAllAsyncChunks**(): `Set`\<[`Chunk`](Chunk.md)\>
+> **getAllAsyncChunks**(): `Set`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1356](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1356)
 
 #### Returns
 
-`Set`\<[`Chunk`](Chunk.md)\>
+`Set`<[`Chunk`](Chunk.md)>
 
 #### Inherited from
 
@@ -450,13 +450,13 @@ Defined in: [webpack/types.d.ts:1356](https://github.com/webpack/webpack/blob/e3
 
 ### getAllInitialChunks()
 
-> **getAllInitialChunks**(): `Set`\<[`Chunk`](Chunk.md)\>
+> **getAllInitialChunks**(): `Set`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1357](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1357)
 
 #### Returns
 
-`Set`\<[`Chunk`](Chunk.md)\>
+`Set`<[`Chunk`](Chunk.md)>
 
 #### Inherited from
 
@@ -466,13 +466,13 @@ Defined in: [webpack/types.d.ts:1357](https://github.com/webpack/webpack/blob/e3
 
 ### getAllReferencedAsyncEntrypoints()
 
-> **getAllReferencedAsyncEntrypoints**(): `Set`\<[`Entrypoint`](Entrypoint.md)\>
+> **getAllReferencedAsyncEntrypoints**(): `Set`<[`Entrypoint`](Entrypoint.md)>
 
 Defined in: [webpack/types.d.ts:1359](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1359)
 
 #### Returns
 
-`Set`\<[`Entrypoint`](Entrypoint.md)\>
+`Set`<[`Entrypoint`](Entrypoint.md)>
 
 #### Inherited from
 
@@ -482,13 +482,13 @@ Defined in: [webpack/types.d.ts:1359](https://github.com/webpack/webpack/blob/e3
 
 ### getAllReferencedChunks()
 
-> **getAllReferencedChunks**(): `Set`\<[`Chunk`](Chunk.md)\>
+> **getAllReferencedChunks**(): `Set`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1358)
 
 #### Returns
 
-`Set`\<[`Chunk`](Chunk.md)\>
+`Set`<[`Chunk`](Chunk.md)>
 
 #### Inherited from
 
@@ -498,7 +498,7 @@ Defined in: [webpack/types.d.ts:1358](https://github.com/webpack/webpack/blob/e3
 
 ### getChildIdsByOrders()
 
-> **getChildIdsByOrders**(`chunkGraph`, `filterFn?`): `Record`\<`string`, `ChunkId`[]\>
+> **getChildIdsByOrders**(`chunkGraph`, `filterFn?`): `Record`<`string`, `ChunkId`\[]>
 
 Defined in: [webpack/types.d.ts:1361](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1361)
 
@@ -514,7 +514,7 @@ Defined in: [webpack/types.d.ts:1361](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`\<`string`, `ChunkId`[]\>
+`Record`<`string`, `ChunkId`\[]>
 
 #### Inherited from
 
@@ -554,7 +554,7 @@ Defined in: [webpack/types.d.ts:1369](https://github.com/webpack/webpack/blob/e3
 
 ### getChildrenOfTypeInOrder()
 
-> **getChildrenOfTypeInOrder**(`chunkGraph`, `type`): `ChunkChildOfTypeInOrder`[]
+> **getChildrenOfTypeInOrder**(`chunkGraph`, `type`): `ChunkChildOfTypeInOrder`\[]
 
 Defined in: [webpack/types.d.ts:1365](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1365)
 
@@ -570,7 +570,7 @@ Defined in: [webpack/types.d.ts:1365](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ChunkChildOfTypeInOrder`[]
+`ChunkChildOfTypeInOrder`\[]
 
 #### Inherited from
 
@@ -626,13 +626,13 @@ Defined in: [webpack/types.d.ts:1334](https://github.com/webpack/webpack/blob/e3
 
 ### getEntryOptions()
 
-> **getEntryOptions**(): [`EntryOptions`](../type-aliases/EntryOptions.md)
+> **getEntryOptions**(): [`EntryOptions`](../type-aliases/EntryOptions)
 
 Defined in: [webpack/types.d.ts:1347](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1347)
 
 #### Returns
 
-[`EntryOptions`](../type-aliases/EntryOptions.md)
+[`EntryOptions`](../type-aliases/EntryOptions)
 
 #### Inherited from
 
@@ -642,13 +642,13 @@ Defined in: [webpack/types.d.ts:1347](https://github.com/webpack/webpack/blob/e3
 
 ### getModules()
 
-> **getModules**(): [`Module`](Module.md)[]
+> **getModules**(): [`Module`](Module.md)\[]
 
 Defined in: [webpack/types.d.ts:1325](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1325)
 
 #### Returns
 
-[`Module`](Module.md)[]
+[`Module`](Module.md)\[]
 
 #### Inherited from
 

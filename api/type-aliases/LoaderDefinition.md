@@ -2,11 +2,11 @@
 title: LoaderDefinition
 ---
 
-[webpack](../globals.md) / LoaderDefinition
+[webpack](../globals) / LoaderDefinition
 
-# Type Alias: LoaderDefinition\<OptionsType, ContextAdditions\>
+# Type Alias: LoaderDefinition\<OptionsType, ContextAdditions>
 
-> **LoaderDefinition**\<`OptionsType`, `ContextAdditions`\> = [`LoaderDefinitionFunction`](../interfaces/LoaderDefinitionFunction.md)\<`OptionsType`, `ContextAdditions`\> & `object`
+> **LoaderDefinition**<`OptionsType`, `ContextAdditions`> = [`LoaderDefinitionFunction`](../interfaces/LoaderDefinitionFunction)<`OptionsType`, `ContextAdditions`> & `object`
 
 Defined in: [webpack/types.d.ts:9939](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9939)
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:9939](https://github.com/webpack/webpack/blob/e3
 
 ### pitch?
 
-> `optional` **pitch**: [`PitchLoaderDefinitionFunction`](../interfaces/PitchLoaderDefinitionFunction.md)\<`OptionsType`, `ContextAdditions`\>
+> `optional` **pitch**: [`PitchLoaderDefinitionFunction`](../interfaces/PitchLoaderDefinitionFunction)<`OptionsType`, `ContextAdditions`>
 
 ### raw?
 
@@ -24,8 +24,8 @@ Defined in: [webpack/types.d.ts:9939](https://github.com/webpack/webpack/blob/e3
 
 ### OptionsType
 
-`OptionsType` = \{ \}
+`OptionsType` = { }
 
 ### ContextAdditions
 
-`ContextAdditions` = \{ \}
+`ContextAdditions` = { }

@@ -2,7 +2,7 @@
 title: JavascriptModulesPlugin
 ---
 
-[webpack](../globals.md) / JavascriptModulesPlugin
+[webpack](../globals) / JavascriptModulesPlugin
 
 # Class: JavascriptModulesPlugin
 
@@ -102,7 +102,7 @@ Defined in: [webpack/types.d.ts:7151](https://github.com/webpack/webpack/blob/e3
 
 ### renderChunk()
 
-> **renderChunk**(`renderContext`, `hooks`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **renderChunk**(`renderContext`, `hooks`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:7137](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7137)
 
@@ -118,13 +118,13 @@ Defined in: [webpack/types.d.ts:7137](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 
 ### renderMain()
 
-> **renderMain**(`renderContext`, `hooks`, `compilation`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **renderMain**(`renderContext`, `hooks`, `compilation`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:7141](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7141)
 
@@ -144,13 +144,13 @@ Defined in: [webpack/types.d.ts:7141](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 
 ### renderModule()
 
-> **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:7132](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7132)
 
@@ -170,7 +170,7 @@ Defined in: [webpack/types.d.ts:7132](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 
@@ -224,7 +224,7 @@ Defined in: [webpack/types.d.ts:7146](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkFilenameTemplate()
 
-> `static` **getChunkFilenameTemplate**(`chunk`, `outputOptions`): [`TemplatePath`](../type-aliases/TemplatePath.md)
+> `static` **getChunkFilenameTemplate**(`chunk`, `outputOptions`): [`TemplatePath`](../type-aliases/TemplatePath)
 
 Defined in: [webpack/types.d.ts:7162](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7162)
 
@@ -240,7 +240,7 @@ Defined in: [webpack/types.d.ts:7162](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`TemplatePath`](../type-aliases/TemplatePath.md)
+[`TemplatePath`](../type-aliases/TemplatePath)
 
 ***
 

@@ -2,7 +2,7 @@
 title: GeneratorOptionsByModuleTypeKnown
 ---
 
-[webpack](../globals.md) / GeneratorOptionsByModuleTypeKnown
+[webpack](../globals) / GeneratorOptionsByModuleTypeKnown
 
 # Interface: GeneratorOptionsByModuleTypeKnown
 

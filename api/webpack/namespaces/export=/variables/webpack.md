@@ -2,7 +2,7 @@
 title: webpack
 ---
 
-[webpack](../../../../globals.md) / [export=](../index.md) / webpack
+[webpack](../../../../globals) / [export=](../index) / webpack
 
 # Variable: webpack
 

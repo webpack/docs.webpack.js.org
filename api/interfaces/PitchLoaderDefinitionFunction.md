@@ -2,9 +2,9 @@
 title: PitchLoaderDefinitionFunction
 ---
 
-[webpack](../globals.md) / PitchLoaderDefinitionFunction
+[webpack](../globals) / PitchLoaderDefinitionFunction
 
-# Interface: PitchLoaderDefinitionFunction()\<OptionsType, ContextAdditions\>
+# Interface: PitchLoaderDefinitionFunction()\<OptionsType, ContextAdditions>
 
 Defined in: [webpack/types.d.ts:14117](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14117)
 
@@ -12,13 +12,13 @@ Defined in: [webpack/types.d.ts:14117](https://github.com/webpack/webpack/blob/e
 
 ### OptionsType
 
-`OptionsType` = \{ \}
+`OptionsType` = { }
 
 ### ContextAdditions
 
-`ContextAdditions` = \{ \}
+`ContextAdditions` = { }
 
-> **PitchLoaderDefinitionFunction**(`this`, `remainingRequest`, `previousRequest`, `data`): `string` \| `void` \| `Buffer`\<`ArrayBufferLike`\> \| `Promise`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
+> **PitchLoaderDefinitionFunction**(`this`, `remainingRequest`, `previousRequest`, `data`): `string` | `void` | `Buffer`<`ArrayBufferLike`> | `Promise`<`string` | `Buffer`<`ArrayBufferLike`>>
 
 Defined in: [webpack/types.d.ts:14121](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14121)
 
@@ -26,7 +26,7 @@ Defined in: [webpack/types.d.ts:14121](https://github.com/webpack/webpack/blob/e
 
 ### this
 
-`NormalModuleLoaderContext`\<`OptionsType`\> & `LoaderRunnerLoaderContext`\<`OptionsType`\> & `LoaderPluginLoaderContext` & `HotModuleReplacementPluginLoaderContext` & `ContextAdditions`
+`NormalModuleLoaderContext`<`OptionsType`> & `LoaderRunnerLoaderContext`<`OptionsType`> & `LoaderPluginLoaderContext` & `HotModuleReplacementPluginLoaderContext` & `ContextAdditions`
 
 ### remainingRequest
 
@@ -42,4 +42,4 @@ Defined in: [webpack/types.d.ts:14121](https://github.com/webpack/webpack/blob/e
 
 ## Returns
 
-`string` \| `void` \| `Buffer`\<`ArrayBufferLike`\> \| `Promise`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
+`string` | `void` | `Buffer`<`ArrayBufferLike`> | `Promise`<`string` | `Buffer`<`ArrayBufferLike`>>

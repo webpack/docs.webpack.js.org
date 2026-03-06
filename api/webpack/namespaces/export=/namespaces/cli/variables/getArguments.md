@@ -2,7 +2,7 @@
 title: getArguments
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [cli](../index.md) / getArguments
+[webpack](../../../../../../globals) / [export=](../../../index) / [cli](../index) / getArguments
 
 # Variable: getArguments()
 

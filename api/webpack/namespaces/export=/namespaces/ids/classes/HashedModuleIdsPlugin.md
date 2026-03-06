@@ -2,7 +2,7 @@
 title: HashedModuleIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / HashedModuleIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / HashedModuleIdsPlugin
 
 # Class: HashedModuleIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

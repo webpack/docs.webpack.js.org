@@ -2,7 +2,7 @@
 title: DotenvPlugin
 ---
 
-[webpack](../globals.md) / DotenvPlugin
+[webpack](../globals) / DotenvPlugin
 
 # Class: DotenvPlugin
 

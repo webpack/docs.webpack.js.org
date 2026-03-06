@@ -2,7 +2,7 @@
 title: AggressiveSplittingPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / AggressiveSplittingPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / AggressiveSplittingPlugin
 
 # Class: AggressiveSplittingPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:237](https://github.com/webpack/webpack/blob/e32
 
 ##### chunk
 
-[`Chunk`](../../../../../../classes/Chunk.md)
+[`Chunk`](../../../../../../classes/Chunk)
 
 #### Returns
 

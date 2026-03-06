@@ -2,7 +2,7 @@
 title: NaturalModuleIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / NaturalModuleIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / NaturalModuleIdsPlugin
 
 # Class: NaturalModuleIdsPlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

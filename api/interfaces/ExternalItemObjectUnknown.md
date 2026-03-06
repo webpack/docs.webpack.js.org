@@ -2,7 +2,7 @@
 title: ExternalItemObjectUnknown
 ---
 
-[webpack](../globals.md) / ExternalItemObjectUnknown
+[webpack](../globals) / ExternalItemObjectUnknown
 
 # Interface: ExternalItemObjectUnknown
 
@@ -12,4 +12,4 @@ If an dependency matches exactly a property of the object, the property value is
 
 ## Indexable
 
-\[`index`: `string`\]: [`ExternalItemValue`](../type-aliases/ExternalItemValue.md)
+\[`index`: `string`]: [`ExternalItemValue`](../type-aliases/ExternalItemValue)

@@ -2,7 +2,7 @@
 title: MEASURE_END_OPERATION
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [serialization](../index.md) / MEASURE\_END\_OPERATION
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [serialization](../index) / MEASURE\_END\_OPERATION
 
 # Variable: MEASURE\_END\_OPERATION
 

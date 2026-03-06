@@ -2,7 +2,7 @@
 title: externalInstallChunk
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / externalInstallChunk
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / externalInstallChunk
 
 # Variable: externalInstallChunk
 

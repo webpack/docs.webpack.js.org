@@ -2,7 +2,7 @@
 title: wasmInstances
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / wasmInstances
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / wasmInstances
 
 # Variable: wasmInstances
 

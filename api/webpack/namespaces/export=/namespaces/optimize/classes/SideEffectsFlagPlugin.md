@@ -2,7 +2,7 @@
 title: SideEffectsFlagPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / SideEffectsFlagPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / SideEffectsFlagPlugin
 
 # Class: SideEffectsFlagPlugin
 
@@ -40,7 +40,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:17212](https://github.com/webpack/webpack/blob/e
 
 ##### cache
 
-`Map`\<`string`, `RegExp`\>
+`Map`<`string`, `RegExp`>
 
 #### Returns
 

@@ -2,7 +2,7 @@
 title: SharePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sharing](../index.md) / SharePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [sharing](../index) / SharePlugin
 
 # Class: SharePlugin
 
@@ -40,7 +40,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

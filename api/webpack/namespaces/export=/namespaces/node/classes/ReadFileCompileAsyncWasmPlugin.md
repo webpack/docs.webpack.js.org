@@ -2,7 +2,7 @@
 title: ReadFileCompileAsyncWasmPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [node](../index.md) / ReadFileCompileAsyncWasmPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [node](../index) / ReadFileCompileAsyncWasmPlugin
 
 # Class: ReadFileCompileAsyncWasmPlugin
 
@@ -40,7 +40,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

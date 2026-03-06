@@ -2,7 +2,7 @@
 title: startupEntrypoint
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / startupEntrypoint
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / startupEntrypoint
 
 # Variable: startupEntrypoint
 

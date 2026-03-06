@@ -2,7 +2,7 @@
 title: SplitChunksPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / SplitChunksPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / SplitChunksPlugin
 
 # Class: SplitChunksPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

@@ -2,7 +2,7 @@
 title: ExternalItemFunctionCallback
 ---
 
-[webpack](../globals.md) / ExternalItemFunctionCallback
+[webpack](../globals) / ExternalItemFunctionCallback
 
 # Type Alias: ExternalItemFunctionCallback()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:20145](https://github.com/webpack/webpack/blob/e
 
 ### data
 
-[`ExternalItemFunctionData`](../interfaces/ExternalItemFunctionData.md)
+[`ExternalItemFunctionData`](../interfaces/ExternalItemFunctionData)
 
 ### callback
 

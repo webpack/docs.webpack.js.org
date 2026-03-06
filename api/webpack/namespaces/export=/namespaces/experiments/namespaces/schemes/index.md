@@ -2,11 +2,11 @@
 title: schemes
 ---
 
-[webpack](../../../../../../../globals.md) / [export=](../../../../index.md) / [experiments](../../index.md) / schemes
+[webpack](../../../../../../../globals) / [export=](../../../../index) / [experiments](../../index) / schemes
 
 # schemes
 
 ## Classes
 
-- [HttpUriPlugin](classes/HttpUriPlugin.md)
-- [VirtualUrlPlugin](classes/VirtualUrlPlugin.md)
+* [HttpUriPlugin](classes/HttpUriPlugin.md)
+* [VirtualUrlPlugin](classes/VirtualUrlPlugin.md)

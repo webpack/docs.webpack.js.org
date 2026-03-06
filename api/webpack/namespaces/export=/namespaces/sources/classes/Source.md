@@ -2,7 +2,7 @@
 title: Source
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / Source
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / Source
 
 # Class: Source
 
@@ -10,15 +10,15 @@ Defined in: [webpack/types.d.ts:17442](https://github.com/webpack/webpack/blob/e
 
 ## Extended by
 
-- [`RawSource`](RawSource.md)
-- [`OriginalSource`](OriginalSource.md)
-- [`ReplaceSource`](ReplaceSource.md)
-- [`SourceMapSource`](SourceMapSource.md)
-- [`ConcatSource`](ConcatSource.md)
-- [`PrefixSource`](PrefixSource.md)
-- [`CachedSource`](CachedSource.md)
-- [`SizeOnlySource`](SizeOnlySource.md)
-- [`CompatSource`](CompatSource.md)
+* [`RawSource`](RawSource.md)
+* [`OriginalSource`](OriginalSource.md)
+* [`ReplaceSource`](ReplaceSource.md)
+* [`SourceMapSource`](SourceMapSource.md)
+* [`ConcatSource`](ConcatSource.md)
+* [`PrefixSource`](PrefixSource.md)
+* [`CachedSource`](CachedSource.md)
+* [`SizeOnlySource`](SizeOnlySource.md)
+* [`CompatSource`](CompatSource.md)
 
 ## Constructors
 

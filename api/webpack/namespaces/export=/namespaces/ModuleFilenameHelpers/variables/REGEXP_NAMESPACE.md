@@ -2,7 +2,7 @@
 title: REGEXP_NAMESPACE
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / REGEXP\_NAMESPACE
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / REGEXP\_NAMESPACE
 
 # Variable: REGEXP\_NAMESPACE
 

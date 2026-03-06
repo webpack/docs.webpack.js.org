@@ -2,7 +2,7 @@
 title: Argument
 ---
 
-[webpack](../globals.md) / Argument
+[webpack](../globals) / Argument
 
 # Interface: Argument
 
@@ -12,7 +12,7 @@ Defined in: [webpack/types.d.ts:317](https://github.com/webpack/webpack/blob/e32
 
 ### configs
 
-> **configs**: `ArgumentConfig`[]
+> **configs**: `ArgumentConfig`\[]
 
 Defined in: [webpack/types.d.ts:321](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L321)
 

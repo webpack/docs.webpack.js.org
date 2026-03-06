@@ -2,7 +2,7 @@
 title: amdOptions
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / amdOptions
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / amdOptions
 
 # Variable: amdOptions
 

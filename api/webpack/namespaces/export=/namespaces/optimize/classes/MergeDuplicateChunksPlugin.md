@@ -2,7 +2,7 @@
 title: MergeDuplicateChunksPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / MergeDuplicateChunksPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / MergeDuplicateChunksPlugin
 
 # Class: MergeDuplicateChunksPlugin
 
@@ -46,7 +46,7 @@ Defined in: [webpack/types.d.ts:10544](https://github.com/webpack/webpack/blob/e
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

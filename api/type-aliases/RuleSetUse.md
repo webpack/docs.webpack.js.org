@@ -2,11 +2,11 @@
 title: RuleSetUse
 ---
 
-[webpack](../globals.md) / RuleSetUse
+[webpack](../globals) / RuleSetUse
 
 # Type Alias: RuleSetUse
 
-> **RuleSetUse** = `string` \| (`undefined` \| `null` \| `string` \| `false` \| `0` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \})[] \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \}
+> **RuleSetUse** = `string` | (`undefined` | `null` | `string` | `false` | `0` | `RuleSetUseFunction` | { `ident?`: `string`; `loader?`: `string`; `options?`: `string` | {\[`index`: `string`]: `any`; }; })\[] | `RuleSetUseFunction` | { `ident?`: `string`; `loader?`: `string`; `options?`: `string` | {\[`index`: `string`]: `any`; }; }
 
 Defined in: [webpack/types.d.ts:16450](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16450)
 
@@ -14,11 +14,11 @@ Defined in: [webpack/types.d.ts:16450](https://github.com/webpack/webpack/blob/e
 
 `string`
 
-(`undefined` \| `null` \| `string` \| `false` \| `0` \| `RuleSetUseFunction` \| \{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \})[]
+(`undefined` | `null` | `string` | `false` | `0` | `RuleSetUseFunction` | { `ident?`: `string`; `loader?`: `string`; `options?`: `string` | {\[`index`: `string`]: `any`; }; })\[]
 
 `RuleSetUseFunction`
 
-\{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` \| \{\[`index`: `string`\]: `any`; \}; \}
+{ `ident?`: `string`; `loader?`: `string`; `options?`: `string` | {\[`index`: `string`]: `any`; }; }
 
 ### ident?
 
@@ -34,6 +34,6 @@ Loader name.
 
 ### options?
 
-> `optional` **options**: `string` \| \{\[`index`: `string`\]: `any`; \}
+> `optional` **options**: `string` | {\[`index`: `string`]: `any`; }
 
 Loader options.

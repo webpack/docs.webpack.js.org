@@ -2,7 +2,7 @@
 title: ContainerReferencePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [container](../index.md) / ContainerReferencePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [container](../index) / ContainerReferencePlugin
 
 # Class: ContainerReferencePlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

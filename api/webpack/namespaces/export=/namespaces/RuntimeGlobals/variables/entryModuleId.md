@@ -2,7 +2,7 @@
 title: entryModuleId
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / entryModuleId
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / entryModuleId
 
 # Variable: entryModuleId
 

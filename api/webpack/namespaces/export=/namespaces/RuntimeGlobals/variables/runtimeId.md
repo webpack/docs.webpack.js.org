@@ -2,7 +2,7 @@
 title: runtimeId
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / runtimeId
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / runtimeId
 
 # Variable: runtimeId
 

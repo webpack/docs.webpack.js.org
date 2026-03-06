@@ -2,7 +2,7 @@
 title: hmrModuleData
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hmrModuleData
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hmrModuleData
 
 # Variable: hmrModuleData
 

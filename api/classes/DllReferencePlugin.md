@@ -2,7 +2,7 @@
 title: DllReferencePlugin
 ---
 
-[webpack](../globals.md) / DllReferencePlugin
+[webpack](../globals) / DllReferencePlugin
 
 # Class: DllReferencePlugin
 

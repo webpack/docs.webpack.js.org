@@ -2,7 +2,7 @@
 title: JavascriptParser
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [javascript](../index.md) / JavascriptParser
+[webpack](../../../../../../globals) / [export=](../../../index) / [javascript](../index) / JavascriptParser
 
 # Class: JavascriptParser
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:7168](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`Parser`](../../../../../../classes/Parser.md)
+* [`Parser`](../../../../../../classes/Parser)
 
 ## Constructors
 
@@ -38,13 +38,13 @@ Defined in: [webpack/types.d.ts:7169](https://github.com/webpack/webpack/blob/e3
 
 #### Overrides
 
-[`Parser`](../../../../../../classes/Parser.md).[`constructor`](../../../../../../classes/Parser.md#constructor)
+[`Parser`](../../../../../../classes/Parser).[`constructor`](../../../../../../classes/Parser)
 
 ## Properties
 
 ### comments?
 
-> `optional` **comments**: `CommentJavascriptParser`[]
+> `optional` **comments**: `CommentJavascriptParser`\[]
 
 Defined in: [webpack/types.d.ts:7615](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7615)
 
@@ -52,7 +52,7 @@ Defined in: [webpack/types.d.ts:7615](https://github.com/webpack/webpack/blob/e3
 
 ### currentTagData?
 
-> `optional` **currentTagData**: `Record`\<`string`, `any`\> \| `CommonJsImportSettings` \| `CompatibilitySettings` \| `HarmonySettings` \| `HarmonySpecifierGuards` \| `ImportSettings` \| [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol.md)
+> `optional` **currentTagData**: `Record`<`string`, `any`> | `CommonJsImportSettings` | `CompatibilitySettings` | `HarmonySettings` | `HarmonySpecifierGuards` | `ImportSettings` | [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol)
 
 Defined in: [webpack/types.d.ts:7678](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7678)
 
@@ -60,7 +60,7 @@ Defined in: [webpack/types.d.ts:7678](https://github.com/webpack/webpack/blob/e3
 
 ### destructuringAssignmentProperties?
 
-> `optional` **destructuringAssignmentProperties**: `WeakMap`\<`Expression`, `Set`\<`DestructuringAssignmentProperty`\>\>
+> `optional` **destructuringAssignmentProperties**: `WeakMap`<`Expression`, `Set`<`DestructuringAssignmentProperty`>>
 
 Defined in: [webpack/types.d.ts:7674](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7674)
 
@@ -68,7 +68,7 @@ Defined in: [webpack/types.d.ts:7674](https://github.com/webpack/webpack/blob/e3
 
 ### hooks
 
-> **hooks**: `Readonly`\<\{ `assign`: `HookMap`\<`SyncBailHook`\<\[`AssignmentExpression`\], `boolean` \| `void`\>\>; `assignMemberChain`: `HookMap`\<`SyncBailHook`\<\[`AssignmentExpression`, `string`[]\], `boolean` \| `void`\>\>; `binaryExpression`: `SyncBailHook`\<\[`BinaryExpression`\], `boolean` \| `void`\>; `blockPreStatement`: `SyncBailHook`\<\[`ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportAllDeclaration` \| `FunctionDeclaration` \| `MaybeNamedFunctionDeclaration` \| `VariableDeclaration` \| `ClassDeclaration` \| `MaybeNamedClassDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `ExportDefaultDeclaration`\], `boolean` \| `void`\>; `call`: `HookMap`\<`SyncBailHook`\<\[`CallExpression`\], `boolean` \| `void`\>\>; `callMemberChain`: `HookMap`\<`SyncBailHook`\<\[`CallExpression`, `string`[], `boolean`[], \[`number`, `number`\][]\], `boolean` \| `void`\>\>; `callMemberChainOfCallMemberChain`: `HookMap`\<`SyncBailHook`\<\[`CallExpression`, `string`[], `CallExpression`, `string`[], \[`number`, `number`\][]\], `boolean` \| `void`\>\>; `canRename`: `HookMap`\<`SyncBailHook`\<\[`Expression`\], `boolean` \| `void`\>\>; `classBodyElement`: `SyncBailHook`\<\[`StaticBlock` \| `MethodDefinition` \| `PropertyDefinition`, `ClassExpression` \| `ClassDeclaration` \| `MaybeNamedClassDeclaration`\], `boolean` \| `void`\>; `classBodyValue`: `SyncBailHook`\<\[`Expression`, `MethodDefinition` \| `PropertyDefinition`, `ClassExpression` \| `ClassDeclaration` \| `MaybeNamedClassDeclaration`\], `boolean` \| `void`\>; `classExtendsExpression`: `SyncBailHook`\<\[`Expression`, `ClassExpression` \| `ClassDeclaration` \| `MaybeNamedClassDeclaration`\], `boolean` \| `void`\>; `collectDestructuringAssignmentProperties`: `SyncBailHook`\<\[`Expression`\], `boolean` \| `void`\>; `collectGuards`: `SyncBailHook`\<\[`Expression`\], `void` \| (`walk`) => `void`\>; `declarator`: `SyncBailHook`\<\[`VariableDeclarator`, `Statement`\], `boolean` \| `void`\>; `evaluate`: `HookMap`\<`SyncBailHook`\<\[`ImportExpressionImport` \| `UnaryExpression` \| `ArrayExpression` \| `ArrowFunctionExpression` \| `AssignmentExpression` \| `AwaitExpression` \| `BinaryExpression` \| `SimpleCallExpression` \| `NewExpression` \| `ChainExpression` \| `ClassExpression` \| `ConditionalExpression` \| `FunctionExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `LogicalExpression` \| `MemberExpression` \| `MetaProperty` \| `ObjectExpression` \| `SequenceExpression` \| `TaggedTemplateExpression` \| `TemplateLiteral` \| `ThisExpression` \| `UpdateExpression` \| `YieldExpression` \| `SpreadElement` \| `PrivateIdentifier` \| `Super`\], `undefined` \| `null` \| `BasicEvaluatedExpression`\>\>; `evaluateCallExpression`: `HookMap`\<`SyncBailHook`\<\[`CallExpression`\], `undefined` \| `null` \| `BasicEvaluatedExpression`\>\>; `evaluateCallExpressionMember`: `HookMap`\<`SyncBailHook`\<\[`CallExpression`, `BasicEvaluatedExpression`\], `undefined` \| `null` \| `BasicEvaluatedExpression`\>\>; `evaluateDefinedIdentifier`: `HookMap`\<`SyncBailHook`\<\[`Identifier` \| `MemberExpression` \| `ThisExpression`\], `undefined` \| `null` \| `BasicEvaluatedExpression`\>\>; `evaluateIdentifier`: `HookMap`\<`SyncBailHook`\<\[`Identifier` \| `MemberExpression` \| `MetaProperty` \| `ThisExpression`\], `undefined` \| `null` \| `BasicEvaluatedExpression`\>\>; `evaluateNewExpression`: `HookMap`\<`SyncBailHook`\<\[`NewExpression`\], `undefined` \| `null` \| `BasicEvaluatedExpression`\>\>; `evaluateTypeof`: `HookMap`\<`SyncBailHook`\<\[`UnaryExpression`\], `undefined` \| `null` \| `BasicEvaluatedExpression`\>\>; `export`: `SyncBailHook`\<\[`ExportNamedDeclaration` \| `ExportDefaultDeclaration`\], `boolean` \| `void`\>; `exportDeclaration`: `SyncBailHook`\<\[`ExportNamedDeclaration` \| `ExportAllDeclaration` \| `ExportDefaultDeclaration`, `Declaration`\], `boolean` \| `void`\>; `exportExpression`: `SyncBailHook`\<\[`ExportDefaultDeclaration`, `ImportExpressionImport` \| `UnaryExpression` \| `ArrayExpression` \| `ArrowFunctionExpression` \| `AssignmentExpression` \| `AwaitExpression` \| `BinaryExpression` \| `SimpleCallExpression` \| `NewExpression` \| `ChainExpression` \| `ClassExpression` \| `ConditionalExpression` \| `FunctionExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `LogicalExpression` \| `MemberExpression` \| `MetaProperty` \| `ObjectExpression` \| `SequenceExpression` \| `TaggedTemplateExpression` \| `TemplateLiteral` \| `ThisExpression` \| `UpdateExpression` \| `YieldExpression` \| `MaybeNamedFunctionDeclaration` \| `MaybeNamedClassDeclaration`\], `boolean` \| `void`\>; `exportImport`: `SyncBailHook`\<\[`ExportNamedDeclaration` \| `ExportAllDeclaration`, `ImportSource`\], `boolean` \| `void`\>; `exportImportSpecifier`: `SyncBailHook`\<\[`ExportNamedDeclaration` \| `ExportAllDeclaration`, `ImportSource`, `null` \| `string`, `null` \| `string`, `undefined` \| `number`\], `boolean` \| `void`\>; `exportSpecifier`: `SyncBailHook`\<\[`ExportNamedDeclaration` \| `ExportAllDeclaration` \| `ExportDefaultDeclaration`, `string`, `string`, `undefined` \| `number`\], `boolean` \| `void`\>; `expression`: `HookMap`\<`SyncBailHook`\<\[`Expression`\], `boolean` \| `void`\>\>; `expressionConditionalOperator`: `SyncBailHook`\<\[`ConditionalExpression`\], `boolean` \| `void`\>; `expressionLogicalOperator`: `SyncBailHook`\<\[`LogicalExpression`\], `boolean` \| `void`\>; `expressionMemberChain`: `HookMap`\<`SyncBailHook`\<\[`MemberExpression`, `string`[], `boolean`[], \[`number`, `number`\][]\], `boolean` \| `void`\>\>; `finish`: `SyncBailHook`\<\[`Program`, `CommentJavascriptParser`[]\], `boolean` \| `void`\>; `import`: `SyncBailHook`\<\[`ImportDeclaration`, `ImportSource`\], `boolean` \| `void`\>; `importCall`: `SyncBailHook`\<\[`ImportExpressionJavascriptParser`, `undefined` \| `SimpleCallExpression` \| `NewExpression`\], `boolean` \| `void`\>; `importSpecifier`: `SyncBailHook`\<\[`ImportDeclaration`, `ImportSource`, `null` \| `string`, `string`\], `boolean` \| `void`\>; `isPure`: `HookMap`\<`SyncBailHook`\<\[`ImportExpressionImport` \| `UnaryExpression` \| `ArrayExpression` \| `ArrowFunctionExpression` \| `AssignmentExpression` \| `AwaitExpression` \| `BinaryExpression` \| `SimpleCallExpression` \| `NewExpression` \| `ChainExpression` \| `ClassExpression` \| `ConditionalExpression` \| `FunctionExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `LogicalExpression` \| `MemberExpression` \| `MetaProperty` \| `ObjectExpression` \| `SequenceExpression` \| `TaggedTemplateExpression` \| `TemplateLiteral` \| `ThisExpression` \| `UpdateExpression` \| `YieldExpression` \| `PrivateIdentifier` \| `FunctionDeclaration` \| `MaybeNamedFunctionDeclaration` \| `VariableDeclaration` \| `ClassDeclaration` \| `MaybeNamedClassDeclaration`, `number`\], `boolean` \| `void`\>\>; `label`: `HookMap`\<`SyncBailHook`\<\[`LabeledStatement`\], `boolean` \| `void`\>\>; `memberChainOfCallMemberChain`: `HookMap`\<`SyncBailHook`\<\[`Expression`, `string`[], `CallExpression`, `string`[], \[`number`, `number`\][]\], `boolean` \| `void`\>\>; `new`: `HookMap`\<`SyncBailHook`\<\[`NewExpression`\], `boolean` \| `void`\>\>; `optionalChaining`: `SyncBailHook`\<\[`ChainExpression`\], `boolean` \| `void`\>; `pattern`: `HookMap`\<`SyncBailHook`\<\[`Identifier`\], `boolean` \| `void`\>\>; `preDeclarator`: `SyncBailHook`\<\[`VariableDeclarator`, `Statement`\], `boolean` \| `void`\>; `preStatement`: `SyncBailHook`\<\[`ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportAllDeclaration` \| `FunctionDeclaration` \| `MaybeNamedFunctionDeclaration` \| `VariableDeclaration` \| `ClassDeclaration` \| `MaybeNamedClassDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `ExportDefaultDeclaration`\], `boolean` \| `void`\>; `program`: `SyncBailHook`\<\[`Program`, `CommentJavascriptParser`[]\], `boolean` \| `void`\>; `rename`: `HookMap`\<`SyncBailHook`\<\[`Expression`\], `boolean` \| `void`\>\>; `statement`: `SyncBailHook`\<\[`ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportAllDeclaration` \| `FunctionDeclaration` \| `MaybeNamedFunctionDeclaration` \| `VariableDeclaration` \| `ClassDeclaration` \| `MaybeNamedClassDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `ExportDefaultDeclaration`\], `boolean` \| `void`\>; `statementIf`: `SyncBailHook`\<\[`IfStatement`\], `boolean` \| `void`\>; `terminate`: `SyncBailHook`\<\[`ReturnStatement` \| `ThrowStatement`\], `boolean` \| `void`\>; `topLevelAwait`: `SyncBailHook`\<\[`ImportExpressionImport` \| `UnaryExpression` \| `ArrayExpression` \| `ArrowFunctionExpression` \| `AssignmentExpression` \| `AwaitExpression` \| `BinaryExpression` \| `SimpleCallExpression` \| `NewExpression` \| `ChainExpression` \| `ClassExpression` \| `ConditionalExpression` \| `FunctionExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `LogicalExpression` \| `MemberExpression` \| `MetaProperty` \| `ObjectExpression` \| `SequenceExpression` \| `TaggedTemplateExpression` \| `TemplateLiteral` \| `ThisExpression` \| `UpdateExpression` \| `YieldExpression` \| `ForOfStatement`\], `boolean` \| `void`\>; `typeof`: `HookMap`\<`SyncBailHook`\<\[`Expression`\], `boolean` \| `void`\>\>; `unhandledExpressionMemberChain`: `HookMap`\<`SyncBailHook`\<\[`MemberExpression`, `string`[]\], `boolean` \| `void`\>\>; `unusedStatement`: `SyncBailHook`\<\[`Statement`\], `boolean` \| `void`\>; `varDeclaration`: `HookMap`\<`SyncBailHook`\<\[`Identifier`\], `boolean` \| `void`\>\>; `varDeclarationConst`: `HookMap`\<`SyncBailHook`\<\[`Identifier`\], `boolean` \| `void`\>\>; `varDeclarationLet`: `HookMap`\<`SyncBailHook`\<\[`Identifier`\], `boolean` \| `void`\>\>; `varDeclarationUsing`: `HookMap`\<`SyncBailHook`\<\[`Identifier`\], `boolean` \| `void`\>\>; `varDeclarationVar`: `HookMap`\<`SyncBailHook`\<\[`Identifier`\], `boolean` \| `void`\>\>; \}\>
+> **hooks**: `Readonly`<{ `assign`: `HookMap`<`SyncBailHook`<\[`AssignmentExpression`], `boolean` | `void`>>; `assignMemberChain`: `HookMap`<`SyncBailHook`<\[`AssignmentExpression`, `string`\[]], `boolean` | `void`>>; `binaryExpression`: `SyncBailHook`<\[`BinaryExpression`], `boolean` | `void`>; `blockPreStatement`: `SyncBailHook`<\[`ImportDeclaration` | `ExportNamedDeclaration` | `ExportAllDeclaration` | `FunctionDeclaration` | `MaybeNamedFunctionDeclaration` | `VariableDeclaration` | `ClassDeclaration` | `MaybeNamedClassDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `ExportDefaultDeclaration`], `boolean` | `void`>; `call`: `HookMap`<`SyncBailHook`<\[`CallExpression`], `boolean` | `void`>>; `callMemberChain`: `HookMap`<`SyncBailHook`<\[`CallExpression`, `string`\[], `boolean`\[], \[`number`, `number`]\[]], `boolean` | `void`>>; `callMemberChainOfCallMemberChain`: `HookMap`<`SyncBailHook`<\[`CallExpression`, `string`\[], `CallExpression`, `string`\[], \[`number`, `number`]\[]], `boolean` | `void`>>; `canRename`: `HookMap`<`SyncBailHook`<\[`Expression`], `boolean` | `void`>>; `classBodyElement`: `SyncBailHook`<\[`StaticBlock` | `MethodDefinition` | `PropertyDefinition`, `ClassExpression` | `ClassDeclaration` | `MaybeNamedClassDeclaration`], `boolean` | `void`>; `classBodyValue`: `SyncBailHook`<\[`Expression`, `MethodDefinition` | `PropertyDefinition`, `ClassExpression` | `ClassDeclaration` | `MaybeNamedClassDeclaration`], `boolean` | `void`>; `classExtendsExpression`: `SyncBailHook`<\[`Expression`, `ClassExpression` | `ClassDeclaration` | `MaybeNamedClassDeclaration`], `boolean` | `void`>; `collectDestructuringAssignmentProperties`: `SyncBailHook`<\[`Expression`], `boolean` | `void`>; `collectGuards`: `SyncBailHook`<\[`Expression`], `void` | (`walk`) => `void`>; `declarator`: `SyncBailHook`<\[`VariableDeclarator`, `Statement`], `boolean` | `void`>; `evaluate`: `HookMap`<`SyncBailHook`<\[`ImportExpressionImport` | `UnaryExpression` | `ArrayExpression` | `ArrowFunctionExpression` | `AssignmentExpression` | `AwaitExpression` | `BinaryExpression` | `SimpleCallExpression` | `NewExpression` | `ChainExpression` | `ClassExpression` | `ConditionalExpression` | `FunctionExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `LogicalExpression` | `MemberExpression` | `MetaProperty` | `ObjectExpression` | `SequenceExpression` | `TaggedTemplateExpression` | `TemplateLiteral` | `ThisExpression` | `UpdateExpression` | `YieldExpression` | `SpreadElement` | `PrivateIdentifier` | `Super`], `undefined` | `null` | `BasicEvaluatedExpression`>>; `evaluateCallExpression`: `HookMap`<`SyncBailHook`<\[`CallExpression`], `undefined` | `null` | `BasicEvaluatedExpression`>>; `evaluateCallExpressionMember`: `HookMap`<`SyncBailHook`<\[`CallExpression`, `BasicEvaluatedExpression`], `undefined` | `null` | `BasicEvaluatedExpression`>>; `evaluateDefinedIdentifier`: `HookMap`<`SyncBailHook`<\[`Identifier` | `MemberExpression` | `ThisExpression`], `undefined` | `null` | `BasicEvaluatedExpression`>>; `evaluateIdentifier`: `HookMap`<`SyncBailHook`<\[`Identifier` | `MemberExpression` | `MetaProperty` | `ThisExpression`], `undefined` | `null` | `BasicEvaluatedExpression`>>; `evaluateNewExpression`: `HookMap`<`SyncBailHook`<\[`NewExpression`], `undefined` | `null` | `BasicEvaluatedExpression`>>; `evaluateTypeof`: `HookMap`<`SyncBailHook`<\[`UnaryExpression`], `undefined` | `null` | `BasicEvaluatedExpression`>>; `export`: `SyncBailHook`<\[`ExportNamedDeclaration` | `ExportDefaultDeclaration`], `boolean` | `void`>; `exportDeclaration`: `SyncBailHook`<\[`ExportNamedDeclaration` | `ExportAllDeclaration` | `ExportDefaultDeclaration`, `Declaration`], `boolean` | `void`>; `exportExpression`: `SyncBailHook`<\[`ExportDefaultDeclaration`, `ImportExpressionImport` | `UnaryExpression` | `ArrayExpression` | `ArrowFunctionExpression` | `AssignmentExpression` | `AwaitExpression` | `BinaryExpression` | `SimpleCallExpression` | `NewExpression` | `ChainExpression` | `ClassExpression` | `ConditionalExpression` | `FunctionExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `LogicalExpression` | `MemberExpression` | `MetaProperty` | `ObjectExpression` | `SequenceExpression` | `TaggedTemplateExpression` | `TemplateLiteral` | `ThisExpression` | `UpdateExpression` | `YieldExpression` | `MaybeNamedFunctionDeclaration` | `MaybeNamedClassDeclaration`], `boolean` | `void`>; `exportImport`: `SyncBailHook`<\[`ExportNamedDeclaration` | `ExportAllDeclaration`, `ImportSource`], `boolean` | `void`>; `exportImportSpecifier`: `SyncBailHook`<\[`ExportNamedDeclaration` | `ExportAllDeclaration`, `ImportSource`, `null` | `string`, `null` | `string`, `undefined` | `number`], `boolean` | `void`>; `exportSpecifier`: `SyncBailHook`<\[`ExportNamedDeclaration` | `ExportAllDeclaration` | `ExportDefaultDeclaration`, `string`, `string`, `undefined` | `number`], `boolean` | `void`>; `expression`: `HookMap`<`SyncBailHook`<\[`Expression`], `boolean` | `void`>>; `expressionConditionalOperator`: `SyncBailHook`<\[`ConditionalExpression`], `boolean` | `void`>; `expressionLogicalOperator`: `SyncBailHook`<\[`LogicalExpression`], `boolean` | `void`>; `expressionMemberChain`: `HookMap`<`SyncBailHook`<\[`MemberExpression`, `string`\[], `boolean`\[], \[`number`, `number`]\[]], `boolean` | `void`>>; `finish`: `SyncBailHook`<\[`Program`, `CommentJavascriptParser`\[]], `boolean` | `void`>; `import`: `SyncBailHook`<\[`ImportDeclaration`, `ImportSource`], `boolean` | `void`>; `importCall`: `SyncBailHook`<\[`ImportExpressionJavascriptParser`, `undefined` | `SimpleCallExpression` | `NewExpression`], `boolean` | `void`>; `importSpecifier`: `SyncBailHook`<\[`ImportDeclaration`, `ImportSource`, `null` | `string`, `string`], `boolean` | `void`>; `isPure`: `HookMap`<`SyncBailHook`<\[`ImportExpressionImport` | `UnaryExpression` | `ArrayExpression` | `ArrowFunctionExpression` | `AssignmentExpression` | `AwaitExpression` | `BinaryExpression` | `SimpleCallExpression` | `NewExpression` | `ChainExpression` | `ClassExpression` | `ConditionalExpression` | `FunctionExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `LogicalExpression` | `MemberExpression` | `MetaProperty` | `ObjectExpression` | `SequenceExpression` | `TaggedTemplateExpression` | `TemplateLiteral` | `ThisExpression` | `UpdateExpression` | `YieldExpression` | `PrivateIdentifier` | `FunctionDeclaration` | `MaybeNamedFunctionDeclaration` | `VariableDeclaration` | `ClassDeclaration` | `MaybeNamedClassDeclaration`, `number`], `boolean` | `void`>>; `label`: `HookMap`<`SyncBailHook`<\[`LabeledStatement`], `boolean` | `void`>>; `memberChainOfCallMemberChain`: `HookMap`<`SyncBailHook`<\[`Expression`, `string`\[], `CallExpression`, `string`\[], \[`number`, `number`]\[]], `boolean` | `void`>>; `new`: `HookMap`<`SyncBailHook`<\[`NewExpression`], `boolean` | `void`>>; `optionalChaining`: `SyncBailHook`<\[`ChainExpression`], `boolean` | `void`>; `pattern`: `HookMap`<`SyncBailHook`<\[`Identifier`], `boolean` | `void`>>; `preDeclarator`: `SyncBailHook`<\[`VariableDeclarator`, `Statement`], `boolean` | `void`>; `preStatement`: `SyncBailHook`<\[`ImportDeclaration` | `ExportNamedDeclaration` | `ExportAllDeclaration` | `FunctionDeclaration` | `MaybeNamedFunctionDeclaration` | `VariableDeclaration` | `ClassDeclaration` | `MaybeNamedClassDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `ExportDefaultDeclaration`], `boolean` | `void`>; `program`: `SyncBailHook`<\[`Program`, `CommentJavascriptParser`\[]], `boolean` | `void`>; `rename`: `HookMap`<`SyncBailHook`<\[`Expression`], `boolean` | `void`>>; `statement`: `SyncBailHook`<\[`ImportDeclaration` | `ExportNamedDeclaration` | `ExportAllDeclaration` | `FunctionDeclaration` | `MaybeNamedFunctionDeclaration` | `VariableDeclaration` | `ClassDeclaration` | `MaybeNamedClassDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `ExportDefaultDeclaration`], `boolean` | `void`>; `statementIf`: `SyncBailHook`<\[`IfStatement`], `boolean` | `void`>; `terminate`: `SyncBailHook`<\[`ReturnStatement` | `ThrowStatement`], `boolean` | `void`>; `topLevelAwait`: `SyncBailHook`<\[`ImportExpressionImport` | `UnaryExpression` | `ArrayExpression` | `ArrowFunctionExpression` | `AssignmentExpression` | `AwaitExpression` | `BinaryExpression` | `SimpleCallExpression` | `NewExpression` | `ChainExpression` | `ClassExpression` | `ConditionalExpression` | `FunctionExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `LogicalExpression` | `MemberExpression` | `MetaProperty` | `ObjectExpression` | `SequenceExpression` | `TaggedTemplateExpression` | `TemplateLiteral` | `ThisExpression` | `UpdateExpression` | `YieldExpression` | `ForOfStatement`], `boolean` | `void`>; `typeof`: `HookMap`<`SyncBailHook`<\[`Expression`], `boolean` | `void`>>; `unhandledExpressionMemberChain`: `HookMap`<`SyncBailHook`<\[`MemberExpression`, `string`\[]], `boolean` | `void`>>; `unusedStatement`: `SyncBailHook`<\[`Statement`], `boolean` | `void`>; `varDeclaration`: `HookMap`<`SyncBailHook`<\[`Identifier`], `boolean` | `void`>>; `varDeclarationConst`: `HookMap`<`SyncBailHook`<\[`Identifier`], `boolean` | `void`>>; `varDeclarationLet`: `HookMap`<`SyncBailHook`<\[`Identifier`], `boolean` | `void`>>; `varDeclarationUsing`: `HookMap`<`SyncBailHook`<\[`Identifier`], `boolean` | `void`>>; `varDeclarationVar`: `HookMap`<`SyncBailHook`<\[`Identifier`], `boolean` | `void`>>; }>
 
 Defined in: [webpack/types.d.ts:7173](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7173)
 
@@ -110,7 +110,7 @@ Defined in: [webpack/types.d.ts:7612](https://github.com/webpack/webpack/blob/e3
 
 ### prevStatement?
 
-> `optional` **prevStatement**: `ClassDeclaration` \| `MaybeNamedClassDeclaration` \| `ClassExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `ThisExpression` \| `ArrayExpression` \| `ObjectExpression` \| `FunctionExpression` \| `UnaryExpression` \| `UpdateExpression` \| `BinaryExpression` \| `AssignmentExpression` \| `LogicalExpression` \| `MemberExpression` \| `ConditionalExpression` \| `SimpleCallExpression` \| `NewExpression` \| `SequenceExpression` \| `ArrowFunctionExpression` \| `YieldExpression` \| `TemplateLiteral` \| `TaggedTemplateExpression` \| `MetaProperty` \| `AwaitExpression` \| `ChainExpression` \| `ImportExpression` \| `FunctionDeclaration` \| `MaybeNamedFunctionDeclaration` \| `ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportDefaultDeclaration` \| `ExportAllDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `VariableDeclaration`
+> `optional` **prevStatement**: `ClassDeclaration` | `MaybeNamedClassDeclaration` | `ClassExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `ThisExpression` | `ArrayExpression` | `ObjectExpression` | `FunctionExpression` | `UnaryExpression` | `UpdateExpression` | `BinaryExpression` | `AssignmentExpression` | `LogicalExpression` | `MemberExpression` | `ConditionalExpression` | `SimpleCallExpression` | `NewExpression` | `SequenceExpression` | `ArrowFunctionExpression` | `YieldExpression` | `TemplateLiteral` | `TaggedTemplateExpression` | `MetaProperty` | `AwaitExpression` | `ChainExpression` | `ImportExpression` | `FunctionDeclaration` | `MaybeNamedFunctionDeclaration` | `ImportDeclaration` | `ExportNamedDeclaration` | `ExportDefaultDeclaration` | `ExportAllDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `VariableDeclaration`
 
 Defined in: [webpack/types.d.ts:7618](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7618)
 
@@ -126,7 +126,7 @@ Defined in: [webpack/types.d.ts:7613](https://github.com/webpack/webpack/blob/e3
 
 ### semicolons?
 
-> `optional` **semicolons**: `Set`\<`number`\>
+> `optional` **semicolons**: `Set`<`number`>
 
 Defined in: [webpack/types.d.ts:7616](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7616)
 
@@ -134,7 +134,7 @@ Defined in: [webpack/types.d.ts:7616](https://github.com/webpack/webpack/blob/e3
 
 ### sourceType
 
-> **sourceType**: `"auto"` \| `"module"` \| `"script"`
+> **sourceType**: `"auto"` | `"module"` | `"script"`
 
 Defined in: [webpack/types.d.ts:7611](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7611)
 
@@ -150,7 +150,7 @@ Defined in: [webpack/types.d.ts:7614](https://github.com/webpack/webpack/blob/e3
 
 ### statementPath?
 
-> `optional` **statementPath**: `StatementPathItem`[]
+> `optional` **statementPath**: `StatementPathItem`\[]
 
 Defined in: [webpack/types.d.ts:7617](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7617)
 
@@ -182,7 +182,7 @@ Defined in: [webpack/types.d.ts:8600](https://github.com/webpack/webpack/blob/e3
 
 ### getImportAttributes()
 
-> `static` **getImportAttributes**: (`node`) => `Record`\<`string`, `string`\>
+> `static` **getImportAttributes**: (`node`) => `Record`<`string`, `string`>
 
 Defined in: [webpack/types.d.ts:8608](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8608)
 
@@ -194,7 +194,7 @@ Defined in: [webpack/types.d.ts:8608](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`\<`string`, `string`\>
+`Record`<`string`, `string`>
 
 ***
 
@@ -208,7 +208,7 @@ Defined in: [webpack/types.d.ts:8601](https://github.com/webpack/webpack/blob/e3
 
 ### VariableInfoFlags
 
-> `static` **VariableInfoFlags**: `Readonly`\<\{ `Evaluated`: `0`; `Free`: `1`; `Normal`: `2`; `Tagged`: `4`; \}\>
+> `static` **VariableInfoFlags**: `Readonly`<{ `Evaluated`: `0`; `Free`: `1`; `Normal`: `2`; `Tagged`: `4`; }>
 
 Defined in: [webpack/types.d.ts:8602](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8602)
 
@@ -316,7 +316,7 @@ Block pre walking iterates the scope for block variable declarations
 
 ##### statements
 
-(`ClassDeclaration` \| `FunctionDeclaration` \| `ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportDefaultDeclaration` \| `ExportAllDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `VariableDeclaration`)[]
+(`ClassDeclaration` | `FunctionDeclaration` | `ImportDeclaration` | `ExportNamedDeclaration` | `ExportDefaultDeclaration` | `ExportAllDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `VariableDeclaration`)\[]
 
 #### Returns
 
@@ -344,7 +344,7 @@ Defined in: [webpack/types.d.ts:8044](https://github.com/webpack/webpack/blob/e3
 
 ### callHooksForExpression()
 
-> **callHooksForExpression**\<`T`, `R`\>(`hookMap`, `expr`, ...`args`): `R`
+> **callHooksForExpression**<`T`, `R`>(`hookMap`, `expr`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:8164](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8164)
 
@@ -362,7 +362,7 @@ Defined in: [webpack/types.d.ts:8164](https://github.com/webpack/webpack/blob/e3
 
 ##### hookMap
 
-`HookMap`\<`SyncBailHook`\<`T`, `R`, `UnsetAdditionalOptions`\>\>
+`HookMap`<`SyncBailHook`<`T`, `R`, `UnsetAdditionalOptions`>>
 
 ##### expr
 
@@ -370,7 +370,7 @@ Defined in: [webpack/types.d.ts:8164](https://github.com/webpack/webpack/blob/e3
 
 ##### args
 
-...`AsArray`\<`T`\>
+...`AsArray`<`T`>
 
 #### Returns
 
@@ -380,7 +380,7 @@ Defined in: [webpack/types.d.ts:8164](https://github.com/webpack/webpack/blob/e3
 
 ### callHooksForExpressionWithFallback()
 
-> **callHooksForExpressionWithFallback**\<`T`, `R`\>(`hookMap`, `expr`, `fallback`, `defined`, ...`args`): `R`
+> **callHooksForExpressionWithFallback**<`T`, `R`>(`hookMap`, `expr`, `fallback`, `defined`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:8197](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8197)
 
@@ -398,7 +398,7 @@ Defined in: [webpack/types.d.ts:8197](https://github.com/webpack/webpack/blob/e3
 
 ##### hookMap
 
-`HookMap`\<`SyncBailHook`\<`T`, `R`, `UnsetAdditionalOptions`\>\>
+`HookMap`<`SyncBailHook`<`T`, `R`, `UnsetAdditionalOptions`>>
 
 ##### expr
 
@@ -414,7 +414,7 @@ Defined in: [webpack/types.d.ts:8197](https://github.com/webpack/webpack/blob/e3
 
 ##### args
 
-...`AsArray`\<`T`\>
+...`AsArray`<`T`>
 
 #### Returns
 
@@ -424,7 +424,7 @@ Defined in: [webpack/types.d.ts:8197](https://github.com/webpack/webpack/blob/e3
 
 ### callHooksForInfo()
 
-> **callHooksForInfo**\<`T`, `R`\>(`hookMap`, `info`, ...`args`): `R`
+> **callHooksForInfo**<`T`, `R`>(`hookMap`, `info`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:8243](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8243)
 
@@ -442,7 +442,7 @@ Defined in: [webpack/types.d.ts:8243](https://github.com/webpack/webpack/blob/e3
 
 ##### hookMap
 
-`HookMap`\<`SyncBailHook`\<`T`, `R`, `UnsetAdditionalOptions`\>\>
+`HookMap`<`SyncBailHook`<`T`, `R`, `UnsetAdditionalOptions`>>
 
 ##### info
 
@@ -450,7 +450,7 @@ Defined in: [webpack/types.d.ts:8243](https://github.com/webpack/webpack/blob/e3
 
 ##### args
 
-...`AsArray`\<`T`\>
+...`AsArray`<`T`>
 
 #### Returns
 
@@ -460,7 +460,7 @@ Defined in: [webpack/types.d.ts:8243](https://github.com/webpack/webpack/blob/e3
 
 ### callHooksForInfoWithFallback()
 
-> **callHooksForInfoWithFallback**\<`T`, `R`\>(`hookMap`, `info`, `fallback`, `defined`, ...`args`): `R`
+> **callHooksForInfoWithFallback**<`T`, `R`>(`hookMap`, `info`, `fallback`, `defined`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:8248](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8248)
 
@@ -478,7 +478,7 @@ Defined in: [webpack/types.d.ts:8248](https://github.com/webpack/webpack/blob/e3
 
 ##### hookMap
 
-`HookMap`\<`SyncBailHook`\<`T`, `R`, `UnsetAdditionalOptions`\>\>
+`HookMap`<`SyncBailHook`<`T`, `R`, `UnsetAdditionalOptions`>>
 
 ##### info
 
@@ -494,7 +494,7 @@ Defined in: [webpack/types.d.ts:8248](https://github.com/webpack/webpack/blob/e3
 
 ##### args
 
-...`AsArray`\<`T`\>
+...`AsArray`<`T`>
 
 #### Returns
 
@@ -504,7 +504,7 @@ Defined in: [webpack/types.d.ts:8248](https://github.com/webpack/webpack/blob/e3
 
 ### callHooksForName()
 
-> **callHooksForName**\<`T`, `R`\>(`hookMap`, `name`, ...`args`): `R`
+> **callHooksForName**<`T`, `R`>(`hookMap`, `name`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:8238](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8238)
 
@@ -522,7 +522,7 @@ Defined in: [webpack/types.d.ts:8238](https://github.com/webpack/webpack/blob/e3
 
 ##### hookMap
 
-`HookMap`\<`SyncBailHook`\<`T`, `R`, `UnsetAdditionalOptions`\>\>
+`HookMap`<`SyncBailHook`<`T`, `R`, `UnsetAdditionalOptions`>>
 
 ##### name
 
@@ -530,7 +530,7 @@ Defined in: [webpack/types.d.ts:8238](https://github.com/webpack/webpack/blob/e3
 
 ##### args
 
-...`AsArray`\<`T`\>
+...`AsArray`<`T`>
 
 #### Returns
 
@@ -540,7 +540,7 @@ Defined in: [webpack/types.d.ts:8238](https://github.com/webpack/webpack/blob/e3
 
 ### callHooksForNameWithFallback()
 
-> **callHooksForNameWithFallback**\<`T`, `R`\>(`hookMap`, `name`, `fallback`, `defined`, ...`args`): `R`
+> **callHooksForNameWithFallback**<`T`, `R`>(`hookMap`, `name`, `fallback`, `defined`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:8255](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8255)
 
@@ -558,7 +558,7 @@ Defined in: [webpack/types.d.ts:8255](https://github.com/webpack/webpack/blob/e3
 
 ##### hookMap
 
-`HookMap`\<`SyncBailHook`\<`T`, `R`, `UnsetAdditionalOptions`\>\>
+`HookMap`<`SyncBailHook`<`T`, `R`, `UnsetAdditionalOptions`>>
 
 ##### name
 
@@ -574,7 +574,7 @@ Defined in: [webpack/types.d.ts:8255](https://github.com/webpack/webpack/blob/e3
 
 ##### args
 
-...`AsArray`\<`T`\>
+...`AsArray`<`T`>
 
 #### Returns
 
@@ -602,7 +602,7 @@ Defined in: [webpack/types.d.ts:8474](https://github.com/webpack/webpack/blob/e3
 
 ### destructuringAssignmentPropertiesFor()
 
-> **destructuringAssignmentPropertiesFor**(`node`): `Set`\<`DestructuringAssignmentProperty`\>
+> **destructuringAssignmentPropertiesFor**(`node`): `Set`<`DestructuringAssignmentProperty`>
 
 Defined in: [webpack/types.d.ts:7687](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7687)
 
@@ -614,7 +614,7 @@ Defined in: [webpack/types.d.ts:7687](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Set`\<`DestructuringAssignmentProperty`\>
+`Set`<`DestructuringAssignmentProperty`>
 
 ***
 
@@ -628,7 +628,7 @@ Defined in: [webpack/types.d.ts:8294](https://github.com/webpack/webpack/blob/e3
 
 ##### statements
 
-(`ClassDeclaration` \| `FunctionDeclaration` \| `ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportDefaultDeclaration` \| `ExportAllDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `VariableDeclaration` \| `Directive`)[]
+(`ClassDeclaration` | `FunctionDeclaration` | `ImportDeclaration` | `ExportNamedDeclaration` | `ExportDefaultDeclaration` | `ExportAllDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `VariableDeclaration` | `Directive`)\[]
 
 #### Returns
 
@@ -704,7 +704,7 @@ Defined in: [webpack/types.d.ts:8031](https://github.com/webpack/webpack/blob/e3
 
 ### enterDestructuringAssignment()
 
-> **enterDestructuringAssignment**(`pattern`, `expression`): `ClassExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `ThisExpression` \| `ArrayExpression` \| `ObjectExpression` \| `FunctionExpression` \| `UnaryExpression` \| `UpdateExpression` \| `BinaryExpression` \| `AssignmentExpression` \| `LogicalExpression` \| `MemberExpression` \| `ConditionalExpression` \| `SimpleCallExpression` \| `NewExpression` \| `SequenceExpression` \| `ArrowFunctionExpression` \| `YieldExpression` \| `TemplateLiteral` \| `TaggedTemplateExpression` \| `MetaProperty` \| `AwaitExpression` \| `ChainExpression` \| `ImportExpression`
+> **enterDestructuringAssignment**(`pattern`, `expression`): `ClassExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `ThisExpression` | `ArrayExpression` | `ObjectExpression` | `FunctionExpression` | `UnaryExpression` | `UpdateExpression` | `BinaryExpression` | `AssignmentExpression` | `LogicalExpression` | `MemberExpression` | `ConditionalExpression` | `SimpleCallExpression` | `NewExpression` | `SequenceExpression` | `ArrowFunctionExpression` | `YieldExpression` | `TemplateLiteral` | `TaggedTemplateExpression` | `MetaProperty` | `AwaitExpression` | `ChainExpression` | `ImportExpression`
 
 Defined in: [webpack/types.d.ts:7998](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7998)
 
@@ -720,7 +720,7 @@ Defined in: [webpack/types.d.ts:7998](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ClassExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `ThisExpression` \| `ArrayExpression` \| `ObjectExpression` \| `FunctionExpression` \| `UnaryExpression` \| `UpdateExpression` \| `BinaryExpression` \| `AssignmentExpression` \| `LogicalExpression` \| `MemberExpression` \| `ConditionalExpression` \| `SimpleCallExpression` \| `NewExpression` \| `SequenceExpression` \| `ArrowFunctionExpression` \| `YieldExpression` \| `TemplateLiteral` \| `TaggedTemplateExpression` \| `MetaProperty` \| `AwaitExpression` \| `ChainExpression` \| `ImportExpression`
+`ClassExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `ThisExpression` | `ArrayExpression` | `ObjectExpression` | `FunctionExpression` | `UnaryExpression` | `UpdateExpression` | `BinaryExpression` | `AssignmentExpression` | `LogicalExpression` | `MemberExpression` | `ConditionalExpression` | `SimpleCallExpression` | `NewExpression` | `SequenceExpression` | `ArrowFunctionExpression` | `YieldExpression` | `TemplateLiteral` | `TaggedTemplateExpression` | `MetaProperty` | `AwaitExpression` | `ChainExpression` | `ImportExpression`
 
 ***
 
@@ -800,7 +800,7 @@ Defined in: [webpack/types.d.ts:8325](https://github.com/webpack/webpack/blob/e3
 
 ##### patterns
 
-(`string` \| `Property` \| `Identifier` \| `MemberExpression` \| `ObjectPattern` \| `ArrayPattern` \| `RestElement` \| `AssignmentPattern`)[]
+(`string` | `Property` | `Identifier` | `MemberExpression` | `ObjectPattern` | `ArrayPattern` | `RestElement` | `AssignmentPattern`)\[]
 
 ##### onIdent
 
@@ -906,25 +906,25 @@ Defined in: [webpack/types.d.ts:8484](https://github.com/webpack/webpack/blob/e3
 
 ##### memberRanges
 
-> **memberRanges**: \[`number`, `number`\][]
+> **memberRanges**: \[`number`, `number`]\[]
 
 ##### members
 
-> **members**: `string`[]
+> **members**: `string`\[]
 
 ##### membersOptionals
 
-> **membersOptionals**: `boolean`[]
+> **membersOptionals**: `boolean`\[]
 
 ##### object
 
-> **object**: `ClassExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `ThisExpression` \| `ArrayExpression` \| `ObjectExpression` \| `FunctionExpression` \| `UnaryExpression` \| `UpdateExpression` \| `BinaryExpression` \| `AssignmentExpression` \| `LogicalExpression` \| `MemberExpression` \| `ConditionalExpression` \| `SimpleCallExpression` \| `NewExpression` \| `SequenceExpression` \| `ArrowFunctionExpression` \| `YieldExpression` \| `TemplateLiteral` \| `TaggedTemplateExpression` \| `MetaProperty` \| `AwaitExpression` \| `ChainExpression` \| `ImportExpression` \| `Super`
+> **object**: `ClassExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `ThisExpression` | `ArrayExpression` | `ObjectExpression` | `FunctionExpression` | `UnaryExpression` | `UpdateExpression` | `BinaryExpression` | `AssignmentExpression` | `LogicalExpression` | `MemberExpression` | `ConditionalExpression` | `SimpleCallExpression` | `NewExpression` | `SequenceExpression` | `ArrowFunctionExpression` | `YieldExpression` | `TemplateLiteral` | `TaggedTemplateExpression` | `MetaProperty` | `AwaitExpression` | `ChainExpression` | `ImportExpression` | `Super`
 
 ***
 
 ### getComments()
 
-> **getComments**(`range`): `CommentJavascriptParser`[]
+> **getComments**(`range`): `CommentJavascriptParser`\[]
 
 Defined in: [webpack/types.d.ts:8444](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8444)
 
@@ -932,11 +932,11 @@ Defined in: [webpack/types.d.ts:8444](https://github.com/webpack/webpack/blob/e3
 
 ##### range
 
-\[`number`, `number`\]
+\[`number`, `number`]
 
 #### Returns
 
-`CommentJavascriptParser`[]
+`CommentJavascriptParser`\[]
 
 ***
 
@@ -958,7 +958,7 @@ Defined in: [webpack/types.d.ts:8548](https://github.com/webpack/webpack/blob/e3
 
 ##### info
 
-> **info**: `string` \| `VariableInfo`
+> **info**: `string` | `VariableInfo`
 
 ##### name
 
@@ -968,7 +968,7 @@ Defined in: [webpack/types.d.ts:8548](https://github.com/webpack/webpack/blob/e3
 
 ### getMemberExpressionInfo()
 
-> **getMemberExpressionInfo**(`expression`, `allowedTypes`): `CallExpressionInfo` \| `ExpressionExpressionInfo`
+> **getMemberExpressionInfo**(`expression`, `allowedTypes`): `CallExpressionInfo` | `ExpressionExpressionInfo`
 
 Defined in: [webpack/types.d.ts:8554](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8554)
 
@@ -984,7 +984,7 @@ Defined in: [webpack/types.d.ts:8554](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`CallExpressionInfo` \| `ExpressionExpressionInfo`
+`CallExpressionInfo` | `ExpressionExpressionInfo`
 
 ***
 
@@ -1006,11 +1006,11 @@ Defined in: [webpack/types.d.ts:8586](https://github.com/webpack/webpack/blob/e3
 
 ##### getMembers()
 
-> **getMembers**: () => `string`[]
+> **getMembers**: () => `string`\[]
 
 ###### Returns
 
-`string`[]
+`string`\[]
 
 ##### name
 
@@ -1040,7 +1040,7 @@ Defined in: [webpack/types.d.ts:8551](https://github.com/webpack/webpack/blob/e3
 
 ##### info
 
-> **info**: `string` \| `VariableInfo`
+> **info**: `string` | `VariableInfo`
 
 ##### name
 
@@ -1050,7 +1050,7 @@ Defined in: [webpack/types.d.ts:8551](https://github.com/webpack/webpack/blob/e3
 
 ### getRenameIdentifier()
 
-> **getRenameIdentifier**(`expr`): `string` \| `VariableInfo`
+> **getRenameIdentifier**(`expr`): `string` | `VariableInfo`
 
 Defined in: [webpack/types.d.ts:7690](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7690)
 
@@ -1062,13 +1062,13 @@ Defined in: [webpack/types.d.ts:7690](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`string` \| `VariableInfo`
+`string` | `VariableInfo`
 
 ***
 
 ### getTagData()
 
-> **getTagData**(`name`, `tag`): `Record`\<`string`, `any`\> \| `CommonJsImportSettings` \| `CompatibilitySettings` \| `HarmonySettings` \| `HarmonySpecifierGuards` \| `ImportSettings` \| [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol.md)
+> **getTagData**(`name`, `tag`): `Record`<`string`, `any`> | `CommonJsImportSettings` | `CompatibilitySettings` | `HarmonySettings` | `HarmonySpecifierGuards` | `ImportSettings` | [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol)
 
 Defined in: [webpack/types.d.ts:8449](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8449)
 
@@ -1084,7 +1084,7 @@ Defined in: [webpack/types.d.ts:8449](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`\<`string`, `any`\> \| `CommonJsImportSettings` \| `CompatibilitySettings` \| `HarmonySettings` \| `HarmonySpecifierGuards` \| `ImportSettings` \| [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol.md)
+`Record`<`string`, `any`> | `CommonJsImportSettings` | `CompatibilitySettings` | `HarmonySettings` | `HarmonySpecifierGuards` | `ImportSettings` | [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol)
 
 ***
 
@@ -1142,7 +1142,7 @@ Defined in: [webpack/types.d.ts:8279](https://github.com/webpack/webpack/blob/e3
 
 ##### params
 
-`Identifier`[]
+`Identifier`\[]
 
 ##### fn
 
@@ -1168,7 +1168,7 @@ Defined in: [webpack/types.d.ts:8280](https://github.com/webpack/webpack/blob/e3
 
 ##### params
 
-(`string` \| `Identifier` \| `MemberExpression` \| `ObjectPattern` \| `ArrayPattern` \| `RestElement` \| `AssignmentPattern`)[]
+(`string` | `Identifier` | `MemberExpression` | `ObjectPattern` | `ArrayPattern` | `RestElement` | `AssignmentPattern`)\[]
 
 ##### fn
 
@@ -1190,7 +1190,7 @@ Defined in: [webpack/types.d.ts:8266](https://github.com/webpack/webpack/blob/e3
 
 ##### params
 
-(`string` \| `Property` \| `Identifier` \| `MemberExpression` \| `ObjectPattern` \| `ArrayPattern` \| `RestElement` \| `AssignmentPattern`)[]
+(`string` | `Property` | `Identifier` | `MemberExpression` | `ObjectPattern` | `ArrayPattern` | `RestElement` | `AssignmentPattern`)\[]
 
 ##### fn
 
@@ -1346,7 +1346,7 @@ Module pre walking iterates the scope for import entries
 
 ##### statements
 
-(`ClassDeclaration` \| `FunctionDeclaration` \| `ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportDefaultDeclaration` \| `ExportAllDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `VariableDeclaration`)[]
+(`ClassDeclaration` | `FunctionDeclaration` | `ImportDeclaration` | `ExportNamedDeclaration` | `ExportDefaultDeclaration` | `ExportAllDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `VariableDeclaration`)\[]
 
 #### Returns
 
@@ -1356,7 +1356,7 @@ Module pre walking iterates the scope for import entries
 
 ### parse()
 
-> **parse**(`source`, `state`): [`ParserState`](../../../../../../type-aliases/ParserState.md)
+> **parse**(`source`, `state`): [`ParserState`](../../../../../../type-aliases/ParserState)
 
 Defined in: [webpack/types.d.ts:13964](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L13964)
 
@@ -1364,19 +1364,19 @@ Defined in: [webpack/types.d.ts:13964](https://github.com/webpack/webpack/blob/e
 
 ##### source
 
-`string` | `Buffer`\<`ArrayBufferLike`\> | `PreparsedAst`
+`string` | `Buffer`<`ArrayBufferLike`> | `PreparsedAst`
 
 ##### state
 
-[`ParserState`](../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../type-aliases/ParserState)
 
 #### Returns
 
-[`ParserState`](../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../type-aliases/ParserState)
 
 #### Inherited from
 
-[`Parser`](../../../../../../classes/Parser.md).[`parse`](../../../../../../classes/Parser.md#parse)
+[`Parser`](../../../../../../classes/Parser).[`parse`](../../../../../../classes/Parser)
 
 ***
 
@@ -1408,7 +1408,7 @@ Defined in: [webpack/types.d.ts:8480](https://github.com/webpack/webpack/blob/e3
 
 ##### range
 
-\[`number`, `number`\]
+\[`number`, `number`]
 
 #### Returns
 
@@ -1416,11 +1416,11 @@ Defined in: [webpack/types.d.ts:8480](https://github.com/webpack/webpack/blob/e3
 
 ##### errors
 
-> **errors**: `Error` & `object`[]
+> **errors**: `Error` & `object`\[]
 
 ##### options
 
-> **options**: `Record`\<`string`, `any`\>
+> **options**: `Record`<`string`, `any`>
 
 ***
 
@@ -1654,7 +1654,7 @@ Pre walking iterates the scope for variable declarations
 
 ##### statements
 
-(`ClassDeclaration` \| `FunctionDeclaration` \| `ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportDefaultDeclaration` \| `ExportAllDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `VariableDeclaration`)[]
+(`ClassDeclaration` | `FunctionDeclaration` | `ImportDeclaration` | `ExportNamedDeclaration` | `ExportDefaultDeclaration` | `ExportAllDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `VariableDeclaration`)\[]
 
 #### Returns
 
@@ -1672,7 +1672,7 @@ Defined in: [webpack/types.d.ts:8053](https://github.com/webpack/webpack/blob/e3
 
 ##### switchCases
 
-`SwitchCase`[]
+`SwitchCase`\[]
 
 #### Returns
 
@@ -1846,7 +1846,7 @@ Defined in: [webpack/types.d.ts:8461](https://github.com/webpack/webpack/blob/e3
 
 ##### data?
 
-`Record`\<`string`, `any`\> | `CommonJsImportSettings` | `CompatibilitySettings` | `HarmonySettings` | `HarmonySpecifierGuards` | `ImportSettings` | [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol.md)
+`Record`<`string`, `any`> | `CommonJsImportSettings` | `CompatibilitySettings` | `HarmonySettings` | `HarmonySpecifierGuards` | `ImportSettings` | [`TopLevelSymbol`](../../optimize/namespaces/InnerGraph/classes/TopLevelSymbol)
 
 ##### flags?
 
@@ -2246,7 +2246,7 @@ Defined in: [webpack/types.d.ts:8062](https://github.com/webpack/webpack/blob/e3
 
 ##### expressions
 
-(`ClassExpression` \| `Identifier` \| `SimpleLiteral` \| `RegExpLiteral` \| `BigIntLiteral` \| `ThisExpression` \| `ArrayExpression` \| `ObjectExpression` \| `FunctionExpression` \| `UnaryExpression` \| `UpdateExpression` \| `BinaryExpression` \| `AssignmentExpression` \| `LogicalExpression` \| `MemberExpression` \| `ConditionalExpression` \| `SimpleCallExpression` \| `NewExpression` \| `SequenceExpression` \| `ArrowFunctionExpression` \| `YieldExpression` \| `TemplateLiteral` \| `TaggedTemplateExpression` \| `MetaProperty` \| `AwaitExpression` \| `ChainExpression` \| `ImportExpression` \| `SpreadElement`)[]
+(`ClassExpression` | `Identifier` | `SimpleLiteral` | `RegExpLiteral` | `BigIntLiteral` | `ThisExpression` | `ArrayExpression` | `ObjectExpression` | `FunctionExpression` | `UnaryExpression` | `UpdateExpression` | `BinaryExpression` | `AssignmentExpression` | `LogicalExpression` | `MemberExpression` | `ConditionalExpression` | `SimpleCallExpression` | `NewExpression` | `SequenceExpression` | `ArrowFunctionExpression` | `YieldExpression` | `TemplateLiteral` | `TaggedTemplateExpression` | `MetaProperty` | `AwaitExpression` | `ChainExpression` | `ImportExpression` | `SpreadElement`)\[]
 
 #### Returns
 
@@ -2490,7 +2490,7 @@ Defined in: [webpack/types.d.ts:8153](https://github.com/webpack/webpack/blob/e3
 
 ### walkMemberExpressionWithExpressionName()
 
-> **walkMemberExpressionWithExpressionName**\<`R`\>(`expression`, `name`, `rootInfo`, `members`, `onUnhandled`): `void`
+> **walkMemberExpressionWithExpressionName**<`R`>(`expression`, `name`, `rootInfo`, `members`, `onUnhandled`): `void`
 
 Defined in: [webpack/types.d.ts:8154](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L8154)
 
@@ -2516,7 +2516,7 @@ Defined in: [webpack/types.d.ts:8154](https://github.com/webpack/webpack/blob/e3
 
 ##### members
 
-`string`[]
+`string`\[]
 
 ##### onUnhandled
 
@@ -2760,7 +2760,7 @@ Walking iterates the statements and expressions and processes them
 
 ##### statements
 
-(`ClassDeclaration` \| `FunctionDeclaration` \| `ImportDeclaration` \| `ExportNamedDeclaration` \| `ExportDefaultDeclaration` \| `ExportAllDeclaration` \| `ExpressionStatement` \| `BlockStatement` \| `StaticBlock` \| `EmptyStatement` \| `DebuggerStatement` \| `WithStatement` \| `ReturnStatement` \| `LabeledStatement` \| `BreakStatement` \| `ContinueStatement` \| `IfStatement` \| `SwitchStatement` \| `ThrowStatement` \| `TryStatement` \| `WhileStatement` \| `DoWhileStatement` \| `ForStatement` \| `ForInStatement` \| `ForOfStatement` \| `VariableDeclaration`)[]
+(`ClassDeclaration` | `FunctionDeclaration` | `ImportDeclaration` | `ExportNamedDeclaration` | `ExportDefaultDeclaration` | `ExportAllDeclaration` | `ExpressionStatement` | `BlockStatement` | `StaticBlock` | `EmptyStatement` | `DebuggerStatement` | `WithStatement` | `ReturnStatement` | `LabeledStatement` | `BreakStatement` | `ContinueStatement` | `IfStatement` | `SwitchStatement` | `ThrowStatement` | `TryStatement` | `WhileStatement` | `DoWhileStatement` | `ForStatement` | `ForInStatement` | `ForOfStatement` | `VariableDeclaration`)\[]
 
 #### Returns
 
@@ -2778,7 +2778,7 @@ Defined in: [webpack/types.d.ts:8054](https://github.com/webpack/webpack/blob/e3
 
 ##### switchCases
 
-`SwitchCase`[]
+`SwitchCase`\[]
 
 #### Returns
 
@@ -3030,7 +3030,7 @@ Defined in: [webpack/types.d.ts:8595](https://github.com/webpack/webpack/blob/e3
 
 ##### plugins
 
-...(`BaseParser`) => *typeof* `Parser`[]
+...(`BaseParser`) => *typeof* `Parser`\[]
 
 #### Returns
 

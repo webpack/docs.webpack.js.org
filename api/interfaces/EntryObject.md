@@ -2,7 +2,7 @@
 title: EntryObject
 ---
 
-[webpack](../globals.md) / EntryObject
+[webpack](../globals) / EntryObject
 
 # Interface: EntryObject
 
@@ -12,4 +12,4 @@ Multiple entry bundles are created. The key is the entry name. The value can be 
 
 ## Indexable
 
-\[`index`: `string`\]: `string` \| `string`[] \| `EntryDescription`
+\[`index`: `string`]: `string` | `string`\[] | `EntryDescription`

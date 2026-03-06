@@ -2,7 +2,7 @@
 title: AsyncWebAssemblyModulesPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [wasm](../index.md) / AsyncWebAssemblyModulesPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [wasm](../index) / AsyncWebAssemblyModulesPlugin
 
 # Class: AsyncWebAssemblyModulesPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -58,7 +58,7 @@ Apply the plugin
 
 ### renderModule()
 
-> **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../../sources/classes/Source.md)
+> **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../../sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:546](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L546)
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:546](https://github.com/webpack/webpack/blob/e32
 
 ##### module
 
-[`Module`](../../../../../../classes/Module.md)
+[`Module`](../../../../../../classes/Module)
 
 ##### renderContext
 
@@ -78,7 +78,7 @@ Defined in: [webpack/types.d.ts:546](https://github.com/webpack/webpack/blob/e32
 
 #### Returns
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ***
 
@@ -92,7 +92,7 @@ Defined in: [webpack/types.d.ts:551](https://github.com/webpack/webpack/blob/e32
 
 ##### compilation
 
-[`Compilation`](../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../classes/Compilation)
 
 #### Returns
 

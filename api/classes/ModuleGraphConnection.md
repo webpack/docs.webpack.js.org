@@ -2,7 +2,7 @@
 title: ModuleGraphConnection
 ---
 
-[webpack](../globals.md) / ModuleGraphConnection
+[webpack](../globals) / ModuleGraphConnection
 
 # Class: ModuleGraphConnection
 
@@ -50,7 +50,7 @@ Defined in: [webpack/types.d.ts:11196](https://github.com/webpack/webpack/blob/e
 
 ### condition?
 
-> `optional` **condition**: `false` \| (`moduleGraphConnection`, `runtime`) => `ConnectionState`
+> `optional` **condition**: `false` | (`moduleGraphConnection`, `runtime`) => `ConnectionState`
 
 Defined in: [webpack/types.d.ts:11217](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11217)
 
@@ -74,7 +74,7 @@ Defined in: [webpack/types.d.ts:11212](https://github.com/webpack/webpack/blob/e
 
 ### explanations?
 
-> `optional` **explanations**: `Set`\<`string`\>
+> `optional` **explanations**: `Set`<`string`>
 
 Defined in: [webpack/types.d.ts:11224](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11224)
 

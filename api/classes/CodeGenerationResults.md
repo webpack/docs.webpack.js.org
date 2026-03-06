@@ -2,7 +2,7 @@
 title: CodeGenerationResults
 ---
 
-[webpack](../globals.md) / CodeGenerationResults
+[webpack](../globals) / CodeGenerationResults
 
 # Abstract Class: CodeGenerationResults
 
@@ -22,7 +22,7 @@ Defined in: [webpack/types.d.ts:2098](https://github.com/webpack/webpack/blob/e3
 
 ### map
 
-> **map**: `Map`\<[`Module`](Module.md), [`RuntimeSpecMap`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecMap.md)\<`CodeGenerationResult`, `CodeGenerationResult`\>\>
+> **map**: `Map`<[`Module`](Module.md), [`RuntimeSpecMap`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecMap)<`CodeGenerationResult`, `CodeGenerationResult`>>
 
 Defined in: [webpack/types.d.ts:2099](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2099)
 
@@ -126,7 +126,7 @@ Defined in: [webpack/types.d.ts:2108](https://github.com/webpack/webpack/blob/e3
 
 ### getRuntimeRequirements()
 
-> **getRuntimeRequirements**(`module`, `runtime`): `ReadonlySet`\<`string`\>
+> **getRuntimeRequirements**(`module`, `runtime`): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:2103](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2103)
 
@@ -142,13 +142,13 @@ Defined in: [webpack/types.d.ts:2103](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
 ### getSource()
 
-> **getSource**(`module`, `runtime`, `sourceType`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **getSource**(`module`, `runtime`, `sourceType`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:2102](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2102)
 
@@ -168,7 +168,7 @@ Defined in: [webpack/types.d.ts:2102](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 

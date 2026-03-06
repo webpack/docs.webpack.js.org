@@ -2,7 +2,7 @@
 title: ALL_LOADERS_RESOURCE
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / ALL\_LOADERS\_RESOURCE
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / ALL\_LOADERS\_RESOURCE
 
 # Variable: ALL\_LOADERS\_RESOURCE
 

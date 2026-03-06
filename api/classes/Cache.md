@@ -2,7 +2,7 @@
 title: Cache
 ---
 
-[webpack](../globals.md) / Cache
+[webpack](../globals) / Cache
 
 # Class: Cache
 
@@ -30,27 +30,27 @@ Defined in: [webpack/types.d.ts:1101](https://github.com/webpack/webpack/blob/e3
 
 #### beginIdle
 
-> **beginIdle**: `SyncHook`\<\[\]\>
+> **beginIdle**: `SyncHook`<\[]>
 
 #### endIdle
 
-> **endIdle**: `AsyncParallelHook`\<\[\]\>
+> **endIdle**: `AsyncParallelHook`<\[]>
 
 #### get
 
-> **get**: `AsyncSeriesBailHook`\<\[`string`, `Etag`, `GotHandler`\<`any`\>[]\], `any`\>
+> **get**: `AsyncSeriesBailHook`<\[`string`, `Etag`, `GotHandler`<`any`>\[]], `any`>
 
 #### shutdown
 
-> **shutdown**: `AsyncParallelHook`\<\[\]\>
+> **shutdown**: `AsyncParallelHook`<\[]>
 
 #### store
 
-> **store**: `AsyncParallelHook`\<\[`string`, `Etag`, `any`\]\>
+> **store**: `AsyncParallelHook`<\[`string`, `Etag`, `any`]>
 
 #### storeBuildDependencies
 
-> **storeBuildDependencies**: `AsyncParallelHook`\<\[`Iterable`\<`string`, `any`, `any`\>\]\>
+> **storeBuildDependencies**: `AsyncParallelHook`<\[`Iterable`<`string`, `any`, `any`>]>
 
 ***
 
@@ -108,7 +108,7 @@ Defined in: [webpack/types.d.ts:1129](https://github.com/webpack/webpack/blob/e3
 
 ##### callback
 
-`CallbackCacheCache`\<`void`\>
+`CallbackCacheCache`<`void`>
 
 #### Returns
 
@@ -118,7 +118,7 @@ Defined in: [webpack/types.d.ts:1129](https://github.com/webpack/webpack/blob/e3
 
 ### get()
 
-> **get**\<`T`\>(`identifier`, `etag`, `callback`): `void`
+> **get**<`T`>(`identifier`, `etag`, `callback`): `void`
 
 Defined in: [webpack/types.d.ts:1109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1109)
 
@@ -140,7 +140,7 @@ Defined in: [webpack/types.d.ts:1109](https://github.com/webpack/webpack/blob/e3
 
 ##### callback
 
-`CallbackCacheCache`\<`T`\>
+`CallbackCacheCache`<`T`>
 
 #### Returns
 
@@ -158,7 +158,7 @@ Defined in: [webpack/types.d.ts:1130](https://github.com/webpack/webpack/blob/e3
 
 ##### callback
 
-`CallbackCacheCache`\<`void`\>
+`CallbackCacheCache`<`void`>
 
 #### Returns
 
@@ -168,7 +168,7 @@ Defined in: [webpack/types.d.ts:1130](https://github.com/webpack/webpack/blob/e3
 
 ### store()
 
-> **store**\<`T`\>(`identifier`, `etag`, `data`, `callback`): `void`
+> **store**<`T`>(`identifier`, `etag`, `data`, `callback`): `void`
 
 Defined in: [webpack/types.d.ts:1114](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1114)
 
@@ -194,7 +194,7 @@ Defined in: [webpack/types.d.ts:1114](https://github.com/webpack/webpack/blob/e3
 
 ##### callback
 
-`CallbackCacheCache`\<`void`\>
+`CallbackCacheCache`<`void`>
 
 #### Returns
 
@@ -214,11 +214,11 @@ After this method has succeeded the cache can only be restored when build depend
 
 ##### dependencies
 
-`Iterable`\<`string`\>
+`Iterable`<`string`>
 
 ##### callback
 
-`CallbackCacheCache`\<`void`\>
+`CallbackCacheCache`<`void`>
 
 #### Returns
 

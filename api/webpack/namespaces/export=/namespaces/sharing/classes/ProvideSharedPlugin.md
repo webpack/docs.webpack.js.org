@@ -2,7 +2,7 @@
 title: ProvideSharedPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sharing](../index.md) / ProvideSharedPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [sharing](../index) / ProvideSharedPlugin
 
 # Class: ProvideSharedPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

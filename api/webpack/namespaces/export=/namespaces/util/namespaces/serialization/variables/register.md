@@ -2,7 +2,7 @@
 title: register
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [serialization](../index.md) / register
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [serialization](../index) / register
 
 # Variable: register()
 

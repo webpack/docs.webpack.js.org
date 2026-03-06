@@ -2,7 +2,7 @@
 title: makeNamespaceObject
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / makeNamespaceObject
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / makeNamespaceObject
 
 # Variable: makeNamespaceObject
 

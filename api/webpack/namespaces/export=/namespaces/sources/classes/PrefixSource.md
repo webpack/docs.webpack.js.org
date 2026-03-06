@@ -2,7 +2,7 @@
 title: PrefixSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / PrefixSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / PrefixSource
 
 # Class: PrefixSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:14204](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 
@@ -28,7 +28,7 @@ Defined in: [webpack/types.d.ts:14205](https://github.com/webpack/webpack/blob/e
 
 ##### source
 
-`string` | `Buffer`\<`ArrayBufferLike`\> | [`Source`](Source.md)
+`string` | `Buffer`<`ArrayBufferLike`> | [`Source`](Source.md)
 
 #### Returns
 

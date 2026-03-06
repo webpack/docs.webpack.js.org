@@ -2,7 +2,7 @@
 title: WatchIgnorePlugin
 ---
 
-[webpack](../globals.md) / WatchIgnorePlugin
+[webpack](../globals) / WatchIgnorePlugin
 
 # Class: WatchIgnorePlugin
 

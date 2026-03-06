@@ -2,7 +2,7 @@
 title: ensureChunkHandlers
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / ensureChunkHandlers
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / ensureChunkHandlers
 
 # Variable: ensureChunkHandlers
 

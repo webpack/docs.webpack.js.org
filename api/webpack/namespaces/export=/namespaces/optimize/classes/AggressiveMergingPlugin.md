@@ -2,7 +2,7 @@
 title: AggressiveMergingPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / AggressiveMergingPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / AggressiveMergingPlugin
 
 # Class: AggressiveMergingPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

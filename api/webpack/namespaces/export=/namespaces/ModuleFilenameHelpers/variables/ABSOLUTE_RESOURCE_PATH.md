@@ -2,7 +2,7 @@
 title: ABSOLUTE_RESOURCE_PATH
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / ABSOLUTE\_RESOURCE\_PATH
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / ABSOLUTE\_RESOURCE\_PATH
 
 # Variable: ABSOLUTE\_RESOURCE\_PATH
 

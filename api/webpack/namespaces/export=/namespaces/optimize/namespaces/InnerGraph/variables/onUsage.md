@@ -2,7 +2,7 @@
 title: onUsage
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / onUsage
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / onUsage
 
 # Variable: onUsage()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:19834](https://github.com/webpack/webpack/blob/e
 
 ### state
 
-[`ParserState`](../../../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../../../type-aliases/ParserState)
 
 ### onUsageCallback
 

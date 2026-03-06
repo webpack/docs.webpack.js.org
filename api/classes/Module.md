@@ -2,7 +2,7 @@
 title: Module
 ---
 
-[webpack](../globals.md) / Module
+[webpack](../globals) / Module
 
 # Class: Module
 
@@ -10,13 +10,13 @@ Defined in: [webpack/types.d.ts:10629](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- `DependenciesBlock`
+* `DependenciesBlock`
 
 ## Extended by
 
-- [`ExternalModule`](ExternalModule.md)
-- [`NormalModule`](NormalModule.md)
-- [`RuntimeModule`](RuntimeModule.md)
+* [`ExternalModule`](ExternalModule.md)
+* [`NormalModule`](NormalModule.md)
+* [`RuntimeModule`](RuntimeModule.md)
 
 ## Constructors
 
@@ -52,7 +52,7 @@ Defined in: [webpack/types.d.ts:10630](https://github.com/webpack/webpack/blob/e
 
 ### blocks
 
-> **blocks**: [`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)[]
+> **blocks**: [`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)\[]
 
 Defined in: [webpack/types.d.ts:4110](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4110)
 
@@ -80,7 +80,7 @@ Defined in: [webpack/types.d.ts:10641](https://github.com/webpack/webpack/blob/e
 
 ### codeGenerationDependencies?
 
-> `optional` **codeGenerationDependencies**: [`Dependency`](Dependency.md)[]
+> `optional` **codeGenerationDependencies**: [`Dependency`](Dependency.md)\[]
 
 Defined in: [webpack/types.d.ts:10644](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10644)
 
@@ -104,7 +104,7 @@ Defined in: [webpack/types.d.ts:10635](https://github.com/webpack/webpack/blob/e
 
 ### dependencies
 
-> **dependencies**: [`Dependency`](Dependency.md)[]
+> **dependencies**: [`Dependency`](Dependency.md)\[]
 
 Defined in: [webpack/types.d.ts:4109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4109)
 
@@ -140,7 +140,7 @@ Defined in: [webpack/types.d.ts:10640](https://github.com/webpack/webpack/blob/e
 
 ### ~~id~~
 
-> **id**: `string` \| `number`
+> **id**: `string` | `number`
 
 Defined in: [webpack/types.d.ts:10649](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10649)
 
@@ -202,7 +202,7 @@ Defined in: [webpack/types.d.ts:4111](https://github.com/webpack/webpack/blob/e3
 
 ### presentationalDependencies?
 
-> `optional` **presentationalDependencies**: [`Dependency`](Dependency.md)[]
+> `optional` **presentationalDependencies**: [`Dependency`](Dependency.md)\[]
 
 Defined in: [webpack/types.d.ts:10643](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10643)
 
@@ -218,7 +218,7 @@ Defined in: [webpack/types.d.ts:10652](https://github.com/webpack/webpack/blob/e
 
 ### resolveOptions?
 
-> `optional` **resolveOptions**: [`ResolveOptions`](../interfaces/ResolveOptions.md)
+> `optional` **resolveOptions**: [`ResolveOptions`](../interfaces/ResolveOptions)
 
 Defined in: [webpack/types.d.ts:10636](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10636)
 
@@ -260,13 +260,13 @@ Defined in: [webpack/types.d.ts:10638](https://github.com/webpack/webpack/blob/e
 
 #### Get Signature
 
-> **get** **chunksIterable**(): `Iterable`\<[`Chunk`](Chunk.md)\>
+> **get** **chunksIterable**(): `Iterable`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:10673](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10673)
 
 ##### Returns
 
-`Iterable`\<[`Chunk`](Chunk.md)\>
+`Iterable`<[`Chunk`](Chunk.md)>
 
 ***
 
@@ -358,7 +358,7 @@ Defined in: [webpack/types.d.ts:10676](https://github.com/webpack/webpack/blob/e
 
 #### Get Signature
 
-> **get** **optimizationBailout**(): (`string` \| (`requestShortener`) => `string`)[]
+> **get** **optimizationBailout**(): (`string` | (`requestShortener`) => `string`)\[]
 
 Defined in: [webpack/types.d.ts:10662](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10662)
 
@@ -366,7 +366,7 @@ Defined in: [webpack/types.d.ts:10662](https://github.com/webpack/webpack/blob/e
 
 ##### Returns
 
-(`string` \| (`requestShortener`) => `string`)[]
+(`string` | (`requestShortener`) => `string`)\[]
 
 ***
 
@@ -402,13 +402,13 @@ Defined in: [webpack/types.d.ts:10651](https://github.com/webpack/webpack/blob/e
 
 #### Get Signature
 
-> **get** **usedExports**(): `boolean` \| `SortableSet`\<`string`\>
+> **get** **usedExports**(): `boolean` | `SortableSet`<`string`>
 
 Defined in: [webpack/types.d.ts:10657](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10657)
 
 ##### Returns
 
-`boolean` \| `SortableSet`\<`string`\>
+`boolean` | `SortableSet`<`string`>
 
 ***
 
@@ -461,19 +461,19 @@ Defined in: [webpack/types.d.ts:10780](https://github.com/webpack/webpack/blob/e
 
 ##### fileDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 ##### contextDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 ##### missingDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 ##### buildDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 #### Returns
 
@@ -615,7 +615,7 @@ Defined in: [webpack/types.d.ts:10724](https://github.com/webpack/webpack/blob/e
 
 ##### fs
 
-[`InputFileSystem`](../interfaces/InputFileSystem.md)
+[`InputFileSystem`](../interfaces/InputFileSystem)
 
 ##### callback
 
@@ -723,7 +723,7 @@ Defined in: [webpack/types.d.ts:4128](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext.md)
+[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext)
 
 #### Returns
 
@@ -737,13 +737,13 @@ Defined in: [webpack/types.d.ts:4128](https://github.com/webpack/webpack/blob/e3
 
 ### getChunks()
 
-> **getChunks**(): [`Chunk`](Chunk.md)[]
+> **getChunks**(): [`Chunk`](Chunk.md)\[]
 
 Defined in: [webpack/types.d.ts:10671](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10671)
 
 #### Returns
 
-[`Chunk`](Chunk.md)[]
+[`Chunk`](Chunk.md)\[]
 
 ***
 
@@ -767,13 +767,13 @@ Defined in: [webpack/types.d.ts:10754](https://github.com/webpack/webpack/blob/e
 
 ### getErrors()
 
-> **getErrors**(): `Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+> **getErrors**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10684](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10684)
 
 #### Returns
 
-`Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 ***
 
@@ -871,7 +871,7 @@ Defined in: [webpack/types.d.ts:10757](https://github.com/webpack/webpack/blob/e
 
 ### getSourceBasicTypes()
 
-> **getSourceBasicTypes**(): `ReadonlySet`\<`string`\>
+> **getSourceBasicTypes**(): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:10740](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10740)
 
@@ -883,19 +883,19 @@ from getSourceTypes(), but their generated output is still JavaScript, i.e. thei
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
 ### getSourceTypes()
 
-> **getSourceTypes**(): `ReadonlySet`\<`string`\>
+> **getSourceTypes**(): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:10731](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10731)
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 
@@ -916,13 +916,13 @@ This data will be passed to restoreFromUnsafeCache later.
 
 ### getWarnings()
 
-> **getWarnings**(): `Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+> **getWarnings**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10681](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10681)
 
 #### Returns
 
-`Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 ***
 
@@ -1192,11 +1192,11 @@ Use needBuild instead
 
 ##### fileTimestamps
 
-`Map`\<`string`, `number`\>
+`Map`<`string`, `number`>
 
 ##### contextTimestamps
 
-`Map`\<`string`, `number`\>
+`Map`<`string`, `number`>
 
 #### Returns
 
@@ -1208,13 +1208,13 @@ Use needBuild instead
 
 ### originalSource()
 
-> **originalSource**(): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **originalSource**(): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10779](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10779)
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 
@@ -1286,7 +1286,7 @@ Defined in: [webpack/types.d.ts:4127](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext.md)
+[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext)
 
 #### Returns
 
@@ -1318,7 +1318,7 @@ Defined in: [webpack/types.d.ts:10751](https://github.com/webpack/webpack/blob/e
 
 ### ~~source()~~
 
-> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10746](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10746)
 
@@ -1340,7 +1340,7 @@ Use codeGeneration() instead
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 #### Deprecated
 

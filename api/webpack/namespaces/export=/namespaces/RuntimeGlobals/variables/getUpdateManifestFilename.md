@@ -2,7 +2,7 @@
 title: getUpdateManifestFilename
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / getUpdateManifestFilename
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / getUpdateManifestFilename
 
 # Variable: getUpdateManifestFilename
 

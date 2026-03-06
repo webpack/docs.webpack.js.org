@@ -2,7 +2,7 @@
 title: ContextReplacementPlugin
 ---
 
-[webpack](../globals.md) / ContextReplacementPlugin
+[webpack](../globals) / ContextReplacementPlugin
 
 # Class: ContextReplacementPlugin
 
@@ -68,7 +68,7 @@ Defined in: [webpack/types.d.ts:3709](https://github.com/webpack/webpack/blob/e3
 
 ##### fs
 
-[`InputFileSystem`](../interfaces/InputFileSystem.md)
+[`InputFileSystem`](../interfaces/InputFileSystem)
 
 ##### callback
 

@@ -2,7 +2,7 @@
 title: EnableLibraryPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [library](../index.md) / EnableLibraryPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [library](../index) / EnableLibraryPlugin
 
 # Class: EnableLibraryPlugin
 
@@ -60,7 +60,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -78,7 +78,7 @@ Defined in: [webpack/types.d.ts:4727](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 ##### type
 
@@ -100,7 +100,7 @@ Defined in: [webpack/types.d.ts:4726](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 ##### type
 

@@ -2,7 +2,7 @@
 title: WebpackOptionsApply
 ---
 
-[webpack](../globals.md) / WebpackOptionsApply
+[webpack](../globals) / WebpackOptionsApply
 
 # Class: WebpackOptionsApply
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:19131](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- `OptionsApply`
+* `OptionsApply`
 
 ## Constructors
 

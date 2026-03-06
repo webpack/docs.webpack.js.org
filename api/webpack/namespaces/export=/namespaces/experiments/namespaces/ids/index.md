@@ -2,10 +2,10 @@
 title: ids
 ---
 
-[webpack](../../../../../../../globals.md) / [export=](../../../../index.md) / [experiments](../../index.md) / ids
+[webpack](../../../../../../../globals) / [export=](../../../../index) / [experiments](../../index) / ids
 
 # ids
 
 ## Classes
 
-- [SyncModuleIdsPlugin](classes/SyncModuleIdsPlugin.md)
+* [SyncModuleIdsPlugin](classes/SyncModuleIdsPlugin.md)

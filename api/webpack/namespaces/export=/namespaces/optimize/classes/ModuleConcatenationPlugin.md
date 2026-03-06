@@ -2,7 +2,7 @@
 title: ModuleConcatenationPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / ModuleConcatenationPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / ModuleConcatenationPlugin
 
 # Class: ModuleConcatenationPlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

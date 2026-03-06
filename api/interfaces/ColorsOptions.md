@@ -2,7 +2,7 @@
 title: ColorsOptions
 ---
 
-[webpack](../globals.md) / ColorsOptions
+[webpack](../globals) / ColorsOptions
 
 # Interface: ColorsOptions
 

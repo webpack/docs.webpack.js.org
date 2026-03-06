@@ -2,7 +2,7 @@
 title: isDependencyUsedByExports
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / isDependencyUsedByExports
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / isDependencyUsedByExports
 
 # Variable: isDependencyUsedByExports()
 
@@ -14,15 +14,15 @@ Defined in: [webpack/types.d.ts:19827](https://github.com/webpack/webpack/blob/e
 
 ### dependency
 
-[`Dependency`](../../../../../../../../classes/Dependency.md)
+[`Dependency`](../../../../../../../../classes/Dependency)
 
 ### usedByExports
 
-`undefined` | `boolean` | `Set`\<`string`\>
+`undefined` | `boolean` | `Set`<`string`>
 
 ### moduleGraph
 
-[`ModuleGraph`](../../../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../../../classes/ModuleGraph)
 
 ### runtime
 

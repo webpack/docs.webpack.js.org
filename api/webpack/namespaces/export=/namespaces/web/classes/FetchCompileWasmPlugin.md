@@ -2,7 +2,7 @@
 title: FetchCompileWasmPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [web](../index.md) / FetchCompileWasmPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [web](../index) / FetchCompileWasmPlugin
 
 # Class: FetchCompileWasmPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

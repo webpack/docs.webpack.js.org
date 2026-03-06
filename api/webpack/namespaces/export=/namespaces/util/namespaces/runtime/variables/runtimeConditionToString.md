@@ -2,7 +2,7 @@
 title: runtimeConditionToString
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / runtimeConditionToString
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / runtimeConditionToString
 
 # Variable: runtimeConditionToString()
 

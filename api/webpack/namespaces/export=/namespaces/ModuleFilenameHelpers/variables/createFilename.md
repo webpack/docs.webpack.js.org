@@ -2,7 +2,7 @@
 title: createFilename
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / createFilename
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / createFilename
 
 # Variable: createFilename()
 
@@ -14,13 +14,13 @@ Defined in: [webpack/types.d.ts:19636](https://github.com/webpack/webpack/blob/e
 
 ### module
 
-`string` | [`Module`](../../../../../../classes/Module.md)
+`string` | [`Module`](../../../../../../classes/Module)
 
 ### options
 
 #### moduleFilenameTemplate?
 
-`string` \| (`context`) => `string`
+`string` | (`context`) => `string`
 
 #### namespace?
 
@@ -30,11 +30,11 @@ Defined in: [webpack/types.d.ts:19636](https://github.com/webpack/webpack/blob/e
 
 #### chunkGraph
 
-[`ChunkGraph`](../../../../../../classes/ChunkGraph.md)
+[`ChunkGraph`](../../../../../../classes/ChunkGraph)
 
 #### hashFunction?
 
-`string` \| *typeof* `Hash`
+`string` | *typeof* `Hash`
 
 #### requestShortener
 

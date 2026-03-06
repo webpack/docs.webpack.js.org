@@ -2,7 +2,7 @@
 title: keyToRuntime
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / keyToRuntime
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / keyToRuntime
 
 # Variable: keyToRuntime()
 

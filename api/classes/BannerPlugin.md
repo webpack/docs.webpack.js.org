@@ -2,7 +2,7 @@
 title: BannerPlugin
 ---
 
-[webpack](../globals.md) / BannerPlugin
+[webpack](../globals) / BannerPlugin
 
 # Class: BannerPlugin
 

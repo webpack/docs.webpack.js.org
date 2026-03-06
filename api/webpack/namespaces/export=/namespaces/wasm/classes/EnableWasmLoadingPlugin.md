@@ -2,7 +2,7 @@
 title: EnableWasmLoadingPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [wasm](../index.md) / EnableWasmLoadingPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [wasm](../index) / EnableWasmLoadingPlugin
 
 # Class: EnableWasmLoadingPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:4744](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 ##### type
 
@@ -88,7 +88,7 @@ Defined in: [webpack/types.d.ts:4743](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 ##### type
 

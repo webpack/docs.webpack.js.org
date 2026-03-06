@@ -2,7 +2,7 @@
 title: OriginalSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / OriginalSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / OriginalSource
 
 # Class: OriginalSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:13236](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:13237](https://github.com/webpack/webpack/blob/e
 
 ##### value
 
-`string` | `Buffer`\<`ArrayBufferLike`\>
+`string` | `Buffer`<`ArrayBufferLike`>
 
 ##### name
 

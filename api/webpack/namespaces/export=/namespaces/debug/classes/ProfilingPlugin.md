@@ -2,7 +2,7 @@
 title: ProfilingPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [debug](../index.md) / ProfilingPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [debug](../index) / ProfilingPlugin
 
 # Class: ProfilingPlugin
 
@@ -56,7 +56,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

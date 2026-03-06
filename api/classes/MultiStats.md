@@ -2,7 +2,7 @@
 title: MultiStats
 ---
 
-[webpack](../globals.md) / MultiStats
+[webpack](../globals) / MultiStats
 
 # Abstract Class: MultiStats
 
@@ -22,7 +22,7 @@ Defined in: [webpack/types.d.ts:11699](https://github.com/webpack/webpack/blob/e
 
 ### stats
 
-> **stats**: [`Stats`](Stats.md)[]
+> **stats**: [`Stats`](Stats.md)\[]
 
 Defined in: [webpack/types.d.ts:11700](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11700)
 
@@ -68,7 +68,7 @@ Defined in: [webpack/types.d.ts:11703](https://github.com/webpack/webpack/blob/e
 
 ### toJson()
 
-> **toJson**(`options?`): [`StatsCompilation`](../type-aliases/StatsCompilation.md)
+> **toJson**(`options?`): [`StatsCompilation`](../type-aliases/StatsCompilation)
 
 Defined in: [webpack/types.d.ts:11704](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11704)
 
@@ -76,11 +76,11 @@ Defined in: [webpack/types.d.ts:11704](https://github.com/webpack/webpack/blob/e
 
 ##### options?
 
-`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions.md)
+`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions)
 
 #### Returns
 
-[`StatsCompilation`](../type-aliases/StatsCompilation.md)
+[`StatsCompilation`](../type-aliases/StatsCompilation)
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: [webpack/types.d.ts:11717](https://github.com/webpack/webpack/blob/e
 
 ##### options?
 
-`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions.md)
+`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions)
 
 #### Returns
 

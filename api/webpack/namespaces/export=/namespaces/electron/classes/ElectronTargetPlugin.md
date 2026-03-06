@@ -2,7 +2,7 @@
 title: ElectronTargetPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [electron](../index.md) / ElectronTargetPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [electron](../index) / ElectronTargetPlugin
 
 # Class: ElectronTargetPlugin
 
@@ -40,7 +40,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

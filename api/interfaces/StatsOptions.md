@@ -2,7 +2,7 @@
 title: StatsOptions
 ---
 
-[webpack](../globals.md) / StatsOptions
+[webpack](../globals) / StatsOptions
 
 # Interface: StatsOptions
 
@@ -34,7 +34,7 @@ Add assets information.
 
 ### assetsSort?
 
-> `optional` **assetsSort**: `string` \| `false`
+> `optional` **assetsSort**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:18028](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18028)
 
@@ -94,7 +94,7 @@ Add information about cached (not built) modules.
 
 ### children?
 
-> `optional` **children**: `boolean` \| `"none"` \| `"normal"` \| `"summary"` \| `"verbose"` \| `"errors-only"` \| `"errors-warnings"` \| `"minimal"` \| `"detailed"` \| `StatsOptions` \| `StatsValue`[]
+> `optional` **children**: `boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | `StatsOptions` | `StatsValue`\[]
 
 Defined in: [webpack/types.d.ts:18058](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18058)
 
@@ -194,7 +194,7 @@ Add chunk information.
 
 ### chunksSort?
 
-> `optional` **chunksSort**: `string` \| `false`
+> `optional` **chunksSort**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:18119](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18119)
 
@@ -204,7 +204,7 @@ Sort the chunks by that field.
 
 ### colors?
 
-> `optional` **colors**: `boolean` \| \{ `bold?`: `string`; `cyan?`: `string`; `green?`: `string`; `magenta?`: `string`; `red?`: `string`; `yellow?`: `string`; \}
+> `optional` **colors**: `boolean` | { `bold?`: `string`; `cyan?`: `string`; `green?`: `string`; `magenta?`: `string`; `red?`: `string`; `yellow?`: `string`; }
 
 Defined in: [webpack/types.d.ts:18124](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18124)
 
@@ -214,7 +214,7 @@ Enables/Disables colorful output.
 
 `boolean`
 
-\{ `bold?`: `string`; `cyan?`: `string`; `green?`: `string`; `magenta?`: `string`; `red?`: `string`; `yellow?`: `string`; \}
+{ `bold?`: `string`; `cyan?`: `string`; `green?`: `string`; `magenta?`: `string`; `red?`: `string`; `yellow?`: `string`; }
 
 #### bold?
 
@@ -286,7 +286,7 @@ Add module depth in module graph.
 
 ### entrypoints?
 
-> `optional` **entrypoints**: `boolean` \| `"auto"`
+> `optional` **entrypoints**: `boolean` | `"auto"`
 
 Defined in: [webpack/types.d.ts:18171](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18171)
 
@@ -306,7 +306,7 @@ Add --env information.
 
 ### errorCause?
 
-> `optional` **errorCause**: `boolean` \| `"auto"`
+> `optional` **errorCause**: `boolean` | `"auto"`
 
 Defined in: [webpack/types.d.ts:18181](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18181)
 
@@ -316,7 +316,7 @@ Add cause to errors.
 
 ### errorDetails?
 
-> `optional` **errorDetails**: `boolean` \| `"auto"`
+> `optional` **errorDetails**: `boolean` | `"auto"`
 
 Defined in: [webpack/types.d.ts:18186](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18186)
 
@@ -326,7 +326,7 @@ Add details to errors (like resolving log).
 
 ### errorErrors?
 
-> `optional` **errorErrors**: `boolean` \| `"auto"`
+> `optional` **errorErrors**: `boolean` | `"auto"`
 
 Defined in: [webpack/types.d.ts:18191](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18191)
 
@@ -376,7 +376,7 @@ Add internal stack trace to errors.
 
 ### exclude?
 
-> `optional` **exclude**: `string` \| `boolean` \| `RegExp` \| `ModuleFilterItemTypes`[] \| (`name`, `module`, `type`) => `boolean`
+> `optional` **exclude**: `string` | `boolean` | `RegExp` | `ModuleFilterItemTypes`\[] | (`name`, `module`, `type`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18216](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18216)
 
@@ -386,7 +386,7 @@ Please use excludeModules instead.
 
 ### excludeAssets?
 
-> `optional` **excludeAssets**: `string` \| `RegExp` \| `AssetFilterItemTypes`[] \| (`name`, `asset`) => `boolean`
+> `optional` **excludeAssets**: `string` | `RegExp` | `AssetFilterItemTypes`\[] | (`name`, `asset`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18230](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18230)
 
@@ -396,7 +396,7 @@ Suppress assets that match the specified filters. Filters can be Strings, RegExp
 
 ### excludeModules?
 
-> `optional` **excludeModules**: `string` \| `boolean` \| `RegExp` \| `ModuleFilterItemTypes`[] \| (`name`, `module`, `type`) => `boolean`
+> `optional` **excludeModules**: `string` | `boolean` | `RegExp` | `ModuleFilterItemTypes`\[] | (`name`, `module`, `type`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18239](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18239)
 
@@ -546,7 +546,7 @@ Add ids.
 
 ### logging?
 
-> `optional` **logging**: `boolean` \| `"none"` \| `"error"` \| `"warn"` \| `"info"` \| `"log"` \| `"verbose"`
+> `optional` **logging**: `boolean` | `"none"` | `"error"` | `"warn"` | `"info"` | `"log"` | `"verbose"`
 
 Defined in: [webpack/types.d.ts:18323](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18323)
 
@@ -556,7 +556,7 @@ Add logging output.
 
 ### loggingDebug?
 
-> `optional` **loggingDebug**: `string` \| `boolean` \| `RegExp` \| `FilterItemTypes`[] \| (`value`) => `boolean`
+> `optional` **loggingDebug**: `string` | `boolean` | `RegExp` | `FilterItemTypes`\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18328](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18328)
 
@@ -596,7 +596,7 @@ Add built modules information.
 
 ### modulesSort?
 
-> `optional` **modulesSort**: `string` \| `false`
+> `optional` **modulesSort**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:18358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18358)
 
@@ -686,7 +686,7 @@ Add performance hint flags.
 
 ### preset?
 
-> `optional` **preset**: `string` \| `boolean`
+> `optional` **preset**: `string` | `boolean`
 
 Defined in: [webpack/types.d.ts:18398](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18398)
 
@@ -826,7 +826,7 @@ Add warnings count.
 
 ### warningsFilter?
 
-> `optional` **warningsFilter**: `string` \| `RegExp` \| `WarningFilterItemTypes`[] \| (`warning`, `warningString`) => `boolean`
+> `optional` **warningsFilter**: `string` | `RegExp` | `WarningFilterItemTypes`\[] | (`warning`, `warningString`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18468](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18468)
 

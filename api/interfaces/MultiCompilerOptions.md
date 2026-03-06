@@ -2,7 +2,7 @@
 title: MultiCompilerOptions
 ---
 
-[webpack](../globals.md) / MultiCompilerOptions
+[webpack](../globals) / MultiCompilerOptions
 
 # Interface: MultiCompilerOptions
 

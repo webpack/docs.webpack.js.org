@@ -2,7 +2,7 @@
 title: ConsumeSharedPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sharing](../index.md) / ConsumeSharedPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [sharing](../index) / ConsumeSharedPlugin
 
 # Class: ConsumeSharedPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

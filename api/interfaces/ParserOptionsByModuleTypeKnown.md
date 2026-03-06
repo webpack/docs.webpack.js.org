@@ -2,7 +2,7 @@
 title: ParserOptionsByModuleTypeKnown
 ---
 
-[webpack](../globals.md) / ParserOptionsByModuleTypeKnown
+[webpack](../globals) / ParserOptionsByModuleTypeKnown
 
 # Interface: ParserOptionsByModuleTypeKnown
 

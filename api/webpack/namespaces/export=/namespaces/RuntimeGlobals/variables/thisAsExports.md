@@ -2,7 +2,7 @@
 title: thisAsExports
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / thisAsExports
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / thisAsExports
 
 # Variable: thisAsExports
 

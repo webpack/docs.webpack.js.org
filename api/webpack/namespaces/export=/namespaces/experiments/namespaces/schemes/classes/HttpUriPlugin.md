@@ -2,7 +2,7 @@
 title: HttpUriPlugin
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [experiments](../../../index.md) / [schemes](../index.md) / HttpUriPlugin
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [experiments](../../../index) / [schemes](../index) / HttpUriPlugin
 
 # Class: HttpUriPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../../../classes/Compiler)
 
 #### Returns
 

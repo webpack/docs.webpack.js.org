@@ -2,7 +2,7 @@
 title: addUsage
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / addUsage
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / addUsage
 
 # Variable: addUsage()
 
@@ -14,11 +14,11 @@ Defined in: [webpack/types.d.ts:19800](https://github.com/webpack/webpack/blob/e
 
 ### state
 
-[`ParserState`](../../../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../../../type-aliases/ParserState)
 
 ### symbol
 
-`null` | [`TopLevelSymbol`](../classes/TopLevelSymbol.md)
+`null` | [`TopLevelSymbol`](../classes/TopLevelSymbol)
 
 ### usage
 

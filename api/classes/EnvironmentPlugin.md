@@ -2,7 +2,7 @@
 title: EnvironmentPlugin
 ---
 
-[webpack](../globals.md) / EnvironmentPlugin
+[webpack](../globals) / EnvironmentPlugin
 
 # Class: EnvironmentPlugin
 
@@ -20,7 +20,7 @@ Defined in: [webpack/types.d.ts:5084](https://github.com/webpack/webpack/blob/e3
 
 ##### keys
 
-...(`string` \| `string`[] \| `Record`\<`string`, `any`\>)[]
+...(`string` | `string`\[] | `Record`<`string`, `any`>)\[]
 
 #### Returns
 
@@ -30,7 +30,7 @@ Defined in: [webpack/types.d.ts:5084](https://github.com/webpack/webpack/blob/e3
 
 ### defaultValues
 
-> **defaultValues**: `Record`\<`string`, `any`\>
+> **defaultValues**: `Record`<`string`, `any`>
 
 Defined in: [webpack/types.d.ts:5086](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5086)
 
@@ -38,7 +38,7 @@ Defined in: [webpack/types.d.ts:5086](https://github.com/webpack/webpack/blob/e3
 
 ### keys
 
-> **keys**: `string`[]
+> **keys**: `string`\[]
 
 Defined in: [webpack/types.d.ts:5085](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5085)
 

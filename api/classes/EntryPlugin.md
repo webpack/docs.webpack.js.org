@@ -2,7 +2,7 @@
 title: EntryPlugin
 ---
 
-[webpack](../globals.md) / EntryPlugin
+[webpack](../globals) / EntryPlugin
 
 # Class: EntryPlugin
 
@@ -30,7 +30,7 @@ An entry plugin which will handle creation of the EntryDependency
 
 ##### options?
 
-`string` | [`EntryOptions`](../type-aliases/EntryOptions.md)
+`string` | [`EntryOptions`](../type-aliases/EntryOptions)
 
 #### Returns
 
@@ -56,7 +56,7 @@ Defined in: [webpack/types.d.ts:4939](https://github.com/webpack/webpack/blob/e3
 
 ### options
 
-> **options**: `string` \| [`EntryOptions`](../type-aliases/EntryOptions.md)
+> **options**: `string` | [`EntryOptions`](../type-aliases/EntryOptions)
 
 Defined in: [webpack/types.d.ts:4940](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4940)
 
@@ -96,7 +96,7 @@ Defined in: [webpack/types.d.ts:4946](https://github.com/webpack/webpack/blob/e3
 
 ##### options
 
-`string` | [`EntryOptions`](../type-aliases/EntryOptions.md)
+`string` | [`EntryOptions`](../type-aliases/EntryOptions)
 
 #### Returns
 

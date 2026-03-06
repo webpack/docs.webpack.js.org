@@ -2,7 +2,7 @@
 title: topLevelSymbolTag
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / topLevelSymbolTag
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / topLevelSymbolTag
 
 # Variable: topLevelSymbolTag
 

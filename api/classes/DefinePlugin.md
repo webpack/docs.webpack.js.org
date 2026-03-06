@@ -2,7 +2,7 @@
 title: DefinePlugin
 ---
 
-[webpack](../globals.md) / DefinePlugin
+[webpack](../globals) / DefinePlugin
 
 # Class: DefinePlugin
 
@@ -90,7 +90,7 @@ Defined in: [webpack/types.d.ts:4081](https://github.com/webpack/webpack/blob/e3
 
 ##### options?
 
-`true` | `string`[] | `RuntimeValueOptions`
+`true` | `string`\[] | `RuntimeValueOptions`
 
 #### Returns
 

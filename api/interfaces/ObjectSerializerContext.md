@@ -2,7 +2,7 @@
 title: ObjectSerializerContext
 ---
 
-[webpack](../globals.md) / ObjectSerializerContext
+[webpack](../globals) / ObjectSerializerContext
 
 # Interface: ObjectSerializerContext
 
@@ -96,7 +96,7 @@ Defined in: [webpack/types.d.ts:12499](https://github.com/webpack/webpack/blob/e
 
 ### writeSeparate()?
 
-> `optional` **writeSeparate**: (`item`, `obj?`) => `LazyFunction`\<`any`, `any`, `any`, `LazyOptions`\>
+> `optional` **writeSeparate**: (`item`, `obj?`) => `LazyFunction`<`any`, `any`, `any`, `LazyOptions`>
 
 Defined in: [webpack/types.d.ts:12500](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12500)
 
@@ -112,4 +112,4 @@ Defined in: [webpack/types.d.ts:12500](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`LazyFunction`\<`any`, `any`, `any`, `LazyOptions`\>
+`LazyFunction`<`any`, `any`, `any`, `LazyOptions`>

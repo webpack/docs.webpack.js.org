@@ -2,7 +2,7 @@
 title: DeterministicModuleIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / DeterministicModuleIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / DeterministicModuleIdsPlugin
 
 # Class: DeterministicModuleIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

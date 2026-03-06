@@ -2,7 +2,7 @@
 title: getChunkScriptFilename
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / getChunkScriptFilename
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / getChunkScriptFilename
 
 # Variable: getChunkScriptFilename
 

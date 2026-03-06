@@ -2,7 +2,7 @@
 title: MEASURE_START_OPERATION
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [serialization](../index.md) / MEASURE\_START\_OPERATION
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [serialization](../index) / MEASURE\_START\_OPERATION
 
 # Variable: MEASURE\_START\_OPERATION
 

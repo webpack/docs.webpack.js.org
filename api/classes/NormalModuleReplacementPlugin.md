@@ -2,7 +2,7 @@
 title: NormalModuleReplacementPlugin
 ---
 
-[webpack](../globals.md) / NormalModuleReplacementPlugin
+[webpack](../globals) / NormalModuleReplacementPlugin
 
 # Class: NormalModuleReplacementPlugin
 
@@ -36,7 +36,7 @@ Create an instance of the plugin
 
 ### newResource
 
-> **newResource**: `string` \| (`resolveData`) => `void`
+> **newResource**: `string` | (`resolveData`) => `void`
 
 Defined in: [webpack/types.d.ts:12396](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12396)
 

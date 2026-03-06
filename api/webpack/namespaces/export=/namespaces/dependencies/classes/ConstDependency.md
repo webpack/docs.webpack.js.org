@@ -2,7 +2,7 @@
 title: ConstDependency
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [dependencies](../index.md) / ConstDependency
+[webpack](../../../../../../globals) / [export=](../../../index) / [dependencies](../index) / ConstDependency
 
 # Class: ConstDependency
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:3419](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`NullDependency`](NullDependency.md)
+* [`NullDependency`](NullDependency.md)
 
 ## Constructors
 
@@ -28,11 +28,11 @@ Defined in: [webpack/types.d.ts:3420](https://github.com/webpack/webpack/blob/e3
 
 ##### range
 
-`number` | \[`number`, `number`\]
+`number` | \[`number`, `number`]
 
 ##### runtimeRequirements?
 
-`string`[]
+`string`\[]
 
 #### Returns
 
@@ -90,7 +90,7 @@ Defined in: [webpack/types.d.ts:4137](https://github.com/webpack/webpack/blob/e3
 
 ### range
 
-> **range**: `number` \| \[`number`, `number`\]
+> **range**: `number` | \[`number`, `number`]
 
 Defined in: [webpack/types.d.ts:3426](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3426)
 
@@ -98,7 +98,7 @@ Defined in: [webpack/types.d.ts:3426](https://github.com/webpack/webpack/blob/e3
 
 ### runtimeRequirements
 
-> **runtimeRequirements**: `Set`\<`string`\>
+> **runtimeRequirements**: `Set`<`string`>
 
 Defined in: [webpack/types.d.ts:3427](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3427)
 
@@ -118,7 +118,7 @@ Defined in: [webpack/types.d.ts:4136](https://github.com/webpack/webpack/blob/e3
 
 ### EXPORTS\_OBJECT\_REFERENCED
 
-> `static` **EXPORTS\_OBJECT\_REFERENCED**: `string`[][]
+> `static` **EXPORTS\_OBJECT\_REFERENCED**: `string`\[]\[]
 
 Defined in: [webpack/types.d.ts:3430](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3430)
 
@@ -130,7 +130,7 @@ Defined in: [webpack/types.d.ts:3430](https://github.com/webpack/webpack/blob/e3
 
 ### NO\_EXPORTS\_REFERENCED
 
-> `static` **NO\_EXPORTS\_REFERENCED**: `string`[][]
+> `static` **NO\_EXPORTS\_REFERENCED**: `string`\[]\[]
 
 Defined in: [webpack/types.d.ts:3429](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3429)
 
@@ -220,13 +220,13 @@ Defined in: [webpack/types.d.ts:4138](https://github.com/webpack/webpack/blob/e3
 
 ### couldAffectReferencingModule()
 
-> **couldAffectReferencingModule**(): `boolean` \| *typeof* `TRANSITIVE`
+> **couldAffectReferencingModule**(): `boolean` | *typeof* `TRANSITIVE`
 
 Defined in: [webpack/types.d.ts:4149](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4149)
 
 #### Returns
 
-`boolean` \| *typeof* `TRANSITIVE`
+`boolean` | *typeof* `TRANSITIVE`
 
 #### Inherited from
 
@@ -236,7 +236,7 @@ Defined in: [webpack/types.d.ts:4149](https://github.com/webpack/webpack/blob/e3
 
 ### createIgnoredModule()
 
-> **createIgnoredModule**(`context`): [`Module`](../../../../../../classes/Module.md)
+> **createIgnoredModule**(`context`): [`Module`](../../../../../../classes/Module)
 
 Defined in: [webpack/types.d.ts:4201](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4201)
 
@@ -248,7 +248,7 @@ Defined in: [webpack/types.d.ts:4201](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Module`](../../../../../../classes/Module.md)
+[`Module`](../../../../../../classes/Module)
 
 #### Inherited from
 
@@ -266,7 +266,7 @@ Defined in: [webpack/types.d.ts:4203](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectDeserializerContext`](../../../../../../interfaces/ObjectDeserializerContext.md)
+[`ObjectDeserializerContext`](../../../../../../interfaces/ObjectDeserializerContext)
 
 #### Returns
 
@@ -280,7 +280,7 @@ Defined in: [webpack/types.d.ts:4203](https://github.com/webpack/webpack/blob/e3
 
 ### getCondition()
 
-> **getCondition**(`moduleGraph`): `false` \| (`moduleGraphConnection`, `runtime`) => `ConnectionState`
+> **getCondition**(`moduleGraph`): `false` | (`moduleGraphConnection`, `runtime`) => `ConnectionState`
 
 Defined in: [webpack/types.d.ts:4164](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4164)
 
@@ -288,11 +288,11 @@ Defined in: [webpack/types.d.ts:4164](https://github.com/webpack/webpack/blob/e3
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
-`false` \| (`moduleGraphConnection`, `runtime`) => `ConnectionState`
+`false` | (`moduleGraphConnection`, `runtime`) => `ConnectionState`
 
 #### Inherited from
 
@@ -318,7 +318,7 @@ Defined in: [webpack/types.d.ts:4147](https://github.com/webpack/webpack/blob/e3
 
 ### getErrors()
 
-> **getErrors**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError.md)[]
+> **getErrors**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 Defined in: [webpack/types.d.ts:4187](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4187)
 
@@ -328,11 +328,11 @@ Returns errors
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
-[`WebpackError`](../../../../../../classes/WebpackError.md)[]
+[`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 #### Inherited from
 
@@ -352,7 +352,7 @@ Returns the exported names
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
@@ -374,7 +374,7 @@ Defined in: [webpack/types.d.ts:4198](https://github.com/webpack/webpack/blob/e3
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
@@ -416,7 +416,7 @@ Returns the referenced module and export
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
@@ -432,7 +432,7 @@ Returns the referenced module and export
 
 ### getReferencedExports()
 
-> **getReferencedExports**(`moduleGraph`, `runtime`): (`string`[] \| `ReferencedExport`)[]
+> **getReferencedExports**(`moduleGraph`, `runtime`): (`string`\[] | `ReferencedExport`)\[]
 
 Defined in: [webpack/types.d.ts:4160](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4160)
 
@@ -442,7 +442,7 @@ Returns list of exports referenced by this dependency
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 ##### runtime
 
@@ -450,7 +450,7 @@ Returns list of exports referenced by this dependency
 
 #### Returns
 
-(`string`[] \| `ReferencedExport`)[]
+(`string`\[] | `ReferencedExport`)\[]
 
 #### Inherited from
 
@@ -476,7 +476,7 @@ Defined in: [webpack/types.d.ts:4148](https://github.com/webpack/webpack/blob/e3
 
 ### getWarnings()
 
-> **getWarnings**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError.md)[]
+> **getWarnings**(`moduleGraph`): [`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 Defined in: [webpack/types.d.ts:4182](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4182)
 
@@ -486,11 +486,11 @@ Returns warnings
 
 ##### moduleGraph
 
-[`ModuleGraph`](../../../../../../classes/ModuleGraph.md)
+[`ModuleGraph`](../../../../../../classes/ModuleGraph)
 
 #### Returns
 
-[`WebpackError`](../../../../../../classes/WebpackError.md)[]
+[`WebpackError`](../../../../../../classes/WebpackError)\[]
 
 #### Inherited from
 
@@ -508,7 +508,7 @@ Defined in: [webpack/types.d.ts:4202](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectSerializerContext`](../../../../../../interfaces/ObjectSerializerContext.md)
+[`ObjectSerializerContext`](../../../../../../interfaces/ObjectSerializerContext)
 
 #### Returns
 
@@ -592,7 +592,7 @@ Defined in: [webpack/types.d.ts:3431](https://github.com/webpack/webpack/blob/e3
 
 ##### dependency
 
-[`Dependency`](../../../../../../classes/Dependency.md)
+[`Dependency`](../../../../../../classes/Dependency)
 
 #### Returns
 

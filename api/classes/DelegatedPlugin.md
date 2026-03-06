@@ -2,7 +2,7 @@
 title: DelegatedPlugin
 ---
 
-[webpack](../globals.md) / DelegatedPlugin
+[webpack](../globals) / DelegatedPlugin
 
 # Class: DelegatedPlugin
 

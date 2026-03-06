@@ -2,10 +2,10 @@
 title: debug
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / debug
+[webpack](../../../../../globals) / [export=](../../index) / debug
 
 # debug
 
 ## Classes
 
-- [ProfilingPlugin](classes/ProfilingPlugin.md)
+* [ProfilingPlugin](classes/ProfilingPlugin.md)

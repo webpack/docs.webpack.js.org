@@ -2,7 +2,7 @@
 title: getEntryRuntime
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / getEntryRuntime
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / getEntryRuntime
 
 # Variable: getEntryRuntime()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:20002](https://github.com/webpack/webpack/blob/e
 
 ### compilation
 
-[`Compilation`](../../../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../../../classes/Compilation)
 
 ### name
 
@@ -22,7 +22,7 @@ Defined in: [webpack/types.d.ts:20002](https://github.com/webpack/webpack/blob/e
 
 ### options?
 
-[`EntryOptions`](../../../../../../../../type-aliases/EntryOptions.md)
+[`EntryOptions`](../../../../../../../../type-aliases/EntryOptions)
 
 ## Returns
 

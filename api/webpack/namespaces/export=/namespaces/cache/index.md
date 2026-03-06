@@ -2,10 +2,10 @@
 title: cache
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / cache
+[webpack](../../../../../globals) / [export=](../../index) / cache
 
 # cache
 
 ## Classes
 
-- [MemoryCachePlugin](classes/MemoryCachePlugin.md)
+* [MemoryCachePlugin](classes/MemoryCachePlugin.md)

@@ -2,7 +2,7 @@
 title: isColorSupported
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [cli](../index.md) / isColorSupported
+[webpack](../../../../../../globals) / [export=](../../../index) / [cli](../index) / isColorSupported
 
 # Variable: isColorSupported()
 

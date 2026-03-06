@@ -2,7 +2,7 @@
 title: createHash
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [util](../index.md) / createHash
+[webpack](../../../../../../globals) / [export=](../../../index) / [util](../index) / createHash
 
 # Variable: createHash()
 

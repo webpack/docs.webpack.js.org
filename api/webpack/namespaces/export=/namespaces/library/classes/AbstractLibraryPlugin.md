@@ -2,9 +2,9 @@
 title: AbstractLibraryPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [library](../index.md) / AbstractLibraryPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [library](../index) / AbstractLibraryPlugin
 
-# Class: AbstractLibraryPlugin\<T\>
+# Class: AbstractLibraryPlugin\<T>
 
 Defined in: [webpack/types.d.ts:133](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L133)
 
@@ -18,7 +18,7 @@ Defined in: [webpack/types.d.ts:133](https://github.com/webpack/webpack/blob/e32
 
 ### Constructor
 
-> **new AbstractLibraryPlugin**\<`T`\>(`__namedParameters`): `AbstractLibraryPlugin`\<`T`\>
+> **new AbstractLibraryPlugin**<`T`>(`__namedParameters`): `AbstractLibraryPlugin`<`T`>
 
 Defined in: [webpack/types.d.ts:134](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L134)
 
@@ -30,7 +30,7 @@ Defined in: [webpack/types.d.ts:134](https://github.com/webpack/webpack/blob/e32
 
 #### Returns
 
-`AbstractLibraryPlugin`\<`T`\>
+`AbstractLibraryPlugin`<`T`>
 
 ## Properties
 
@@ -54,7 +54,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -72,7 +72,7 @@ Defined in: [webpack/types.d.ts:177](https://github.com/webpack/webpack/blob/e32
 
 ##### chunk
 
-[`Chunk`](../../../../../../classes/Chunk.md)
+[`Chunk`](../../../../../../classes/Chunk)
 
 ##### hash
 
@@ -84,7 +84,7 @@ Defined in: [webpack/types.d.ts:177](https://github.com/webpack/webpack/blob/e32
 
 ##### libraryContext
 
-`LibraryContext`\<`T`\>
+`LibraryContext`<`T`>
 
 #### Returns
 
@@ -102,7 +102,7 @@ Defined in: [webpack/types.d.ts:146](https://github.com/webpack/webpack/blob/e32
 
 ##### module
 
-[`Module`](../../../../../../classes/Module.md)
+[`Module`](../../../../../../classes/Module)
 
 ##### renderContext
 
@@ -110,7 +110,7 @@ Defined in: [webpack/types.d.ts:146](https://github.com/webpack/webpack/blob/e32
 
 ##### libraryContext
 
-`LibraryContext`\<`T`\>
+`LibraryContext`<`T`>
 
 #### Returns
 
@@ -128,7 +128,7 @@ Defined in: [webpack/types.d.ts:141](https://github.com/webpack/webpack/blob/e32
 
 ##### module
 
-[`Module`](../../../../../../classes/Module.md)
+[`Module`](../../../../../../classes/Module)
 
 ##### entryName
 
@@ -136,7 +136,7 @@ Defined in: [webpack/types.d.ts:141](https://github.com/webpack/webpack/blob/e32
 
 ##### libraryContext
 
-`LibraryContext`\<`T`\>
+`LibraryContext`<`T`>
 
 #### Returns
 
@@ -154,7 +154,7 @@ Defined in: [webpack/types.d.ts:140](https://github.com/webpack/webpack/blob/e32
 
 ##### library
 
-[`LibraryOptions`](../../../../../../interfaces/LibraryOptions.md)
+[`LibraryOptions`](../../../../../../interfaces/LibraryOptions)
 
 #### Returns
 
@@ -164,7 +164,7 @@ Defined in: [webpack/types.d.ts:140](https://github.com/webpack/webpack/blob/e32
 
 ### render()
 
-> **render**(`source`, `renderContext`, `libraryContext`): [`Source`](../../sources/classes/Source.md)
+> **render**(`source`, `renderContext`, `libraryContext`): [`Source`](../../sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:160](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L160)
 
@@ -172,7 +172,7 @@ Defined in: [webpack/types.d.ts:160](https://github.com/webpack/webpack/blob/e32
 
 ##### source
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ##### renderContext
 
@@ -180,17 +180,17 @@ Defined in: [webpack/types.d.ts:160](https://github.com/webpack/webpack/blob/e32
 
 ##### libraryContext
 
-`LibraryContext`\<`T`\>
+`LibraryContext`<`T`>
 
 #### Returns
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ***
 
 ### renderModuleContent()
 
-> **renderModuleContent**(`source`, `module`, `renderContext`, `libraryContext`): [`Source`](../../sources/classes/Source.md)
+> **renderModuleContent**(`source`, `module`, `renderContext`, `libraryContext`): [`Source`](../../sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:171](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L171)
 
@@ -198,11 +198,11 @@ Defined in: [webpack/types.d.ts:171](https://github.com/webpack/webpack/blob/e32
 
 ##### source
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ##### module
 
-[`Module`](../../../../../../classes/Module.md)
+[`Module`](../../../../../../classes/Module)
 
 ##### renderContext
 
@@ -210,17 +210,17 @@ Defined in: [webpack/types.d.ts:171](https://github.com/webpack/webpack/blob/e32
 
 ##### libraryContext
 
-`Omit`\<`LibraryContext`\<`T`\>, `"options"`\>
+`Omit`<`LibraryContext`<`T`>, `"options"`>
 
 #### Returns
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ***
 
 ### renderStartup()
 
-> **renderStartup**(`source`, `module`, `renderContext`, `libraryContext`): [`Source`](../../sources/classes/Source.md)
+> **renderStartup**(`source`, `module`, `renderContext`, `libraryContext`): [`Source`](../../sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:165](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L165)
 
@@ -228,11 +228,11 @@ Defined in: [webpack/types.d.ts:165](https://github.com/webpack/webpack/blob/e32
 
 ##### source
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ##### module
 
-[`Module`](../../../../../../classes/Module.md)
+[`Module`](../../../../../../classes/Module)
 
 ##### renderContext
 
@@ -240,11 +240,11 @@ Defined in: [webpack/types.d.ts:165](https://github.com/webpack/webpack/blob/e32
 
 ##### libraryContext
 
-`LibraryContext`\<`T`\>
+`LibraryContext`<`T`>
 
 #### Returns
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ***
 
@@ -258,15 +258,15 @@ Defined in: [webpack/types.d.ts:155](https://github.com/webpack/webpack/blob/e32
 
 ##### chunk
 
-[`Chunk`](../../../../../../classes/Chunk.md)
+[`Chunk`](../../../../../../classes/Chunk)
 
 ##### set
 
-`Set`\<`string`\>
+`Set`<`string`>
 
 ##### libraryContext
 
-`LibraryContext`\<`T`\>
+`LibraryContext`<`T`>
 
 #### Returns
 
@@ -288,7 +288,7 @@ Defined in: [webpack/types.d.ts:151](https://github.com/webpack/webpack/blob/e32
 
 ##### libraryContext
 
-`LibraryContext`\<`T`\>
+`LibraryContext`<`T`>
 
 #### Returns
 

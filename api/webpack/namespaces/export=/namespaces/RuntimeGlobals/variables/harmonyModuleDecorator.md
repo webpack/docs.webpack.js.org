@@ -2,7 +2,7 @@
 title: harmonyModuleDecorator
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / harmonyModuleDecorator
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / harmonyModuleDecorator
 
 # Variable: harmonyModuleDecorator
 

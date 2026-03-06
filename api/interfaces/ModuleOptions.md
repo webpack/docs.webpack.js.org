@@ -2,7 +2,7 @@
 title: ModuleOptions
 ---
 
-[webpack](../globals.md) / ModuleOptions
+[webpack](../globals) / ModuleOptions
 
 # Interface: ModuleOptions
 
@@ -14,7 +14,7 @@ Options affecting the normal modules (`NormalModuleFactory`).
 
 ### defaultRules?
 
-> `optional` **defaultRules**: (`false` \| `""` \| `0` \| `"..."` \| [`RuleSetRule`](RuleSetRule.md))[]
+> `optional` **defaultRules**: (`false` | `""` | `0` | `"..."` | [`RuleSetRule`](RuleSetRule.md))\[]
 
 Defined in: [webpack/types.d.ts:11260](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11260)
 
@@ -44,7 +44,7 @@ Enable recursive directory lookup for full dynamic dependencies. Deprecated: Thi
 
 ### exprContextRegExp?
 
-> `optional` **exprContextRegExp**: `boolean` \| `RegExp`
+> `optional` **exprContextRegExp**: `boolean` | `RegExp`
 
 Defined in: [webpack/types.d.ts:11275](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11275)
 
@@ -74,7 +74,7 @@ Specify options for each generator.
 
 ### noParse?
 
-> `optional` **noParse**: `string` \| `RegExp` \| (`content`) => `boolean` \| (`string` \| `RegExp` \| (`content`) => `boolean`)[]
+> `optional` **noParse**: `string` | `RegExp` | (`content`) => `boolean` | (`string` | `RegExp` | (`content`) => `boolean`)\[]
 
 Defined in: [webpack/types.d.ts:11290](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11290)
 
@@ -94,7 +94,7 @@ Specify options for each parser.
 
 ### rules?
 
-> `optional` **rules**: (`false` \| `""` \| `0` \| `"..."` \| [`RuleSetRule`](RuleSetRule.md))[]
+> `optional` **rules**: (`false` | `""` | `0` | `"..."` | [`RuleSetRule`](RuleSetRule.md))\[]
 
 Defined in: [webpack/types.d.ts:11304](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11304)
 
@@ -144,7 +144,7 @@ Enable recursive directory lookup when using the require function in a not stati
 
 ### unknownContextRegExp?
 
-> `optional` **unknownContextRegExp**: `boolean` \| `RegExp`
+> `optional` **unknownContextRegExp**: `boolean` | `RegExp`
 
 Defined in: [webpack/types.d.ts:11329](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11329)
 
@@ -164,7 +164,7 @@ Sets the request when using the require function in a not statically analyse-abl
 
 ### unsafeCache?
 
-> `optional` **unsafeCache**: `boolean` \| (`module`) => `boolean`
+> `optional` **unsafeCache**: `boolean` | (`module`) => `boolean`
 
 Defined in: [webpack/types.d.ts:11339](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11339)
 

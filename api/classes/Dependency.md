@@ -2,7 +2,7 @@
 title: Dependency
 ---
 
-[webpack](../globals.md) / Dependency
+[webpack](../globals) / Dependency
 
 # Class: Dependency
 
@@ -10,8 +10,8 @@ Defined in: [webpack/types.d.ts:4134](https://github.com/webpack/webpack/blob/e3
 
 ## Extended by
 
-- [`ModuleDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/ModuleDependency.md)
-- [`NullDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/NullDependency.md)
+* [`ModuleDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/ModuleDependency)
+* [`NullDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/NullDependency)
 
 ## Constructors
 
@@ -61,7 +61,7 @@ Defined in: [webpack/types.d.ts:4136](https://github.com/webpack/webpack/blob/e3
 
 ### EXPORTS\_OBJECT\_REFERENCED
 
-> `static` **EXPORTS\_OBJECT\_REFERENCED**: `string`[][]
+> `static` **EXPORTS\_OBJECT\_REFERENCED**: `string`\[]\[]
 
 Defined in: [webpack/types.d.ts:4207](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4207)
 
@@ -69,7 +69,7 @@ Defined in: [webpack/types.d.ts:4207](https://github.com/webpack/webpack/blob/e3
 
 ### NO\_EXPORTS\_REFERENCED
 
-> `static` **NO\_EXPORTS\_REFERENCED**: `string`[][]
+> `static` **NO\_EXPORTS\_REFERENCED**: `string`\[]\[]
 
 Defined in: [webpack/types.d.ts:4206](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4206)
 
@@ -127,13 +127,13 @@ Defined in: [webpack/types.d.ts:4138](https://github.com/webpack/webpack/blob/e3
 
 ### couldAffectReferencingModule()
 
-> **couldAffectReferencingModule**(): `boolean` \| *typeof* `TRANSITIVE`
+> **couldAffectReferencingModule**(): `boolean` | *typeof* `TRANSITIVE`
 
 Defined in: [webpack/types.d.ts:4149](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4149)
 
 #### Returns
 
-`boolean` \| *typeof* `TRANSITIVE`
+`boolean` | *typeof* `TRANSITIVE`
 
 ***
 
@@ -165,7 +165,7 @@ Defined in: [webpack/types.d.ts:4203](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext.md)
+[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext)
 
 #### Returns
 
@@ -175,7 +175,7 @@ Defined in: [webpack/types.d.ts:4203](https://github.com/webpack/webpack/blob/e3
 
 ### getCondition()
 
-> **getCondition**(`moduleGraph`): `false` \| (`moduleGraphConnection`, `runtime`) => `ConnectionState`
+> **getCondition**(`moduleGraph`): `false` | (`moduleGraphConnection`, `runtime`) => `ConnectionState`
 
 Defined in: [webpack/types.d.ts:4164](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4164)
 
@@ -187,7 +187,7 @@ Defined in: [webpack/types.d.ts:4164](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`false` \| (`moduleGraphConnection`, `runtime`) => `ConnectionState`
+`false` | (`moduleGraphConnection`, `runtime`) => `ConnectionState`
 
 ***
 
@@ -205,7 +205,7 @@ Defined in: [webpack/types.d.ts:4147](https://github.com/webpack/webpack/blob/e3
 
 ### getErrors()
 
-> **getErrors**(`moduleGraph`): [`WebpackError`](WebpackError.md)[]
+> **getErrors**(`moduleGraph`): [`WebpackError`](WebpackError.md)\[]
 
 Defined in: [webpack/types.d.ts:4187](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4187)
 
@@ -219,7 +219,7 @@ Returns errors
 
 #### Returns
 
-[`WebpackError`](WebpackError.md)[]
+[`WebpackError`](WebpackError.md)\[]
 
 ***
 
@@ -299,7 +299,7 @@ Returns the referenced module and export
 
 ### getReferencedExports()
 
-> **getReferencedExports**(`moduleGraph`, `runtime`): (`string`[] \| `ReferencedExport`)[]
+> **getReferencedExports**(`moduleGraph`, `runtime`): (`string`\[] | `ReferencedExport`)\[]
 
 Defined in: [webpack/types.d.ts:4160](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4160)
 
@@ -317,7 +317,7 @@ Returns list of exports referenced by this dependency
 
 #### Returns
 
-(`string`[] \| `ReferencedExport`)[]
+(`string`\[] | `ReferencedExport`)\[]
 
 ***
 
@@ -335,7 +335,7 @@ Defined in: [webpack/types.d.ts:4148](https://github.com/webpack/webpack/blob/e3
 
 ### getWarnings()
 
-> **getWarnings**(`moduleGraph`): [`WebpackError`](WebpackError.md)[]
+> **getWarnings**(`moduleGraph`): [`WebpackError`](WebpackError.md)\[]
 
 Defined in: [webpack/types.d.ts:4182](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4182)
 
@@ -349,7 +349,7 @@ Returns warnings
 
 #### Returns
 
-[`WebpackError`](WebpackError.md)[]
+[`WebpackError`](WebpackError.md)\[]
 
 ***
 
@@ -363,7 +363,7 @@ Defined in: [webpack/types.d.ts:4202](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext.md)
+[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext)
 
 #### Returns
 

@@ -2,7 +2,7 @@
 title: DllPlugin
 ---
 
-[webpack](../globals.md) / DllPlugin
+[webpack](../globals) / DllPlugin
 
 # Class: DllPlugin
 

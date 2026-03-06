@@ -2,7 +2,7 @@
 title: MinChunkSizePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / MinChunkSizePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / MinChunkSizePlugin
 
 # Class: MinChunkSizePlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

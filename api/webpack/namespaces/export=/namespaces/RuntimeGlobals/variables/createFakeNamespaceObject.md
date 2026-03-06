@@ -2,7 +2,7 @@
 title: createFakeNamespaceObject
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / createFakeNamespaceObject
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / createFakeNamespaceObject
 
 # Variable: createFakeNamespaceObject
 

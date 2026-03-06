@@ -2,7 +2,7 @@
 title: nodeModuleDecorator
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / nodeModuleDecorator
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / nodeModuleDecorator
 
 # Variable: nodeModuleDecorator
 

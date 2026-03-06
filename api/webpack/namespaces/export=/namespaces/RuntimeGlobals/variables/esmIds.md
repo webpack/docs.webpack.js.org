@@ -2,7 +2,7 @@
 title: esmIds
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / esmIds
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / esmIds
 
 # Variable: esmIds
 

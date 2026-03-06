@@ -2,7 +2,7 @@
 title: SourceMapDevToolPlugin
 ---
 
-[webpack](../globals.md) / SourceMapDevToolPlugin
+[webpack](../globals) / SourceMapDevToolPlugin
 
 # Class: SourceMapDevToolPlugin
 
@@ -62,7 +62,7 @@ Defined in: [webpack/types.d.ts:17503](https://github.com/webpack/webpack/blob/e
 
 ### sourceMapFilename?
 
-> `optional` **sourceMapFilename**: `string` \| `false`
+> `optional` **sourceMapFilename**: `string` | `false`
 
 Defined in: [webpack/types.d.ts:17495](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L17495)
 
@@ -70,7 +70,7 @@ Defined in: [webpack/types.d.ts:17495](https://github.com/webpack/webpack/blob/e
 
 ### sourceMappingURLComment
 
-> **sourceMappingURLComment**: `string` \| `false` \| (`pathData`, `assetInfo?`) => `string`
+> **sourceMappingURLComment**: `string` | `false` | (`pathData`, `assetInfo?`) => `string`
 
 Defined in: [webpack/types.d.ts:17496](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L17496)
 

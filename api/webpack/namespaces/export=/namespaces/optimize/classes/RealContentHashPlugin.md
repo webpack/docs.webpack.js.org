@@ -2,7 +2,7 @@
 title: RealContentHashPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / RealContentHashPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / RealContentHashPlugin
 
 # Class: RealContentHashPlugin
 
@@ -40,7 +40,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -58,7 +58,7 @@ Defined in: [webpack/types.d.ts:15060](https://github.com/webpack/webpack/blob/e
 
 ##### compilation
 
-[`Compilation`](../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../classes/Compilation)
 
 #### Returns
 

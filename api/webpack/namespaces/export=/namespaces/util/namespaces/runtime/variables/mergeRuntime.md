@@ -2,7 +2,7 @@
 title: mergeRuntime
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / mergeRuntime
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / mergeRuntime
 
 # Variable: mergeRuntime()
 

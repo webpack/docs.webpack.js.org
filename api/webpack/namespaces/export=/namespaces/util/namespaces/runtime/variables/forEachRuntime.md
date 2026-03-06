@@ -2,7 +2,7 @@
 title: forEachRuntime
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / forEachRuntime
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / forEachRuntime
 
 # Variable: forEachRuntime()
 

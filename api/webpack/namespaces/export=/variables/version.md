@@ -2,7 +2,7 @@
 title: version
 ---
 
-[webpack](../../../../globals.md) / [export=](../index.md) / version
+[webpack](../../../../globals) / [export=](../index) / version
 
 # Variable: version
 

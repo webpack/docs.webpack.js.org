@@ -2,7 +2,7 @@
 title: system
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / system
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / system
 
 # Variable: system
 

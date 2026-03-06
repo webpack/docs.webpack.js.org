@@ -2,7 +2,7 @@
 title: OutputFileSystem
 ---
 
-[webpack](../globals.md) / OutputFileSystem
+[webpack](../globals) / OutputFileSystem
 
 # Interface: OutputFileSystem
 

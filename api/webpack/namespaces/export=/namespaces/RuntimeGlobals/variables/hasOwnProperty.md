@@ -2,7 +2,7 @@
 title: hasOwnProperty
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hasOwnProperty
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hasOwnProperty
 
 # Variable: hasOwnProperty
 

@@ -2,7 +2,7 @@
 title: ModuleFactory
 ---
 
-[webpack](../globals.md) / ModuleFactory
+[webpack](../globals) / ModuleFactory
 
 # Class: ModuleFactory
 

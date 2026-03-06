@@ -2,7 +2,7 @@
 title: RESOURCE
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / RESOURCE
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / RESOURCE
 
 # Variable: RESOURCE
 

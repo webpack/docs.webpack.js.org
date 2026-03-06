@@ -2,7 +2,7 @@
 title: HotModuleReplacementPlugin
 ---
 
-[webpack](../globals.md) / HotModuleReplacementPlugin
+[webpack](../globals) / HotModuleReplacementPlugin
 
 # Class: HotModuleReplacementPlugin
 
@@ -52,7 +52,7 @@ Defined in: [webpack/types.d.ts:6724](https://github.com/webpack/webpack/blob/e3
 
 ##### parser
 
-[`JavascriptParser`](../webpack/namespaces/export=/namespaces/javascript/classes/JavascriptParser.md)
+[`JavascriptParser`](../webpack/namespaces/export=/namespaces/javascript/classes/JavascriptParser)
 
 #### Returns
 

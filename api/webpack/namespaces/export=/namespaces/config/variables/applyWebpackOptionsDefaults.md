@@ -2,7 +2,7 @@
 title: applyWebpackOptionsDefaults
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [config](../index.md) / applyWebpackOptionsDefaults
+[webpack](../../../../../../globals) / [export=](../../../index) / [config](../index) / applyWebpackOptionsDefaults
 
 # Variable: applyWebpackOptionsDefaults()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:19765](https://github.com/webpack/webpack/blob/e
 
 ### options
 
-[`WebpackOptionsNormalized`](../../../../../../interfaces/WebpackOptionsNormalized.md)
+[`WebpackOptionsNormalized`](../../../../../../interfaces/WebpackOptionsNormalized)
 
 ### compilerIndex?
 

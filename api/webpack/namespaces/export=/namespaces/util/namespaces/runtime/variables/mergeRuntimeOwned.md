@@ -2,7 +2,7 @@
 title: mergeRuntimeOwned
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / mergeRuntimeOwned
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / mergeRuntimeOwned
 
 # Variable: mergeRuntimeOwned()
 

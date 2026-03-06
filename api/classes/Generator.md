@@ -2,7 +2,7 @@
 title: Generator
 ---
 
-[webpack](../globals.md) / Generator
+[webpack](../globals) / Generator
 
 # Class: Generator
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:6312](https://github.com/webpack/webpack/blob/e3
 
 ### generate()
 
-> **generate**(`module`, `__namedParameters`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **generate**(`module`, `__namedParameters`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:6315](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6315)
 
@@ -40,7 +40,7 @@ Defined in: [webpack/types.d.ts:6315](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 
@@ -90,7 +90,7 @@ Defined in: [webpack/types.d.ts:6314](https://github.com/webpack/webpack/blob/e3
 
 ### getTypes()
 
-> **getTypes**(`module`): `ReadonlySet`\<`string`\>
+> **getTypes**(`module`): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:6313](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6313)
 
@@ -102,7 +102,7 @@ Defined in: [webpack/types.d.ts:6313](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 ***
 

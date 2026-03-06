@@ -2,7 +2,7 @@
 title: CssModulesPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [css](../index.md) / CssModulesPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [css](../index) / CssModulesPlugin
 
 # Class: CssModulesPlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -44,7 +44,7 @@ Apply the plugin
 
 ### getModulesInOrder()
 
-> **getModulesInOrder**(`chunk`, `modules`, `compilation`): [`Module`](../../../../../../classes/Module.md)[]
+> **getModulesInOrder**(`chunk`, `modules`, `compilation`): [`Module`](../../../../../../classes/Module)\[]
 
 Defined in: [webpack/types.d.ts:3959](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3959)
 
@@ -52,25 +52,25 @@ Defined in: [webpack/types.d.ts:3959](https://github.com/webpack/webpack/blob/e3
 
 ##### chunk
 
-[`Chunk`](../../../../../../classes/Chunk.md)
+[`Chunk`](../../../../../../classes/Chunk)
 
 ##### modules
 
-`Iterable`\<[`Module`](../../../../../../classes/Module.md), `any`, `any`\>
+`Iterable`<[`Module`](../../../../../../classes/Module), `any`, `any`>
 
 ##### compilation
 
-[`Compilation`](../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../classes/Compilation)
 
 #### Returns
 
-[`Module`](../../../../../../classes/Module.md)[]
+[`Module`](../../../../../../classes/Module)\[]
 
 ***
 
 ### getOrderedChunkCssModules()
 
-> **getOrderedChunkCssModules**(`chunk`, `chunkGraph`, `compilation`): `CssModule`[]
+> **getOrderedChunkCssModules**(`chunk`, `chunkGraph`, `compilation`): `CssModule`\[]
 
 Defined in: [webpack/types.d.ts:3964](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3964)
 
@@ -78,25 +78,25 @@ Defined in: [webpack/types.d.ts:3964](https://github.com/webpack/webpack/blob/e3
 
 ##### chunk
 
-[`Chunk`](../../../../../../classes/Chunk.md)
+[`Chunk`](../../../../../../classes/Chunk)
 
 ##### chunkGraph
 
-[`ChunkGraph`](../../../../../../classes/ChunkGraph.md)
+[`ChunkGraph`](../../../../../../classes/ChunkGraph)
 
 ##### compilation
 
-[`Compilation`](../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../classes/Compilation)
 
 #### Returns
 
-`CssModule`[]
+`CssModule`\[]
 
 ***
 
 ### renderChunk()
 
-> **renderChunk**(`__namedParameters`, `hooks`): [`Source`](../../sources/classes/Source.md)
+> **renderChunk**(`__namedParameters`, `hooks`): [`Source`](../../sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:3969](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3969)
 
@@ -112,7 +112,7 @@ Defined in: [webpack/types.d.ts:3969](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)
 
 ***
 
@@ -126,11 +126,11 @@ Defined in: [webpack/types.d.ts:3985](https://github.com/webpack/webpack/blob/e3
 
 ##### chunk
 
-[`Chunk`](../../../../../../classes/Chunk.md)
+[`Chunk`](../../../../../../classes/Chunk)
 
 ##### chunkGraph
 
-[`ChunkGraph`](../../../../../../classes/ChunkGraph.md)
+[`ChunkGraph`](../../../../../../classes/ChunkGraph)
 
 #### Returns
 
@@ -140,7 +140,7 @@ Defined in: [webpack/types.d.ts:3985](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkFilenameTemplate()
 
-> `static` **getChunkFilenameTemplate**(`chunk`, `outputOptions`): [`TemplatePath`](../../../../../../type-aliases/TemplatePath.md)
+> `static` **getChunkFilenameTemplate**(`chunk`, `outputOptions`): [`TemplatePath`](../../../../../../type-aliases/TemplatePath)
 
 Defined in: [webpack/types.d.ts:3981](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3981)
 
@@ -148,7 +148,7 @@ Defined in: [webpack/types.d.ts:3981](https://github.com/webpack/webpack/blob/e3
 
 ##### chunk
 
-[`Chunk`](../../../../../../classes/Chunk.md)
+[`Chunk`](../../../../../../classes/Chunk)
 
 ##### outputOptions
 
@@ -156,7 +156,7 @@ Defined in: [webpack/types.d.ts:3981](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`TemplatePath`](../../../../../../type-aliases/TemplatePath.md)
+[`TemplatePath`](../../../../../../type-aliases/TemplatePath)
 
 ***
 
@@ -170,7 +170,7 @@ Defined in: [webpack/types.d.ts:3973](https://github.com/webpack/webpack/blob/e3
 
 ##### compilation
 
-[`Compilation`](../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../classes/Compilation)
 
 #### Returns
 
@@ -180,7 +180,7 @@ Defined in: [webpack/types.d.ts:3973](https://github.com/webpack/webpack/blob/e3
 
 ### renderModule()
 
-> `static` **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../../sources/classes/Source.md)
+> `static` **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../../sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:3976](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3976)
 
@@ -200,4 +200,4 @@ Defined in: [webpack/types.d.ts:3976](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../../sources/classes/Source.md)
+[`Source`](../../sources/classes/Source)

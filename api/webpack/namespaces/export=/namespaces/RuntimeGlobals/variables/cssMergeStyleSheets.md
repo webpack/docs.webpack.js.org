@@ -2,7 +2,7 @@
 title: cssMergeStyleSheets
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / cssMergeStyleSheets
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / cssMergeStyleSheets
 
 # Variable: cssMergeStyleSheets
 

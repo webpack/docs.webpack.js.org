@@ -2,7 +2,7 @@
 title: createScriptUrl
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / createScriptUrl
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / createScriptUrl
 
 # Variable: createScriptUrl
 

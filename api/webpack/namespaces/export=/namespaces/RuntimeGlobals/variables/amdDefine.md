@@ -2,7 +2,7 @@
 title: amdDefine
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / amdDefine
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / amdDefine
 
 # Variable: amdDefine
 

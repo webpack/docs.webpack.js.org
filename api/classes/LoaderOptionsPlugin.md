@@ -2,7 +2,7 @@
 title: LoaderOptionsPlugin
 ---
 
-[webpack](../globals.md) / LoaderOptionsPlugin
+[webpack](../globals) / LoaderOptionsPlugin
 
 # Class: LoaderOptionsPlugin
 

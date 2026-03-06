@@ -2,7 +2,7 @@
 title: getTrustedTypesPolicy
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / getTrustedTypesPolicy
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / getTrustedTypesPolicy
 
 # Variable: getTrustedTypesPolicy
 

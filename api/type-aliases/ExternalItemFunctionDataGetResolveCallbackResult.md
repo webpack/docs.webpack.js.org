@@ -2,7 +2,7 @@
 title: ExternalItemFunctionDataGetResolveCallbackResult
 ---
 
-[webpack](../globals.md) / ExternalItemFunctionDataGetResolveCallbackResult
+[webpack](../globals) / ExternalItemFunctionDataGetResolveCallbackResult
 
 # Type Alias: ExternalItemFunctionDataGetResolveCallbackResult()
 

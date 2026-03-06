@@ -2,7 +2,7 @@
 title: enable
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / enable
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / enable
 
 # Variable: enable()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:19811](https://github.com/webpack/webpack/blob/e
 
 ### parserState
 
-[`ParserState`](../../../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../../../type-aliases/ParserState)
 
 ## Returns
 

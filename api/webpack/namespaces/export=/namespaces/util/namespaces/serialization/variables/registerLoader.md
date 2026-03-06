@@ -2,7 +2,7 @@
 title: registerLoader
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [serialization](../index.md) / registerLoader
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [serialization](../index) / registerLoader
 
 # Variable: registerLoader()
 

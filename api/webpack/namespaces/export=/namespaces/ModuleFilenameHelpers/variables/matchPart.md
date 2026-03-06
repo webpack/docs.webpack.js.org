@@ -2,7 +2,7 @@
 title: matchPart
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / matchPart
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / matchPart
 
 # Variable: matchPart()
 

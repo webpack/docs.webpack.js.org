@@ -2,7 +2,7 @@
 title: PlatformPlugin
 ---
 
-[webpack](../globals.md) / PlatformPlugin
+[webpack](../globals) / PlatformPlugin
 
 # Class: PlatformPlugin
 
@@ -20,7 +20,7 @@ Defined in: [webpack/types.d.ts:14133](https://github.com/webpack/webpack/blob/e
 
 ##### platform
 
-`Partial`\<`PlatformTargetProperties`\>
+`Partial`<`PlatformTargetProperties`>
 
 #### Returns
 
@@ -30,7 +30,7 @@ Defined in: [webpack/types.d.ts:14133](https://github.com/webpack/webpack/blob/e
 
 ### platform
 
-> **platform**: `Partial`\<`PlatformTargetProperties`\>
+> **platform**: `Partial`<`PlatformTargetProperties`>
 
 Defined in: [webpack/types.d.ts:14134](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14134)
 

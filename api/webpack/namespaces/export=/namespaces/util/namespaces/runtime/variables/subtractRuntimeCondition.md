@@ -2,7 +2,7 @@
 title: subtractRuntimeCondition
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / subtractRuntimeCondition
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / subtractRuntimeCondition
 
 # Variable: subtractRuntimeCondition()
 

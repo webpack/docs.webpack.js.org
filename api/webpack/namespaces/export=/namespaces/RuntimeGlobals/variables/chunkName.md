@@ -2,7 +2,7 @@
 title: chunkName
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / chunkName
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / chunkName
 
 # Variable: chunkName
 

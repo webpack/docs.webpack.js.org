@@ -2,7 +2,7 @@
 title: JsonpTemplatePlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [web](../index.md) / JsonpTemplatePlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [web](../index) / JsonpTemplatePlugin
 
 # Class: JsonpTemplatePlugin
 
@@ -34,7 +34,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -54,7 +54,7 @@ use JsonpChunkLoadingRuntimeModule.getCompilationHooks instead
 
 ##### compilation
 
-[`Compilation`](../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../classes/Compilation)
 
 #### Returns
 

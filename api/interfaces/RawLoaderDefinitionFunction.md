@@ -2,9 +2,9 @@
 title: RawLoaderDefinitionFunction
 ---
 
-[webpack](../globals.md) / RawLoaderDefinitionFunction
+[webpack](../globals) / RawLoaderDefinitionFunction
 
-# Interface: RawLoaderDefinitionFunction()\<OptionsType, ContextAdditions\>
+# Interface: RawLoaderDefinitionFunction()\<OptionsType, ContextAdditions>
 
 Defined in: [webpack/types.d.ts:14427](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14427)
 
@@ -12,13 +12,13 @@ Defined in: [webpack/types.d.ts:14427](https://github.com/webpack/webpack/blob/e
 
 ### OptionsType
 
-`OptionsType` = \{ \}
+`OptionsType` = { }
 
 ### ContextAdditions
 
-`ContextAdditions` = \{ \}
+`ContextAdditions` = { }
 
-> **RawLoaderDefinitionFunction**(`this`, `content`, `sourceMap?`, `additionalData?`): `string` \| `void` \| `Buffer`\<`ArrayBufferLike`\> \| `Promise`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
+> **RawLoaderDefinitionFunction**(`this`, `content`, `sourceMap?`, `additionalData?`): `string` | `void` | `Buffer`<`ArrayBufferLike`> | `Promise`<`string` | `Buffer`<`ArrayBufferLike`>>
 
 Defined in: [webpack/types.d.ts:14431](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14431)
 
@@ -26,7 +26,7 @@ Defined in: [webpack/types.d.ts:14431](https://github.com/webpack/webpack/blob/e
 
 ### this
 
-`NormalModuleLoaderContext`\<`OptionsType`\> & `LoaderRunnerLoaderContext`\<`OptionsType`\> & `LoaderPluginLoaderContext` & `HotModuleReplacementPluginLoaderContext` & `ContextAdditions`
+`NormalModuleLoaderContext`<`OptionsType`> & `LoaderRunnerLoaderContext`<`OptionsType`> & `LoaderPluginLoaderContext` & `HotModuleReplacementPluginLoaderContext` & `ContextAdditions`
 
 ### content
 
@@ -42,4 +42,4 @@ Defined in: [webpack/types.d.ts:14431](https://github.com/webpack/webpack/blob/e
 
 ## Returns
 
-`string` \| `void` \| `Buffer`\<`ArrayBufferLike`\> \| `Promise`\<`string` \| `Buffer`\<`ArrayBufferLike`\>\>
+`string` | `void` | `Buffer`<`ArrayBufferLike`> | `Promise`<`string` | `Buffer`<`ArrayBufferLike`>>

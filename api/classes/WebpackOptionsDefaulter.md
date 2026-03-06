@@ -2,7 +2,7 @@
 title: WebpackOptionsDefaulter
 ---
 
-[webpack](../globals.md) / WebpackOptionsDefaulter
+[webpack](../globals) / WebpackOptionsDefaulter
 
 # Class: WebpackOptionsDefaulter
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:19135](https://github.com/webpack/webpack/blob/e
 
 ### process()
 
-> **process**(`options`): [`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized.md)
+> **process**(`options`): [`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized)
 
 Defined in: [webpack/types.d.ts:19136](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19136)
 
@@ -32,8 +32,8 @@ Defined in: [webpack/types.d.ts:19136](https://github.com/webpack/webpack/blob/e
 
 ##### options
 
-[`Configuration`](../interfaces/Configuration.md)
+[`Configuration`](../interfaces/Configuration)
 
 #### Returns
 
-[`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized.md)
+[`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized)

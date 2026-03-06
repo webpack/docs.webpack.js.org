@@ -2,7 +2,7 @@
 title: fromLists
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [compileBooleanMatcher](../index.md) / fromLists
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [compileBooleanMatcher](../index) / fromLists
 
 # Variable: fromLists()
 
@@ -14,11 +14,11 @@ Defined in: [webpack/types.d.ts:20072](https://github.com/webpack/webpack/blob/e
 
 ### positiveItems
 
-`string`[]
+`string`\[]
 
 ### negativeItems
 
-`string`[]
+`string`\[]
 
 ## Returns
 

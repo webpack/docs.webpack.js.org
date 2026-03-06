@@ -2,7 +2,7 @@
 title: NOT_SERIALIZABLE
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [serialization](../index.md) / NOT\_SERIALIZABLE
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [serialization](../index) / NOT\_SERIALIZABLE
 
 # Variable: NOT\_SERIALIZABLE
 

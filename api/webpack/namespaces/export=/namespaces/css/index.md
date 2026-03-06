@@ -2,10 +2,10 @@
 title: css
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / css
+[webpack](../../../../../globals) / [export=](../../index) / css
 
 # css
 
 ## Classes
 
-- [CssModulesPlugin](classes/CssModulesPlugin.md)
+* [CssModulesPlugin](classes/CssModulesPlugin.md)

@@ -2,7 +2,7 @@
 title: itemsToRegexp
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [compileBooleanMatcher](../index.md) / itemsToRegexp
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [compileBooleanMatcher](../index) / itemsToRegexp
 
 # Variable: itemsToRegexp()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:20076](https://github.com/webpack/webpack/blob/e
 
 ### itemsArr
 
-`string`[]
+`string`\[]
 
 ## Returns
 

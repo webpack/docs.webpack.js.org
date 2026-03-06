@@ -2,7 +2,7 @@
 title: makeOptimizedDeferredNamespaceObject
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / makeOptimizedDeferredNamespaceObject
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / makeOptimizedDeferredNamespaceObject
 
 # Variable: makeOptimizedDeferredNamespaceObject
 

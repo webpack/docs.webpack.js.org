@@ -2,9 +2,9 @@
 title: LazySet
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [util](../index.md) / LazySet
+[webpack](../../../../../../globals) / [export=](../../../index) / [util](../index) / LazySet
 
-# Class: LazySet\<T\>
+# Class: LazySet\<T>
 
 Defined in: [webpack/types.d.ts:9695](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9695)
 
@@ -18,7 +18,7 @@ Defined in: [webpack/types.d.ts:9695](https://github.com/webpack/webpack/blob/e3
 
 ### Constructor
 
-> **new LazySet**\<`T`\>(`iterable?`): `LazySet`\<`T`\>
+> **new LazySet**<`T`>(`iterable?`): `LazySet`<`T`>
 
 Defined in: [webpack/types.d.ts:9696](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9696)
 
@@ -26,11 +26,11 @@ Defined in: [webpack/types.d.ts:9696](https://github.com/webpack/webpack/blob/e3
 
 ##### iterable?
 
-`Iterable`\<`T`\>
+`Iterable`<`T`>
 
 #### Returns
 
-`LazySet`\<`T`\>
+`LazySet`<`T`>
 
 ## Accessors
 
@@ -48,21 +48,21 @@ Defined in: [webpack/types.d.ts:9697](https://github.com/webpack/webpack/blob/e3
 
 ## Methods
 
-### \[iterator\]()
+### \[iterator]\()
 
-> **\[iterator\]**(): `SetIterator`\<`T`\>
+> **\[iterator]**(): `SetIterator`<`T`>
 
 Defined in: [webpack/types.d.ts:9711](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9711)
 
 #### Returns
 
-`SetIterator`\<`T`\>
+`SetIterator`<`T`>
 
 ***
 
 ### add()
 
-> **add**(`item`): `LazySet`\<`T`\>
+> **add**(`item`): `LazySet`<`T`>
 
 Defined in: [webpack/types.d.ts:9698](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9698)
 
@@ -74,13 +74,13 @@ Defined in: [webpack/types.d.ts:9698](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`LazySet`\<`T`\>
+`LazySet`<`T`>
 
 ***
 
 ### addAll()
 
-> **addAll**(`iterable`): `LazySet`\<`T`\>
+> **addAll**(`iterable`): `LazySet`<`T`>
 
 Defined in: [webpack/types.d.ts:9699](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9699)
 
@@ -88,11 +88,11 @@ Defined in: [webpack/types.d.ts:9699](https://github.com/webpack/webpack/blob/e3
 
 ##### iterable
 
-`LazySet`\<`T`\> | `Iterable`\<`T`, `any`, `any`\>
+`LazySet`<`T`> | `Iterable`<`T`, `any`, `any`>
 
 #### Returns
 
-`LazySet`\<`T`\>
+`LazySet`<`T`>
 
 ***
 
@@ -128,19 +128,19 @@ Defined in: [webpack/types.d.ts:9701](https://github.com/webpack/webpack/blob/e3
 
 ### entries()
 
-> **entries**(): `SetIterator`\<\[`T`, `T`\]\>
+> **entries**(): `SetIterator`<\[`T`, `T`]>
 
 Defined in: [webpack/types.d.ts:9702](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9702)
 
 #### Returns
 
-`SetIterator`\<\[`T`, `T`\]\>
+`SetIterator`<\[`T`, `T`]>
 
 ***
 
 ### forEach()
 
-> **forEach**\<`K`\>(`callbackFn`, `thisArg`): `void`
+> **forEach**<`K`>(`callbackFn`, `thisArg`): `void`
 
 Defined in: [webpack/types.d.ts:9703](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9703)
 
@@ -186,13 +186,13 @@ Defined in: [webpack/types.d.ts:9707](https://github.com/webpack/webpack/blob/e3
 
 ### keys()
 
-> **keys**(): `SetIterator`\<`T`\>
+> **keys**(): `SetIterator`<`T`>
 
 Defined in: [webpack/types.d.ts:9708](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9708)
 
 #### Returns
 
-`SetIterator`\<`T`\>
+`SetIterator`<`T`>
 
 ***
 
@@ -206,7 +206,7 @@ Defined in: [webpack/types.d.ts:9710](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectSerializerContext`](../../../../../../interfaces/ObjectSerializerContext.md)
+[`ObjectSerializerContext`](../../../../../../interfaces/ObjectSerializerContext)
 
 #### Returns
 
@@ -216,19 +216,19 @@ Defined in: [webpack/types.d.ts:9710](https://github.com/webpack/webpack/blob/e3
 
 ### values()
 
-> **values**(): `SetIterator`\<`T`\>
+> **values**(): `SetIterator`<`T`>
 
 Defined in: [webpack/types.d.ts:9709](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9709)
 
 #### Returns
 
-`SetIterator`\<`T`\>
+`SetIterator`<`T`>
 
 ***
 
 ### deserialize()
 
-> `static` **deserialize**\<`T`\>(`__namedParameters`): `LazySet`\<`T`\>
+> `static` **deserialize**<`T`>(`__namedParameters`): `LazySet`<`T`>
 
 Defined in: [webpack/types.d.ts:9712](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L9712)
 
@@ -242,8 +242,8 @@ Defined in: [webpack/types.d.ts:9712](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectDeserializerContext`](../../../../../../interfaces/ObjectDeserializerContext.md)
+[`ObjectDeserializerContext`](../../../../../../interfaces/ObjectDeserializerContext)
 
 #### Returns
 
-`LazySet`\<`T`\>
+`LazySet`<`T`>

@@ -2,7 +2,7 @@
 title: ModuleGraph
 ---
 
-[webpack](../globals.md) / ModuleGraph
+[webpack](../globals) / ModuleGraph
 
 # Class: ModuleGraph
 
@@ -76,7 +76,7 @@ Defined in: [webpack/types.d.ts:11102](https://github.com/webpack/webpack/blob/e
 
 ### cached()
 
-> **cached**\<`T`, `R`\>(`fn`, ...`args`): `R`
+> **cached**<`T`, `R`>(`fn`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:11157](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11157)
 
@@ -84,7 +84,7 @@ Defined in: [webpack/types.d.ts:11157](https://github.com/webpack/webpack/blob/e
 
 ##### T
 
-`T` *extends* `any`[]
+`T` *extends* `any`\[]
 
 ##### R
 
@@ -156,7 +156,7 @@ Defined in: [webpack/types.d.ts:11097](https://github.com/webpack/webpack/blob/e
 
 ### dependencyCacheProvide()
 
-> **dependencyCacheProvide**\<`D`, `ARGS`, `R`\>(`dependency`, ...`args`): `R`
+> **dependencyCacheProvide**<`D`, `ARGS`, `R`>(`dependency`, ...`args`): `R`
 
 Defined in: [webpack/types.d.ts:11164](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11164)
 
@@ -168,7 +168,7 @@ Defined in: [webpack/types.d.ts:11164](https://github.com/webpack/webpack/blob/e
 
 ##### ARGS
 
-`ARGS` *extends* `any`[]
+`ARGS` *extends* `any`\[]
 
 ##### R
 
@@ -182,7 +182,7 @@ Defined in: [webpack/types.d.ts:11164](https://github.com/webpack/webpack/blob/e
 
 ##### args
 
-...\[`ARGS`, `...((moduleGraph: ModuleGraph, dependency: D, args: ARGS) => R)[]`\]
+...\[`ARGS`, `...((moduleGraph: ModuleGraph, dependency: D, args: ARGS) => R)[]`]
 
 #### Returns
 
@@ -298,7 +298,7 @@ Defined in: [webpack/types.d.ts:11134](https://github.com/webpack/webpack/blob/e
 
 ### getIncomingConnections()
 
-> **getIncomingConnections**(`module`): `Iterable`\<[`ModuleGraphConnection`](ModuleGraphConnection.md)\>
+> **getIncomingConnections**(`module`): `Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 Defined in: [webpack/types.d.ts:11108](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11108)
 
@@ -310,13 +310,13 @@ Defined in: [webpack/types.d.ts:11108](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`Iterable`\<[`ModuleGraphConnection`](ModuleGraphConnection.md)\>
+`Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 ***
 
 ### getIncomingConnectionsByOriginModule()
 
-> **getIncomingConnectionsByOriginModule**(`module`): `ReadonlyMap`\<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)[]\>
+> **getIncomingConnectionsByOriginModule**(`module`): `ReadonlyMap`<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)\[]>
 
 Defined in: [webpack/types.d.ts:11110](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11110)
 
@@ -328,7 +328,7 @@ Defined in: [webpack/types.d.ts:11110](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`ReadonlyMap`\<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)[]\>
+`ReadonlyMap`<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)\[]>
 
 ***
 
@@ -406,7 +406,7 @@ Defined in: [webpack/types.d.ts:11105](https://github.com/webpack/webpack/blob/e
 
 ### getOptimizationBailout()
 
-> **getOptimizationBailout**(`module`): (`string` \| (`requestShortener`) => `string`)[]
+> **getOptimizationBailout**(`module`): (`string` | (`requestShortener`) => `string`)\[]
 
 Defined in: [webpack/types.d.ts:11126](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11126)
 
@@ -418,7 +418,7 @@ Defined in: [webpack/types.d.ts:11126](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-(`string` \| (`requestShortener`) => `string`)[]
+(`string` | (`requestShortener`) => `string`)\[]
 
 ***
 
@@ -442,7 +442,7 @@ Defined in: [webpack/types.d.ts:11106](https://github.com/webpack/webpack/blob/e
 
 ### getOutgoingConnections()
 
-> **getOutgoingConnections**(`module`): `Iterable`\<[`ModuleGraphConnection`](ModuleGraphConnection.md)\>
+> **getOutgoingConnections**(`module`): `Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 Defined in: [webpack/types.d.ts:11109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11109)
 
@@ -454,13 +454,13 @@ Defined in: [webpack/types.d.ts:11109](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`Iterable`\<[`ModuleGraphConnection`](ModuleGraphConnection.md)\>
+`Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 ***
 
 ### getOutgoingConnectionsByModule()
 
-> **getOutgoingConnectionsByModule**(`module`): `ReadonlyMap`\<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)[]\>
+> **getOutgoingConnectionsByModule**(`module`): `ReadonlyMap`<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)\[]>
 
 Defined in: [webpack/types.d.ts:11116](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11116)
 
@@ -472,7 +472,7 @@ Defined in: [webpack/types.d.ts:11116](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`ReadonlyMap`\<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)[]\>
+`ReadonlyMap`<[`Module`](Module.md), readonly [`ModuleGraphConnection`](ModuleGraphConnection.md)\[]>
 
 ***
 
@@ -586,7 +586,7 @@ Defined in: [webpack/types.d.ts:11121](https://github.com/webpack/webpack/blob/e
 
 ### getProvidedExports()
 
-> **getProvidedExports**(`module`): `true` \| `string`[]
+> **getProvidedExports**(`module`): `true` | `string`\[]
 
 Defined in: [webpack/types.d.ts:11129](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11129)
 
@@ -598,7 +598,7 @@ Defined in: [webpack/types.d.ts:11129](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`true` \| `string`[]
+`true` | `string`\[]
 
 ***
 
@@ -662,7 +662,7 @@ Defined in: [webpack/types.d.ts:11107](https://github.com/webpack/webpack/blob/e
 
 ### getUsedExports()
 
-> **getUsedExports**(`module`, `runtime`): `boolean` \| `SortableSet`\<`string`\>
+> **getUsedExports**(`module`, `runtime`): `boolean` | `SortableSet`<`string`>
 
 Defined in: [webpack/types.d.ts:11137](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11137)
 
@@ -678,7 +678,7 @@ Defined in: [webpack/types.d.ts:11137](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`boolean` \| `SortableSet`\<`string`\>
+`boolean` | `SortableSet`<`string`>
 
 ***
 
@@ -732,7 +732,7 @@ Defined in: [webpack/types.d.ts:11130](https://github.com/webpack/webpack/blob/e
 
 ##### exportName
 
-`string` | `string`[]
+`string` | `string`\[]
 
 #### Returns
 
@@ -930,7 +930,7 @@ Defined in: [webpack/types.d.ts:11161](https://github.com/webpack/webpack/blob/e
 
 ##### moduleMemCaches
 
-`Map`\<[`Module`](Module.md), `WeakTupleMap`\<`any`[], `any`\>\>
+`Map`<[`Module`](Module.md), `WeakTupleMap`<`any`\[], `any`>>
 
 #### Returns
 

@@ -2,7 +2,7 @@
 title: matchObject
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / matchObject
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / matchObject
 
 # Variable: matchObject()
 

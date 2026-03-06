@@ -2,7 +2,7 @@
 title: hasCssModules
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hasCssModules
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hasCssModules
 
 # Variable: hasCssModules
 

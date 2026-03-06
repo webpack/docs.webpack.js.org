@@ -2,7 +2,7 @@
 title: DeterministicChunkIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / DeterministicChunkIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / DeterministicChunkIdsPlugin
 
 # Class: DeterministicChunkIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

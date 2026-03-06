@@ -2,7 +2,7 @@
 title: sortWithSourceOrder
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [comparators](../index.md) / sortWithSourceOrder
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [comparators](../index) / sortWithSourceOrder
 
 # Variable: sortWithSourceOrder()
 
@@ -14,11 +14,11 @@ Defined in: [webpack/types.d.ts:19985](https://github.com/webpack/webpack/blob/e
 
 ### dependencies
 
-[`Dependency`](../../../../../../../../classes/Dependency.md)[]
+[`Dependency`](../../../../../../../../classes/Dependency)\[]
 
 ### dependencySourceOrderMap
 
-`WeakMap`\<[`Dependency`](../../../../../../../../classes/Dependency.md), `DependencySourceOrder`\>
+`WeakMap`<[`Dependency`](../../../../../../../../classes/Dependency), `DependencySourceOrder`>
 
 ### onDependencyReSort?
 

@@ -2,7 +2,7 @@
 title: LOADERS
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / LOADERS
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / LOADERS
 
 # Variable: LOADERS
 

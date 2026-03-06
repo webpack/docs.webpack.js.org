@@ -2,7 +2,7 @@
 title: RuntimeChunkPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [optimize](../index.md) / RuntimeChunkPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [optimize](../index) / RuntimeChunkPlugin
 
 # Class: RuntimeChunkPlugin
 
@@ -40,7 +40,7 @@ Defined in: [webpack/types.d.ts:16552](https://github.com/webpack/webpack/blob/e
 
 #### name
 
-> **name**: `string` \| (`entrypoint`) => `string`
+> **name**: `string` | (`entrypoint`) => `string`
 
 ## Methods
 
@@ -56,7 +56,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

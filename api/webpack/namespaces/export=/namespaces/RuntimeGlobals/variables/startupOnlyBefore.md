@@ -2,7 +2,7 @@
 title: startupOnlyBefore
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / startupOnlyBefore
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / startupOnlyBefore
 
 # Variable: startupOnlyBefore
 

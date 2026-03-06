@@ -2,7 +2,7 @@
 title: Resolver
 ---
 
-[webpack](../globals.md) / Resolver
+[webpack](../globals) / Resolver
 
 # Abstract Class: Resolver
 
@@ -54,7 +54,7 @@ Defined in: [webpack/types.d.ts:16026](https://github.com/webpack/webpack/blob/e
 
 ##### hook
 
-`AsyncSeriesBailHook`\<\[`ResolveRequest`, `ResolveContext`\], `ResolveRequest`\>
+`AsyncSeriesBailHook`<\[`ResolveRequest`, `ResolveContext`], `ResolveRequest`>
 
 ##### request
 
@@ -80,7 +80,7 @@ Defined in: [webpack/types.d.ts:16026](https://github.com/webpack/webpack/blob/e
 
 ### ensureHook()
 
-> **ensureHook**(`name`): `AsyncSeriesBailHook`\<\[`ResolveRequest`, `ResolveContext`\], `ResolveRequest`\>
+> **ensureHook**(`name`): `AsyncSeriesBailHook`<\[`ResolveRequest`, `ResolveContext`], `ResolveRequest`>
 
 Defined in: [webpack/types.d.ts:15988](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15988)
 
@@ -88,17 +88,17 @@ Defined in: [webpack/types.d.ts:15988](https://github.com/webpack/webpack/blob/e
 
 ##### name
 
-`string` | `AsyncSeriesBailHook`\<\[`ResolveRequest`, `ResolveContext`\], `ResolveRequest`, `UnsetAdditionalOptions`\>
+`string` | `AsyncSeriesBailHook`<\[`ResolveRequest`, `ResolveContext`], `ResolveRequest`, `UnsetAdditionalOptions`>
 
 #### Returns
 
-`AsyncSeriesBailHook`\<\[`ResolveRequest`, `ResolveContext`\], `ResolveRequest`\>
+`AsyncSeriesBailHook`<\[`ResolveRequest`, `ResolveContext`], `ResolveRequest`>
 
 ***
 
 ### getHook()
 
-> **getHook**(`name`): `AsyncSeriesBailHook`\<\[`ResolveRequest`, `ResolveContext`\], `ResolveRequest`\>
+> **getHook**(`name`): `AsyncSeriesBailHook`<\[`ResolveRequest`, `ResolveContext`], `ResolveRequest`>
 
 Defined in: [webpack/types.d.ts:15999](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15999)
 
@@ -106,11 +106,11 @@ Defined in: [webpack/types.d.ts:15999](https://github.com/webpack/webpack/blob/e
 
 ##### name
 
-`string` | `AsyncSeriesBailHook`\<\[`ResolveRequest`, `ResolveContext`\], `ResolveRequest`, `UnsetAdditionalOptions`\>
+`string` | `AsyncSeriesBailHook`<\[`ResolveRequest`, `ResolveContext`], `ResolveRequest`, `UnsetAdditionalOptions`>
 
 #### Returns
 
-`AsyncSeriesBailHook`\<\[`ResolveRequest`, `ResolveContext`\], `ResolveRequest`\>
+`AsyncSeriesBailHook`<\[`ResolveRequest`, `ResolveContext`], `ResolveRequest`>
 
 ***
 
@@ -262,7 +262,7 @@ Defined in: [webpack/types.d.ts:16015](https://github.com/webpack/webpack/blob/e
 
 ### resolveSync()
 
-> **resolveSync**(`context`, `path`, `request`): `string` \| `false`
+> **resolveSync**(`context`, `path`, `request`): `string` | `false`
 
 Defined in: [webpack/types.d.ts:16010](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16010)
 
@@ -282,4 +282,4 @@ Defined in: [webpack/types.d.ts:16010](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`string` \| `false`
+`string` | `false`

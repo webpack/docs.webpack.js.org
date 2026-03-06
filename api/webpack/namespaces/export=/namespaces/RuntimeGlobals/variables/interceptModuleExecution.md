@@ -2,7 +2,7 @@
 title: interceptModuleExecution
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / interceptModuleExecution
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / interceptModuleExecution
 
 # Variable: interceptModuleExecution
 

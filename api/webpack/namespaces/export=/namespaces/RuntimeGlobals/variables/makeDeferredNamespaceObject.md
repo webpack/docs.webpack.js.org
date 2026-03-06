@@ -2,7 +2,7 @@
 title: makeDeferredNamespaceObject
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / makeDeferredNamespaceObject
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / makeDeferredNamespaceObject
 
 # Variable: makeDeferredNamespaceObject
 

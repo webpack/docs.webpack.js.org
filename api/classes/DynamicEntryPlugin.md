@@ -2,7 +2,7 @@
 title: DynamicEntryPlugin
 ---
 
-[webpack](../globals.md) / DynamicEntryPlugin
+[webpack](../globals) / DynamicEntryPlugin
 
 # Class: DynamicEntryPlugin
 
@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:4651](https://github.com/webpack/webpack/blob/e3
 
 ##### entry
 
-() => `Promise`\<`EntryStaticNormalized`\>
+() => `Promise`<`EntryStaticNormalized`>
 
 #### Returns
 
@@ -42,13 +42,13 @@ Defined in: [webpack/types.d.ts:4652](https://github.com/webpack/webpack/blob/e3
 
 ### entry()
 
-> **entry**: () => `Promise`\<`EntryStaticNormalized`\>
+> **entry**: () => `Promise`<`EntryStaticNormalized`>
 
 Defined in: [webpack/types.d.ts:4653](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4653)
 
 #### Returns
 
-`Promise`\<`EntryStaticNormalized`\>
+`Promise`<`EntryStaticNormalized`>
 
 ## Methods
 

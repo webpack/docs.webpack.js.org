@@ -2,7 +2,7 @@
 title: inferDependencyUsage
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / inferDependencyUsage
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / inferDependencyUsage
 
 # Variable: inferDependencyUsage()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:19826](https://github.com/webpack/webpack/blob/e
 
 ### state
 
-[`ParserState`](../../../../../../../../type-aliases/ParserState.md)
+[`ParserState`](../../../../../../../../type-aliases/ParserState)
 
 ## Returns
 

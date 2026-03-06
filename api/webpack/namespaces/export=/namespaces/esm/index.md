@@ -2,10 +2,10 @@
 title: esm
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / esm
+[webpack](../../../../../globals) / [export=](../../index) / esm
 
 # esm
 
 ## Classes
 
-- [ModuleChunkLoadingRuntimeModule](classes/ModuleChunkLoadingRuntimeModule.md)
+* [ModuleChunkLoadingRuntimeModule](classes/ModuleChunkLoadingRuntimeModule.md)

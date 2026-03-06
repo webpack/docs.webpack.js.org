@@ -2,7 +2,7 @@
 title: publicPath
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / publicPath
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / publicPath
 
 # Variable: publicPath
 

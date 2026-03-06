@@ -2,7 +2,7 @@
 title: toBinary
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / toBinary
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / toBinary
 
 # Variable: toBinary
 

@@ -2,11 +2,11 @@
 title: compareSelect
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [comparators](../index.md) / compareSelect
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [comparators](../index) / compareSelect
 
 # Variable: compareSelect()
 
-> **compareSelect**: \<`T`, `R`\>(`getter`, `comparator`) => `Comparator`\<`T`\>
+> **compareSelect**: <`T`, `R`>(`getter`, `comparator`) => `Comparator`<`T`>
 
 Defined in: [webpack/types.d.ts:19973](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L19973)
 
@@ -24,12 +24,12 @@ Defined in: [webpack/types.d.ts:19973](https://github.com/webpack/webpack/blob/e
 
 ### getter
 
-`Selector`\<`T`, `R`\>
+`Selector`<`T`, `R`>
 
 ### comparator
 
-`Comparator`\<`R`\>
+`Comparator`<`R`>
 
 ## Returns
 
-`Comparator`\<`T`\>
+`Comparator`<`T`>

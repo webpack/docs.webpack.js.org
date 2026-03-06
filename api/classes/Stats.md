@@ -2,7 +2,7 @@
 title: Stats
 ---
 
-[webpack](../globals.md) / Stats
+[webpack](../globals) / Stats
 
 # Class: Stats
 
@@ -104,7 +104,7 @@ Defined in: [webpack/types.d.ts:17902](https://github.com/webpack/webpack/blob/e
 
 ### toJson()
 
-> **toJson**(`options?`): [`StatsCompilation`](../type-aliases/StatsCompilation.md)
+> **toJson**(`options?`): [`StatsCompilation`](../type-aliases/StatsCompilation)
 
 Defined in: [webpack/types.d.ts:17904](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L17904)
 
@@ -112,11 +112,11 @@ Defined in: [webpack/types.d.ts:17904](https://github.com/webpack/webpack/blob/e
 
 ##### options?
 
-`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions.md)
+`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions)
 
 #### Returns
 
-[`StatsCompilation`](../type-aliases/StatsCompilation.md)
+[`StatsCompilation`](../type-aliases/StatsCompilation)
 
 ***
 
@@ -130,7 +130,7 @@ Defined in: [webpack/types.d.ts:17917](https://github.com/webpack/webpack/blob/e
 
 ##### options?
 
-`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions.md)
+`boolean` | `"none"` | `"normal"` | `"summary"` | `"verbose"` | `"errors-only"` | `"errors-warnings"` | `"minimal"` | `"detailed"` | [`StatsOptions`](../interfaces/StatsOptions)
 
 #### Returns
 

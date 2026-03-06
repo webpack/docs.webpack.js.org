@@ -2,7 +2,7 @@
 title: NamedModuleIdsPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ids](../index.md) / NamedModuleIdsPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [ids](../index) / NamedModuleIdsPlugin
 
 # Class: NamedModuleIdsPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

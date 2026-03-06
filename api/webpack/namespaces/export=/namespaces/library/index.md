@@ -2,11 +2,11 @@
 title: library
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / library
+[webpack](../../../../../globals) / [export=](../../index) / library
 
 # library
 
 ## Classes
 
-- [AbstractLibraryPlugin](classes/AbstractLibraryPlugin.md)
-- [EnableLibraryPlugin](classes/EnableLibraryPlugin.md)
+* [AbstractLibraryPlugin](classes/AbstractLibraryPlugin.md)
+* [EnableLibraryPlugin](classes/EnableLibraryPlugin.md)

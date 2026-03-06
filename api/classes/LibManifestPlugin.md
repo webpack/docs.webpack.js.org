@@ -2,7 +2,7 @@
 title: LibManifestPlugin
 ---
 
-[webpack](../globals.md) / LibManifestPlugin
+[webpack](../globals) / LibManifestPlugin
 
 # Class: LibManifestPlugin
 

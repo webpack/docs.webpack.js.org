@@ -2,7 +2,7 @@
 title: esmModules
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / esmModules
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / esmModules
 
 # Variable: esmModules
 

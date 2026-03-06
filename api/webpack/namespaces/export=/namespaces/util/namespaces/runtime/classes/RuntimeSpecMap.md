@@ -2,9 +2,9 @@
 title: RuntimeSpecMap
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [runtime](../index.md) / RuntimeSpecMap
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [runtime](../index) / RuntimeSpecMap
 
-# Class: RuntimeSpecMap\<T, R\>
+# Class: RuntimeSpecMap\<T, R>
 
 Defined in: [webpack/types.d.ts:16607](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16607)
 
@@ -22,7 +22,7 @@ Defined in: [webpack/types.d.ts:16607](https://github.com/webpack/webpack/blob/e
 
 ### Constructor
 
-> **new RuntimeSpecMap**\<`T`, `R`\>(`clone?`): `RuntimeSpecMap`\<`T`, `R`\>
+> **new RuntimeSpecMap**<`T`, `R`>(`clone?`): `RuntimeSpecMap`<`T`, `R`>
 
 Defined in: [webpack/types.d.ts:16608](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16608)
 
@@ -30,11 +30,11 @@ Defined in: [webpack/types.d.ts:16608](https://github.com/webpack/webpack/blob/e
 
 ##### clone?
 
-`RuntimeSpecMap`\<`T`, `R`\>
+`RuntimeSpecMap`<`T`, `R`>
 
 #### Returns
 
-`RuntimeSpecMap`\<`T`, `R`\>
+`RuntimeSpecMap`<`T`, `R`>
 
 ## Accessors
 
@@ -108,13 +108,13 @@ Defined in: [webpack/types.d.ts:16610](https://github.com/webpack/webpack/blob/e
 
 ### keys()
 
-> **keys**(): `RuntimeSpec`[]
+> **keys**(): `RuntimeSpec`\[]
 
 Defined in: [webpack/types.d.ts:16615](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16615)
 
 #### Returns
 
-`RuntimeSpec`[]
+`RuntimeSpec`\[]
 
 ***
 
@@ -186,10 +186,10 @@ Defined in: [webpack/types.d.ts:16614](https://github.com/webpack/webpack/blob/e
 
 ### values()
 
-> **values**(): `IterableIterator`\<`R`\>
+> **values**(): `IterableIterator`<`R`>
 
 Defined in: [webpack/types.d.ts:16616](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16616)
 
 #### Returns
 
-`IterableIterator`\<`R`\>
+`IterableIterator`<`R`>

@@ -2,7 +2,7 @@
 title: ContainerPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [container](../index.md) / ContainerPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [container](../index) / ContainerPlugin
 
 # Class: ContainerPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 

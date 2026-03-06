@@ -2,7 +2,7 @@
 title: RenderManifestOptions
 ---
 
-[webpack](../globals.md) / RenderManifestOptions
+[webpack](../globals) / RenderManifestOptions
 
 # Interface: RenderManifestOptions
 
@@ -12,7 +12,7 @@ Defined in: [webpack/types.d.ts:15308](https://github.com/webpack/webpack/blob/e
 
 ### chunk
 
-> **chunk**: [`Chunk`](../classes/Chunk.md)
+> **chunk**: [`Chunk`](../classes/Chunk)
 
 Defined in: [webpack/types.d.ts:15312](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15312)
 
@@ -22,7 +22,7 @@ the chunk used to render
 
 ### chunkGraph
 
-> **chunkGraph**: [`ChunkGraph`](../classes/ChunkGraph.md)
+> **chunkGraph**: [`ChunkGraph`](../classes/ChunkGraph)
 
 Defined in: [webpack/types.d.ts:15321](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15321)
 
@@ -30,7 +30,7 @@ Defined in: [webpack/types.d.ts:15321](https://github.com/webpack/webpack/blob/e
 
 ### codeGenerationResults
 
-> **codeGenerationResults**: [`CodeGenerationResults`](../classes/CodeGenerationResults.md)
+> **codeGenerationResults**: [`CodeGenerationResults`](../classes/CodeGenerationResults)
 
 Defined in: [webpack/types.d.ts:15316](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15316)
 
@@ -62,7 +62,7 @@ Defined in: [webpack/types.d.ts:15313](https://github.com/webpack/webpack/blob/e
 
 ### moduleGraph
 
-> **moduleGraph**: [`ModuleGraph`](../classes/ModuleGraph.md)
+> **moduleGraph**: [`ModuleGraph`](../classes/ModuleGraph)
 
 Defined in: [webpack/types.d.ts:15320](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15320)
 

@@ -2,7 +2,7 @@
 title: Watching
 ---
 
-[webpack](../globals.md) / Watching
+[webpack](../globals) / Watching
 
 # Abstract Class: Watching
 
@@ -30,7 +30,7 @@ Defined in: [webpack/types.d.ts:18976](https://github.com/webpack/webpack/blob/e
 
 ### callbacks
 
-> **callbacks**: (`err`, `result?`) => `void`[]
+> **callbacks**: (`err`, `result?`) => `void`\[]
 
 Defined in: [webpack/types.d.ts:18973](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18973)
 
@@ -68,7 +68,7 @@ Defined in: [webpack/types.d.ts:18978](https://github.com/webpack/webpack/blob/e
 
 ### handler
 
-> **handler**: `CallbackWebpackFunction_2`\<[`Stats`](Stats.md), `void`\>
+> **handler**: `CallbackWebpackFunction_2`<[`Stats`](Stats.md), `void`>
 
 Defined in: [webpack/types.d.ts:18972](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18972)
 
@@ -208,15 +208,15 @@ Defined in: [webpack/types.d.ts:18983](https://github.com/webpack/webpack/blob/e
 
 ##### files
 
-`Iterable`\<`string`\>
+`Iterable`<`string`>
 
 ##### dirs
 
-`Iterable`\<`string`\>
+`Iterable`<`string`>
 
 ##### missing
 
-`Iterable`\<`string`\>
+`Iterable`<`string`>
 
 #### Returns
 

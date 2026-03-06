@@ -2,7 +2,7 @@
 title: TopLevelSymbol
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / TopLevelSymbol
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / TopLevelSymbol
 
 # Class: TopLevelSymbol
 

@@ -2,7 +2,7 @@
 title: systemContext
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / systemContext
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / systemContext
 
 # Variable: systemContext
 

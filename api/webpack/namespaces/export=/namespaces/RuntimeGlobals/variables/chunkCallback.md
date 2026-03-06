@@ -2,7 +2,7 @@
 title: chunkCallback
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / chunkCallback
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / chunkCallback
 
 # Variable: chunkCallback
 

@@ -2,7 +2,7 @@
 title: Template
 ---
 
-[webpack](../globals.md) / Template
+[webpack](../globals) / Template
 
 # Class: Template
 
@@ -48,7 +48,7 @@ Defined in: [webpack/types.d.ts:18624](https://github.com/webpack/webpack/blob/e
 
 ##### str
 
-`string` | `string`[]
+`string` | `string`\[]
 
 #### Returns
 
@@ -76,7 +76,7 @@ Defined in: [webpack/types.d.ts:18615](https://github.com/webpack/webpack/blob/e
 
 ### getModulesArrayBounds()
 
-> `static` **getModulesArrayBounds**(`modules`): `false` \| \[`number`, `number`\]
+> `static` **getModulesArrayBounds**(`modules`): `false` | \[`number`, `number`]
 
 Defined in: [webpack/types.d.ts:18625](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18625)
 
@@ -84,11 +84,11 @@ Defined in: [webpack/types.d.ts:18625](https://github.com/webpack/webpack/blob/e
 
 ##### modules
 
-`WithId`[]
+`WithId`\[]
 
 #### Returns
 
-`false` \| \[`number`, `number`\]
+`false` | \[`number`, `number`]
 
 ***
 
@@ -102,7 +102,7 @@ Defined in: [webpack/types.d.ts:18622](https://github.com/webpack/webpack/blob/e
 
 ##### s
 
-`string` | `string`[]
+`string` | `string`\[]
 
 #### Returns
 
@@ -156,7 +156,7 @@ Defined in: [webpack/types.d.ts:18623](https://github.com/webpack/webpack/blob/e
 
 ##### s
 
-`string` | `string`[]
+`string` | `string`\[]
 
 ##### prefix
 
@@ -170,7 +170,7 @@ Defined in: [webpack/types.d.ts:18623](https://github.com/webpack/webpack/blob/e
 
 ### renderChunkModules()
 
-> `static` **renderChunkModules**(`renderContext`, `modules`, `renderModule`, `prefix?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> `static` **renderChunkModules**(`renderContext`, `modules`, `renderModule`, `prefix?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:18626](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18626)
 
@@ -182,11 +182,11 @@ Defined in: [webpack/types.d.ts:18626](https://github.com/webpack/webpack/blob/e
 
 ##### modules
 
-[`Module`](Module.md)[]
+[`Module`](Module.md)\[]
 
 ##### renderModule
 
-(`module`, `renderInArray?`) => [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+(`module`, `renderInArray?`) => [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ##### prefix?
 
@@ -194,13 +194,13 @@ Defined in: [webpack/types.d.ts:18626](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 
 ### renderChunkRuntimeModules()
 
-> `static` **renderChunkRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> `static` **renderChunkRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:18638](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18638)
 
@@ -208,7 +208,7 @@ Defined in: [webpack/types.d.ts:18638](https://github.com/webpack/webpack/blob/e
 
 ##### runtimeModules
 
-[`RuntimeModule`](RuntimeModule.md)[]
+[`RuntimeModule`](RuntimeModule.md)\[]
 
 ##### renderContext
 
@@ -216,13 +216,13 @@ Defined in: [webpack/types.d.ts:18638](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 
 ### renderRuntimeModules()
 
-> `static` **renderRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> `static` **renderRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:18632](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18632)
 
@@ -230,7 +230,7 @@ Defined in: [webpack/types.d.ts:18632](https://github.com/webpack/webpack/blob/e
 
 ##### runtimeModules
 
-[`RuntimeModule`](RuntimeModule.md)[]
+[`RuntimeModule`](RuntimeModule.md)\[]
 
 ##### renderContext
 
@@ -238,7 +238,7 @@ Defined in: [webpack/types.d.ts:18632](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 ***
 

@@ -2,7 +2,7 @@
 title: prefetchChunk
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / prefetchChunk
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / prefetchChunk
 
 # Variable: prefetchChunk
 

@@ -2,7 +2,7 @@
 title: returnExportsFromRuntime
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / returnExportsFromRuntime
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / returnExportsFromRuntime
 
 # Variable: returnExportsFromRuntime
 

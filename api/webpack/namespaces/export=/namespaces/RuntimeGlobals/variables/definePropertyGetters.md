@@ -2,7 +2,7 @@
 title: definePropertyGetters
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / definePropertyGetters
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / definePropertyGetters
 
 # Variable: definePropertyGetters
 

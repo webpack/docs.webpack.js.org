@@ -2,7 +2,7 @@
 title: hmrInvalidateModuleHandlers
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hmrInvalidateModuleHandlers
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hmrInvalidateModuleHandlers
 
 # Variable: hmrInvalidateModuleHandlers
 

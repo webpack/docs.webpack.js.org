@@ -2,7 +2,7 @@
 title: baseURI
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / baseURI
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / baseURI
 
 # Variable: baseURI
 

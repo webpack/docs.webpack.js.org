@@ -2,7 +2,7 @@
 title: CompatSource
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [sources](../index.md) / CompatSource
+[webpack](../../../../../../globals) / [export=](../../../index) / [sources](../index) / CompatSource
 
 # Class: CompatSource
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:2220](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`Source`](Source.md)
+* [`Source`](Source.md)
 
 ## Constructors
 

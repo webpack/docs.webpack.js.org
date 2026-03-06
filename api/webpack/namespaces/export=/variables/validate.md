@@ -2,7 +2,7 @@
 title: validate
 ---
 
-[webpack](../../../../globals.md) / [export=](../index.md) / validate
+[webpack](../../../../globals) / [export=](../index) / validate
 
 # Variable: validate()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:19559](https://github.com/webpack/webpack/blob/e
 
 ### configuration
 
-[`Configuration`](../../../../interfaces/Configuration.md) | [`MultiConfiguration`](../../../../type-aliases/MultiConfiguration.md)
+[`Configuration`](../../../../interfaces/Configuration) | [`MultiConfiguration`](../../../../type-aliases/MultiConfiguration)
 
 ## Returns
 

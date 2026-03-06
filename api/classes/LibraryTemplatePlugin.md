@@ -2,7 +2,7 @@
 title: LibraryTemplatePlugin
 ---
 
-[webpack](../globals.md) / LibraryTemplatePlugin
+[webpack](../globals) / LibraryTemplatePlugin
 
 # Class: LibraryTemplatePlugin
 

@@ -2,11 +2,11 @@
 title: cleverMerge
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [util](../index.md) / cleverMerge
+[webpack](../../../../../../globals) / [export=](../../../index) / [util](../index) / cleverMerge
 
 # Variable: cleverMerge()
 
-> `const` **cleverMerge**: \<`T`, `O`\>(`first?`, `second?`) => `T` \| `O` \| `T` & `O`
+> `const` **cleverMerge**: <`T`, `O`>(`first?`, `second?`) => `T` | `O` | `T` & `O`
 
 Defined in: [webpack/types.d.ts:20064](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L20064)
 
@@ -32,4 +32,4 @@ Defined in: [webpack/types.d.ts:20064](https://github.com/webpack/webpack/blob/e
 
 ## Returns
 
-`T` \| `O` \| `T` & `O`
+`T` | `O` | `T` & `O`

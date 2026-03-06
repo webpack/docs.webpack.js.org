@@ -2,7 +2,7 @@
 title: hasFetchPriority
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hasFetchPriority
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hasFetchPriority
 
 # Variable: hasFetchPriority
 

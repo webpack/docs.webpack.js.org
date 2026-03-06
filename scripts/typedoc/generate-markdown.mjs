@@ -13,31 +13,34 @@ const navigationFile = resolve(__dirname, "./nav.generated.json");
 const entryPointsPath = resolve(__dirname, "../../../webpack/types.d.ts");
 const tsconfigPath = resolve(__dirname, "./tsconfig.json");
 const postprocessorPath = resolve(__dirname, "./postprocessor.mjs");
+const remarkPostProcessor = resolve(__dirname, "./remark.mjs");
 const docsJsonPath = resolve(__dirname, "../../docs.json");
 
-// const app = await Application.bootstrapWithPlugins({
-//   entryPoints: [entryPointsPath],
-//   out: "api",
+const app = await Application.bootstrapWithPlugins({
+  entryPoints: [entryPointsPath],
+  out: "api",
 
-//   // Plugins
-//   plugin: [
-//     "typedoc-plugin-markdown",
-//     "typedoc-plugin-frontmatter",
-//     postprocessorPath,
-//   ],
+  // Plugins
+  plugin: [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-frontmatter",
+    "typedoc-plugin-remark",
+    postprocessorPath,
+  ],
+  remarkPlugins: [remarkPostProcessor],
 
-//   // TypeScript configuration
-//   tsconfig: tsconfigPath,
+  // TypeScript configuration
+  tsconfig: tsconfigPath,
 
-//   // Markdown configuration
-//   entryFileName: "index",
-//   hidePageHeader: true,
-//   navigationJson: navigationFile,
-// });
+  // Markdown configuration
+  entryFileName: "index",
+  hidePageHeader: true,
+  navigationJson: navigationFile,
+});
 
-// const project = await app.convert();
+const project = await app.convert();
 
-// await app.generateOutputs(project);
+await app.generateOutputs(project);
 
 // Update navigation
 const { default: generatedNavigation } = await import(navigationFile, {
@@ -46,7 +49,7 @@ const { default: generatedNavigation } = await import(navigationFile, {
 
 const mapNavigation = (section) => {
   if (!section.children) {
-    return `api/${section.path}`;
+    return `api/${section.path.replace(/\.[^/.]+$/, '')}`;
   }
 
   // If this section has only one child and that child has children,

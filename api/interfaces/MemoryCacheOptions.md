@@ -2,7 +2,7 @@
 title: MemoryCacheOptions
 ---
 
-[webpack](../globals.md) / MemoryCacheOptions
+[webpack](../globals) / MemoryCacheOptions
 
 # Interface: MemoryCacheOptions
 

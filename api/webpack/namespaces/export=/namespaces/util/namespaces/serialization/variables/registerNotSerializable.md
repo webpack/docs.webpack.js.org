@@ -2,7 +2,7 @@
 title: registerNotSerializable
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [util](../../../index.md) / [serialization](../index.md) / registerNotSerializable
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [util](../../../index) / [serialization](../index) / registerNotSerializable
 
 # Variable: registerNotSerializable()
 

@@ -2,7 +2,7 @@
 title: hmrDownloadManifest
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / hmrDownloadManifest
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / hmrDownloadManifest
 
 # Variable: hmrDownloadManifest
 

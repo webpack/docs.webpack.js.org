@@ -2,7 +2,7 @@
 title: exports
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / exports
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / exports
 
 # Variable: exports
 

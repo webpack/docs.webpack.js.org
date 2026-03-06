@@ -2,7 +2,7 @@
 title: IgnorePlugin
 ---
 
-[webpack](../globals.md) / IgnorePlugin
+[webpack](../globals) / IgnorePlugin
 
 # Class: IgnorePlugin
 
@@ -68,7 +68,7 @@ Note that if "contextRegExp" is given, both the "resourceRegExp" and "contextReg
 
 ##### resolveData
 
-`BeforeContextResolveData` | [`ResolveData`](../interfaces/ResolveData.md)
+`BeforeContextResolveData` | [`ResolveData`](../interfaces/ResolveData)
 
 #### Returns
 

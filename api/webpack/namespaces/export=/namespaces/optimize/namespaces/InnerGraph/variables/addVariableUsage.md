@@ -2,7 +2,7 @@
 title: addVariableUsage
 ---
 
-[webpack](../../../../../../../../globals.md) / [export=](../../../../../index.md) / [optimize](../../../index.md) / [InnerGraph](../index.md) / addVariableUsage
+[webpack](../../../../../../../../globals) / [export=](../../../../../index) / [optimize](../../../index) / [InnerGraph](../index) / addVariableUsage
 
 # Variable: addVariableUsage()
 
@@ -14,7 +14,7 @@ Defined in: [webpack/types.d.ts:19805](https://github.com/webpack/webpack/blob/e
 
 ### parser
 
-[`JavascriptParser`](../../../../javascript/classes/JavascriptParser.md)
+[`JavascriptParser`](../../../../javascript/classes/JavascriptParser)
 
 ### name
 

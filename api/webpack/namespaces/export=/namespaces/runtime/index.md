@@ -2,11 +2,11 @@
 title: runtime
 ---
 
-[webpack](../../../../../globals.md) / [export=](../../index.md) / runtime
+[webpack](../../../../../globals) / [export=](../../index) / runtime
 
 # runtime
 
 ## Classes
 
-- [GetChunkFilenameRuntimeModule](classes/GetChunkFilenameRuntimeModule.md)
-- [LoadScriptRuntimeModule](classes/LoadScriptRuntimeModule.md)
+* [GetChunkFilenameRuntimeModule](classes/GetChunkFilenameRuntimeModule.md)
+* [LoadScriptRuntimeModule](classes/LoadScriptRuntimeModule.md)

@@ -2,7 +2,7 @@
 title: EnableChunkLoadingPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [javascript](../index.md) / EnableChunkLoadingPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [javascript](../index) / EnableChunkLoadingPlugin
 
 # Class: EnableChunkLoadingPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:4715](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 ##### type
 
@@ -88,7 +88,7 @@ Defined in: [webpack/types.d.ts:4714](https://github.com/webpack/webpack/blob/e3
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 ##### type
 

@@ -2,7 +2,7 @@
 title: REGEXP_QUERY
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [ModuleFilenameHelpers](../index.md) / REGEXP\_QUERY
+[webpack](../../../../../../globals) / [export=](../../../index) / [ModuleFilenameHelpers](../index) / REGEXP\_QUERY
 
 # Variable: REGEXP\_QUERY
 

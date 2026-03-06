@@ -2,7 +2,7 @@
 title: ExternalModule
 ---
 
-[webpack](../globals.md) / ExternalModule
+[webpack](../globals) / ExternalModule
 
 # Class: ExternalModule
 
@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:5683](https://github.com/webpack/webpack/blob/e3
 
 ## Extends
 
-- [`Module`](Module.md)
+* [`Module`](Module.md)
 
 ## Constructors
 
@@ -50,7 +50,7 @@ Defined in: [webpack/types.d.ts:5684](https://github.com/webpack/webpack/blob/e3
 
 ### blocks
 
-> **blocks**: [`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)[]
+> **blocks**: [`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)\[]
 
 Defined in: [webpack/types.d.ts:4110](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4110)
 
@@ -86,7 +86,7 @@ Defined in: [webpack/types.d.ts:10641](https://github.com/webpack/webpack/blob/e
 
 ### codeGenerationDependencies?
 
-> `optional` **codeGenerationDependencies**: [`Dependency`](Dependency.md)[]
+> `optional` **codeGenerationDependencies**: [`Dependency`](Dependency.md)\[]
 
 Defined in: [webpack/types.d.ts:10644](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10644)
 
@@ -104,7 +104,7 @@ Defined in: [webpack/types.d.ts:10632](https://github.com/webpack/webpack/blob/e
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`context`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#context)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`context`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -122,7 +122,7 @@ Defined in: [webpack/types.d.ts:10635](https://github.com/webpack/webpack/blob/e
 
 ### dependencies
 
-> **dependencies**: [`Dependency`](Dependency.md)[]
+> **dependencies**: [`Dependency`](Dependency.md)\[]
 
 Defined in: [webpack/types.d.ts:4109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L4109)
 
@@ -134,7 +134,7 @@ Defined in: [webpack/types.d.ts:4109](https://github.com/webpack/webpack/blob/e3
 
 ### dependencyMeta?
 
-> `optional` **dependencyMeta**: `AssetDependencyMeta` \| `CssImportDependencyMeta` \| `ImportDependencyMeta`
+> `optional` **dependencyMeta**: `AssetDependencyMeta` | `CssImportDependencyMeta` | `ImportDependencyMeta`
 
 Defined in: [webpack/types.d.ts:5696](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5696)
 
@@ -148,7 +148,7 @@ Defined in: [webpack/types.d.ts:10655](https://github.com/webpack/webpack/blob/e
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`depth`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#depth)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`depth`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -186,7 +186,7 @@ Defined in: [webpack/types.d.ts:10640](https://github.com/webpack/webpack/blob/e
 
 ### ~~id~~
 
-> **id**: `string` \| `number`
+> **id**: `string` | `number`
 
 Defined in: [webpack/types.d.ts:10649](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10649)
 
@@ -194,7 +194,7 @@ Defined in: [webpack/types.d.ts:10649](https://github.com/webpack/webpack/blob/e
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`id`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#id)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`id`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -206,7 +206,7 @@ Defined in: [webpack/types.d.ts:10653](https://github.com/webpack/webpack/blob/e
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`index`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#index)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`index`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -218,7 +218,7 @@ Defined in: [webpack/types.d.ts:10654](https://github.com/webpack/webpack/blob/e
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`index2`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#index2)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`index2`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -230,7 +230,7 @@ Defined in: [webpack/types.d.ts:10656](https://github.com/webpack/webpack/blob/e
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`issuer`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#issuer)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`issuer`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -242,7 +242,7 @@ Defined in: [webpack/types.d.ts:10633](https://github.com/webpack/webpack/blob/e
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`layer`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#layer)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`layer`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -272,7 +272,7 @@ Defined in: [webpack/types.d.ts:4111](https://github.com/webpack/webpack/blob/e3
 
 ### presentationalDependencies?
 
-> `optional` **presentationalDependencies**: [`Dependency`](Dependency.md)[]
+> `optional` **presentationalDependencies**: [`Dependency`](Dependency.md)\[]
 
 Defined in: [webpack/types.d.ts:10643](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10643)
 
@@ -304,7 +304,7 @@ Defined in: [webpack/types.d.ts:5693](https://github.com/webpack/webpack/blob/e3
 
 ### resolveOptions?
 
-> `optional` **resolveOptions**: [`ResolveOptions`](../interfaces/ResolveOptions.md)
+> `optional` **resolveOptions**: [`ResolveOptions`](../interfaces/ResolveOptions)
 
 Defined in: [webpack/types.d.ts:10636](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10636)
 
@@ -372,7 +372,7 @@ Defined in: [webpack/types.d.ts:10638](https://github.com/webpack/webpack/blob/e
 
 ### getExternalModuleNodeCommonjsInitFragment()
 
-> `static` **getExternalModuleNodeCommonjsInitFragment**: (`runtimeTemplate`) => [`InitFragment`](InitFragment.md)\<`ChunkRenderContextJavascriptModulesPlugin`\>
+> `static` **getExternalModuleNodeCommonjsInitFragment**: (`runtimeTemplate`) => [`InitFragment`](InitFragment.md)<`ChunkRenderContextJavascriptModulesPlugin`>
 
 Defined in: [webpack/types.d.ts:5709](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L5709)
 
@@ -384,7 +384,7 @@ Defined in: [webpack/types.d.ts:5709](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`InitFragment`](InitFragment.md)\<`ChunkRenderContextJavascriptModulesPlugin`\>
+[`InitFragment`](InitFragment.md)<`ChunkRenderContextJavascriptModulesPlugin`>
 
 ***
 
@@ -400,13 +400,13 @@ Defined in: [webpack/types.d.ts:5708](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **chunksIterable**(): `Iterable`\<[`Chunk`](Chunk.md)\>
+> **get** **chunksIterable**(): `Iterable`<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:10673](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10673)
 
 ##### Returns
 
-`Iterable`\<[`Chunk`](Chunk.md)\>
+`Iterable`<[`Chunk`](Chunk.md)>
 
 #### Inherited from
 
@@ -526,7 +526,7 @@ Defined in: [webpack/types.d.ts:10676](https://github.com/webpack/webpack/blob/e
 
 #### Get Signature
 
-> **get** **optimizationBailout**(): (`string` \| (`requestShortener`) => `string`)[]
+> **get** **optimizationBailout**(): (`string` | (`requestShortener`) => `string`)\[]
 
 Defined in: [webpack/types.d.ts:10662](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10662)
 
@@ -534,7 +534,7 @@ Defined in: [webpack/types.d.ts:10662](https://github.com/webpack/webpack/blob/e
 
 ##### Returns
 
-(`string` \| (`requestShortener`) => `string`)[]
+(`string` | (`requestShortener`) => `string`)\[]
 
 #### Inherited from
 
@@ -582,17 +582,17 @@ Defined in: [webpack/types.d.ts:10651](https://github.com/webpack/webpack/blob/e
 
 #### Get Signature
 
-> **get** **usedExports**(): `boolean` \| `SortableSet`\<`string`\>
+> **get** **usedExports**(): `boolean` | `SortableSet`<`string`>
 
 Defined in: [webpack/types.d.ts:10657](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10657)
 
 ##### Returns
 
-`boolean` \| `SortableSet`\<`string`\>
+`boolean` | `SortableSet`<`string`>
 
 #### Inherited from
 
-[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md).[`usedExports`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule.md#usedexports)
+[`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule).[`usedExports`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ***
 
@@ -649,19 +649,19 @@ Defined in: [webpack/types.d.ts:10780](https://github.com/webpack/webpack/blob/e
 
 ##### fileDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 ##### contextDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 ##### missingDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 ##### buildDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet.md)\<`string`\>
+[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
 
 #### Returns
 
@@ -827,7 +827,7 @@ Defined in: [webpack/types.d.ts:10724](https://github.com/webpack/webpack/blob/e
 
 ##### fs
 
-[`InputFileSystem`](../interfaces/InputFileSystem.md)
+[`InputFileSystem`](../interfaces/InputFileSystem)
 
 ##### callback
 
@@ -955,7 +955,7 @@ Defined in: [webpack/types.d.ts:4128](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext.md)
+[`ObjectDeserializerContext`](../interfaces/ObjectDeserializerContext)
 
 #### Returns
 
@@ -969,13 +969,13 @@ Defined in: [webpack/types.d.ts:4128](https://github.com/webpack/webpack/blob/e3
 
 ### getChunks()
 
-> **getChunks**(): [`Chunk`](Chunk.md)[]
+> **getChunks**(): [`Chunk`](Chunk.md)\[]
 
 Defined in: [webpack/types.d.ts:10671](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10671)
 
 #### Returns
 
-[`Chunk`](Chunk.md)[]
+[`Chunk`](Chunk.md)\[]
 
 #### Inherited from
 
@@ -1007,13 +1007,13 @@ Defined in: [webpack/types.d.ts:10754](https://github.com/webpack/webpack/blob/e
 
 ### getErrors()
 
-> **getErrors**(): `Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+> **getErrors**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10684](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10684)
 
 #### Returns
 
-`Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 #### Inherited from
 
@@ -1135,7 +1135,7 @@ Defined in: [webpack/types.d.ts:10757](https://github.com/webpack/webpack/blob/e
 
 ### getSourceBasicTypes()
 
-> **getSourceBasicTypes**(): `ReadonlySet`\<`string`\>
+> **getSourceBasicTypes**(): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:10740](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10740)
 
@@ -1147,7 +1147,7 @@ from getSourceTypes(), but their generated output is still JavaScript, i.e. thei
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 #### Inherited from
 
@@ -1157,13 +1157,13 @@ from getSourceTypes(), but their generated output is still JavaScript, i.e. thei
 
 ### getSourceTypes()
 
-> **getSourceTypes**(): `ReadonlySet`\<`string`\>
+> **getSourceTypes**(): `ReadonlySet`<`string`>
 
 Defined in: [webpack/types.d.ts:10731](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10731)
 
 #### Returns
 
-`ReadonlySet`\<`string`\>
+`ReadonlySet`<`string`>
 
 #### Inherited from
 
@@ -1192,13 +1192,13 @@ This data will be passed to restoreFromUnsafeCache later.
 
 ### getWarnings()
 
-> **getWarnings**(): `Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+> **getWarnings**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10681](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10681)
 
 #### Returns
 
-`Iterable`\<[`WebpackError`](WebpackError.md), `any`, `any`\>
+`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 #### Inherited from
 
@@ -1528,11 +1528,11 @@ Use needBuild instead
 
 ##### fileTimestamps
 
-`Map`\<`string`, `number`\>
+`Map`<`string`, `number`>
 
 ##### contextTimestamps
 
-`Map`\<`string`, `number`\>
+`Map`<`string`, `number`>
 
 #### Returns
 
@@ -1548,13 +1548,13 @@ Use needBuild instead
 
 ### originalSource()
 
-> **originalSource**(): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **originalSource**(): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10779](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10779)
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 #### Inherited from
 
@@ -1662,7 +1662,7 @@ Defined in: [webpack/types.d.ts:4127](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext.md)
+[`ObjectSerializerContext`](../interfaces/ObjectSerializerContext)
 
 #### Returns
 
@@ -1698,7 +1698,7 @@ Defined in: [webpack/types.d.ts:10751](https://github.com/webpack/webpack/blob/e
 
 ### ~~source()~~
 
-> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10746](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10746)
 
@@ -1720,7 +1720,7 @@ Use codeGeneration() instead
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source.md)
+[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
 
 #### Deprecated
 

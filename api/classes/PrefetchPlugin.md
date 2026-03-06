@@ -2,7 +2,7 @@
 title: PrefetchPlugin
 ---
 
-[webpack](../globals.md) / PrefetchPlugin
+[webpack](../globals) / PrefetchPlugin
 
 # Class: PrefetchPlugin
 

@@ -2,7 +2,7 @@
 title: moduleFactoriesAddOnly
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / moduleFactoriesAddOnly
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / moduleFactoriesAddOnly
 
 # Variable: moduleFactoriesAddOnly
 

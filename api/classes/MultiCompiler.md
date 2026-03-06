@@ -2,7 +2,7 @@
 title: MultiCompiler
 ---
 
-[webpack](../globals.md) / MultiCompiler
+[webpack](../globals) / MultiCompiler
 
 # Class: MultiCompiler
 
@@ -20,11 +20,11 @@ Defined in: [webpack/types.d.ts:11643](https://github.com/webpack/webpack/blob/e
 
 ##### compilers
 
-`Record`\<`string`, [`Compiler`](Compiler.md)\> | [`Compiler`](Compiler.md)[]
+`Record`<`string`, [`Compiler`](Compiler.md)> | [`Compiler`](Compiler.md)\[]
 
 ##### options
 
-[`MultiCompilerOptions`](../interfaces/MultiCompilerOptions.md)
+[`MultiCompilerOptions`](../interfaces/MultiCompilerOptions)
 
 #### Returns
 
@@ -34,7 +34,7 @@ Defined in: [webpack/types.d.ts:11643](https://github.com/webpack/webpack/blob/e
 
 ### compilers
 
-> **compilers**: [`Compiler`](Compiler.md)[]
+> **compilers**: [`Compiler`](Compiler.md)\[]
 
 Defined in: [webpack/types.d.ts:11657](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11657)
 
@@ -42,7 +42,7 @@ Defined in: [webpack/types.d.ts:11657](https://github.com/webpack/webpack/blob/e
 
 ### dependencies
 
-> **dependencies**: `WeakMap`\<[`Compiler`](Compiler.md), `string`[]\>
+> **dependencies**: `WeakMap`<[`Compiler`](Compiler.md), `string`\[]>
 
 Defined in: [webpack/types.d.ts:11658](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11658)
 
@@ -50,7 +50,7 @@ Defined in: [webpack/types.d.ts:11658](https://github.com/webpack/webpack/blob/e
 
 ### hooks
 
-> **hooks**: `Readonly`\<\{ `done`: `SyncHook`\<\[[`MultiStats`](MultiStats.md)\]\>; `infrastructureLog`: `MultiHook`\<`SyncBailHook`\<\[`string`, `string`, `undefined` \| `any`[]\], `true` \| `void`\>\>; `invalid`: `MultiHook`\<`SyncHook`\<\[`null` \| `string`, `number`\]\>\>; `run`: `MultiHook`\<`AsyncSeriesHook`\<\[[`Compiler`](Compiler.md)\]\>\>; `watchClose`: `SyncHook`\<\[\]\>; `watchRun`: `MultiHook`\<`AsyncSeriesHook`\<\[[`Compiler`](Compiler.md)\]\>\>; \}\>
+> **hooks**: `Readonly`<{ `done`: `SyncHook`<\[[`MultiStats`](MultiStats.md)]>; `infrastructureLog`: `MultiHook`<`SyncBailHook`<\[`string`, `string`, `undefined` | `any`\[]], `true` | `void`>>; `invalid`: `MultiHook`<`SyncHook`<\[`null` | `string`, `number`]>>; `run`: `MultiHook`<`AsyncSeriesHook`<\[[`Compiler`](Compiler.md)]>>; `watchClose`: `SyncHook`<\[]>; `watchRun`: `MultiHook`<`AsyncSeriesHook`<\[[`Compiler`](Compiler.md)]>>; }>
 
 Defined in: [webpack/types.d.ts:11647](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11647)
 
@@ -58,7 +58,7 @@ Defined in: [webpack/types.d.ts:11647](https://github.com/webpack/webpack/blob/e
 
 ### inputFileSystem
 
-> **inputFileSystem**: [`InputFileSystem`](../interfaces/InputFileSystem.md)
+> **inputFileSystem**: [`InputFileSystem`](../interfaces/InputFileSystem)
 
 Defined in: [webpack/types.d.ts:11662](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11662)
 
@@ -74,7 +74,7 @@ Defined in: [webpack/types.d.ts:11665](https://github.com/webpack/webpack/blob/e
 
 ### outputFileSystem
 
-> **outputFileSystem**: [`OutputFileSystem`](../interfaces/OutputFileSystem.md)
+> **outputFileSystem**: [`OutputFileSystem`](../interfaces/OutputFileSystem)
 
 Defined in: [webpack/types.d.ts:11663](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11663)
 
@@ -100,13 +100,13 @@ Defined in: [webpack/types.d.ts:11664](https://github.com/webpack/webpack/blob/e
 
 #### Get Signature
 
-> **get** **options**(): [`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized.md)[] & [`MultiCompilerOptions`](../interfaces/MultiCompilerOptions.md)
+> **get** **options**(): [`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized)\[] & [`MultiCompilerOptions`](../interfaces/MultiCompilerOptions)
 
 Defined in: [webpack/types.d.ts:11660](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11660)
 
 ##### Returns
 
-[`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized.md)[] & [`MultiCompilerOptions`](../interfaces/MultiCompilerOptions.md)
+[`WebpackOptionsNormalized`](../interfaces/WebpackOptionsNormalized)\[] & [`MultiCompilerOptions`](../interfaces/MultiCompilerOptions)
 
 ***
 
@@ -182,7 +182,7 @@ Defined in: [webpack/types.d.ts:11688](https://github.com/webpack/webpack/blob/e
 
 ##### callback
 
-`CallbackWebpackFunction_2`\<[`MultiStats`](MultiStats.md), `void`\>
+`CallbackWebpackFunction_2`<[`MultiStats`](MultiStats.md), `void`>
 
 #### Returns
 
@@ -202,7 +202,7 @@ This method should have been private
 
 ##### compilers
 
-[`Compiler`](Compiler.md)[]
+[`Compiler`](Compiler.md)\[]
 
 ##### fn
 
@@ -210,7 +210,7 @@ This method should have been private
 
 ##### callback
 
-`CallbackWebpackFunction_2`\<[`Stats`](Stats.md)[], `void`\>
+`CallbackWebpackFunction_2`<[`Stats`](Stats.md)\[], `void`>
 
 #### Returns
 
@@ -234,7 +234,7 @@ Defined in: [webpack/types.d.ts:11667](https://github.com/webpack/webpack/blob/e
 
 ##### dependencies
 
-`string`[]
+`string`\[]
 
 #### Returns
 
@@ -252,7 +252,7 @@ Defined in: [webpack/types.d.ts:11668](https://github.com/webpack/webpack/blob/e
 
 ##### callback
 
-`CallbackWebpackFunction_2`\<[`MultiStats`](MultiStats.md), `void`\>
+`CallbackWebpackFunction_2`<[`MultiStats`](MultiStats.md), `void`>
 
 #### Returns
 
@@ -270,11 +270,11 @@ Defined in: [webpack/types.d.ts:11684](https://github.com/webpack/webpack/blob/e
 
 ##### watchOptions
 
-`WatchOptions` | `WatchOptions`[]
+`WatchOptions` | `WatchOptions`\[]
 
 ##### handler
 
-`CallbackWebpackFunction_2`\<[`MultiStats`](MultiStats.md), `void`\>
+`CallbackWebpackFunction_2`<[`MultiStats`](MultiStats.md), `void`>
 
 #### Returns
 

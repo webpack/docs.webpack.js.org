@@ -2,7 +2,7 @@
 title: ManifestPlugin
 ---
 
-[webpack](../globals.md) / ManifestPlugin
+[webpack](../globals) / ManifestPlugin
 
 # Class: ManifestPlugin
 

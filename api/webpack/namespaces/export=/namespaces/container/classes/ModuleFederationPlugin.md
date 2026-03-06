@@ -2,7 +2,7 @@
 title: ModuleFederationPlugin
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [container](../index.md) / ModuleFederationPlugin
+[webpack](../../../../../../globals) / [export=](../../../index) / [container](../index) / ModuleFederationPlugin
 
 # Class: ModuleFederationPlugin
 
@@ -48,7 +48,7 @@ Apply the plugin
 
 ##### compiler
 
-[`Compiler`](../../../../../../classes/Compiler.md)
+[`Compiler`](../../../../../../classes/Compiler)
 
 #### Returns
 
@@ -68,7 +68,7 @@ Get the compilation hooks associated with this plugin.
 
 ##### compilation
 
-[`Compilation`](../../../../../../classes/Compilation.md)
+[`Compilation`](../../../../../../classes/Compilation)
 
 #### Returns
 

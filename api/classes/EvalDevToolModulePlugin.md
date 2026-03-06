@@ -2,7 +2,7 @@
 title: EvalDevToolModulePlugin
 ---
 
-[webpack](../globals.md) / EvalDevToolModulePlugin
+[webpack](../globals) / EvalDevToolModulePlugin
 
 # Class: EvalDevToolModulePlugin
 

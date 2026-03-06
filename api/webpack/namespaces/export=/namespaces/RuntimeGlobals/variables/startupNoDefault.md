@@ -2,7 +2,7 @@
 title: startupNoDefault
 ---
 
-[webpack](../../../../../../globals.md) / [export=](../../../index.md) / [RuntimeGlobals](../index.md) / startupNoDefault
+[webpack](../../../../../../globals) / [export=](../../../index) / [RuntimeGlobals](../index) / startupNoDefault
 
 # Variable: startupNoDefault
 

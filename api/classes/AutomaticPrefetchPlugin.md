@@ -2,7 +2,7 @@
 title: AutomaticPrefetchPlugin
 ---
 
-[webpack](../globals.md) / AutomaticPrefetchPlugin
+[webpack](../globals) / AutomaticPrefetchPlugin
 
 # Class: AutomaticPrefetchPlugin
 
