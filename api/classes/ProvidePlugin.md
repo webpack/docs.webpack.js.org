@@ -20,7 +20,7 @@ Defined in: [webpack/types.d.ts:14353](https://github.com/webpack/webpack/blob/e
 
 ##### definitions
 
-`Record`<`string`, `string` | `string`\[]>
+[`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `string` | `string`\[]>
 
 #### Returns
 
@@ -30,7 +30,7 @@ Defined in: [webpack/types.d.ts:14353](https://github.com/webpack/webpack/blob/e
 
 ### definitions
 
-> **definitions**: `Record`<`string`, `string` | `string`\[]>
+> **definitions**: [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `string` | `string`\[]>
 
 Defined in: [webpack/types.d.ts:14354](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L14354)
 

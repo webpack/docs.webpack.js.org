@@ -38,7 +38,7 @@ Defined in: [webpack/types.d.ts:1291](https://github.com/webpack/webpack/blob/e3
 
 ### auxiliaryFiles
 
-> **auxiliaryFiles**: `Set`<`string`>
+> **auxiliaryFiles**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 Defined in: [webpack/types.d.ts:1306](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1306)
 
@@ -54,7 +54,7 @@ Defined in: [webpack/types.d.ts:1311](https://github.com/webpack/webpack/blob/e3
 
 ### contentHash
 
-> **contentHash**: `Record`<`string`, `string`>
+> **contentHash**: [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `string`>
 
 Defined in: [webpack/types.d.ts:1309](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1309)
 
@@ -94,7 +94,7 @@ Defined in: [webpack/types.d.ts:1298](https://github.com/webpack/webpack/blob/e3
 
 ### files
 
-> **files**: `Set`<`string`>
+> **files**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 Defined in: [webpack/types.d.ts:1305](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1305)
 
@@ -206,13 +206,13 @@ Defined in: [webpack/types.d.ts:1352](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **modulesIterable**(): `Iterable`<[`Module`](Module.md)>
+> **get** **modulesIterable**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1322](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1322)
 
 ##### Returns
 
-`Iterable`<[`Module`](Module.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 ## Methods
 
@@ -332,55 +332,55 @@ Defined in: [webpack/types.d.ts:1353](https://github.com/webpack/webpack/blob/e3
 
 ### getAllAsyncChunks()
 
-> **getAllAsyncChunks**(): `Set`<`Chunk`>
+> **getAllAsyncChunks**(): [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`Chunk`>
 
 Defined in: [webpack/types.d.ts:1356](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1356)
 
 #### Returns
 
-`Set`<`Chunk`>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`Chunk`>
 
 ***
 
 ### getAllInitialChunks()
 
-> **getAllInitialChunks**(): `Set`<`Chunk`>
+> **getAllInitialChunks**(): [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`Chunk`>
 
 Defined in: [webpack/types.d.ts:1357](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1357)
 
 #### Returns
 
-`Set`<`Chunk`>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`Chunk`>
 
 ***
 
 ### getAllReferencedAsyncEntrypoints()
 
-> **getAllReferencedAsyncEntrypoints**(): `Set`<[`Entrypoint`](Entrypoint.md)>
+> **getAllReferencedAsyncEntrypoints**(): [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Entrypoint`](Entrypoint.md)>
 
 Defined in: [webpack/types.d.ts:1359](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1359)
 
 #### Returns
 
-`Set`<[`Entrypoint`](Entrypoint.md)>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Entrypoint`](Entrypoint.md)>
 
 ***
 
 ### getAllReferencedChunks()
 
-> **getAllReferencedChunks**(): `Set`<`Chunk`>
+> **getAllReferencedChunks**(): [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`Chunk`>
 
 Defined in: [webpack/types.d.ts:1358](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1358)
 
 #### Returns
 
-`Set`<`Chunk`>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`Chunk`>
 
 ***
 
 ### getChildIdsByOrders()
 
-> **getChildIdsByOrders**(`chunkGraph`, `filterFn?`): `Record`<`string`, `ChunkId`\[]>
+> **getChildIdsByOrders**(`chunkGraph`, `filterFn?`): [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `ChunkId`\[]>
 
 Defined in: [webpack/types.d.ts:1361](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1361)
 
@@ -396,7 +396,7 @@ Defined in: [webpack/types.d.ts:1361](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`<`string`, `ChunkId`\[]>
+[`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `ChunkId`\[]>
 
 ***
 

@@ -14,10 +14,10 @@ Defined in: [webpack/types.d.ts:16561](https://github.com/webpack/webpack/blob/e
 
 ## Extended by
 
-* [`GetChunkFilenameRuntimeModule`](../webpack/namespaces/export=/namespaces/runtime/classes/GetChunkFilenameRuntimeModule)
-* [`JsonpChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/web/classes/JsonpChunkLoadingRuntimeModule)
-* [`CssLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/web/classes/CssLoadingRuntimeModule)
-* [`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/export=/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
+* [`GetChunkFilenameRuntimeModule`](../webpack/namespaces/runtime/classes/GetChunkFilenameRuntimeModule)
+* [`JsonpChunkLoadingRuntimeModule`](../webpack/namespaces/web/classes/JsonpChunkLoadingRuntimeModule)
+* [`CssLoadingRuntimeModule`](../webpack/namespaces/web/classes/CssLoadingRuntimeModule)
+* [`ModuleChunkLoadingRuntimeModule`](../webpack/namespaces/esm/classes/ModuleChunkLoadingRuntimeModule)
 
 ## Constructors
 
@@ -437,13 +437,13 @@ Runtime modules which trigger actions on bootstrap
 
 #### Get Signature
 
-> **get** **chunksIterable**(): `Iterable`<[`Chunk`](Chunk.md)>
+> **get** **chunksIterable**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:10673](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10673)
 
 ##### Returns
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 #### Inherited from
 
@@ -686,19 +686,19 @@ Defined in: [webpack/types.d.ts:10780](https://github.com/webpack/webpack/blob/e
 
 ##### fileDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 ##### contextDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 ##### missingDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 ##### buildDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 #### Returns
 
@@ -1082,13 +1082,13 @@ Defined in: [webpack/types.d.ts:10754](https://github.com/webpack/webpack/blob/e
 
 ### getErrors()
 
-> **getErrors**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+> **getErrors**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10684](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10684)
 
 #### Returns
 
-`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 #### Inherited from
 
@@ -1279,13 +1279,13 @@ This data will be passed to restoreFromUnsafeCache later.
 
 ### getWarnings()
 
-> **getWarnings**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+> **getWarnings**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10681](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10681)
 
 #### Returns
 
-`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 #### Inherited from
 
@@ -1615,11 +1615,11 @@ Use needBuild instead
 
 ##### fileTimestamps
 
-`Map`<`string`, `number`>
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `number`>
 
 ##### contextTimestamps
 
-`Map`<`string`, `number`>
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `number`>
 
 #### Returns
 
@@ -1635,13 +1635,13 @@ Use needBuild instead
 
 ### originalSource()
 
-> **originalSource**(): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **originalSource**(): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10779](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10779)
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 #### Inherited from
 
@@ -1773,7 +1773,7 @@ Defined in: [webpack/types.d.ts:10751](https://github.com/webpack/webpack/blob/e
 
 ### ~~source()~~
 
-> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10746](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10746)
 
@@ -1795,7 +1795,7 @@ Use codeGeneration() instead
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 #### Deprecated
 

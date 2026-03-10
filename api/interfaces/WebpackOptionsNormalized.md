@@ -154,7 +154,7 @@ Ignore specific warnings.
 
 ##### warning
 
-`Error`
+[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)
 
 ##### compilation
 

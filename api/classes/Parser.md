@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:13962](https://github.com/webpack/webpack/blob/e
 
 ## Extended by
 
-* [`JavascriptParser`](../webpack/namespaces/export=/namespaces/javascript/classes/JavascriptParser)
+* [`JavascriptParser`](../webpack/namespaces/javascript/classes/JavascriptParser)
 
 ## Constructors
 

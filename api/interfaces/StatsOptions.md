@@ -376,7 +376,7 @@ Add internal stack trace to errors.
 
 ### exclude?
 
-> `optional` **exclude**: `string` | `boolean` | `RegExp` | `ModuleFilterItemTypes`\[] | (`name`, `module`, `type`) => `boolean`
+> `optional` **exclude**: `string` | `boolean` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `ModuleFilterItemTypes`\[] | (`name`, `module`, `type`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18216](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18216)
 
@@ -386,7 +386,7 @@ Please use excludeModules instead.
 
 ### excludeAssets?
 
-> `optional` **excludeAssets**: `string` | `RegExp` | `AssetFilterItemTypes`\[] | (`name`, `asset`) => `boolean`
+> `optional` **excludeAssets**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `AssetFilterItemTypes`\[] | (`name`, `asset`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18230](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18230)
 
@@ -396,7 +396,7 @@ Suppress assets that match the specified filters. Filters can be Strings, RegExp
 
 ### excludeModules?
 
-> `optional` **excludeModules**: `string` | `boolean` | `RegExp` | `ModuleFilterItemTypes`\[] | (`name`, `module`, `type`) => `boolean`
+> `optional` **excludeModules**: `string` | `boolean` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `ModuleFilterItemTypes`\[] | (`name`, `module`, `type`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18239](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18239)
 
@@ -556,7 +556,7 @@ Add logging output.
 
 ### loggingDebug?
 
-> `optional` **loggingDebug**: `string` | `boolean` | `RegExp` | `FilterItemTypes`\[] | (`value`) => `boolean`
+> `optional` **loggingDebug**: `string` | `boolean` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `FilterItemTypes`\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18328](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18328)
 
@@ -826,7 +826,7 @@ Add warnings count.
 
 ### warningsFilter?
 
-> `optional` **warningsFilter**: `string` | `RegExp` | `WarningFilterItemTypes`\[] | (`warning`, `warningString`) => `boolean`
+> `optional` **warningsFilter**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `WarningFilterItemTypes`\[] | (`warning`, `warningString`) => `boolean`
 
 Defined in: [webpack/types.d.ts:18468](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18468)
 

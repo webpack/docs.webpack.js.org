@@ -376,7 +376,7 @@ Defined in: [webpack/types.d.ts:11876](https://github.com/webpack/webpack/blob/e
 
 ### resourceResolveData?
 
-> `optional` **resourceResolveData**: `ResourceSchemeData` & `Partial`<`ResolveRequest`>
+> `optional` **resourceResolveData**: `ResourceSchemeData` & [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`ResolveRequest`>
 
 Defined in: [webpack/types.d.ts:11877](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11877)
 
@@ -442,13 +442,13 @@ Defined in: [webpack/types.d.ts:10638](https://github.com/webpack/webpack/blob/e
 
 #### Get Signature
 
-> **get** **chunksIterable**(): `Iterable`<[`Chunk`](Chunk.md)>
+> **get** **chunksIterable**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:10673](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10673)
 
 ##### Returns
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 #### Inherited from
 
@@ -691,19 +691,19 @@ Defined in: [webpack/types.d.ts:10780](https://github.com/webpack/webpack/blob/e
 
 ##### fileDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 ##### contextDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 ##### missingDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 ##### buildDependencies
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 #### Returns
 
@@ -857,7 +857,7 @@ Defined in: [webpack/types.d.ts:11909](https://github.com/webpack/webpack/blob/e
 
 ##### rule
 
-`string` | `RegExp` | (`content`) => `boolean`
+`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | (`content`) => `boolean`
 
 ##### content
 
@@ -1011,7 +1011,7 @@ Defined in: [webpack/types.d.ts:10758](https://github.com/webpack/webpack/blob/e
 
 ### createSource()
 
-> **createSource**(`context`, `content`, `sourceMap?`, `associatedObjectForCache?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **createSource**(`context`, `content`, `sourceMap?`, `associatedObjectForCache?`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:11902](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11902)
 
@@ -1035,13 +1035,13 @@ Defined in: [webpack/types.d.ts:11902](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
 ### createSourceForAsset()
 
-> **createSourceForAsset**(`context`, `name`, `content`, `sourceMap?`, `associatedObjectForCache?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **createSourceForAsset**(`context`, `name`, `content`, `sourceMap?`, `associatedObjectForCache?`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:11891](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11891)
 
@@ -1069,7 +1069,7 @@ Defined in: [webpack/types.d.ts:11891](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
@@ -1157,13 +1157,13 @@ Defined in: [webpack/types.d.ts:11898](https://github.com/webpack/webpack/blob/e
 
 ### getErrors()
 
-> **getErrors**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+> **getErrors**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10684](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10684)
 
 #### Returns
 
-`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 #### Inherited from
 
@@ -1354,13 +1354,13 @@ This data will be passed to restoreFromUnsafeCache later.
 
 ### getWarnings()
 
-> **getWarnings**(): `Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+> **getWarnings**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:10681](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10681)
 
 #### Returns
 
-`Iterable`<[`WebpackError`](WebpackError.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`WebpackError`](WebpackError.md), `any`, `any`>
 
 #### Inherited from
 
@@ -1708,11 +1708,11 @@ Use needBuild instead
 
 ##### fileTimestamps
 
-`Map`<`string`, `number`>
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `number`>
 
 ##### contextTimestamps
 
-`Map`<`string`, `number`>
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `number`>
 
 #### Returns
 
@@ -1728,13 +1728,13 @@ Use needBuild instead
 
 ### originalSource()
 
-> **originalSource**(): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **originalSource**(): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10779](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10779)
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 #### Inherited from
 
@@ -1864,7 +1864,7 @@ Defined in: [webpack/types.d.ts:11913](https://github.com/webpack/webpack/blob/e
 
 ##### noParseRule
 
-`string` | `RegExp` | (`content`) => `boolean` | (`string` | `RegExp` | (`content`) => `boolean`)\[]
+`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | (`content`) => `boolean` | (`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | (`content`) => `boolean`)\[]
 
 ##### request
 
@@ -1900,7 +1900,7 @@ Defined in: [webpack/types.d.ts:10751](https://github.com/webpack/webpack/blob/e
 
 ### ~~source()~~
 
-> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **source**(`dependencyTemplates`, `runtimeTemplate`, `type?`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:10746](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L10746)
 
@@ -1922,7 +1922,7 @@ Use codeGeneration() instead
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 #### Deprecated
 

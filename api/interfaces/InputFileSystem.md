@@ -76,7 +76,7 @@ Defined in: [webpack/types.d.ts:7029](https://github.com/webpack/webpack/blob/e3
 
 ##### value?
 
-`string` | `string`\[] | `Set`<`string`>
+`string` | `string`\[] | [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 #### Returns
 

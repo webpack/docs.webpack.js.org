@@ -20,19 +20,19 @@ Defined in: [webpack/types.d.ts:3694](https://github.com/webpack/webpack/blob/e3
 
 ##### resourceRegExp
 
-`RegExp`
+[`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 ##### newContentResource?
 
-`string` | `boolean` | `RegExp` | (`context`) => `void`
+`string` | `boolean` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | (`context`) => `void`
 
 ##### newContentRecursive?
 
-`boolean` | `RegExp` | `NewContentCreateContextMap`
+`boolean` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `NewContentCreateContextMap`
 
 ##### newContentRegExp?
 
-`RegExp`
+[`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 #### Returns
 
@@ -90,7 +90,7 @@ Defined in: [webpack/types.d.ts:3716](https://github.com/webpack/webpack/blob/e3
 
 ### newContentRegExp?
 
-> `optional` **newContentRegExp**: `RegExp`
+> `optional` **newContentRegExp**: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 Defined in: [webpack/types.d.ts:3717](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3717)
 
@@ -106,7 +106,7 @@ Defined in: [webpack/types.d.ts:3708](https://github.com/webpack/webpack/blob/e3
 
 ### resourceRegExp
 
-> **resourceRegExp**: `RegExp`
+> **resourceRegExp**: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 Defined in: [webpack/types.d.ts:3704](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3704)
 

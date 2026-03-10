@@ -10,7 +10,7 @@ Defined in: [webpack/types.d.ts:19041](https://github.com/webpack/webpack/blob/e
 
 ## Extends
 
-* `Error`
+* [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)
 
 ## Indexable
 
@@ -240,7 +240,7 @@ a();
 
 ##### constructorOpt?
 
-`Function`
+[`Function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
 #### Returns
 
@@ -262,7 +262,7 @@ Defined in: [webpack/types.d.ts:19096](https://github.com/webpack/webpack/blob/e
 
 ##### err
 
-`Error`
+[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)
 
 ##### stackTraces
 

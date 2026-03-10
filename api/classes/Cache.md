@@ -50,7 +50,7 @@ Defined in: [webpack/types.d.ts:1101](https://github.com/webpack/webpack/blob/e3
 
 #### storeBuildDependencies
 
-> **storeBuildDependencies**: `AsyncParallelHook`<\[`Iterable`<`string`, `any`, `any`>]>
+> **storeBuildDependencies**: `AsyncParallelHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<`string`, `any`, `any`>]>
 
 ***
 
@@ -214,7 +214,7 @@ After this method has succeeded the cache can only be restored when build depend
 
 ##### dependencies
 
-`Iterable`<`string`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<`string`>
 
 ##### callback
 

@@ -38,7 +38,7 @@ Defined in: [webpack/types.d.ts:15425](https://github.com/webpack/webpack/blob/e
 
 ### contextDependencies
 
-> **contextDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **contextDependencies**: [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 Defined in: [webpack/types.d.ts:15433](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15433)
 
@@ -54,7 +54,7 @@ Defined in: [webpack/types.d.ts:15423](https://github.com/webpack/webpack/blob/e
 
 ### createData
 
-> **createData**: `Partial`<`NormalModuleCreateData` & `object`>
+> **createData**: [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`NormalModuleCreateData` & `object`>
 
 Defined in: [webpack/types.d.ts:15430](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15430)
 
@@ -62,7 +62,7 @@ Defined in: [webpack/types.d.ts:15430](https://github.com/webpack/webpack/blob/e
 
 ### dependencies
 
-> **dependencies**: [`ModuleDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/ModuleDependency)\[]
+> **dependencies**: [`ModuleDependency`](../webpack/namespaces/dependencies/classes/ModuleDependency)\[]
 
 Defined in: [webpack/types.d.ts:15428](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15428)
 
@@ -78,7 +78,7 @@ Defined in: [webpack/types.d.ts:15429](https://github.com/webpack/webpack/blob/e
 
 ### fileDependencies
 
-> **fileDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **fileDependencies**: [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 Defined in: [webpack/types.d.ts:15431](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15431)
 
@@ -94,7 +94,7 @@ Defined in: [webpack/types.d.ts:15434](https://github.com/webpack/webpack/blob/e
 
 ### missingDependencies
 
-> **missingDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **missingDependencies**: [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 Defined in: [webpack/types.d.ts:15432](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L15432)
 

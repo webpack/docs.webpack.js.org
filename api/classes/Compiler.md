@@ -58,7 +58,7 @@ Defined in: [webpack/types.d.ts:2959](https://github.com/webpack/webpack/blob/e3
 
 ### contextTimestamps?
 
-> `optional` **contextTimestamps**: `Map`<`string`, `"ignore"` | `EntryTypesIndex` | `OnlySafeTimeEntry` | `ExistenceOnlyTimeEntryTypesIndex`>
+> `optional` **contextTimestamps**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `"ignore"` | `EntryTypesIndex` | `OnlySafeTimeEntry` | `ExistenceOnlyTimeEntryTypesIndex`>
 
 Defined in: [webpack/types.d.ts:2942](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2942)
 
@@ -66,7 +66,7 @@ Defined in: [webpack/types.d.ts:2942](https://github.com/webpack/webpack/blob/e3
 
 ### fileTimestamps?
 
-> `optional` **fileTimestamps**: `Map`<`string`, `"ignore"` | `EntryTypesIndex` | `OnlySafeTimeEntry` | `ExistenceOnlyTimeEntryTypesIndex`>
+> `optional` **fileTimestamps**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `"ignore"` | `EntryTypesIndex` | `OnlySafeTimeEntry` | `ExistenceOnlyTimeEntryTypesIndex`>
 
 Defined in: [webpack/types.d.ts:2934](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2934)
 
@@ -82,7 +82,7 @@ Defined in: [webpack/types.d.ts:2950](https://github.com/webpack/webpack/blob/e3
 
 ### hooks
 
-> **hooks**: `Readonly`<{ `additionalPass`: `AsyncSeriesHook`<\[]>; `afterCompile`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `afterDone`: `SyncHook`<\[[`Stats`](Stats.md)]>; `afterEmit`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `afterEnvironment`: `SyncHook`<\[]>; `afterPlugins`: `SyncHook`<\[`Compiler`]>; `afterResolvers`: `SyncHook`<\[`Compiler`]>; `assetEmitted`: `AsyncSeriesHook`<\[`string`, [`AssetEmittedInfo`](../interfaces/AssetEmittedInfo)]>; `beforeCompile`: `AsyncSeriesHook`<\[`CompilationParams`]>; `beforeRun`: `AsyncSeriesHook`<\[`Compiler`]>; `compilation`: `SyncHook`<\[[`Compilation`](Compilation.md), `CompilationParams`]>; `compile`: `SyncHook`<\[`CompilationParams`]>; `contextModuleFactory`: `SyncHook`<\[`ContextModuleFactory`]>; `done`: `AsyncSeriesHook`<\[[`Stats`](Stats.md)]>; `emit`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `emitRecords`: `AsyncSeriesHook`<\[]>; `entryOption`: `SyncBailHook`<\[`string`, [`EntryNormalized`](../type-aliases/EntryNormalized)], `boolean` | `void`>; `environment`: `SyncHook`<\[]>; `failed`: `SyncHook`<\[`Error`]>; `finishMake`: `AsyncParallelHook`<\[[`Compilation`](Compilation.md)]>; `infrastructureLog`: `SyncBailHook`<\[`string`, `string`, `undefined` | `any`\[]], `true` | `void`>; `initialize`: `SyncHook`<\[]>; `invalid`: `SyncHook`<\[`null` | `string`, `number`]>; `make`: `AsyncParallelHook`<\[[`Compilation`](Compilation.md)]>; `normalModuleFactory`: `SyncHook`<\[`NormalModuleFactory`]>; `readRecords`: `AsyncSeriesHook`<\[]>; `run`: `AsyncSeriesHook`<\[`Compiler`]>; `shouldEmit`: `SyncBailHook`<\[[`Compilation`](Compilation.md)], `boolean` | `void`>; `shutdown`: `AsyncSeriesHook`<\[]>; `thisCompilation`: `SyncHook`<\[[`Compilation`](Compilation.md), `CompilationParams`]>; `validate`: `SyncHook`<\[]>; `watchClose`: `SyncHook`<\[]>; `watchRun`: `AsyncSeriesHook`<\[`Compiler`]>; }>
+> **hooks**: [`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<{ `additionalPass`: `AsyncSeriesHook`<\[]>; `afterCompile`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `afterDone`: `SyncHook`<\[[`Stats`](Stats.md)]>; `afterEmit`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `afterEnvironment`: `SyncHook`<\[]>; `afterPlugins`: `SyncHook`<\[`Compiler`]>; `afterResolvers`: `SyncHook`<\[`Compiler`]>; `assetEmitted`: `AsyncSeriesHook`<\[`string`, [`AssetEmittedInfo`](../interfaces/AssetEmittedInfo)]>; `beforeCompile`: `AsyncSeriesHook`<\[`CompilationParams`]>; `beforeRun`: `AsyncSeriesHook`<\[`Compiler`]>; `compilation`: `SyncHook`<\[[`Compilation`](Compilation.md), `CompilationParams`]>; `compile`: `SyncHook`<\[`CompilationParams`]>; `contextModuleFactory`: `SyncHook`<\[`ContextModuleFactory`]>; `done`: `AsyncSeriesHook`<\[[`Stats`](Stats.md)]>; `emit`: `AsyncSeriesHook`<\[[`Compilation`](Compilation.md)]>; `emitRecords`: `AsyncSeriesHook`<\[]>; `entryOption`: `SyncBailHook`<\[`string`, [`EntryNormalized`](../type-aliases/EntryNormalized)], `boolean` | `void`>; `environment`: `SyncHook`<\[]>; `failed`: `SyncHook`<\[[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)]>; `finishMake`: `AsyncParallelHook`<\[[`Compilation`](Compilation.md)]>; `infrastructureLog`: `SyncBailHook`<\[`string`, `string`, `undefined` | `any`\[]], `true` | `void`>; `initialize`: `SyncHook`<\[]>; `invalid`: `SyncHook`<\[`null` | `string`, `number`]>; `make`: `AsyncParallelHook`<\[[`Compilation`](Compilation.md)]>; `normalModuleFactory`: `SyncHook`<\[`NormalModuleFactory`]>; `readRecords`: `AsyncSeriesHook`<\[]>; `run`: `AsyncSeriesHook`<\[`Compiler`]>; `shouldEmit`: `SyncBailHook`<\[[`Compilation`](Compilation.md)], `boolean` | `void`>; `shutdown`: `AsyncSeriesHook`<\[]>; `thisCompilation`: `SyncHook`<\[[`Compilation`](Compilation.md), `CompilationParams`]>; `validate`: `SyncHook`<\[]>; `watchClose`: `SyncHook`<\[]>; `watchRun`: `AsyncSeriesHook`<\[`Compiler`]>; }>
 
 Defined in: [webpack/types.d.ts:2878](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2878)
 
@@ -98,7 +98,7 @@ Defined in: [webpack/types.d.ts:2965](https://github.com/webpack/webpack/blob/e3
 
 ### immutablePaths
 
-> **immutablePaths**: `Set`<`string` | `RegExp`>
+> **immutablePaths**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)>
 
 Defined in: [webpack/types.d.ts:2931](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2931)
 
@@ -148,7 +148,7 @@ Defined in: [webpack/types.d.ts:2923](https://github.com/webpack/webpack/blob/e3
 
 ### managedPaths
 
-> **managedPaths**: `Set`<`string` | `RegExp`>
+> **managedPaths**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)>
 
 Defined in: [webpack/types.d.ts:2929](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2929)
 
@@ -164,7 +164,7 @@ Defined in: [webpack/types.d.ts:2932](https://github.com/webpack/webpack/blob/e3
 
 ### moduleMemCaches?
 
-> `optional` **moduleMemCaches**: `Map`<[`Module`](Module.md), `ModuleMemCachesItem`>
+> `optional` **moduleMemCaches**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[`Module`](Module.md), `ModuleMemCachesItem`>
 
 Defined in: [webpack/types.d.ts:2962](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2962)
 
@@ -212,7 +212,7 @@ Defined in: [webpack/types.d.ts:2918](https://github.com/webpack/webpack/blob/e3
 
 ### platform
 
-> **platform**: `Readonly`<`PlatformTargetProperties`>
+> **platform**: [`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<`PlatformTargetProperties`>
 
 Defined in: [webpack/types.d.ts:2957](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2957)
 
@@ -284,7 +284,7 @@ Defined in: [webpack/types.d.ts:2964](https://github.com/webpack/webpack/blob/e3
 
 ### unmanagedPaths
 
-> **unmanagedPaths**: `Set`<`string` | `RegExp`>
+> **unmanagedPaths**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)>
 
 Defined in: [webpack/types.d.ts:2930](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2930)
 
@@ -380,7 +380,7 @@ Defined in: [webpack/types.d.ts:2988](https://github.com/webpack/webpack/blob/e3
 
 ##### outputOptions?
 
-`Partial`<`OutputNormalized`>
+[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`OutputNormalized`>
 
 ##### plugins?
 

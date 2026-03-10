@@ -12,8 +12,8 @@ const __dirname = dirname(__filename);
 const navigationFile = resolve(__dirname, "./nav.generated.json");
 const entryPointsPath = resolve(__dirname, "../../../webpack/types.d.ts");
 const tsconfigPath = resolve(__dirname, "./tsconfig.json");
-const postprocessorPath = resolve(__dirname, "./postprocessor.mjs");
-const remarkPostProcessor = resolve(__dirname, "./remark.mjs");
+const typedocPlugin = resolve(__dirname, "./plugins/typedoc.mjs");
+const remarkPlugin = resolve(__dirname, "./plugins/remark.mjs");
 const docsJsonPath = resolve(__dirname, "../../docs.json");
 
 const app = await Application.bootstrapWithPlugins({
@@ -25,9 +25,10 @@ const app = await Application.bootstrapWithPlugins({
     "typedoc-plugin-markdown",
     "typedoc-plugin-frontmatter",
     "typedoc-plugin-remark",
-    postprocessorPath,
+    "typedoc-plugin-mdn-links",
+    typedocPlugin,
   ],
-  remarkPlugins: [remarkPostProcessor],
+  remarkPlugins: [remarkPlugin],
 
   // TypeScript configuration
   tsconfig: tsconfigPath,
@@ -49,20 +50,9 @@ const { default: generatedNavigation } = await import(navigationFile, {
 
 const mapNavigation = (section) => {
   if (!section.children) {
-    return `api/${section.path.replace(/\.[^/.]+$/, '')}`;
+    return `api/${section.path.replace(/\.[^/.]+$/, "")}`;
   }
 
-  // If this section has only one child and that child has children,
-  // collapse this section and promote the grandchildren
-  if (section.children.length === 1 && section.children[0].children) {
-    const singleChild = section.children[0];
-    return {
-      group: section.title,
-      pages: singleChild.children.map(mapNavigation),
-    };
-  }
-
-  // Normal case: map all children
   return {
     group: section.title,
     pages: section.children.map(mapNavigation),

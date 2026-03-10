@@ -38,7 +38,7 @@ Defined in: [webpack/types.d.ts:18973](https://github.com/webpack/webpack/blob/e
 
 ##### err
 
-`Error`
+[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)
 
 ##### result?
 
@@ -208,15 +208,15 @@ Defined in: [webpack/types.d.ts:18983](https://github.com/webpack/webpack/blob/e
 
 ##### files
 
-`Iterable`<`string`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<`string`>
 
 ##### dirs
 
-`Iterable`<`string`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<`string`>
 
 ##### missing
 
-`Iterable`<`string`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<`string`>
 
 #### Returns
 

@@ -54,7 +54,7 @@ Defined in: [webpack/types.d.ts:1539](https://github.com/webpack/webpack/blob/e3
 
 ##### items
 
-`Set`<`string`>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 #### Returns
 
@@ -124,7 +124,7 @@ Defined in: [webpack/types.d.ts:1533](https://github.com/webpack/webpack/blob/e3
 
 ##### items
 
-`Set`<`string`>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 ##### transferOwnership?
 
@@ -150,7 +150,7 @@ Defined in: [webpack/types.d.ts:1540](https://github.com/webpack/webpack/blob/e3
 
 ##### items
 
-`Iterable`<`string`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<`string`>
 
 #### Returns
 
@@ -172,7 +172,7 @@ Defined in: [webpack/types.d.ts:1404](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md)>
 
 #### Returns
 
@@ -194,7 +194,7 @@ Defined in: [webpack/types.d.ts:1403](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md)>
 
 #### Returns
 
@@ -216,7 +216,7 @@ Defined in: [webpack/types.d.ts:1401](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`<[`Module`](Module.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 #### Returns
 
@@ -238,7 +238,7 @@ Defined in: [webpack/types.d.ts:1402](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md)>
 
 #### Returns
 
@@ -562,7 +562,7 @@ Defined in: [webpack/types.d.ts:1459](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkDependentHashModulesIterable()
 
-> **getChunkDependentHashModulesIterable**(`chunk`): `Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
+> **getChunkDependentHashModulesIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1508](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1508)
 
@@ -574,13 +574,13 @@ Defined in: [webpack/types.d.ts:1508](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 ***
 
 ### getChunkEntryDependentChunksIterable()
 
-> **getChunkEntryDependentChunksIterable**(`chunk`): `Iterable`<[`Chunk`](Chunk.md)>
+> **getChunkEntryDependentChunksIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1497](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1497)
 
@@ -592,13 +592,13 @@ Defined in: [webpack/types.d.ts:1497](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 ***
 
 ### getChunkEntryModulesIterable()
 
-> **getChunkEntryModulesIterable**(`chunk`): `Iterable`<[`Module`](Module.md)>
+> **getChunkEntryModulesIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1496](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1496)
 
@@ -610,13 +610,13 @@ Defined in: [webpack/types.d.ts:1496](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Module`](Module.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 ***
 
 ### getChunkEntryModulesWithChunkGroupIterable()
 
-> **getChunkEntryModulesWithChunkGroupIterable**(`chunk`): `Iterable`<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)]>
+> **getChunkEntryModulesWithChunkGroupIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)]>
 
 Defined in: [webpack/types.d.ts:1511](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1511)
 
@@ -628,13 +628,13 @@ Defined in: [webpack/types.d.ts:1511](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)]>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<\[[`Module`](Module.md), [`Entrypoint`](Entrypoint.md)]>
 
 ***
 
 ### getChunkFullHashModulesIterable()
 
-> **getChunkFullHashModulesIterable**(`chunk`): `Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
+> **getChunkFullHashModulesIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1502](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1502)
 
@@ -646,7 +646,7 @@ Defined in: [webpack/types.d.ts:1502](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md), `any`, `any`>
 
 ***
 
@@ -744,7 +744,7 @@ Defined in: [webpack/types.d.ts:1443](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkModulesIterable()
 
-> **getChunkModulesIterable**(`chunk`): `Iterable`<[`Module`](Module.md)>
+> **getChunkModulesIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1422](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1422)
 
@@ -756,13 +756,13 @@ Defined in: [webpack/types.d.ts:1422](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Module`](Module.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 ***
 
 ### getChunkModulesIterableBySourceType()
 
-> **getChunkModulesIterableBySourceType**(`chunk`, `sourceType`): `Iterable`<[`Module`](Module.md), `any`, `any`>
+> **getChunkModulesIterableBySourceType**(`chunk`, `sourceType`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1423](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1423)
 
@@ -778,7 +778,7 @@ Defined in: [webpack/types.d.ts:1423](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Module`](Module.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md), `any`, `any`>
 
 ***
 
@@ -824,7 +824,7 @@ Defined in: [webpack/types.d.ts:1469](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkModulesSizes()
 
-> **getChunkModulesSizes**(`chunk`): `Record`<`string`, `number`>
+> **getChunkModulesSizes**(`chunk`): [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `number`>
 
 Defined in: [webpack/types.d.ts:1470](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1470)
 
@@ -836,7 +836,7 @@ Defined in: [webpack/types.d.ts:1470](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`<`string`, `number`>
+[`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `number`>
 
 ***
 
@@ -878,7 +878,7 @@ Defined in: [webpack/types.d.ts:1501](https://github.com/webpack/webpack/blob/e3
 
 ### getChunkRuntimeModulesIterable()
 
-> **getChunkRuntimeModulesIterable**(`chunk`): `Iterable`<[`RuntimeModule`](RuntimeModule.md)>
+> **getChunkRuntimeModulesIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md)>
 
 Defined in: [webpack/types.d.ts:1500](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1500)
 
@@ -890,7 +890,7 @@ Defined in: [webpack/types.d.ts:1500](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`RuntimeModule`](RuntimeModule.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`RuntimeModule`](RuntimeModule.md)>
 
 ***
 
@@ -980,7 +980,7 @@ Defined in: [webpack/types.d.ts:1417](https://github.com/webpack/webpack/blob/e3
 
 ### getModuleChunksIterable()
 
-> **getModuleChunksIterable**(`module`): `Iterable`<[`Chunk`](Chunk.md)>
+> **getModuleChunksIterable**(`module`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1412](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1412)
 
@@ -992,7 +992,7 @@ Defined in: [webpack/types.d.ts:1412](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 ***
 
@@ -1112,7 +1112,7 @@ Defined in: [webpack/types.d.ts:1541](https://github.com/webpack/webpack/blob/e3
 
 ### getModuleRuntimes()
 
-> **getModuleRuntimes**(`module`): [`RuntimeSpecSet`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet)
+> **getModuleRuntimes**(`module`): [`RuntimeSpecSet`](../webpack/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet)
 
 Defined in: [webpack/types.d.ts:1419](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1419)
 
@@ -1124,7 +1124,7 @@ Defined in: [webpack/types.d.ts:1419](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`RuntimeSpecSet`](../webpack/namespaces/export=/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet)
+[`RuntimeSpecSet`](../webpack/namespaces/util/namespaces/runtime/classes/RuntimeSpecSet)
 
 ***
 
@@ -1260,7 +1260,7 @@ Defined in: [webpack/types.d.ts:1444](https://github.com/webpack/webpack/blob/e3
 
 ### getOrderedChunkModulesIterable()
 
-> **getOrderedChunkModulesIterable**(`chunk`, `comparator`): `Iterable`<[`Module`](Module.md)>
+> **getOrderedChunkModulesIterable**(`chunk`, `comparator`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:1434](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1434)
 
@@ -1276,13 +1276,13 @@ Defined in: [webpack/types.d.ts:1434](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Module`](Module.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 ***
 
 ### getOrderedChunkModulesIterableBySourceType()
 
-> **getOrderedChunkModulesIterableBySourceType**(`chunk`, `sourceType`, `comparator`): `Iterable`<[`Module`](Module.md), `any`, `any`>
+> **getOrderedChunkModulesIterableBySourceType**(`chunk`, `sourceType`, `comparator`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md), `any`, `any`>
 
 Defined in: [webpack/types.d.ts:1438](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1438)
 
@@ -1302,13 +1302,13 @@ Defined in: [webpack/types.d.ts:1438](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Module`](Module.md), `any`, `any`>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md), `any`, `any`>
 
 ***
 
 ### getOrderedModuleChunksIterable()
 
-> **getOrderedModuleChunksIterable**(`module`, `sortFn`): `Iterable`<[`Chunk`](Chunk.md)>
+> **getOrderedModuleChunksIterable**(`module`, `sortFn`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1413](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1413)
 
@@ -1324,7 +1324,7 @@ Defined in: [webpack/types.d.ts:1413](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 ***
 
@@ -1352,7 +1352,7 @@ Defined in: [webpack/types.d.ts:1526](https://github.com/webpack/webpack/blob/e3
 
 ### getRuntimeChunkDependentChunksIterable()
 
-> **getRuntimeChunkDependentChunksIterable**(`chunk`): `Iterable`<[`Chunk`](Chunk.md)>
+> **getRuntimeChunkDependentChunksIterable**(`chunk`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:1498](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1498)
 
@@ -1364,7 +1364,7 @@ Defined in: [webpack/types.d.ts:1498](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 ***
 

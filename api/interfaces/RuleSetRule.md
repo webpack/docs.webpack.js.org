@@ -28,7 +28,7 @@ Match on import assertions of the dependency.
 
 ### compiler?
 
-> `optional` **compiler**: `string` | `RegExp` | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
+> `optional` **compiler**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16210](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16210)
 
@@ -38,7 +38,7 @@ Match the child compiler name.
 
 ### dependency?
 
-> `optional` **dependency**: `string` | `RegExp` | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
+> `optional` **dependency**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16220](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16220)
 
@@ -72,7 +72,7 @@ Enforce this rule as pre or post step.
 
 ### exclude?
 
-> `optional` **exclude**: `string` | `RegExp` | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
+> `optional` **exclude**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16240](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16240)
 
@@ -106,7 +106,7 @@ The options for the module generator.
 
 ### include?
 
-> `optional` **include**: `string` | `RegExp` | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
+> `optional` **include**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16260](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16260)
 
@@ -116,7 +116,7 @@ Shortcut for resource.include.
 
 ### issuer?
 
-> `optional` **issuer**: `string` | `RegExp` | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
+> `optional` **issuer**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16270](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16270)
 
@@ -126,7 +126,7 @@ Match the issuer of the module (The module pointing to this module).
 
 ### issuerLayer?
 
-> `optional` **issuerLayer**: `string` | `RegExp` | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
+> `optional` **issuerLayer**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16280](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16280)
 
@@ -156,7 +156,7 @@ Shortcut for use.loader.
 
 ### mimetype?
 
-> `optional` **mimetype**: `string` | `RegExp` | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
+> `optional` **mimetype**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16300](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16300)
 
@@ -200,7 +200,7 @@ Options for parsing.
 
 ### realResource?
 
-> `optional` **realResource**: `string` | `RegExp` | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
+> `optional` **realResource**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16325](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16325)
 
@@ -220,7 +220,7 @@ Options for the resolver.
 
 ### resource?
 
-> `optional` **resource**: `string` | `RegExp` | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
+> `optional` **resource**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16340](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16340)
 
@@ -230,7 +230,7 @@ Match the resource path of the module.
 
 ### resourceFragment?
 
-> `optional` **resourceFragment**: `string` | `RegExp` | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
+> `optional` **resourceFragment**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16350](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16350)
 
@@ -240,7 +240,7 @@ Match the resource fragment of the module.
 
 ### resourceQuery?
 
-> `optional` **resourceQuery**: `string` | `RegExp` | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
+> `optional` **resourceQuery**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16360](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16360)
 
@@ -260,7 +260,7 @@ Match and execute these rules when this rule is matched.
 
 ### scheme?
 
-> `optional` **scheme**: `string` | `RegExp` | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
+> `optional` **scheme**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditions` | [`RuleSetCondition`](../type-aliases/RuleSetCondition)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16375](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16375)
 
@@ -280,7 +280,7 @@ Flags a module as with or without side effects.
 
 ### test?
 
-> `optional` **test**: `string` | `RegExp` | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
+> `optional` **test**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | `RuleSetLogicalConditionsAbsolute` | [`RuleSetConditionAbsolute`](../type-aliases/RuleSetConditionAbsolute)\[] | (`value`) => `boolean`
 
 Defined in: [webpack/types.d.ts:16390](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L16390)
 

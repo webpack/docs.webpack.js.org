@@ -298,7 +298,7 @@ Defined in: [webpack/types.d.ts:11134](https://github.com/webpack/webpack/blob/e
 
 ### getIncomingConnections()
 
-> **getIncomingConnections**(`module`): `Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
+> **getIncomingConnections**(`module`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 Defined in: [webpack/types.d.ts:11108](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11108)
 
@@ -310,7 +310,7 @@ Defined in: [webpack/types.d.ts:11108](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 ***
 
@@ -442,7 +442,7 @@ Defined in: [webpack/types.d.ts:11106](https://github.com/webpack/webpack/blob/e
 
 ### getOutgoingConnections()
 
-> **getOutgoingConnections**(`module`): `Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
+> **getOutgoingConnections**(`module`): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 Defined in: [webpack/types.d.ts:11109](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11109)
 
@@ -454,7 +454,7 @@ Defined in: [webpack/types.d.ts:11109](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-`Iterable`<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`ModuleGraphConnection`](ModuleGraphConnection.md)>
 
 ***
 
@@ -930,7 +930,7 @@ Defined in: [webpack/types.d.ts:11161](https://github.com/webpack/webpack/blob/e
 
 ##### moduleMemCaches
 
-`Map`<[`Module`](Module.md), `WeakTupleMap`<`any`\[], `any`>>
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[`Module`](Module.md), `WeakTupleMap`<`any`\[], `any`>>
 
 #### Returns
 

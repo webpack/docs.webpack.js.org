@@ -6,7 +6,7 @@ title: ExternalItemFunctionPromise
 
 # Type Alias: ExternalItemFunctionPromise()
 
-> **ExternalItemFunctionPromise** = (`data`) => `Promise`<[`ExternalItemValue`](ExternalItemValue.md)>
+> **ExternalItemFunctionPromise** = (`data`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ExternalItemValue`](ExternalItemValue.md)>
 
 Defined in: [webpack/types.d.ts:20178](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L20178)
 
@@ -18,4 +18,4 @@ Defined in: [webpack/types.d.ts:20178](https://github.com/webpack/webpack/blob/e
 
 ## Returns
 
-`Promise`<[`ExternalItemValue`](ExternalItemValue.md)>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ExternalItemValue`](ExternalItemValue.md)>

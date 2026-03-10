@@ -26,7 +26,7 @@ Defined in: [webpack/types.d.ts:6979](https://github.com/webpack/webpack/blob/e3
 
 ##### content
 
-`string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+`string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 ##### stage
 
@@ -42,7 +42,7 @@ Defined in: [webpack/types.d.ts:6979](https://github.com/webpack/webpack/blob/e3
 
 ##### endContent?
 
-`string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+`string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 #### Returns
 
@@ -52,7 +52,7 @@ Defined in: [webpack/types.d.ts:6979](https://github.com/webpack/webpack/blob/e3
 
 ### content?
 
-> `optional` **content**: `string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> `optional` **content**: `string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:6986](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6986)
 
@@ -60,7 +60,7 @@ Defined in: [webpack/types.d.ts:6986](https://github.com/webpack/webpack/blob/e3
 
 ### endContent?
 
-> `optional` **endContent**: `string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> `optional` **endContent**: `string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:6990](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6990)
 
@@ -166,7 +166,7 @@ Defined in: [webpack/types.d.ts:6994](https://github.com/webpack/webpack/blob/e3
 
 ### getContent()
 
-> **getContent**(`context`): `string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **getContent**(`context`): `string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:6991](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6991)
 
@@ -178,13 +178,13 @@ Defined in: [webpack/types.d.ts:6991](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+`string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
 ### getEndContent()
 
-> **getEndContent**(`context`): `string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **getEndContent**(`context`): `string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:6992](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6992)
 
@@ -196,7 +196,7 @@ Defined in: [webpack/types.d.ts:6992](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`string` | [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+`string` | [`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
@@ -220,7 +220,7 @@ Defined in: [webpack/types.d.ts:6993](https://github.com/webpack/webpack/blob/e3
 
 ### addToSource()
 
-> `static` **addToSource**<`Context`>(`source`, `initFragments`, `context`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> `static` **addToSource**<`Context`>(`source`, `initFragments`, `context`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:6995](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6995)
 
@@ -234,7 +234,7 @@ Defined in: [webpack/types.d.ts:6995](https://github.com/webpack/webpack/blob/e3
 
 ##### source
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ##### initFragments
 
@@ -246,4 +246,4 @@ Defined in: [webpack/types.d.ts:6995](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)

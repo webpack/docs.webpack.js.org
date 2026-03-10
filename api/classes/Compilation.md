@@ -60,7 +60,7 @@ Defined in: [webpack/types.d.ts:2464](https://github.com/webpack/webpack/blob/e3
 
 ### assetsInfo
 
-> **assetsInfo**: `Map`<`string`, [`AssetInfo`](../type-aliases/AssetInfo)>
+> **assetsInfo**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, [`AssetInfo`](../type-aliases/AssetInfo)>
 
 Defined in: [webpack/types.d.ts:2465](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2465)
 
@@ -84,7 +84,7 @@ Defined in: [webpack/types.d.ts:2425](https://github.com/webpack/webpack/blob/e3
 
 ### buildDependencies
 
-> **buildDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **buildDependencies**: [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 Defined in: [webpack/types.d.ts:2484](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2484)
 
@@ -100,7 +100,7 @@ Defined in: [webpack/types.d.ts:2444](https://github.com/webpack/webpack/blob/e3
 
 ### buildTimeExecutedModules
 
-> **buildTimeExecutedModules**: `WeakSet`<[`Module`](Module.md)>
+> **buildTimeExecutedModules**: [`WeakSet`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:2478](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2478)
 
@@ -108,7 +108,7 @@ Defined in: [webpack/types.d.ts:2478](https://github.com/webpack/webpack/blob/e3
 
 ### builtModules
 
-> **builtModules**: `WeakSet`<[`Module`](Module.md)>
+> **builtModules**: [`WeakSet`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:2476](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2476)
 
@@ -124,7 +124,7 @@ Defined in: [webpack/types.d.ts:2468](https://github.com/webpack/webpack/blob/e3
 
 ### childrenCounters
 
-> **childrenCounters**: `Record`<`string`, `number`>
+> **childrenCounters**: [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `number`>
 
 Defined in: [webpack/types.d.ts:2472](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2472)
 
@@ -148,7 +148,7 @@ Defined in: [webpack/types.d.ts:2458](https://github.com/webpack/webpack/blob/e3
 
 ### chunks
 
-> **chunks**: `Set`<[`Chunk`](Chunk.md)>
+> **chunks**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:2457](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2457)
 
@@ -164,7 +164,7 @@ Defined in: [webpack/types.d.ts:2429](https://github.com/webpack/webpack/blob/e3
 
 ### codeGeneratedModules
 
-> **codeGeneratedModules**: `WeakSet`<[`Module`](Module.md)>
+> **codeGeneratedModules**: [`WeakSet`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:2477](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2477)
 
@@ -180,7 +180,7 @@ Defined in: [webpack/types.d.ts:2436](https://github.com/webpack/webpack/blob/e3
 
 ### comparedForEmitAssets
 
-> **comparedForEmitAssets**: `Set`<`string`>
+> **comparedForEmitAssets**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 Defined in: [webpack/types.d.ts:2480](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2480)
 
@@ -194,7 +194,7 @@ Defined in: [webpack/types.d.ts:2489](https://github.com/webpack/webpack/blob/e3
 
 #### ~~add()~~
 
-> **add**: (`item`) => [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **add**: (`item`) => [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 ##### Parameters
 
@@ -204,7 +204,7 @@ Defined in: [webpack/types.d.ts:2489](https://github.com/webpack/webpack/blob/e3
 
 ##### Returns
 
-[`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+[`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 #### Deprecated
 
@@ -228,7 +228,7 @@ Defined in: [webpack/types.d.ts:2421](https://github.com/webpack/webpack/blob/e3
 
 ### contextDependencies
 
-> **contextDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **contextDependencies**: [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 Defined in: [webpack/types.d.ts:2482](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2482)
 
@@ -236,7 +236,7 @@ Defined in: [webpack/types.d.ts:2482](https://github.com/webpack/webpack/blob/e3
 
 ### creatingModuleDuringBuild
 
-> **creatingModuleDuringBuild**: `WeakMap`<[`Module`](Module.md), `Set`<[`Module`](Module.md)>>
+> **creatingModuleDuringBuild**: [`WeakMap`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)<[`Module`](Module.md), [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Module`](Module.md)>>
 
 Defined in: [webpack/types.d.ts:2452](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2452)
 
@@ -248,7 +248,7 @@ Needed to detect build cycles.
 
 ### dependencyFactories
 
-> **dependencyFactories**: `Map`<`DependencyConstructor`, [`ModuleFactory`](ModuleFactory.md)>
+> **dependencyFactories**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`DependencyConstructor`, [`ModuleFactory`](ModuleFactory.md)>
 
 Defined in: [webpack/types.d.ts:2470](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2470)
 
@@ -264,7 +264,7 @@ Defined in: [webpack/types.d.ts:2471](https://github.com/webpack/webpack/blob/e3
 
 ### emittedAssets
 
-> **emittedAssets**: `Set`<`string`>
+> **emittedAssets**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 Defined in: [webpack/types.d.ts:2479](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2479)
 
@@ -280,7 +280,7 @@ Defined in: [webpack/types.d.ts:2414](https://github.com/webpack/webpack/blob/e3
 
 ### entries
 
-> **entries**: `Map`<`string`, `EntryData`>
+> **entries**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `EntryData`>
 
 Defined in: [webpack/types.d.ts:2453](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2453)
 
@@ -288,7 +288,7 @@ Defined in: [webpack/types.d.ts:2453](https://github.com/webpack/webpack/blob/e3
 
 ### entrypoints
 
-> **entrypoints**: `Map`<`string`, [`Entrypoint`](Entrypoint.md)>
+> **entrypoints**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, [`Entrypoint`](Entrypoint.md)>
 
 Defined in: [webpack/types.d.ts:2455](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2455)
 
@@ -296,7 +296,7 @@ Defined in: [webpack/types.d.ts:2455](https://github.com/webpack/webpack/blob/e3
 
 ### errors
 
-> **errors**: `Error`\[]
+> **errors**: [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]
 
 Defined in: [webpack/types.d.ts:2466](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2466)
 
@@ -312,7 +312,7 @@ Defined in: [webpack/types.d.ts:2439](https://github.com/webpack/webpack/blob/e3
 
 ### fileDependencies
 
-> **fileDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **fileDependencies**: [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 Defined in: [webpack/types.d.ts:2481](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2481)
 
@@ -352,7 +352,7 @@ Defined in: [webpack/types.d.ts:2658](https://github.com/webpack/webpack/blob/e3
 
 ### hooks
 
-> **hooks**: `Readonly`<{ `addEntry`: `SyncHook`<\[[`Dependency`](Dependency.md), [`EntryOptions`](../type-aliases/EntryOptions)]>; `additionalAssets`: `FakeHook`<`Pick`<`AsyncSeriesHook`<\[]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `additionalChunkAssets`: `FakeHook`<`Pick`<`AsyncSeriesHook`<\[`Set`<[`Chunk`](Chunk.md)>]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `additionalChunkRuntimeRequirements`: `SyncHook`<\[[`Chunk`](Chunk.md), `Set`<`string`>, `RuntimeRequirementsContext`]>; `additionalModuleRuntimeRequirements`: `SyncHook`<\[[`Module`](Module.md), `Set`<`string`>, `RuntimeRequirementsContext`]>; `additionalTreeRuntimeRequirements`: `SyncHook`<\[[`Chunk`](Chunk.md), `Set`<`string`>, `RuntimeRequirementsContext`]>; `afterChunks`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>]>; `afterCodeGeneration`: `SyncHook`<\[]>; `afterHash`: `SyncHook`<\[]>; `afterModuleHash`: `SyncHook`<\[]>; `afterOptimizeAssets`: `SyncHook`<\[`CompilationAssets`]>; `afterOptimizeChunkAssets`: `FakeHook`<`Pick`<`AsyncSeriesHook`<\[`Set`<[`Chunk`](Chunk.md)>]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `afterOptimizeChunkIds`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>]>; `afterOptimizeChunkModules`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, `Iterable`<[`Module`](Module.md)>]>; `afterOptimizeChunks`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, [`ChunkGroup`](ChunkGroup.md)\[]]>; `afterOptimizeDependencies`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>]>; `afterOptimizeModuleIds`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>]>; `afterOptimizeModules`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>]>; `afterOptimizeTree`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, `Iterable`<[`Module`](Module.md)>]>; `afterProcessAssets`: `SyncHook`<\[`CompilationAssets`]>; `afterRuntimeRequirements`: `SyncHook`<\[]>; `afterSeal`: `AsyncSeriesHook`<\[]>; `assetPath`: `SyncWaterfallHook`<\[`string`, [`PathData`](../interfaces/PathData), `undefined` | [`AssetInfo`](../type-aliases/AssetInfo)], `string`>; `beforeChunkAssets`: `SyncHook`<\[]>; `beforeChunkIds`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>]>; `beforeChunks`: `SyncHook`<\[]>; `beforeCodeGeneration`: `SyncHook`<\[]>; `beforeHash`: `SyncHook`<\[]>; `beforeModuleAssets`: `SyncHook`<\[]>; `beforeModuleHash`: `SyncHook`<\[]>; `beforeModuleIds`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>]>; `beforeRuntimeRequirements`: `SyncHook`<\[]>; `buildModule`: `SyncHook`<\[[`Module`](Module.md)]>; `childCompiler`: `SyncHook`<\[[`Compiler`](Compiler.md), `string`, `number`]>; `chunkAsset`: `SyncHook`<\[[`Chunk`](Chunk.md), `string`]>; `chunkHash`: `SyncHook`<\[[`Chunk`](Chunk.md), `Hash`, `ChunkHashContext`]>; `chunkIds`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>]>; `contentHash`: `SyncHook`<\[[`Chunk`](Chunk.md)]>; `dependencyReferencedExports`: `SyncWaterfallHook`<\[(`string`\[] | `ReferencedExport`)\[], [`Dependency`](Dependency.md), `RuntimeSpec`], (`string`\[] | `ReferencedExport`)\[]>; `executeModule`: `SyncHook`<\[`ExecuteModuleArgument`, `ExecuteModuleContext`]>; `failedEntry`: `SyncHook`<\[[`Dependency`](Dependency.md), [`EntryOptions`](../type-aliases/EntryOptions), `Error`]>; `failedModule`: `SyncHook`<\[[`Module`](Module.md), [`WebpackError`](WebpackError.md)]>; `finishModules`: `AsyncSeriesHook`<\[`Iterable`<[`Module`](Module.md)>]>; `finishRebuildingModule`: `AsyncSeriesHook`<\[[`Module`](Module.md)]>; `fullHash`: `SyncHook`<\[`Hash`]>; `log`: `SyncBailHook`<\[`string`, `LogEntry`], `boolean` | `void`>; `moduleAsset`: `SyncHook`<\[[`Module`](Module.md), `string`]>; `moduleIds`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>]>; `needAdditionalPass`: `SyncBailHook`<\[], `boolean` | `void`>; `needAdditionalSeal`: `SyncBailHook`<\[], `boolean` | `void`>; `optimize`: `SyncHook`<\[]>; `optimizeAssets`: `AsyncSeriesHook`<\[`CompilationAssets`], `ProcessAssetsAdditionalOptions`>; `optimizeChunkAssets`: `FakeHook`<`Pick`<`AsyncSeriesHook`<\[`Set`<[`Chunk`](Chunk.md)>]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `optimizeChunkIds`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>]>; `optimizeChunkModules`: `AsyncSeriesBailHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, `Iterable`<[`Module`](Module.md)>], `void`>; `optimizeChunks`: `SyncBailHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, [`ChunkGroup`](ChunkGroup.md)\[]], `boolean` | `void`>; `optimizeCodeGeneration`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>]>; `optimizeDependencies`: `SyncBailHook`<\[`Iterable`<[`Module`](Module.md)>], `boolean` | `void`>; `optimizeModuleIds`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>]>; `optimizeModules`: `SyncBailHook`<\[`Iterable`<[`Module`](Module.md)>], `boolean` | `void`>; `optimizeTree`: `AsyncSeriesHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, `Iterable`<[`Module`](Module.md)>]>; `prepareModuleExecution`: `AsyncParallelHook`<\[`ExecuteModuleArgument`, `ExecuteModuleContext`]>; `processAdditionalAssets`: `AsyncSeriesHook`<\[`CompilationAssets`]>; `processAssets`: `AsyncSeriesHook`<\[`CompilationAssets`], `ProcessAssetsAdditionalOptions`>; `processErrors`: `SyncWaterfallHook`<\[`Error`\[]], `Error`\[]>; `processWarnings`: `SyncWaterfallHook`<\[`Error`\[]], `Error`\[]>; `rebuildModule`: `SyncHook`<\[[`Module`](Module.md)]>; `record`: `SyncHook`<\[`Compilation`, `Records`]>; `recordChunks`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, `Records`]>; `recordHash`: `SyncHook`<\[`Records`]>; `recordModules`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>, `Records`]>; `renderManifest`: `SyncWaterfallHook`<\[[`RenderManifestEntry`](../type-aliases/RenderManifestEntry)\[], [`RenderManifestOptions`](../interfaces/RenderManifestOptions)], [`RenderManifestEntry`](../type-aliases/RenderManifestEntry)\[]>; `reviveChunks`: `SyncHook`<\[`Iterable`<[`Chunk`](Chunk.md)>, `Records`]>; `reviveModules`: `SyncHook`<\[`Iterable`<[`Module`](Module.md)>, `Records`]>; `runtimeModule`: `SyncHook`<\[[`RuntimeModule`](RuntimeModule.md), [`Chunk`](Chunk.md)]>; `runtimeRequirementInChunk`: `HookMap`<`SyncBailHook`<\[[`Chunk`](Chunk.md), `Set`<`string`>, `RuntimeRequirementsContext`], `void`>>; `runtimeRequirementInModule`: `HookMap`<`SyncBailHook`<\[[`Module`](Module.md), `Set`<`string`>, `RuntimeRequirementsContext`], `void`>>; `runtimeRequirementInTree`: `HookMap`<`SyncBailHook`<\[[`Chunk`](Chunk.md), `Set`<`string`>, `RuntimeRequirementsContext`], `void`>>; `seal`: `SyncHook`<\[]>; `shouldGenerateChunkAssets`: `SyncBailHook`<\[], `boolean` | `void`>; `shouldRecord`: `SyncBailHook`<\[], `boolean` | `void`>; `statsFactory`: `SyncHook`<\[`StatsFactory`, `NormalizedStatsOptions`]>; `statsNormalize`: `SyncHook`<\[`Partial`<`NormalizedStatsOptions`>, `CreateStatsOptionsContext`]>; `statsPreset`: `HookMap`<`SyncHook`<\[`Partial`<`NormalizedStatsOptions`>, `CreateStatsOptionsContext`]>>; `statsPrinter`: `SyncHook`<\[`StatsPrinter`, `NormalizedStatsOptions`]>; `stillValidModule`: `SyncHook`<\[[`Module`](Module.md)]>; `succeedEntry`: `SyncHook`<\[[`Dependency`](Dependency.md), [`EntryOptions`](../type-aliases/EntryOptions), [`Module`](Module.md)]>; `succeedModule`: `SyncHook`<\[[`Module`](Module.md)]>; `unseal`: `SyncHook`<\[]>; get `normalModuleLoader`(): `SyncHook`<\[`AnyLoaderContext`, [`NormalModule`](NormalModule.md)]>; }>
+> **hooks**: [`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<{ `addEntry`: `SyncHook`<\[[`Dependency`](Dependency.md), [`EntryOptions`](../type-aliases/EntryOptions)]>; `additionalAssets`: `FakeHook`<[`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)<`AsyncSeriesHook`<\[]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `additionalChunkAssets`: `FakeHook`<[`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)<`AsyncSeriesHook`<\[[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Chunk`](Chunk.md)>]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `additionalChunkRuntimeRequirements`: `SyncHook`<\[[`Chunk`](Chunk.md), [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>, `RuntimeRequirementsContext`]>; `additionalModuleRuntimeRequirements`: `SyncHook`<\[[`Module`](Module.md), [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>, `RuntimeRequirementsContext`]>; `additionalTreeRuntimeRequirements`: `SyncHook`<\[[`Chunk`](Chunk.md), [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>, `RuntimeRequirementsContext`]>; `afterChunks`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>]>; `afterCodeGeneration`: `SyncHook`<\[]>; `afterHash`: `SyncHook`<\[]>; `afterModuleHash`: `SyncHook`<\[]>; `afterOptimizeAssets`: `SyncHook`<\[`CompilationAssets`]>; `afterOptimizeChunkAssets`: `FakeHook`<[`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)<`AsyncSeriesHook`<\[[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Chunk`](Chunk.md)>]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `afterOptimizeChunkIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>]>; `afterOptimizeChunkModules`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `afterOptimizeChunks`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, [`ChunkGroup`](ChunkGroup.md)\[]]>; `afterOptimizeDependencies`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `afterOptimizeModuleIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `afterOptimizeModules`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `afterOptimizeTree`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `afterProcessAssets`: `SyncHook`<\[`CompilationAssets`]>; `afterRuntimeRequirements`: `SyncHook`<\[]>; `afterSeal`: `AsyncSeriesHook`<\[]>; `assetPath`: `SyncWaterfallHook`<\[`string`, [`PathData`](../interfaces/PathData), `undefined` | [`AssetInfo`](../type-aliases/AssetInfo)], `string`>; `beforeChunkAssets`: `SyncHook`<\[]>; `beforeChunkIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>]>; `beforeChunks`: `SyncHook`<\[]>; `beforeCodeGeneration`: `SyncHook`<\[]>; `beforeHash`: `SyncHook`<\[]>; `beforeModuleAssets`: `SyncHook`<\[]>; `beforeModuleHash`: `SyncHook`<\[]>; `beforeModuleIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `beforeRuntimeRequirements`: `SyncHook`<\[]>; `buildModule`: `SyncHook`<\[[`Module`](Module.md)]>; `childCompiler`: `SyncHook`<\[[`Compiler`](Compiler.md), `string`, `number`]>; `chunkAsset`: `SyncHook`<\[[`Chunk`](Chunk.md), `string`]>; `chunkHash`: `SyncHook`<\[[`Chunk`](Chunk.md), `Hash`, `ChunkHashContext`]>; `chunkIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>]>; `contentHash`: `SyncHook`<\[[`Chunk`](Chunk.md)]>; `dependencyReferencedExports`: `SyncWaterfallHook`<\[(`string`\[] | `ReferencedExport`)\[], [`Dependency`](Dependency.md), `RuntimeSpec`], (`string`\[] | `ReferencedExport`)\[]>; `executeModule`: `SyncHook`<\[`ExecuteModuleArgument`, `ExecuteModuleContext`]>; `failedEntry`: `SyncHook`<\[[`Dependency`](Dependency.md), [`EntryOptions`](../type-aliases/EntryOptions), [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)]>; `failedModule`: `SyncHook`<\[[`Module`](Module.md), [`WebpackError`](WebpackError.md)]>; `finishModules`: `AsyncSeriesHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `finishRebuildingModule`: `AsyncSeriesHook`<\[[`Module`](Module.md)]>; `fullHash`: `SyncHook`<\[`Hash`]>; `log`: `SyncBailHook`<\[`string`, `LogEntry`], `boolean` | `void`>; `moduleAsset`: `SyncHook`<\[[`Module`](Module.md), `string`]>; `moduleIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `needAdditionalPass`: `SyncBailHook`<\[], `boolean` | `void`>; `needAdditionalSeal`: `SyncBailHook`<\[], `boolean` | `void`>; `optimize`: `SyncHook`<\[]>; `optimizeAssets`: `AsyncSeriesHook`<\[`CompilationAssets`], `ProcessAssetsAdditionalOptions`>; `optimizeChunkAssets`: `FakeHook`<[`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)<`AsyncSeriesHook`<\[[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Chunk`](Chunk.md)>]>, `"name"` | `"tap"` | `"tapAsync"` | `"tapPromise"`>>; `optimizeChunkIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>]>; `optimizeChunkModules`: `AsyncSeriesBailHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>], `void`>; `optimizeChunks`: `SyncBailHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, [`ChunkGroup`](ChunkGroup.md)\[]], `boolean` | `void`>; `optimizeCodeGeneration`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `optimizeDependencies`: `SyncBailHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>], `boolean` | `void`>; `optimizeModuleIds`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `optimizeModules`: `SyncBailHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>], `boolean` | `void`>; `optimizeTree`: `AsyncSeriesHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>]>; `prepareModuleExecution`: `AsyncParallelHook`<\[`ExecuteModuleArgument`, `ExecuteModuleContext`]>; `processAdditionalAssets`: `AsyncSeriesHook`<\[`CompilationAssets`]>; `processAssets`: `AsyncSeriesHook`<\[`CompilationAssets`], `ProcessAssetsAdditionalOptions`>; `processErrors`: `SyncWaterfallHook`<\[[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]], [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]>; `processWarnings`: `SyncWaterfallHook`<\[[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]], [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]>; `rebuildModule`: `SyncHook`<\[[`Module`](Module.md)]>; `record`: `SyncHook`<\[`Compilation`, `Records`]>; `recordChunks`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, `Records`]>; `recordHash`: `SyncHook`<\[`Records`]>; `recordModules`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>, `Records`]>; `renderManifest`: `SyncWaterfallHook`<\[[`RenderManifestEntry`](../type-aliases/RenderManifestEntry)\[], [`RenderManifestOptions`](../interfaces/RenderManifestOptions)], [`RenderManifestEntry`](../type-aliases/RenderManifestEntry)\[]>; `reviveChunks`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>, `Records`]>; `reviveModules`: `SyncHook`<\[[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>, `Records`]>; `runtimeModule`: `SyncHook`<\[[`RuntimeModule`](RuntimeModule.md), [`Chunk`](Chunk.md)]>; `runtimeRequirementInChunk`: `HookMap`<`SyncBailHook`<\[[`Chunk`](Chunk.md), [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>, `RuntimeRequirementsContext`], `void`>>; `runtimeRequirementInModule`: `HookMap`<`SyncBailHook`<\[[`Module`](Module.md), [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>, `RuntimeRequirementsContext`], `void`>>; `runtimeRequirementInTree`: `HookMap`<`SyncBailHook`<\[[`Chunk`](Chunk.md), [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>, `RuntimeRequirementsContext`], `void`>>; `seal`: `SyncHook`<\[]>; `shouldGenerateChunkAssets`: `SyncBailHook`<\[], `boolean` | `void`>; `shouldRecord`: `SyncBailHook`<\[], `boolean` | `void`>; `statsFactory`: `SyncHook`<\[`StatsFactory`, `NormalizedStatsOptions`]>; `statsNormalize`: `SyncHook`<\[[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`NormalizedStatsOptions`>, `CreateStatsOptionsContext`]>; `statsPreset`: `HookMap`<`SyncHook`<\[[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`NormalizedStatsOptions`>, `CreateStatsOptionsContext`]>>; `statsPrinter`: `SyncHook`<\[`StatsPrinter`, `NormalizedStatsOptions`]>; `stillValidModule`: `SyncHook`<\[[`Module`](Module.md)]>; `succeedEntry`: `SyncHook`<\[[`Dependency`](Dependency.md), [`EntryOptions`](../type-aliases/EntryOptions), [`Module`](Module.md)]>; `succeedModule`: `SyncHook`<\[[`Module`](Module.md)]>; `unseal`: `SyncHook`<\[]>; get `normalModuleLoader`(): `SyncHook`<\[`AnyLoaderContext`, [`NormalModule`](NormalModule.md)]>; }>
 
 Defined in: [webpack/types.d.ts:2238](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2238)
 
@@ -376,7 +376,7 @@ Defined in: [webpack/types.d.ts:2422](https://github.com/webpack/webpack/blob/e3
 
 ### logging
 
-> **logging**: `Map`<`string`, `LogEntry`\[]>
+> **logging**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `LogEntry`\[]>
 
 Defined in: [webpack/types.d.ts:2469](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2469)
 
@@ -392,7 +392,7 @@ Defined in: [webpack/types.d.ts:2428](https://github.com/webpack/webpack/blob/e3
 
 ### missingDependencies
 
-> **missingDependencies**: [`LazySet`](../webpack/namespaces/export=/namespaces/util/classes/LazySet)<`string`>
+> **missingDependencies**: [`LazySet`](../webpack/namespaces/util/classes/LazySet)<`string`>
 
 Defined in: [webpack/types.d.ts:2483](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2483)
 
@@ -408,7 +408,7 @@ Defined in: [webpack/types.d.ts:2434](https://github.com/webpack/webpack/blob/e3
 
 ### moduleMemCaches?
 
-> `optional` **moduleMemCaches**: `Map`<[`Module`](Module.md), `WeakTupleMap`<`any`\[], `any`>>
+> `optional` **moduleMemCaches**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[`Module`](Module.md), `WeakTupleMap`<`any`\[], `any`>>
 
 Defined in: [webpack/types.d.ts:2432](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2432)
 
@@ -416,7 +416,7 @@ Defined in: [webpack/types.d.ts:2432](https://github.com/webpack/webpack/blob/e3
 
 ### moduleMemCaches2?
 
-> `optional` **moduleMemCaches2**: `Map`<[`Module`](Module.md), `WeakTupleMap`<`any`\[], `any`>>
+> `optional` **moduleMemCaches2**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[`Module`](Module.md), `WeakTupleMap`<`any`\[], `any`>>
 
 Defined in: [webpack/types.d.ts:2433](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2433)
 
@@ -424,7 +424,7 @@ Defined in: [webpack/types.d.ts:2433](https://github.com/webpack/webpack/blob/e3
 
 ### modules
 
-> **modules**: `Set`<[`Module`](Module.md)>
+> **modules**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Module`](Module.md)>
 
 Defined in: [webpack/types.d.ts:2461](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2461)
 
@@ -448,7 +448,7 @@ Defined in: [webpack/types.d.ts:2412](https://github.com/webpack/webpack/blob/e3
 
 ### namedChunkGroups
 
-> **namedChunkGroups**: `Map`<`string`, [`ChunkGroup`](ChunkGroup.md)>
+> **namedChunkGroups**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, [`ChunkGroup`](ChunkGroup.md)>
 
 Defined in: [webpack/types.d.ts:2459](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2459)
 
@@ -456,7 +456,7 @@ Defined in: [webpack/types.d.ts:2459](https://github.com/webpack/webpack/blob/e3
 
 ### namedChunks
 
-> **namedChunks**: `Map`<`string`, [`Chunk`](Chunk.md)>
+> **namedChunks**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, [`Chunk`](Chunk.md)>
 
 Defined in: [webpack/types.d.ts:2460](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2460)
 
@@ -560,7 +560,7 @@ Defined in: [webpack/types.d.ts:2413](https://github.com/webpack/webpack/blob/e3
 
 ### usedChunkIds
 
-> **usedChunkIds**: `Set`<`number`>
+> **usedChunkIds**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`number`>
 
 Defined in: [webpack/types.d.ts:2473](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2473)
 
@@ -568,7 +568,7 @@ Defined in: [webpack/types.d.ts:2473](https://github.com/webpack/webpack/blob/e3
 
 ### usedModuleIds
 
-> **usedModuleIds**: `Set`<`number`>
+> **usedModuleIds**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`number`>
 
 Defined in: [webpack/types.d.ts:2474](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2474)
 
@@ -576,7 +576,7 @@ Defined in: [webpack/types.d.ts:2474](https://github.com/webpack/webpack/blob/e3
 
 ### valueCacheVersions
 
-> **valueCacheVersions**: `Map`<`string`, `ValueCacheVersion`>
+> **valueCacheVersions**: [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<`string`, `ValueCacheVersion`>
 
 Defined in: [webpack/types.d.ts:2419](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2419)
 
@@ -584,7 +584,7 @@ Defined in: [webpack/types.d.ts:2419](https://github.com/webpack/webpack/blob/e3
 
 ### warnings
 
-> **warnings**: `Error`\[]
+> **warnings**: [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]
 
 Defined in: [webpack/types.d.ts:2467](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2467)
 
@@ -955,7 +955,7 @@ context string path
 
 ###### contextInfo?
 
-`Partial`<`ModuleFactoryCreateDataContextInfo`>
+[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`ModuleFactoryCreateDataContextInfo`>
 
 additional context info for the root module
 
@@ -1031,7 +1031,7 @@ Defined in: [webpack/types.d.ts:2641](https://github.com/webpack/webpack/blob/e3
 
 ##### modules
 
-`Set`<[`Module`](Module.md)>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<[`Module`](Module.md)>
 
 #### Returns
 
@@ -1135,7 +1135,7 @@ from parent (or top level compiler) and creates a child Compilation
 
 ##### outputOptions?
 
-`Partial`<`OutputNormalized`>
+[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`OutputNormalized`>
 
 ##### plugins?
 
@@ -1291,7 +1291,7 @@ Defined in: [webpack/types.d.ts:2659](https://github.com/webpack/webpack/blob/e3
 
 ##### source
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ##### assetInfo?
 
@@ -1413,7 +1413,7 @@ Defined in: [webpack/types.d.ts:2579](https://github.com/webpack/webpack/blob/e3
 
 ### getAsset()
 
-> **getAsset**(`name`): `Readonly`<[`Asset`](../interfaces/Asset)>
+> **getAsset**(`name`): [`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<[`Asset`](../interfaces/Asset)>
 
 Defined in: [webpack/types.d.ts:2670](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2670)
 
@@ -1425,7 +1425,7 @@ Defined in: [webpack/types.d.ts:2670](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Readonly`<[`Asset`](../interfaces/Asset)>
+[`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<[`Asset`](../interfaces/Asset)>
 
 ***
 
@@ -1475,13 +1475,13 @@ Defined in: [webpack/types.d.ts:2681](https://github.com/webpack/webpack/blob/e3
 
 ### getAssets()
 
-> **getAssets**(): `Readonly`<[`Asset`](../interfaces/Asset)>\[]
+> **getAssets**(): [`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<[`Asset`](../interfaces/Asset)>\[]
 
 Defined in: [webpack/types.d.ts:2669](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2669)
 
 #### Returns
 
-`Readonly`<[`Asset`](../interfaces/Asset)>\[]
+[`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<[`Asset`](../interfaces/Asset)>\[]
 
 ***
 
@@ -1527,13 +1527,13 @@ Defined in: [webpack/types.d.ts:2642](https://github.com/webpack/webpack/blob/e3
 
 ### getErrors()
 
-> **getErrors**(): `Error`\[]
+> **getErrors**(): [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]
 
 Defined in: [webpack/types.d.ts:2686](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2686)
 
 #### Returns
 
-`Error`\[]
+[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]
 
 ***
 
@@ -1651,13 +1651,13 @@ Defined in: [webpack/types.d.ts:2490](https://github.com/webpack/webpack/blob/e3
 
 ### getWarnings()
 
-> **getWarnings**(): `Error`\[]
+> **getWarnings**(): [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]
 
 Defined in: [webpack/types.d.ts:2685](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L2685)
 
 #### Returns
 
-`Error`\[]
+[`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)\[]
 
 ***
 
@@ -1763,13 +1763,13 @@ the chunk graph
 
 ###### chunkGraphEntries?
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 chunkGraphEntries
 
 ###### chunks?
 
-`Iterable`<[`Chunk`](Chunk.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Chunk`](Chunk.md)>
 
 chunks
 
@@ -1781,7 +1781,7 @@ codeGenerationResults
 
 ###### modules?
 
-`Iterable`<[`Module`](Module.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`Module`](Module.md)>
 
 modules
 
@@ -1969,7 +1969,7 @@ Defined in: [webpack/types.d.ts:2660](https://github.com/webpack/webpack/blob/e3
 
 ##### newSourceOrFunction
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source) | (`source`) => [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source) | (`source`) => [`Source`](../webpack/namespaces/sources/classes/Source)
 
 ##### assetInfoUpdateOrFunction?
 

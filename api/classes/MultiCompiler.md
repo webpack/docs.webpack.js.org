@@ -20,7 +20,7 @@ Defined in: [webpack/types.d.ts:11643](https://github.com/webpack/webpack/blob/e
 
 ##### compilers
 
-`Record`<`string`, [`Compiler`](Compiler.md)> | [`Compiler`](Compiler.md)\[]
+[`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, [`Compiler`](Compiler.md)> | [`Compiler`](Compiler.md)\[]
 
 ##### options
 
@@ -42,7 +42,7 @@ Defined in: [webpack/types.d.ts:11657](https://github.com/webpack/webpack/blob/e
 
 ### dependencies
 
-> **dependencies**: `WeakMap`<[`Compiler`](Compiler.md), `string`\[]>
+> **dependencies**: [`WeakMap`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)<[`Compiler`](Compiler.md), `string`\[]>
 
 Defined in: [webpack/types.d.ts:11658](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11658)
 
@@ -50,7 +50,7 @@ Defined in: [webpack/types.d.ts:11658](https://github.com/webpack/webpack/blob/e
 
 ### hooks
 
-> **hooks**: `Readonly`<{ `done`: `SyncHook`<\[[`MultiStats`](MultiStats.md)]>; `infrastructureLog`: `MultiHook`<`SyncBailHook`<\[`string`, `string`, `undefined` | `any`\[]], `true` | `void`>>; `invalid`: `MultiHook`<`SyncHook`<\[`null` | `string`, `number`]>>; `run`: `MultiHook`<`AsyncSeriesHook`<\[[`Compiler`](Compiler.md)]>>; `watchClose`: `SyncHook`<\[]>; `watchRun`: `MultiHook`<`AsyncSeriesHook`<\[[`Compiler`](Compiler.md)]>>; }>
+> **hooks**: [`Readonly`](https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype)<{ `done`: `SyncHook`<\[[`MultiStats`](MultiStats.md)]>; `infrastructureLog`: `MultiHook`<`SyncBailHook`<\[`string`, `string`, `undefined` | `any`\[]], `true` | `void`>>; `invalid`: `MultiHook`<`SyncHook`<\[`null` | `string`, `number`]>>; `run`: `MultiHook`<`AsyncSeriesHook`<\[[`Compiler`](Compiler.md)]>>; `watchClose`: `SyncHook`<\[]>; `watchRun`: `MultiHook`<`AsyncSeriesHook`<\[[`Compiler`](Compiler.md)]>>; }>
 
 Defined in: [webpack/types.d.ts:11647](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11647)
 

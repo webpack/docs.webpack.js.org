@@ -20,7 +20,7 @@ Defined in: [webpack/types.d.ts:3114](https://github.com/webpack/webpack/blob/e3
 
 ##### modulesMap
 
-`Map`<[`Module`](Module.md), `ModuleInfo`> | `ModuleInfo`\[]
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[`Module`](Module.md), `ModuleInfo`> | `ModuleInfo`\[]
 
 ##### currentModule
 
@@ -28,7 +28,7 @@ Defined in: [webpack/types.d.ts:3114](https://github.com/webpack/webpack/blob/e3
 
 ##### usedNames
 
-`Set`<`string`>
+[`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 #### Returns
 
@@ -38,7 +38,7 @@ Defined in: [webpack/types.d.ts:3114](https://github.com/webpack/webpack/blob/e3
 
 ### usedNames
 
-> **usedNames**: `Set`<`string`>
+> **usedNames**: [`Set`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)<`string`>
 
 Defined in: [webpack/types.d.ts:3119](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3119)
 
@@ -74,7 +74,7 @@ Defined in: [webpack/types.d.ts:3126](https://github.com/webpack/webpack/blob/e3
 
 ##### \_\_namedParameters
 
-`Partial`<`ModuleReferenceOptions`>
+[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)<`ModuleReferenceOptions`>
 
 #### Returns
 

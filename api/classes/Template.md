@@ -170,7 +170,7 @@ Defined in: [webpack/types.d.ts:18623](https://github.com/webpack/webpack/blob/e
 
 ### renderChunkModules()
 
-> `static` **renderChunkModules**(`renderContext`, `modules`, `renderModule`, `prefix?`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> `static` **renderChunkModules**(`renderContext`, `modules`, `renderModule`, `prefix?`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:18626](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18626)
 
@@ -186,7 +186,7 @@ Defined in: [webpack/types.d.ts:18626](https://github.com/webpack/webpack/blob/e
 
 ##### renderModule
 
-(`module`, `renderInArray?`) => [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+(`module`, `renderInArray?`) => [`Source`](../webpack/namespaces/sources/classes/Source)
 
 ##### prefix?
 
@@ -194,13 +194,13 @@ Defined in: [webpack/types.d.ts:18626](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
 ### renderChunkRuntimeModules()
 
-> `static` **renderChunkRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> `static` **renderChunkRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:18638](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18638)
 
@@ -216,13 +216,13 @@ Defined in: [webpack/types.d.ts:18638](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
 ### renderRuntimeModules()
 
-> `static` **renderRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> `static` **renderRuntimeModules**(`runtimeModules`, `renderContext`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:18632](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L18632)
 
@@ -238,7 +238,7 @@ Defined in: [webpack/types.d.ts:18632](https://github.com/webpack/webpack/blob/e
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 

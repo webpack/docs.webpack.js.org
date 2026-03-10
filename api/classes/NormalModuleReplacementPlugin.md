@@ -22,7 +22,7 @@ Create an instance of the plugin
 
 ##### resourceRegExp
 
-`RegExp`
+[`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 ##### newResource
 
@@ -44,7 +44,7 @@ Defined in: [webpack/types.d.ts:12396](https://github.com/webpack/webpack/blob/e
 
 ### resourceRegExp
 
-> **resourceRegExp**: `RegExp`
+> **resourceRegExp**: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 Defined in: [webpack/types.d.ts:12395](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L12395)
 

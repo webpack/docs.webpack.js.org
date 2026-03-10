@@ -24,7 +24,7 @@ Defined in: [webpack/types.d.ts:6312](https://github.com/webpack/webpack/blob/e3
 
 ### generate()
 
-> **generate**(`module`, `__namedParameters`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **generate**(`module`, `__namedParameters`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:6315](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6315)
 
@@ -40,7 +40,7 @@ Defined in: [webpack/types.d.ts:6315](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 

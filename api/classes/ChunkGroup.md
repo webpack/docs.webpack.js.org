@@ -129,13 +129,13 @@ Defined in: [webpack/types.d.ts:1653](https://github.com/webpack/webpack/blob/e3
 
 #### Get Signature
 
-> **get** **blocksIterable**(): `Iterable`<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)>
+> **get** **blocksIterable**(): [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)>
 
 Defined in: [webpack/types.d.ts:1657](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1657)
 
 ##### Returns
 
-`Iterable`<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)>
+[`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)<[`AsyncDependenciesBlock`](AsyncDependenciesBlock.md)>
 
 ***
 
@@ -380,7 +380,7 @@ Defined in: [webpack/types.d.ts:1642](https://github.com/webpack/webpack/blob/e3
 
 ### getChildrenByOrders()
 
-> **getChildrenByOrders**(`moduleGraph`, `chunkGraph`): `Record`<`string`, `ChunkGroup`\[]>
+> **getChildrenByOrders**(`moduleGraph`, `chunkGraph`): [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `ChunkGroup`\[]>
 
 Defined in: [webpack/types.d.ts:1673](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L1673)
 
@@ -396,7 +396,7 @@ Defined in: [webpack/types.d.ts:1673](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-`Record`<`string`, `ChunkGroup`\[]>
+[`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)<`string`, `ChunkGroup`\[]>
 
 ***
 

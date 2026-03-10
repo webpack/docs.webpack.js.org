@@ -102,7 +102,7 @@ Defined in: [webpack/types.d.ts:7151](https://github.com/webpack/webpack/blob/e3
 
 ### renderChunk()
 
-> **renderChunk**(`renderContext`, `hooks`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **renderChunk**(`renderContext`, `hooks`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:7137](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7137)
 
@@ -118,13 +118,13 @@ Defined in: [webpack/types.d.ts:7137](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
 ### renderMain()
 
-> **renderMain**(`renderContext`, `hooks`, `compilation`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **renderMain**(`renderContext`, `hooks`, `compilation`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:7141](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7141)
 
@@ -144,13 +144,13 @@ Defined in: [webpack/types.d.ts:7141](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 
 ### renderModule()
 
-> **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+> **renderModule**(`module`, `renderContext`, `hooks`): [`Source`](../webpack/namespaces/sources/classes/Source)
 
 Defined in: [webpack/types.d.ts:7132](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L7132)
 
@@ -170,7 +170,7 @@ Defined in: [webpack/types.d.ts:7132](https://github.com/webpack/webpack/blob/e3
 
 #### Returns
 
-[`Source`](../webpack/namespaces/export=/namespaces/sources/classes/Source)
+[`Source`](../webpack/namespaces/sources/classes/Source)
 
 ***
 

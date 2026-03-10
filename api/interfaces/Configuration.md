@@ -84,7 +84,7 @@ Enable and configure the Dotenv plugin to load environment variables from .env f
 
 ### entry?
 
-> `optional` **entry**: `string` | `string`\[] | [`EntryObject`](EntryObject.md) | () => `string` | `string`\[] | [`EntryObject`](EntryObject.md) | `Promise`<`EntryStatic`>
+> `optional` **entry**: `string` | `string`\[] | [`EntryObject`](EntryObject.md) | () => `string` | `string`\[] | [`EntryObject`](EntryObject.md) | [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<`EntryStatic`>
 
 Defined in: [webpack/types.d.ts:3192](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3192)
 
@@ -114,7 +114,7 @@ Extend configuration from another configuration (only works when using webpack-c
 
 ### externals?
 
-> `optional` **externals**: `string` | `RegExp` | [`ExternalItemObjectKnown`](ExternalItemObjectKnown.md) & [`ExternalItemObjectUnknown`](ExternalItemObjectUnknown.md) | (`data`, `callback`) => `void` | (`data`) => `Promise`<[`ExternalItemValue`](../type-aliases/ExternalItemValue)> | [`ExternalItem`](../type-aliases/ExternalItem)\[]
+> `optional` **externals**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | [`ExternalItemObjectKnown`](ExternalItemObjectKnown.md) & [`ExternalItemObjectUnknown`](ExternalItemObjectUnknown.md) | (`data`, `callback`) => `void` | (`data`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ExternalItemValue`](../type-aliases/ExternalItemValue)> | [`ExternalItem`](../type-aliases/ExternalItem)\[]
 
 Defined in: [webpack/types.d.ts:3211](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3211)
 
@@ -144,7 +144,7 @@ Specifies the default type of externals ('amd\*', 'umd\*', 'system' and 'jsonp' 
 
 ### ignoreWarnings?
 
-> `optional` **ignoreWarnings**: (`RegExp` | { `file?`: `RegExp`; `message?`: `RegExp`; `module?`: `RegExp`; } | (`warning`, `compilation`) => `boolean`)\[]
+> `optional` **ignoreWarnings**: ([`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | { `file?`: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp); `message?`: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp); `module?`: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp); } | (`warning`, `compilation`) => `boolean`)\[]
 
 Defined in: [webpack/types.d.ts:3263](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L3263)
 

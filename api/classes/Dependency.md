@@ -10,8 +10,8 @@ Defined in: [webpack/types.d.ts:4134](https://github.com/webpack/webpack/blob/e3
 
 ## Extended by
 
-* [`ModuleDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/ModuleDependency)
-* [`NullDependency`](../webpack/namespaces/export=/namespaces/dependencies/classes/NullDependency)
+* [`ModuleDependency`](../webpack/namespaces/dependencies/classes/ModuleDependency)
+* [`NullDependency`](../webpack/namespaces/dependencies/classes/NullDependency)
 
 ## Constructors
 

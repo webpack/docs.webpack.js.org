@@ -44,7 +44,7 @@ Enable recursive directory lookup for full dynamic dependencies. Deprecated: Thi
 
 ### exprContextRegExp?
 
-> `optional` **exprContextRegExp**: `boolean` | `RegExp`
+> `optional` **exprContextRegExp**: `boolean` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 Defined in: [webpack/types.d.ts:11275](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11275)
 
@@ -74,7 +74,7 @@ Specify options for each generator.
 
 ### noParse?
 
-> `optional` **noParse**: `string` | `RegExp` | (`content`) => `boolean` | (`string` | `RegExp` | (`content`) => `boolean`)\[]
+> `optional` **noParse**: `string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | (`content`) => `boolean` | (`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | (`content`) => `boolean`)\[]
 
 Defined in: [webpack/types.d.ts:11290](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11290)
 
@@ -144,7 +144,7 @@ Enable recursive directory lookup when using the require function in a not stati
 
 ### unknownContextRegExp?
 
-> `optional` **unknownContextRegExp**: `boolean` | `RegExp`
+> `optional` **unknownContextRegExp**: `boolean` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 Defined in: [webpack/types.d.ts:11329](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11329)
 
@@ -194,7 +194,7 @@ Enable recursive directory lookup for partial dynamic dependencies. Deprecated: 
 
 ### wrappedContextRegExp?
 
-> `optional` **wrappedContextRegExp**: `RegExp`
+> `optional` **wrappedContextRegExp**: [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 Defined in: [webpack/types.d.ts:11354](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L11354)
 

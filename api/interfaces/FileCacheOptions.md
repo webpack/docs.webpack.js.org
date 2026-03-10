@@ -108,7 +108,7 @@ Time in ms after which idle period the initial cache storing should happen.
 
 ### immutablePaths?
 
-> `optional` **immutablePaths**: (`string` | `RegExp`)\[]
+> `optional` **immutablePaths**: (`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp))\[]
 
 Defined in: [webpack/types.d.ts:6039](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6039)
 
@@ -118,7 +118,7 @@ List of paths that are managed by a package manager and contain a version or has
 
 ### managedPaths?
 
-> `optional` **managedPaths**: (`string` | `RegExp`)\[]
+> `optional` **managedPaths**: (`string` | [`RegExp`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp))\[]
 
 Defined in: [webpack/types.d.ts:6044](https://github.com/webpack/webpack/blob/e3298f1e7776ed66e31f70c8bc1bb2ac73f2c024/types.d.ts#L6044)
 
