@@ -10,12 +10,22 @@ This guide covers how to install webpack in your project.
 ## Prerequisites
 
 <Note>
-webpack requires **Node.js version 10.13.0 or higher**. Check your Node.js version with `node -v`.
+webpack requires **Node.js version 14.15.0 or higher**. Check your Node.js version with `node -v`.
 </Note>
 
-Before installing webpack, make sure you have:
-- Node.js installed (version 10.13.0 or higher)
-- npm, yarn, or pnpm package manager
+Before installing webpack, ensure the following tools are installed:
+
+- **Node.js** (version 14.15.0 or higher)
+- A package manager such as **npm**, **yarn**, or **pnpm**
+
+<Tip>
+If you're using Node.js 16.10 or later, you can enable **Corepack** to manage package managers like yarn and pnpm:
+
+```bash
+corepack enable
+```
+</Tip>
+
 
 ## Local Installation (Recommended)
 
@@ -59,7 +69,7 @@ For most projects, we recommend installing webpack locally. This allows differen
     npx webpack --version
     ```
     
-    You should see the webpack version number (currently 5.105.4).
+    You should see the webpack version number .
   </Step>
 </Steps>
 
@@ -107,7 +117,7 @@ pnpm add -D webpack@5.105.4 webpack-cli
 
 ## Installing Loaders and Plugins
 
-Webpack's power comes from its ecosystem of loaders and plugins. Install them as dev dependencies:
+Webpack's power comes from its ecosystem of loaders and plugins. Install them as development dependencies:
 
 ```bash
 # Example: Installing loaders for CSS and TypeScript

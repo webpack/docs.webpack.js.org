@@ -95,10 +95,10 @@ Get started with webpack by creating a simple project and bundling it.
     npm run build
     ```
     
-    Webpack will create a `dist/bundle.js` file with your bundled code.
+    Webpack will create a `dist/bundle.js` file containing all bundled modules from your dependency graph.
   </Step>
 
-  <Step title="Create an HTML file">
+  <Step title="Create an HTML file to load the bundle">
     Create `dist/index.html` to load your bundle:
     
     ```html
@@ -150,7 +150,7 @@ Production mode automatically:
 
 ## Adding CSS
 
-To bundle CSS files, install loaders:
+To bundle CSS files with webpack, install the required loaders:
 
 ```bash
 npm install --save-dev style-loader css-loader

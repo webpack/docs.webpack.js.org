@@ -28,7 +28,7 @@ Development mode optimizes for build speed and debugging experience, not bundle 
 
 ## Webpack Dev Server
 
-The dev server provides live reloading and hot module replacement.
+The dev server provides live reloading and hot module replacement (HMR), allowing updates without a full page refresh.
 
 <Steps>
 <Step title="Install webpack-dev-server">
@@ -140,7 +140,7 @@ Most frameworks (React, Vue) have HMR support built into their loaders. You usua
 
 ## Lazy Compilation
 
-Compile dynamic imports only when they're requested:
+Compile dynamically imported modules only when they are requested by the browser:
 
 ```javascript
 module.exports = {
