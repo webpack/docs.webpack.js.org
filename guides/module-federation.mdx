@@ -41,29 +41,29 @@ An application can be both host and remote simultaneously.
   module.exports = {
     name: 'remote',
     mode: 'development',
-    
+
     output: {
       publicPath: 'http://localhost:3001/',
       uniqueName: 'remote'
     },
-    
+
     plugins: [
       new ModuleFederationPlugin({
         name: 'remote',
         filename: 'remoteEntry.js',
-        
+
         exposes: {
           './Button': './src/Button',
           './Header': './src/Header'
         },
-        
+
         shared: {
           react: { singleton: true },
           'react-dom': { singleton: true }
         }
       })
     ],
-    
+
     devServer: {
       port: 3001
     }
@@ -79,27 +79,27 @@ An application can be both host and remote simultaneously.
   module.exports = {
     name: 'host',
     mode: 'development',
-    
+
     output: {
       publicPath: 'http://localhost:3000/',
       uniqueName: 'host'
     },
-    
+
     plugins: [
       new ModuleFederationPlugin({
         name: 'host',
-        
+
         remotes: {
           remote: 'remote@http://localhost:3001/remoteEntry.js'
         },
-        
+
         shared: {
           react: { singleton: true },
           'react-dom': { singleton: true }
         }
       })
     ],
-    
+
     devServer: {
       port: 3000
     }
@@ -120,7 +120,7 @@ An application can be both host and remote simultaneously.
         <Suspense fallback="Loading Header...">
           <RemoteHeader />
         </Suspense>
-        
+
         <Suspense fallback="Loading Button...">
           <RemoteButton />
         </Suspense>
@@ -131,6 +131,14 @@ An application can be both host and remote simultaneously.
 </Step>
 </Steps>
 
+### Why `output.uniqueName` Matters
+
+When using a Module Federation setup, both the host and each remote should use a unique `output.uniqueName`. By default, Webpack derives this value from the `name` field in `package.json`, so any two builds using the same default name can collide at runtime.
+
+This can happen when multiple remotes are loaded on the same page, or when a host and a single remote are split from the same project and end up sharing the same default name.
+
+To avoid conflicts, set `output.uniqueName` explicitly in each build.
+
 ## Configuration Options
 
 ### Exposing Modules
@@ -139,7 +147,7 @@ An application can be both host and remote simultaneously.
 new ModuleFederationPlugin({
   name: 'myApp',
   filename: 'remoteEntry.js',
-  
+
   exposes: {
     './Component': './src/Component',
     './utils': './src/utils',
@@ -155,7 +163,7 @@ new ModuleFederationPlugin({
   remotes: {
     app1: 'app1@http://localhost:3001/remoteEntry.js',
     app2: 'app2@http://localhost:3002/remoteEntry.js',
-    
+
     // Dynamic remote URLs
     app3: `app3@${process.env.APP3_URL}/remoteEntry.js`
   }
@@ -169,16 +177,16 @@ new ModuleFederationPlugin({
   shared: {
     // Simple sharing
     react: { singleton: true },
-    
+
     // With version requirements
     lodash: {
       singleton: true,
       requiredVersion: '^4.17.0'
     },
-    
+
     // Share all lodash modules
     'lodash/': {},
-    
+
     // Advanced configuration
     'react-router-dom': {
       singleton: true,
@@ -218,13 +226,13 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'shell',
-      
+
       remotes: {
         products: 'products@https://products.example.com/remoteEntry.js',
         checkout: 'checkout@https://checkout.example.com/remoteEntry.js',
         profile: 'profile@https://profile.example.com/remoteEntry.js'
       },
-      
+
       shared: {
         react: {
           singleton: true,
@@ -255,13 +263,13 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'products',
       filename: 'remoteEntry.js',
-      
+
       exposes: {
         './ProductList': './src/components/ProductList',
         './ProductDetail': './src/components/ProductDetail',
         './routes': './src/routes'
       },
-      
+
       shared: {
         react: { singleton: true },
         'react-dom': { singleton: true },
@@ -315,7 +323,7 @@ new ModuleFederationPlugin({
 function loadRemote(url, scope, module) {
   return async () => {
     await __webpack_init_sharing__('default');
-    
+
     const container = await new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = url;
@@ -335,7 +343,7 @@ function loadRemote(url, scope, module) {
       script.onerror = reject;
       document.head.appendChild(script);
     });
-    
+
     await container.init(__webpack_share_scopes__.default);
     const factory = await container.get(module);
     return factory();
@@ -361,15 +369,15 @@ Both applications can expose and consume modules:
 new ModuleFederationPlugin({
   name: 'appA',
   filename: 'remoteEntry.js',
-  
+
   exposes: {
     './Header': './src/Header'
   },
-  
+
   remotes: {
     appB: 'appB@http://localhost:3002/remoteEntry.js'
   },
-  
+
   shared: ['react', 'react-dom']
 })
 ```
@@ -379,15 +387,15 @@ new ModuleFederationPlugin({
 new ModuleFederationPlugin({
   name: 'appB',
   filename: 'remoteEntry.js',
-  
+
   exposes: {
     './Footer': './src/Footer'
   },
-  
+
   remotes: {
     appA: 'appA@http://localhost:3001/remoteEntry.js'
   },
-  
+
   shared: ['react', 'react-dom']
 })
 ```
@@ -432,15 +440,15 @@ import React, { lazy, Suspense } from 'react';
 
 class ErrorBoundary extends React.Component {
   state = { hasError: false };
-  
+
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-  
+
   componentDidCatch(error, errorInfo) {
     console.error('Remote module failed:', error, errorInfo);
   }
-  
+
   render() {
     if (this.state.hasError) {
       return <div>Failed to load remote module</div>;
@@ -449,7 +457,7 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-const RemoteComponent = lazy(() => 
+const RemoteComponent = lazy(() =>
   import('remote/Component').catch(() => {
     // Fallback component
     return { default: () => <div>Fallback UI</div> };
@@ -507,7 +515,8 @@ npm install --save-dev @module-federation/typescript
   ```
 </Step>
 
-<Step title="Set unique names">
+<Step title="Set unique names for the host and each remote">
+  This helps federated builds to avoid collisions at runtime.
   ```javascript
   output: {
     uniqueName: 'my-unique-app-name'
