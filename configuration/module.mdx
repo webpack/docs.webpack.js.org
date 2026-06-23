@@ -410,6 +410,57 @@ module.exports = {
 };
 ```
 
+## Generator Options
+
+### CSS Generator
+
+When using webpack's native CSS support (`experiments.css`), the class names produced for CSS Modules are controlled by the `css/auto`, `css/module`, and `css/global` generators rather than by `css-loader`:
+
+```javascript
+module.exports = {
+  experiments: { css: true },
+  module: {
+    generator: {
+      'css/auto': {
+        localIdentName: '[uniqueName]-[id]-[local]',
+        localIdentHashFunction: 'xxhash64',
+        localIdentHashDigest: 'base64url',
+        localIdentHashDigestLength: 6,
+        localIdentHashSalt: undefined,
+        exportsConvention: 'as-is',
+        esModule: true
+      }
+    }
+  }
+};
+```
+
+#### `localIdentName`
+
+Template for the generated local class name. It defaults to `[uniqueName]-[id]-[local]` (or `[id]-[local]`) in development and `[fullhash]` in production.
+
+Supported placeholders: `[local]`, `[path]`, `[name]`, `[file]`, `[ext]`, `[query]`, `[fragment]`, `[uniqueName]`, `[hash]`, `[fullhash]`, and `[contenthash]`. A hash placeholder accepts an optional length, e.g. `[hash:8]`.
+
+<Warning>
+  The hash **digest** (encoding) is configured with the generator options below, not inline. Unlike `css-loader`, the native CSS generator does **not** support the `[hash:<digest>:<length>]` form such as `[hash:base64:5]` — use `localIdentHashDigest: 'base64'` together with `[hash]` (or `[hash:5]`) instead.
+</Warning>
+
+#### `localIdentHashFunction`
+
+Hash function used for the local ident hash (e.g. `'xxhash64'`, `'md4'`, `'sha256'`). Defaults to the output `hashFunction`.
+
+#### `localIdentHashDigest`
+
+Encoding of the hash digest, e.g. `'hex'`, `'base64'`, or `'base64url'` (default).
+
+#### `localIdentHashDigestLength`
+
+Number of characters kept from the hash digest. Defaults to `6`. An inline `[hash:N]` length, when given, takes precedence.
+
+#### `localIdentHashSalt`
+
+Optional salt mixed into the hash so identical class names hash to different values across projects.
+
 ## Common Patterns
 
 ### JavaScript with Babel
