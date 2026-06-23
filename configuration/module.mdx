@@ -439,10 +439,10 @@ module.exports = {
 
 Template for the generated local class name. It defaults to `[uniqueName]-[id]-[local]` (or `[id]-[local]`) in development and `[fullhash]` in production.
 
-Supported placeholders: `[local]`, `[path]`, `[name]`, `[file]`, `[ext]`, `[query]`, `[fragment]`, `[uniqueName]`, `[hash]`, `[fullhash]`, and `[contenthash]`. A hash placeholder accepts an inline length and/or digest, e.g. `[hash:8]`, `[hash:base64:5]`, or `[contenthash:base64:8]`.
+Supported placeholders: `[local]`, `[path]`, `[name]`, `[file]`, `[ext]`, `[query]`, `[fragment]`, `[uniqueName]`, `[hash]`, `[fullhash]`, `[modulehash]`, and `[contenthash]`. A hash placeholder accepts an inline length and/or digest, e.g. `[hash:8]`, `[hash:base64:5]`, or `[contenthash:base64:8]`.
 
 <Note>
-  An inline digest **re-encodes** the stored hash, which is already truncated to its hash length, so it is not byte-identical to `css-loader`/`loader-utils`. `[hash]` and `[contenthash]` are encoded with the output `hashDigest`; `[fullhash]` (the local ident hash) uses `localIdentHashDigest`, so set that option to change its digest rather than an inline one.
+  `[hash]` and `[fullhash]` are the **local ident hash** (derived from the resource path and local name, matching `css-loader`); use `[modulehash]` for the module hash. An inline digest **re-encodes** the stored hash, which is already truncated to its hash length, so it is not byte-identical to `css-loader`/`loader-utils`. `[hash]`/`[fullhash]` use `localIdentHashDigest`; `[contenthash]` uses the output `hashDigest` — set those options to change the digest rather than an inline one.
 </Note>
 
 #### `localIdentHashFunction`
