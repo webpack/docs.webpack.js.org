@@ -439,11 +439,11 @@ module.exports = {
 
 Template for the generated local class name. It defaults to `[uniqueName]-[id]-[local]` (or `[id]-[local]`) in development and `[fullhash]` in production.
 
-Supported placeholders: `[local]`, `[path]`, `[name]`, `[file]`, `[ext]`, `[query]`, `[fragment]`, `[uniqueName]`, `[hash]`, `[fullhash]`, and `[contenthash]`. A hash placeholder accepts an optional length, e.g. `[hash:8]`.
+Supported placeholders: `[local]`, `[path]`, `[name]`, `[file]`, `[ext]`, `[query]`, `[fragment]`, `[uniqueName]`, `[hash]`, `[fullhash]`, and `[contenthash]`. A hash placeholder accepts an inline length and/or digest, e.g. `[hash:8]`, `[hash:base64:5]`, or `[contenthash:base64:8]`.
 
-<Warning>
-  The hash **digest** (encoding) is configured with the generator options below, not inline. Unlike `css-loader`, the native CSS generator does **not** support the `[hash:<digest>:<length>]` form such as `[hash:base64:5]` — use `localIdentHashDigest: 'base64'` together with `[hash]` (or `[hash:5]`) instead.
-</Warning>
+<Note>
+  An inline digest **re-encodes** the stored hash, which is already truncated to its hash length, so it is not byte-identical to `css-loader`/`loader-utils`. `[hash]` and `[contenthash]` are encoded with the output `hashDigest`; `[fullhash]` (the local ident hash) uses `localIdentHashDigest`, so set that option to change its digest rather than an inline one.
+</Note>
 
 #### `localIdentHashFunction`
 
