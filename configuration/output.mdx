@@ -119,6 +119,20 @@ chunkFilename: 'chunks/[name].[chunkhash:8].js'
 assetModuleFilename: 'assets/[name].[hash:8][ext]'
 ```
 
+A hash placeholder accepts an optional inline digest and length —
+`[<hash>:<digest>:<length>]`, e.g. `[contenthash:base64:8]` — overriding
+`output.hashDigest` for that placeholder:
+
+```javascript
+filename: '[name].[contenthash:base64:8].js'
+```
+
+<Note>
+  The stored hash is already truncated to `output.hashDigestLength`, so an
+  inline digest is re-encoded from those bytes rather than recomputed from the
+  full content.
+</Note>
+
 ## Advanced Options
 
 <Accordion title="Chunk Loading">
